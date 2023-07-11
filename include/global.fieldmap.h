@@ -122,10 +122,10 @@ struct MapEvents
     u8 warpCount;
     u8 coordEventCount;
     u8 bgEventCount;
-    const struct ObjectEventTemplate *objectEvents;
-    const struct WarpEvent *warps;
-    const struct CoordEvent *coordEvents;
-    const struct BgEvent *bgEvents;
+    struct ObjectEventTemplate *objectEvents;
+    struct WarpEvent *warps;
+    struct CoordEvent *coordEvents;
+    struct BgEvent *bgEvents;
 };
 
 struct MapConnection
