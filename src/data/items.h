@@ -1747,9 +1747,6 @@ const struct Item gItems[] =
         .price = 10000,
         .description = sGoldBottleCapDesc,
         .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .flingPower = 30,
     },
 
     [ITEM_NUGGET] =
@@ -10205,10 +10202,6 @@ const struct Item gItems[] =
         .name = _("NormlTeraShrd"),
         .itemId = ITEM_NORMAL_TERA_SHARD,
         .price = 0,
-        .description = sTeraShardDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
     [ITEM_POISON_TERA_SHARD] =
