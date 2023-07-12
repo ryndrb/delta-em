@@ -241,6 +241,25 @@
 #define OBJ_EVENT_GFX_LUGIA                      237
 #define OBJ_EVENT_GFX_HOOH                       238
 
+#define OBJ_EVENT_GFX_DELTA_BRENDAN_ACRO_BIKE    239
+#define OBJ_EVENT_GFX_DELTA_BRENDAN_DECORATING   240
+#define OBJ_EVENT_GFX_DELTA_BRENDAN_FIELD_MOVE   241
+#define OBJ_EVENT_GFX_DELTA_BRENDAN_FISHING      242
+#define OBJ_EVENT_GFX_DELTA_BRENDAN_MACH_BIKE    243
+#define OBJ_EVENT_GFX_DELTA_BRENDAN_SURFING      244
+#define OBJ_EVENT_GFX_DELTA_BRENDAN_UNDERWATER   245
+#define OBJ_EVENT_GFX_DELTA_BRENDAN              246
+#define OBJ_EVENT_GFX_DELTA_BRENDAN_WATERING     247
+#define OBJ_EVENT_GFX_DELTA_MAY_ACRO_BIKE        248
+#define OBJ_EVENT_GFX_DELTA_MAY_DECORATING       249
+#define OBJ_EVENT_GFX_DELTA_MAY_FIELD_MOVE       250
+#define OBJ_EVENT_GFX_DELTA_MAY_FISHING          251
+#define OBJ_EVENT_GFX_DELTA_MAY_MACH_BIKE        252
+#define OBJ_EVENT_GFX_DELTA_MAY_SURFING          253
+#define OBJ_EVENT_GFX_DELTA_MAY_UNDERWATER       254
+#define OBJ_EVENT_GFX_DELTA_MAY                  255
+#define OBJ_EVENT_GFX_DELTA_MAY_WATERING         256
+
 // NOTE: By default, the max value for NUM_OBJ_EVENT_GFX is 239.
 //
 // Object event graphics ids are 1 byte in size (max value of 255), and the dynamic
@@ -250,7 +269,7 @@
 // object graphics that can be removed. If more graphics are needed, anything that
 // stores graphics ids will need to be increased in size. See wiki entry below:
 // https://github.com/pret/pokeemerald/wiki/Feature-Branches#overworld-expansion
-#define NUM_OBJ_EVENT_GFX                        239
+#define NUM_OBJ_EVENT_GFX                        257
 
 
 // These are dynamic object gfx ids.

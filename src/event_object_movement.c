@@ -451,6 +451,11 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_LUGIA                   0x1121
 #define OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x1122
 #define OBJ_EVENT_PAL_TAG_RS_MAY                  0x1123
+
+#define OBJ_EVENT_PAL_TAG_DELTA_BRENDAN           0x1124
+#define OBJ_EVENT_PAL_TAG_DELTA_BRENDAN_UNDERWATER 0x1125
+#define OBJ_EVENT_PAL_TAG_DELTA_MAY               0x1126
+#define OBJ_EVENT_PAL_TAG_DELTA_MAY_UNDERWATER    0x1127
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -497,6 +502,11 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Lugia,                 OBJ_EVENT_PAL_TAG_LUGIA},
     {gObjectEventPal_RubySapphireBrendan,   OBJ_EVENT_PAL_TAG_RS_BRENDAN},
     {gObjectEventPal_RubySapphireMay,       OBJ_EVENT_PAL_TAG_RS_MAY},
+
+    {gObjectEventPal_Delta_Brendan,          OBJ_EVENT_PAL_TAG_DELTA_BRENDAN},
+    {gObjectEventPal_Delta_Brendan_Underwater,OBJ_EVENT_PAL_TAG_DELTA_BRENDAN_UNDERWATER},
+    {gObjectEventPal_Delta_May,              OBJ_EVENT_PAL_TAG_DELTA_MAY},
+    {gObjectEventPal_Delta_May_Underwater,   OBJ_EVENT_PAL_TAG_DELTA_MAY_UNDERWATER},
 #ifdef BUGFIX
     {NULL,                                  OBJ_EVENT_PAL_TAG_NONE},
 #else

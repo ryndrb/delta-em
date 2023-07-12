@@ -245,6 +245,24 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Giddy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan2;
 
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_Brendan_Acro_Bike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_Brendan_Decorating;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_Brendan_FieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_Brendan_Fishing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_Brendan_Mach_Bike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_Brendan_Surfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_Brendan_Underwater;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_Brendan;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_Brendan_Watering;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_May_Acro_Bike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_May_Decorating;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_May_FieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_May_Fishing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_May_Mach_Bike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_May_Surfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_May_Underwater;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_May;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_May_Watering;
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
     [OBJ_EVENT_GFX_BRENDAN_NORMAL] =           &gObjectEventGraphicsInfo_BrendanNormal,
@@ -486,6 +504,25 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LINK_RS_MAY] =              &gObjectEventGraphicsInfo_RubySapphireMay,
     [OBJ_EVENT_GFX_LUGIA] =                    &gObjectEventGraphicsInfo_Lugia,
     [OBJ_EVENT_GFX_HOOH] =                     &gObjectEventGraphicsInfo_HoOh,
+
+    [OBJ_EVENT_GFX_DELTA_BRENDAN_ACRO_BIKE] =      &gObjectEventGraphicsInfo_Delta_Brendan_Acro_Bike,
+    [OBJ_EVENT_GFX_DELTA_BRENDAN_DECORATING] =     &gObjectEventGraphicsInfo_Delta_Brendan_Decorating,
+    [OBJ_EVENT_GFX_DELTA_BRENDAN_FIELD_MOVE] =     &gObjectEventGraphicsInfo_Delta_Brendan_FieldMove,
+    [OBJ_EVENT_GFX_DELTA_BRENDAN_FISHING] =        &gObjectEventGraphicsInfo_Delta_Brendan_Fishing,
+    [OBJ_EVENT_GFX_DELTA_BRENDAN_MACH_BIKE] =      &gObjectEventGraphicsInfo_Delta_Brendan_Mach_Bike,
+    [OBJ_EVENT_GFX_DELTA_BRENDAN_SURFING] =        &gObjectEventGraphicsInfo_Delta_Brendan_Surfing,
+    [OBJ_EVENT_GFX_DELTA_BRENDAN_UNDERWATER] =     &gObjectEventGraphicsInfo_Delta_Brendan_Underwater,
+    [OBJ_EVENT_GFX_DELTA_BRENDAN] =                &gObjectEventGraphicsInfo_Delta_Brendan,
+    [OBJ_EVENT_GFX_DELTA_BRENDAN_WATERING] =       &gObjectEventGraphicsInfo_Delta_Brendan_Watering,
+    [OBJ_EVENT_GFX_DELTA_MAY_ACRO_BIKE] =          &gObjectEventGraphicsInfo_Delta_May_Acro_Bike,
+    [OBJ_EVENT_GFX_DELTA_MAY_DECORATING] =         &gObjectEventGraphicsInfo_Delta_May_Decorating,
+    [OBJ_EVENT_GFX_DELTA_MAY_FIELD_MOVE] =         &gObjectEventGraphicsInfo_Delta_May_FieldMove,
+    [OBJ_EVENT_GFX_DELTA_MAY_FISHING] =            &gObjectEventGraphicsInfo_Delta_May_Fishing,
+    [OBJ_EVENT_GFX_DELTA_MAY_MACH_BIKE] =          &gObjectEventGraphicsInfo_Delta_May_Mach_Bike,
+    [OBJ_EVENT_GFX_DELTA_MAY_SURFING] =            &gObjectEventGraphicsInfo_Delta_May_Surfing,
+    [OBJ_EVENT_GFX_DELTA_MAY_UNDERWATER] =         &gObjectEventGraphicsInfo_Delta_May_Underwater,
+    [OBJ_EVENT_GFX_DELTA_MAY] =                    &gObjectEventGraphicsInfo_Delta_May,
+    [OBJ_EVENT_GFX_DELTA_MAY_WATERING] =           &gObjectEventGraphicsInfo_Delta_May_Watering,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {
