@@ -136,11 +136,22 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GoSeeRival::
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_AgreeToSeeRival::
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou, MSGBOX_DEFAULT
+	checkplayergender
+	call_if_eq VAR_RESULT, MALE, LittlerootTown_ProfessorBirchsLab_EventScript_AgreeToSeeRival_M
+	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_ProfessorBirchsLab_EventScript_AgreeToSeeRival_F
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_RestAtYourHouse, MSGBOX_DEFAULT
 	clearflag FLAG_HIDE_ROUTE_101_BOY
 	setvar VAR_BIRCH_LAB_STATE, 3
 	releaseall
 	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_AgreeToSeeRival_M::
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou_M, MSGBOX_DEFAULT
+	return
+
+LittlerootTown_ProfessorBirchsLab_EventScript_AgreeToSeeRival_F::
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou_F, MSGBOX_DEFAULT
+	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_DeclineSeeingRival::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_DontBeThatWay, MSGBOX_YESNO
@@ -664,75 +675,37 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ScottAboardSSTidalCall::
 	end
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchAwayOnFieldwork:
-	.string "Hunh? Prof. Birch?\p"
-	.string "The Prof's away on fieldwork.\n"
-	.string "Ergo, he isn't here.\p"
-	.string "Oh, let me explain what fieldwork is.\p"
-	.string "It is to study things in the natural\n"
-	.string "environment, like fields and mountains,\l"
-	.string "instead of a laboratory.\p"
-	.string "The Prof isn't one for doing desk work.\n"
-	.string "He's the type of person who would\l"
-	.string "rather go outside and experience\l"
-	.string "things than read about them here.$"
+	.string "Huh? You're looking for Professor\nBirch?\pThe prof's away on fieldwork.\nErgo, not here.\pOh, I guess I have to tell you what\nfieldwork is?\pFieldwork is when you study things in\ntheir natural environments, like out\lin the fields and mountains, instead\lof in a laboratory.\pThe prof isn't one for doing desk\nwork, really.\pHe's the type who would rather go\noutside and experience things than\lread about them here.\pHe's probably doing a survey for\n{COLOR BLUE}Route 101{COLOR DARK_GRAY} now.\lIt's just outside of the town.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchIsntOneForDeskWork:
-	.string "The Prof isn't one for doing desk work.\n"
-	.string "He's the type of person who would\l"
-	.string "rather go outside and experience\l"
-	.string "things than read about them here.$"
+	.string "The prof isn't one for doing desk\nwork, really.\pHe's the type who would rather go\noutside and experience things than\lread about them here.\pHe's probably doing a survey for\n{COLOR BLUE}Route 101{COLOR DARK_GRAY} now.\lIt's just outside of the town.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo:
-	.string "Prof. Birch is studying the habitats\n"
-	.string "and distribution of Pokémon.\p"
-	.string "The Prof enjoys {RIVAL}'s help, too.\n"
-	.string "There's a lot of love there.$"
+	.string "Professor Birch is studying the\nhabitats and distribution of\lPokémon.\pThe Professor enjoy {RIVAL}'s help,\ntoo. There's a lot of love there.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon:
-	.string "Prof. Birch: So, {PLAYER}{KUN}.\p"
-	.string "I've heard so much about you from\n"
-	.string "your father.\p"
-	.string "I've heard that you don't have your\n"
-	.string "own Pokémon yet.\p"
-	.string "But the way you battled earlier,\n"
-	.string "you pulled it off with aplomb!\p"
-	.string "I guess you have your father's blood\n"
-	.string "in your veins after all!\p"
-	.string "Oh, yes. As thanks for rescuing me,\n"
-	.string "I'd like you to have the Pokémon you\l"
-	.string "used earlier.\p"
-	.string "{PLAYER} received the {STR_VAR_1}!$"
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: So, {PLAYER}!\pI've heard so much about you from\nyour father.\pBut he said that you don't have your\nown Pokémon yet.\pIf that's true, that was quite the\nperformance back there!\pLooks like you really are your\nfather's child!\pOh, yes! To say thanks for rescuing\nme out there, how about I give\lyou that Pokémon you used earlier?\p{PLAYER} received the {STR_VAR_1}!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_WhyNotGiveNicknameToMon:
-	.string "Prof. Birch: While you're at it, why not\n"
-	.string "give a nickname to that {STR_VAR_1}?$"
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: While you're at it, why\nnot give a nickname to that {STR_VAR_1}?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival:
-	.string "Prof. Birch: If you work at Pokémon\n"
-	.string "and gain experience, I think you'll make\l"
-	.string "an extremely good Trainer.\p"
-	.string "My kid, {RIVAL}, is also studying\n"
-	.string "Pokémon while helping me out.\p"
-	.string "{PLAYER}{KUN}, don't you think it might be\n"
-	.string "a good idea to go see {RIVAL}?$"
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: Oh, so that's how you\nlike to do things?\pNot even going to give it a nickname,\nare you?\pYou know, if you work with your\nPokémon and gain experience, I\lthink you'll make a pretty\lexcellent Trainer.\pMy kid, {RIVAL}, happens to be out on\n{COLOR BLUE}Route 103{COLOR DARK_GRAY} right now, surveying\lPokémon for me.\pIt might not be a bad idea for you\nto head out that way yourself.\lWhat do you think?$"
 
-LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou:
-	.string "Prof. Birch: Great!\n"
-	.string "{RIVAL} should be happy, too.\p"
-	.string "Get {RIVAL} to teach you what it\n"
-	.string "means to be a Trainer.$"
+LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou_M:
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: Great! I'm sure\nMay'll be happy to hear that,\ltoo.\pShe can help teach you what it means\nto be a Trainer.$"
+
+LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou_F:
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: Great! I'm sure\nBrendan'll be happy to hear that,\ltoo.\pHe can help teach you what it means\nto be a Trainer.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_DontBeThatWay:
-	.string "Prof. Birch: Oh, don't be that way.\n"
-	.string "You should go meet my kid.$"
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: Oh, don't be that way!\nYou should go meet my kid.$"
+
+LittlerootTown_ProfessorBirchsLab_Text_RestAtYourHouse:
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: And if you or your\nPokémon get tired, get some rest\lback at your new house.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome:
-	.string "Prof. Birch: {RIVAL}?\n"
-	.string "Gone home, I think.\p"
-	.string "Or maybe that kid's scrabbling around\n"
-	.string "in tall grass again somewhere…\p"
-	.string "If you or your Pokémon get tired,\n"
-	.string "you should get some rest at home.$"
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: My kid, {RIVAL},\nhappens to be out on {COLOR BLUE}Route 103{COLOR DARK_GRAY}\lright now, surveying Pokémon for\lme.\pIt might not be a bad idea for you\nto head out that way yourself.\pAnd if you or your Pokémon get\ntired, get some rest back at your\lnew house.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
 	.string "Prof. Birch: Oh, hi, {PLAYER}{KUN}!\p"

@@ -910,19 +910,10 @@ LittlerootTown_EventScript_GiveRunningShoes::
 	return
 
 LittlerootTown_Text_OurNewHomeLetsGoInside:
-	.string "Mom: {PLAYER}, we're here, honey!\p"
-	.string "It must be tiring riding with our things\n"
-	.string "in the moving truck.\p"
-	.string "Well, this is Littleroot Town.\p"
-	.string "How do you like it?\n"
-	.string "This is our new home!\p"
-	.string "It has a quaint feel, but it seems to be\n"
-	.string "an easy place to live, don't you think?\p"
-	.string "And, you get your own room, {PLAYER}!\n"
-	.string "Let's go inside.$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: {PLAYER}! You're here at last!\pWasn't it tough riding in the back of\nthe bumpy truck all that way?\pWell, this is Littleroot Town.\nWhat do you think?\pThis is going to be our new home!\pIt has a quaint feel, but it looks\nlike it should be a nice place to\llive, don't you think?\pAnd you get your own room this time,\n{PLAYER}!\pCome on.\nYou have to see the inside!$"
 
 LittlerootTown_Text_WaitPlayer:
-	.string "Mom: Wait, {PLAYER}!$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Wait, {PLAYER}!$"
 
 LittlerootTown_Text_WearTheseRunningShoes:
 	.string "Mom: {PLAYER}! {PLAYER}! Did you\n"
@@ -963,29 +954,17 @@ LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "The power of science is staggering!$"
 
 LittlerootTown_Text_BirchSpendsDaysInLab:
-	.string "Prof. Birch spends days in his Lab\n"
-	.string "studying, then he'll suddenly go out in\l"
-	.string "the wild to do more research…\p"
-	.string "When does Prof. Birch spend time\n"
-	.string "at home?$"
+	.string "Professor Birch will spend days on\nend in his lab researching\lsomething, then he'll suddenly go\lout into the field to gather more\ldata…\pWhen does he ever spend time at\nhome?$"
 
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
-	.string "Um, um, um!\p"
-	.string "If you go outside and go in the grass,\n"
-	.string "wild Pokémon will jump out!$"
+	.string "It's not safe to out there if you\ndon't have any Pokémon with you.$"
 
 LittlerootTown_Text_DangerousIfYouDontHavePokemon:
 	.string "It's dangerous if you don't have\n"
 	.string "your own Pokémon.$"
 
 LittlerootTown_Text_CanYouGoSeeWhatsHappening:
-	.string "Um, hi!\p"
-	.string "There are scary Pokémon outside!\n"
-	.string "I can hear their cries!\p"
-	.string "I want to go see what's going on,\n"
-	.string "but I don't have any Pokémon…\p"
-	.string "Can you go see what's happening\n"
-	.string "for me?$"
+	.string "I think I hear someone screaming up\nahead!\pWhat should I do? What should we\ndo?\lSomebody has to go help…$"
 
 LittlerootTown_Text_YouSavedBirch:
 	.string "You saved Prof. Birch!\n"
@@ -996,17 +975,17 @@ LittlerootTown_Text_GoodLuckCatchingPokemon:
 	.string "Good luck!$"
 
 LittlerootTown_Text_TownSign:
-	.string "Littleroot Town\n"
+	.string "{COLOR GREEN}Littleroot Town{COLOR DARK_GRAY}\n"
 	.string "“A town that can't be shaded any hue.”$"
 
 LittlerootTown_Text_ProfBirchsLab:
-	.string "Prof. Birch's Pokémon Lab$"
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}'s Pokémon Lab$"
 
 LittlerootTown_Text_PlayersHouse:
-	.string "{PLAYER}'s House$"
+	.string "{COLOR RED}{PLAYER}{COLOR DARK_GRAY}'s House$"
 
 LittlerootTown_Text_ProfBirchsHouse:
-	.string "Prof. Birch's House$"
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}'s House$"
 
 LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "Prof. Birch: Well, well, {PLAYER}{KUN}!\n"

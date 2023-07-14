@@ -31,6 +31,7 @@ LittlerootTown_BrendansHouse_1F_OnTransition:
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV
+	call_if_unset FLAG_MET_RIVAL_MOM, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoorFrontFacingUp
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs::
@@ -46,6 +47,11 @@ LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV::
 LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor::
 	setobjectxyperm LOCALID_MOM, 9, 8
 	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_UP
+	return
+
+LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoorFrontFacingUp::
+	setobjectxyperm LOCALID_RIVAL_MOM, 8, 6
+	setobjectmovementtype LOCALID_RIVAL_MOM, MOVEMENT_TYPE_FACE_UP
 	return
 
 @ Many of the below scripts have no gender check because they assume youre in the correct house
@@ -90,28 +96,28 @@ LittlerootTown_BrendansHouse_1F_EventScript_PetalburgGymReport::
 
 LittlerootTown_BrendansHouse_1F_EventScript_YoureNewNeighbor::
 	lockall
+	delay 40
+	applymovement LOCALID_RIVAL_MOM, Common_Movement_WalkInPlaceDown
+	waitmovement 0
+	delay 8
 	playse SE_PIN
 	applymovement LOCALID_RIVAL_MOM, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_RIVAL_MOM, Common_Movement_Delay48
+	msgbox PlayersHouse_1F_Text_OhYoureTheNewNeighbor, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_RIVAL_MOM, LittlerootTown_BrendansHouse_1F_Movement_RivalMomMoveAside
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	applymovement LOCALID_RIVAL_MOM, LittlerootTown_BrendansHouse_1F_Movement_RivalMomApproach
-	waitmovement 0
-	special GetRivalSonDaughterString
-	msgbox RivalsHouse_1F_Text_OhYoureTheNewNeighbor, MSGBOX_DEFAULT
 	setflag FLAG_MET_RIVAL_MOM
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
 	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 2
+	setvar VAR_TEMP_0, 1
 	releaseall
 	end
 
-LittlerootTown_BrendansHouse_1F_Movement_RivalMomApproach:
-	walk_down
+LittlerootTown_BrendansHouse_1F_Movement_RivalMomMoveAside:
+	delay_16
 	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
+	walk_in_place_left
 	step_end
 
 LittlerootTown_BrendansHouse_1F_EventScript_GoSeeRoom::
@@ -123,236 +129,47 @@ LittlerootTown_BrendansHouse_1F_EventScript_GoSeeRoom::
 	goto PlayersHouse_1F_EventScript_MomGoSeeRoom
 	end
 
-LittlerootTown_BrendansHouse_1F_EventScript_MeetRival0::
-	lockall
-	setvar VAR_0x8008, 0
-	goto LittlerootTown_BrendansHouse_1F_EventScript_MeetRival
-	end
-
-LittlerootTown_BrendansHouse_1F_EventScript_MeetRival1::
-	lockall
-	setvar VAR_0x8008, 1
-	goto LittlerootTown_BrendansHouse_1F_EventScript_MeetRival
-	end
-
-LittlerootTown_BrendansHouse_1F_EventScript_MeetRival2::
-	lockall
-	setvar VAR_0x8008, 2
-	goto LittlerootTown_BrendansHouse_1F_EventScript_MeetRival
-	end
-
-LittlerootTown_BrendansHouse_1F_EventScript_MeetRival::
-	playse SE_EXIT
-	delay 10
-	addobject LOCALID_RIVAL
-	delay 30
-	playse SE_PIN
-	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_RIVAL, Common_Movement_Delay48
-	waitmovement 0
-	call_if_ne VAR_0x8008, 1, LittlerootTown_BrendansHouse_1F_EventScript_PlayerFaceBrendan
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	call_if_eq VAR_0x8008, 0, LittlerootTown_BrendansHouse_1F_EventScript_BrendanApproachPlayer0
-	call_if_eq VAR_0x8008, 1, LittlerootTown_BrendansHouse_1F_EventScript_BrendanApproachPlayer1
-	call_if_eq VAR_0x8008, 2, LittlerootTown_BrendansHouse_1F_EventScript_BrendanApproachPlayer2
-	msgbox RivalsHouse_1F_Text_BrendanWhoAreYou, MSGBOX_DEFAULT
-	closemessage
-	call_if_eq VAR_0x8008, 0, LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs0
-	call_if_eq VAR_0x8008, 1, LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs1
-	call_if_eq VAR_0x8008, 2, LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs2
-	playse SE_EXIT
-	removeobject LOCALID_RIVAL
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_BRENDAN
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_POKE_BALL
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
-	delay 30
-	setvar VAR_LITTLEROOT_RIVAL_STATE, 3
-	setvar VAR_LITTLEROOT_TOWN_STATE, 1
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	releaseall
-	end
-
-LittlerootTown_BrendansHouse_1F_EventScript_PlayerFaceBrendan::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	return
-
-LittlerootTown_BrendansHouse_1F_EventScript_BrendanApproachPlayer0::
-	applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer0
-	waitmovement 0
-	return
-
-LittlerootTown_BrendansHouse_1F_EventScript_BrendanApproachPlayer1::
-	applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer1
-	waitmovement 0
-	return
-
-LittlerootTown_BrendansHouse_1F_EventScript_BrendanApproachPlayer2::
-	applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer2
-	waitmovement 0
-	return
-
-LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer0:
-	walk_in_place_faster_left
-	walk_left
-	walk_in_place_faster_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer1:
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer2:
-	walk_in_place_faster_right
-	walk_right
-	walk_in_place_faster_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs0::
-	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_BrendansHouse_1F_Movement_PlayerWatchBrendanExit0
-	applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs0
-	waitmovement 0
-	return
-
-LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs1::
-	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_BrendansHouse_1F_Movement_PlayerWatchBrendanExit1
-	applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs1
-	waitmovement 0
-	return
-
-LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs2::
-	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_BrendansHouse_1F_Movement_PlayerWatchBrendanExit2
-	applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs2
-	waitmovement 0
-	return
-
-LittlerootTown_BrendansHouse_1F_Movement_PlayerWatchBrendanExit0:
-	delay_16
-	delay_8
-	walk_in_place_faster_right
-	step_end
-
-LittlerootTown_BrendansHouse_1F_Movement_PlayerWatchBrendanExit1:
-	delay_16
-	delay_8
-	walk_in_place_faster_right
-	delay_16
-	delay_16
-	walk_in_place_faster_up
-	step_end
-
-LittlerootTown_BrendansHouse_1F_Movement_PlayerWatchBrendanExit2:
-	delay_16
-	delay_8
-	walk_in_place_faster_left
-	step_end
-
-LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs0:
-	walk_in_place_faster_right
-	walk_right
-	walk_in_place_faster_up
-	walk_up
-	walk_up
-	step_end
-
-LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs1:
-	walk_in_place_faster_right
-	walk_right
-	walk_in_place_faster_up
-	walk_up
-	walk_up
-	walk_in_place_faster_left
-	walk_left
-	walk_in_place_faster_up
-	walk_up
-	step_end
-
-LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs2:
-	walk_in_place_faster_left
-	walk_left
-	walk_in_place_faster_up
-	walk_up
-	walk_up
-	step_end
-
 PlayersHouse_1F_Text_IsntItNiceInHere:
-	.string "Mom: See, {PLAYER}?\n"
-	.string "Isn't it nice in here, too?$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: See, {PLAYER}?\nIsn't it nice in here, too?$"
 
 PlayersHouse_1F_Text_MoversPokemonGoSetClock:
-	.string "The mover's Pokémon do all the work\n"
-	.string "of moving us in and cleaning up after.\l"
-	.string "This is so convenient!\p"
-	.string "{PLAYER}, your room is upstairs.\n"
-	.string "Go check it out, dear!\p"
-	.string "Dad bought you a new clock to mark\n"
-	.string "our move here.\l"
-	.string "Don't forget to set it!$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: The moving company's Pokémon\neven help with the unpacking and\lcleanup.\lThey really make moving a cinch!\p…\pYou should go and see your new room\nupstairs, {PLAYER}!\pDad even bought a new clock for it\nto help celebrate the big move.\pYou'll need to set the time, though!$"
 
 PlayersHouse_1F_Text_ArentYouInterestedInRoom:
-	.string "Mom: Well, {PLAYER}?\p"
-	.string "Aren't you interested in seeing your\n"
-	.string "very own room?$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Well, {PLAYER}?\pDon't you want to see your new room?$"
 
 PlayersHouse_1F_Text_GoSetTheClock:
-	.string "Mom: {PLAYER}.\p"
-	.string "Go set the clock in your room, honey.$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: {PLAYER}, go set the clock in\nyour room, honey.\pI hung it on the wall, right between\nthe TV and the stairs.$"
 
 PlayersHouse_1F_Text_OhComeQuickly:
-	.string "Mom: Oh! {PLAYER}, {PLAYER}!\n"
-	.string "Quick! Come quickly!$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Oh! {PLAYER}! {PLAYER}!!!\nQuick! Come quickly!$"
 
 PlayersHouse_1F_Text_MaybeDadWillBeOn:
-	.string "Mom: Look! It's Petalburg Gym!\n"
-	.string "Maybe Dad will be on!$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: It's the Petalburg Gym!\nMaybe Dad will be on TV!$"
 
 PlayersHouse_1F_Text_ItsOverWeMissedHim:
-	.string "Mom: Oh… It's over.\p"
-	.string "I think Dad was on, but we missed him.\n"
-	.string "Too bad.$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Oh… It's already ended.\pLooks like your dad was on, but we\nmissed his part.\pWhat a shame.$"
 
 PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor:
-	.string "Oh, yes.\n"
-	.string "One of Dad's friends lives in town.\p"
-	.string "Prof. Birch is his name.\p"
-	.string "He lives right next door, so you should\n"
-	.string "go over and introduce yourself.$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: But that reminds me…\pOne of Dad's friends lives in this\ntown.\p{COLOR BLUE}Professor Birch{COLOR DARK_GRAY} is his name.\pHe lives {COLOR BLUE}right next door{COLOR DARK_GRAY}, so you\nshould go over and introduce\lyourself.$"
 
 PlayersHouse_1F_Text_SeeYouHoney:
-	.string "Mom: See you, honey!$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Now take care out there, honey!$"
 
 PlayersHouse_1F_Text_DidYouMeetProfBirch:
-	.string "Mom: Did you introduce yourself to\n"
-	.string "Prof. Birch?$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Did you get to meet Professor\nBirch?$"
 
 PlayersHouse_1F_Text_YouShouldRestABit:
-	.string "Mom: How are you doing, {PLAYER}?\n"
-	.string "You look a little tired.\p"
-	.string "I think you should rest a bit.$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: You feeling OK, {PLAYER}?\pYou look a little tired.\nI think you should rest a bit.$"
 
 PlayersHouse_1F_Text_TakeCareHoney:
-	.string "Mom: Take care, honey!$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Now take care out there, honey!$"
 
 PlayersHouse_1F_Text_GotDadsBadgeHeresSomethingFromMom:
-	.string "Mom: Oh? Did Dad give you that Badge?\p"
-	.string "Then here's something from your Mom!$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Oh? Did Dad give you that\nbadge!?\pThen here's something from your Mom!$"
 
 PlayersHouse_1F_Text_DontPushYourselfTooHard:
-	.string "Don't push yourself too hard, dear.\n"
-	.string "You can always come home.\p"
-	.string "Go for it, honey!$"
+	.string "It's a wonderful thing to try\nhard at your passion, but don't\lpush yourself too hard, dear.\pYou can always come home if you\nneed to.\pGood luck, honey!$"
 
 PlayersHouse_1F_Text_IsThatAPokenav:
 	.string "Mom: What is that, honey? A Pokénav?\n"
@@ -372,8 +189,7 @@ PlayersHouse_1F_Text_Vigoroth2:
 	.string "Huggoh, uggo uggo…$"
 
 PlayersHouse_1F_Text_ReportFromPetalburgGym:
-	.string "Interviewer: …We brought you this\n"
-	.string "report from in front of Petalburg Gym.$"
+	.string "{COLOR RED}Interviewer{COLOR DARK_GRAY}: …\pWe brought you this report live from\nin front of Petalburg Gym.\pNext up, a special look at a long-\n-awaited meteor shower in the next\lstar show…$"
 
 PlayersHouse_1F_Text_TheresAMovieOnTV:
 	.string "There is a movie on TV.\p"
@@ -438,3 +254,6 @@ PlayersHouse_1F_Text_WhatColorDidTheySay:
 PlayersHouse_1F_Text_StillUnknownPokemon:
 	.string "Mom: Well, isn't that something!\n"
 	.string "There are still unknown Pokémon.$"
+
+PlayersHouse_1F_Text_OhYoureTheNewNeighbor:
+	.string "Oh, hello. And you are?\p…\pOh, you're {PLAYER}, our new next-door\n neighbor! Welcome.\pWe have a son who is about the same\nage as you.\pHe has been so excited about making\na new friend.\pHe should be in {COLOR BLUE}his room upstairs{COLOR DARK_GRAY}.\pI hope you'll go and introduce\nyourself.$"

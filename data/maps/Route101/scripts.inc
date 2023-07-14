@@ -26,6 +26,8 @@ Route101_EventScript_StartBirchRescue::
 	closemessage
 	setobjectxy LOCALID_BIRCH, 0, 15
 	setobjectxy LOCALID_ZIGZAGOON, 0, 16
+	delay 16
+	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_EnterScene
 	applymovement LOCALID_BIRCH, Route101_Movement_BirchRunAway1
 	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonChase1
@@ -46,6 +48,10 @@ Route101_EventScript_StartBirchRescue::
 
 Route101_EventScript_PreventExitSouth::
 	lockall
+	delay 8
+	playse SE_PIN
+	applymovement LOCALID_BIRCH, Common_Movement_ExclamationMark
+	waitmovement 0
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitSouth
@@ -136,6 +142,8 @@ Route101_Movement_ZigzagoonFaceBirch:
 	step_end
 
 Route101_Movement_EnterScene:
+	emote_exclamation_mark
+	delay_16
 	walk_fast_up
 	walk_fast_up
 	walk_fast_up
@@ -233,6 +241,14 @@ Route101_EventScript_BirchsBag::
 	applymovement LOCALID_BIRCH, Route101_Movement_BirchApproachPlayer
 	waitmovement 0
 	msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT
+	closemessage
+	delay 16
+	playse SE_PIN
+	applymovement LOCALID_BIRCH, Common_Movement_ExclamationMark
+	waitmovement 0
+	checkplayergender
+	call_if_eq VAR_RESULT, MALE, Route101_EventScript_NoticePlayer_M
+	call_if_eq VAR_RESULT, FEMALE, Route101_EventScript_NoticePlayer_F
 	special HealPlayerParty
 	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
@@ -248,6 +264,16 @@ Route101_EventScript_BirchsBag::
 	release
 	end
 
+Route101_EventScript_NoticePlayer_M::
+	msgbox Route101_Text_NoticeItsPlayer_M, MSGBOX_DEFAULT
+	closemessage
+	return
+
+Route101_EventScript_NoticePlayer_F::
+	msgbox Route101_Text_NoticeItsPlayer_F, MSGBOX_DEFAULT
+	closemessage
+	return
+
 Route101_EventScript_HideMayInBedroom::
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
 	return
@@ -261,28 +287,22 @@ Route101_Movement_BirchApproachPlayer:
 	step_end
 
 Route101_Text_HelpMe:
-	.string "H-help me!$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: H-help me!$"
 
 Route101_Text_PleaseHelp:
-	.string "Hello! You over there!\n"
-	.string "Please! Help!\p"
-	.string "In my Bag!\n"
-	.string "There's a Poké Ball!$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Halloo! You over there!\nPlease! Help me out!\pIn my Bag!\nThere are some Poké Balls!$"
 
 Route101_Text_DontLeaveMe:
-	.string "Wh-Where are you going?!\n"
-	.string "Don't leave me like this!$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Wh-where are you going?!\nDon't leave me like this!$"
 
 Route101_Text_YouSavedMe:
-	.string "Prof. Birch: Whew…\p"
-	.string "I was in the tall grass studying wild\n"
-	.string "Pokémon when I was jumped.\p"
-	.string "You saved me.\n"
-	.string "Thanks a lot!\p"
-	.string "Oh?\p"
-	.string "Hi, you're {PLAYER}{KUN}!\p"
-	.string "This is not the place to chat, so come\n"
-	.string "by my Pokémon Lab later, okay?$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Whew…\pI went into the tall grass to survey\nwild Pokémon when I was suddenly\ljumped!\pYou saved my hide. Thanks a lot!$"
+
+Route101_Text_NoticeItsPlayer_M:
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Oh?\pBut you're Norman's boy, {PLAYER}!\pI didn't even realize who you were\nat first.\pYou've grown into quite the young\nboy.\pThis isn't the place to chat, though.\nCome along to my lab.$"
+
+Route101_Text_NoticeItsPlayer_F:
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Oh?\pBut you're Norman's girl, {PLAYER}!\pI didn't even realize who you were\nat first.\pYou've grown into quite the young\nlady.\pThis isn't the place to chat, though.\nCome along to my lab.$"
 
 Route101_Text_TakeTiredPokemonToPokeCenter:
 	.string "If Pokémon get tired, take them to\n"

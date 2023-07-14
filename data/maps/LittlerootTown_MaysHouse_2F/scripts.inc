@@ -3,6 +3,7 @@
 LittlerootTown_MaysHouse_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_MaysHouse_2F_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LittlerootTown_MaysHouse_2F_OnWarp
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, LittlerootTown_MaysHouse_2F_OnFrame
 	.byte 0
 
 LittlerootTown_MaysHouse_2F_OnTransition:
@@ -42,6 +43,10 @@ LittlerootTown_MaysHouse_2F_OnWarp:
 	map_script_2 VAR_SECRET_BASE_INITIALIZED, 0, LittlerootTown_MaysHouse_2F_EventScript_CheckInitDecor
 	.2byte 0
 
+LittlerootTown_MaysHouse_2F_OnFrame:
+	map_script_2 VAR_LITTLEROOT_RIVAL_STATE, 2, LittlerootTown_MaysHouse_2F_EventScript_MeetMay
+	.2byte 0
+
 LittlerootTown_MaysHouse_2F_EventScript_CheckInitDecor::
 	checkplayergender
 	goto_if_eq VAR_RESULT, FEMALE, SecretBase_EventScript_InitDecorations
@@ -55,76 +60,91 @@ LittlerootTown_MaysHouse_2F_EventScript_RivalsPokeBall::
 	end
 
 LittlerootTown_MaysHouse_2F_EventScript_MeetMay::
-	delay 10
 	addobject LOCALID_RIVAL
-	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayEnters
+	delay 10
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, LittlerootTown_MaysHouse_2F_Movement_CameraPansToMay
 	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
+	waitmovement 0
+	msgbox RivalsHouse_2F_Text_MayGettingReady, MSGBOX_DEFAULT
+	closemessage
+	delay 8
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceLeft
+	waitmovement 0
+	delay 16
 	playse SE_PIN
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_RIVAL, Common_Movement_Delay48
-	waitmovement 0
-	delay 10
+	delay 16
+	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPlayer
+	applymovement OBJ_EVENT_ID_CAMERA, LittlerootTown_MaysHouse_2F_Movement_CameraPansToBoth
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
 	playbgm MUS_ENCOUNTER_MAY, TRUE
-	call_if_eq VAR_FACING, DIR_NORTH, LittlerootTown_MaysHouse_2F_EventScript_MeetMayNorth
-	call_if_eq VAR_FACING, DIR_SOUTH, LittlerootTown_MaysHouse_2F_EventScript_MeetMaySouth
-	call_if_eq VAR_FACING, DIR_WEST, LittlerootTown_MaysHouse_2F_EventScript_MeetMayWest
-	call_if_eq VAR_FACING, DIR_EAST, LittlerootTown_MaysHouse_2F_EventScript_MeetMayEast
+	msgbox RivalsHouse_2F_Text_MayWhoAreYouIntro, MSGBOX_DEFAULT
+	closemessage
+	delay 16
+	playse SE_PIN
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	msgbox RivalsHouse_2F_Text_MayWhoAreYou, MSGBOX_DEFAULT
+	closemessage
+	delay 16
+	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerMoveAside
+	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayLeaveRoom
+	waitmovement LOCALID_RIVAL
+	removeobject LOCALID_RIVAL
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, LittlerootTown_MaysHouse_2F_Movement_CameraPansToPlayer
+	waitmovement 0
+	special RemoveCameraObject
 	setvar VAR_LITTLEROOT_RIVAL_STATE, 3
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_POKE_BALL
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
 	setvar VAR_LITTLEROOT_TOWN_STATE, 1
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	releaseall
 	end
 
-LittlerootTown_MaysHouse_2F_EventScript_MeetMayNorth::
-	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerNorth
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	msgbox RivalsHouse_2F_Text_MayWhoAreYou, MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayNorth
-	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCNorth
-	waitmovement 0
-	return
+LittlerootTown_MaysHouse_2F_Movement_CameraPansToMay:
+	walk_right
+	walk_right
+	walk_right
+	step_end
 
-LittlerootTown_MaysHouse_2F_EventScript_MeetMaySouth::
-	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerSouth
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	msgbox RivalsHouse_2F_Text_MayWhoAreYou, MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMaySouth
-	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCSouth
-	waitmovement 0
-	return
+LittlerootTown_MaysHouse_2F_Movement_CameraPansToBoth:
+	delay_16
+	delay_16
+	delay_16
+	walk_left
+	walk_left
+	step_end
 
-LittlerootTown_MaysHouse_2F_EventScript_MeetMayWest::
-	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerWest
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	msgbox RivalsHouse_2F_Text_MayWhoAreYou, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCWest
-	waitmovement 0
-	return
+LittlerootTown_MaysHouse_2F_Movement_CameraPansToPlayer:
+	walk_left
+	step_end
 
-LittlerootTown_MaysHouse_2F_EventScript_MeetMayEast::
-	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerEast
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	msgbox RivalsHouse_2F_Text_MayWhoAreYou, MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayEast
-	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCEast
-	waitmovement 0
-	return
+LittlerootTown_MaysHouse_2F_Movement_PlayerMoveAside:
+	walk_down
+	walk_in_place_up
+	step_end
+
+LittlerootTown_MaysHouse_2F_Movement_MayWalkToPlayer:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+LittlerootTown_MaysHouse_2F_Movement_MayLeaveRoom:
+	walk_left
+	walk_left
+	walk_in_place_up
+	walk_up
+	set_invisible
+	step_end
 
 LittlerootTown_MaysHouse_2F_Movement_MayEnters:
 	walk_down
@@ -310,57 +330,30 @@ LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC::
 	releaseall
 	end
 
+MaysHouse_2F_EventScript_Notebook::
+	msgbox MaysHouse_2F_Text_Notebook, MSGBOX_SIGN
+	end
+
+MaysHouse_2F_Text_Notebook:
+	.string "There are some notes on the page,\nwritten in spare, angular script.\p“This'll be on the test! Don't\nforget!\pEach Pokémon can learn up to four\nmoves!\pWhich moves you teach a Pokémon\nwill show how good of Trainer you\lare!”$"
+
+RivalsHouse_2F_Text_MayWhoAreYouIntro:
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Huh!?\pWho… are you?$"
+
 RivalsHouse_2F_Text_MayWhoAreYou:
-	.string "Huh?\n"
-	.string "Who… Who are you?\p"
-	.string "… … … … … … … …\n"
-	.string "… … … … … … … …\p"
-	.string "Oh, you're {PLAYER}{KUN}.\n"
-	.string "So your move was today.\p"
-	.string "Um… I'm May.\n"
-	.string "Glad to meet you!\p"
-	.string "I…\n"
-	.string "I have this dream of becoming friends\l"
-	.string "with Pokémon all over the world.\p"
-	.string "I… I heard about you, {PLAYER}{KUN}, from\n"
-	.string "my dad, Prof. Birch.\p"
-	.string "I was hoping that you would be nice,\n"
-	.string "{PLAYER}{KUN}, and that we could be friends.\p"
-	.string "Oh, this is silly, isn't it?\n"
-	.string "I… I've just met you, {PLAYER}{KUN}.\p"
-	.string "Eheheh…\p"
-	.string "Oh, no! I forgot!\p"
-	.string "I was supposed to go help Dad catch\n"
-	.string "some wild Pokémon!\p"
-	.string "{PLAYER}{KUN}, I'll catch you later!$"
+	.string "Oh! You must be {PLAYER}!\nYour move was today, huh?\pWell, I'm {COLOR RED}May{COLOR DARK_GRAY}!\nGlad to meet you!\pI… I actually have this dream of\nbecoming friend with Pokémon all\lover the world.\pAnd when Dad-oh, I mean, Professor\nBirch-told me about your move here,\l{PLAYER}…\pWell, I was hoping you would be nice\nand we could be friends.\p…B-but that's just silly, isn't it?\pI've just met you. Right, {PLAYER}?\pSo what am I talking about…\pHee hee…\pOh no! I forgot!\pI was supposed to be going out to\nhelp Dad catch some wild Pokémon!\p{PLAYER}, I'll see you later!$"
 
 RivalsHouse_2F_Text_MayGettingReady:
-	.string "Pokémon fully restored!\n"
-	.string "Items ready, and…$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Pokémon fully restored, items\nall ready and…$"
+
+RivalsHouse_2F_Text_BrendanWhoAreYouIntro:
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Y-you…\pWho are you?$"
 
 RivalsHouse_2F_Text_BrendanWhoAreYou:
-	.string "Hey!\n"
-	.string "You…\p"
-	.string "Who are you?\p"
-	.string "Oh, you're {PLAYER}, aren't you?\n"
-	.string "Moved in next door, right?\p"
-	.string "I didn't know that you're a girl.\p"
-	.string "Dad, Prof. Birch, said that our new\n"
-	.string "next-door neighbor is a Gym Leader's\l"
-	.string "kid, so I assumed you'd be a guy.\p"
-	.string "My name's Brendan.\n"
-	.string "So, hi, neighbor!\p"
-	.string "Huh? Hey, {PLAYER}, don't you have\n"
-	.string "a Pokémon?\p"
-	.string "Do you want me to go catch you one?\p"
-	.string "Aw, darn, I forgot…\p"
-	.string "I'm supposed to go help my dad catch\n"
-	.string "some wild Pokémon.\p"
-	.string "Some other time, okay?$"
+	.string "{PLAYER}?\pOh, you're the new kid who just\nmoved in next door!?\pHuh…\nI didn't know that you'd be a girl.\pDad-I mean, Professor Birch-told me\nyou were the kid of a Gym Leader,\lso I sort of hoped you'd be a guy.\pMy name's {COLOR RED}Brendan{COLOR DARK_GRAY}.\nWell, I guess we are still\lneighbors, so…\pNice to meet you! Let's be friends,\nOK?\pHuh? Hey, {PLAYER}…\nDon't you have any Pokémon?\pIf you want, I can go catch you\none.\pAw, wait I forgot…\pI'm supposed to be going out to help\nmy dad catch some wild Pokémon.\pSome other time, OK?$"
 
 RivalsHouse_2F_Text_BrendanGettingReady:
-	.string "Pokémon fully restored…\n"
-	.string "Items all packed, and…$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Pokémon fully restored… Items\nall ready and…$"
 
 RivalsHouse_2F_Text_ItsRivalsPokeBall:
 	.string "It's {RIVAL}'s Poké Ball!\p"

@@ -7,55 +7,30 @@ gText_Birch_Welcome::
 	.string "$"
 
 gText_Birch_Pokemon::
-	.string "This is what we call a “Pokémon.”\p"
-	.string "\n"
+	.string "And this… {PAUSE 96}\nis what we call a “Pokémon.”\p"
 	.string "$"
 
 gText_Birch_MainSpeech::
-	.string "This world is widely inhabited by\n"
-	.string "creatures known as Pokémon.\p"
-	.string "We humans live alongside Pokémon,\n"
-	.string "at times as friendly playmates, and\l"
-	.string "at times as cooperative workmates.\p"
-	.string "And sometimes, we band together\n"
-	.string "and battle others like us.\p"
-	.string "But despite our closeness, we don't\n"
-	.string "know everything about Pokémon.\p"
-	.string "In fact, there are many, many\n"
-	.string "secrets surrounding Pokémon.\p"
-	.string "To unravel Pokémon mysteries,\n"
-	.string "I've been undertaking research.\l"
-	.string "That's what I do.\p"
+	.string "This world is widely inhabited by\ncreatures known as Pokémon.\pWe humans live alongside Pokémon, at\ntimes playing together as friends,\land at times helping one another.\pAnd sometimes, we just like to have\nfun battling others like us!\pBut as close as we are, we don't\nknow everything about Pokémon.\pIn fact, there are still many, many\nmysteries surrounding Pokémon.\pI do research to try to unravel\nthose mysteries.\pBut that's enough about me!\p"
 	.string "$"
 
 gText_Birch_AndYouAre::
-	.string "And you are?$"
+	.string "What about you?$"
 
 gText_Birch_BoyOrGirl::
 	.string "Are you a boy?\n"
 	.string "Or are you a girl?$"
 
 gText_Birch_WhatsYourName::
-	.string "All right.\n"
-	.string "What's your name?$"
+	.string "Will you give me your name, too?$"
 
 gText_Birch_SoItsPlayer::
-	.string "So it's {PLAYER}{KUN}?$"
+	.string "So you're {PLAYER}{KUN}?$"
 
 gText_Birch_YourePlayer::
-	.string "Ah, okay!\p"
-	.string "You're {PLAYER}{KUN} who's moving to my\n"
-	.string "hometown of Littleroot.\l"
-	.string "I get it now!\p"
+	.string "Ah… I see!\nYou're THAT {PLAYER}!\pYou're the one who's moving to\nLittleroot Town, where I live!\p"
 	.string "$"
 
 gText_Birch_AreYouReady::
-	.string "All right, are you ready?\p"
-	.string "Your very own adventure is about\n"
-	.string "to unfold.\p"
-	.string "Take courage, and leap into the\n"
-	.string "world of Pokémon where dreams,\l"
-	.string "adventure, and friendships await!\p"
-	.string "Well, I'll be expecting you later.\n"
-	.string "Come see me in my Pokémon Lab.\p"
+	.string "Are you ready?\pYour very own adventure is now about\nto unfold!\pBe courageous and leap in to the\nworld of Pokémon where dreams,\ladventures, and friendships await!\pI expect we'll be meeting again\nsoon.\pCome see me in my Pokémon Lab!\p"
 	.string "$"
