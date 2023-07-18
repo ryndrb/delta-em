@@ -327,6 +327,22 @@
 
 #define ABILITIES_COUNT_GEN9 299
 
-#define ABILITIES_COUNT ABILITIES_COUNT_GEN9
+// New Added Abilities
+#define ABILITY_PYROMANCY 300                       // Fire attacks are 5x more likely to inflict a burn
+#define ABILITY_FATAL_PRECISION 301                 // Super Effective Moves from this Pokemon can’t miss and receive a 20% damage boost
+#define ABILITY_ADRENALINE 302                      // Boosts Speed by 1.5x, Attack by 1.2x on first turn
+#define ABILITY_GROUNDED 303                        // Powers up ground moves (similar to Rocky Payload)
+#define ABILITY_POISON_ABSORB 304                   // Restore 1/4 HP when hit by Poison-type moves.
+#define ABILITY_STRIKER 305                         // Boosts kicking moves by 1.2x. Moves affected by Striker #####NEED TO UPDATE AFFECTED MOVES
+#define ABILITY_PSYCH 306                           // Doubles Special Attack (special Huge/Pure Power).
+#define ABILITY_SELF_SUFFICIENT 307                 // Heals 1/16 at the end of every turn.
+#define ABILITY_CHLOROPLAST 308                     // Moves function as if it's sunny, regardless of weather
+#define ABILITY_POWER_FIST 309                      // Punching moves do special damage and get 20% boost
+#define ABILITY_VENGEANCE 310                       // Starter-like ability but for Ghost mons.
+#define ABILITY_BLITZ_BOXER 311                     // Punching moves go first.
+
+#define ABILITIES_COUNT_ADDED 312
+
+#define ABILITIES_COUNT ABILITIES_COUNT_ADDED
 
 #endif  // GUARD_CONSTANTS_ABILITIES_H

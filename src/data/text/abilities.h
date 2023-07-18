@@ -289,6 +289,18 @@ static const u8 sToxicDebrisDescription[] = _("Throws poison spikes if hit.");
 static const u8 sArmorTailDescription[] = _("Protects from priority.");
 static const u8 sEarthEaterDescription[] = _("Eats ground to heal HP.");
 static const u8 sMyceliumMightDescription[] = _("Status moves never fail.");
+static const u8 sPyromancyDescription[] = _("Fire moves burn 5x more often.");
+static const u8 sFatalPrecisionDescription[] = _("Can't miss super-effective moves.");
+static const u8 sAdrenalineDescription[] = _("Ups Atk and Spd in first turn.");
+static const u8 sGroundedDescription[] = _("Powers up Ground moves.");
+static const u8 sPoisonAbsorbDescription[] = _("Turns poison into HP.");
+static const u8 sStrikerDescription[] = _("Boosts kicking moves.");
+static const u8 sPsychDescription[] = _("Doubles Special Attack.");
+static const u8 sSelfSufficientDescription[] = _("Recover some HP every turn.");
+static const u8 sChloroplastDescription[] = _("Battles as if in sunlight.");
+static const u8 sPowerFistDescription[] = _("Punching moves deals special damage.");
+static const u8 sVengeanceDescription[] = _("Ups ghost moves in a pinch.");
+static const u8 sBlitzBoxerDescription[] = _("Punching moves have +1 priority.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -592,6 +604,18 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_ARMOR_TAIL] = _("Armor Tail"),
     [ABILITY_EARTH_EATER] = _("Earth Eater"),
     [ABILITY_MYCELIUM_MIGHT] = _("Mycelium Might"),
+    [ABILITY_PYROMANCY] = _("Pyromancy"),
+    [ABILITY_FATAL_PRECISION] = _("Fatal Precision"),
+    [ABILITY_ADRENALINE] = _("Adrenaline"),
+    [ABILITY_GROUNDED] = _("Grounded"),
+    [ABILITY_POISON_ABSORB] = _("Poison Absorb"),
+    [ABILITY_STRIKER] = _("Striker"),
+    [ABILITY_PSYCH] = _("Psych"),
+    [ABILITY_SELF_SUFFICIENT] = _("Self Sufficient"),
+    [ABILITY_CHLOROPLAST] = _("Chloroplast"),
+    [ABILITY_POWER_FIST] = _("Power Fist"),
+    [ABILITY_VENGEANCE] = _("Vengeance"),
+    [ABILITY_BLITZ_BOXER] = _("Blitz Boxer"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -1199,4 +1223,16 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_ARMOR_TAIL] = sArmorTailDescription,
     [ABILITY_EARTH_EATER] = sEarthEaterDescription,
     [ABILITY_MYCELIUM_MIGHT] = sMyceliumMightDescription,
+    [ABILITY_PYROMANCY] = sPyromancyDescription,
+    [ABILITY_FATAL_PRECISION] = sFatalPrecisionDescription,
+    [ABILITY_ADRENALINE] = sAdrenalineDescription,
+    [ABILITY_GROUNDED] = sGroundedDescription,
+    [ABILITY_POISON_ABSORB] = sPoisonAbsorbDescription,
+    [ABILITY_STRIKER] = sStrikerDescription,
+    [ABILITY_PSYCH] = sPsychDescription,
+    [ABILITY_SELF_SUFFICIENT] = sSelfSufficientDescription,
+    [ABILITY_CHLOROPLAST] = sChloroplastDescription,
+    [ABILITY_POWER_FIST] = sPowerFistDescription,
+    [ABILITY_VENGEANCE] = sVengeanceDescription,
+    [ABILITY_BLITZ_BOXER] = sBlitzBoxerDescription,
 };

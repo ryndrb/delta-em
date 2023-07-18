@@ -4678,6 +4678,8 @@ u32 GetBattlerTotalSpeedStat(u8 battlerId)
         speed = (speed * 150) / 100;
     else if (ability == ABILITY_QUARK_DRIVE && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN && highestStat == STAT_SPEED)
         speed = (speed * 150) / 100;
+    else if (ability == ABILITY_ADRENALINE && gDisableStructs[battlerId].isFirstTurn)
+        speed = (speed * 150) / 100;
 
     // stat stages
     speed *= gStatStageRatios[gBattleMons[battlerId].statStages[STAT_SPEED]][0];
@@ -4773,6 +4775,11 @@ s8 GetMovePriority(u32 battlerId, u16 move)
             priority += 3;
             break;
         }
+    }
+
+    if ((GetBattlerAbility(battlerId) == ABILITY_BLITZ_BOXER) && (gBattleMoves[move].flags & FLAG_IRON_FIST_BOOST))
+    {
+        priority++;
     }
 
     if (gProtectStructs[battlerId].quash)

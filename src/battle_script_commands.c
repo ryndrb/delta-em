@@ -1793,6 +1793,13 @@ static bool32 AccuracyCalcHelper(u16 move)
         return TRUE;
     }
 
+    if(GetBattlerAbility(gBattlerAttacker) == ABILITY_FATAL_PRECISION && CalcTypeEffectivenessMultiplier(move, gBattleMoves[move].type, gBattlerAttacker, gBattlerTarget, TRUE) >= UQ_4_12(2.0)) 
+    {
+        if (!JumpIfMoveFailed(7, move))
+            RecordAbilityBattle(gBattlerTarget, ABILITY_FATAL_PRECISION);
+        return TRUE;
+    }
+
     if ((gStatuses3[gBattlerTarget] & STATUS3_PHANTOM_FORCE)
         || (!(gBattleMoves[move].flags & (FLAG_DMG_IN_AIR | FLAG_DMG_2X_IN_AIR)) && gStatuses3[gBattlerTarget] & STATUS3_ON_AIR)
         || (!(gBattleMoves[move].flags & FLAG_DMG_UNDERGROUND) && gStatuses3[gBattlerTarget] & STATUS3_UNDERGROUND)
@@ -3877,6 +3884,10 @@ static void Cmd_seteffectwithchance(void)
 
     if (GetBattlerAbility(gBattlerAttacker) == ABILITY_SERENE_GRACE)
         percentChance = gBattleMoves[gCurrentMove].secondaryEffectChance * 2;
+    else if (GetBattlerAbility(gBattlerAttacker) == ABILITY_PYROMANCY
+            && gBattleMoves[gCurrentMove].type == TYPE_FIRE
+            && gBattleMoves[gCurrentMove].effect == EFFECT_BURN_HIT)
+        percentChance = gBattleMoves[gCurrentMove].secondaryEffectChance * 5;
     else
         percentChance = gBattleMoves[gCurrentMove].secondaryEffectChance;
 
@@ -14040,9 +14051,9 @@ static void Cmd_recoverbasedonsunlight(void)
         }
         else
         {
-            if (!(gBattleWeather & B_WEATHER_ANY) || !WEATHER_HAS_EFFECT || GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_UTILITY_UMBRELLA)
+            if ((!(gBattleWeather & B_WEATHER_ANY) || !WEATHER_HAS_EFFECT || GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_UTILITY_UMBRELLA) && GetBattlerAbility(gBattlerAttacker) != ABILITY_CHLOROPLAST)
                 gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 2;
-            else if (gBattleWeather & B_WEATHER_SUN)
+            else if (gBattleWeather & B_WEATHER_SUN || GetBattlerAbility(gBattlerAttacker) == ABILITY_CHLOROPLAST)
                 gBattleMoveDamage = 20 * gBattleMons[gBattlerAttacker].maxHP / 30;
             else // not sunny weather
                 gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 4;
