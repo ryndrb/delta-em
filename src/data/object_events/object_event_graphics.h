@@ -376,6 +376,9 @@ const u16 gObjectEventPal_Lugia[] = INCBIN_U16("graphics/object_events/palettes/
 const u32 gObjectEventPic_HoOh[] = INCBIN_U32("graphics/object_events/pics/pokemon/ho_oh.4bpp");
 const u16 gObjectEventPal_HoOh[] = INCBIN_U16("graphics/object_events/palettes/ho_oh.gbapal");
 
+const u32 gFieldEffectObjectPic_CaveDust[] = INCBIN_U32("graphics/field_effects/pics/cave_dust.4bpp");
+const u16 gFieldEffectObjectPalette_CaveDust[] = INCBIN_U16("graphics/field_effects/palettes/cave_dust.gbapal");
+
 const u32 gObjectEventPic_Delta_Brendan_Acro_Bike[] = INCBIN_U32("graphics/object_events/pics/people/delta/brendan_acro_bike.4bpp");
 const u32 gObjectEventPic_Delta_Brendan_Decorating[] = INCBIN_U32("graphics/object_events/pics/people/delta/brendan_decorating.4bpp");
 const u32 gObjectEventPic_Delta_Brendan_FieldMove[] = INCBIN_U32("graphics/object_events/pics/people/delta/brendan_fieldmove.4bpp");
