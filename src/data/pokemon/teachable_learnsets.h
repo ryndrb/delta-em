@@ -6751,6 +6751,7 @@ static const u16 sHoothootTeachableLearnset[] = {
     MOVE_SUBSTITUTE,
     MOVE_SWAGGER,
     MOVE_SWIFT,
+    MOVE_CALM_MIND,//
     MOVE_UNAVAILABLE,
 };
 
@@ -6787,6 +6788,7 @@ static const u16 sNoctowlTeachableLearnset[] = {
     MOVE_SUBSTITUTE,
     MOVE_SWAGGER,
     MOVE_SWIFT,
+    MOVE_CALM_MIND,//
     MOVE_UNAVAILABLE,
 };
 
