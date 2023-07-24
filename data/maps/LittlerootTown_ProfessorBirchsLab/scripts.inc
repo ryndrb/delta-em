@@ -161,12 +161,17 @@ LittlerootTown_ProfessorBirchsLab_EventScript_DeclineSeeingRival::
 
 LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedexEvent::
 	lockall
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_CallPlayerOver, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForPokedex
 	waitmovement 0
 	goto LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex
 	end
 
 LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForPokedex:
+	emote_exclamation_mark
+	delay_16
 	walk_up
 	walk_up
 	walk_up
@@ -522,13 +527,18 @@ EventScript_RegisterProfBirch::
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex, MSGBOX_DEFAULT
+	checkplayergender
+	call_if_eq VAR_RESULT, MALE, LittlerootTown_ProfessorBirchsLab_EventScript_HeardYouBeatRivalTakePokedex_MayVer
+	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_ProfessorBirchsLab_EventScript_HeardYouBeatRivalTakePokedex_BrendanVer
 	call LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex, MSGBOX_DEFAULT
+	checkplayergender
+	call_if_eq VAR_RESULT, MALE, LittlerootTown_ProfessorBirchsLab_EventScript_ExplainPokedex_MayVer
+	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_ProfessorBirchsLab_EventScript_ExplainPokedex_BrendanVer
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_RIVAL, LittlerootTown_ProfessorBirchsLab_Movement_RivalApproachPlayer
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
@@ -541,9 +551,25 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	releaseall
 	end
 
+LittlerootTown_ProfessorBirchsLab_EventScript_HeardYouBeatRivalTakePokedex_BrendanVer::
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex_Brendan, MSGBOX_DEFAULT
+	return
+
+LittlerootTown_ProfessorBirchsLab_EventScript_HeardYouBeatRivalTakePokedex_MayVer::
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex_May, MSGBOX_DEFAULT
+	return
+
+LittlerootTown_ProfessorBirchsLab_EventScript_ExplainPokedex_BrendanVer::
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex_Brendan, MSGBOX_DEFAULT
+	return
+
+LittlerootTown_ProfessorBirchsLab_EventScript_ExplainPokedex_MayVer::
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex_May, MSGBOX_DEFAULT
+	return
+
 LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese, MSGBOX_DEFAULT
-	giveitem ITEM_POKE_BALL, 5
+	giveitem ITEM_POKE_BALL, 20
 	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_MayNoRoomForPokeBalls
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 0
@@ -551,7 +577,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls::
 
 LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese, MSGBOX_DEFAULT
-	giveitem ITEM_POKE_BALL, 5
+	giveitem ITEM_POKE_BALL, 20
 	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanNoRoomForPokeBalls
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CatchCoolPokemonWithPokeBalls, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 1
@@ -582,7 +608,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanNoRoomForPokeBalls::
 
 LittlerootTown_ProfessorBirchsLab_Movement_RivalApproachPlayer:
 	walk_down
-	walk_in_place_faster_left
+	walk_in_place_left
 	step_end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_Machine::
@@ -707,79 +733,51 @@ LittlerootTown_ProfessorBirchsLab_Text_RestAtYourHouse:
 LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome:
 	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: My kid, {RIVAL},\nhappens to be out on {COLOR BLUE}Route 103{COLOR DARK_GRAY}\lright now, surveying Pokémon for\lme.\pIt might not be a bad idea for you\nto head out that way yourself.\pAnd if you or your Pokémon get\ntired, get some rest back at your\lnew house.$"
 
-LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
-	.string "Prof. Birch: Oh, hi, {PLAYER}{KUN}!\p"
-	.string "I heard you beat {RIVAL} on\n"
-	.string "your first try. That's excellent!\p"
-	.string "{RIVAL}'s been helping with my research\n"
-	.string "for a long time.\p"
-	.string "{RIVAL} has an extensive history as\n"
-	.string "a Trainer already.\p"
-	.string "Here, {PLAYER}{KUN}, I ordered this for my\n"
-	.string "research, but I think you should have\l"
-	.string "this Pokédex.$"
+LittlerootTown_ProfessorBirchsLab_Text_CallPlayerOver:
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: Oh! {PLAYER}!\nOver here!$"
+
+LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex_May:
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: So I hear you beat\nMay on your first try.\lThat's amazing!\pMay's been helping with my\nresearch for a long time, so she\lhas a pretty long history as a\lTrainer already.\pMm-hmm! I think that settles it!\p{PLAYER}, I ordered this Pokédex for\nmy research, but I think you\lshould take it.$"
+
+LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex_Brendan:
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: So I hear you beat\nBrendan on your first try.\lThat's amazing!\pMay's been helping with my\nresearch for a long time, so he\lhas a pretty long history as a\lTrainer already.\pMm-hmm! I think that settles it!\p{PLAYER}, I ordered this Pokédex for\nmy research, but I think you\lshould take it.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex:
-	.string "{PLAYER} received the Pokédex!$"
+	.string "{PLAYER} received a Pokédex!$"
 
-LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
-	.string "Prof. Birch: The Pokédex is a high-tech\n"
-	.string "tool that automatically makes a record\l"
-	.string "of any Pokémon you meet or catch.\p"
-	.string "My kid, {RIVAL}, goes everywhere\n"
-	.string "with it.\p"
-	.string "Whenever my kid catches a rare Pokémon\n"
-	.string "and records its data in the Pokédex,\l"
-	.string "why, {RIVAL} looks for me while I'm out\l"
-	.string "doing fieldwork, and shows me.$"
+LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex_May:
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: That Pokédex is a high-\ntech tool that automatically makes\la record of any Pokémon you meet\lor catch.\pMy girl May takes hers with her\neverywhere she goes.\pWhenever she catches a rare Pokémon\nand records its data in the\lPokédex, why, she comes to seek me\lout whenever I am in the field and\lshow me!$"
+
+LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex_Brendan:
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: That Pokédex is a high-\ntech tool that automatically makes\la record of any Pokémon you meet\lor catch.\pMy boy Brendan takes his with him\neverywhere he goes.\pWhenever he catches a rare Pokémon\nand records its data in the\lPokédex, why, he comes to seek me\lout whenever I am in the field and\lshow me!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait:
-	.string "Prof. Birch: Countless Pokémon\n"
-	.string "await you!\p"
-	.string "Argh, I'm getting the itch to get out\n"
-	.string "and do fieldwork again!$"
+	.string "The people and the Pokémon you will\nmeet…\lAnd the great expanse of nature\lthat lies before you!\pExperience them both while you fill\nin your Pokédex.\pI'd love it if your world seemed\nwider than ever!\pThough I'd love it even more if you\ncame back from time to time to\lshow me what progress you've made.\p…Arghhh!\nI'm getting the itch to get out and\ldo fieldwork again!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese:
-	.string "May: Oh, wow, {PLAYER}{KUN}!\n"
-	.string "You got a Pokédex, too!\p"
-	.string "That's great! Just like me!\n"
-	.string "I've got something for you, too!$"
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: Oh, wow, {PLAYER}!\nNow you've got a Pokédex, too!\lThat's great. Just like me!\pThen here… I'll give you something,\ntoo!\pSome Poké Balls that you can use to\ncatch wild Pokémon!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls:
-	.string "May: It's fun if you can get a lot of\n"
-	.string "Pokémon!\p"
-	.string "I'm going to look all over the place\n"
-	.string "because I want different Pokémon.\p"
-	.string "If I find any cute Pokémon, I'll catch\n"
-	.string "them with Poké Balls!$"
+	.string "If you catch a Pokémon in the\nwild and battle together with it\lfor a while, it will grow stronger\lfor you!\pTake that as a bit of advice from a\nmore experienced Trainer like me!\pI'm going to get ready to head out\nfrom Littleroot soon myself.\pI can't wait to see what kind of\nPokémon I'm going to meet…\pLet's both do our best on our\njourneys, {PLAYER}!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_OhYourBagsFull:
 	.string "Oh? Your Bag's full.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MayWhereShouldIGoNext:
-	.string "May: I wonder where I should go look\n"
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: I wonder where I should go look\n"
 	.string "for Pokémon next?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese:
-	.string "Brendan: Huh…\n"
-	.string "So you got a Pokédex, too.\p"
-	.string "Well then, here.\n"
-	.string "I'll give you these.$"
+	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: Huh… So you got a Pokédex,\ntoo, {PLAYER}.\pWell then here.\nHave some Poké Balls on me.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CatchCoolPokemonWithPokeBalls:
-	.string "Brendan: You know it's more fun to\n"
-	.string "have a whole bunch of Pokémon.\p"
-	.string "I'm going to explore all over the place\n"
-	.string "to find different Pokémon.\p"
-	.string "If I find any cool Pokémon, you bet\n"
-	.string "I'll try to get them with Poké Balls.$"
+	.string "You can use them to catch wild\nPokémon.\pIf you catch a Pokémon in the\nwild and battle together with it\lfor a while, it will grow stronger\lfor you!\pTake that as a bit of advice from a\nmore experienced Trainer like me!\pI'm going to get ready to head out\nfrom Littleroot soon myself.\pIt's like… I don't know…\pIt really gets you pumped, right?\pWe've both gotta give it our all,\n{PLAYER}!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_HeyYourBagsFull:
 	.string "Hey, your Bag's full.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanWhereShouldIGoNext:
-	.string "Brendan: Where should I look for\n"
-	.string "Pokémon next…$"
+	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: I wonder where I should go\nlook for Pokémon next…$"
 
 LittlerootTown_ProfessorBirchsLab_Text_SeriousLookingMachine:
 	.string "It's a serious-looking machine.\n"

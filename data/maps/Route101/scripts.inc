@@ -320,3 +320,162 @@ Route101_Text_RouteSign:
 	.string "Route 101\n"
 	.string "{UP_ARROW} Oldale Town$"
 
+Route101_EventScript_RivalGiveDexNavTriggerLeft::
+	lock
+	setvar VAR_TEMP_1, 0
+	goto Route101_EventScript_RivalGiveDexNav
+	end
+
+
+Route101_EventScript_RivalGiveDexNavTriggerRight::
+	setvar VAR_TEMP_1, 1
+	goto Route101_EventScript_RivalGiveDexNav
+	end
+
+
+Route101_EventScript_RivalGiveDexNav::
+	lock
+	delay 8
+	addobject 7
+	msgbox Route101_EventScript_RivalGiveDexNav_Text_0
+	closemessage
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement 0
+	delay 8
+	compare VAR_TEMP_1, 0
+	goto_if_eq Route101_EventScript_RivalGiveDexNav_2
+Route101_EventScript_RivalGiveDexNav_1:
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PlayerLookAtMayRight
+	applymovement 7, Route101_Movement_RivalGotoPlayerRight
+	waitmovement 0
+	msgbox Route101_EventScript_RivalGiveDexNav_Text_1
+	delay 8
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox Route101_EventScript_RivalGiveDexNav_Text_2
+	waitfanfare
+	setflag FLAG_SYS_DETECTOR_MODE
+	setflag FLAG_SYS_DEXNAV_GET
+	msgbox Route101_EventScript_RivalGiveDexNav_Text_3
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq Route101_EventScript_RivalGiveDexNav_5
+	msgbox Route101_EventScript_RivalGiveDexNav_Text_5
+Route101_EventScript_RivalGiveDexNav_4:
+	closemessage
+	delay 8
+	compare VAR_TEMP_1, 0
+	goto_if_eq Route101_EventScript_RivalGiveDexNav_9
+Route101_EventScript_RivalGiveDexNav_8:
+	applymovement 7, Route101_Movement_RivalLeaveRight
+	waitmovement 7
+	removeobject 7
+	setvar VAR_ROUTE101_STATE, 5
+	release
+	end
+
+Route101_EventScript_RivalGiveDexNav_2:
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PlayerLookAtMayLeft
+	applymovement 7, Route101_Movement_RivalGotoPlayerLeft
+	goto Route101_EventScript_RivalGiveDexNav_1
+
+Route101_EventScript_RivalGiveDexNav_5:
+	msgbox Route101_EventScript_RivalGiveDexNav_Text_4
+	goto Route101_EventScript_RivalGiveDexNav_4
+
+Route101_EventScript_RivalGiveDexNav_9:
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PlayerLookAtMayLeaving
+	applymovement 7, Route101_Movement_RivalLeaveLeft
+	goto Route101_EventScript_RivalGiveDexNav_8
+
+
+Route101_Movement_PlayerLookAtMayLeft:
+	walk_in_place_down
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_in_place_right
+	step_end
+
+Route101_Movement_PlayerLookAtMayRight:
+	walk_in_place_down
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_in_place_left
+	step_end
+
+Route101_Movement_PlayerLookAtMayLeaving:
+	delay_16
+	delay_16
+	walk_in_place_up
+	step_end
+
+Route101_Movement_RivalGotoPlayerLeft:
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_in_place_left
+	step_end
+
+Route101_Movement_RivalGotoPlayerRight:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_in_place_right
+	step_end
+
+Route101_Movement_RivalLeaveLeft:
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Route101_Movement_RivalLeaveRight:
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Route101_EventScript_RivalGiveDexNav_Text_0:
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: {PLAYER}!$"
+
+Route101_EventScript_RivalGiveDexNav_Text_1:
+	.string "{COLOR RED}{RIVAL}{COLOR DARK_GRAY}: This is from my dad.\pHe said he forgot to give it to\nyou before.$"
+
+Route101_EventScript_RivalGiveDexNav_Text_2:
+	.string "{PLAYER} received the DexNav!$"
+
+Route101_EventScript_RivalGiveDexNav_Text_3:
+	.string "The item I just gave you is called a\nDexNav.\pIt can tell you lots about the\nPokémon living in each area and\lthat kind of stuff.\pIt's a handy app if you're trying to\ncatch lots of different Pokémon.$"
+
+Route101_EventScript_RivalGiveDexNav_Text_4:
+	.string "All right!\pGuess it's about time I use the\nDexNav to do some more Pokémon\lcatching myself!\p{PLAYER}, you should use those\nPoké Balls I gave you earlier to do a\lbit of catching, too!$"
+
+Route101_EventScript_RivalGiveDexNav_Text_5:
+	.string "Guess it's about time I use\nthe DexNav to do a little more\lcatching myself!\pI'm gonna head that way and see what\nI find.\p{PLAYER}, you should those Poké Balls\nI gave you earlier to do a bit of\lcatching, too!$"

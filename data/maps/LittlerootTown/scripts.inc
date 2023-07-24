@@ -13,7 +13,7 @@ LittlerootTown_MapScripts::
 	@ 1: Met Rival
 	@ 2: Saving Birch
 	@ 3: Received Pokedex
-	@ 4: Received Running Shoes
+	@ 4: Mom Said Goodbye
 
 	@ State descriptions for VAR_LITTLEROOT_INTRO_STATE
 	@ 1: In truck male
@@ -482,11 +482,11 @@ LittlerootTown_EventScript_GiveRunningShoesTrigger::
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_MomApproachPlayerMale
 	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_MomApproachPlayerFemale
-	call LittlerootTown_EventScript_GiveRunningShoes
+	call LittlerootTown_EventScript_MomSaysBye
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_MomReturnHomeMale
 	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_MomReturnHomeFemale
-	goto LittlerootTown_EventScript_SetReceivedRunningShoes
+	goto LittlerootTown_EventScript_MomSaidBye
 	end
 
 LittlerootTown_EventScript_SetHomeDoorCoordsMale::
@@ -500,12 +500,20 @@ LittlerootTown_EventScript_SetHomeDoorCoordsFemale::
 	return
 
 LittlerootTown_EventScript_MomNoticePlayerMale::
-	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceRight
+	waitmovement 0
+	delay 8
+	playse SE_PIN
+	applymovement LOCALID_MOM, Common_Movement_ExclamationMark
 	waitmovement 0
 	return
 
 LittlerootTown_EventScript_MomNoticePlayerFemale::
-	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceLeft
+	waitmovement 0
+	delay 8
+	playse SE_PIN
+	applymovement LOCALID_MOM, Common_Movement_ExclamationMark
 	waitmovement 0
 	return
 
@@ -812,7 +820,7 @@ LittlerootTown_Movement_MomReturnHomeMale2:
 	walk_left
 	walk_left
 	walk_left
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 LittlerootTown_Movement_MomReturnHomeMale3:
@@ -821,33 +829,33 @@ LittlerootTown_Movement_MomReturnHomeMale3:
 	walk_left
 	walk_left
 	walk_left
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 LittlerootTown_Movement_MomReturnHomeMale4:
 	walk_left
 	walk_left
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 LittlerootTown_Movement_MomReturnHomeMale5:
 	walk_left
 	walk_left
 	walk_left
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 LittlerootTown_Movement_MomReturnHomeFemale2:
 	walk_right
 	walk_right
 	walk_right
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 LittlerootTown_Movement_MomReturnHomeFemale3:
 	walk_right
 	walk_right
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 LittlerootTown_Movement_MomReturnHomeFemale4:
@@ -856,7 +864,7 @@ LittlerootTown_Movement_MomReturnHomeFemale4:
 	walk_right
 	walk_right
 	walk_right
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 LittlerootTown_Movement_MomReturnHomeFemale5:
@@ -864,7 +872,7 @@ LittlerootTown_Movement_MomReturnHomeFemale5:
 	walk_right
 	walk_right
 	walk_right
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 LittlerootTown_Movement_MomExitThroughDoor:
@@ -877,8 +885,8 @@ LittlerootTown_EventScript_Mom::
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_SetHomeDoorCoordsMale
 	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
-	call LittlerootTown_EventScript_GiveRunningShoes
-	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceFasterUp
+	call LittlerootTown_EventScript_MomSaysBye
+	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	opendoor VAR_0x8009, VAR_0x800A
 	waitdooranim
@@ -887,24 +895,18 @@ LittlerootTown_EventScript_Mom::
 	hideobjectat LOCALID_MOM, MAP_LITTLEROOT_TOWN
 	closedoor VAR_0x8009, VAR_0x800A
 	waitdooranim
-	goto LittlerootTown_EventScript_SetReceivedRunningShoes
+	goto LittlerootTown_EventScript_MomSaidBye
 	end
 
-LittlerootTown_EventScript_SetReceivedRunningShoes::
+LittlerootTown_EventScript_MomSaidBye::
 	removeobject LOCALID_MOM
-	setflag FLAG_SYS_B_DASH
 	setvar VAR_LITTLEROOT_TOWN_STATE, 4
+	setvar VAR_ROUTE101_STATE, 4
 	release
 	end
 
-LittlerootTown_EventScript_GiveRunningShoes::
-	msgbox LittlerootTown_Text_WearTheseRunningShoes, MSGBOX_DEFAULT
-	playfanfare MUS_OBTAIN_ITEM
-	message LittlerootTown_Text_SwitchShoesWithRunningShoes
-	waitfanfare
-	setflag FLAG_RECEIVED_RUNNING_SHOES
-	msgbox LittlerootTown_Text_ExplainRunningShoes, MSGBOX_DEFAULT
-	msgbox LittlerootTown_Text_ComeHomeIfAnythingHappens, MSGBOX_DEFAULT
+LittlerootTown_EventScript_MomSaysBye::
+	msgbox LittlerootTown_Text_TakeCarePlayer, MSGBOX_DEFAULT
 	closemessage
 	delay 30
 	return
@@ -915,38 +917,8 @@ LittlerootTown_Text_OurNewHomeLetsGoInside:
 LittlerootTown_Text_WaitPlayer:
 	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Wait, {PLAYER}!$"
 
-LittlerootTown_Text_WearTheseRunningShoes:
-	.string "Mom: {PLAYER}! {PLAYER}! Did you\n"
-	.string "introduce yourself to Prof. Birch?\p"
-	.string "Oh! What an adorable Pokémon!\n"
-	.string "You got it from Prof. Birch. How nice!\p"
-	.string "You're your father's child, all right.\n"
-	.string "You look good together with Pokémon!\p"
-	.string "Here, honey! If you're going out on an\n"
-	.string "adventure, wear these Running Shoes.\p"
-	.string "They'll put a zip in your step!$"
-
-LittlerootTown_Text_SwitchShoesWithRunningShoes:
-	.string "{PLAYER} switched shoes with the\n"
-	.string "Running Shoes.$"
-
-LittlerootTown_Text_ExplainRunningShoes:
-	.string "Mom: {PLAYER}, those shoes came with\n"
-	.string "instructions.\p"
-	.string "“Press the B Button while wearing these\n"
-	.string "Running Shoes to run extra-fast!\p"
-	.string "“Slip on these Running Shoes and race\n"
-	.string "in the great outdoors!”$"
-
-LittlerootTown_Text_ComeHomeIfAnythingHappens:
-	.string "… … … … … … … …\n"
-	.string "… … … … … … … …\p"
-	.string "To think that you have your very own\n"
-	.string "Pokémon now…\l"
-	.string "Your father will be overjoyed.\p"
-	.string "…But please be careful.\n"
-	.string "If anything happens, you can come home.\p"
-	.string "Go on, go get them, honey!$"
+LittlerootTown_Text_TakeCarePlayer:
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: {PLAYER}!\pDid you introduce yourself to\nProfessor Birch?\pOh! What an adorable Pokémon!\nYou got it from the professor?\lHow nice!\pYou are your father's child, all\nright…\pYou look good together with a\nPokémon!\p…\pTo think that you have your very own\nPokémon now…\lYour father will be overjoyed.\pBut don't push yourself too hard.\pIf anything happens, you can always\ncome home, honey.$"
 
 LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "If you use a PC, you can store items\n"

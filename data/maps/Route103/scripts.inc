@@ -29,9 +29,11 @@ Route103_EventScript_Rival::
 Route103_EventScript_RivalMay::
 	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
 	closemessage
+	delay 16
 	playbgm MUS_ENCOUNTER_MAY, TRUE
 	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
 	waitmovement 0
+	playse SE_PIN
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_Delay48
@@ -46,9 +48,11 @@ Route103_EventScript_RivalMay::
 Route103_EventScript_RivalBrendan::
 	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
 	closemessage
+	delay 16
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
 	waitmovement 0
+	playse SE_PIN
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_Delay48
@@ -91,11 +95,27 @@ Route103_EventScript_StartBrendanBattleMudkip::
 	end
 
 Route103_EventScript_AfterMayBattle::
+	msgbox Route103_Text_HealParties, MSGBOX_DEFAULT
+	closemessage
+	fadescreen FADE_TO_BLACK
+	playfanfare MUS_HEAL
+	waitfanfare
+	special HealPlayerParty
+	delay 24
+	fadescreen FADE_FROM_BLACK
 	msgbox Route103_Text_MayTimeToHeadBack, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	end
 
 Route103_EventScript_AfterBrendanBattle::
+	msgbox Route103_Text_HealParties, MSGBOX_DEFAULT
+	closemessage
+	fadescreen FADE_TO_BLACK
+	playfanfare MUS_HEAL
+	waitfanfare
+	special HealPlayerParty
+	delay 24
+	fadescreen FADE_FROM_BLACK
 	msgbox Route103_Text_BrendanTimeToHeadBack, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	end
@@ -151,7 +171,8 @@ Route103_EventScript_RivalEnd::
 	end
 
 Route103_Movement_RivalExitFacingNorth1:
-	walk_left
+	walk_right
+	walk_down
 	walk_down
 	step_end
 
@@ -167,12 +188,13 @@ Route103_Movement_RivalExitFacingNorth2:
 Route103_Movement_WatchRivalExitFacingNorth:
 	delay_16
 	delay_4
-	walk_in_place_faster_left
+	walk_in_place_right
 	delay_16
-	walk_in_place_faster_down
+	walk_in_place_down
 	step_end
 
 Route103_Movement_RivalExit1:
+	walk_down
 	walk_down
 	step_end
 
@@ -186,7 +208,7 @@ Route103_Movement_RivalExit2:
 
 Route103_Movement_WatchRivalExitFacingEastOrWest:
 	delay_16
-	walk_in_place_faster_down
+	walk_in_place_down
 	step_end
 
 Route103_EventScript_Boy::
@@ -289,56 +311,32 @@ Route103_EventScript_Isabelle::
 	end
 
 Route103_Text_MayRoute103Pokemon:
-	.string "May: Let's see… The Pokémon found\n"
-	.string "on Route 103 include…$"
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: Let's see…\pOn Route 103, I found this\nPokémon…\land this one…and this one, too…$"
 
 Route103_Text_MayLetsBattle:
-	.string "Oh, hi, {PLAYER}{KUN}!\p"
-	.string "…Oh, I see, my dad gave you\n"
-	.string "a Pokémon as a gift.\p"
-	.string "Since we're here, let's have a quick\n"
-	.string "battle!\p"
-	.string "I'll give you a taste of what being\n"
-	.string "a Trainer is like.$"
+	.string "Oh! Hey, {PLAYER}!\pWhat's that? Oh! My dad gave you a\nPokémon as a gift, huh?\pWell then, why don't we go ahead and\nhave a quick battle?\pI'll give a taste of what being a\nTrainer is really like!$"
 
 Route103_Text_MayDefeated:
 	.string "Wow! That's great!\n"
 	.string "{PLAYER}{KUN}, you're pretty good!$"
 
+Route103_Text_HealParties:
+	.string "It was a good battle.\nThanks!\pLet me heal up both of our parties\nreal quick.$"
+
 Route103_Text_MayTimeToHeadBack:
-	.string "May: I think I know why my dad has\n"
-	.string "an eye out for you now.\p"
-	.string "I mean, you just got that Pokémon,\n"
-	.string "but it already likes you.\p"
-	.string "You might be able to befriend any\n"
-	.string "kind of Pokémon easily.\p"
-	.string "Well, it's time to head back to\n"
-	.string "the Lab.$"
+	.string "Wow… I think I know why my dad has\nhis eye on you now.\pI mean, you just got that Pokémon,\nand you've already got that strong\lof a bond.\pI bet you could probably befriend\nany kind of Pokémon you meet!\p…\pPhew…\nI guess I'd better head back to\lthe lab!$"
 
 Route103_Text_BrendanRoute103Pokemon:
-	.string "Brendan: Okay, so it's this one and\n"
-	.string "that one that live on Route 103…$"
+	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: OK, so it's this one and\nthat on that live on Route 103…\pHuh?$"
 
 Route103_Text_BrendanLetsBattle:
-	.string "Hey, it's {PLAYER}!\p"
-	.string "…Oh, yeah, Dad gave you a Pokémon.\p"
-	.string "Since we're here, how about a little\n"
-	.string "battle?\p"
-	.string "I'll teach you what being a Trainer's\n"
-	.string "about!$"
+	.string "Hey, {PLAYER}!\pOhhh.\pSo you finally got a Pokémon from\nmy dad?\pThen how about a little battle?\pSince we're here and all!\pI'm going to teach you what being\nTrainer's all about!$"
 
 Route103_Text_BrendanDefeated:
-	.string "Huh, {PLAYER}, you're not too shabby.$"
+	.string "Huh.\nYou're not too shabby, {PLAYER}$"
 
 Route103_Text_BrendanTimeToHeadBack:
-	.string "Brendan: I think I get it.\n"
-	.string "I think I know why my dad has his eye\l"
-	.string "out for you now.\p"
-	.string "Look, your Pokémon already likes you,\n"
-	.string "even though you just got it.\p"
-	.string "{PLAYER}, I get the feeling that you\n"
-	.string "could befriend any Pokémon with ease.\p"
-	.string "We should head back to the Lab.$"
+	.string "I think I know why my dad had his\neye on you now.\pLook, you just got your Pokémon,\nright?\lAnd you already have that strong\lof a bond?\pI get the feeling you could befriend\nany Pokémon, {PLAYER}.\lNo doubt.\p…\pWell, I've got some good data here,\nso I guess it's time I got back to\lthe lab.\pYou should head back, too, {PLAYER}!$"
 
 Route103_Text_ShouldHaveBroughtPotion:
 	.string "My Pokémon is staggeringly tired…\n"
