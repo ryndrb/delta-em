@@ -3450,7 +3450,7 @@ static void PrintStats(void)
     bst[2] = gSpeciesInfo[sum->species].baseDefense;
     bst[3] = gSpeciesInfo[sum->species].baseSpAttack;
     bst[4] = gSpeciesInfo[sum->species].baseSpDefense;
-    bst[4] = gSpeciesInfo[sum->species].baseSpeed;
+    bst[5] = gSpeciesInfo[sum->species].baseSpeed;
 
     monEv[0] = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_HP_EV);
     monEv[1] = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_ATK_EV);
