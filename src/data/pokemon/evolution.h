@@ -228,7 +228,7 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
     [SPECIES_CORPHISH]              = {{EVO_LEVEL, 30, SPECIES_CRAWDAUNT}},
     [SPECIES_FEEBAS]                = {{EVO_BEAUTY, 170, SPECIES_MILOTIC},
                                        {EVO_TRADE_ITEM, ITEM_PRISM_SCALE, SPECIES_MILOTIC},
-                                       {EVO_ITEM, ITEM_PRISM_SCALE, SPECIES_MILOTIC}},
+                                       {EVO_ITEM_HOLD, ITEM_PRISM_SCALE, SPECIES_MILOTIC}},
     [SPECIES_CARVANHA]              = {{EVO_LEVEL, 30, SPECIES_SHARPEDO}},
     [SPECIES_TRAPINCH]              = {{EVO_LEVEL, 35, SPECIES_VIBRAVA}},
     [SPECIES_VIBRAVA]               = {{EVO_LEVEL, 45, SPECIES_FLYGON}},
@@ -251,7 +251,7 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
     [SPECIES_DUSKULL]               = {{EVO_LEVEL, 37, SPECIES_DUSCLOPS}},
 #if P_GEN_4_POKEMON == TRUE
     [SPECIES_DUSCLOPS]              = {{EVO_TRADE_ITEM, ITEM_REAPER_CLOTH, SPECIES_DUSKNOIR},
-                                       {EVO_ITEM, ITEM_REAPER_CLOTH, SPECIES_DUSKNOIR}},
+                                       {EVO_ITEM_HOLD, ITEM_REAPER_CLOTH, SPECIES_DUSKNOIR}},
     [SPECIES_ROSELIA]               = {{EVO_ITEM, ITEM_SHINY_STONE, SPECIES_ROSERADE}},
 #endif
     [SPECIES_SLAKOTH]               = {{EVO_LEVEL, 18, SPECIES_VIGOROTH}},
@@ -261,8 +261,8 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
     [SPECIES_LOUDRED]               = {{EVO_LEVEL, 40, SPECIES_EXPLOUD}},
     [SPECIES_CLAMPERL]              = {{EVO_TRADE_ITEM, ITEM_DEEP_SEA_TOOTH, SPECIES_HUNTAIL},
                                        {EVO_TRADE_ITEM, ITEM_DEEP_SEA_SCALE, SPECIES_GOREBYSS},
-                                       {EVO_ITEM, ITEM_DEEP_SEA_TOOTH, SPECIES_HUNTAIL},
-                                       {EVO_ITEM, ITEM_DEEP_SEA_SCALE, SPECIES_GOREBYSS}},
+                                       {EVO_ITEM_HOLD, ITEM_DEEP_SEA_TOOTH, SPECIES_HUNTAIL},
+                                       {EVO_ITEM_HOLD, ITEM_DEEP_SEA_SCALE, SPECIES_GOREBYSS}},
     [SPECIES_SHUPPET]               = {{EVO_LEVEL, 37, SPECIES_BANETTE}},
     [SPECIES_ARON]                  = {{EVO_LEVEL, 32, SPECIES_LAIRON}},
     [SPECIES_LAIRON]                = {{EVO_LEVEL, 42, SPECIES_AGGRON}},
