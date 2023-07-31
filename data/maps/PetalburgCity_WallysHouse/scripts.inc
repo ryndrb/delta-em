@@ -68,20 +68,7 @@ PetalburgCity_WallysHouse_EventScript_ReceivedHM03Surf::
 	end
 
 PetalburgCity_WallysHouse_Text_ThanksForPlayingWithWally:
-	.string "You're…\n"
-	.string "Ah, you must be {PLAYER}{KUN}, right?\p"
-	.string "Thank you for playing with Wally a\n"
-	.string "little while ago.\p"
-	.string "He's been frail and sickly ever\n"
-	.string "since he was a baby.\p"
-	.string "We've sent him to stay with my relatives\n"
-	.string "in Verdanturf Town for a while.\p"
-	.string "The air is a lot cleaner there\n"
-	.string "than it is here.\p"
-	.string "What's that? Where's Wally?\n"
-	.string "He's already left, our Wally.\p"
-	.string "I wonder where he could have\n"
-	.string "gotten by now?$"
+	.string "You…\nAh. You're {PLAYER}, aren't you?\pThank you for helping Wally out back\nthere.\pThat boy has been sickly since the\ntime he was born, I'm afraid.\pThat's why we decided to stay with\nmy brother's family in Verdanturf\lTown for a while.\pThe air is far cleaner there than it\nis around these parts.\pOh, you're looking for Wally?\pI'm sorry, kid, but I'm afraid he's\nalready left.\pI wonder where he is right this\nmoment…$"
 
 PetalburgCity_WallysHouse_Text_WonderHowWallyIsDoing:
 	.string "I wonder how our Wally is doing?$"
@@ -120,10 +107,7 @@ PetalburgCity_WallysHouse_Text_YouMetWallyInEverGrandeCity:
 	.string "that all by himself.$"
 
 PetalburgCity_WallysHouse_Text_WallyWasReallyHappy:
-	.string "Wally was really happy when he told\n"
-	.string "us that he caught a Pokémon.\p"
-	.string "It's been ages since I've seen him\n"
-	.string "smile like that.$"
+	.string "Wally was so happy when he told us\nthat he'd caught a Pokémon…\pIt's been ages since I've seen him\nsmile like that…$"
 
 PetalburgCity_WallysHouse_Text_WallyLeftWithoutTelling:
 	.string "I want you to keep this a secret\n"

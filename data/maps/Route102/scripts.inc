@@ -74,20 +74,16 @@ Route102_EventScript_Allen::
 	end
 
 Route102_Text_WatchMeCatchPokemon:
-	.string "Wally: {PLAYER}…\n"
-	.string "Pokémon hide in tall grass like this,\l"
-	.string "don't they?\p"
-	.string "Please watch me and see if I can\n"
-	.string "catch one properly.\p"
-	.string "…Whoa!$"
+	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: {PLAYER}…\pPokémon hide in tall grass like this,\ndon't they?\pP-please stay there to watch and see\nif I can catch one properly.$"
+
+Route102_Text_Whoa:
+	.string "Wh-whoa!$"
 
 Route102_Text_WallyIDidIt:
-	.string "Wally: I did it… It's my…\n"
-	.string "My Pokémon!$"
+	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: I did it… It's my…\nMy own Pokémon!$"
 
 Route102_Text_LetsGoBack:
-	.string "{PLAYER}, thank you!\n"
-	.string "Let's go back to the Gym!$"
+	.string "Thanks so much, {PLAYER}!\nLet's head back to the Gym!$"
 
 Route102_Text_ImNotVeryTall:
 	.string "I'm…not very tall, so I sink right\n"
