@@ -148,8 +148,6 @@ enum
     COLOR_MAP_CONTRAST,
 };
 
-void UpdatePaletteGammaType(u8 index, u8 gammaType);
-
 // field_weather_effect.c
 extern const u8 gWeatherFogHorizontalTiles[];
 
@@ -179,7 +177,6 @@ void SetWeatherScreenFadeOut(void);
 void SetWeatherPalStateIdle(void);
 void PreservePaletteInWeather(u8 preservedPalIndex);
 void ResetPreservedPalettesInWeather(void);
-void UpdatePaletteGammaType(u8 index, u8 gammaType);
 
 // field_weather_effect.c
 void Clouds_InitVars(void);

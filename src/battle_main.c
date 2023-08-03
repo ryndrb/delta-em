@@ -4787,7 +4787,7 @@ s8 GetMovePriority(u32 battlerId, u16 move)
         }
     }
 
-    if ((GetBattlerAbility(battlerId) == ABILITY_BLITZ_BOXER) && (gBattleMoves[move].flags & FLAG_IRON_FIST_BOOST))
+    if ((GetBattlerAbility(battlerId) == ABILITY_BLITZ_BOXER) && (gBattleMoves[move].punchingMove))
     {
         priority++;
     }
