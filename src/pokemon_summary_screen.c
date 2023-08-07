@@ -3136,7 +3136,7 @@ static void PrintMonAbilityName(void)
 static void PrintMonAbilityDescription(void)
 {
     u16 ability = GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum);
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY), gAbilityDescriptionPointers[ability], 0, 16, 0, 0);
+    AddTextPrinterParameterized4(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY), FONT_SMALL, 0, 14, 0, -2, sTextColors[0], 0, gAbilityDescriptionPointers[ability]);
 }
 
 static void BufferMonTrainerMemo(void)
