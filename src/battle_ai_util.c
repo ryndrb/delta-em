@@ -304,7 +304,6 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_SELF_SUFFICIENT] = 7,
     [ABILITY_CHLOROPLAST] = 7,
     [ABILITY_POWER_FIST] = 7,
-    [ABILITY_VENGEANCE] = 5,
     [ABILITY_BLITZ_BOXER] = 8,
 };
 

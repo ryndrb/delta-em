@@ -338,10 +338,9 @@
 #define ABILITY_SELF_SUFFICIENT 307                 // Heals 1/16 at the end of every turn.
 #define ABILITY_CHLOROPLAST 308                     // Moves function as if it's sunny, regardless of weather
 #define ABILITY_POWER_FIST 309                      // Punching moves do special damage and get 20% boost
-#define ABILITY_VENGEANCE 310                       // Starter-like ability but for Ghost mons.
-#define ABILITY_BLITZ_BOXER 311                     // Punching moves go first.
+#define ABILITY_BLITZ_BOXER 310                     // Punching moves go first.
 
-#define ABILITIES_COUNT_ADDED 312
+#define ABILITIES_COUNT_ADDED 311
 
 #define ABILITIES_COUNT ABILITIES_COUNT_ADDED
 

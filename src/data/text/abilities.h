@@ -299,7 +299,6 @@ static const u8 sPsychDescription[] = _("Doubles Special Attack.");
 static const u8 sSelfSufficientDescription[] = _("Recover some HP every turn.");
 static const u8 sChloroplastDescription[] = _("Battles as if in sunlight.");
 static const u8 sPowerFistDescription[] = _("Punching moves deals special damage.");
-static const u8 sVengeanceDescription[] = _("Ups ghost moves in a pinch.");
 static const u8 sBlitzBoxerDescription[] = _("Punching moves have +1 priority.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
@@ -614,7 +613,6 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_SELF_SUFFICIENT] = _("Self Sufficient"),
     [ABILITY_CHLOROPLAST] = _("Chloroplast"),
     [ABILITY_POWER_FIST] = _("Power Fist"),
-    [ABILITY_VENGEANCE] = _("Vengeance"),
     [ABILITY_BLITZ_BOXER] = _("Blitz Boxer"),
 };
 #else   // 12 characters
@@ -1233,6 +1231,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_SELF_SUFFICIENT] = sSelfSufficientDescription,
     [ABILITY_CHLOROPLAST] = sChloroplastDescription,
     [ABILITY_POWER_FIST] = sPowerFistDescription,
-    [ABILITY_VENGEANCE] = sVengeanceDescription,
     [ABILITY_BLITZ_BOXER] = sBlitzBoxerDescription,
 };

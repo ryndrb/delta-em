@@ -9209,11 +9209,6 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
         else
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
         break;
-    case ABILITY_VENGEANCE:
-        if (moveType == TYPE_GHOST && gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 3))
-            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
-        else
-            modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
     #if B_PLUS_MINUS_INTERACTION >= GEN_5
     case ABILITY_PLUS:
     case ABILITY_MINUS:
