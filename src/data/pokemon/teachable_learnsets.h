@@ -17498,6 +17498,7 @@ static const u16 sDrifloonTeachableLearnset[] = {
     MOVE_SWAGGER,
     MOVE_SWIFT,
     MOVE_THUNDER_WAVE,
+    MOVE_DARK_PULSE,//
     MOVE_UNAVAILABLE,
 };
 
@@ -17539,6 +17540,7 @@ static const u16 sDrifblimTeachableLearnset[] = {
     MOVE_SWAGGER,
     MOVE_SWIFT,
     MOVE_THUNDER_WAVE,
+    MOVE_DARK_PULSE,//
     MOVE_UNAVAILABLE,
 };
 
