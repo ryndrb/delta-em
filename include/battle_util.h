@@ -218,6 +218,8 @@ void CopyMonAbilityAndTypesToBattleMon(u32 battler, struct Pokemon *mon);
 void RecalcBattlerStats(u32 battler, struct Pokemon *mon);
 void MulModifier(u16 *modifier, u16 val);
 bool32 IsAlly(u32 battlerAtk, u32 battlerDef);
+bool8 CheckTableForMovesEffect(u16 move, const u8 table[]);
+u8 GetTypeEffectiveness(u8 targetId);
 
 // Ability checks
 bool32 IsRolePlayBannedAbilityAtk(u16 ability);

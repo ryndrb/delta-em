@@ -4236,6 +4236,10 @@ static void HandleTurnActionSelectionState(void)
                                                             gBattleMons[gActiveBattler].moves[i],
                                                             gBattleMons[gActiveBattler].ppBonuses,
                                                             i);
+
+                            SetTypeBeforeUsingMove(moveInfo.moves[i], gActiveBattler);
+                            GET_MOVE_TYPE(moveInfo.moves[i], moveInfo.moveTypes[i])
+                            moveInfo.moveSplit[i] = GetBattleMoveSplit(gBattleMons[gActiveBattler].moves[i]);
                         }
 
                         BtlController_EmitChooseMove(BUFFER_A, (gBattleTypeFlags & BATTLE_TYPE_DOUBLE) != 0, FALSE, &moveInfo);

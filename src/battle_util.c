@@ -10981,3 +10981,54 @@ bool32 IsAlly(u32 battlerAtk, u32 battlerDef)
 {
     return (GetBattlerSide(battlerAtk) == GetBattlerSide(battlerDef));
 }
+
+bool8 CheckTableForMovesEffect(u16 move, const u8 table[])
+{
+    u32 i;
+	for (i = 0; table[i] != 0xFF; ++i)
+	{
+		if (gBattleMoves[move].effect == table[i])
+			return TRUE;
+	}
+
+	return FALSE;
+}
+
+u8 GetTypeEffectiveness(u8 targetId)
+{
+    struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[gActiveBattler][4]);
+	
+	if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].power == 0)
+		return 0;
+	else
+	{
+		u16 mod = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type][gBattleMons[targetId].type1];
+
+		if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
+		{
+			u16 mod2 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type][gBattleMons[targetId].type2];
+			uq4_12_multiply(mod, mod2);
+		}
+
+		if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].effect == EFFECT_TWO_TYPED_MOVE)
+		{
+			u16 mod3 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].argument][gBattleMons[targetId].type1];
+			uq4_12_multiply(mod, mod3);
+
+			if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
+			{
+				u16 mod4 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].argument][gBattleMons[targetId].type2];
+				uq4_12_multiply(mod, mod4);
+			}
+		}
+
+		if (mod == UQ_4_12(0.0))
+			return MOVE_RESULT_NO_EFFECT;
+		else if (mod <= UQ_4_12(0.5))
+			return MOVE_RESULT_NOT_VERY_EFFECTIVE;
+		else if (mod >= UQ_4_12(2.0))
+			return MOVE_RESULT_SUPER_EFFECTIVE;
+		else
+			return 0;
+	}
+}
