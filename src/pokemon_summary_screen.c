@@ -3130,7 +3130,12 @@ static void PrintMonOTID(void)
 static void PrintMonAbilityName(void)
 {
     u16 ability = GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum);
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY), gAbilityNames[ability], 0, 0, 0, 1);
+    u8 color = 1;
+
+    if(sMonSummaryScreen->summary.abilityNum == 2)
+        color = gSaveBlock2Ptr->playerGender == MALE ? 3 : 4;
+
+    PrintTextOnWindow(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY), gAbilityNames[ability], 0, 0, 0, color);
 }
 
 static void PrintMonAbilityDescription(void)
