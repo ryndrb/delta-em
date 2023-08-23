@@ -4211,17 +4211,27 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Calvin1[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Billy[] = {
+static const struct TrainerMonCustomized sParty_Billy[] = {
     {
-    .iv = 0,
-    .lvl = 5,
-    .species = SPECIES_ZIGZAGOON,
+        .lvl = 6,
+        .species = SPECIES_ZIGZAGOON_GALARIAN,
+        .ability = ABILITY_QUICK_FEET,
+        .nature = TRAINER_PARTY_NATURE(NATURE_ADAMANT),
+        .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+        .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 0, 252),
+        .heldItem = ITEM_NONE,
+        .moves = {MOVE_TACKLE, MOVE_GROWL},
     },
     {
-    .iv = 0,
-    .lvl = 7,
-    .species = SPECIES_SEEDOT,
-    }
+        .lvl = 6,
+        .species = SPECIES_WOOPER,
+        .ability = ABILITY_WATER_ABSORB,
+        .nature = TRAINER_PARTY_NATURE(NATURE_BOLD),
+        .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+        .ev = TRAINER_PARTY_EVS(0, 0, 0, 0, 0, 0),
+        .heldItem = ITEM_NONE,
+        .moves = {MOVE_MUD_SHOT, MOVE_WATER_GUN},
+    },
 };
 
 static const struct TrainerMonNoItemCustomMoves sParty_Josh[] = {

@@ -3837,8 +3837,8 @@ const struct Trainer gTrainers[] = {
         .trainerName = _("Billy"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_Billy),
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
+        .party = EVERYTHING_CUSTOMIZED(sParty_Billy),
     },
 
     [TRAINER_JOSH] =
