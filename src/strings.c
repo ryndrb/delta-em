@@ -1838,3 +1838,15 @@ const u8 gText_BattleUI_SuperEffective[] = _("{UP_ARROW_2}{SHIFT_RIGHT 13}");
 const u8 gText_BattleUI_NotVeryEffective[] = _("{DOWN_ARROW_2}{SHIFT_RIGHT 13}");
 const u8 gText_BattleUI_NoEffect[] = _("{BIG_MULT_X}");
 const u8 gText_BattleUI_STAB[] = _("{PLUS}");
+
+// Start Menu Clock
+const u8 gText_Clock_AM[] = _("AM");
+const u8 gText_Clock_PM[] = _("PM");
+const u8 gText_Clock_Sun[] = _("Sun. {STR_VAR_1}:{STR_VAR_2} {STR_VAR_3}");
+const u8 gText_Clock_Mon[] = _("Mon. {STR_VAR_1}:{STR_VAR_2} {STR_VAR_3}");
+const u8 gText_Clock_Tue[] = _("Tue. {STR_VAR_1}:{STR_VAR_2} {STR_VAR_3}");
+const u8 gText_Clock_Wed[] = _("Wed. {STR_VAR_1}:{STR_VAR_2} {STR_VAR_3}");
+const u8 gText_Clock_Thu[] = _("Thu. {STR_VAR_1}:{STR_VAR_2} {STR_VAR_3}");
+const u8 gText_Clock_Fri[] = _("Fri. {STR_VAR_1}:{STR_VAR_2} {STR_VAR_3}");
+const u8 gText_Clock_Sat[] = _("Sat. {STR_VAR_1}:{STR_VAR_2} {STR_VAR_3}");
+const u8 gText_Clock_Err[] = _("Err. {STR_VAR_1}:{STR_VAR_2} {STR_VAR_3}");

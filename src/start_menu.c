@@ -45,6 +45,7 @@
 #include "window.h"
 #include "union_room.h"
 #include "dexnav.h"
+#include "rtc.h"
 #include "wild_encounter.h"
 #include "constants/battle_frontier.h"
 #include "constants/rgb.h"
@@ -78,6 +79,11 @@ enum
     SAVE_CANCELED,
     SAVE_ERROR
 };
+
+// Clock
+EWRAM_DATA static u8 sTimeWindowId = 0;
+static void DrawTime(void);
+static void RemoveTimeBox(void);
 
 // IWRAM common
 bool8 (*gMenuCallback)(void);
@@ -324,6 +330,8 @@ static void BuildNormalStartMenu(void)
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
     AddStartMenuAction(MENU_ACTION_EXIT);
+    if(FlagGet(FLAG_SET_WALL_CLOCK) == TRUE)
+        DrawTime();
 }
 
 static void BuildDebugStartMenu(void)
@@ -639,6 +647,7 @@ static bool8 HandleStartMenuInput(void)
     {
         RemoveExtraStartMenuWindows();
         HideStartMenu();
+        RemoveTimeBox();
         return TRUE;
     }
 
@@ -1471,4 +1480,73 @@ static bool8 StartMenuDexNavCallback(void)
 {
     CreateTask(Task_OpenDexNavFromStartMenu, 0);
     return TRUE;
+}
+
+static void DrawTime(void){
+    u8 width, xOff, rem;
+    struct WindowTemplate template;
+    struct SiiRtcInfo rtc;
+    const u8* amPMString;
+    
+    RtcCalcLocalTime();
+    RtcGetDateTime(&rtc);
+
+    amPMString = (gLocalTime.hours >= 12) ? gText_Clock_PM : gText_Clock_AM;
+	ConvertIntToDecimalStringN(gStringVar1, (gLocalTime.hours == 0) ? 12 : (gLocalTime.hours > 12) ? gLocalTime.hours - 12 : gLocalTime.hours, STR_CONV_MODE_RIGHT_ALIGN, 2);
+	ConvertIntToDecimalStringN(gStringVar2, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+
+	StringCopy(gStringVar3, amPMString);
+    switch(ConvertBcdToBinary(rtc.dayOfWeek)){
+        case 1:
+            StringExpandPlaceholders(gStringVar4, gText_Clock_Mon);
+            break;
+        case 2:
+            StringExpandPlaceholders(gStringVar4, gText_Clock_Tue);
+            break;
+        case 3:
+            StringExpandPlaceholders(gStringVar4, gText_Clock_Wed);
+            break;
+        case 4:
+            StringExpandPlaceholders(gStringVar4, gText_Clock_Thu);
+            break;
+        case 5:
+            StringExpandPlaceholders(gStringVar4, gText_Clock_Fri);
+            break;
+        case 6:
+            StringExpandPlaceholders(gStringVar4, gText_Clock_Sat);
+            break;
+        case 7:
+            StringExpandPlaceholders(gStringVar4, gText_Clock_Sun);
+            break;
+        default:
+            StringExpandPlaceholders(gStringVar4, gText_Clock_Err);
+            break;
+    }
+
+    width = GetStringWidth(FONT_NORMAL, gStringVar4, 0);
+    xOff = width;
+    rem = width % 8;
+
+    if(rem < 3)
+        width = width - rem;
+    else
+        width = width + 8 - rem;
+    width = width / 8 + 1;
+    xOff = (width * 8 - xOff) / 2;
+
+    SetWindowTemplateFields(&template, 0, 1, 1, width, 2, 15, 0x008);
+	sTimeWindowId = AddWindow(&template);
+    DrawStdWindowFrame(sTimeWindowId, FALSE);
+    PutWindowTilemap(sTimeWindowId);
+    FillWindowPixelBuffer(sTimeWindowId, PIXEL_FILL(1));
+
+	AddTextPrinterParameterized(sTimeWindowId, FONT_NORMAL, gStringVar4, xOff, 0, 0xFF, NULL);
+	CopyWindowToVram(sTimeWindowId, COPYWIN_GFX);
+}
+
+static void RemoveTimeBox(void)
+{
+    ClearStdWindowAndFrame(sTimeWindowId, TRUE);
+    CopyWindowToVram(sTimeWindowId, COPYWIN_GFX);
+    RemoveWindow(sTimeWindowId);
 }

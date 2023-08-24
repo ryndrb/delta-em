@@ -3043,4 +3043,18 @@ extern const u8 gText_BattleUI_NoEffect[];
 extern const u8 gText_BattleUI_STAB[];
 extern const u8 StringNull[];
 
+// Start Menu Clock
+extern const u8 gText_Clock_TimeBase_12[];
+extern const u8 gText_Clock_TimeBase_Fin[];
+extern const u8 gText_Clock_AM[];
+extern const u8 gText_Clock_PM[];
+extern const u8 gText_Clock_Sun[];
+extern const u8 gText_Clock_Mon[];
+extern const u8 gText_Clock_Tue[];
+extern const u8 gText_Clock_Wed[];
+extern const u8 gText_Clock_Thu[];
+extern const u8 gText_Clock_Fri[];
+extern const u8 gText_Clock_Sat[];
+extern const u8 gText_Clock_Err[];
+
 #endif // GUARD_STRINGS_H
