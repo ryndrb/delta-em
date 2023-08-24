@@ -293,8 +293,8 @@ PlayersHouse_2F_EventScript_GameCube::
 	end
 
 PlayersHouse_2F_Text_ClockIsStopped:
-	.string "The clock is stopped…\p"
-	.string "Better set it and start it!$"
+	.string "The clock on the wall isn't moving…\p"
+	.string "You've got to set the time!$"
 
 PlayersHouse_2F_Text_HowDoYouLikeYourRoom:
 	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: How do you like your new room,\n{PLAYER}?\pGood! Everything's put away neatly!\pThey finished moving everything\ndownstairs, too.\pIt really is so nice having Pokémon\naround to help us!\pOh, but you should make sure that\neverything's all there on your\ldesk.$"
