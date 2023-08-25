@@ -35,7 +35,7 @@
       "id": "LAYOUT_RUSTBORO_CITY",
       "name": "RustboroCity_Layout",
       "width": 40,
-      "height": 60,
+      "height": 70,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/RustboroCity/border.bin",
@@ -4410,6 +4410,36 @@
       "secondary_tileset": "gTileset_MysteryEventsHouse",
       "border_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/border.bin",
       "blockdata_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/map.bin"
+    },
+    {
+      "id": "LAYOUT_SEASPRAY_CAVE",
+      "name": "Seaspray_Cave_Layout",
+      "width": 50,
+      "height": 38,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Seaspray_Cave/border.bin",
+      "blockdata_filepath": "data/layouts/Seaspray_Cave/map.bin"
+    },
+    {
+      "id": "LAYOUT_SEASPRAY_CAVE_B1F",
+      "name": "Seaspray_Cave_B1F_Layout",
+      "width": 52,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Seaspray_Cave_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/Seaspray_Cave_B1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SEASPRAY_CAVE_B2F",
+      "name": "Seaspray_Cave_B2F_Layout",
+      "width": 21,
+      "height": 23,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Seaspray_Cave_B2F/border.bin",
+      "blockdata_filepath": "data/layouts/Seaspray_Cave_B2F/map.bin"
     }
   ]
 }
