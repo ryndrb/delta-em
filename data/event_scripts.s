@@ -1067,3 +1067,7 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/Seaspray_Cave_B1F/scripts.inc"
 
 	.include "data/maps/Seaspray_Cave_B2F/scripts.inc"
+
+	.include "data/maps/Dewford_Meadow/scripts.inc"
+
+	.include "data/maps/Dewford_Manor_1F/scripts.inc"

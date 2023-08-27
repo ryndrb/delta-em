@@ -1711,6 +1711,22 @@
       "y": 4,
       "width": 1,
       "height": 1
+    },
+    {
+      "map_section": "MAPSEC_DEWFORD_MEADOW",
+      "name": "Dewford Meadow",
+      "x": 1,
+      "y": 14,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_DEWFORD_MANOR",
+      "name": "Abandoned Manor",
+      "x": 1,
+      "y": 14,
+      "width": 1,
+      "height": 1
     }
   ]
 }

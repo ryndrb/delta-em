@@ -4440,6 +4440,26 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/Seaspray_Cave_B2F/border.bin",
       "blockdata_filepath": "data/layouts/Seaspray_Cave_B2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEWFORD_MEADOW",
+      "name": "Dewford_Meadow_Layout",
+      "width": 40,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/Dewford_Meadow/border.bin",
+      "blockdata_filepath": "data/layouts/Dewford_Meadow/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEWFORD_MANOR_1F",
+      "name": "Dewford_Manor_1F_Layout",
+      "width": 24,
+      "height": 12,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_InsideShip",
+      "border_filepath": "data/layouts/Dewford_Manor_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Dewford_Manor_1F/map.bin"
     }
   ]
 }

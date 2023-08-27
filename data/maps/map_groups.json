@@ -432,7 +432,9 @@
     "MeteorFalls_StevensCave",
     "Seaspray_Cave",
     "Seaspray_Cave_B1F",
-    "Seaspray_Cave_B2F"
+    "Seaspray_Cave_B2F",
+    "Dewford_Meadow",
+    "Dewford_Manor_1F"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",
