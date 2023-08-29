@@ -1,0 +1,7 @@
+mapscripts PetalburgWoods_2_MapScripts {}
+
+script PetalburgWoods_2_EventScript_Sign {
+    msgbox("A chilling pocket in Petalburg Woods,\nwhere an eerie cold bites through\lthe air without explanation…")
+    release
+    end
+}

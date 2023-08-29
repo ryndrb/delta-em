@@ -4460,6 +4460,16 @@
       "secondary_tileset": "gTileset_InsideShip",
       "border_filepath": "data/layouts/Dewford_Manor_1F/border.bin",
       "blockdata_filepath": "data/layouts/Dewford_Manor_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PETALBURG_WOODS_2",
+      "name": "PetalburgWoods_2_Layout",
+      "width": 26,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/PetalburgWoods_2/border.bin",
+      "blockdata_filepath": "data/layouts/PetalburgWoods_2/map.bin"
     }
   ]
 }
