@@ -7,6 +7,13 @@ PetalburgWoods_MapScripts::
 PetalburgWoods_EventScript_DevonResearcherLeft::
 	lockall
 	call PetalburgWoods_EventScript_DevonResearcherIntro
+    applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceDown
+    waitmovement LOCALID_DEVON_EMPLOYEE
+    delay 8
+    playse SE_PIN
+    applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_ExclamationMark
+    waitmovement LOCALID_DEVON_EMPLOYEE
+    delay 8
 	applymovement LOCALID_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonResearcherApproachPlayerLeft
 	waitmovement 0
 	msgbox PetalburgWoods_Text_HaveYouSeenShroomish, MSGBOX_DEFAULT
@@ -14,11 +21,19 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 	playbgm MUS_ENCOUNTER_AQUA, FALSE
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_AquaEntrance
 	waitmovement 0
+    delay 8
+    applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceUp
+    waitmovement LOCALID_DEVON_EMPLOYEE
+    delay 8
+    playse SE_PIN
+    applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_ExclamationMark
+    waitmovement LOCALID_DEVON_EMPLOYEE
+    delay 8
 	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_AquaApproachResearcherLeft
 	waitmovement 0
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	msgbox PetalburgWoods_Text_HandOverThosePapers, MSGBOX_DEFAULT
 	closemessage
@@ -26,6 +41,10 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 	waitmovement 0
 	msgbox PetalburgWoods_Text_YouHaveToHelpMe, MSGBOX_DEFAULT
 	closemessage
+    delay 8
+    playse SE_PIN
+    applymovement LOCALID_GRUNT, Common_Movement_QuestionMark
+    waitmovement LOCALID_GRUNT
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_AquaApproachPlayer
 	waitmovement 0
 	msgbox PetalburgWoods_Text_NoOneCrossesTeamAqua, MSGBOX_DEFAULT
@@ -42,28 +61,48 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 PetalburgWoods_EventScript_DevonResearcherRight::
 	lockall
 	call PetalburgWoods_EventScript_DevonResearcherIntro
+    applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceDown
+    waitmovement LOCALID_DEVON_EMPLOYEE
+    delay 8
+    playse SE_PIN
+    applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_ExclamationMark
+    waitmovement LOCALID_DEVON_EMPLOYEE
+    delay 8
 	applymovement LOCALID_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonResearcherApproachPlayerRight
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	msgbox PetalburgWoods_Text_HaveYouSeenShroomish, MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_ENCOUNTER_AQUA, FALSE
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_AquaEntrance
 	waitmovement 0
+    delay 8
+    applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceUp
+    waitmovement LOCALID_DEVON_EMPLOYEE
+    applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp
+	waitmovement 0
+    delay 8
+    playse SE_PIN
+    applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_ExclamationMark
+    waitmovement LOCALID_DEVON_EMPLOYEE
+    delay 8
 	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_AquaApproachResearcherRight
 	waitmovement 0
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	msgbox PetalburgWoods_Text_HandOverThosePapers, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonResearcherFleeToPlayerRight
 	waitmovement 0
 	msgbox PetalburgWoods_Text_YouHaveToHelpMe, MSGBOX_DEFAULT
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
+    closemessage
+    delay 8
+    playse SE_PIN
+    applymovement LOCALID_GRUNT, Common_Movement_QuestionMark
+    waitmovement LOCALID_GRUNT
 	msgbox PetalburgWoods_Text_NoOneCrossesTeamAqua, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_GRUNT_PETALBURG_WOODS, PetalburgWoods_Text_YoureKiddingMe
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_AquaBackOff
@@ -88,11 +127,20 @@ PetalburgWoods_EventScript_DevonResearcherPostBattle::
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_AquaRunAway
 	waitmovement 0
 	removeobject LOCALID_GRUNT
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+    delay 8
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	msgbox PetalburgWoods_Text_ThatWasAwfullyClose, MSGBOX_DEFAULT
-	giveitem ITEM_GREAT_BALL
-	goto_if_eq VAR_RESULT, FALSE, PetalburgWoods_EventScript_BagFull
+	giveitem ITEM_EXP_SHARE
+    goto_if_eq VAR_RESULT, FALSE, PetalburgWoods_EventScript_BagFull
+    msgbox PetalburgWoods_Text_ExplainExpShare, MSGBOX_DEFAULT
+	closemessage
+    fadescreenswapbuffers FADE_TO_BLACK
+    special HealPlayerParty
+    playfanfare MUS_HEAL
+    waitfanfare
+    fadescreenswapbuffers FADE_FROM_BLACK
+    msgbox PetalburgWoods_Text_PokemonHealed, MSGBOX_DEFAULT
 	goto PetalburgWoods_EventScript_DevonResearcherFinish
 	end
 
@@ -103,9 +151,6 @@ PetalburgWoods_EventScript_BagFull::
 
 PetalburgWoods_EventScript_DevonResearcherFinish::
 	msgbox PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro, MSGBOX_DEFAULT
-	applymovement LOCALID_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonResearcherStartExit
-	waitmovement 0
-	msgbox PetalburgWoods_Text_ICantBeWastingTime, MSGBOX_DEFAULT
 	closemessage
 	return
 
@@ -116,21 +161,16 @@ PetalburgWoods_EventScript_RemoveDevonResearcher::
 	end
 
 PetalburgWoods_Movement_DevonResearcherLookAround:
-	face_up
+	walk_in_place_up
 	delay_16
 	delay_4
-	face_right
+	walk_in_place_right
 	delay_16
 	delay_8
-	face_left
+	walk_in_place_left
 	delay_16
 	delay_8
-	face_down
-	delay_16
-	face_right
-	delay_16
-	delay_8
-	face_up
+	walk_in_place_up
 	delay_16
 	step_end
 
@@ -158,7 +198,7 @@ PetalburgWoods_Movement_DevonResearcherApproachPlayerRight:
 	walk_down
 	walk_down
 	walk_down
-	walk_in_place_faster_right
+	walk_in_place_right
 	step_end
 
 PetalburgWoods_Movement_DevonResearcherExitRight:
@@ -175,7 +215,7 @@ PetalburgWoods_Movement_DevonResearcherExitRight:
 PetalburgWoods_Movement_WatchResearcherLeave:
 	delay_16
 	delay_16
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 PetalburgWoods_Movement_DevonResearcherFleeToPlayerLeft:
@@ -183,23 +223,13 @@ PetalburgWoods_Movement_DevonResearcherFleeToPlayerLeft:
 	walk_fast_down
 	walk_fast_down
 	walk_fast_left
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 PetalburgWoods_Movement_DevonResearcherFleeToPlayerRight:
 	walk_fast_down
 	walk_fast_right
-	walk_in_place_faster_up
-	step_end
-
-PetalburgWoods_Movement_DevonResearcherStartExit:
-	walk_in_place_faster_down
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	face_up
+	walk_in_place_up
 	step_end
 
 PetalburgWoods_Movement_AquaApproachResearcherLeft:
@@ -218,9 +248,8 @@ PetalburgWoods_Movement_AquaRunAway:
 	walk_fast_up
 	walk_fast_up
 	walk_fast_up
-	walk_fast_up
-	delay_16
-	delay_16
+    walk_fast_up
+    delay_8
 	step_end
 
 PetalburgWoods_Movement_AquaApproachResearcherRight:
@@ -319,65 +348,40 @@ PetalburgWoods_EventScript_JamesRematch::
 	end
 
 PetalburgWoods_Text_NotAOneToBeFound:
-	.string "Hmmm…\n"
-	.string "Not a one to be found…$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Hmmm…\nNot a one to be found…$"
 
 PetalburgWoods_Text_HaveYouSeenShroomish:
-	.string "Hello, have you seen any Pokémon\n"
-	.string "called Shroomish around here?\p"
-	.string "I really love that Pokémon.$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Hello, have you seen\nany Pokémon called Shroomish\laround here?\pI really love that Pokémon.$"
 
 PetalburgWoods_Text_IWasGoingToAmbushYou:
-	.string "I was going to ambush you, but you\n"
-	.string "had to dawdle in Petalburg Woods\l"
-	.string "forever, didn't you?\p"
-	.string "I got sick of waiting, so here I am!$"
+	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: I was going to ambush you,\nbut you had to dawdle in Petalburg\lWoods forever, didn't you?\pI got sick of waiting, so here I am!$"
 
 PetalburgWoods_Text_HandOverThosePapers:
-	.string "You! Devon Researcher!\p"
-	.string "Hand over those papers!$"
+	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: You! Devon Researcher!\pHand over those papers!$"
 
 PetalburgWoods_Text_YouHaveToHelpMe:
-	.string "Aiyeeeh!\p"
-	.string "You're a Pokémon Trainer, aren't you?\n"
-	.string "You've got to help me, please!$"
+	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Aiyeeeh!\pYou're a Pokémon Trainer, aren't you?\nYou've got to help me, please!$"
 
 PetalburgWoods_Text_NoOneCrossesTeamAqua:
-	.string "Hunh? What do you think you're doing?\n"
-	.string "What, you're going to protect him?\p"
-	.string "No one who crosses Team Aqua\n"
-	.string "gets any mercy, not even a kid!\p"
-	.string "Come on and battle me!$"
+	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: Huh? What do you think you're\ndoing?\pWhat, you're going to protect him?\pNo one who crosses Team Aqua gets\nany mercy, not even a kid!\pCome on and battle me!$"
 
 PetalburgWoods_Text_YoureKiddingMe:
-	.string "You're kidding me! You're tough!$"
+	.string "You're so strong!$"
 
 PetalburgWoods_Text_YouveGotSomeNerve:
-	.string "Grrr… You've got some nerve\n"
-	.string "meddling with Team Aqua!\l"
-	.string "Come on and battle me again!\p"
-	.string "I wish I could say that, but I'm out of\n"
-	.string "Pokémon…\p"
-	.string "And, hey, we of Team Aqua are also\n"
-	.string "after something in Rustboro.\p"
-	.string "I'll let you go today!$"
+	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: Grrr… You've got some nerve\nmeddling with Team Aqua!\lCome on and battle me again!\pI wish I could say that, but I'm out\nof Pokémon…\pAnd, hey, we of Team Aqua are also\nafter something in Rustboro.\pI'll let you go for today!$"
 
 PetalburgWoods_Text_ThatWasAwfullyClose:
-	.string "Whew…\n"
-	.string "That was awfully close!\p"
-	.string "Thanks to you, he didn't rob me of\n"
-	.string "these important papers.\p"
-	.string "I know, I'll give you a Great Ball as\n"
-	.string "my thanks!$"
+	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Whew…\nThat was awfully close!\pThanks to you, he didn't rob me of\nthese important papers.\pI know!\nI'll give you this as my thanks!$"
+
+PetalburgWoods_Text_ExplainExpShare:
+    .string "The Exp. Share is a super high-tech\ndevice.\pI had to strain every fiber\nof my brain and body to develop\lthis device.\pTurn the switch on, and battle\nexperience will be shared by all\lparty Pokémon!\lPlease give it a try!\pAnd with this, I'll restore your\nPokémon's health.\pIt's another technical advance that\nI'm proud of!$"
+
+PetalburgWoods_Text_PokemonHealed:
+    .string "You had your Pokémon's HP restored!$"
 
 PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro:
-	.string "Didn't that Team Aqua thug say\n"
-	.string "they were after something in\l"
-	.string "Rustboro, too?$"
-
-PetalburgWoods_Text_ICantBeWastingTime:
-	.string "Uh-oh! It's a crisis!\n"
-	.string "I can't be wasting time!$"
+	.string "…Ah!\pDidn't that Team Aqua thug\nsay they were after something in\lRustboro, too?\pUh-oh! It's a crisis!\nI can't be wasting time!$"
 
 PetalburgWoods_Text_YoureLoadedWithItems:
 	.string "You're loaded with items.\n"
@@ -459,11 +463,11 @@ PetalburgWoods_Text_MiracleSeedExplanation:
 PetalburgWoods_Text_TrainerTipsExperience:
 	.string "Trainer Tips\p"
 	.string "Any Pokémon that appears even once\n"
-	.string "in a battle is awarded Exp Points.\p"
+	.string "in a battle is awarded Exp. Points.\p"
 	.string "To raise a weak Pokémon, put it at the\n"
 	.string "left of the team list.\p"
 	.string "As soon as a battle starts, switch it\n"
-	.string "out. It will earn Exp Points without\l"
+	.string "out. It will earn Exp. Points without\l"
 	.string "being exposed to any harm.$"
 
 PetalburgWoods_Text_TrainerTipsPP:
@@ -474,3 +478,110 @@ PetalburgWoods_Text_TrainerTipsPP:
 	.string "If a Pokémon runs out of PP, it must be\n"
 	.string "taken to a Pokémon Center.$"
 
+PetalburgWoods_EventScript_ZiniaLeft::
+	applymovement OBJ_EVENT_ID_PLAYER, PetalburgWoods_Movement_PlayerGoneToRoute104
+	playse SE_EXIT
+	special SpawnCameraObject
+	delay 8
+	applymovement OBJ_EVENT_ID_CAMERA, PetalburgWoods_Movement_PanToZiniaLeft
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	goto PetalburgWoods_EventScript_ZiniaReport
+	return
+
+
+PetalburgWoods_EventScript_ZiniaRight::
+	applymovement OBJ_EVENT_ID_PLAYER, PetalburgWoods_Movement_PlayerGoneToRoute104
+	playse SE_EXIT
+	special SpawnCameraObject
+	delay 8
+	applymovement OBJ_EVENT_ID_CAMERA, PetalburgWoods_Movement_PanToZiniaRight
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	goto PetalburgWoods_EventScript_ZiniaReport
+	return
+
+
+PetalburgWoods_EventScript_ZiniaReport::
+	delay 8
+	applymovement 14, PetalburgWoods_Movement_ZiniaMoveLeft
+	waitmovement 14
+	msgbox PetalburgWoods_EventScript_ZiniaReport_Text_0
+	closemessage
+	delay 24
+	applymovement 14, PetalburgWoods_Movement_ZiniaLookAround
+	waitmovement 14
+	msgbox PetalburgWoods_EventScript_ZiniaReport_Text_1
+	closemessage
+	applymovement 14, Common_Movement_WalkInPlaceLeft
+	waitmovement 14
+	delay 32
+	setflag FLAG_HIDE_PETALBURG_WOODS_ZINIA
+	setvar VAR_PETALBURG_WOODS_STATE, 2
+	warpsilent MAP_ROUTE104, 10, 30
+	release
+	end
+
+
+PetalburgWoods_Movement_PanToZiniaLeft:
+	walk_down
+	walk_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_diag_southeast
+	walk_diag_southeast
+	step_end
+
+PetalburgWoods_Movement_PanToZiniaRight:
+	walk_down
+	walk_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_diag_southeast
+	walk_diag_southeast
+	step_end
+
+PetalburgWoods_Movement_ZiniaMoveLeft:
+	walk_left
+	walk_left
+	step_end
+
+PetalburgWoods_Movement_ZiniaLookAround:
+	walk_in_place_right
+	delay_16
+	delay_8
+	walk_in_place_down
+	delay_8
+	step_end
+
+PetalburgWoods_Movement_PlayerGoneToRoute104:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+PetalburgWoods_EventScript_ZiniaReport_Text_0:
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: …This is the Petalburg recon\nteam checking in.\pI'm afraid I have to begin with an\napology, Ms. Shelly…\lIt's not good news…\pThe mission is a no-go…\pA little something cropped up and\ngot in the way…\p…Roger that.\p…Got it.\nWill do.\pI'll continue investigating that\nenergy we detected.$"
+
+PetalburgWoods_EventScript_ZiniaReport_Text_1:
+	.string "…\p…Phew!\pBut that kid sure had some promise\nas a Trainer, I'd say.\p…$"

@@ -1170,3 +1170,43 @@ Route104_Text_BrendanPostBattle:
 	.string "making Pokémon battle.\p"
 	.string "Like Mr. Briney, it's important to\n"
 	.string "become friends with your Pokémon.$"
+
+Route104_EventScript_MrBriney_FirstEncounter::
+	lock
+	faceplayer
+	msgbox Route104_EventScript_MrBriney_FirstEncounter_Text_0
+	closemessage
+	applymovement 35, Common_Movement_WalkInPlaceDown
+	waitmovement 35
+	release
+	end
+
+
+Route104_EventScript_Peeko_FirstEncounter::
+	lock
+	faceplayer
+	delay 8
+	playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL
+	msgbox Route104_EventScript_Peeko_FirstEncounter_Text_0
+	closemessage
+	delay 8
+	release
+	end
+
+
+Route104_EventScript_Boy3::
+	lock
+	faceplayer
+	msgbox Route104_EventScript_Boy3_Text_0
+	release
+	end
+
+
+Route104_EventScript_MrBriney_FirstEncounter_Text_0:
+	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Hoh hoh hoh hoh!\pMy pretty Peeko's as full of energy\nas usual!$"
+
+Route104_EventScript_Peeko_FirstEncounter_Text_0:
+	.string "Pi-kwee!$"
+
+Route104_EventScript_Boy3_Text_0:
+	.string "I kept encountering the same kind of\nPokémon.\pThen the DexNav got better, and now\nI can find rare Pokémon easily.$"
