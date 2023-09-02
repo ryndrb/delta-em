@@ -190,20 +190,20 @@ BerryTree_Text_WantToPlant:
 	.string "Want to plant a Berry?$"
 
 BerryTree_Text_PlantedOneBerry:
-	.string "{PLAYER} planted one {STR_VAR_1} in\n"
+	.string "{PLAYER} planted one {COLOR RED}{STR_VAR_1}{COLOR DARK_GRAY} in\n"
 	.string "the soft, loamy soil.$"
 
 BerryTree_Text_BerryGrowthStage1:
-	.string "One {STR_VAR_1} was planted here.$"
+	.string "One {COLOR RED}{STR_VAR_1}{COLOR DARK_GRAY} was planted here.$"
 
 BerryTree_Text_BerryGrowthStage2:
-	.string "{STR_VAR_1} has sprouted.$"
+	.string "{COLOR RED}{STR_VAR_1}{COLOR DARK_GRAY} has sprouted.$"
 
 BerryTree_Text_BerryGrowthStage3:
-	.string "This {STR_VAR_1} plant is growing taller.$"
+	.string "This {COLOR RED}{STR_VAR_1}{COLOR DARK_GRAY} plant is growing taller.$"
 
 BerryTree_Text_BerryGrowthStage4:
-	.string "These {STR_VAR_1} flowers are blooming\n"
+	.string "These {COLOR RED}{STR_VAR_1}{COLOR DARK_GRAY} flowers are blooming\n"
 	.string "{STR_VAR_2}.$"
 
 BerryTree_Text_CareAdverbGreat:
@@ -216,33 +216,33 @@ BerryTree_Text_CareAdverbGood:
 	.string "prettily$"
 
 BerryTree_Text_WantToPick:
-	.string "You found {STR_VAR_2} {STR_VAR_1}!\p"
+	.string "You found {STR_VAR_2} {COLOR RED}{STR_VAR_1}{COLOR DARK_GRAY}!\p"
 	.string "Do you want to pick the\n"
-	.string "{STR_VAR_1}?$"
+	.string "{COLOR RED}{STR_VAR_1}{COLOR DARK_GRAY}?$"
 
 BerryTree_Text_PickedTheBerry:
-	.string "{PLAYER} picked the {STR_VAR_2} {STR_VAR_1}.$"
+	.string "{PLAYER} picked the {STR_VAR_2} {COLOR RED}{STR_VAR_1}{COLOR DARK_GRAY}.$"
 
 BerryTree_Text_PutAwayBerry:
-	.string "{PLAYER} put away the {STR_VAR_1}\n"
-	.string "in the Bag's Berries Pocket.\p"
+	.string "{PLAYER} put the {COLOR RED}{STR_VAR_1}{COLOR DARK_GRAY}\n"
+	.string "in the Bag's {COLOR BLUE}Berries Pocket{COLOR DARK_GRAY}.\p"
 	.string "The soil returned to its soft and\n"
 	.string "loamy state.$"
 
 BerryTree_Text_BerryPocketFull:
-	.string "The Bag's Berries Pocket is full.\p"
-	.string "The {STR_VAR_1} couldn't be taken.$"
+	.string "The Bag's {COLOR BLUE}Berries Pocket{COLOR DARK_GRAY} is full.\p"
+	.string "The {COLOR RED}{STR_VAR_1}{COLOR DARK_GRAY} couldn't be taken.$"
 
 BerryTree_Text_BerryLeftUnpicked:
-	.string "{PLAYER} left the {STR_VAR_1}\n"
+	.string "{PLAYER} left the {COLOR RED}{STR_VAR_1}{COLOR DARK_GRAY}\n"
 	.string "unpicked.$"
 
 BerryTree_Text_WantToWater:
-	.string "Want to water the {STR_VAR_1} with the\n"
+	.string "Want to water the {COLOR RED}{STR_VAR_1}{COLOR DARK_GRAY} with the\n"
 	.string "Wailmer Pail?$"
 
 BerryTree_Text_WateredTheBerry:
-	.string "{PLAYER} watered the {STR_VAR_1}.$"
+	.string "{PLAYER} watered the {COLOR RED}{STR_VAR_1}{COLOR DARK_GRAY}.$"
 
 BerryTree_Text_PlantIsDelighted:
 	.string "The plant seems to be delighted.$"
