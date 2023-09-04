@@ -50,24 +50,17 @@ RustboroCity_House1_EventScript_Hiker::
 	end
 
 RustboroCity_House1_Text_IllTradeIfYouWant:
-	.string "Huh? My Pokémon is cute?\n"
-	.string "Sure, I knew that.\p"
-	.string "But if you really want, I'm willing\n"
-	.string "to trade it to you.\p"
-	.string "I'll trade you my {STR_VAR_2} for\n"
-	.string "a {STR_VAR_1} if you want.$"
+	.string "Do you nickname your Pokémon?\nI gave a cool name to mine.\pBut when I call my Pokémon by that\nname, people laugh at me…\pIf it's OK with you, want to trade\nyour {STR_VAR_1} for my {STR_VAR_2}?$"
 
 RustboroCity_House1_Text_PleaseBeGoodToMyPokemon:
 	.string "Eheheh…\n"
 	.string "Please be good to my Pokémon.$"
 
 RustboroCity_House1_Text_DoesntLookLikeMonToMe:
-	.string "Huh? That doesn't look anything like\n"
-	.string "a {STR_VAR_1} to me.$"
+	.string "But that's no {STR_VAR_1}.\nTsk. So disappointing.$"
 
 RustboroCity_House1_Text_YouDontWantToThatsOkay:
-	.string "Oh, if you don't want to, that's okay.\n"
-	.string "But my Pokémon is cute, you know…$"
+	.string "Aww, it's a good Pokémon…$"
 
 RustboroCity_House1_Text_AnyPokemonCanBeCute:
 	.string "Any Pokémon can be cute if you raise\n"
@@ -76,6 +69,5 @@ RustboroCity_House1_Text_AnyPokemonCanBeCute:
 RustboroCity_House1_Text_AllSortsOfPlaces:
 	.string "In all sorts of places, there are all\n"
 	.string "sorts of Pokémon and people.\p"
-	.string "I find that fascinating, so I go to all\n"
-	.string "sorts of places.$"
+	.string "I find that fascinating!\pIt inspires me to go to all sorts of\nplaces.$"
 

@@ -42,10 +42,10 @@
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 
 #define FLAG_HIDE_ROUTE_104_MR_BRINEY_2     0x20
-#define FLAG_HIDE_ROUTE_104_WINGULL_2       0x21
+#define FLAG_HIDE_ROUTE_104_PEEKO_2       0x21
 #define FLAG_HIDE_PETALBURG_WOODS_ZINIA     0x22
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
+#define FLAG_HIDE_RUSTBORO_CITY_RIVAL_FIRST 0x23
+#define FLAG_RECEIVED_FLOAT_STONE           0x24
 #define FLAG_UNUSED_0x025    0x25 // Unused Flag
 #define FLAG_UNUSED_0x026    0x26 // Unused Flag
 #define FLAG_UNUSED_0x027    0x27 // Unused Flag

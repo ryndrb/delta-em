@@ -81,14 +81,10 @@ RustboroCity_DevonCorp_1F_EventScript_ProductsDisplay::
 	end
 
 RustboroCity_DevonCorp_1F_Text_WelcomeToDevonCorp:
-	.string "Hello and welcome to the Devon\n"
-	.string "Corporation.\p"
-	.string "We're proud producers of items and\n"
-	.string "medicine that enhance your life.$"
+	.string "Hello and welcome to the\nDevon Corporation.\pWe are the proud producers of\nitems and medicine that enhance\lyour life.$"
 
 RustboroCity_DevonCorp_1F_Text_StaffGotRobbed:
-	.string "One of our research staff stupidly\n"
-	.string "got robbed of an important parcel.$"
+	.string "One of our research staff went and\ngot robbed of something important.$"
 
 RustboroCity_DevonCorp_1F_Text_ThoseShoesAreOurProduct:
 	.string "Hey, those Running Shoes!\n"
@@ -97,26 +93,21 @@ RustboroCity_DevonCorp_1F_Text_ThoseShoesAreOurProduct:
 	.string "using something we made.$"
 
 RustboroCity_DevonCorp_1F_Text_RobberWasntVeryBright:
-	.string "That stolen parcel…\p"
-	.string "Well, sure it's important, but it's not\n"
-	.string "anything that anyone can use.\p"
-	.string "In my estimation, that robber must not\n"
-	.string "have been very bright.$"
+	.string "That stolen case…\pSure, it's important, but it's not like\nit would be much good to anyone\lelse.\pBecause those you know about the\nenergy are…\p…No! Nothing! Nothing, really!\nUhahaheh…$"
 
 RustboroCity_DevonCorp_1F_Text_SoundsLikeStolenGoodsRecovered:
 	.string "It sounds like they've recovered\n"
-	.string "the ripped-off Devon Goods.$"
+	.string "the stolen Devon Goods.$"
 
 RustboroCity_DevonCorp_1F_Text_OnlyAuthorizedPeopleEnter:
 	.string "I'm sorry, only authorized people\n"
 	.string "are allowed to enter here.$"
 
 RustboroCity_DevonCorp_1F_Text_HowCouldWeGetRobbed:
-	.string "It's beyond stupid.\n"
-	.string "How could we get robbed?$"
+	.string "It's beyond stupid.\nHow could he get robbed like that?$"
 
 RustboroCity_DevonCorp_1F_Text_YoureAlwaysWelcomeHere:
-	.string "Hi, there!\n"
+	.string "Hi there!\n"
 	.string "You're always welcome here!$"
 
 RustboroCity_DevonCorp_1F_Text_RocksMetalDisplay:
@@ -143,4 +134,3 @@ RustboroCity_DevonCorp_1F_Text_ProductDisplay:
 	.string "“Recently, Devon has begun marketing\n"
 	.string "tools for Pokémon Trainers, including\l"
 	.string "Poké Balls and Pokénav systems.”$"
-

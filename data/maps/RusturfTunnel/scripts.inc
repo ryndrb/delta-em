@@ -322,11 +322,16 @@ RusturfTunnel_EventScript_Grunt::
 	applymovement LOCALID_BRINEY, RusturfTunnel_Movement_BrineyApproachPeeko2
 	waitmovement 0
 	msgbox RusturfTunnel_Text_PeekoGladToSeeYouSafe, MSGBOX_DEFAULT
-	applymovement LOCALID_BRINEY, Common_Movement_FacePlayer
+    closemessage
+	applymovement LOCALID_BRINEY, Common_Movement_WalkInPlaceDown
 	waitmovement 0
-	message RusturfTunnel_Text_ThankYouLetsGoHomePeeko
-	waitmessage
-	waitse
+	msgbox RusturfTunnel_Text_ThankYou, MSGBOX_DEFAULT
+    closemessage
+    applymovement LOCALID_BRINEY, Common_Movement_WalkInPlaceRight
+	waitmovement LOCALID_BRINEY
+	message RusturfTunnel_Text_LetsGoHomePeeko
+    waitmessage
+    waitse
 	playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL
 	waitbuttonpress
 	waitmoncry
@@ -350,12 +355,12 @@ RusturfTunnel_Movement_PushPlayerAsideForGrunt:
 	lock_facing_direction
 	walk_up
 	unlock_facing_direction
-	walk_in_place_faster_left
+	walk_in_place_left
 	step_end
 
 RusturfTunnel_Movement_PlayerMoveAsideForBriney:
 	walk_down
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 RusturfTunnel_Movement_GruntEscape:
@@ -424,53 +429,28 @@ RusturfTunnel_EventScript_Mike::
 	end
 
 RusturfTunnel_Text_ComeAndGetSome:
-	.string "What, are you coming?\n"
-	.string "Come and get some, then!$"
+	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: What? Are you coming?\nCome and get some, then!$"
 
 RusturfTunnel_Text_Peeko:
-	.string "Peeko: Pii pihyoh!$"
+	.string "Pii pihyoh!$"
 
 RusturfTunnel_Text_GruntIntro:
-	.string "Grah, keelhaul it all!\p"
-	.string "That hostage Pokémon turned out to\n"
-	.string "be worthless!\p"
-	.string "And to think I made a getaway…\n"
-	.string "In this tunnel to nowhere!\p"
-	.string "Hey! You!\n"
-	.string "So you want to battle me?$"
+	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: Grah, keelhaul it all!\pThis hostage Pokémon turned out to\nbe worthless!\pAnd to think I made a getaway…\ninto this tunnel to nowhere!\pAnd you!\nNow you're here to battle me.\lReally?$"
 
 RusturfTunnel_Text_GruntDefeat:
-	.string "Urrrggh! My career in crime comes to\n"
-	.string "a dead end!$"
+	.string "Ugh! Uhhn ugh!\nIs this the end of my evil deeds!?$"
 
 RusturfTunnel_Text_GruntTakePackage:
-	.string "This is plain not right…\p"
-	.string "The Boss told me this would be a\n"
-	.string "slick-and-easy job to pull.\p"
-	.string "All I had to do was steal some package\n"
-	.string "from Devon.\p"
-	.string "Tch!\n"
-	.string "You want it back that badly, take it!$"
+	.string "This is plain not right…\pThe boss told me this would be a\nslick-and-easy job to pull.\pAll I had to do was steal some parts\nfrom Devon.\pTch!\pYou want 'em back that badly, then\ntake 'em!$"
 
 RusturfTunnel_Text_PeekoGladToSeeYouSafe:
-	.string "Peeko!\n"
-	.string "Am I glad to see you're safe!$"
+	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Peeko!\nAm I glad to see you're safe!$"
 
-RusturfTunnel_Text_ThankYouLetsGoHomePeeko:
-	.string "Peeko owes her life to you!\p"
-	.string "They call me Mr. Briney.\n"
-	.string "And, you are?\p"
-	.string "… … … … … … … …\n"
-	.string "… … … … … … … …\p"
-	.string "Ah, so you are {PLAYER}{KUN}!\n"
-	.string "I sincerely thank you!\p"
-	.string "Now, if there's anything that troubles\n"
-	.string "you, don't hesitate to tell me!\p"
-	.string "You can usually find me in my cottage\n"
-	.string "by the sea near Petalburg Woods.\p"
-	.string "Come, Peeko, we should make our way\n"
-	.string "home.\p"
-	.string "Peeko: Pihyoh!$"
+RusturfTunnel_Text_ThankYou:
+	.string "My Peeko owes her life an' freedom\nto you!\pThey call me Mr. Briney.\nAnd you are?\pAh, so it's {PLAYER}, is it now!\pThen I sincerely thank you,\n{PLAYER}!\pIf there's ever a thing I can\ndo to help you in turn, don't you\lhesitate to tell me.\pIf I'm to be found, it will always be\nat my cottage by the sea near\lPetalburg Woods.$"
+
+RusturfTunnel_Text_LetsGoHomePeeko:
+    .string "Come, Peeko!\nHigh time we're under way to home!\p{COLOR RED}Peeko{COLOR DARK_GRAY}: Pikwee!$"
 
 RusturfTunnel_Text_WhyCantTheyKeepDigging:
 	.string "… …\p"
@@ -529,4 +509,3 @@ RusturfTunnel_Text_MikePostBattle:
 	.string "They halted development here to\n"
 	.string "protect Pokémon, right?\l"
 	.string "There's a feel-good story!$"
-

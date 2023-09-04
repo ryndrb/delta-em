@@ -1,6 +1,3 @@
-RustboroCity_Gym_MapScripts::
-	.byte 0
-
 RustboroCity_Gym_EventScript_Roxanne::
 	trainerbattle_single TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneIntro, RustboroCity_Gym_Text_RoxanneDefeat, RustboroCity_Gym_EventScript_RoxanneDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
@@ -11,6 +8,7 @@ RustboroCity_Gym_EventScript_Roxanne::
 	end
 
 RustboroCity_Gym_EventScript_RoxanneDefeated::
+	msgbox RustboroCity_Gym_Text_RoxanneGiveTM, MSGBOX_DEFAULT
 	message RustboroCity_Gym_Text_ReceivedStoneBadge
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
@@ -104,7 +102,7 @@ RustboroCity_Gym_EventScript_RegisterRoxanne::
 	end
 
 RustboroCity_Gym_Text_GymGuideAdvice:
-	.string "Yo, how's it going?\p"
+	.string "{COLOR RED}Guide{COLOR DARK_GRAY}: Yo, how's it going?\p"
 	.string "Listen, my friend!\n"
 	.string "Would you like to become the Champion?\p"
 	.string "I'm no Trainer, not me, but I can\n"
@@ -156,9 +154,7 @@ RustboroCity_Gym_Text_TommyDefeat:
 	.string "Wow! You've got some potential!$"
 
 RustboroCity_Gym_Text_TommyPostBattle:
-	.string "Roxanne is stronger than me by\n"
-	.string "several times.\p"
-	.string "You'd better be on your guard!$"
+	.string "Roxanne is several times stronger\nthan me.\pYou'd better be on your guard!$"
 
 RustboroCity_Gym_Text_MarcIntro:
 	.string "We might be in the middle of town,\n"
@@ -176,52 +172,26 @@ RustboroCity_Gym_Text_MarcPostBattle:
 	.string "pick the Rock type at her young age.$"
 
 RustboroCity_Gym_Text_RoxanneIntro:
-	.string "Hello, I am Roxanne, the Rustboro\n"
-	.string "Pokémon Gym Leader.\p"
-	.string "I became a Gym Leader so that I might\n"
-	.string "apply what I learned at the Pokémon\l"
-	.string "Trainer's School in battle.\p"
-	.string "Would you kindly demonstrate how you\n"
-	.string "battle, and with which Pokémon?$"
+	.string "{COLOR RED}Roxanne{COLOR DARK_GRAY}: Just as I expected…\pI knew you and your Pokémon would\nbe able to go this far.\pNow, would you kindly demonstrate\nhow you battle with your Pokémon?$"
 
 RustboroCity_Gym_Text_RoxanneDefeat:
-	.string "So…\n"
-	.string "I lost…\p"
-	.string "It seems that I still have much more\n"
-	.string "to learn…\p"
-	.string "I understand.\p"
-	.string "The Pokémon League's rules state\n"
-	.string "that Trainers are to be given this\l"
-	.string "if they defeat a Gym Leader.\p"
-	.string "Please accept the official Pokémon\n"
-	.string "League Stone Badge.$"
+	.string "So…I lost…\pIt seems that I still have much more\nto learn…$"
+
+RustboroCity_Gym_Text_RoxanneGiveTM:
+	.string "I understand.\pThe Pokémon League's rules state\nthat Trainers receive this if they\ldefeat a Gym Leader.\pPlease accept the official\nPokémon League Stone Badge.$"
 
 RustboroCity_Gym_Text_ReceivedStoneBadge:
-	.string "{PLAYER} received the Stone Badge\n"
+	.string "{PLAYER} received the {COLOR RED}Stone Badge{COLOR DARK_GRAY}\n"
 	.string "from Roxanne.$"
 
 RustboroCity_Gym_Text_StoneBadgeInfoTakeThis:
-	.string "The Stone Badge heightens the Attack\n"
-	.string "power of your Pokémon.\p"
-	.string "It also enables them to use the HM move\n"
-	.string "Cut outside of battle.\p"
-	.string "Please take this with you, too.$"
+	.string "The Stone Badge enables Pokémon\nto use the HM move Cut outside of\lbattle.\pAll Pokémon up to Level 20, even\nthose you get in trades, will obey\lyou.\pAnd…\nPlease take this with you, too.$"
 
 RustboroCity_Gym_Text_ExplainRockTomb:
-	.string "That Technical Machine, TM39,\n"
-	.string "contains Rock Tomb.\p"
-	.string "It not only inflicts damage by dropping\n"
-	.string "rocks, it also lowers Speed.\p"
-	.string "If you use a TM, it instantly teaches\n"
-	.string "the move to a Pokémon.\p"
-	.string "Remember, a TM can be used only once,\n"
-	.string "so think before you use it.$"
+	.string "The move Rock Tomb not only inflicts\ndamage by dropping rocks, it also\llower's the target's Speed.\pIf you use a TM, it instantly teaches\nthe move to a Pokémon.\pYou can use a TM as many times as\nyou want, so please try it out!$"
 
 RustboroCity_Gym_Text_RoxannePostBattle:
-	.string "Since you are so strong, you should\n"
-	.string "challenge other Gym Leaders.\p"
-	.string "By battling many Trainers, you should\n"
-	.string "learn many things.$"
+	.string "{COLOR RED}Roxanne{COLOR DARK_GRAY}: Since you are so\nstrong, you should challenge other\lGym Leaders.\pBy battling many Trainers, you should\nlearn many things.$"
 
 RustboroCity_Gym_Text_GymStatue:
 	.string "Rustboro City Pokémon Gym$"
@@ -281,3 +251,60 @@ RustboroCity_Gym_Text_RoxanneRematchNeedTwoMons:
 	.string "You only have one Pokémon with you?\p"
 	.string "Please return with at least one more\n"
 	.string "Pokémon.$"
+
+RustboroCity_Gym_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_Gym_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, RustboroCity_Gym_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
+	.byte 0
+
+RustboroCity_Gym_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_RUSTBORO_GYM_STATE, 0, RustboroCity_Gym_EventScript_WelcomeToGym
+	.2byte 0
+
+
+RustboroCity_Gym_OnTransition::
+	compare VAR_RUSTBORO_GYM_STATE, 0
+	goto_if_eq RustboroCity_Gym_OnTransition_2
+RustboroCity_Gym_OnTransition_1:
+	end
+
+RustboroCity_Gym_OnTransition_2:
+	setobjectxyperm 1, 5, 17
+	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_LEFT
+	goto RustboroCity_Gym_OnTransition_1
+
+
+RustboroCity_Gym_EventScript_WelcomeToGym::
+	lock
+	delay 16
+	applymovement 1, Common_Movement_WalkInPlaceDown
+	delay 4
+	applymovement 4, Common_Movement_WalkInPlaceRight
+	waitmovement 4
+	msgbox RustboroCity_Gym_EventScript_WelcomeToGym_Text_0
+	closemessage
+	delay 16
+	applymovement 1, RustboroCity_Gym_Movement_RoxanneHeadsBack
+	fadescreenswapbuffers FADE_TO_BLACK
+	delay 16
+	waitmovement 1
+	fadescreenswapbuffers FADE_FROM_BLACK
+	setobjectxy 1, 5, 2
+	turnobject 1, DIR_SOUTH
+	applymovement 4, Common_Movement_WalkInPlaceDown
+	waitmovement 4
+	setvar VAR_RUSTBORO_GYM_STATE, 1
+	release
+	end
+
+
+RustboroCity_Gym_Movement_RoxanneHeadsBack:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+RustboroCity_Gym_EventScript_WelcomeToGym_Text_0:
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Hello.\pYou must be a new challenger.\pI am {COLOR RED}Roxanne{COLOR DARK_GRAY}, the Rustboro City\nPokémon Gym Leader.\pI became a Gym Leader so that\nI may apply in battle all that I've\llearned at the Pokémon Trainers'\lSchool.\pIf you defeat me in a Pokémon\nbattle, I'll present you with a Gym\lBadge as proof of your strength as\la Trainer.\pPlease take up the challenge.\pI look forward to seeing you as a\nchallenger.\pUntil then, farewell.$"

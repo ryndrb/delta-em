@@ -79,13 +79,7 @@ RustboroCity_Flat1_2F_EventScript_PokeDoll::
 	end
 
 RustboroCity_Flat1_2F_Text_ComingUpWithMealsIsHard:
-	.string "Oh, it's so hard every day…\p"
-	.string "What's hard?\n"
-	.string "You need to ask?\p"
-	.string "It's trying to figure out what to\n"
-	.string "make for meals every day.\p"
-	.string "It really isn't easy coming up with\n"
-	.string "meals every day.$"
+	.string "Oh, it's just so hard!\pWhat's hard?\nDo you even need to ask?\pPlanning meals every day!\pIt's hard to come up with different\nideas day after day!$"
 
 RustboroCity_Flat1_2F_Text_HelloDoYouKnowFunnyPhrase:
 	.string "Oh, hello!\n"

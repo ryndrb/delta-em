@@ -15,7 +15,8 @@ Route116_OnTransition:
 	end
 
 Route116_EventScript_SetWandasBoyfriendPos::
-	setobjectxyperm LOCALID_WANDAS_BF_OUTSIDE, 38, 10
+	setobjectxyperm LOCALID_WANDAS_BF_OUTSIDE, 47, 11
+    setobjectmovementtype LOCALID_WANDAS_BF_OUTSIDE, MOVEMENT_TYPE_FACE_UP
 	return
 
 Route116_OnLoad:
@@ -144,9 +145,13 @@ Route116_EventScript_Briney::
 
 Route116_EventScript_BrineyTrigger::
 	lockall
-	applymovement LOCALID_BRINEY, Common_Movement_WalkInPlaceFasterRight
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
+    delay 16
+    playse SE_PIN
+    applymovement LOCALID_BRINEY, Common_Movement_ExclamationMark
+    waitmovement LOCALID_BRINEY
+    delay 8
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox Route116_Text_ScoundrelMadeOffWithPeeko, MSGBOX_DEFAULT
 	setvar VAR_ROUTE116_STATE, 2
 	releaseall
@@ -352,19 +357,13 @@ Route116_EventScript_Johnson::
 	end
 
 Route116_Text_ScoundrelMadeOffWithPeeko:
-	.string "Ohhh, what am I to do?\p"
-	.string "We were on our walk, Peeko and I, when\n"
-	.string "we were jumped by an odd thug…\p"
-	.string "The scoundrel made off with my\n"
-	.string "darling Peeko!\p"
-	.string "Wrrrooooooaaaar! Peeko!$"
+	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Ohhh, what am I to do?\pWe were just out on our walk, Peeko\nand I, when we were attacked by an\lodd thug…\pAnd then the scoundrel made off with\nmy darling Peeko!\pWhere are yooouuu!? Peeeeeeko!$"
 
 Route116_Text_WantToDigTunnel:
-	.string "Nnn… Roar!\p"
-	.string "I want to dig that tunnel!$"
+	.string "Grrrrrroar!\pThat goofy goon hightailed it out of\nthe tunnel!\pI can go back to digging!$"
 
 Route116_Text_DiggingTunnelWhenGoonOrderedMeOut:
-	.string "Nnn… Roar!\n"
+	.string "Grrrrr!\n"
 	.string "What's going on?\p"
 	.string "I was digging the tunnel without any\n"
 	.string "tools when some goon ordered me out!\p"
@@ -470,4 +469,3 @@ Route116_Text_TrainerTipsBagHasPockets:
 	.string "placed in the appropriate Pockets.\p"
 	.string "No Trainer can afford to be without\n"
 	.string "a Bag of their own.$"
-

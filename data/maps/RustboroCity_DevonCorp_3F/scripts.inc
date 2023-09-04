@@ -38,19 +38,15 @@ RustboroCity_DevonCorp_3F_EventScript_MeetPresident::
 	waitmovement 0
 	msgbox RustboroCity_DevonCorp_3F_Text_WordWithPresidentComeWithMe, MSGBOX_DEFAULT
 	closemessage
-	playbgm MUS_FOLLOW_ME, FALSE
 	applymovement LOCALID_DEVON_EMPLOYEE, RustboroCity_DevonCorp_3F_Movement_LeadPlayerToPresident
 	applymovement OBJ_EVENT_ID_PLAYER, RustboroCity_DevonCorp_3F_Movement_PlayerFollowToPresident
 	waitmovement 0
 	msgbox RustboroCity_DevonCorp_3F_Text_PleaseGoAhead, MSGBOX_DEFAULT
 	closemessage
-	fadedefaultbgm
 	applymovement LOCALID_DEVON_EMPLOYEE, RustboroCity_DevonCorp_3F_Movement_EmployeeFaceDesk
 	applymovement OBJ_EVENT_ID_PLAYER, RustboroCity_DevonCorp_3F_Movement_PlayerApproachDesk
 	waitmovement 0
 	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor, MSGBOX_DEFAULT
-	giveitem ITEM_LETTER
-	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneWantYouToHaveThis, MSGBOX_DEFAULT
 	playfanfare MUS_OBTAIN_ITEM
 	message RustboroCity_DevonCorp_3F_Text_ReceivedPokenav
 	waitfanfare
@@ -58,9 +54,9 @@ RustboroCity_DevonCorp_3F_EventScript_MeetPresident::
 	setflag FLAG_RECEIVED_POKENAV
 	setflag FLAG_HIDE_RUSTBORO_CITY_POKEMON_SCHOOL_SCOTT
 	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp, MSGBOX_DEFAULT
-	closemessage
-	call Common_EventScript_OutOfCenterPartyHeal
-	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneGoWithCautionAndCare, MSGBOX_DEFAULT
+	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneLetterToSteven, MSGBOX_DEFAULT
+	giveitem ITEM_LETTER
+	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneGoFindMrBriney, MSGBOX_DEFAULT
 	setflag FLAG_HIDE_ROUTE_116_WANDAS_BOYFRIEND
 	clearflag FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
 	clearflag FLAG_HIDE_RUSTURF_TUNNEL_WANDA
@@ -154,6 +150,7 @@ RustboroCity_DevonCorp_3F_EventScript_MrStone::
 	goto_if_set FLAG_RECEIVED_EXP_SHARE, RustboroCity_DevonCorp_3F_EventScript_MrStoneAfterFavor
 	goto_if_set FLAG_DELIVERED_STEVEN_LETTER, RustboroCity_DevonCorp_3F_EventScript_GiveExpShare
 	msgbox RustboroCity_DevonCorp_3F_Text_CountingOnYou, MSGBOX_DEFAULT
+	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneGoFindMrBriney, MSGBOX_DEFAULT
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -198,51 +195,22 @@ RustboroCity_DevonCorp_3F_EventScript_RareRocksDisplay::
 	end
 
 RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor:
-	.string "I'm Mr. Stone, the President of\n"
-	.string "the Devon Corporation.\p"
-	.string "I'd just got word about you!\p"
-	.string "You saved our staff not just once,\n"
-	.string "but twice!\p"
-	.string "I have a favor to ask of an amazing\n"
-	.string "person like you.\p"
-	.string "I understand that you're delivering\n"
-	.string "a package to Slateport's Shipyard.\p"
-	.string "Well, on the way, could you stop off in\n"
-	.string "Dewford Town?\p"
-	.string "I was hoping that you'd deliver a\n"
-	.string "Letter to Steven in Dewford.$"
-
-RustboroCity_DevonCorp_3F_Text_MrStoneWantYouToHaveThis:
-	.string "Mr. Stone: Now, you should know that\n"
-	.string "I am a great President.\p"
-	.string "So, I'd never be so cheap as to ask\n"
-	.string "a favor for nothing in return.\p"
-	.string "That's why I want you to have this!$"
+	.string "{COLOR RED}Mr. Stone{COLOR DARK_GRAY}: I'm Mr. Stone, the\nPresident of the Devon Corporation.\pI heard just now how we have quite\na bit to thank you for.\pSo you helped out my staff not just\nonce, but twice!\pThere's a favor I'd like to ask of a\nreliable Trainer like you.\pNow I want you to know I'm a\npresident you can trust.\pI'd never be so mean to ask a favor\nfor nothing in return.\pThat's why I want you to have this!$"
 
 RustboroCity_DevonCorp_3F_Text_ReceivedPokenav:
-	.string "{PLAYER} received a Pokénav.$"
+	.string "{PLAYER} received a {COLOR RED}PokéNav{COLOR DARK_GRAY}.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp:
-	.string "Mr. Stone: That device…\p"
-	.string "It's a Pokémon Navigator, or Pokénav\n"
-	.string "for short.\p"
-	.string "It's an indispensable tool for any\n"
-	.string "Trainer on an adventure.\p"
-	.string "It has a map of the Hoenn region.\p"
-	.string "You can check the locations of\n"
-	.string "Dewford and Slateport easily!\p"
-	.string "By the way, I've heard that sinister\n"
-	.string "criminals--Magma and Aqua, I believe--\l"
-	.string "have been making trouble far and wide.\p"
-	.string "I think it would be best if you rested\n"
-	.string "up before you go on your way.$"
+	.string "That device…\pIt's Pokémon Navigator, or PokéNav\nfor short.\pIt is an indispensable tool for any\nTrainer who is traveling out in the\lworld.\p…\pNow let me get to the important\nissue of what it is I need you to\ldo…$"
 
-RustboroCity_DevonCorp_3F_Text_MrStoneGoWithCautionAndCare:
-	.string "Mr. Stone: Well, then, {PLAYER}{KUN},\n"
-	.string "go with caution and care!$"
+RustboroCity_DevonCorp_3F_Text_MrStoneLetterToSteven:
+	.string "I want to ask you to deliver this\n{COLOR BLUE}Letter{COLOR DARK_GRAY} to a man named {COLOR RED}Steven{COLOR DARK_GRAY}.\lYou should find him in {COLOR BLUE}Dewford{COLOR DARK_GRAY}.$"
+
+RustboroCity_DevonCorp_3F_Text_MrStoneGoFindMrBriney:
+	.string "You'll have to cross the sea to\nreach Dewford, of course.\pI'll ask {COLOR RED}Mr. Briney{COLOR DARK_GRAY}, the old sailor\nwho lives in that hut on {COLOR BLUE}Route 104{COLOR DARK_GRAY},\lto help with the crossing.\pGo find him, and he should agree to\nhelp you.\pI'm counting on you, young Trainer!\pIf you're ever unsure of what to do,\njust come and talk with me again!$"
 
 RustboroCity_DevonCorp_3F_Text_CountingOnYou:
-	.string "Mr. Stone: I'm counting on you!$"
+	.string "{COLOR RED}Mr. Stone{COLOR DARK_GRAY}: Deliver that {COLOR BLUE}Letter{COLOR DARK_GRAY} to\n{COLOR RED}Steven{COLOR DARK_GRAY} in {COLOR BLUE}Dewford Town{COLOR DARK_GRAY} for me!$"
 
 RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter:
 	.string "Mr. Stone: You delivered my Letter?\n"
@@ -268,22 +236,7 @@ RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends:
 	.string "Trainers in the Pokémon League?$"
 
 RustboroCity_DevonCorp_3F_Text_ThisIs3rdFloorWaitHere:
-	.string "This is the Devon Corporation's\n"
-	.string "third floor.\p"
-	.string "Our President's Office is on\n"
-	.string "this floor.\p"
-	.string "Anyway, I can't tell you how much I'm\n"
-	.string "grateful for what you've done.\p"
-	.string "Um… By the way, that parcel\n"
-	.string "you got back for us…\p"
-	.string "Could I get you to deliver that to\n"
-	.string "the Shipyard in Slateport?\p"
-	.string "It would be awful if those robbers\n"
-	.string "tried to take it again.\p"
-	.string "Uh… Hehehe, so, uh, could I count\n"
-	.string "on you to do that for me?\p"
-	.string "Oh, that's right.\n"
-	.string "Could you wait here a second?$"
+	.string "This is the top floor of the\nDevon Corporation.\pOur president's office is on this\nfloor.\pI can't tell you how grateful\nI am for what you've done for our\lcompany.\pCould you wait here for just a\nmoment?$"
 
 RustboroCity_DevonCorp_3F_Text_WordWithPresidentComeWithMe:
 	.string "Our President would like to have\n"
@@ -294,8 +247,7 @@ RustboroCity_DevonCorp_3F_Text_PleaseGoAhead:
 	.string "Please, go ahead.$"
 
 RustboroCity_DevonCorp_3F_Text_VisitCaptSternShipyard:
-	.string "If you visit the Shipyard in Slateport,\n"
-	.string "you should go see Capt. Stern.$"
+	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Mr. Briney is an old and\ndear friend of Mr. Stone's.\pThe two of them, along with one\nother friend, used to travel all\lthe corners of the world together\lin their youth.$"
 
 RustboroCity_DevonCorp_3F_Text_RepeatAndTimerHugelyPopular:
 	.string "Devon's new products, the Repeat Ball\n"
