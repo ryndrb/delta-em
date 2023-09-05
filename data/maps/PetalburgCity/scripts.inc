@@ -755,11 +755,11 @@ PetalburgCity_Text_GymSign:
 	.string "“A man in pursuit of power!”$"
 
 PetalburgCity_Text_CitySign:
-	.string "{COLOR GREEN}Petalburg City{COLOR DARK_GRAY}\n"
+	.string "Petalburg City\n"
 	.string "“Where people mingle with nature.”$"
 
 PetalburgCity_Text_WallyHouseSign:
-	.string "{COLOR RED}Wally{COLOR DARK_GRAY}'s House$"
+	.string "Wally's House$"
 
 PetalburgCity_Text_AreYouATrainer:
 	.string "Excuse me!\p"
@@ -777,3 +777,19 @@ PetalburgCity_Text_ImLookingForTalentedTrainers:
 	.string "I'm roaming the land in search of\n"
 	.string "talented Trainers.\p"
 	.string "I'm sorry to have taken your time.$"
+
+PetalburgCity_EventScript_WilburHouseSign::
+	msgbox PetalburgCity_EventScript_WilburHouseSign_Text_0, MSGBOX_SIGN
+	end
+
+
+PetalburgCity_EventScript_OliviaHouseSign::
+	msgbox PetalburgCity_EventScript_OliviaHouseSign_Text_0, MSGBOX_SIGN
+	end
+
+
+PetalburgCity_EventScript_WilburHouseSign_Text_0:
+	.string "Wilbur's House$"
+
+PetalburgCity_EventScript_OliviaHouseSign_Text_0:
+	.string "Olivia's House$"

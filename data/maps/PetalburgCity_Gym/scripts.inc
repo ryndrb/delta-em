@@ -134,12 +134,15 @@ PetalburgCity_Gym_EventScript_BeginWallyTutorial::
 	msgbox PetalburgCity_Gym_Text_DadOhYoureWallyRight, MSGBOX_DEFAULT
 	msgbox PetalburgCity_Gym_Text_WallyIveNeverCaughtAPokemon, MSGBOX_DEFAULT
 	msgbox PetalburgCity_Gym_Text_DadHmISee, MSGBOX_DEFAULT
+	closemessage
 	call PetalburgCity_Gym_EventScript_NormanAddressPlayer
 	msgbox PetalburgCity_Gym_Text_DadPlayerGoWithWally, MSGBOX_DEFAULT
+	closemessage
 	call PetalburgCity_Gym_EventScript_NormanAddressWally
 	msgbox PetalburgCity_Gym_Text_IllLoanYouMyZigzagoon, MSGBOX_DEFAULT
 	msgbox PetalburgCity_Gym_Text_WallyThankYouAndDadGivesPokeBall, MSGBOX_DEFAULT
 	msgbox PetalburgCity_Gym_Text_WallyOhWowThankYou, MSGBOX_DEFAULT
+	closemessage
 	call PetalburgCity_Gym_EventScript_NormanFaceDoor
 	call PetalburgCity_Gym_EventScript_WallyFaceDown
 	msgbox PetalburgCity_Gym_Text_WouldYouReallyComeWithMe, MSGBOX_DEFAULT
@@ -1021,10 +1024,10 @@ PetalburgCity_Gym_Text_DadPlayerGoWithWally:
 	.string "{PLAYER}!\nYou heard all that, right?\pYou go with Wally, and make sure\nthat he safely catches a Pokémon.$"
 
 PetalburgCity_Gym_Text_IllLoanYouMyZigzagoon:
-	.string "Wally, here.\pI'll lend you one of my Pokémon.\pWally received Zigzagoon!$"
+	.string "Wally, here.\pI'll lend you one of my Pokémon.\pWally received {COLOR RED}Zigzagoon{COLOR DARK_GRAY}!$"
 
 PetalburgCity_Gym_Text_WallyThankYouAndDadGivesPokeBall:
-	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Oh, wow…\nYour Pokémon, sir?\p{COLOR RED}Dad{COLOR DARK_GRAY}: Hm…\pI'll give you a Poké Ball, too, so\ngo give it your best!\pWally received a Poké Ball!$"
+	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Oh, wow…\nYour Pokémon, sir?\p{COLOR RED}Dad{COLOR DARK_GRAY}: Hm…\pI'll give you a Poké Ball, too, so\ngo give it your best!\pWally received a {COLOR RED}Poké Ball{COLOR DARK_GRAY}!$"
 
 PetalburgCity_Gym_Text_WallyOhWowThankYou:
 	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Th-thank you, Mr. Norman!$"
@@ -1478,4 +1481,4 @@ PetalburgCity_Gym_EventScript_NormanChallenger_Text_4:
 	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: Hm?$"
 
 PetalburgCity_Gym_EventScript_NormanChallenger_Text_5:
-	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: Why if it isn't {PLAYER}!\pSo you've finished moving in?\pI see…\pWell…\pYou know, I sure was surprised that\nyou managed to get here by\lyourself.\pAh… I see. You're making a good\nstart on your team!\pMm-hmm! Then I guess you're going to\nbecome a Trainer like me, {PLAYER}?\pNow that's something to look forward\nto!$"
+	.string "Why if it isn't {PLAYER}!\pSo you've finished moving in?\pI see…\pWell…\pYou know, I sure was surprised that\nyou managed to get here by\lyourself.\pAh… I see. You're making a good\nstart on your team!\pMm-hmm! Then I guess you're going to\nbecome a Trainer like me, {PLAYER}?\pNow that's something to look forward\nto!$"

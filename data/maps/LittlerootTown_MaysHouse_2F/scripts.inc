@@ -149,7 +149,7 @@ LittlerootTown_MaysHouse_2F_Movement_MayLeaveRoom:
 LittlerootTown_MaysHouse_2F_Movement_MayEnters:
 	walk_down
 	walk_down
-	walk_in_place_faster_right
+	walk_in_place_right
 	step_end
 
 LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerNorth:
@@ -164,22 +164,22 @@ LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCNorth:
 	walk_up
 	walk_up
 	walk_up
-	walk_in_place_faster_right
+	walk_in_place_right
 	walk_right
 	walk_right
 	walk_right
 	walk_right
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayNorth:
 	delay_16
-	walk_in_place_faster_up
+	walk_in_place_up
 	delay_16
 	delay_16
 	delay_16
 	delay_16
-	walk_in_place_faster_right
+	walk_in_place_right
 	step_end
 
 LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerSouth:
@@ -190,20 +190,20 @@ LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerSouth:
 
 LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCSouth:
 	walk_up
-	walk_in_place_faster_right
+	walk_in_place_right
 	walk_right
 	walk_right
 	walk_right
 	walk_right
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMaySouth:
 	delay_16
-	walk_in_place_faster_up
+	walk_in_place_up
 	delay_16
 	delay_16
-	walk_in_place_faster_right
+	walk_in_place_right
 	step_end
 
 LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerWest:
@@ -212,28 +212,28 @@ LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerWest:
 	walk_right
 	walk_right
 	walk_right
-	walk_in_place_faster_down
+	walk_in_place_down
 	step_end
 
 LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCWest:
 	walk_up
 	walk_right
 	walk_right
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 @ Unused, the player is already facing this direction so its unneeded
 LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayWest:
 	delay_16
 	delay_16
-	walk_in_place_faster_right
+	walk_in_place_right
 	step_end
 
 LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerEast:
 	walk_right
 	walk_right
 	walk_down
-	walk_in_place_faster_right
+	walk_in_place_right
 	step_end
 
 LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCEast:
@@ -244,15 +244,15 @@ LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCEast:
 	walk_right
 	walk_right
 	walk_right
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayEast:
 	delay_16
-	walk_in_place_faster_up
+	walk_in_place_up
 	delay_16
 	delay_16
-	walk_in_place_faster_right
+	walk_in_place_right
 	step_end
 
 RivalsHouse_2F_EventScript_Rival::
@@ -338,7 +338,7 @@ MaysHouse_2F_Text_Notebook:
 	.string "There are some notes on the page,\nwritten in spare, angular script.\p“This'll be on the test! Don't\nforget!\pEach Pokémon can learn up to four\nmoves!\pWhich moves you teach a Pokémon\nwill show how good of Trainer you\lare!”$"
 
 RivalsHouse_2F_Text_MayWhoAreYouIntro:
-	.string "{COLOR RED}???{COLOR DARK_GRAY}: Huh!?\pWho… are you?$"
+	.string "Huh!?\pWho… are you?$"
 
 RivalsHouse_2F_Text_MayWhoAreYou:
 	.string "Oh! You must be {PLAYER}!\nYour move was today, huh?\pWell, I'm {COLOR RED}May{COLOR DARK_GRAY}!\nGlad to meet you!\pI… I actually have this dream of\nbecoming friend with Pokémon all\lover the world.\pAnd when Dad-oh, I mean, Professor\nBirch-told me about your move here,\l{PLAYER}…\pWell, I was hoping you would be nice\nand we could be friends.\p…B-but that's just silly, isn't it?\pI've just met you. Right, {PLAYER}?\pSo what am I talking about…\pHee hee…\pOh no! I forgot!\pI was supposed to be going out to\nhelp Dad catch some wild Pokémon!\p{PLAYER}, I'll see you later!$"
@@ -347,7 +347,7 @@ RivalsHouse_2F_Text_MayGettingReady:
 	.string "{COLOR RED}???{COLOR DARK_GRAY}: Pokémon fully restored, items\nall ready and…$"
 
 RivalsHouse_2F_Text_BrendanWhoAreYouIntro:
-	.string "{COLOR RED}???{COLOR DARK_GRAY}: Y-you…\pWho are you?$"
+	.string "Y-you…\pWho are you?$"
 
 RivalsHouse_2F_Text_BrendanWhoAreYou:
 	.string "{PLAYER}?\pOh, you're the new kid who just\nmoved in next door!?\pHuh…\nI didn't know that you'd be a girl.\pDad-I mean, Professor Birch-told me\nyou were the kid of a Gym Leader,\lso I sort of hoped you'd be a guy.\pMy name's {COLOR RED}Brendan{COLOR DARK_GRAY}.\nWell, I guess we are still\lneighbors, so…\pNice to meet you! Let's be friends,\nOK?\pHuh? Hey, {PLAYER}…\nDon't you have any Pokémon?\pIf you want, I can go catch you\none.\pAw, wait I forgot…\pI'm supposed to be going out to help\nmy dad catch some wild Pokémon.\pSome other time, OK?$"

@@ -36,7 +36,7 @@ Route101_EventScript_StartBirchRescue::
 	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonChaseInCircles
 	applymovement LOCALID_BIRCH, Route101_Movement_BirchRunInCircles
 	waitmovement 0
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonFaceBirch
 	applymovement LOCALID_BIRCH, Route101_Movement_BirchFaceZigzagoon
@@ -149,7 +149,7 @@ Route101_Movement_EnterScene:
 	walk_fast_up
 	walk_fast_up
 	walk_fast_up
-	walk_in_place_faster_left
+	walk_in_place_left
 	step_end
 
 Route101_Movement_BirchRunInCircles:
@@ -235,7 +235,7 @@ Route101_EventScript_BirchsBag::
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_ZIGZAGOON
 	setobjectxy OBJ_EVENT_ID_PLAYER, 6, 13
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	special ChooseStarter
 	waitstate
@@ -291,19 +291,19 @@ Route101_Text_HelpMe:
 	.string "{COLOR RED}???{COLOR DARK_GRAY}: H-help me!$"
 
 Route101_Text_PleaseHelp:
-	.string "{COLOR RED}???{COLOR DARK_GRAY}: Halloo! You over there!\nPlease! Help me out!\pIn my Bag!\nThere are some Poké Balls!$"
+	.string "Halloo! You over there!\nPlease! Help me out!\pIn my Bag!\nThere are some Poké Balls!$"
 
 Route101_Text_DontLeaveMe:
-	.string "{COLOR RED}???{COLOR DARK_GRAY}: Wh-where are you going?!\nDon't leave me like this!$"
+	.string "Wh-where are you going?!\nDon't leave me like this!$"
 
 Route101_Text_YouSavedMe:
-	.string "{COLOR RED}???{COLOR DARK_GRAY}: Whew…\pI went into the tall grass to survey\nwild Pokémon when I was suddenly\ljumped!\pYou saved my hide. Thanks a lot!$"
+	.string "Whew…\pI went into the tall grass to survey\nwild Pokémon when I was suddenly\ljumped!\pYou saved my hide. Thanks a lot!$"
 
 Route101_Text_NoticeItsPlayer_M:
-	.string "{COLOR RED}???{COLOR DARK_GRAY}: Oh?\pBut you're Norman's boy, {PLAYER}!\pI didn't even realize who you were\nat first.\pYou've grown into quite the young\nboy.\pThis isn't the place to chat, though.\nCome along to my lab.$"
+	.string "Oh?\pBut you're Norman's boy, {PLAYER}!\pI didn't even realize who you were\nat first.\pYou've grown into quite the young\nboy.\pThis isn't the place to chat, though.\nCome along to my lab.$"
 
 Route101_Text_NoticeItsPlayer_F:
-	.string "{COLOR RED}???{COLOR DARK_GRAY}: Oh?\pBut you're Norman's girl, {PLAYER}!\pI didn't even realize who you were\nat first.\pYou've grown into quite the young\nlady.\pThis isn't the place to chat, though.\nCome along to my lab.$"
+	.string "Oh?\pBut you're Norman's girl, {PLAYER}!\pI didn't even realize who you were\nat first.\pYou've grown into quite the young\nlady.\pThis isn't the place to chat, though.\nCome along to my lab.$"
 
 Route101_Text_TakeTiredPokemonToPokeCenter:
 	.string "If Pokémon get tired, take them to\n"
@@ -353,10 +353,10 @@ script Route101_EventScript_RivalGiveDexNav{
 	applymovement(OBJ_EVENT_ID_PLAYER, Route101_Movement_PlayerLookAtMayRight)
     applymovement(LOCALID_RIVAL, Route101_Movement_RivalGotoPlayerRight)
     waitmovement(0)
-    msgbox("{COLOR RED}{RIVAL}{COLOR DARK_GRAY}: This is from my dad.\pHe said he forgot to give it to\nyou before.")
+    msgbox("This is from my dad.\pHe said he forgot to give it to\nyou before.")
     delay(8)
     playfanfare(MUS_OBTAIN_ITEM) 
-    msgbox("{PLAYER} received the DexNav!")
+    msgbox("{PLAYER} received the {COLOR RED}DexNav{COLOR DARK_GRAY}!")
     waitfanfare
     setflag(FLAG_SYS_DETECTOR_MODE)
     setflag(FLAG_SYS_DEXNAV_GET)

@@ -358,7 +358,7 @@ PetalburgWoods_Text_IWasGoingToAmbushYou:
 	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: I was going to ambush you,\nbut you had to dawdle in Petalburg\lWoods forever, didn't you?\pI got sick of waiting, so here I am!$"
 
 PetalburgWoods_Text_HandOverThosePapers:
-	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: You! Devon Researcher!\pHand over those papers!$"
+	.string "You! Devon Researcher!\pHand over those papers!$"
 
 PetalburgWoods_Text_YouHaveToHelpMe:
 	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Aiyeeeh!\pYou're a Pokémon Trainer, aren't you?\nYou've got to help me, please!$"
@@ -370,7 +370,7 @@ PetalburgWoods_Text_YoureKiddingMe:
 	.string "You're so strong!$"
 
 PetalburgWoods_Text_YouveGotSomeNerve:
-	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: Grrr… You've got some nerve\nmeddling with Team Aqua!\lCome on and battle me again!\pI wish I could say that, but I'm out\nof Pokémon…\pAnd, hey, we of Team Aqua are also\nafter something in Rustboro.\pI'll let you go for today!$"
+	.string "Grrr… You've got some nerve meddling\nwith Team Aqua!\lCome on and battle me again!\pI wish I could say that, but I'm out\nof Pokémon…\pAnd, hey, we of Team Aqua are also\nafter something in Rustboro.\pI'll let you go for today!$"
 
 PetalburgWoods_Text_ThatWasAwfullyClose:
 	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Whew…\nThat was awfully close!\pThanks to you, he didn't rob me of\nthese important papers.\pI know!\nI'll give you this as my thanks!$"

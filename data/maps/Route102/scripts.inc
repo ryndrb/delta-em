@@ -80,7 +80,7 @@ Route102_Text_Whoa:
 	.string "Wh-whoa!$"
 
 Route102_Text_WallyIDidIt:
-	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: I did it… It's my…\nMy own Pokémon!$"
+	.string "I did it… It's my…\nMy own Pokémon!$"
 
 Route102_Text_LetsGoBack:
 	.string "Thanks so much, {PLAYER}!\nLet's head back to the Gym!$"

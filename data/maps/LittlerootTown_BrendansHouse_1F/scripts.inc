@@ -124,7 +124,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_GoSeeRoom::
 	lockall
 	setvar VAR_0x8004, LOCALID_MOM
 	setvar VAR_0x8005, MALE
-	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFasterLeft
+	applymovement VAR_0x8004, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	goto PlayersHouse_1F_EventScript_MomGoSeeRoom
 	end
@@ -133,7 +133,7 @@ PlayersHouse_1F_Text_IsntItNiceInHere:
 	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: See, {PLAYER}?\nIsn't it nice in here, too?$"
 
 PlayersHouse_1F_Text_MoversPokemonGoSetClock:
-	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: The moving company's Pokémon\neven help with the unpacking and\lcleanup.\lThey really make moving a cinch!\p…\pYou should go and see your new room\nupstairs, {PLAYER}!\pDad even bought a new clock for it\nto help celebrate the big move.\pYou'll need to set the time, though!$"
+	.string "The moving company's Pokémon\neven help with the unpacking and\lcleanup.\lThey really make moving a cinch!\p…\pYou should go and see your new room\nupstairs, {PLAYER}!\pDad even bought a new clock for it\nto help celebrate the big move.\pYou'll need to set the time, though!$"
 
 PlayersHouse_1F_Text_ArentYouInterestedInRoom:
 	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Well, {PLAYER}?\pDon't you want to see your new room?$"
@@ -145,13 +145,13 @@ PlayersHouse_1F_Text_OhComeQuickly:
 	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Oh! {PLAYER}! {PLAYER}!!!\nQuick! Come quickly!$"
 
 PlayersHouse_1F_Text_MaybeDadWillBeOn:
-	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: It's the Petalburg Gym!\nMaybe Dad will be on TV!$"
+	.string "It's the Petalburg Gym!\nMaybe Dad will be on TV!$"
 
 PlayersHouse_1F_Text_ItsOverWeMissedHim:
-	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Oh… It's already ended.\pLooks like your dad was on, but we\nmissed his part.\pWhat a shame.$"
+	.string "Oh… It's already ended.\pLooks like your dad was on, but we\nmissed his part.\pWhat a shame.$"
 
 PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor:
-	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: But that reminds me…\pOne of Dad's friends lives in this\ntown.\p{COLOR BLUE}Professor Birch{COLOR DARK_GRAY} is his name.\pHe lives {COLOR BLUE}right next door{COLOR DARK_GRAY}, so you\nshould go over and introduce\lyourself.$"
+	.string "But that reminds me…\pOne of Dad's friends lives in this\ntown.\p{COLOR BLUE}Professor Birch{COLOR DARK_GRAY} is his name.\pHe lives {COLOR BLUE}right next door{COLOR DARK_GRAY}, so you\nshould go over and introduce\lyourself.$"
 
 PlayersHouse_1F_Text_SeeYouHoney:
 	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Now take care out there, honey!$"

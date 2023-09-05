@@ -31,7 +31,7 @@ Route103_EventScript_RivalMay::
 	closemessage
 	delay 16
 	playbgm MUS_ENCOUNTER_MAY, TRUE
-	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	playse SE_PIN
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
@@ -314,7 +314,7 @@ Route103_Text_MayRoute103Pokemon:
 	.string "{COLOR RED}May{COLOR DARK_GRAY}: Let's see…\pOn Route 103, I found this\nPokémon…\land this one…and this one, too…$"
 
 Route103_Text_MayLetsBattle:
-	.string "Oh! Hey, {PLAYER}!\pWhat's that? Oh! My dad gave you a\nPokémon as a gift, huh?\pWell then, why don't we go ahead and\nhave a quick battle?\pI'll give a taste of what being a\nTrainer is really like!$"
+	.string "Oh! Hey, {PLAYER}!\pWhat's that?\pOh!\pMy dad gave you a Pokémon as a\ngift, huh?\pWell then, why don't we go ahead and\nhave a quick battle?\pI'll give a taste of what being a\nTrainer is really like!$"
 
 Route103_Text_MayDefeated:
 	.string "Wow! That's great!\n"

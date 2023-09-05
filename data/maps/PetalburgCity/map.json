@@ -145,7 +145,7 @@
   ],
   "warp_events": [
     {
-      "x": 11,
+      "x": 10,
       "y": 19,
       "elevation": 0,
       "dest_map": "MAP_PETALBURG_CITY_HOUSE1",
@@ -325,6 +325,22 @@
       "elevation": 3,
       "item": "ITEM_RARE_CANDY",
       "flag": "FLAG_HIDDEN_ITEM_PETALBURG_CITY_RARE_CANDY"
+    },
+    {
+      "type": "sign",
+      "x": 13,
+      "y": 19,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PetalburgCity_EventScript_WilburHouseSign"
+    },
+    {
+      "type": "sign",
+      "x": 20,
+      "y": 23,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PetalburgCity_EventScript_OliviaHouseSign"
     }
   ]
 }

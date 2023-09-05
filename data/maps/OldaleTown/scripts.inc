@@ -124,7 +124,7 @@ OldaleTown_Movement_Unknown1:
 	walk_up
 	walk_up
 	delay_8
-	walk_in_place_faster_down
+	walk_in_place_down
 	step_end
 
 OldaleTown_Movement_Unknown2:
@@ -181,7 +181,7 @@ OldaleTown_EventScript_RivalTrigger1::
 	lockall
 	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer1
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	setvar VAR_0x8009, 1
 	goto OldaleTown_EventScript_ShowRivalMessage
@@ -191,7 +191,7 @@ OldaleTown_EventScript_RivalTrigger2::
 	lockall
 	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer2
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	setvar VAR_0x8009, 1
 	goto OldaleTown_EventScript_ShowRivalMessage
@@ -201,7 +201,7 @@ OldaleTown_EventScript_RivalTrigger3::
 	lockall
 	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer3
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	setvar VAR_0x8009, 1
 	goto OldaleTown_EventScript_ShowRivalMessage
@@ -272,7 +272,7 @@ OldaleTown_Movement_RivalExit:
 OldaleTown_Movement_WatchRivalExit:
 	delay_8
 	delay_4
-	walk_in_place_faster_down
+	walk_in_place_down
 	step_end
 
 OldaleTown_Movement_PlayerStepBack:
@@ -282,7 +282,7 @@ OldaleTown_Movement_PlayerStepBack:
 
 OldaleTown_Movement_BackUp:
 	walk_fast_up
-	walk_in_place_faster_left
+	walk_in_place_left
 	lock_facing_direction
 	walk_right
 	unlock_facing_direction
@@ -325,6 +325,6 @@ OldaleTown_Text_BrendanLetsGoBack:
 	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: I'm heading back to my dad's\nlab first!\pCome on, {PLAYER}!$"
 
 OldaleTown_Text_TownSign:
-	.string "{COLOR GREEN}Oldale Town\n"
+	.string "Oldale Town\n"
 	.string "“Where things start off scarce.”$"
 

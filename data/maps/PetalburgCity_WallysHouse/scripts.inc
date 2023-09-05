@@ -68,7 +68,7 @@ PetalburgCity_WallysHouse_EventScript_ReceivedHM03Surf::
 	end
 
 PetalburgCity_WallysHouse_Text_ThanksForPlayingWithWally:
-	.string "You…\nAh. You're {PLAYER}, aren't you?\pThank you for helping Wally out back\nthere.\pThat boy has been sickly since the\ntime he was born, I'm afraid.\pThat's why we decided to stay with\nmy brother's family in Verdanturf\lTown for a while.\pThe air is far cleaner there than it\nis around these parts.\pOh, you're looking for Wally?\pI'm sorry, kid, but I'm afraid he's\nalready left.\pI wonder where he is right this\nmoment…$"
+	.string "You…\nAh. You're {PLAYER}, aren't you?\pThank you for helping Wally out back\nthere.\pThat boy has been sickly since the\ntime he was born, I'm afraid.\pThat's why we decided to stay with\nmy brother's family in Verdanturf\lTown for a while.\pThe air is far cleaner there than it\nis around these parts.\pOh, you're looking for Wally?\pI'm sorry, {PLAYER}, but I'm afraid\nhe's already left.\pI wonder where he is right this\nmoment…$"
 
 PetalburgCity_WallysHouse_Text_WonderHowWallyIsDoing:
 	.string "I wonder how our Wally is doing?$"

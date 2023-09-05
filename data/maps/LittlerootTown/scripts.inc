@@ -174,7 +174,7 @@ LittlerootTown_Movement_MomExitHouse:
 
 LittlerootTown_Movement_MomApproachPlayerAtTruck:
 	walk_down
-	walk_in_place_faster_left
+	walk_in_place_left
 	step_end
 
 LittlerootTown_Movement_MomApproachDoor:
@@ -192,7 +192,7 @@ LittlerootTown_Movement_PlayerApproachDoor:
 	delay_16
 	delay_8
 	walk_right
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 LittlerootTown_Movement_PlayerEnterHouse:
@@ -334,7 +334,7 @@ LittlerootTown_Movement_TwinReturnLeft:
 	walk_left
 	walk_left
 	walk_up
-	walk_in_place_faster_down
+	walk_in_place_down
 	step_end
 
 LittlerootTown_Movement_PushPlayerBackFromRoute:
@@ -374,14 +374,14 @@ LittlerootTown_Movement_TwinReturnRight:
 	walk_left
 	walk_left
 	walk_left
-	walk_in_place_faster_down
+	walk_in_place_down
 	step_end
 
 LittlerootTown_EventScript_GoSaveBirchTrigger::
 	lockall
-	applymovement LOCALID_TWIN, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_TWIN, Common_Movement_WalkInPlaceRight
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	special GetPlayerBigGuyGirlString
 	msgbox LittlerootTown_Text_CanYouGoSeeWhatsHappening, MSGBOX_DEFAULT
@@ -536,70 +536,70 @@ LittlerootTown_EventScript_MomApproachPlayerFemale::
 	return
 
 LittlerootTown_EventScript_MomApproachPlayer0::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomApproachPlayer0
 	waitmovement 0
 	return
 
 LittlerootTown_EventScript_MomApproachPlayer1::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomApproachPlayer1
 	waitmovement 0
 	return
 
 LittlerootTown_EventScript_MomApproachPlayerMale2::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomApproachPlayerMale2
 	waitmovement 0
 	return
 
 LittlerootTown_EventScript_MomApproachPlayerMale3::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomApproachPlayerMale3
 	waitmovement 0
 	return
 
 LittlerootTown_EventScript_MomApproachPlayerMale4::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomApproachPlayerMale4
 	waitmovement 0
 	return
 
 LittlerootTown_EventScript_MomApproachPlayerMale5::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomApproachPlayerMale5
 	waitmovement 0
 	return
 
 LittlerootTown_EventScript_MomApproachPlayerFemale2::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomApproachPlayerFemale2
 	waitmovement 0
 	return
 
 LittlerootTown_EventScript_MomApproachPlayerFemale3::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomApproachPlayerFemale3
 	waitmovement 0
 	return
 
 LittlerootTown_EventScript_MomApproachPlayerFemale4::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomApproachPlayerFemale4
 	waitmovement 0
 	return
 
 LittlerootTown_EventScript_MomApproachPlayerFemale5::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomApproachPlayerFemale5
 	waitmovement 0
@@ -918,7 +918,7 @@ LittlerootTown_Text_WaitPlayer:
 	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Wait, {PLAYER}!$"
 
 LittlerootTown_Text_TakeCarePlayer:
-	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: {PLAYER}!\pDid you introduce yourself to\nProfessor Birch?\pOh! What an adorable Pokémon!\nYou got it from the professor?\lHow nice!\pYou are your father's child, all\nright…\pYou look good together with a\nPokémon!\p…\pTo think that you have your very own\nPokémon now…\lYour father will be overjoyed.\pBut don't push yourself too hard.\pIf anything happens, you can always\ncome home, honey.$"
+	.string "Did you introduce yourself to\nProfessor Birch?\pOh! What an adorable Pokémon!\nYou got it from the professor?\lHow nice!\pYou are your father's child, all\nright…\pYou look good together with a\nPokémon!\p…\pTo think that you have your very own\nPokémon now…\lYour father will be overjoyed.\pBut don't push yourself too hard.\pIf anything happens, you can always\ncome home, honey.$"
 
 LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "If you use a PC, you can store items\n"
@@ -947,17 +947,17 @@ LittlerootTown_Text_GoodLuckCatchingPokemon:
 	.string "Good luck!$"
 
 LittlerootTown_Text_TownSign:
-	.string "{COLOR GREEN}Littleroot Town{COLOR DARK_GRAY}\n"
+	.string "Littleroot Town\n"
 	.string "“A town that can't be shaded any hue.”$"
 
 LittlerootTown_Text_ProfBirchsLab:
-	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}'s Pokémon Lab$"
+	.string "Prof. Birch's Pokémon Lab$"
 
 LittlerootTown_Text_PlayersHouse:
-	.string "{COLOR RED}{PLAYER}{COLOR DARK_GRAY}'s House$"
+	.string "{PLAYER}'s House$"
 
 LittlerootTown_Text_ProfBirchsHouse:
-	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}'s House$"
+	.string "Prof. Birch's House$"
 
 LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "Prof. Birch: Well, well, {PLAYER}{KUN}!\n"

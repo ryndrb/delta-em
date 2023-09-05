@@ -197,8 +197,8 @@ LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex::
 	delay 10
 	playse SE_CLICK
 	delay 20
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterRight
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment
@@ -208,8 +208,8 @@ LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex::
 	delay 20
 	applymovement LOCALID_BIRCH, LittlerootTown_ProfessorBirchsLab_Movement_BirchReturnPokedex
 	waitmovement 0
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterUp
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_OkayAllDone, MSGBOX_DEFAULT
 	playfanfare MUS_OBTAIN_ITEM
@@ -240,11 +240,11 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment::
 
 LittlerootTown_ProfessorBirchsLab_Movement_BirchRetrievePokedexes:
 	walk_left
-	walk_in_place_faster_down
+	walk_in_place_down
 	delay_16
 	delay_16
 	walk_right
-	walk_in_place_faster_down
+	walk_in_place_down
 	delay_16
 	delay_16
 	walk_right
@@ -255,7 +255,7 @@ LittlerootTown_ProfessorBirchsLab_Movement_BirchRetrievePokedexes:
 	walk_right
 	walk_right
 	walk_right
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 LittlerootTown_ProfessorBirchsLab_Movement_BirchReturnPokedex:
@@ -267,7 +267,7 @@ LittlerootTown_ProfessorBirchsLab_Movement_BirchReturnPokedex:
 	walk_up
 	walk_up
 	walk_left
-	walk_in_place_faster_down
+	walk_in_place_down
 	step_end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_ChooseJohtoStarter::
@@ -312,7 +312,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_AideReceivedStarter::
 LittlerootTown_ProfessorBirchsLab_EventScript_Cyndaquil::
 	release
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 6, LittlerootTown_ProfessorBirchsLab_EventScript_AlreadyChoseJohtoStarter
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	showmonpic SPECIES_CYNDAQUIL, 10, 3
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_YoullTakeCyndaquil, MSGBOX_YESNO
@@ -323,7 +323,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Cyndaquil::
 LittlerootTown_ProfessorBirchsLab_EventScript_Totodile::
 	release
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 6, LittlerootTown_ProfessorBirchsLab_EventScript_AlreadyChoseJohtoStarter
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	showmonpic SPECIES_TOTODILE, 10, 3
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_YoullTakeTotodile, MSGBOX_YESNO
@@ -334,7 +334,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Totodile::
 LittlerootTown_ProfessorBirchsLab_EventScript_Chikorita::
 	release
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 6, LittlerootTown_ProfessorBirchsLab_EventScript_AlreadyChoseJohtoStarter
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	showmonpic SPECIES_CHIKORITA, 10, 3
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_YoullTakeChikorita, MSGBOX_YESNO
@@ -713,22 +713,22 @@ LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon:
 	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: So, {PLAYER}!\pI've heard so much about you from\nyour father.\pBut he said that you don't have your\nown Pokémon yet.\pIf that's true, that was quite the\nperformance back there!\pLooks like you really are your\nfather's child!\pOh, yes! To say thanks for rescuing\nme out there, how about I give\lyou that Pokémon you used earlier?\p{PLAYER} received the {STR_VAR_1}!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_WhyNotGiveNicknameToMon:
-	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: While you're at it, why\nnot give a nickname to that {STR_VAR_1}?$"
+	.string "While you're at it, why not give a\nnickname to that {STR_VAR_1}?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival:
-	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: Oh, so that's how you\nlike to do things?\pNot even going to give it a nickname,\nare you?\pYou know, if you work with your\nPokémon and gain experience, I\lthink you'll make a pretty\lexcellent Trainer.\pMy kid, {RIVAL}, happens to be out on\n{COLOR BLUE}Route 103{COLOR DARK_GRAY} right now, surveying\lPokémon for me.\pIt might not be a bad idea for you\nto head out that way yourself.\lWhat do you think?$"
+	.string "Oh, so that's how you like to do\nthings?\pNot even going to give it a nickname,\nare you?\pYou know, if you work with your\nPokémon and gain experience, I\lthink you'll make a pretty\lexcellent Trainer.\pMy kid, {PLAYER}, happens to be out\non {COLOR BLUE}Route 103{COLOR DARK_GRAY} right now, surveying\lPokémon for me.\pIt might not be a bad idea for you\nto head out that way yourself.\lWhat do you think?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou_M:
-	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: Great! I'm sure\nMay'll be happy to hear that,\ltoo.\pShe can help teach you what it means\nto be a Trainer.$"
+	.string "Great! I'm sure May'll be happy to\nhear that, too.\pShe can help teach you what it\nmeans to be a Trainer.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou_F:
-	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: Great! I'm sure\nBrendan'll be happy to hear that,\ltoo.\pHe can help teach you what it means\nto be a Trainer.$"
+	.string "Great! I'm sure Brendan'll be happy\nto hear that, too.\pHe can help teach you what it means\nto be a Trainer.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_DontBeThatWay:
-	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: Oh, don't be that way!\nYou should go meet my kid.$"
+	.string "Oh, don't be that way!\nYou should go meet my kid.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_RestAtYourHouse:
-	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: And if you or your\nPokémon get tired, get some rest\lback at your new house.$"
+	.string "And if you or your Pokémon get\ntired, get some rest back at your\lnew house.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome:
 	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: My kid, {RIVAL},\nhappens to be out on {COLOR BLUE}Route 103{COLOR DARK_GRAY}\lright now, surveying Pokémon for\lme.\pIt might not be a bad idea for you\nto head out that way yourself.\pAnd if you or your Pokémon get\ntired, get some rest back at your\lnew house.$"
@@ -737,19 +737,19 @@ LittlerootTown_ProfessorBirchsLab_Text_CallPlayerOver:
 	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: Oh! {PLAYER}!\nOver here!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex_May:
-	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: So I hear you beat\nMay on your first try.\lThat's amazing!\pMay's been helping with my\nresearch for a long time, so she\lhas a pretty long history as a\lTrainer already.\pMm-hmm! I think that settles it!\p{PLAYER}, I ordered this Pokédex for\nmy research, but I think you\lshould take it.$"
+	.string "So I hear you beat May on your first\ntry.\lThat's amazing!\pMay's been helping with my\nresearch for a long time, so she\lhas a pretty long history as a\lTrainer already.\pMm-hmm! I think that settles it!\p{PLAYER}, I ordered this Pokédex for\nmy research, but I think you\lshould take it.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex_Brendan:
 	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: So I hear you beat\nBrendan on your first try.\lThat's amazing!\pMay's been helping with my\nresearch for a long time, so he\lhas a pretty long history as a\lTrainer already.\pMm-hmm! I think that settles it!\p{PLAYER}, I ordered this Pokédex for\nmy research, but I think you\lshould take it.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex:
-	.string "{PLAYER} received a Pokédex!$"
+	.string "{PLAYER} received a {COLOR RED}Pokédex{COLOR DARK_GRAY}!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex_May:
-	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: That Pokédex is a high-\ntech tool that automatically makes\la record of any Pokémon you meet\lor catch.\pMy girl May takes hers with her\neverywhere she goes.\pWhenever she catches a rare Pokémon\nand records its data in the\lPokédex, why, she comes to seek me\lout whenever I am in the field and\lshow me!$"
+	.string "That Pokédex is a high-tech tool\nthat automatically makes a record\lof any Pokémon you meet or catch.\pMy girl May takes hers with her\neverywhere she goes.\pWhenever she catches a rare Pokémon\nand records its data in the\lPokédex, why, she comes to seek me\lout whenever I am in the field and\lshow me!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex_Brendan:
-	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: That Pokédex is a high-\ntech tool that automatically makes\la record of any Pokémon you meet\lor catch.\pMy boy Brendan takes his with him\neverywhere he goes.\pWhenever he catches a rare Pokémon\nand records its data in the\lPokédex, why, he comes to seek me\lout whenever I am in the field and\lshow me!$"
+	.string "That Pokédex is a high-tech tool\nthat automatically makes a record\lof any Pokémon you meet or catch.\pMy boy Brendan takes his with him\neverywhere he goes.\pWhenever he catches a rare Pokémon\nand records its data in the\lPokédex, why, he comes to seek me\lout whenever I am in the field and\lshow me!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait:
 	.string "The people and the Pokémon you will\nmeet…\lAnd the great expanse of nature\lthat lies before you!\pExperience them both while you fill\nin your Pokédex.\pI'd love it if your world seemed\nwider than ever!\pThough I'd love it even more if you\ncame back from time to time to\lshow me what progress you've made.\p…Arghhh!\nI'm getting the itch to get out and\ldo fieldwork again!$"
