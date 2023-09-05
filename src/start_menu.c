@@ -647,7 +647,8 @@ static bool8 HandleStartMenuInput(void)
     {
         RemoveExtraStartMenuWindows();
         HideStartMenu();
-        RemoveTimeBox();
+        if(FlagGet(FLAG_SET_WALL_CLOCK) == TRUE)
+            RemoveTimeBox();
         return TRUE;
     }
 
