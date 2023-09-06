@@ -305,10 +305,8 @@
 // - Unown has 1 frame, presumably to avoid the work of animating all 28 of its forms
 #define MAX_MON_PIC_FRAMES 2
 
-#define BATTLE_ALIVE_EXCEPT_ACTIVE   0
-#define BATTLE_ALIVE_ATK_SIDE        1
-#define BATTLE_ALIVE_DEF_SIDE        2
-#define BATTLE_ALIVE_EXCEPT_ATTACKER 3
+#define BATTLE_ALIVE_EXCEPT_BATTLER  0
+#define BATTLE_ALIVE_SIDE            1
 
 #define SKIP_FRONT_ANIM (1 << 7)
 
@@ -327,6 +325,7 @@
 #define SPECIES_FLAG_HISUIAN_FORM       (1 << 7)
 #define SPECIES_FLAG_ALL_PERFECT_IVS    (1 << 8)
 #define SPECIES_FLAG_CANNOT_BE_TRADED   (1 << 9)
+#define SPECIES_FLAG_ULTRA_BURST        (1 << 10)
 
 #define LEGENDARY_PERFECT_IV_COUNT 3
 
