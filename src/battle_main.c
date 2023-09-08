@@ -4634,6 +4634,10 @@ u32 GetBattlerTotalSpeedStat(u8 battler)
         speed = (speed * 150) / 100;
     else if (ability == ABILITY_QUARK_DRIVE && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN && highestStat == STAT_SPEED)
         speed = (speed * 150) / 100;
+    else if (ability == ABILITY_FLARE_BOOST && gBattleMons[battler].status1 & STATUS1_BURN)
+        speed = (speed * 130) / 100;
+    else if (ability == ABILITY_TOXIC_BOOST && gBattleMons[battler].status1 & STATUS1_PSN_ANY)
+        speed = (speed * 130) / 100;
     else if (ability == ABILITY_ADRENALINE && gDisableStructs[battler].isFirstTurn)
         speed = (speed * 150) / 100;
 

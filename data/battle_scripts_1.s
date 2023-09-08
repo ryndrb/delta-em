@@ -8093,7 +8093,7 @@ BattleScript_MoveUsedFlinched::
 BattleScript_MoveUsedFlinchedEnd:
 	goto BattleScript_MoveEnd
 BattleScript_TryActivateSteadFast:
-	setstatchanger STAT_SPEED, 1, FALSE
+	setstatchanger STAT_SPEED, 2, FALSE
 	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_MoveUsedFlinchedEnd
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_MoveUsedFlinchedEnd
 	copybyte gBattlerAbility, gBattlerAttacker
