@@ -1504,6 +1504,9 @@ static void DrawTime(void){
 
 	StringCopy(gStringVar3, amPMString);
     switch(ConvertBcdToBinary(rtc.dayOfWeek)){
+        case 0:
+            StringExpandPlaceholders(gStringVar4, gText_Clock_Sun);
+            break;
         case 1:
             StringExpandPlaceholders(gStringVar4, gText_Clock_Mon);
             break;
@@ -1521,9 +1524,6 @@ static void DrawTime(void){
             break;
         case 6:
             StringExpandPlaceholders(gStringVar4, gText_Clock_Sat);
-            break;
-        case 7:
-            StringExpandPlaceholders(gStringVar4, gText_Clock_Sun);
             break;
         default:
             StringExpandPlaceholders(gStringVar4, gText_Clock_Err);
