@@ -1,121 +1,170 @@
-.set LOCALID_STEVEN, 1
-
 GraniteCave_StevensRoom_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, GraniteCave_StevensRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+GraniteCave_StevensRoom_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_GRANITE_CAVE_STEVEN_ROOM_STATE, 0, GraniteCave_StevensRoom_EventScript_Steven
+	.2byte 0
+
 
 GraniteCave_StevensRoom_EventScript_Steven::
 	lock
-	faceplayer
-	msgbox GraniteCave_StevensRoom_Text_ImStevenLetterForMe, MSGBOX_DEFAULT
-	setvar VAR_0x8004, ITEM_LETTER
-	call Common_EventScript_PlayerHandedOverTheItem
-	setflag FLAG_DELIVERED_STEVEN_LETTER
-	msgbox GraniteCave_StevensRoom_Text_ThankYouTakeThis, MSGBOX_DEFAULT
-	giveitem ITEM_TM_STEEL_WING
-	call_if_eq VAR_RESULT, FALSE, GraniteCave_StevensRoom_EventScript_BagFull
-	msgbox GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister, MSGBOX_DEFAULT
+	delay 16
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, GraniteCave_StevensRoom_Movement_CameraPanToSteven
+	waitmovement OBJ_EVENT_ID_CAMERA
+	delay 16
+	applymovement 1, GraniteCave_StevensRoom_Movement_StevenLeftRight
+	waitmovement 1
+	applymovement OBJ_EVENT_ID_PLAYER, GraniteCave_StevensRoom_Movement_PlayerGoToSteven
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox GraniteCave_StevensRoom_EventScript_Steven_Text_0
 	closemessage
-	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox GraniteCave_StevensRoom_Text_RegisteredSteven, MSGBOX_DEFAULT
+	delay 8
+	applymovement 1, Common_Movement_WalkInPlaceDown
+	waitmovement 1
+	msgbox GraniteCave_StevensRoom_EventScript_Steven_Text_1
+	closemessage
+	delay 24
+	msgbox GraniteCave_StevensRoom_EventScript_Steven_Text_2
+	closemessage
+	delay 8
+	playfanfare MUS_OBTAIN_TMHM
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq GraniteCave_StevensRoom_EventScript_Steven_2
+	msgbox GraniteCave_StevensRoom_EventScript_Steven_Text_4
+GraniteCave_StevensRoom_EventScript_Steven_1:
 	waitfanfare
 	closemessage
-	delay 30
-	setflag FLAG_REGISTERED_STEVEN_POKENAV
-	msgbox GraniteCave_StevensRoom_Text_IveGotToHurryAlong, MSGBOX_DEFAULT
+	removeitem ITEM_LETTER
+	setflag FLAG_DELIVERED_STEVEN_LETTER
+	delay 16
+	msgbox GraniteCave_StevensRoom_EventScript_Steven_Text_5
+	giveitem ITEM_TM_STEEL_WING
+	delay 8
 	closemessage
-	call_if_eq VAR_FACING, DIR_NORTH, GraniteCave_StevensRoom_EventScript_StevenExitNorth
-	call_if_eq VAR_FACING, DIR_SOUTH, GraniteCave_StevensRoom_EventScript_StevenExitSouth
-	call_if_eq VAR_FACING, DIR_WEST, GraniteCave_StevensRoom_EventScript_StevenExitWestEast
-	call_if_eq VAR_FACING, DIR_EAST, GraniteCave_StevensRoom_EventScript_StevenExitWestEast
+	delay 8
+	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUp
+	applymovement 1, Common_Movement_WalkInPlaceUp
+	waitmovement 1
+	msgbox GraniteCave_StevensRoom_EventScript_Steven_Text_6
+	closemessage
+	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDown
+	applymovement 1, Common_Movement_WalkInPlaceDown
+	waitmovement 1
+	msgbox GraniteCave_StevensRoom_EventScript_Steven_Text_7
+	closemessage
+	delay 24
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox GraniteCave_StevensRoom_EventScript_Steven_Text_8
+	waitfanfare
+	closemessage
+	delay 24
+	setflag FLAG_REGISTERED_STEVEN_POKENAV
+	msgbox GraniteCave_StevensRoom_EventScript_Steven_Text_9
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, GraniteCave_StevensRoom_Movement_PlayerWatchStevenLeave
+	applymovement 1, GraniteCave_StevensRoom_Movement_StevenLeavesRoom
+	waitmovement 1
+	special RemoveCameraObject
 	playse SE_EXIT
-	removeobject LOCALID_STEVEN
+	removeobject 1
+	setvar VAR_GRANITE_CAVE_STEVEN_ROOM_STATE, 1
 	release
 	end
 
-GraniteCave_StevensRoom_EventScript_StevenExitNorth::
-	applymovement LOCALID_STEVEN, GraniteCave_StevensRoom_Movement_StevenExit
-	waitmovement 0
-	return
+GraniteCave_StevensRoom_EventScript_Steven_2:
+	msgbox GraniteCave_StevensRoom_EventScript_Steven_Text_3
+	goto GraniteCave_StevensRoom_EventScript_Steven_1
 
-GraniteCave_StevensRoom_EventScript_StevenExitWestEast::
-	applymovement OBJ_EVENT_ID_PLAYER, GraniteCave_StevensRoom_Movement_PlayerTurnTowardExit
-	applymovement LOCALID_STEVEN, GraniteCave_StevensRoom_Movement_StevenExit
-	waitmovement 0
-	return
 
-GraniteCave_StevensRoom_EventScript_StevenExitSouth::
-	applymovement OBJ_EVENT_ID_PLAYER, GraniteCave_StevensRoom_Movement_PlayerTurnTowardExit
-	applymovement LOCALID_STEVEN, GraniteCave_StevensRoom_Movement_StevenExitSouth
-	waitmovement 0
-	return
-
-GraniteCave_StevensRoom_EventScript_BagFull::
-	msgbox GraniteCave_StevensRoom_Text_OhBagIsFull, MSGBOX_DEFAULT
-	return
-
-GraniteCave_StevensRoom_Movement_StevenExit:
+GraniteCave_StevensRoom_Movement_CameraPanToSteven:
 	walk_up
 	walk_up
 	walk_up
 	walk_up
 	walk_up
-	delay_8
+	walk_up
 	step_end
 
-GraniteCave_StevensRoom_Movement_PlayerTurnTowardExit:
-	delay_16
-	delay_16
-	delay_16
-	walk_in_place_faster_up
-	step_end
-
-GraniteCave_StevensRoom_Movement_StevenExitSouth:
-	walk_left
-	walk_up
-	walk_up
-	walk_up
+GraniteCave_StevensRoom_Movement_StevenLeftRight:
 	walk_right
-	walk_up
-	walk_up
+	walk_right
+	walk_in_place_up
+	delay_16
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_in_place_up
+	delay_16
 	delay_8
+	walk_right
+	walk_right
+	walk_in_place_up
 	step_end
 
-GraniteCave_StevensRoom_Text_ImStevenLetterForMe:
-	.string "My name is Steven.\p"
-	.string "I'm interested in rare stones,\n"
-	.string "so I travel here and there.\p"
-	.string "Oh?\n"
-	.string "A Letter for me?$"
+GraniteCave_StevensRoom_Movement_PlayerGoToSteven:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
 
-GraniteCave_StevensRoom_Text_ThankYouTakeThis:
-	.string "Steven: Okay, thank you.\p"
-	.string "You went through all this trouble to\n"
-	.string "deliver that. I need to thank you.\p"
-	.string "Let me see…\n"
-	.string "I'll give you this TM.\p"
-	.string "It contains my favorite move,\n"
-	.string "Steel Wing.$"
+GraniteCave_StevensRoom_Movement_StevenLeavesRoom:
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
 
-GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister:
-	.string "Steven: Your Pokémon appear quite\n"
-	.string "capable.\p"
-	.string "If you keep training, you could even\n"
-	.string "become the Champion of the Pokémon\l"
-	.string "League one day. That's what I think.\p"
-	.string "I know, since we've gotten to know each\n"
-	.string "other, let's register one another in\l"
-	.string "our Pokénavs.\p"
-	.string "… … … … … …$"
+GraniteCave_StevensRoom_Movement_PlayerWatchStevenLeave:
+	delay_16
+	delay_16
+	walk_in_place_down
+	step_end
 
-GraniteCave_StevensRoom_Text_RegisteredSteven:
-	.string "Registered Steven\n"
-	.string "in the Pokénav.$"
+GraniteCave_StevensRoom_EventScript_CavePainting::
+	msgbox GraniteCave_StevensRoom_EventScript_CavePainting_Text_0, MSGBOX_SIGN
+	end
 
-GraniteCave_StevensRoom_Text_IveGotToHurryAlong:
-	.string "Now, I've got to hurry along.$"
 
-GraniteCave_StevensRoom_Text_OhBagIsFull:
-	.string "Oh, your Bag is full…\n"
-	.string "That's too bad, then.$"
+GraniteCave_StevensRoom_EventScript_Steven_Text_0:
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: …Mm-hmm.\pSo in the ancient world, their primal\nforms once held this much power…?\pThese super-ancient Pokémon…\nWhat terrible strength…\lBut this appearance here…\pIt seems somehow different from\nMega Evolution…\pHmmm.\nIt seems my questions will not be\lanswered today.\pHm?$"
 
+GraniteCave_StevensRoom_EventScript_Steven_Text_1:
+	.string "You are…?\p…$"
+
+GraniteCave_StevensRoom_EventScript_Steven_Text_2:
+	.string "Ah, I see.\nIt's a pleasure, {PLAYER}.\pMy apologies.\nMy name is {COLOR RED}Steven{COLOR DARK_GRAY}.\pI'm interested in rare stones, so I\ntravel here and there.\pToday, my journey brought me here,\nbut what about you?\pOh?\nA letter for me?$"
+
+GraniteCave_StevensRoom_EventScript_Steven_Text_3:
+	.string "{PLAYER} gave Steven the letter he\nhad been entrusted with!$"
+
+GraniteCave_StevensRoom_EventScript_Steven_Text_4:
+	.string "{PLAYER} gave Steven the letter she\nhad been entrusted with!$"
+
+GraniteCave_StevensRoom_EventScript_Steven_Text_5:
+	.string "Why, thank you…\pIt must have been some trouble to\ntrack me down.\pI suppose I must repay you in some\nway.\pLet me see…\pI will give you this TM.\nPlease accept it.\pIt contains my favorite move, Steel\nWing.$"
+
+GraniteCave_StevensRoom_EventScript_Steven_Text_6:
+	.string "If you don't mind me asking…\pDo you feel anything in particular\nwhen you look up at this wall?\pA primal world, lost thousands of\nyears in the past…\pLegendary Pokémon of tremendous\npower became humanity's greatest\lthreat…\pThe terror aroused by that power\nis clear to see in this ancient\lartwork.$"
+
+GraniteCave_StevensRoom_EventScript_Steven_Text_7:
+	.string "…Yes.\pBut not all power is terrible.\pYour Pokémon are clearly quite\ncapable as well.\lLooking at you all together…\pI think you have it takes to become\na Pokémon League Champion.\pAs long as you keep training, that\nis.\p…\pI know, since we've gotten to know\neach other, let's register one\lanother in our PokéNavs.$"
+
+GraniteCave_StevensRoom_EventScript_Steven_Text_8:
+	.string "Registered Steven in the PokéNav.$"
+
+GraniteCave_StevensRoom_EventScript_Steven_Text_9:
+	.string "Good luck to you.\nI must be going now.$"
+
+GraniteCave_StevensRoom_EventScript_CavePainting_Text_0:
+	.string "It is a cave painting the depicts\ngiant Pokémon-like creatures\lwreaking havoc.\pThere are symbols resembling the\ncharacters Omega and Alpha on\leach of the beast's arms.$"

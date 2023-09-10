@@ -19,17 +19,7 @@ DewfordTown_OnTransition:
 	end
 
 DewfordTown_EventScript_Briney::
-	lock
-	faceplayer
-	goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, DewfordTown_EventScript_ReturnToPetalburgPrompt
-	message DewfordTown_Text_WhereAreWeBound
-	waitmessage
-	multichoicedefault 21, 6, MULTI_BRINEY_ON_DEWFORD, 2, FALSE
-	switch VAR_RESULT
-	case 0, DewfordTown_EventScript_ChoosePetalburg
-	case 1, DewfordTown_EventScript_ChooseSlateport
-	case 2, DewfordTown_EventScript_CancelSailSelect
-	case MULTI_B_PRESSED, DewfordTown_EventScript_CancelSailSelect
+	goto DewfordTown_EventScript_Briney_Continue
 	end
 
 DewfordTown_EventScript_ChoosePetalburg::
@@ -639,9 +629,7 @@ DewfordTown_EventScript_PhraseNotTrendyEnough::
 	end
 
 DewfordTown_Text_TinyIslandCommunity:
-	.string "Dewford is a tiny island community.\n"
-	.string "If something gets trendy here,\l"
-	.string "everyone picks up on it right away.$"
+	.string "Dewford Town is a tiny island\ncommunity.\pSo if something gets trendy here,\neveryone picks on it right away.$"
 
 DewfordTown_Text_TownSign:
 	.string "Dewford Town\n"
@@ -657,50 +645,31 @@ DewfordTown_Text_HallSign:
 	.string "“Everyone's information exchange!”$"
 
 Route104_Text_LandedInDewfordDeliverLetter:
-	.string "Mr. Briney: Ahoy!\n"
-	.string "We've hit land in Dewford.\p"
-	.string "I suppose you're off to deliver that\n"
-	.string "Letter to, who was it now, Steven!$"
+	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Ahoy!\nWe've struck land in Dewford.\pI suppose you'll be heading\nashore to deliver that letter to\lwhat's-his-name or whomever.\pIf you're ever feeling lost and\nadrift though, try calling in on\lthe island's Pokémon Gym.\pThe Leader, Brawly, surely knows\neveryone and everything that goes\lon in his town!$"
 
 DewfordTown_Text_SetSailBackToPetalburg:
-	.string "Mr. Briney: Have you delivered your\n"
-	.string "Letter?\p"
-	.string "Or were you meaning to sail back to\n"
-	.string "Petalburg?$"
+	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Have you delivered that\nletter yet?\pOr were you meaning to sail back to\nPetalburg way, maybe?$"
 
 DewfordTown_Text_PetalburgWereSettingSail2:
-	.string "Mr. Briney: Petalburg it is, then!\p"
-	.string "Anchors aweigh!\n"
-	.string "Peeko, we're setting sail, my darling!$"
+	.string "Petalburg City, or thereabouts?\nAnchors aweigh!\pPeeko, we're setting sail, my darling!$"
 
 DewfordTown_Text_GoDeliverIllBeWaiting:
-	.string "Mr. Briney: Then you go on and deliver\n"
-	.string "the Letter. I'll be waiting.$"
+	.string "Then you go on and deliver that\nletter. I have the deck.\pIf you're ever feeling lost and\nadrift though, try calling in on\lthe island's Pokémon Gym.\pThe Leader, Brawly, surely knows\neveryone and everything that goes\lon in his town!$"
 
 DewfordTown_Text_BrineyLandedInDewford:
-	.string "Mr. Briney: Ahoy!\n"
-	.string "We've hit land in Dewford!\p"
-	.string "You just go on and tell me whenever\n"
-	.string "you want to set sail again!$"
+	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Ahoy!\nWe've hit land in Dewford!\pYou just go on and tell me whenever\nyou want to set sail again, {PLAYER}!$"
 
 DewfordTown_Text_WhereAreWeBound:
-	.string "Mr. Briney: Ahoy!\n"
-	.string "For you, I'll go out to sea anytime!\p"
-	.string "Now, my friend, where are we bound?$"
+	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Ahoy!\nWe'll lift anchor anytime for you!\pSo tell me, my friend, where are\nwe bound?$"
 
 DewfordTown_Text_PetalburgWereSettingSail:
-	.string "Mr. Briney: Petalburg, is it?\p"
-	.string "Anchors aweigh!\n"
-	.string "Peeko, we're setting sail, my darling!$"
+	.string "Petalburg City, or thereabouts?\nAnchors aweigh!\pPeeko, we're setting sail, my darling!$"
 
 DewfordTown_Text_SlateportWereSettingSail:
-	.string "Mr. Briney: Slateport, is it?\p"
-	.string "Anchors aweigh!\n"
-	.string "Peeko, we're setting sail, my darling!$"
+	.string "Slateport City, is it?\nAnchors aweigh!\pPeeko, we're setting sail, my darling!$"
 
 DewfordTown_Text_JustTellMeWhenYouNeedToSetSail:
-	.string "Mr. Briney: You just tell me whenever\n"
-	.string "you need to set sail again!$"
+	.string "Just tell me whenever you want to\nhoist anchor again.$"
 
 DewfordTown_Text_GettingItchToFish:
 	.string "This is a renowned fishing spot.\n"
@@ -709,18 +678,18 @@ DewfordTown_Text_GettingItchToFish:
 DewfordTown_Text_GiveYouOneOfMyRods:
 	.string "I hear you, and I like what\n"
 	.string "you're saying!\p"
-	.string "I'll give you one of my fishing Rods.$"
+	.string "I'll give you one of my fishing rods.$"
 
 DewfordTown_Text_ThrowInFishingAdvice:
 	.string "And, as an added bonus, I'll even throw\n"
 	.string "in a little fishing advice!\p"
 	.string "First, you want to face the water,\n"
-	.string "then use the Rod.\p"
+	.string "then use the rod.\p"
 	.string "Focus your mind…\n"
-	.string "If you get a bite, pull on the Rod.\p"
+	.string "If you get a bite, pull on the rod.\p"
 	.string "Sometimes you can snag something\n"
 	.string "immediately, but with bigger catches,\l"
-	.string "you need to time the pulls on your Rod\l"
+	.string "you need to time the pulls on your rod\l"
 	.string "to haul them in.$"
 
 DewfordTown_Text_ThatsTooBadThen:
@@ -748,49 +717,31 @@ DewfordTown_Text_FishingAdvice:
 	.string "to haul them in.$"
 
 DewfordTown_Text_XIsTheBiggestHappeningThingRight:
-	.string "I like what's hip, happening, and trendy.\n"
-	.string "I'm always checking it out.\p"
-	.string "Listen, have you heard about this new\n"
-	.string "“{STR_VAR_1}”?\p"
-	.string "That's right!\n"
-	.string "Of course you know!\p"
-	.string "I mean, sheesh,\n"
-	.string "“{STR_VAR_1}”…\l"
-	.string "It's the hottest thing in cool!\p"
-	.string "Wherever you're from,\n"
-	.string "“{STR_VAR_1}”\l"
-	.string "is the biggest happening thing, right?$"
+	.string "I like what's hip, happening, and\ntrendy.\lI'm always checking it out.\pHey, have you heard about these new\n{STR_VAR_1}?\pThat's right!\nOf course you know!\pI mean {STR_VAR_1} are the\nhottest thing in cool!\p{STR_VAR_1} are the biggest\nthing happening where you're from,\ltoo, right?$"
 
 DewfordTown_Text_TellMeWhatsNewAndIn:
-	.string "Hunh?\n"
-	.string "It's not the hip and happening thing?\p"
-	.string "Well, hey, you have to tell me,\n"
-	.string "what's new and what's “in”?$"
+	.string "Huh!?\nIt's not hip and happening thing?\pWell, hey, you have to tell me,\nwhat's new and what's “in.”$"
 
 DewfordTown_Text_OfCourseIKnowAboutThat:
-	.string "Hunh?\n"
-	.string "“{STR_VAR_2}”?\p"
+	.string "Huh?\n"
+	.string "{STR_VAR_2}?\p"
 	.string "… …\p"
 	.string "…Uh… Yeah! That's right!\n"
 	.string "Yeah, I knew that! Knew it all along!\p"
 	.string "Of course I know about that!\n"
-	.string "“{STR_VAR_2},” right?\p"
+	.string "{STR_VAR_2}, right?\p"
 	.string "Yeah, that's it, it's there!\n"
-	.string "Isn't “{STR_VAR_2}”\l"
+	.string "Isn't {STR_VAR_2}\l"
 	.string "the coolest, or what?\p"
 	.string "It's the hippest thing in hip.\n"
 	.string "You think I'd not know about it?\p"
-	.string "“{STR_VAR_1}”…\n"
+	.string "{STR_VAR_1}…\n"
 	.string "It's, like, so five minutes ago.\p"
-	.string "Now, “{STR_VAR_2}” is\n"
+	.string "Now, {STR_VAR_2} is\n"
 	.string "what's vital and in tune with the times!$"
 
 DewfordTown_Text_XHuhIThinkYIsCool:
-	.string "Hmm…\n"
-	.string "“{STR_VAR_2},” huh?\p"
-	.string "But personally, I think\n"
-	.string "“{STR_VAR_1}”\l"
-	.string "is what's real in cool.$"
+	.string "Hmmm. {STR_VAR_2}, huh?\nWhat's popular about them?$"
 
 DewfordTown_Text_HearOfAnyTrendsComeShareWithMe:
 	.string "Well, if you hear of any happening new\n"
@@ -798,5 +749,72 @@ DewfordTown_Text_HearOfAnyTrendsComeShareWithMe:
 
 DewfordTown_Text_YeahDefinitionOfInRightNow:
 	.string "Yeah, absolutely right!\p"
-	.string "“{STR_VAR_1}” is the\n"
+	.string "{STR_VAR_1} is the\n"
 	.string "definition of “in” right now.$"
+
+DewfordTown_EventScript_Briney_Continue::
+	lock
+	faceplayer
+	goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, DewfordTown_EventScript_Briney_Continue_2
+DewfordTown_EventScript_Briney_Continue_1:
+	compare VAR_MR_BRINEY_DIALOGUE_STATE, 0
+	goto_if_eq DewfordTown_EventScript_Briney_Continue_5
+	compare VAR_MR_BRINEY_DIALOGUE_STATE, 1
+	goto_if_eq DewfordTown_EventScript_Briney_Continue_8
+DewfordTown_EventScript_Briney_Continue_7:
+	message DewfordTown_Text_WhereAreWeBound
+DewfordTown_EventScript_Briney_Continue_4:
+	waitmessage
+	multichoicedefault 21, 6, MULTI_BRINEY_ON_DEWFORD, 2, FALSE
+	switch VAR_RESULT
+	case 0, DewfordTown_EventScript_Briney_Continue_14
+	case 1, DewfordTown_EventScript_Briney_Continue_15
+	case 2, DewfordTown_EventScript_Briney_Continue_16
+	case MULTI_B_PRESSED, DewfordTown_EventScript_Briney_Continue_17
+DewfordTown_EventScript_Briney_Continue_12:
+	end
+
+DewfordTown_EventScript_Briney_Continue_2:
+	goto DewfordTown_EventScript_ReturnToPetalburgPrompt
+	goto DewfordTown_EventScript_Briney_Continue_1
+
+DewfordTown_EventScript_Briney_Continue_5:
+	setvar VAR_MR_BRINEY_DIALOGUE_STATE, 1
+	message DewfordTown_EventScript_Briney_Continue_Text_0
+	goto DewfordTown_EventScript_Briney_Continue_4
+
+DewfordTown_EventScript_Briney_Continue_6:
+	goto_if_unset FLAG_DELIVERED_DEVON_GOODS, DewfordTown_EventScript_Briney_Continue_18
+	setvar VAR_MR_BRINEY_DIALOGUE_STATE, 2
+	goto DewfordTown_EventScript_Briney_Continue_4
+
+DewfordTown_EventScript_Briney_Continue_8:
+	goto_if_unset FLAG_DELIVERED_DEVON_GOODS, DewfordTown_EventScript_Briney_Continue_6
+	goto DewfordTown_EventScript_Briney_Continue_7
+
+DewfordTown_EventScript_Briney_Continue_14:
+	goto DewfordTown_EventScript_ChoosePetalburg
+	goto DewfordTown_EventScript_Briney_Continue_12
+
+DewfordTown_EventScript_Briney_Continue_15:
+	goto DewfordTown_EventScript_ChooseSlateport
+	goto DewfordTown_EventScript_Briney_Continue_12
+
+DewfordTown_EventScript_Briney_Continue_16:
+	goto DewfordTown_EventScript_CancelSailSelect
+	goto DewfordTown_EventScript_Briney_Continue_12
+
+DewfordTown_EventScript_Briney_Continue_17:
+	goto DewfordTown_EventScript_CancelSailSelect
+	goto DewfordTown_EventScript_Briney_Continue_12
+
+DewfordTown_EventScript_Briney_Continue_18:
+	message DewfordTown_EventScript_Briney_Continue_Text_1
+	goto DewfordTown_EventScript_Briney_Continue_4
+
+
+DewfordTown_EventScript_Briney_Continue_Text_0:
+	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Oho!\pIt looks as though you have\ndelivered your chit good and\lproper.\pAh, but that reminds me!\pI've had a message from President\nStone, saying he has another favor\lto ask.\pIt's about the {COLOR BLUE}Devon Parts{COLOR DARK_GRAY} that you\nrecovered for him before.\pSeems as though they should\ngo to some fellow called {COLOR RED}Stern{COLOR DARK_GRAY} at\l{COLOR BLUE}Slateport's shipyard{COLOR DARK_GRAY}.\pThis old seadog will see you there\nsafely!\pWeigh anchors!\nWe're for Slateport!$"
+
+DewfordTown_EventScript_Briney_Continue_Text_1:
+	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Ahoy! I know exactly\nwhat you want to say!\pYou've still got to deliver that\ncase to young Stern in Slateport.\lAin't that so?\pYou just leave it up to this old\nseadog!\pWeigh anchors!\nWe're for Slateport!$"

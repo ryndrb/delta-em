@@ -1209,7 +1209,7 @@ RustboroCity_Text_DevelopedNewPokenavFeature:
 	.string "I've been working on an exciting new\nfeature for the PokéNav…\lAnd it's turned out splendidly!\p{PLAYER}, could I take a look at your\nPokéNav?\pThe one President Stone provided\nyou with?$"
 
 RustboroCity_Text_AddedMatchCallPleaseCallMrStone:
-	.string "Fantastic!\nThere you go, {PLAYER}!\pI've added a new feature called the\nMatch Call to your PokéNav.\pWith the Match Call, you can easily\nconnect and chat with trainers\lyou've ment on your journey, right\lfrom your PokéNav.\pYou know, President Stone should be\none of your first contacts.\pGive it a try!$"
+	.string "Fantastic!\nThere you go, {PLAYER}!\pI've added a new feature called the\nMatch Call to your PokéNav.\pWith the Match Call, you can easily\nconnect and chat with trainers\lyou've met on your journey, right\lfrom your PokéNav.\pYou know, President Stone should be\none of your first contacts.\pGive it a try!$"
 
 RustboroCity_Text_PleaseSelectPokenav:
 	.string "Go ahead, initiate a call with him\nand see how it works.$"

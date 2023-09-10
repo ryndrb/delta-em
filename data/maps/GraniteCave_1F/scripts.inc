@@ -18,22 +18,40 @@ GraniteCave_1F_EventScript_ReceivedFlash::
 	end
 
 GraniteCave_1F_Text_GetsDarkAheadHereYouGo:
-	.string "Hey, you.\n"
-	.string "It gets awfully dark ahead.\l"
-	.string "It'll be tough trying to explore.\p"
-	.string "That guy who came by earlier…\n"
-	.string "Steven, I think it was.\p"
-	.string "He knew how to use Flash, so he ought\n"
-	.string "to be all right, but…\p"
-	.string "Well, for us Hikers, helping out those\n"
-	.string "that we meet is our motto.\p"
-	.string "Here you go, I'll pass this on to you.$"
+	.string "Hey, you.\nIt gets awfully dark ahead.\pIt'll be tough for trying to\nexplore.\pWell, for us Hikers, helping out\nthose that we meet is our motto.\pHere you go, I'll pass this on to\nyou.$"
 
 GraniteCave_1F_Text_ExplainFlash:
-	.string "Teach that hidden move Flash to\n"
-	.string "a Pokémon and use it.\p"
-	.string "It lights up even the inky darkness\n"
-	.string "of caves.\p"
-	.string "But, to use it, you need the Gym Badge\n"
-	.string "from Dewford's Pokémon Gym.$"
+	.string "Teach that HM flash to a Pokémon\nand use it.\pIt lights up even the inky darkness\nof caves.$"
 
+GraniteCave_1F_EventScript_Hiker2::
+	msgbox GraniteCave_1F_EventScript_Hiker2_Text_0, MSGBOX_NPC
+	closemessage
+	applymovement 3, Common_Movement_WalkInPlaceUp
+	waitmovement 3
+	end
+
+
+GraniteCave_1F_EventScript_Hiker3::
+	msgbox GraniteCave_1F_EventScript_Hiker3_Text_0, MSGBOX_NPC
+	closemessage
+	applymovement 4, Common_Movement_WalkInPlaceUp
+	waitmovement 4
+	end
+
+
+GraniteCave_1F_EventScript_Hiker4::
+	msgbox GraniteCave_1F_EventScript_Hiker4_Text_0, MSGBOX_NPC
+	closemessage
+	applymovement 5, Common_Movement_WalkInPlaceUp
+	waitmovement 5
+	end
+
+
+GraniteCave_1F_EventScript_Hiker2_Text_0:
+	.string "Hey, hey!\nCutting in line is no bueno.$"
+
+GraniteCave_1F_EventScript_Hiker3_Text_0:
+	.string "The mural ahead…\pWe can't figure out what's\npainted there, but that makes ruin\lenthusiasts like me even more\lcurious about it.\pIt looks as if huge Pokémon is\npainted on it, but we've never seen\lsuch a Pokémon.\pIt's sooooo intriguing and fascinating!$"
+
+GraniteCave_1F_EventScript_Hiker4_Text_0:
+	.string "The mural ahead has drawn a lot of\nattention lately.\pThe other day, Team Something in red\nor blue suits came here in numbers.$"

@@ -1,0 +1,18 @@
+raw `
+Dewford_Meadow_MapScripts::
+	.byte 0
+
+`
+
+script DewfordMeadow_EventScript_TrainingPokemon {
+    lock
+    faceplayer
+    msgbox("'Sup! Have you been training your\nPokémon?\pIf you want to make your\nPokémon strong, I highly recommend\lSuper Training!\pBe like me, and enjoy some\nrefreshing training!")
+    release
+    end
+}
+
+script DewfordMeadow_EventScript_AbandonedManorSign {
+    msgbox("Abandoned Manor", MSGBOX_SIGN)
+    end
+}

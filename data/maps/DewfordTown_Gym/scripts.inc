@@ -137,6 +137,7 @@ DewfordTown_Gym_EventScript_Brawly::
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, DewfordTown_Gym_EventScript_BrawlyRematch
 	goto_if_unset FLAG_RECEIVED_TM_BULK_UP, DewfordTown_Gym_EventScript_GiveBulkUp2
+    goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, DewfordTown_Gym_EventScript_BrawlyBeenGraniteCave
 	msgbox DewfordTown_Gym_Text_BrawlyPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -149,6 +150,7 @@ DewfordTown_Gym_EventScript_BrawlyDefeated::
 	msgbox DewfordTown_Gym_Text_KnuckleBadgeInfoTakeThis, MSGBOX_DEFAULT
 	setflag FLAG_DEFEATED_DEWFORD_GYM
 	setflag FLAG_BADGE02_GET
+    setflag FLAG_HIDE_GRANITE_CAVE_ENTHUSIASTS
 	addvar VAR_PETALBURG_GYM_STATE, 1
 	call_if_eq VAR_PETALBURG_GYM_STATE, 6, Common_EventScript_ReadyPetalburgGymForBattle
 	setvar VAR_0x8008, 2
@@ -162,6 +164,7 @@ DewfordTown_Gym_EventScript_BrawlyDefeated::
 	closemessage
 	delay 30
 	setflag FLAG_ENABLE_BRAWLY_MATCH_CALL
+    setvar VAR_TEMP_0, 1
 	setvar VAR_ROXANNE_CALL_STEP_COUNTER, 0
 	setflag FLAG_ENABLE_ROXANNE_FIRST_CALL
 	release
@@ -283,24 +286,10 @@ DewfordTown_Gym_EventScript_GymStatue::
 	end
 
 DewfordTown_Gym_Text_GymGuideAdvice:
-	.string "Hey, how's it going, Champion-\n"
-	.string "bound {PLAYER}?\p"
-	.string "Dewford's Gym Leader Brawly commands\n"
-	.string "Fighting-type Pokémon.\p"
-	.string "Going against him with Normal-type\n"
-	.string "Pokémon is asking for trouble.\p"
-	.string "Fighting Pokémon will lay a serious\n"
-	.string "smack down on Normal Pokémon,\l"
-	.string "so be careful!\p"
-	.string "What's worse, the Gym is as dark as\n"
-	.string "the ocean floor.\p"
-	.string "But it will get brighter after defeating\n"
-	.string "the Trainers in your way.\p"
-	.string "Hey, okay, go for it!$"
+	.string "{COLOR RED}Guide{COLOR DARK_GRAY}: Yo, how's it going,\nChamp-to-be {PLAYER}?\pDewford's Gym Leader, Brawly,\ncommands Fighting-type Pokémon.\pGoing against him with Normal-type\nPokémon is asking for trouble.\pFighting-type Pokémon will lay a\nserious smackdown on Normal-type\lPokémon, so stay on your toes!\pWhat's worse, this Gym is as dark as\na the ocean floor.\pBut it will get brighter after\ndefeating the Trainers in your way.\pHey, OK, go for it!$"
 
 DewfordTown_Gym_Text_GymGuidePostVictory:
-	.string "Whoah! It's turned too bright in here!\p"
-	.string "Your future is bright, too!$"
+	.string "{COLOR RED}Guide{COLOR DARK_GRAY}: Whoa!\nIt's turned too bright in here!\pYour future is bright, too!$"
 
 DewfordTown_Gym_Text_TakaoIntro:
 	.string "Might is right!\n"
@@ -380,48 +369,26 @@ DewfordTown_Gym_Text_CristianPostBattle:
 	.string "Go after that Badge!$"
 
 DewfordTown_Gym_Text_BrawlyIntro:
-	.string "I'm Brawly!\n"
-	.string "Dewford's Gym Leader!\p"
-	.string "I've been churned in the rough waves\n"
-	.string "of these parts, and I've grown tough\l"
-	.string "in the pitch-black cave!\p"
-	.string "So you wanted to challenge me?\n"
-	.string "Let me see what you're made of!$"
+	.string "{COLOR RED}Brawly{COLOR DARK_GRAY}: I'm Brawly!\nDewford's Gym Leader!\pI've been churned in the rough waves\nof these parts…\pAnd I've grown tough using the cave\nat the outskirts of this town as my\ltrainer ground, as well as using\lthe equipment in this Gym.\pSo you want to challenge me?\pLet me see what you're made of!$"
 
 DewfordTown_Gym_Text_BrawlyDefeat:
-	.string "Whoah, wow! You made a much bigger\n"
-	.string "splash than I expected!\p"
-	.string "You swamped me!\p"
-	.string "Okay, you've got me.\n"
-	.string "Take this Gym Badge!$"
+	.string "Whoa, wow!\pYou made a much bigger splash than\nI expected!$"
 
 DewfordTown_Gym_Text_ReceivedKnuckleBadge:
-	.string "{PLAYER} received the Knuckle Badge\n"
-	.string "from Brawly.$"
+	.string "OK, you've got me.\nTake this Gym Badge!\p{PLAYER} received the {COLOR RED}Knuckle Badge{COLOR DARK_GRAY}\nfrom Brawly.$"
 
 DewfordTown_Gym_Text_KnuckleBadgeInfoTakeThis:
-	.string "The Knuckle Badge makes all Pokémon\n"
-	.string "up to Level 30, even those you get in\l"
-	.string "trades, obey without question.\p"
-	.string "And, you'll be able to use the HM move\n"
-	.string "Flash outside of battle.\p"
-	.string "If you'd like, use this Technical\n"
-	.string "Machine, too.$"
+	.string "The Knuckle Badge makes all\nPokémon up to Level 30, even those\lyou get in trades, obey without\lquestion.\pHmmm…\nYou know what?\pI think you can make full use of\nthis, too.\pI'm sure this will help your Pokémon\nbulk up muscle!$"
 
 DewfordTown_Gym_Text_ExplainBulkUp:
-	.string "That TM08 contains Bulk Up.\p"
-	.string "It's a move that raises both Attack\n"
-	.string "and Defense stats.\p"
-	.string "… … … … … …$"
+	.string "Bulk Up temporarily enhances the\nPokémon's muscle power.\pThe move boosts both Attack and\nDefense of the Pokémon.$"
 
 DewfordTown_Gym_Text_RegisteredBrawly:
 	.string "Registered Gym Leader Brawly\n"
-	.string "in the Pokénav.$"
+	.string "in the PokéNav.$"
 
 DewfordTown_Gym_Text_BrawlyPostBattle:
-	.string "I can see your talent becoming a giant\n"
-	.string "wave to cause a storm of astonishment\l"
-	.string "among Trainers one day!$"
+	.string "I can see your talent becoming a\ngiant wave that causes a storm of\lastonishment with Trainers one day!\pI look forward to the day when I\ncan surf your giant wave!$"
 
 DewfordTown_Gym_Text_GymStatue:
 	.string "Dewford Town Pokémon Gym$"
@@ -457,3 +424,24 @@ DewfordTown_Gym_Text_BrawlyRematchNeedTwoMons:
 	.string "that can battle.\p"
 	.string "I'm sorry, but I'd like you to come back\n"
 	.string "with at least two Pokémon.$"
+
+DewfordTown_Gym_EventScript_BrawlyBeenGraniteCave::
+	compare VAR_TEMP_0, 1
+	goto_if_eq DewfordTown_Gym_EventScript_BrawlyBeenGraniteCave_2
+	msgbox DewfordTown_Gym_EventScript_BrawlyBeenGraniteCave_Text_1
+DewfordTown_Gym_EventScript_BrawlyBeenGraniteCave_1:
+	closemessage
+	release
+	end
+
+DewfordTown_Gym_EventScript_BrawlyBeenGraniteCave_2:
+	msgbox DewfordTown_Gym_EventScript_BrawlyBeenGraniteCave_Text_0
+	setvar VAR_TEMP_0, 0
+	goto DewfordTown_Gym_EventScript_BrawlyBeenGraniteCave_1
+
+
+DewfordTown_Gym_EventScript_BrawlyBeenGraniteCave_Text_0:
+	.string "I can see your talent becoming a\ngiant wave that causes a storm of\lastonishment with Trainers one day!\pI look forward to the day when I\ncan surf your giant wave!\pBy the way, have you been to\n{COLOR BLUE}Granite Cave{COLOR DARK_GRAY}?\pIt's located to the north of this\ntown.\pIt's full of fascinating stuff\nlike rare stones and wall paintings\lthousands years of old.\pMy friend {COLOR RED}Steven{COLOR DARK_GRAY} rushed to the cave\nafter I told him about it.$"
+
+DewfordTown_Gym_EventScript_BrawlyBeenGraniteCave_Text_1:
+	.string "By the way, have you been to\n{COLOR BLUE}Granite Cave{COLOR DARK_GRAY}?\pIt's located to the north of this\ntown.\pIt's full of fascinating stuff\nlike rare stones and wall paintings\lthousands years of old.\pMy friend {COLOR RED}Steven{COLOR DARK_GRAY} rushed to the cave\nafter I told him about it.$"

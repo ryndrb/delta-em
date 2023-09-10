@@ -477,25 +477,16 @@ Route109_EventScript_Elijah::
 	end
 
 DewfordTown_Text_BrineyLandedInSlateportDeliverGoods:
-	.string "Mr. Briney: Ahoy!\n"
-	.string "We've made land in Slateport!\p"
-	.string "I suppose you're going to visit Capt.\n"
-	.string "Stern and deliver the Devon Goods?$"
+	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Ahoy!\nWe've made land in Slateport!\pI suppose you're off to visit\nCaptain Stern and deliver those\lDevon Parts?$"
 
 Route109_Text_BrineySailToDewfordQuestion:
-	.string "Mr. Briney: I thought you're supposed\n"
-	.string "to deliver the Devon Goods.\p"
-	.string "Would you like to sail back to\n"
-	.string "Dewford, then?$"
+	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Aren't you about\ndelivering those Devon Parts?\pOr were you meaning to sail back to\nDewford?$"
 
 Route109_Text_BrineyDewfordItIs:
-	.string "Mr. Briney: Dewford it is, then!\p"
-	.string "Anchors aweigh!\n"
-	.string "Peeko, we're setting sail, my darling!$"
+	.string "Dewford, we're a-coming!\nAnchors aweigh!\pPeeko, we're setting sail, my darling!$"
 
 Route109_Text_BrineyDeliverDevonGoods:
-	.string "Mr. Briney: Then you go on and deliver\n"
-	.string "the Devon Goods. I'll be waiting.$"
+	.string "Then you go on and deliver those\nDevon Parts.\pI'll wait till all's blue.$"
 
 DewfordTown_Text_BrineyLandedInSlateport:
 	.string "Mr. Briney: Ahoy! We've made land in\n"

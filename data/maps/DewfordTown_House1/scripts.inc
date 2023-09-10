@@ -22,15 +22,10 @@ DewfordTown_House1_EventScript_Zigzagoon::
 DewfordTown_House1_Text_LotToBeSaidForLivingOnIsland:
 	.string "There's a lot to be said for living on\n"
 	.string "a small island like this in harmony with\l"
-	.string "Pokémon and the family.$"
+	.string "my Pokémon and family.$"
 
 DewfordTown_House1_Text_LifeGoesSlowlyOnIsland:
-	.string "I left the major port of Slateport\n"
-	.string "City when I married my husband here.\p"
-	.string "Life goes by slowly on this little\n"
-	.string "island. But being surrounded by the\l"
-	.string "beautiful sea--that's happiness, too.$"
+	.string "When I married my husband, I moved\nhere from the large port city of\lSlateport.\pLife goes by slowly on this little\nisland.\pBut being surrounded by the\nbeautiful sea- that's a kind of\lhappiness, too.$"
 
 DewfordTown_House1_Text_Zigzagoon:
-	.string "Zigzagoon: Guguuh!$"
-
+	.string "Zig-guuuh!$"

@@ -39,6 +39,45 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "GraniteCave_1F_EventScript_ItemEscapeRope",
       "flag": "FLAG_ITEM_GRANITE_CAVE_1F_ESCAPE_ROPE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "x": 5,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "GraniteCave_1F_EventScript_Hiker2",
+      "flag": "FLAG_HIDE_GRANITE_CAVE_ENTHUSIASTS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "x": 5,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "GraniteCave_1F_EventScript_Hiker3",
+      "flag": "FLAG_HIDE_GRANITE_CAVE_ENTHUSIASTS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "x": 5,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "GraniteCave_1F_EventScript_Hiker4",
+      "flag": "FLAG_HIDE_GRANITE_CAVE_ENTHUSIASTS"
     }
   ],
   "warp_events": [

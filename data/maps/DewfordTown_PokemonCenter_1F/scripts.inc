@@ -27,13 +27,15 @@ DewfordTown_PokemonCenter_1F_EventScript_Man::
 	end
 
 DewfordTown_PokemonCenter_1F_Text_StoneCavern:
-	.string "There's a stone cavern at the edge\n"
-	.string "of town.\p"
-	.string "I've heard you can find rare stones\n"
-	.string "there.$"
+	.string "At the edge of the town, there's a\ncavern known as Granite Cave.\pI've heard you can find rare stones\nthere.$"
 
 DewfordTown_PokemonCenter_1F_Text_FaintedMonCanUseHM:
-	.string "Even if a Pokémon faints and can't\n"
-	.string "battle, it can still use a move learned\l"
-	.string "from a Hidden Machine (HM).$"
+	.string "Even if a Pokémon faints and can't\nbattle, it can still use HM moves.$"
 
+DewfordTown_PokemonCenter_1F_EventScript_Woman::
+	msgbox DewfordTown_PokemonCenter_1F_EventScript_Woman_Text_0, MSGBOX_NPC
+	end
+
+
+DewfordTown_PokemonCenter_1F_EventScript_Woman_Text_0:
+	.string "As long as you have Pokémon by\nyour side, you can overcome\llanguage barriers and meet many\ldifferent kinds of people.$"

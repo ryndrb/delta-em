@@ -1,0 +1,111 @@
+const LOCALID_STEVEN = 1
+
+mapscripts GraniteCave_StevensRoom_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_GRANITE_CAVE_STEVEN_ROOM_STATE, 0: GraniteCave_StevensRoom_EventScript_Steven
+    ]
+}
+
+script GraniteCave_StevensRoom_EventScript_Steven {
+    lock
+    delay(16)
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, GraniteCave_StevensRoom_Movement_CameraPanToSteven)
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+    delay(16)
+    applymovement(LOCALID_STEVEN, GraniteCave_StevensRoom_Movement_StevenLeftRight)
+    waitmovement(LOCALID_STEVEN)
+    applymovement(OBJ_EVENT_ID_PLAYER, GraniteCave_StevensRoom_Movement_PlayerGoToSteven)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    msgbox("{COLOR RED}???{COLOR DARK_GRAY}: …Mm-hmm.\pSo in the ancient world, their primal\nforms once held this much power…?\pThese super-ancient Pokémon…\nWhat terrible strength…\lBut this appearance here…\pIt seems somehow different from\nMega Evolution…\pHmmm.\nIt seems my questions will not be\lanswered today.\pHm?")
+    closemessage
+    delay(8)
+    applymovement(LOCALID_STEVEN, Common_Movement_WalkInPlaceDown)
+    waitmovement(LOCALID_STEVEN)
+    msgbox("You are…?\p…")
+    closemessage
+    delay(24)
+    msgbox("Ah, I see.\nIt's a pleasure, {PLAYER}.\pMy apologies.\nMy name is {COLOR RED}Steven{COLOR DARK_GRAY}.\pI'm interested in rare stones, so I\ntravel here and there.\pToday, my journey brought me here,\nbut what about you?\pOh?\nA letter for me?")
+    closemessage
+    delay(8)
+    playfanfare(MUS_OBTAIN_TMHM)
+    checkplayergender
+    if(var(VAR_RESULT) == MALE){
+        msgbox("{PLAYER} gave Steven the letter he\nhad been entrusted with!")
+    }else{
+        msgbox("{PLAYER} gave Steven the letter she\nhad been entrusted with!")
+    }
+    waitfanfare
+    closemessage
+    removeitem(ITEM_LETTER)
+    setflag(FLAG_DELIVERED_STEVEN_LETTER)
+    delay(16)
+    msgbox("Why, thank you…\pIt must have been some trouble to\ntrack me down.\pI suppose I must repay you in some\nway.\pLet me see…\pI will give you this TM.\nPlease accept it.\pIt contains my favorite move, Steel\nWing.")
+    giveitem(ITEM_TM_STEEL_WING)
+    delay(8)
+    closemessage
+    delay(8)
+    applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUp)
+    applymovement(LOCALID_STEVEN, Common_Movement_WalkInPlaceUp)
+    waitmovement(LOCALID_STEVEN)
+    msgbox("If you don't mind me asking…\pDo you feel anything in particular\nwhen you look up at this wall?\pA primal world, lost thousands of\nyears in the past…\pLegendary Pokémon of tremendous\npower became humanity's greatest\lthreat…\pThe terror aroused by that power\nis clear to see in this ancient\lartwork.")
+    closemessage
+    applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDown)
+    applymovement(LOCALID_STEVEN, Common_Movement_WalkInPlaceDown)
+    waitmovement(LOCALID_STEVEN)
+    msgbox("…Yes.\pBut not all power is terrible.\pYour Pokémon are clearly quite\ncapable as well.\lLooking at you all together…\pI think you have it takes to become\na Pokémon League Champion.\pAs long as you keep training, that\nis.\p…\pI know, since we've gotten to know\neach other, let's register one\lanother in our PokéNavs.")
+    closemessage
+    delay(24)
+	playfanfare(MUS_REGISTER_MATCH_CALL)
+	msgbox("Registered Steven in the PokéNav.")
+	waitfanfare
+	closemessage
+	delay(24)
+	setflag(FLAG_REGISTERED_STEVEN_POKENAV)
+    msgbox("Good luck to you.\nI must be going now.")
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, GraniteCave_StevensRoom_Movement_PlayerWatchStevenLeave)
+    applymovement(LOCALID_STEVEN, GraniteCave_StevensRoom_Movement_StevenLeavesRoom)
+    waitmovement(LOCALID_STEVEN)
+    special(RemoveCameraObject)
+    playse(SE_EXIT)
+	removeobject(LOCALID_STEVEN)
+    setvar(VAR_GRANITE_CAVE_STEVEN_ROOM_STATE, 1)
+    release
+    end
+}
+
+movement GraniteCave_StevensRoom_Movement_CameraPanToSteven {
+    walk_up * 6
+}
+
+movement GraniteCave_StevensRoom_Movement_StevenLeftRight {
+    walk_right * 2
+    walk_in_place_up
+    delay_16
+    walk_left * 4
+    walk_in_place_up
+    delay_16
+    delay_8
+    walk_right * 2
+    walk_in_place_up
+}
+
+movement GraniteCave_StevensRoom_Movement_PlayerGoToSteven {
+    walk_up * 6
+}
+
+movement GraniteCave_StevensRoom_Movement_StevenLeavesRoom {
+    walk_right
+    walk_down * 7
+}
+
+movement GraniteCave_StevensRoom_Movement_PlayerWatchStevenLeave {
+    delay_16 * 2
+    walk_in_place_down
+}
+
+script GraniteCave_StevensRoom_EventScript_CavePainting{
+    msgbox("It is a cave painting the depicts\ngiant Pokémon-like creatures\lwreaking havoc.\pThere are symbols resembling the\ncharacters Omega and Alpha on\leach of the beast's arms.", MSGBOX_SIGN)
+    end
+}
