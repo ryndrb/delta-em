@@ -61,7 +61,6 @@ enum
     MENU_ACTION_PLAYER,
     MENU_ACTION_SAVE,
     MENU_ACTION_OPTION,
-    MENU_ACTION_EXIT,
     MENU_ACTION_RETIRE_SAFARI,
     MENU_ACTION_PLAYER_LINK,
     MENU_ACTION_REST_FRONTIER,
@@ -109,7 +108,6 @@ static bool8 StartMenuPokeNavCallback(void);
 static bool8 StartMenuPlayerNameCallback(void);
 static bool8 StartMenuSaveCallback(void);
 static bool8 StartMenuOptionCallback(void);
-static bool8 StartMenuExitCallback(void);
 static bool8 StartMenuSafariZoneRetireCallback(void);
 static bool8 StartMenuLinkModePlayerNameCallback(void);
 static bool8 StartMenuBattlePyramidRetireCallback(void);
@@ -203,7 +201,6 @@ static const struct MenuAction sStartMenuItems[] =
     [MENU_ACTION_PLAYER]          = {gText_MenuPlayer,  {.u8_void = StartMenuPlayerNameCallback}},
     [MENU_ACTION_SAVE]            = {gText_MenuSave,    {.u8_void = StartMenuSaveCallback}},
     [MENU_ACTION_OPTION]          = {gText_MenuOption,  {.u8_void = StartMenuOptionCallback}},
-    [MENU_ACTION_EXIT]            = {gText_MenuExit,    {.u8_void = StartMenuExitCallback}},
     [MENU_ACTION_RETIRE_SAFARI]   = {gText_MenuRetire,  {.u8_void = StartMenuSafariZoneRetireCallback}},
     [MENU_ACTION_PLAYER_LINK]     = {gText_MenuPlayer,  {.u8_void = StartMenuLinkModePlayerNameCallback}},
     [MENU_ACTION_REST_FRONTIER]   = {gText_MenuRest,    {.u8_void = StartMenuSaveCallback}},
@@ -354,7 +351,6 @@ static void BuildNormalStartMenu(void)
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
     if(FlagGet(FLAG_SET_WALL_CLOCK) == TRUE)
         DrawTime();
 }
@@ -382,7 +378,6 @@ static void BuildSafariZoneStartMenu(void)
     AddStartMenuAction(MENU_ACTION_BAG);
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildLinkModeStartMenu(void)
@@ -397,7 +392,6 @@ static void BuildLinkModeStartMenu(void)
 
     AddStartMenuAction(MENU_ACTION_PLAYER_LINK);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildUnionRoomStartMenu(void)
@@ -412,7 +406,6 @@ static void BuildUnionRoomStartMenu(void)
 
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildBattlePikeStartMenu(void)
@@ -421,7 +414,6 @@ static void BuildBattlePikeStartMenu(void)
     AddStartMenuAction(MENU_ACTION_POKEMON);
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildBattlePyramidStartMenu(void)
@@ -432,7 +424,6 @@ static void BuildBattlePyramidStartMenu(void)
     AddStartMenuAction(MENU_ACTION_REST_FRONTIER);
     AddStartMenuAction(MENU_ACTION_RETIRE_FRONTIER);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildMultiPartnerRoomStartMenu(void)
@@ -440,7 +431,6 @@ static void BuildMultiPartnerRoomStartMenu(void)
     AddStartMenuAction(MENU_ACTION_POKEMON);
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void ShowSafariBallsWindow(void)
@@ -657,7 +647,6 @@ static bool8 HandleStartMenuInput(void)
         gMenuCallback = sStartMenuItems[sCurrentStartMenuActions[sStartMenuCursorPos]].func.u8_void;
 
         if (gMenuCallback != StartMenuSaveCallback
-            && gMenuCallback != StartMenuExitCallback
             && gMenuCallback != StartMenuDebugCallback
             && gMenuCallback != StartMenuSafariZoneRetireCallback
             && gMenuCallback != StartMenuBattlePyramidRetireCallback)
@@ -786,14 +775,6 @@ static bool8 StartMenuOptionCallback(void)
     }
 
     return FALSE;
-}
-
-static bool8 StartMenuExitCallback(void)
-{
-    RemoveExtraStartMenuWindows();
-    HideStartMenu(); // Hide start menu
-
-    return TRUE;
 }
 
 static bool8 StartMenuDebugCallback(void)
