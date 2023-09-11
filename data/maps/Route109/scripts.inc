@@ -66,7 +66,7 @@ Route109_EventScript_DoSailToDewford::
 	end
 
 Route109_Movement_SailToDewford:
-	walk_in_place_faster_down
+	walk_in_place_down
 	walk_down
 	walk_down
 	walk_fast_down
@@ -238,7 +238,7 @@ Route109_Movement_SailToDewford:
 	walk_fast_left
 	walk_left
 	walk_left
-	walk_in_place_faster_down
+	walk_in_place_down
 	step_end
 
 Route109_Movement_PlayerEnterBoatSouth:
@@ -250,7 +250,7 @@ Route109_Movement_PlayerExitBoat:
 	walk_down
 	walk_down
 	walk_left
-	walk_in_place_faster_right
+	walk_in_place_right
 	step_end
 
 Route109_Movement_PlayerEnterBoatEast:
@@ -269,7 +269,7 @@ Route109_Movement_BrineyEnterBoat:
 
 Route109_Movement_BrineyExitBoat:
 	walk_down
-	walk_in_place_faster_left
+	walk_in_place_left
 	step_end
 
 Route109_EventScript_MrBriney::
@@ -354,6 +354,8 @@ Route109_EventScript_Woman::
 
 Route109_EventScript_OldMan::
 	msgbox Route109_Text_ZigzagoonPicksUpLitter, MSGBOX_NPC
+	applymovement 19, Common_Movement_WalkInPlaceLeft
+	waitmovement 19
 	end
 
 Route109_EventScript_Zigzagoon::
@@ -363,6 +365,9 @@ Route109_EventScript_Zigzagoon::
 	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL
 	msgbox Route109_Text_ZigzagoonCry, MSGBOX_DEFAULT
 	waitmoncry
+	closemessage
+	applymovement 20, Common_Movement_WalkInPlaceRight
+	waitmovement 20
 	release
 	end
 
@@ -489,25 +494,16 @@ Route109_Text_BrineyDeliverDevonGoods:
 	.string "Then you go on and deliver those\nDevon Parts.\pI'll wait till all's blue.$"
 
 DewfordTown_Text_BrineyLandedInSlateport:
-	.string "Mr. Briney: Ahoy! We've made land in\n"
-	.string "Slateport!\p"
-	.string "You just go on and tell me whenever\n"
-	.string "you want to set sail again!$"
+	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Ahoy!\nWe've hit land in Slateport!\pYou go on and tell me if-an'-ever\nyou want to set sail again, {PLAYER}!$"
 
 Route109_Text_BrineyWhereAreWeBound:
-	.string "Mr. Briney: Ahoy!\n"
-	.string "For you, I'll go out to sea anytime!\p"
-	.string "Now, my friend, where are we bound?$"
+	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Ahoy!\nWe'll lift anchor anytime for you!\pSo tell me, my friend, where are\nwe bound?$"
 
 Route109_Text_BrineyTellMeWhenYouNeedToSail:
-	.string "Mr. Briney: You just tell me whenever\n"
-	.string "you need to set sail again!$"
+	.string "You just tell me if-an'-ever you\nneed to set sail again!$"
 
 Route109_Text_ChillAtMyPapasSpot:
-	.string "Yo, Trainers!\n"
-	.string "Whether you're hot to trot,\l"
-	.string "or cool cat not,\l"
-	.string "chill at my papa's spot!$"
+	.string "Yo, Trainer!\pWhether you're hot to trot or cool\ncat not, chill at my papa's spot!$"
 
 Route109_Text_LittleKidsDartAround:
 	.string "Little kids can dart around so quickly…\p"
@@ -531,16 +527,10 @@ Route109_Text_WereGoingToMakeBigCastle:
 	.string "We'll let you be a servant.$"
 
 Route109_Text_ZigzagoonPicksUpLitter:
-	.string "The water around these parts is clean.\p"
-	.string "But, I get my Zigzagoon to pick up\n"
-	.string "litter from the shoreline at times.\p"
-	.string "Dirty water becomes rain and joins our\n"
-	.string "rivers, which we drink from…\p"
-	.string "If we pollute the sea, it all comes\n"
-	.string "back to haunt us eventually.$"
+	.string "The water around these part is\nclean.\pBut my Zigzagoon still picks up\nlitter from the shoreline at times.\pDirty water becomes rain and joins\nour rivers, which we drink from…\pIf we pollute the sea, it all comes\nback to haunt us eventually.$"
 
 Route109_Text_ZigzagoonCry:
-	.string "Zigzagoon: Guguu?$"
+	.string "Goon goon?$"
 
 Route109_Text_SeashoreHouseSign:
 	.string "Seashore House\p"

@@ -889,13 +889,7 @@ gText_RegisteredTrainerinPokeNav::
 	.string "in the PokéNav.$"
 
 gText_ComeBackWithSecretPower::
-	.string "Do you know the TM Secret Power?\p"
-	.string "Our group, we love the TM Secret\n"
-	.string "Power.\p"
-	.string "One of our members will give it to you.\n"
-	.string "Come back and show me if you get it.\p"
-	.string "We'll accept you as a member and sell\n"
-	.string "you good stuff in secrecy.$"
+	.string "Do you know the TM Secret Power?\pOur group, we love the TM Secret\nPower.\pOne of our members will give it to\nyou.\pComeback and show me if you get\nit.\pWe'll accept you as a member and\nsell you good stuff in secrecy.$"
 
 gText_PokerusExplanation::
 	.string "Your Pokémon may be infected with\n"

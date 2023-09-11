@@ -9,14 +9,14 @@ SlateportCity_OceanicMuseum_1F_EventScript_EntranceAttendant::
 
 SlateportCity_OceanicMuseum_1F_EventScript_PayEntranceFeeLeft::
 	lockall
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	goto SlateportCity_OceanicMuseum_1F_EventScript_PayEntranceFee
 	end
 
 SlateportCity_OceanicMuseum_1F_EventScript_PayEntranceFeeRight::
 	lockall
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	goto SlateportCity_OceanicMuseum_1F_EventScript_PayEntranceFee
 	end
@@ -27,6 +27,8 @@ SlateportCity_OceanicMuseum_1F_EventScript_PayEntranceFee::
 	goto_if_eq VAR_RESULT, YES, SlateportCity_OceanicMuseum_1F_EventScript_CheckMoneyForFee
 	closemessage
 	hidemoneybox
+    msgbox SlateportCity_OceanicMuseum_1F_Text_PleaseVisitAgain, MSGBOX_DEFAULT
+    closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_OceanicMuseum_1F_Movement_PushPlayerBackFromCounter
 	waitmovement 0
 	releaseall
@@ -143,13 +145,13 @@ SlateportCity_OceanicMuseum_1F_EventScript_MuseumPatron4::
 
 SlateportCity_OceanicMuseum_1F_EventScript_FamiliarGrunt::
 	lock
-	faceplayer
 	delay 8
 	playse SE_PIN
 	applymovement LOCALID_FAMILIAR_GRUNT, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement LOCALID_FAMILIAR_GRUNT, Common_Movement_Delay48
 	waitmovement 0
+    faceplayer
 	msgbox SlateportCity_OceanicMuseum_1F_Text_RememberMeTakeThis, MSGBOX_DEFAULT
 	giveitem ITEM_TM_THIEF
 	goto_if_eq VAR_RESULT, 0, SlateportCity_OceanicMuseum_1F_EventScript_NoRoomForThief
@@ -198,12 +200,12 @@ SlateportCity_OceanicMuseum_1F_Movement_PlayerWatchGruntExitNorth:
 	delay_16
 	delay_8
 	delay_4
-	walk_in_place_faster_down
+	walk_in_place_down
 	step_end
 
 SlateportCity_OceanicMuseum_1F_Movement_PlayerWatchGruntExitWestEast:
 	delay_16
-	walk_in_place_faster_down
+	walk_in_place_down
 	step_end
 
 SlateportCity_OceanicMuseum_1F_Movement_FamiliarGruntExit:
@@ -229,8 +231,11 @@ SlateportCity_OceanicMuseum_1F_Text_WouldYouLikeToEnter:
 	.string "The entrance fee is ¥50.\n"
 	.string "Would you like to enter?$"
 
+SlateportCity_OceanicMuseum_1F_Text_PleaseVisitAgain:
+    .string "Please visit again!$"
+
 SlateportCity_OceanicMuseum_1F_Text_PleaseEnjoyYourself:
-	.string "Please enjoy yourself.$"
+	.string "Enjoy the museum!$"
 
 SlateportCity_OceanicMuseum_1F_Text_NotEnoughMoney:
 	.string "Oh? I'm sorry, but you don't seem to\n"
@@ -243,8 +248,7 @@ SlateportCity_OceanicMuseum_1F_Text_CatchUpWithYourGroup:
 	.string "You'd better go catch up to them!$"
 
 SlateportCity_OceanicMuseum_1F_Text_AquaExistForGoodOfAll:
-	.string "We, Team Aqua, exist for the good\n"
-	.string "of all!$"
+	.string "We of Team Aqua exist for the good\nof all people!$"
 
 SlateportCity_OceanicMuseum_1F_Text_OurBossIsntHere:
 	.string "We were told to assemble here,\n"
@@ -256,26 +260,20 @@ SlateportCity_OceanicMuseum_1F_Text_WouldStuffHereMakeMeRich:
 	.string "would it make me rich?$"
 
 SlateportCity_OceanicMuseum_1F_Text_CanLearnForNefariousDeeds:
-	.string "What I learn here, I can put to use on\n"
-	.string "nefarious deeds…$"
+	.string "I can put my knowledge to use in\nnefarious deeds…$"
 
 SlateportCity_OceanicMuseum_1F_Text_RustboroBungled:
-	.string "If our goons didn't bungle things\n"
-	.string "in Rustboro, we wouldn't be here!$"
+	.string "If our member didn't fail in Rustboro,\nwe wouldn't have to come here!$"
 
 SlateportCity_OceanicMuseum_1F_Text_DidntHaveMoney:
-	.string "I didn't have ¥50, so it took a long\n"
-	.string "time getting by the receptionist.$"
+	.string "It's a secret that I was stopped\nat reception because I didn't have\l¥50.$"
 
 SlateportCity_OceanicMuseum_1F_Text_LearnAboutSeaForBattling:
 	.string "I want to learn about the sea and\n"
 	.string "use that knowledge for battling.$"
 
 SlateportCity_OceanicMuseum_1F_Text_SternIsRoleModel:
-	.string "I get all giddy and gooey when\n"
-	.string "I see the sea!\p"
-	.string "For me, Capt. Stern is the number\n"
-	.string "one role model!$"
+	.string "I get all giddy and gooey when I\nsee the sea!\pFor me, Captain Stern is the number\none role model!$"
 
 SlateportCity_OceanicMuseum_1F_Text_MustBePokemonWeDontKnow:
 	.string "The sea is vast without end, and\n"
@@ -289,19 +287,10 @@ SlateportCity_OceanicMuseum_1F_Text_WantSeaPokemon:
 	.string "to hug.$"
 
 SlateportCity_OceanicMuseum_1F_Text_RememberMeTakeThis:
-	.string "Aiyeeeh!\n"
-	.string "What are you doing here?\p"
-	.string "Me? I'm the Team Aqua member\n"
-	.string "you thumped before, remember?\l"
-	.string "Back in Rusturf Tunnel?\p"
-	.string "Here, take this!\n"
-	.string "You have to forgive me!$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Aiyeeeh!\nWhat are you doing here?\pMe?\nI'm the Team Aqua member you\lthumped before, remember?\pHere, take this!\nYou have to forgive me!$"
 
 SlateportCity_OceanicMuseum_1F_Text_HopeINeverSeeYouAgain:
-	.string "That TM, it suits you more than it\n"
-	.string "does me.\p"
-	.string "Hope I never see you again!\n"
-	.string "Wahahaha!$"
+	.string "Aww, darn it!\nYou so screwed up out plans!\pI was going to steal something to\nmake up for it, but…\pJust you wait…\nYou'll get yours one day!$"
 
 SlateportCity_OceanicMuseum_1F_Text_YouHaveToTakeThis:
 	.string "Awww, come on!\n"
@@ -377,4 +366,3 @@ SlateportCity_OceanicMuseum_1F_Text_DepthMeasuringMachine:
 	.string "a glass dome.\p"
 	.string "Maybe it's for measuring the depth\n"
 	.string "of something…$"
-

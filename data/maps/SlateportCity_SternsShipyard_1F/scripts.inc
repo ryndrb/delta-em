@@ -10,11 +10,17 @@ SlateportCity_SternsShipyard_1F_EventScript_Dock::
 	goto_if_set FLAG_DELIVERED_DEVON_GOODS, SlateportCity_SternsShipyard_1F_EventScript_NeedVeteran
 	goto_if_set FLAG_DOCK_REJECTED_DEVON_GOODS, SlateportCity_SternsShipyard_1F_EventScript_GoFindStern
 	msgbox SlateportCity_SternsShipyard_1F_Text_CantMakeHeadsOrTails, MSGBOX_DEFAULT
+    closemessage
+    delay 16
+    playse SE_PIN
+    applymovement LOCALID_DOCK, Common_Movement_QuestionMark
+    waitmovement LOCALID_DOCK
 	applymovement LOCALID_DOCK, Common_Movement_FacePlayer
 	waitmovement 0
+    delay 8
 	msgbox SlateportCity_SternsShipyard_1F_Text_MeetDockDeliverToStern, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_DOCK, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_DOCK, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	setflag FLAG_DOCK_REJECTED_DEVON_GOODS
 	setflag FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA
@@ -40,7 +46,7 @@ SlateportCity_SternsShipyard_1F_EventScript_GoFindStern::
 	waitmovement 0
 	msgbox SlateportCity_SternsShipyard_1F_Text_CouldYouFindStern, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_DOCK, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_DOCK, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	releaseall
 	end
@@ -65,45 +71,19 @@ SlateportCity_SternsShipyard_1F_EventScript_Briney::
 	end
 
 SlateportCity_SternsShipyard_1F_Text_CantMakeHeadsOrTails:
-	.string "Umm… If this goes here, and that\n"
-	.string "goes over there…\p"
-	.string "Then where does this thing go?\n"
-	.string "And what about that doohickey?\p"
-	.string "Aaargh! I can't make heads or tails\n"
-	.string "of this!$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Umm…\nIf this goes here, and that goes\lover there…\pThen where does thing go?\nAnd about the that doohickey?\pAaargh!\nI can't make heads or tails of this!$"
 
 SlateportCity_SternsShipyard_1F_Text_MeetDockDeliverToStern:
-	.string "Hm?\n"
-	.string "Hi, I'm Dock.\p"
-	.string "Capt. Stern commissioned me to\n"
-	.string "design a ferry.\p"
-	.string "Oh! That there…\n"
-	.string "Are they Devon Goods?\p"
-	.string "But, hmm…\n"
-	.string "This won't do…\p"
-	.string "Capt. Stern went off somewhere.\n"
-	.string "He said he had some work to do.\p"
-	.string "Could I get you to go find Capt.\n"
-	.string "Stern and deliver that to him?$"
+	.string "Hm?\nYou…\pOh, sorry.\nI'm {COLOR RED}Dock{COLOR DARK_GRAY}.\pCaptain Stern commissioned me to draw\nup designs for ferry.\pOh! Those parts you have…\nThose are the Devon Parts!\pBut…hmmm…\nThis won't do…\pI guess Captain Stern is probably off\nat the Oceanic Museum again.\pSorry, but could I ask you to\nfind the captain and give the parts\lto him?$"
 
 SlateportCity_SternsShipyard_1F_Text_CouldYouFindStern:
-	.string "Dock: Where could Capt. Stern have\n"
-	.string "gone off to?\p"
-	.string "Could you go find Capt. Stern and\n"
-	.string "deliver that parcel to him?$"
+	.string "{COLOR RED}Dock{COLOR DARK_GRAY}: I guess Captain Stern is\nprobably off at the Oceanic Museum\lagain.\pSorry, but find the captain and\ndeliver the parts directly to him!$"
 
 SlateportCity_SternsShipyard_1F_Text_CouldUseAdviceFromVeteran:
-	.string "Dock: Shipbuilding is an art.\p"
-	.string "A lot of things can't be figured out\n"
-	.string "just by calculating.\p"
-	.string "I really could use advice from a veteran\n"
-	.string "who knows the seas…$"
+	.string "{COLOR RED}Dock{COLOR DARK_GRAY}: Shipbuilding is an art.\pA lot of things can't be figured out\nby calculations on paper.\pI really could use some advice\nfrom a veteran sailor who knows the\lseas…$"
 
 SlateportCity_SternsShipyard_1F_Text_BrineyJoinedUs:
-	.string "Dock: Hi! Mr. Briney's joined us to\n"
-	.string "lend us his help.\p"
-	.string "Thanks to the veteran sailor, the\n"
-	.string "ferry is steadily coming together.$"
+	.string "{COLOR RED}Dock{COLOR DARK_GRAY}: Hey!\pMr. Briney agreed to join us\nand lend us his knowledge and\lexpertise.\pThe help of a legendary sailor\nmeans ferry plans are really coming\ltogether!$"
 
 SlateportCity_SternsShipyard_1F_Text_FerryIsReady:
 	.string "Dock: The ferry is finally ready!\p"
@@ -141,3 +121,13 @@ SlateportCity_SternsShipyard_1F_Text_GetSeasickEasily:
 	.string "I get seasick real easily.\n"
 	.string "So I get to help out here instead.$"
 
+SlateportCity_SternsShipyard_1F_EventScript_Scientist3::
+	msgbox SlateportCity_SternsShipyard_1F_EventScript_Scientist3_Text_0, MSGBOX_NPC
+	closemessage
+	applymovement 5, Common_Movement_WalkInPlaceUp
+	waitmovement 5
+	end
+
+
+SlateportCity_SternsShipyard_1F_EventScript_Scientist3_Text_0:
+	.string "I'm working here.$"

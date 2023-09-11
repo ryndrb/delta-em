@@ -97,39 +97,23 @@ Route109_SeashoreHouse_EventScript_TrainersNotCompleted::
 	end
 
 Route109_SeashoreHouse_Text_SeashoreHouseIntro:
-	.string "I'm the owner of the Seashore House.\n"
-	.string "But you can call me Mr. Sea!\p"
-	.string "What I love above all is to see hot\n"
-	.string "Pokémon battles.\p"
-	.string "Let me see that your heart burns hot!\p"
-	.string "If you can defeat all the Trainers\n"
-	.string "here, I'll reward your efforts.$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: I'm the owner of the\nSeashore House.\pYou can call me {COLOR RED}Mr. Sea{COLOR DARK_GRAY}!\pWhat I love above all is to see hot\nPokémon battles.\pLet me see if your heart burns hot!\pIf you can defeat all the Trainers\nhere, I'll reward your effort.$"
 
 Route109_SeashoreHouse_Text_ShowMeSomeHotMatches:
-	.string "Show me some hot matches!\p"
-	.string "I run this Seashore House just for\n"
-	.string "that reason alone!$"
+	.string "{COLOR RED}Mr. Sea{COLOR DARK_GRAY}: Show me some hot matches!\pI run the Seashore House for that\nreason alone!$"
 
 Route109_SeashoreHouse_Text_TakeTheseSodaPopBottles:
-	.string "You're scorching hot!\n"
-	.string "Those battles blazed!\l"
-	.string "I'm more than just satisfied!\p"
-	.string "As thanks for showing me your hot\n"
-	.string "streak, I want you to take these.\p"
-	.string "It's half a dozen bottles of Soda Pop!$"
+	.string "{COLOR RED}Mr. Sea{COLOR DARK_GRAY}: You're scorching hot!\nThose battles blazed!\lI'm more than pleased!\pAs thanks for showing me your hot\nstreak, I want you to take these.\pIt's half a dozen battles of Soda\nPop!$"
 
 Route109_SeashoreHouse_Text_BagFull:
 	.string "Oh, but hey, your Bag's jammed full.\n"
 	.string "I'll hang on to these for you.$"
 
 Route109_SeashoreHouse_Text_WantToBuySodaPop:
-	.string "Want to buy some Soda Pop?\n"
-	.string "Pokémon love it!\p"
-	.string "Just ¥300 a bottle!\n"
-	.string "Buy some!$"
+	.string "{COLOR RED}Mr. Sea{COLOR DARK_GRAY}: Want to buy some Soda Pop?\nPokémon love it!\pOnly ¥300 a bottle!\nTry some, buy some!$"
 
 Route109_SeashoreHouse_Text_HereYouGo:
-	.string "Here you go!$"
+	.string "Here ya go!$"
 
 Route109_SeashoreHouse_Text_NotEnoughMoney:
 	.string "You don't have the money.$"
@@ -174,4 +158,3 @@ Route109_SeashoreHouse_Text_SimonPostBattle:
 	.string "If one of my Pokémon knew the move\n"
 	.string "for carrying me across water on its\l"
 	.string "back, I could get rid of this inner tube.$"
-

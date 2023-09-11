@@ -1,0 +1,327 @@
+const LOCALID_CAPT_STERN = 1
+const LOCALID_ARCHIE = 2
+const LOCALID_GRUNT_1 = 3
+const LOCALID_GRUNT_2 = 4
+
+mapscripts SlateportCity_OceanicMuseum_2F_MapScripts {
+
+}
+
+script SlateportCity_OceanicMuseum_2F_EventScript_CaptStern {
+    lock
+    delay(32)
+    playse(SE_PIN)
+    applymovement(LOCALID_CAPT_STERN, Common_Movement_ExclamationMark)
+    waitmovement(LOCALID_CAPT_STERN)
+    delay(16)
+    faceplayer
+    delay(16)
+    msgbox("{COLOR RED}???{COLOR DARK_GRAY}: Yes?\pIf you're looking for Stern, that\nwould be me.\pAh!\nThose must be the parts I ordered\lfrom Mr. Stone at Devon.\pThank you for bringing the case all\nthis way.\pNow we can prepare for our\nexpedition at last.")
+    closemessage
+    delay(16)
+    playse(SE_EXIT)
+    addobject(LOCALID_GRUNT_1)
+    waitse
+    playbgm(MUS_ENCOUNTER_AQUA, TRUE)
+    applymovement(LOCALID_GRUNT_1, SlateportCity_OceanicMuseum_2F_Movement_FirstGruntEnter)
+	waitmovement(0)
+    playse(SE_EXIT)
+    addobject(LOCALID_GRUNT_2)
+    waitse
+    applymovement(LOCALID_GRUNT_2, SlateportCity_OceanicMuseum_2F_Movement_SecondGruntEnter)
+	waitmovement(0)
+	applymovement(LOCALID_GRUNT_1, SlateportCity_OceanicMuseum_2F_Movement_FirstGruntApproach)
+	applymovement(LOCALID_GRUNT_2, SlateportCity_OceanicMuseum_2F_Movement_SecondGruntApproach)
+	waitmovement(0)
+    if(var(VAR_FACING) == DIR_SOUTH || var(VAR_FACING) == DIR_EAST){
+        applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+    }
+    if(var(VAR_FACING) != DIR_EAST){
+        applymovement(LOCALID_CAPT_STERN, Common_Movement_WalkInPlaceLeft)
+    }
+    waitmovement(0)
+    playse(SE_PIN)
+    applymovement(LOCALID_CAPT_STERN, Common_Movement_ExclamationMark)
+    waitmovement(LOCALID_CAPT_STERN)
+    delay(16)
+    msgbox("{COLOR RED}Grunt{COLOR DARK_GRAY}: Heh heh heh heh…\pJust a moment!\nWe'll be taking those!")
+	msgbox("{COLOR RED}Stern{COLOR DARK_GRAY}: Wh-what was that!?\nWho are you people!?")
+    closemessage
+    applymovement(LOCALID_GRUNT_2, SlateportCity_OceanicMuseum_2F_Movement_GruntApproachToBattle)
+	waitmovement(0)
+    if(var(VAR_FACING) == DIR_SOUTH){
+        applymovement(OBJ_EVENT_ID_PLAYER, SlateportCity_OceanicMuseum_2F_Movement_PlayerApproachGruntSouth)
+    }
+    if(var(VAR_FACING) == DIR_WEST){
+        applymovement(OBJ_EVENT_ID_PLAYER, SlateportCity_OceanicMuseum_2F_Movement_PlayerApproachGruntWest)
+    }
+    waitmovement(0)
+    msgbox("{COLOR RED}Grunt{COLOR DARK_GRAY}: We're Team Aqua!\pOur boss wants the parts in that\ncase, so shut your nap and fork it\lover!")
+	closemessage
+    trainerbattle_no_intro(TRAINER_GRUNT_MUSEUM_1, "Whoa!")
+    delay(8)
+    applymovement(LOCALID_GRUNT_2, SlateportCity_OceanicMuseum_2F_Movement_GruntDefeated)
+	waitmovement(0)
+    msgbox("Awaaaughhh!\nI got beat by a little brat?\pOh, man, what a disaster…\nThe boss is gonna be furious…")
+	closemessage
+    delay(16)
+    applymovement(LOCALID_GRUNT_1, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+    msgbox("Hmph!\nSniveling wimp!\pStand back and watch me,\nthe 27th-strongest member of\lTeam Aqua, take care of this kid!")
+    closemessage
+    applymovement(LOCALID_GRUNT_1, SlateportCity_OceanicMuseum_2F_Movement_GruntApproachToBattle)
+	waitmovement(0)
+    trainerbattle_no_intro(TRAINER_GRUNT_MUSEUM_2, "What!?")
+    applymovement(LOCALID_GRUNT_1, SlateportCity_OceanicMuseum_2F_Movement_GruntDefeated)
+	waitmovement(0)
+    delay(8)
+    msgbox("This kid beat the 27th-strongest Grunt\nin Team Aqua?")
+    closemessage
+    applymovement(LOCALID_GRUNT_1, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+    msgbox("N-now what?\nIf we don't get that case, we're in\lfor it!")
+	closemessage
+    applymovement(LOCALID_GRUNT_2, Common_Movement_WalkInPlaceUp)
+	waitmovement(0)
+    msgbox("Arrgh!\nI never thought we'd be stopped by\lsome meddling kid!")
+	closemessage
+    delay(32)
+    playse(SE_EXIT)
+    addobject(LOCALID_ARCHIE)
+    waitse
+    delay(16)
+    playse(SE_PIN)
+    applymovement(LOCALID_GRUNT_1, Common_Movement_ExclamationMark)
+    applymovement(LOCALID_GRUNT_2, Common_Movement_ExclamationMark)
+    waitmovement(LOCALID_GRUNT_2)
+    delay(16)
+    applymovement(LOCALID_GRUNT_1, Common_Movement_WalkInPlaceLeft)
+    applymovement(LOCALID_GRUNT_2, Common_Movement_WalkInPlaceLeft)
+    waitmovement(LOCALID_GRUNT_2)
+    applymovement(LOCALID_ARCHIE, SlateportCity_OceanicMuseum_2F_Movement_ArchieEnter)
+    applymovement(LOCALID_GRUNT_2, SlateportCity_OceanicMuseum_2F_Movement_GruntMoveForArchie)
+    waitmovement(0)
+    applymovement(LOCALID_GRUNT_1, Common_Movement_WalkInPlaceDown)
+    waitmovement(LOCALID_GRUNT_1)
+    msgbox("{COLOR RED}???{COLOR DARK_GRAY}: What do we have here?\pI came to see what was taking\nso long just to steal a few parts,\land I find you simps getting beat\lby this kid?")
+	closemessage
+    applymovement(LOCALID_ARCHIE, SlateportCity_OceanicMuseum_2F_Movement_ArchieApproachPlayer)
+	waitmovement(0)
+    checkplayergender
+    if(var(VAR_RESULT) == MALE){
+        msgbox("{COLOR RED}???{COLOR DARK_GRAY}: Heh!\pThat's quite a fierce expression for\nsuch a wee little scamp.\pThat face tells me you're not just\nanother mindless Trainer brat.\pThe name is {COLOR RED}Archie{COLOR DARK_GRAY}.\pThe rough-looking lot you see here\nare members of my team-Team Aqua.\pSo tell me, boyo…\pDo you know that Pokémon, people,\nand all life in this world depend\lon the sea for life?\pThat's right.\pThe sea is an irreplaceable\ntreasure for every living thing on\lthis planet.\pBut with our selfish extravagance,\nhumanity dirties the great ocean,\ldestroying this source of all life…")
+    }else{
+        msgbox("{COLOR RED}???{COLOR DARK_GRAY}: Heh!\pThat's quite a fierce expression for\nsuch a wee little scamp.\pThat face tells me you're not just\nanother mindless Trainer brat.\pThe name is {COLOR RED}Archie{COLOR DARK_GRAY}.\pThe rough-looking lot you see here\nare members of my team-Team Aqua.\pSo tell me, girlie…\pDo you know that Pokémon, people,\nand all life in this world depend\lon the sea for life?\pThat's right.\pThe sea is an irreplaceable\ntreasure for every living thing on\lthis planet.\pBut with our selfish extravagance,\nhumanity dirties the great ocean,\ldestroying this source of all life…")
+    }
+    msgbox("Day by day, we're all destroying our\nmost precious resource!\pIf we humans suffer from our\nactions, well, maybe we'll end up\lgetting what we deserve.\pBut what about the Pokémon in our\nworld?\pThe Pokémon that no longer have a\nplace to live because we stole and\lsoiled their seas?\pThe Pokémon that won't have\na place to raise their young and\lwatch them grow?\pWe are creating a world in which\ninnocent Pokémon suffer as a result\lof our actions…\pAnd that is something I can't\nforgive!\pThat's why I came to a decision,\nsee?\pThe foolish actions of my fellow\nhumans, the seas we have blighted,\lnature itself…\pI will return everything to its\nunspoiled beginnings!")
+    closemessage
+    delay(48)
+    msgbox("…\pHeh!\pIt's not like me to talk so much.\pNever mind, little scamp…\nI'll withdraw for now and leave you\lbe.\lBut understand this…\pGet in my way again, and you won't\nwalk away unscathed next time.\pRemember that, at least!")
+    closemessage
+    delay(16)
+    msgbox("We're moving out, lads!")
+    closemessage
+    savebgm(MUS_DUMMY)
+    fadedefaultbgm
+	fadescreen(FADE_TO_BLACK)
+    delay(16)
+    playse(SE_EXIT)
+	removeobject(LOCALID_ARCHIE)
+    waitse
+    playse(SE_EXIT)
+	removeobject(LOCALID_GRUNT_1)
+    waitse
+    playse(SE_EXIT)
+	removeobject(LOCALID_GRUNT_2)
+    waitse
+	fadescreen(FADE_FROM_BLACK)
+    delay(32)
+    setflag(FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+    checkplayergender
+    if(var(VAR_RESULT) == MALE){
+        msgbox("{COLOR RED}Stern{COLOR DARK_GRAY}: Young man…\pAh, {PLAYER}, is it?\pThat was quite a tense situation!\nThank you for helping me out!\pOh, yes, I almost forgot that you\nbrought the parts from Devon!")
+    }else{
+        msgbox("{COLOR RED}Stern{COLOR DARK_GRAY}: Young lady…\pAh, {PLAYER}, is it?\pThat was quite a tense situation!\nThank you for helping me out!\pOh, yes, I almost forgot that you\nbrought the parts from Devon!")
+    }
+    closemessage
+    delay(8)
+    playfanfare(MUS_OBTAIN_TMHM)
+	message("{PLAYER} handed over the Devon Parts\nto Captain Stern.")
+	waitmessage
+	waitfanfare
+	removeitem(ITEM_DEVON_PARTS)
+    delay(8)
+    playse(SE_PIN)
+    applymovement(LOCALID_CAPT_STERN, Common_Movement_ExclamationMark)
+    waitmovement(LOCALID_CAPT_STERN)
+    msgbox("This is it!\nI can't be standing around here!\pIt's finally time for us to set out on\nour ocean-floor expedition!\pThanks for this, and excuse me!")
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, SlateportCity_OceanicMuseum_2F_Movement_PlayerWatchSternLeave)
+    applymovement(LOCALID_CAPT_STERN, SlateportCity_OceanicMuseum_2F_Movement_SternLeavesRoom)
+    waitmovement(LOCALID_CAPT_STERN)
+    removeobject(LOCALID_CAPT_STERN)
+    playse(SE_EXIT)
+    waitse
+	setflag(FLAG_HIDE_ROUTE_110_TEAM_AQUA)
+	if(var(VAR_REGISTER_BIRCH_STATE) == 0){
+        setvar(VAR_REGISTER_BIRCH_STATE, 1)
+    }
+	setflag(FLAG_DELIVERED_DEVON_GOODS)
+	clearflag(FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE)
+	setflag(FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_EMPLOYEE)
+	setvar(VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 1)
+    release
+	end   
+}
+
+movement SlateportCity_OceanicMuseum_2F_Movement_PlayerApproachGruntSouth {
+	walk_left
+	walk_down
+	walk_in_place_left
+}
+
+movement SlateportCity_OceanicMuseum_2F_Movement_PlayerApproachGruntWest {
+	walk_up
+	walk_left * 2
+	walk_down
+	walk_in_place_left
+}
+
+movement SlateportCity_OceanicMuseum_2F_Movement_ArchieApproachPlayer{
+	walk_right
+}
+
+movement SlateportCity_OceanicMuseum_2F_Movement_ArchieEnter {
+	walk_down * 5
+	walk_right * 4
+}
+
+movement SlateportCity_OceanicMuseum_2F_Movement_GruntApproachToBattle {
+	walk_right
+}
+
+movement SlateportCity_OceanicMuseum_2F_Movement_FirstGruntEnter {
+	walk_down
+	walk_right
+	walk_in_place_down
+}
+
+movement SlateportCity_OceanicMuseum_2F_Movement_FirstGruntApproach {
+	walk_down * 3
+	walk_right * 3
+}
+
+movement SlateportCity_OceanicMuseum_2F_Movement_GruntDefeated {
+	lock_facing_direction
+	walk_left
+	unlock_facing_direction
+}
+
+movement SlateportCity_OceanicMuseum_2F_Movement_SecondGruntEnter {
+	walk_down
+}
+
+movement SlateportCity_OceanicMuseum_2F_Movement_SecondGruntApproach{
+	walk_down * 4
+	walk_right * 4
+}
+
+movement SlateportCity_OceanicMuseum_2F_Movement_GruntMoveForArchie {
+	delay_16 * 8
+	delay_8
+	walk_fast_down
+	walk_in_place_up
+}
+
+movement SlateportCity_OceanicMuseum_2F_Movement_PlayerWatchSternLeave {
+    delay_16
+    walk_in_place_up
+    delay_16 * 3
+    walk_in_place_left
+}
+
+movement SlateportCity_OceanicMuseum_2F_Movement_SternLeavesRoom {
+    walk_up
+    walk_left * 4
+    walk_up * 2
+    walk_left * 3
+    walk_up * 2
+    set_invisible
+}
+
+script SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron2 {
+    lock
+    msgbox("Don't run around inside the museum!")
+    release
+	end
+}
+
+script SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron3 {
+    lock
+	faceplayer
+	msgbox("Wow, the submarine's awesome!\nI want to go for a ride!", MSGBOX_DEFAULT)
+	closemessage
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
+	release
+	end
+}
+
+script SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron1{
+    msgbox("Looking at this model of a ship\nhere reminds me of Mr. Briney on\lRoute 104.", MSGBOX_NPC)
+    applymovement(VAR_LAST_TALKED, Common_Movement_WalkInPlaceDown)
+    waitmovement(VAR_LAST_TALKED)
+	end
+}
+
+script SlateportCity_OceanicMuseum_2F_EventScript_WaterQualitySample1 {
+	msgbox("“Kalos Water Quality Sample,”\nthe label says.\pThe hardness of Kalos's water often\nexceeds 300 ppm.\pThat's characteristics of the water\nin Kalos.", MSGBOX_SIGN)
+	end
+}
+
+script SlateportCity_OceanicMuseum_2F_EventScript_WaterQualitySample2 {
+	msgbox("“Unova Water Quality Sample,”\nthe label says.\pWater hardness is a measure of the\namount of calcium and magnesium it\lcontains.", MSGBOX_SIGN)
+	end
+}
+
+script SlateportCity_OceanicMuseum_2F_EventScript_PressureExperiment {
+	msgbox("A video is playing of a guy with a\nwacky hairstyle, who could be a\lscientist conducting experiment\lwith some sort of machine…\p“Because of this…\nwhen you dive into the sea,\lyou fell discomfort in your ears…”", MSGBOX_SIGN)
+	end
+}
+
+script SlateportCity_OceanicMuseum_2F_EventScript_HoennModel{
+	msgbox("“Model of the Hoenn Region”\pIt's a miniature diorama of the\nHoenn Region.\pWhere is Littleroot Town on this?", MSGBOX_SIGN)
+	end
+}
+
+script SlateportCity_OceanicMuseum_2F_EventScript_DeepSeawaterDisplay {
+	msgbox("It's a display on the flow of\nseawater.\p“Near the bottom of the sea,\nwater flows due to differences in\lsuch factors as temperature and\lsalinity”", MSGBOX_SIGN)
+	end
+}
+
+script SlateportCity_OceanicMuseum_2F_EventScript_SurfaceSeawaterDisplay {
+	msgbox("It's a display on the flow of\nseawater.\p“Toward the surface, seawater flows\nas currents driven by the winds.”", MSGBOX_SIGN)
+	end
+}
+
+script SlateportCity_OceanicMuseum_2F_EventScript_SSTidalReplica {
+    msgbox("“The Ferry S.S. Tidal”\pA scale replica of the ship under\nconstruction at Stern's Shipyard.", MSGBOX_SIGN)
+	end
+}
+
+script SlateportCity_OceanicMuseum_2F_EventScript_SubmarineReplica {
+    msgbox("“Prototype Submarine Explorer 0”\pA replica of the high-performance\nsubmarine for ocean-floor\lexploration.", MSGBOX_SIGN)
+	end
+}
+
+script SlateportCity_OceanicMuseum_2F_EventScript_SubmersibleReplica {
+    msgbox("“Submersible Pod”\pA replica of a compact, unmanned pod\nfor seafloor exploration.", MSGBOX_SIGN)
+	end
+}
+
+script SlateportCity_OceanicMuseum_2F_EventScript_SSAnneReplica {
+    msgbox("“The S.S. Anne”\pA replica of the luxury liner that\ncircles the globe.", MSGBOX_SIGN)
+	end
+}

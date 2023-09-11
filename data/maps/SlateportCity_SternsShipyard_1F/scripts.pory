@@ -1,0 +1,133 @@
+raw `
+.set LOCALID_DOCK, 1
+
+SlateportCity_SternsShipyard_1F_MapScripts::
+	.byte 0
+
+SlateportCity_SternsShipyard_1F_EventScript_Dock::
+	lockall
+	goto_if_set FLAG_SYS_GAME_CLEAR, SlateportCity_SternsShipyard_1F_EventScript_FerryReady
+	goto_if_set FLAG_BADGE07_GET, SlateportCity_SternsShipyard_1F_EventScript_BrineyJoined
+	goto_if_set FLAG_DELIVERED_DEVON_GOODS, SlateportCity_SternsShipyard_1F_EventScript_NeedVeteran
+	goto_if_set FLAG_DOCK_REJECTED_DEVON_GOODS, SlateportCity_SternsShipyard_1F_EventScript_GoFindStern
+	msgbox SlateportCity_SternsShipyard_1F_Text_CantMakeHeadsOrTails, MSGBOX_DEFAULT
+    closemessage
+    delay 16
+    playse SE_PIN
+    applymovement LOCALID_DOCK, Common_Movement_QuestionMark
+    waitmovement LOCALID_DOCK
+	applymovement LOCALID_DOCK, Common_Movement_FacePlayer
+	waitmovement 0
+    delay 8
+	msgbox SlateportCity_SternsShipyard_1F_Text_MeetDockDeliverToStern, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_DOCK, Common_Movement_WalkInPlaceDown
+	waitmovement 0
+	setflag FLAG_DOCK_REJECTED_DEVON_GOODS
+	setflag FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA
+	releaseall
+	end
+
+SlateportCity_SternsShipyard_1F_EventScript_FerryReady::
+	applymovement LOCALID_DOCK, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox SlateportCity_SternsShipyard_1F_Text_FerryIsReady, MSGBOX_DEFAULT
+	releaseall
+	end
+
+SlateportCity_SternsShipyard_1F_EventScript_BrineyJoined::
+	applymovement LOCALID_DOCK, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox SlateportCity_SternsShipyard_1F_Text_BrineyJoinedUs, MSGBOX_DEFAULT
+	releaseall
+	end
+
+SlateportCity_SternsShipyard_1F_EventScript_GoFindStern::
+	applymovement LOCALID_DOCK, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox SlateportCity_SternsShipyard_1F_Text_CouldYouFindStern, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_DOCK, Common_Movement_WalkInPlaceDown
+	waitmovement 0
+	releaseall
+	end
+
+SlateportCity_SternsShipyard_1F_EventScript_NeedVeteran::
+	applymovement LOCALID_DOCK, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox SlateportCity_SternsShipyard_1F_Text_CouldUseAdviceFromVeteran, MSGBOX_DEFAULT
+	releaseall
+	end
+
+SlateportCity_SternsShipyard_1F_EventScript_Scientist1::
+	msgbox SlateportCity_SternsShipyard_1F_Text_SeaIsLikeLivingThing, MSGBOX_NPC
+	end
+
+SlateportCity_SternsShipyard_1F_EventScript_Scientist2::
+	msgbox SlateportCity_SternsShipyard_1F_Text_GetSeasickEasily, MSGBOX_NPC
+	end
+
+SlateportCity_SternsShipyard_1F_EventScript_Briney::
+	msgbox SlateportCity_SternsShipyard_1F_Text_DecidedToHelpDock, MSGBOX_NPC
+	end
+
+SlateportCity_SternsShipyard_1F_Text_CantMakeHeadsOrTails:
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Umm…\nIf this goes here, and that goes\lover there…\pThen where does thing go?\nAnd about the that doohickey?\pAaargh!\nI can't make heads or tails of this!$"
+
+SlateportCity_SternsShipyard_1F_Text_MeetDockDeliverToStern:
+	.string "Hm?\nYou…\pOh, sorry.\nI'm {COLOR RED}Dock{COLOR DARK_GRAY}.\pCaptain Stern commissioned me to draw\nup designs for ferry.\pOh! Those parts you have…\nThose are the Devon Parts!\pBut…hmmm…\nThis won't do…\pI guess Captain Stern is probably off\nat the Oceanic Museum again.\pSorry, but could I ask you to\nfind the captain and give the parts\lto him?$"
+
+SlateportCity_SternsShipyard_1F_Text_CouldYouFindStern:
+	.string "{COLOR RED}Dock{COLOR DARK_GRAY}: I guess Captain Stern is\nprobably off at the Oceanic Museum\lagain.\pSorry, but find the captain and\ndeliver the parts directly to him!$"
+
+SlateportCity_SternsShipyard_1F_Text_CouldUseAdviceFromVeteran:
+	.string "{COLOR RED}Dock{COLOR DARK_GRAY}: Shipbuilding is an art.\pA lot of things can't be figured out\nby calculations on paper.\pI really could use some advice\nfrom a veteran sailor who knows the\lseas…$"
+
+SlateportCity_SternsShipyard_1F_Text_BrineyJoinedUs:
+	.string "{COLOR RED}Dock{COLOR DARK_GRAY}: Hey!\pMr. Briney agreed to join us\nand lend us his knowledge and\lexpertise.\pThe help of a legendary sailor\nmeans ferry plans are really coming\ltogether!$"
+
+SlateportCity_SternsShipyard_1F_Text_FerryIsReady:
+	.string "Dock: The ferry is finally ready!\p"
+	.string "The new S.S. Tidal is truly a marvel\n"
+	.string "of technology!\p"
+	.string "But, I get the feeling that we can\n"
+	.string "make something even better.\p"
+	.string "You know, there's never an end to\n"
+	.string "technology's march.$"
+
+SlateportCity_SternsShipyard_1F_Text_DecidedToHelpDock:
+	.string "Mr. Briney: Ah, {PLAYER}{KUN}!\n"
+	.string "It's been too long!\p"
+	.string "Aye, since I met you, this old sea dog's\n"
+	.string "been feeling frisky!\p"
+	.string "So I've decided to help Dock make\n"
+	.string "a ferry.\p"
+	.string "Aye, after all, a ferry would be able\n"
+	.string "to carry a lot of people.\p"
+	.string "But, you know, that Dock is really\n"
+	.string "something special.\p"
+	.string "With his knack for technology and\n"
+	.string "my experience, I'm sure that we can\l"
+	.string "build one great ship, aye!$"
+
+SlateportCity_SternsShipyard_1F_Text_SeaIsLikeLivingThing:
+	.string "The seasons, the weather, where\n"
+	.string "the moon sits in the sky…\p"
+	.string "These and other conditions make\n"
+	.string "the sea change its expression.\p"
+	.string "That's right!\n"
+	.string "The sea is like a living thing!$"
+
+SlateportCity_SternsShipyard_1F_Text_GetSeasickEasily:
+	.string "I get seasick real easily.\n"
+	.string "So I get to help out here instead.$"
+
+`
+
+script SlateportCity_SternsShipyard_1F_EventScript_Scientist3 {
+    msgbox("I'm working here.", MSGBOX_NPC)
+    closemessage
+    applymovement(5, Common_Movement_WalkInPlaceUp)
+    waitmovement(5)
+	end
+}

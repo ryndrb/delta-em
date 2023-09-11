@@ -53,10 +53,10 @@ SlateportCity_Harbor_EventScript_AquaEscapeTrigger3::
 	end
 
 SlateportCity_Harbor_EventScript_AquaEscapeScene::
-	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceDown
 	waitmovement 0
-	applymovement LOCALID_GRUNT, Common_Movement_WalkInPlaceFasterDown
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_GRUNT, Common_Movement_WalkInPlaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	msgbox SlateportCity_Harbor_Text_ArchieYouAgainHideoutInLilycove, MSGBOX_DEFAULT
 	closemessage
@@ -86,21 +86,21 @@ SlateportCity_Harbor_EventScript_AquaEscapeScene::
 SlateportCity_Harbor_EventScript_SternApproachPlayer0::
 	applymovement LOCALID_CAPT_STERN, SlateportCity_Harbor_Movement_SternApproachPlayer0
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	return
 
 SlateportCity_Harbor_EventScript_SternApproachPlayer1::
 	applymovement LOCALID_CAPT_STERN, SlateportCity_Harbor_Movement_SternApproachPlayer1
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	return
 
 SlateportCity_Harbor_EventScript_SternApproachPlayer::
 	applymovement LOCALID_CAPT_STERN, SlateportCity_Harbor_Movement_SternApproachPlayer
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	return
 
@@ -227,7 +227,7 @@ SlateportCity_Harbor_EventScript_ChooseNewDestination::
 SlateportCity_Harbor_EventScript_BoardFerry::
 	msgbox SlateportCity_Harbor_Text_PleaseBoardFerry, MSGBOX_DEFAULT
 	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterUp
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	delay 30
 	hideobjectat VAR_LAST_TALKED, MAP_SLATEPORT_CITY_HARBOR
@@ -256,7 +256,7 @@ SlateportCity_Harbor_EventScript_BoardFerryNorth::
 
 SlateportCity_Harbor_Movement_BoardFerryEast:
 	walk_right
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 SlateportCity_Harbor_Movement_BoardFerryNorth:
@@ -387,10 +387,7 @@ SlateportCity_Harbor_EventScript_TradedScanner::
 	end
 
 SlateportCity_Harbor_Text_FerryServiceUnavailable:
-	.string "I beg your pardon?\n"
-	.string "You're looking for a ship?\p"
-	.string "I'm sorry, the ferry service isn't\n"
-	.string "available at present…$"
+	.string "I beg your pardon?\nYou're looking for a ship?\pI'm sorry.\nThe ferry service isn't available at\lpresent…$"
 
 SlateportCity_Harbor_Text_MayISeeYourTicket:
 	.string "Hello, are you here for the ferry?\n"
@@ -441,11 +438,7 @@ SlateportCity_Harbor_Text_AbnormalWeather:
 	.string "and ask around!$"
 
 SlateportCity_Harbor_Text_SubTooSmallForMe:
-	.string "I wanted to go with Capt. Stern on\n"
-	.string "the ocean floor exploration.\p"
-	.string "But the sub's too small for me.\p"
-	.string "If I squeezed in, there wouldn't be\n"
-	.string "any room for the Captain…$"
+	.string "I wanted to go with Captain Stern on\nthe ocean-floor exploration.\pBut the sub's too small for me.\pIf I squeezed in, there wouldn't be\nany room for the captain…$"
 
 SlateportCity_Harbor_Text_SameThugsTriedToRobAtMuseum:
 	.string "Capt. Stern: Those thugs…\p"

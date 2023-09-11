@@ -253,21 +253,7 @@ SlateportCity_PokemonFanClub_EventScript_Azumarill::
 	end
 
 SlateportCity_PokemonFanClub_Text_MeetChairman:
-	.string "Er-hem! I am the Chairman of the\n"
-	.string "Pokémon Fan Club!\p"
-	.string "Being the Chairman, I am naturally\n"
-	.string "the most important!\p"
-	.string "No one can best me when it comes\n"
-	.string "to raising Pokémon. No one!\p"
-	.string "Well, let me tell you about\n"
-	.string "Pokémon Contests.\p"
-	.string "They're events where one can show off\n"
-	.string "Pokémon for the world to see!\p"
-	.string "However, they're held in far-off towns,\n"
-	.string "so I cannot participate often enough.\p"
-	.string "That is why we gather here to show\n"
-	.string "off our Pokémon, and have others\l"
-	.string "show us theirs.$"
+	.string "Er-hem! I am the chairman of the\nPokémon Fan Club!\pBeing the Chairman, I am naturally\nthe most important!\pNo one could best me when it comes\nto raising Pokémon.\lNo one!\pIn any contest, my victory is a\nforegone conclusion!\pBut that would deprive others of\ntheir enjoyment.\pSo I now while away my time\nexamining the Pokémon of others.\pIt is marvelous to witness how others\nhave raised Pokémon.\pThe contented faces of properly\nraised Pokémon…\pThe kind and loving gazes of their\nTrainers…\pMy heart is overwhelmed-there is so\nmuch happiness.$"
 
 SlateportCity_PokemonFanClub_Text_LikeToSeeEnteredContestPokemon:
 	.string "The Pokémon of a Trainer who has\n"
@@ -275,38 +261,18 @@ SlateportCity_PokemonFanClub_Text_LikeToSeeEnteredContestPokemon:
 	.string "That, I would like to see.$"
 
 SlateportCity_PokemonFanClub_Text_AllowMeToExamineYourPokemon:
-	.string "Er-hem! I see you've participated in\n"
-	.string "a Pokémon Contest!\p"
-	.string "Please! Allow me to examine how you\n"
-	.string "have raised your Pokémon.\p"
-	.string "It delights me no end to see Pokémon\n"
-	.string "raised by other Trainers.\p"
-	.string "The happy expressions of Pokémon\n"
-	.string "raised with proper care…\p"
-	.string "The kindly eyes of the Trainer that\n"
-	.string "nurtured and raised the Pokémon…\p"
-	.string "The very thought fills my heart to\n"
-	.string "overwhelming with joy.\p"
-	.string "Oh! I do beg your pardon!\n"
-	.string "Forgive me for prattling on so!\p"
-	.string "Please! Allow me to examine how much\n"
-	.string "your Pokémon has grown!$"
+	.string "Er-hem! I am the chairman of the\nPokémon Fan Club!\pBeing the Chairman, I am naturally\nthe most important!\pNo one could best me when it comes\nto raising Pokémon.\lNo one!\pIn any contest, my victory is a\nforegone conclusion!\pBut that would deprive others of\ntheir enjoyment.\pSo I now while away my time\nexamining the Pokémon of others.\pIt is marvelous to witness how others\nhave raised Pokémon.\pThe contented faces of properly\nraised Pokémon…\pThe kind and loving gazes of their\nTrainers…\pMy heart is overwhelmed-there is so\nmuch happiness.\pOh my!\nExcuse me!\lI seem to have nattered on far too\llong!\pPlease, do allow me to examine your\nPokémon and see how it's grown.\pHmmhm…\nI see…\pHmmm… It's not bad, but it's not\ngood, either.\pYou, the Trainer, must put more\neffort into raising this Pokémon!\pFor instance, may I suggest that\nyou give it more Pokéblocks?$"
 
 SlateportCity_PokemonFanClub_Text_HowIsYourPokemonGrowing:
 	.string "How is your Pokémon growing?\n"
 	.string "Allow me to examine it.$"
 
 SlateportCity_PokemonFanClub_Text_HmHmISee:
-	.string "Hm, hm…\n"
+	.string "Hmmhm…\n"
 	.string "I see…$"
 
 SlateportCity_PokemonFanClub_Text_GiveMonMorePokeblocks:
-	.string "Hmmm… It's not bad, but it's not\n"
-	.string "good, either…\p"
-	.string "You, the Trainer, must put more\n"
-	.string "effort into raising this Pokémon!\p"
-	.string "For instance, may I suggest that\n"
-	.string "you give it more {POKEBLOCK}s?$"
+	.string "Hmmm… It's not bad, but it's not\ngood, either.\pYou, the Trainer, must put more\neffort into raising this Pokémon!\pFor instance, may I suggest that\nyou give it more Pokéblocks?$"
 
 SlateportCity_PokemonFanClub_Text_NoSpaceForReward:
 	.string "Oh, my…\p"
@@ -355,14 +321,7 @@ SlateportCity_PokemonFanClub_Text_NothingElseToGiveYou:
 	.string "to any items!$"
 
 SlateportCity_PokemonFanClub_Text_ShowMePokemonThatLoveYou:
-	.string "I love seeing Pokémon that love\n"
-	.string "their Trainers.\p"
-	.string "Pokémon are very sensitive to\n"
-	.string "the feelings of their Trainers.\p"
-	.string "If you treat your Pokémon with love\n"
-	.string "and care, they'll love you back.\p"
-	.string "When your Pokémon grow to love you,\n"
-	.string "please come show me.$"
+	.string "I love seeing Pokémon that are very\nfriendly toward their Trainers.\pPokémon are very sensitive to the\nfeelings of their Trainers.\pIf you treat your Pokémon with love\nand care, they'll become friendly.\pWhen you Pokémon become friendly,\nplease come show me.$"
 
 SlateportCity_PokemonFanClub_Text_PokemonAdoresYou:
 	.string "Your Pokémon really adores you.\p"
@@ -376,12 +335,7 @@ SlateportCity_PokemonFanClub_Text_TreatPokemonWithLove:
 	.string "and care, they'll love you back.$"
 
 SlateportCity_PokemonFanClub_Text_PokemonDontLikeFainting:
-	.string "If you keep letting a Pokémon faint\n"
-	.string "in battle, it'll come to resent it.\p"
-	.string "Soon, it will become less trusting\n"
-	.string "of the Trainer.\p"
-	.string "In other words, it certainly won't\n"
-	.string "like you very much.$"
+	.string "If you keep letting a Pokémon\nfaint in battle, it'll start feeling\lsorry for itself.\pSoon, it will become less trusting of\nits Trainer.\pIt other words, it certainly won't\nbecome friendly toward you.$"
 
 SlateportCity_PokemonFanClub_Text_MonEnjoyedProtein:
 	.string "Do Pokémon enjoy having items used\n"
@@ -390,11 +344,10 @@ SlateportCity_PokemonFanClub_Text_MonEnjoyedProtein:
 	.string "it some Protein.$"
 
 SlateportCity_PokemonFanClub_Text_Skitty:
-	.string "Skitty: Fffnyaaaah…$"
+	.string "Fffnyaaaah…$"
 
 SlateportCity_PokemonFanClub_Text_Zigzagoon:
-	.string "Zigzagoon: Kyuuu…$"
+	.string "Kyuuu…$"
 
 SlateportCity_PokemonFanClub_Text_Azumarill:
-	.string "Azumarill: Marimari?$"
-
+	.string "Marimari?$"

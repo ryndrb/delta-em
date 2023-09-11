@@ -27,16 +27,7 @@ SlateportCity_PokemonCenter_1F_EventScript_Woman::
 	end
 
 SlateportCity_PokemonCenter_1F_Text_RaiseDifferentTypesOfPokemon:
-	.string "Want a tip for battling?\p"
-	.string "I'd say it's raising different kinds\n"
-	.string "of Pokémon in a balanced manner.\p"
-	.string "It's no good to make just one\n"
-	.string "Pokémon strong.\p"
-	.string "If it has a type disadvantage,\n"
-	.string "it might not stand a chance.$"
+	.string "Want to know the trick to battling?\pIf you ask me, it's raising different\nkinds of Pokémon in a balanced way.\pIt's no good to make just one of\nyour Pokémon strong.\pIf you end up facing a type\nthat it's weak to, it might not\lstand a chance.$"
 
 SlateportCity_PokemonCenter_1F_Text_TradedMonWithFriend:
-	.string "I trade Pokémon with my friends.\p"
-	.string "If a traded Pokémon is holding an\n"
-	.string "item, it makes me twice as happy!$"
-
+	.string "You trade Pokémon with your friends,\nright?\pIf the Pokémon you trade is holding\nan item when you send it out, it'll\lmake them twice as happy!$"

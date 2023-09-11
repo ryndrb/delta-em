@@ -2424,7 +2424,7 @@
     {
       "id": "LAYOUT_ROUTE109_SEASHORE_HOUSE",
       "name": "Route109_SeashoreHouse_Layout",
-      "width": 15,
+      "width": 14,
       "height": 10,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_SeashoreHouse",
