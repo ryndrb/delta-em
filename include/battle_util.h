@@ -192,7 +192,7 @@ void ClearIllusionMon(u32 battler);
 bool32 SetIllusionMon(struct Pokemon *mon, u32 battler);
 bool8 ShouldGetStatBadgeBoost(u16 flagId, u8 battler);
 u8 GetBattleMoveSplit(u32 moveId);
-bool32 CanFling(u8 battler);
+bool32 CanFling(u32 battler);
 bool32 IsTelekinesisBannedSpecies(u16 species);
 bool32 IsHealBlockPreventingMove(u32 battler, u32 move);
 bool32 HasEnoughHpToEatBerry(u32 battler, u32 hpFraction, u32 itemId);
@@ -221,6 +221,7 @@ void RecalcBattlerStats(u32 battler, struct Pokemon *mon);
 bool32 IsAlly(u32 battlerAtk, u32 battlerDef);
 bool8 CheckTableForMovesEffect(u16 move, const u8 table[]);
 u8 GetTypeEffectiveness(u8 targetId, u32 battler);
+bool32 IsGen6ExpShareEnabled(void);
 
 // Ability checks
 bool32 IsRolePlayBannedAbilityAtk(u16 ability);

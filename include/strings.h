@@ -3062,4 +3062,8 @@ extern const u8 gText_Clock_Fri[];
 extern const u8 gText_Clock_Sat[];
 extern const u8 gText_Clock_Err[];
 
+// Exp. Share
+extern const u8 gText_ExpShareOn[];
+extern const u8 gText_ExpShareOff[];
+
 #endif // GUARD_STRINGS_H

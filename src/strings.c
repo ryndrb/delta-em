@@ -1864,3 +1864,6 @@ const u8 gText_Clock_Thu[] = _("Thu. {STR_VAR_1}:{STR_VAR_2} {STR_VAR_3}");
 const u8 gText_Clock_Fri[] = _("Fri. {STR_VAR_1}:{STR_VAR_2} {STR_VAR_3}");
 const u8 gText_Clock_Sat[] = _("Sat. {STR_VAR_1}:{STR_VAR_2} {STR_VAR_3}");
 const u8 gText_Clock_Err[] = _("Err. {STR_VAR_1}:{STR_VAR_2} {STR_VAR_3}");
+
+const u8 gText_ExpShareOn[] = _("The Exp. Share has been turned on.{PAUSE_UNTIL_PRESS}");
+const u8 gText_ExpShareOff[] = _("The Exp. Share has been turned off.{PAUSE_UNTIL_PRESS}");
