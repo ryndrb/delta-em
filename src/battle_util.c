@@ -3140,7 +3140,7 @@ bool8 HandleWishPerishSongOnTurnEnd(void)
                 if (gWishFutureKnock.futureSightCounter[battler] == 0
                  && gWishFutureKnock.futureSightCounter[BATTLE_PARTNER(battler)] == 0)
                 {
-                    gSideStatuses[GET_BATTLER_SIDE(gBattlerTarget)] &= ~SIDE_STATUS_FUTUREATTACK;
+                    gSideStatuses[GetBattlerSide(gBattlerTarget)] &= ~SIDE_STATUS_FUTUREATTACK;
                 }
                 return TRUE;
             }
@@ -4252,7 +4252,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                         gBattleWeather = B_WEATHER_SNOW;
                         gBattleScripting.animArg1 = B_ANIM_SNOW_CONTINUES;
                         effect++;
-                    #else  
+                    #else
                         gBattleWeather = B_WEATHER_HAIL;
                         gBattleScripting.animArg1 = B_ANIM_HAIL_CONTINUES;
                         effect++;
@@ -5739,10 +5739,10 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
              && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
              && IS_MOVE_PHYSICAL(gCurrentMove)
              && TARGET_TURN_DAMAGED
-             && !(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_TOXIC_SPIKES)
+             && (gSideTimers[gBattlerAttacker].toxicSpikesAmount != 2)
              && IsBattlerAlive(gBattlerTarget))
             {
-                gBattlerTarget = gBattlerAttacker;
+                SWAP(gBattlerAttacker, gBattlerTarget, i);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_ToxicDebrisActivates;
                 effect++;
@@ -6633,13 +6633,36 @@ static u8 TrySetMicleBerry(u32 battler, u32 itemId, bool32 end2)
     return 0;
 }
 
+static u8 TrySetEnigmaBerry(u32 battler)
+{
+    if (IsBattlerAlive(battler)
+     && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
+     && ((TARGET_TURN_DAMAGED && gMoveResultFlags & MOVE_RESULT_SUPER_EFFECTIVE) || gBattleScripting.overrideBerryRequirements)
+     && !(gBattleScripting.overrideBerryRequirements && gBattleMons[battler].hp == gBattleMons[battler].maxHP)
+#if B_HEAL_BLOCKING >= GEN_5
+     && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
+#endif
+    {
+        gBattleScripting.battler = battler;
+        gBattleMoveDamage = (gBattleMons[battler].maxHP * 25 / 100) * -1;
+        if (GetBattlerAbility(battler) == ABILITY_RIPEN)
+            gBattleMoveDamage *= 2;
+
+        BattleScriptPushCursor();
+        gBattlescriptCurrInstr = BattleScript_ItemHealHP_RemoveItemRet;
+        return ITEM_HP_CHANGE;
+    }
+    return 0;
+}
+
 static u8 DamagedStatBoostBerryEffect(u8 battler, u8 statId, u8 split)
 {
     if (IsBattlerAlive(battler)
-     && TARGET_TURN_DAMAGED
      && CompareStat(battler, statId, MAX_STAT_STAGE, CMP_LESS_THAN)
      && (gBattleScripting.overrideBerryRequirements
-         || (!DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove) && GetBattleMoveSplit(gCurrentMove) == split))
+         || (!DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
+             && GetBattleMoveSplit(gCurrentMove) == split
+             && TARGET_TURN_DAMAGED))
         )
     {
         BufferStatChange(battler, statId, STRINGID_STATROSE);
@@ -6679,6 +6702,53 @@ u8 TryHandleSeed(u8 battler, u32 terrainFlag, u8 statId, u16 itemId, bool32 exec
             gBattlescriptCurrInstr = BattleScript_BerryStatRaiseRet;
         }
         return ITEM_STATS_CHANGE;
+    }
+    return 0;
+}
+
+static u32 ItemRestorePp(u32 battler, u32 itemId, bool32 execute)
+{
+    struct Pokemon *party = GetBattlerParty(battler);
+    struct Pokemon *mon = &party[gBattlerPartyIndexes[battler]];
+    u32 i, changedPP = 0;
+
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        u32 move = GetMonData(mon, MON_DATA_MOVE1 + i);
+        u32 currentPP = GetMonData(mon, MON_DATA_PP1 + i);
+        u32 ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES);
+        u32 maxPP = CalculatePPWithBonus(move, ppBonuses, i);
+        if (move && (currentPP == 0 || (gBattleScripting.overrideBerryRequirements && currentPP != maxPP)))
+        {
+            u32 ppRestored = GetBattlerItemHoldEffectParam(battler, itemId);
+
+            if (GetBattlerAbility(battler) == ABILITY_RIPEN)
+            {
+                ppRestored *= 2;
+                gBattlerAbility = battler;
+            }
+            if (currentPP + ppRestored > maxPP)
+                changedPP = maxPP;
+            else
+                changedPP = currentPP + ppRestored;
+
+            PREPARE_MOVE_BUFFER(gBattleTextBuff1, move);
+
+            if (execute)
+            {
+                BattleScriptExecute(BattleScript_BerryPPHealEnd2);
+            }
+            else
+            {
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_BerryPPHealRet;
+            }
+            BtlController_EmitSetMonData(battler, BUFFER_A, i + REQUEST_PPMOVE1_BATTLE, 0, 1, &changedPP);
+            MarkBattlerForControllerExec(battler);
+            if (MOVE_IS_PERMANENT(battler, i))
+                gBattleMons[battler].pp[i] = changedPP;
+            return ITEM_PP_CHANGE;
+        }
     }
     return 0;
 }
@@ -6816,6 +6886,9 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
     case HOLD_EFFECT_RESTORE_PCT_HP:
         effect = ItemHealHp(battler, gLastUsedItem, FALSE, TRUE);
         break;
+    case HOLD_EFFECT_RESTORE_PP:
+        effect = ItemRestorePp(battler, gLastUsedItem, FALSE);
+        break;
     case HOLD_EFFECT_CONFUSE_SPICY:
         effect = HealConfuseBerry(battler, gLastUsedItem, FLAVOR_SPICY, FALSE);
         break;
@@ -6845,6 +6918,9 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
         break;
     case HOLD_EFFECT_SP_DEFENSE_UP:
         effect = StatRaiseBerry(battler, gLastUsedItem, STAT_SPDEF, FALSE);
+        break;
+    case HOLD_EFFECT_ENIGMA_BERRY: // consume and heal if hit by super effective move
+        effect = TrySetEnigmaBerry(battler);
         break;
     case HOLD_EFFECT_KEE_BERRY:  // consume and boost defense if used physical move
         effect = DamagedStatBoostBerryEffect(battler, STAT_DEF, SPLIT_PHYSICAL);
@@ -7280,10 +7356,6 @@ u8 ItemBattleEffects(u8 caseID, u8 battler, bool8 moveTurn)
                     BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[battler].status1);
                     MarkBattlerForControllerExec(battler);
                     break;
-                case ITEM_PP_CHANGE:
-                    if (MOVE_IS_PERMANENT(battler, i))
-                        gBattleMons[battler].pp[i] = changedPP;
-                    break;
                 }
             }
         }
@@ -7303,43 +7375,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battler, bool8 moveTurn)
                 break;
             case HOLD_EFFECT_RESTORE_PP:
                 if (!moveTurn)
-                {
-                    struct Pokemon *party = GetBattlerParty(battler);
-                    struct Pokemon *mon = &party[gBattlerPartyIndexes[battler]];
-                    u8 ppBonuses;
-                    u16 move;
-
-                    for (i = 0; i < MAX_MON_MOVES; i++)
-                    {
-                        move = GetMonData(mon, MON_DATA_MOVE1 + i);
-                        changedPP = GetMonData(mon, MON_DATA_PP1 + i);
-                        ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES);
-                        if (move && changedPP == 0)
-                            break;
-                    }
-                    if (i != MAX_MON_MOVES)
-                    {
-                        u8 maxPP = CalculatePPWithBonus(move, ppBonuses, i);
-                        u8 ppRestored = GetBattlerHoldEffectParam(battler);
-
-                        if (GetBattlerAbility(battler) == ABILITY_RIPEN)
-                        {
-                            ppRestored *= 2;
-                            gBattlerAbility = battler;
-                        }
-                        if (changedPP + ppRestored > maxPP)
-                            changedPP = maxPP;
-                        else
-                            changedPP = changedPP + ppRestored;
-
-                        PREPARE_MOVE_BUFFER(gBattleTextBuff1, move);
-
-                        BattleScriptExecute(BattleScript_BerryPPHealEnd2);
-                        BtlController_EmitSetMonData(battler, BUFFER_A, i + REQUEST_PPMOVE1_BATTLE, 0, 1, &changedPP);
-                        MarkBattlerForControllerExec(battler);
-                        effect = ITEM_PP_CHANGE;
-                    }
-                }
+                    effect = ItemRestorePp(battler, gLastUsedItem, TRUE);
                 break;
             case HOLD_EFFECT_RESTORE_STATS:
                 for (i = 0; i < NUM_BATTLE_STATS; i++)
@@ -7587,10 +7623,6 @@ u8 ItemBattleEffects(u8 caseID, u8 battler, bool8 moveTurn)
                     BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[battler].status1);
                     MarkBattlerForControllerExec(battler);
                     break;
-                case ITEM_PP_CHANGE:
-                    if (MOVE_IS_PERMANENT(battler, i))
-                        gBattleMons[battler].pp[i] = changedPP;
-                    break;
                 }
             }
         }
@@ -7809,6 +7841,9 @@ u8 ItemBattleEffects(u8 caseID, u8 battler, bool8 moveTurn)
                     gBattleScripting.statChanger = SET_STATCHANGER(STAT_SPATK, 1, FALSE);
                 }
                 break;
+            case HOLD_EFFECT_ENIGMA_BERRY: // consume and heal if hit by super effective move
+                effect = TrySetEnigmaBerry(battler);
+                break;
             case HOLD_EFFECT_JABOCA_BERRY:  // consume and damage attacker if used physical move
                 if (IsBattlerAlive(battler)
                  && TARGET_TURN_DAMAGED
@@ -8011,7 +8046,7 @@ u32 GetMoveTarget(u16 move, u8 setTarget)
     case MOVE_TARGET_BOTH:
     case MOVE_TARGET_FOES_AND_ALLY:
     case MOVE_TARGET_OPPONENTS_FIELD:
-        targetBattler = GetBattlerAtPosition(BATTLE_OPPOSITE(GET_BATTLER_SIDE(gBattlerAttacker)));
+        targetBattler = GetBattlerAtPosition(BATTLE_OPPOSITE(GetBattlerSide(gBattlerAttacker)));
         if (!IsBattlerAlive(targetBattler))
             targetBattler ^= BIT_FLANK;
         break;
@@ -8022,7 +8057,7 @@ u32 GetMoveTarget(u16 move, u8 setTarget)
         else if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE && moveTarget & MOVE_TARGET_RANDOM)
             targetBattler = SetRandomTarget(gBattlerAttacker);
         else
-            targetBattler = GetBattlerAtPosition(BATTLE_OPPOSITE(GET_BATTLER_SIDE(gBattlerAttacker)));
+            targetBattler = GetBattlerAtPosition(BATTLE_OPPOSITE(GetBattlerSide(gBattlerAttacker)));
         break;
     case MOVE_TARGET_USER_OR_SELECTED:
     case MOVE_TARGET_USER:
@@ -8802,7 +8837,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     u16 basePower = CalcMoveBasePower(move, battlerAtk, battlerDef);
     uq4_12_t holdEffectModifier;
     uq4_12_t modifier = UQ_4_12(1.0);
-    u32 atkSide = GET_BATTLER_SIDE(battlerAtk);
+    u32 atkSide = GetBattlerSide(battlerAtk);
     u16 atkAbility = GetBattlerAbility(battlerAtk);
     u16 defAbility = GetBattlerAbility(battlerDef);
 
@@ -9719,7 +9754,7 @@ static inline uq4_12_t GetAirborneModifier(u32 move, u32 battlerDef)
 
 static inline uq4_12_t GetScreensModifier(u32 move, u32 battlerAtk, u32 battlerDef, bool32 isCrit)
 {
-    u32 sideStatus = gSideStatuses[GET_BATTLER_SIDE(battlerDef)];
+    u32 sideStatus = gSideStatuses[GetBattlerSide(battlerDef)];
     bool32 lightScreen = (sideStatus & SIDE_STATUS_LIGHTSCREEN) && IS_MOVE_SPECIAL(move);
     bool32 reflect = (sideStatus & SIDE_STATUS_REFLECT) && IS_MOVE_PHYSICAL(move);
     bool32 auroraVeil = sideStatus & SIDE_STATUS_AURORA_VEIL;
@@ -10534,7 +10569,7 @@ bool32 CanBattlerFormChange(u8 battler, u16 method)
 bool32 TryBattleFormChange(u8 battler, u16 method)
 {
     u8 monId = gBattlerPartyIndexes[battler];
-    u8 side = GET_BATTLER_SIDE(battler);
+    u8 side = GetBattlerSide(battler);
     struct Pokemon *party = GetBattlerParty(battler);
     u16 targetSpecies;
 
