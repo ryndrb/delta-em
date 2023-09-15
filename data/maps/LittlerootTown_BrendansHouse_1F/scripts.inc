@@ -148,10 +148,10 @@ PlayersHouse_1F_Text_MaybeDadWillBeOn:
 	.string "It's the Petalburg Gym!\nMaybe Dad will be on TV!$"
 
 PlayersHouse_1F_Text_ItsOverWeMissedHim:
-	.string "Oh… It's already ended.\pLooks like your dad was on, but we\nmissed his part.\pWhat a shame.$"
+	.string "Oh…\nIt's already ended.\pLooks like your dad was on, but we\nmissed his part.\pWhat a shame.$"
 
 PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor:
-	.string "But that reminds me…\pOne of Dad's friends lives in this\ntown.\p{COLOR BLUE}Professor Birch{COLOR DARK_GRAY} is his name.\pHe lives {COLOR BLUE}right next door{COLOR DARK_GRAY}, so you\nshould go over and introduce\lyourself.$"
+	.string "But that reminds me…\pOne of Dad's friends lives in this\ntown.\p{COLOR BLUE}Professor Birch{COLOR DARK_GRAY} is his name.\pHe lives {COLOR BLUE}right next door{COLOR DARK_GRAY}, so\nyou should go over and introduce\lyourself.$"
 
 PlayersHouse_1F_Text_SeeYouHoney:
 	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Now take care out there, honey!$"
@@ -166,7 +166,7 @@ PlayersHouse_1F_Text_TakeCareHoney:
 	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Now take care out there, honey!$"
 
 PlayersHouse_1F_Text_GotDadsBadgeHeresSomethingFromMom:
-	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Oh? Did Dad give you that\nbadge!?\pThen here's something from your Mom!$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Oh?\nDid Dad give you that badge!?\pThen here's something from your Mom!$"
 
 PlayersHouse_1F_Text_DontPushYourselfTooHard:
 	.string "It's a wonderful thing to try\nhard at your passion, but don't\lpush yourself too hard, dear.\pYou can always come home if you\nneed to.\pGood luck, honey!$"
@@ -256,4 +256,4 @@ PlayersHouse_1F_Text_StillUnknownPokemon:
 	.string "There are still unknown Pokémon.$"
 
 PlayersHouse_1F_Text_OhYoureTheNewNeighbor:
-	.string "Oh, hello. And you are?\p…\pOh, you're {PLAYER}, our new next-door\n neighbor! Welcome.\pWe have a son who is about the same\nage as you.\pHe has been so excited about making\na new friend.\pHe should be in {COLOR BLUE}his room upstairs{COLOR DARK_GRAY}.\pI hope you'll go and introduce\nyourself.$"
+	.string "Oh, hello.\nAnd you are?\p…\pOh, you're {PLAYER}, our new next-\ndoor neighbor! Welcome.\pWe have a son who is about the same\nage as you.\pHe has been so excited about making\na new friend.\pHe should be in {COLOR BLUE}his room upstairs{COLOR DARK_GRAY}.\pI hope you'll go and introduce\nyourself.$"

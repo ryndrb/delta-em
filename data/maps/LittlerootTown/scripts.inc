@@ -912,13 +912,13 @@ LittlerootTown_EventScript_MomSaysBye::
 	return
 
 LittlerootTown_Text_OurNewHomeLetsGoInside:
-	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: {PLAYER}! You're here at last!\pWasn't it tough riding in the back of\nthe bumpy truck all that way?\pWell, this is Littleroot Town.\nWhat do you think?\pThis is going to be our new home!\pIt has a quaint feel, but it looks\nlike it should be a nice place to\llive, don't you think?\pAnd you get your own room this time,\n{PLAYER}!\pCome on.\nYou have to see the inside!$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: {PLAYER}!\nYou're here at last!\pWasn't it tough riding in the back\nof the bumpy truck all that way?\pWell, this is Littleroot Town.\nWhat do you think?\pThis is going to be our new home!\pIt has a quaint feel, but it looks\nlike it should be a nice place to\llive, don't you think?\pAnd you get your own room this time,\n{PLAYER}!\pCome on.\nYou have to see the inside!$"
 
 LittlerootTown_Text_WaitPlayer:
 	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Wait, {PLAYER}!$"
 
 LittlerootTown_Text_TakeCarePlayer:
-	.string "Did you introduce yourself to\nProfessor Birch?\pOh! What an adorable Pokémon!\nYou got it from the professor?\lHow nice!\pYou are your father's child, all\nright…\pYou look good together with a\nPokémon!\p…\pTo think that you have your very own\nPokémon now…\lYour father will be overjoyed.\pBut don't push yourself too hard.\pIf anything happens, you can always\ncome home, honey.$"
+	.string "Did you introduce yourself to\nProfessor Birch?\pOh!\nWhat an adorable Pokémon!\lYou got it from the professor?\lHow nice!\pYou are your father's child, all\nright…\pYou look good together with a\nPokémon!\p…\pTo think that you have your very own\nPokémon now…\lYour father will be overjoyed.\pBut don't push yourself too hard.\pIf anything happens, you can always\ncome home, honey.$"
 
 LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "If you use a PC, you can store items\n"
@@ -936,7 +936,7 @@ LittlerootTown_Text_DangerousIfYouDontHavePokemon:
 	.string "your own Pokémon.$"
 
 LittlerootTown_Text_CanYouGoSeeWhatsHappening:
-	.string "I think I hear someone screaming up\nahead!\pWhat should I do? What should we\ndo?\lSomebody has to go help…$"
+	.string "I think I hear someone screaming up\nahead!\pWhat should I do?\nWhat should we do?\lSomebody has to go help…$"
 
 LittlerootTown_Text_YouSavedBirch:
 	.string "You saved Prof. Birch!\n"
@@ -969,4 +969,3 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "I gave you?\p"
 	.string "I have something to show you.\n"
 	.string "Let's go to my Lab.$"
-

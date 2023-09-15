@@ -712,19 +712,19 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo:
 	.string "Professor Birch is studying the\nhabitats and distribution of\lPokémon.\pThe Professor enjoy {RIVAL}'s help,\ntoo. There's a lot of love there.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon:
-	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: So, {PLAYER}!\pI've heard so much about you from\nyour father.\pBut he said that you don't have your\nown Pokémon yet.\pIf that's true, that was quite the\nperformance back there!\pLooks like you really are your\nfather's child!\pOh, yes! To say thanks for rescuing\nme out there, how about I give\lyou that Pokémon you used earlier?\p{PLAYER} received the {STR_VAR_1}!$"
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: So, {PLAYER}!\pI've heard so much about you from\nyour father.\pBut he said that you don't have your\nown Pokémon yet.\pIf that's true, that was quite the\nperformance back there!\pLooks like you really are your\nfather's child!\pOh, yes!\nTo say thanks for rescuing me out\lthere, how about I give you that\lPokémon you used earlier?\p{PLAYER} received the {COLOR RED}{STR_VAR_1}{COLOR DARK_GRAY}!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_WhyNotGiveNicknameToMon:
 	.string "While you're at it, why not give a\nnickname to that {STR_VAR_1}?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival:
-	.string "Oh, so that's how you like to do\nthings?\pNot even going to give it a nickname,\nare you?\pYou know, if you work with your\nPokémon and gain experience, I\lthink you'll make a pretty\lexcellent Trainer.\pMy kid, {PLAYER}, happens to be out\non {COLOR BLUE}Route 103{COLOR DARK_GRAY} right now, surveying\lPokémon for me.\pIt might not be a bad idea for you\nto head out that way yourself.\lWhat do you think?$"
+	.string "Oh, so that's how you like to do\nthings?\pNot even going to give it a nickname,\nare you?\pYou know, if you work with\nyour Pokémon and gain experience,\lI think you'll make a pretty\lexcellent Trainer.\pMy kid, {RIVAL}, happens to be out\non {COLOR BLUE}Route 103{COLOR DARK_GRAY} right now, surveying\lPokémon for me.\pIt might not be a bad idea for you\nto head out that way yourself.\lWhat do you think?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou_M:
-	.string "Great! I'm sure May'll be happy to\nhear that, too.\pShe can help teach you what it\nmeans to be a Trainer.$"
+	.string "Great!\pI'm sure May'll be happy to hear\nthat, too.\pShe can help teach you what it\nmeans to be a Trainer.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou_F:
-	.string "Great! I'm sure Brendan'll be happy\nto hear that, too.\pHe can help teach you what it means\nto be a Trainer.$"
+	.string "Great!\pI'm sure Brendan'll be happy to hear\nthat, too.\pHe can help teach you what it means\nto be a Trainer.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_DontBeThatWay:
 	.string "Oh, don't be that way!\nYou should go meet my kid.$"
@@ -733,34 +733,34 @@ LittlerootTown_ProfessorBirchsLab_Text_RestAtYourHouse:
 	.string "And if you or your Pokémon get\ntired, get some rest back at your\lnew house.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome:
-	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: My kid, {RIVAL},\nhappens to be out on {COLOR BLUE}Route 103{COLOR DARK_GRAY}\lright now, surveying Pokémon for\lme.\pIt might not be a bad idea for you\nto head out that way yourself.\pAnd if you or your Pokémon get\ntired, get some rest back at your\lnew house.$"
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: My kid, {RIVAL},\nhappens to be out on {COLOR BLUE}Route 103{COLOR DARK_GRAY}\lright now, surveying Pokémon for me.\pIt might not be a bad idea for you\nto head out that way yourself.\pAnd if you or your Pokémon get\ntired, get some rest back at your\lnew house.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CallPlayerOver:
 	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: Oh! {PLAYER}!\nOver here!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex_May:
-	.string "So I hear you beat May on your first\ntry.\lThat's amazing!\pMay's been helping with my\nresearch for a long time, so she\lhas a pretty long history as a\lTrainer already.\pMm-hmm! I think that settles it!\p{PLAYER}, I ordered this Pokédex for\nmy research, but I think you\lshould take it.$"
+	.string "So I hear you beat May on your first\ntry.\lThat's amazing!\pMay's been helping with my\nresearch for a long time, so she\lhas a pretty long history as a\lTrainer already.\pMm-hmm!\nI think that settles it!\p{PLAYER}, I ordered this Pokédex\nfor my research, but I think you\lshould take it.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex_Brendan:
-	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: So I hear you beat\nBrendan on your first try.\lThat's amazing!\pMay's been helping with my\nresearch for a long time, so he\lhas a pretty long history as a\lTrainer already.\pMm-hmm! I think that settles it!\p{PLAYER}, I ordered this Pokédex for\nmy research, but I think you\lshould take it.$"
+	.string "So I hear you beat Brendan on your\nfirst try.\lThat's amazing!\pMay's been helping with my\nresearch for a long time, so he\lhas a pretty long history as a\lTrainer already.\pMm-hmm!\nI think that settles it!\p{PLAYER}, I ordered this Pokédex\nfor my research, but I think you\lshould take it.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex:
 	.string "{PLAYER} received a {COLOR RED}Pokédex{COLOR DARK_GRAY}!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex_May:
-	.string "That Pokédex is a high-tech tool\nthat automatically makes a record\lof any Pokémon you meet or catch.\pMy girl May takes hers with her\neverywhere she goes.\pWhenever she catches a rare Pokémon\nand records its data in the\lPokédex, why, she comes to seek me\lout whenever I am in the field and\lshow me!$"
+	.string "That Pokédex is a high-tech tool\nthat automatically makes a record\lof any Pokémon you meet or catch.\pMy girl May takes hers with her\neverywhere she goes.\pWhenever she catches a rare\nPokémon and records its data in the\lPokédex, why, she comes to seek me\lout whenever I am in the field and\lshow me!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex_Brendan:
-	.string "That Pokédex is a high-tech tool\nthat automatically makes a record\lof any Pokémon you meet or catch.\pMy boy Brendan takes his with him\neverywhere he goes.\pWhenever he catches a rare Pokémon\nand records its data in the\lPokédex, why, he comes to seek me\lout whenever I am in the field and\lshow me!$"
+	.string "That Pokédex is a high-tech tool\nthat automatically makes a record\lof any Pokémon you meet or catch.\pMy boy Brendan takes his with him\neverywhere he goes.\pWhenever he catches a rare\nPokémon and records its data in the\lPokédex, why, he comes to seek me\lout whenever I am in the field and\lshow me!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait:
-	.string "The people and the Pokémon you will\nmeet…\lAnd the great expanse of nature\lthat lies before you!\pExperience them both while you fill\nin your Pokédex.\pI'd love it if your world seemed\nwider than ever!\pThough I'd love it even more if you\ncame back from time to time to\lshow me what progress you've made.\p…Arghhh!\nI'm getting the itch to get out and\ldo fieldwork again!$"
+	.string "The people and the Pokémon you will\nmeet…\pAnd the great expanse of nature\nthat lies before you!\pExperience them both while you fill\nin your Pokédex.\pI'd love it if your world seemed\nwider than ever!\pThough I'd love it even more if\nyou came back from time to time to\lshow me what progress you've made.\p…Arghhh!\pI'm getting the itch to get out and\ndo fieldwork again!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese:
-	.string "{COLOR RED}May{COLOR DARK_GRAY}: Oh, wow, {PLAYER}!\nNow you've got a Pokédex, too!\lThat's great. Just like me!\pThen here… I'll give you something,\ntoo!\pSome Poké Balls that you can use to\ncatch wild Pokémon!$"
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: Oh, wow, {PLAYER}!\nNow you've got a Pokédex, too!\pThat's great.\nJust like me!\pThen here…\nI'll give you something, too!\pSome Poké Balls that you can use to\ncatch wild Pokémon!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls:
-	.string "If you catch a Pokémon in the\nwild and battle together with it\lfor a while, it will grow stronger\lfor you!\pTake that as a bit of advice from a\nmore experienced Trainer like me!\pI'm going to get ready to head out\nfrom Littleroot soon myself.\pI can't wait to see what kind of\nPokémon I'm going to meet…\pLet's both do our best on our\njourneys, {PLAYER}!$"
+	.string "If you catch a Pokémon in the\nwild and battle together with it\lfor a while, it will grow stronger\lfor you!\pTake that as a bit of advice from\na more experienced Trainer like me!\pI'm going to get ready to head out\nfrom Littleroot soon myself.\pI can't wait to see what kind of\nPokémon I'm going to meet…\pLet's both do our best on our\njourneys, {PLAYER}!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_OhYourBagsFull:
 	.string "Oh? Your Bag's full.$"
@@ -773,7 +773,7 @@ LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese:
 	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: Huh… So you got a Pokédex,\ntoo, {PLAYER}.\pWell then here.\nHave some Poké Balls on me.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CatchCoolPokemonWithPokeBalls:
-	.string "You can use them to catch wild\nPokémon.\pIf you catch a Pokémon in the\nwild and battle together with it\lfor a while, it will grow stronger\lfor you!\pTake that as a bit of advice from a\nmore experienced Trainer like me!\pI'm going to get ready to head out\nfrom Littleroot soon myself.\pIt's like… I don't know…\pIt really gets you pumped, right?\pWe've both gotta give it our all,\n{PLAYER}!$"
+	.string "You can use them to catch wild\nPokémon.\pIf you catch a Pokémon in the\nwild and battle together with it\lfor a while, it will grow stronger\lfor you!\pTake that as a bit of advice from a\nmore experienced Trainer like me!\pI'm going to get ready to head out\nfrom Littleroot soon myself.\pIt's like…\nI don't know…\pIt really gets you pumped, right?\pWe've both gotta give it our all,\n{PLAYER}!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_HeyYourBagsFull:
 	.string "Hey, your Bag's full.$"

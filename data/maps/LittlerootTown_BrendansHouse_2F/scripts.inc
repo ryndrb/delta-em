@@ -297,10 +297,10 @@ PlayersHouse_2F_Text_ClockIsStopped:
 	.string "You've got to set the time!$"
 
 PlayersHouse_2F_Text_HowDoYouLikeYourRoom:
-	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: How do you like your new room,\n{PLAYER}?\pGood! Everything's put away neatly!\pThey finished moving everything\ndownstairs, too.\pIt really is so nice having Pokémon\naround to help us!\pOh, but you should make sure that\neverything's all there on your\ldesk.$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: How do you like your new room,\n{PLAYER}?\pGood!\nEverything's put away neatly!\pThey finished moving everything\ndownstairs, too.\pIt really is so nice having Pokémon\naround to help us!\pOh, but you should make sure that\neverything's all there on your desk.$"
 
 BrendansHouse_2F_Text_Notebook:
-	.string "{PLAYER}'s notebook is full of\nadventure rules he jotted down!\pADVENTURE RULE NO. 1\nOpen the menu with the X Button.\pADVENTURE RULE NO. 2\nRecord your progress with Save.$"
+	.string "The notebook is full of adventure\nrules jotted down!\pADVENTURE RULE NO. 1\nOpen the menu with the X Button.\pADVENTURE RULE NO. 2\nRecord your progress with Save.$"
 
 Common_Text_LookCloserAtMap:
 	.string "{PLAYER} peered closely at\nthe Hoenn region's Town Map!$"

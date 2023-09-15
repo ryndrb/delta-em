@@ -296,7 +296,7 @@ Route101_Text_DontLeaveMe:
 	.string "Wh-where are you going?!\nDon't leave me like this!$"
 
 Route101_Text_YouSavedMe:
-	.string "Whew…\pI went into the tall grass to survey\nwild Pokémon when I was suddenly\ljumped!\pYou saved my hide. Thanks a lot!$"
+	.string "Whew…\pI went into the tall grass to survey\nwild Pokémon when I was suddenly\ljumped!\pYou saved my hide.\nThanks a lot!$"
 
 Route101_Text_NoticeItsPlayer_M:
 	.string "Oh?\pBut you're Norman's boy, {PLAYER}!\pI didn't even realize who you were\nat first.\pYou've grown into quite the young\nboy.\pThis isn't the place to chat, though.\nCome along to my lab.$"
@@ -472,7 +472,7 @@ Route101_EventScript_RivalGiveDexNav_Text_2:
 	.string "{PLAYER} received the {COLOR RED}DexNav{COLOR DARK_GRAY}!$"
 
 Route101_EventScript_RivalGiveDexNav_Text_3:
-	.string "The item I just gave you is called a\nDexNav.\pIt can tell you lots about the\nPokémon living in each area and\lthat kind of stuff.\pIt's a handy app if you're trying to\ncatch lots of different Pokémon.$"
+	.string "The item I just gave you is called a\nDexNav.\pIt can tell you lots about the\nPokémon living in each area and\lthat kind of stuff.\pIt's a handy app if you're trying\nto catch lots of different Pokémon.$"
 
 Route101_EventScript_RivalGiveDexNav_Text_4:
 	.string "All right!\pGuess it's about time I use the\nDexNav to do some more Pokémon\lcatching myself!\p{PLAYER}, you should use those\nPoké Balls I gave you earlier to do a\lbit of catching, too!$"
