@@ -150,7 +150,7 @@ LittlerootTown_BrendansHouse_2F_Movement_BrendaLeaveRoom:
 LittlerootTown_BrendansHouse_2F_Movement_BrendanEnters:
 	walk_down
 	walk_down
-	walk_in_place_faster_left
+	walk_in_place_left
 	step_end
 
 LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerNorth:
@@ -169,17 +169,17 @@ LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCNorth:
 	walk_left
 	walk_left
 	walk_left
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanNorth:
 	delay_16
-	walk_in_place_faster_up
+	walk_in_place_up
 	delay_16
 	delay_16
 	delay_16
 	delay_16
-	walk_in_place_faster_left
+	walk_in_place_left
 	step_end
 
 LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerSouth:
@@ -194,22 +194,22 @@ LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCSouth:
 	walk_left
 	walk_left
 	walk_left
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanSouth:
 	delay_16
-	walk_in_place_faster_up
+	walk_in_place_up
 	delay_16
 	delay_16
-	walk_in_place_faster_left
+	walk_in_place_left
 	step_end
 
 LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerWest:
 	walk_left
 	walk_left
 	walk_down
-	walk_in_place_faster_left
+	walk_in_place_left
 	step_end
 
 LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCWest:
@@ -220,16 +220,16 @@ LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCWest:
 	walk_left
 	walk_left
 	walk_left
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanWest:
 	delay_8
 	delay_16
-	walk_in_place_faster_up
+	walk_in_place_up
 	delay_16
 	delay_16
-	walk_in_place_faster_left
+	walk_in_place_left
 	step_end
 
 LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerEast:
@@ -238,21 +238,21 @@ LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerEast:
 	walk_left
 	walk_left
 	walk_left
-	walk_in_place_faster_down
+	walk_in_place_down
 	step_end
 
 LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCEast:
 	walk_up
 	walk_left
 	walk_left
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 @ Unused, the player is already facing this direction so its unneeded
 LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanEast:
 	delay_16
 	delay_16
-	walk_in_place_faster_left
+	walk_in_place_left
 	step_end
 
 LittlerootTown_BrendansHouse_2F_EventScript_PC::

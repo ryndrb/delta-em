@@ -36,7 +36,7 @@ Route110_EventScript_AquaGrunt1::
 	lock
 	faceplayer
 	msgbox Route110_Text_WeCantTalkAboutAquaActivities, MSGBOX_DEFAULT
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	release
 	end
@@ -45,7 +45,7 @@ Route110_EventScript_AquaGrunt2::
 	lock
 	faceplayer
 	msgbox Route110_Text_KickUpARuckus, MSGBOX_DEFAULT
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	release
 	end
@@ -54,7 +54,7 @@ Route110_EventScript_AquaGrunt3::
 	lock
 	faceplayer
 	msgbox Route110_Text_MyFirstJobInAqua, MSGBOX_DEFAULT
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	release
 	end
@@ -63,7 +63,7 @@ Route110_EventScript_AquaGrunt4::
 	lock
 	faceplayer
 	msgbox Route110_Text_AquaActionsBringSmiles, MSGBOX_DEFAULT
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	release
 	end
@@ -304,7 +304,7 @@ Route110_EventScript_Alyssa::
 
 Route110_EventScript_CyclingChallengeEnd::
 	lockall
-	applymovement LOCALID_CHALLENGE_BIKER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_CHALLENGE_BIKER, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	call Route110_EventScript_CyclingChallengeResults
 	releaseall
@@ -375,13 +375,15 @@ Route110_EventScript_RivalTrigger3::
 
 Route110_EventScript_RivalScene::
 	lockall
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceDown
+	waitmovement 0
+	playse SE_PIN
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	waitse
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, Route110_EventScript_PlayMayMusic
 	call_if_eq VAR_RESULT, FEMALE, Route110_EventScript_PlayBrendanMusic
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
-	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_Delay48
 	waitmovement 0
 	delay 30
@@ -403,6 +405,7 @@ Route110_EventScript_PlayBrendanMusic::
 	return
 
 Route110_EventScript_MayBattle::
+	msgbox Route110_Text_MayRoute110Intro, MSGBOX_DEFAULT
 	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_MayBattleTreecko
@@ -426,6 +429,14 @@ Route110_EventScript_MayBattleMudkip::
 	end
 
 Route110_EventScript_MayDefeated::
+	msgbox Route110_Text_MayMonWornOut, MSGBOX_DEFAULT
+	closemessage
+	fadescreenswapbuffers FADE_TO_BLACK
+	special HealPlayerParty
+	playse SE_USE_ITEM
+	waitse
+	fadescreenswapbuffers FADE_FROM_BLACK
+	msgbox Route110_Text_MonHPRestored, MSGBOX_DEFAULT
 	msgbox Route110_Text_MayTakeThis, MSGBOX_DEFAULT
 	call Route110_EventScript_GiveItemfinder
 	msgbox Route110_Text_MayExplainItemfinder, MSGBOX_DEFAULT
@@ -433,6 +444,7 @@ Route110_EventScript_MayDefeated::
 	end
 
 Route110_EventScript_BrendanBattle::
+	msgbox Route110_Text_BrendanRoute110Intro, MSGBOX_DEFAULT
 	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_BrendanBattleTreecko
@@ -456,6 +468,14 @@ Route110_EventScript_BrendanBattleMudkip::
 	end
 
 Route110_EventScript_BrendanDefeated::
+	msgbox Route110_Text_BrendanMonWornOut, MSGBOX_DEFAULT
+	closemessage
+	fadescreenswapbuffers FADE_TO_BLACK
+	special HealPlayerParty
+	playse SE_USE_ITEM
+	waitse
+	fadescreenswapbuffers FADE_FROM_BLACK
+	msgbox Route110_Text_MonHPRestored, MSGBOX_DEFAULT
 	msgbox Route110_Text_BrendanTakeThis, MSGBOX_DEFAULT
 	call Route110_EventScript_GiveItemfinder
 	msgbox Route110_Text_BrendanExplainItemfinder, MSGBOX_DEFAULT
@@ -531,7 +551,7 @@ Route110_EventScript_MoveRival3::
 Route110_Movement_RivalApproachPlayer1:
 	walk_down
 	walk_left
-	walk_in_place_faster_down
+	walk_in_place_down
 	step_end
 
 Route110_Movement_RivalApproachPlayer2:
@@ -541,7 +561,7 @@ Route110_Movement_RivalApproachPlayer2:
 Route110_Movement_RivalApproachPlayer3:
 	walk_down
 	walk_right
-	walk_in_place_faster_down
+	walk_in_place_down
 	step_end
 
 Route110_Movement_RivalExit1:
@@ -604,6 +624,8 @@ Route110_EventScript_BirchScene::
 	waitmovement 0
 	applymovement LOCALID_BIRCH, Common_Movement_Delay48
 	waitmovement 0
+    applymovement LOCALID_BIRCH, Route110_Movement_BirchNoticePlayer
+    waitmovement 0
 	call_if_eq VAR_0x8008, 1, Route110_EventScript_BirchApproachPlayer1
 	call_if_eq VAR_0x8008, 2, Route110_EventScript_BirchApproachPlayer2
 	call_if_eq VAR_0x8008, 3, Route110_EventScript_BirchApproachPlayer3
@@ -611,13 +633,13 @@ Route110_EventScript_BirchScene::
 	msgbox Route110_Text_ImagineSeeingYouHere, MSGBOX_DEFAULT
 	closemessage
 	delay 20
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	delay 10
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	delay 20
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	delay 30
 	msgbox Route110_Text_HeardYouInstallMatchCall, MSGBOX_DEFAULT
@@ -686,6 +708,15 @@ Route110_Movement_BirchEntrance:
 	walk_down
 	step_end
 
+Route110_Movement_BirchNoticePlayer:
+    walk_in_place_up
+    delay_16
+    delay_8
+    emote_question_mark
+    walk_in_place_down
+    delay_8
+    step_end
+
 Route110_Movement_BirchApproachPlayer1:
 	walk_down
 	walk_left
@@ -744,76 +775,58 @@ Route110_Movement_BirchExit4:
 	step_end
 
 Route110_Text_WeCantTalkAboutAquaActivities:
-	.string "Team Aqua's activities…\n"
-	.string "We can't talk about them yet.$"
+	.string "Team Aqua's activities…\nWe can't talk about them yet.$"
 
 Route110_Text_KickUpARuckus:
-	.string "I want to get going to Slateport and\n"
-	.string "kick up a ruckus!$"
+	.string "I want to get going to Slateport and\nkick up a ruckus!$"
 
 Route110_Text_MyFirstJobInAqua:
-	.string "This is my first job after joining\n"
-	.string "Team Aqua. It's a little scary.$"
+	.string "This is my first job after joining\nTeam Aqua.\pIt's a little scary.$"
 
 Route110_Text_AquaActionsBringSmiles:
-	.string "Team Aqua's actions should bring\n"
-	.string "smiles to people's faces!$"
+	.string "Team Aqua's actions should bring\nsmiles to people's faces!$"
+
+Route110_Text_MayRoute110Intro:
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: Hey, {PLAYER}!\nIt's been ages!\lNice, timing, too.\pI was just searching for Pokémon,\nyou know?\pMy dad is always going on about\nhow nature used to be even more\ldiverse, way back in the day.\pHe says that there used to be\nway more kinds of Pokémon that\lthere are now!\pSo that's why we do fieldwork, him\nand me.\pWe really want to find out what\nhappened to those Pokémon in the\lpast.\pOn my journey up to now, I've\nmet a lot of different Pokémon, and\lI think I've gotten to understand a\llot of them, too.$"
 
 Route110_Text_MayLetsBattle:
-	.string "May: Hi, {PLAYER}{KUN}, long time no see!\p"
-	.string "While I was searching for other\n"
-	.string "Pokémon, my Pokémon grew stronger.\p"
-	.string "So…\n"
-	.string "How about a little battle?$"
+	.string "Me and my Pokémon have really grown.\nSo… How about a little battle?$"
 
 Route110_Text_MayDefeated:
-	.string "Yikes!\n"
-	.string "You're better than I expected!$"
+	.string "Yikes!\nYou're better than I expected!$"
+
+Route110_Text_MayMonWornOut:
+	.string "{PLAYER}, you've been busy training,\ntoo, haven't you?\pOops!\nBut look at us!\lOur teams looks pretty tired.\lLet's get them taken care of first.$"
 
 Route110_Text_MayTakeThis:
-	.string "May: {PLAYER}{KUN}, you've been busy\n"
-	.string "training, too, haven't you?\p"
-	.string "I think you deserve a reward!\n"
-	.string "This is from me!$"
+	.string "And now I think you deserve a\nreward, too!\pHere, this is from me!$"
 
 Route110_Text_MayExplainItemfinder:
-	.string "May: That's an Itemfinder.\p"
-	.string "Try it out. If there is an item that's\n"
-	.string "not visible, it emits a sound.\p"
-	.string "Okay, {PLAYER}{KUN}, let's meet again!\p"
-	.string "I know it's a little silly coming from\n"
-	.string "me, but I think you should train a lot\l"
-	.string "harder for the next time.$"
+	.string "That's a {COLOR BLUE}Dowsing Machine{COLOR DARK_GRAY}.\pTry it out-if there's a hidden\nitem anywhere near you, that little\lthing will react to tell you.\pPay attention, and it'll lead you\nright to items!\pAnd it's fun to see all those waving\nbits above your head.\lTry it, and I bet you'll get hooked!\pCareful-you won't be able to sneak\nup on Pokémon while you wear it!\pSee you later then, {PLAYER}!\nLet's meet again!\pI hope we'll both be able to meet\neven more Pokémon on our journeys!$"
+
+Route110_Text_BrendanRoute110Intro:
+	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: Hey, {PLAYER}.\nSo this is where you've been.\lHow've things been going?\pI was just checking out the\nPokémon around here to help with\lmy dad's research.\pHe says that long, long time ago,\nnature used to be way more diverse\land there were lots more kinds of\lPokémon, too.\pMy dad and I want to learn more\nabout those Pokémon from the past,\lyou know?\lThat's why we do fieldwork.\lAnd this journey has really helped.\pI've met a lot of Pokémon on my way\nhere and learned about them, too.$"
 
 Route110_Text_BrendanLetsBattle:
-	.string "Brendan: Hey, {PLAYER}.\n"
-	.string "So this is where you were.\l"
-	.string "How's it going?\p"
-	.string "Have you been raising your Pokémon?\n"
-	.string "I'll check for you.$"
+	.string "Which reminds me!\pCome on!\nIt's the first time we've met in\lages, so let's have a battle!\pShow me what you and your team\nhave accomplished on your journey,\l{PLAYER}!$"
 
 Route110_Text_BrendanDefeated:
-	.string "Hmm…\n"
-	.string "You're pretty good.$"
+	.string "Whoa!\nNot bad!$"
+
+Route110_Text_BrendanMonWornOut:
+	.string "Sheesh, {PLAYER}, when did you go and\ntrain your Pokémon up that well?\pIt's like, I don't know…\nIt's pretty surprising, OK!\pBoth our teams look pretty wiped out\nafter that, huh!\lHere, let me help them out.$"
+
+Route110_Text_MonHPRestored:
+	.string "You had your Pokémon's HP restored!$"
 
 Route110_Text_BrendanTakeThis:
-	.string "Brendan: {PLAYER}, you've trained\n"
-	.string "without me noticing…\p"
-	.string "Good enough!\n"
-	.string "Here, take this.$"
+	.string "And this is for you.$"
 
 Route110_Text_BrendanExplainItemfinder:
-	.string "Brendan: That's an Itemfinder.\p"
-	.string "Use it to root around for items that\n"
-	.string "aren't visible.\p"
-	.string "If it senses something, it emits\n"
-	.string "a sound.\p"
-	.string "Anyway, I'm off to look for new\n"
-	.string "Pokémon.$"
+	.string "That's a {COLOR BLUE}Dowsing Machine{COLOR DARK_GRAY}.\pUse it to root around for items that\naren't visible.\pIf it senses something nearby, it'll\nreact, see?\pTruth is, once I started using it, I\ngot pretty hooked on it.\lIt's addicting!\lBut I recommend you give it a try.\pCareful though, you won't be able\nto sneak up on Pokémon while you\lwear it!\pI guess I'm off to get started\nsurveying the next area then.\pI hope you meet a lot of Pokémon,\ntoo, {PLAYER}!$"
 
 Route110_Text_RideBikeAtFullSpeed:
-	.string "Wouldn't it be great to ride a Bike\n"
-	.string "at full speed on Cycling Road?$"
+	.string "Wouldn't it be great to ride a Bike\nat full speed on the Cycling Road?$"
 
 Route110_Text_HairStreamsBehindMe:
 	.string "How do you like the way my raven-\n"
@@ -835,7 +848,7 @@ Route110_Text_YouGotBikeFromRydel:
 	.string "Rydel, Rydel, Rydel, Rydel, Rydel…\n"
 	.string "That name's everywhere.\p"
 	.string "You should ride it around all over\n"
-	.string "the place--it's good advertising!$"
+	.string "the place-it's good advertising!$"
 
 Route110_Text_TwoRoads:
 	.string "The two roads, one above, one below…\p"
@@ -853,10 +866,7 @@ Route110_Text_BikeTechniques:
 	.string "reach only by using a Bike technique.$"
 
 Route110_Text_WhichShouldIChoose:
-	.string "Which should I choose?\p"
-	.string "Make a beeline for Mauville on\n"
-	.string "Cycling Road, or take the low road\l"
-	.string "and look for Pokémon?$"
+	.string "Which should I choose?\pMake a beeline for Mauville on the\nCycling Road, or take the low road\land look for Pokémon?$"
 
 Route110_Text_CyclingChallengeResultSummary:
 	.string "Number of collisions:\n"
@@ -965,30 +975,118 @@ Route110_Text_ThereIsNoRecord:
 	.string "challenge. There is no record…$"
 
 Route110_Text_ImagineSeeingYouHere:
-	.string "Prof. Birch: Oh, {PLAYER}{KUN}!\n"
-	.string "Imagine seeing you here!\p"
-	.string "And where might my {RIVAL} be?$"
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: Oh, {PLAYER}!\nImagine seeing you here!\pI hope you haven't had any trouble\nwith those troublesome Team Aqua.\pI heard they've been causing quite a\nruckus in some towns lately.\pBut anyway, how has your journey\nbeen so far?\pAnd speaking of which, where might\nmy {RIVAL} be?$"
 
 Route110_Text_HeardYouInstallMatchCall:
-	.string "Oh, I see!\n"
-	.string "You two are running separately.\l"
-	.string "Well, that's fine.\p"
-	.string "Oh, yes, I heard that your Pokénav\n"
-	.string "had the Match Call system installed.\p"
-	.string "Well, then, I should register you in\n"
-	.string "my Pokénav as well.\p"
-	.string "That way, even when we're apart,\n"
-	.string "I can rate your Pokédex anytime.\p"
-	.string "… … … … … …$"
+	.string "Oh, I see!\nYou two are running separately.\lWell, that's fine.\pOh, yes, I heard that your Pokénav\nhad the Match Call system installed.\pWell, then, I should register you in\nmy Pokénav as well.\pThat way, even when we're apart, I\ncan rate your Pokédex anytime.$"
 
 Route110_Text_RegisteredBirchInPokenav:
 	.string "Registered Prof. Birch\n"
 	.string "in the Pokénav.$"
 
 Route110_Text_KeepAnEyeOutForRival:
-	.string "Prof. Birch: {PLAYER}{KUN}…\p"
-	.string "Please keep an eye out for my {RIVAL}.\n"
-	.string "… … … … … …\p"
-	.string "Well, I had better get going.\n"
-	.string "See you again, {PLAYER}{KUN}!$"
+	.string "Oh, and {PLAYER}…\pPlease keep an eye out for my\n{RIVAL}.\pWell, I had better get going, then.\nSee you again, {PLAYER}!$"
 
+Route110_EventScript_AquaGruntsScene1::
+	lockall
+	setvar VAR_0x8008, 1
+	goto Route110_EventScript_AquaGruntsScene
+	end
+
+
+Route110_EventScript_AquaGruntsScene2::
+	lockall
+	setvar VAR_0x8008, 2
+	goto Route110_EventScript_AquaGruntsScene
+	end
+
+
+Route110_EventScript_AquaGruntsScene3::
+	lockall
+	setvar VAR_0x8008, 3
+	goto Route110_EventScript_AquaGruntsScene
+	end
+
+
+Route110_EventScript_AquaGruntsScene4::
+	lockall
+	setvar VAR_0x8008, 4
+	goto Route110_EventScript_AquaGruntsScene
+	end
+
+
+Route110_EventScript_AquaGruntsScene::
+	delay 32
+	msgbox Route110_EventScript_AquaGruntsScene_Text_0
+	applymovement 23, Common_Movement_WalkInPlaceUp
+	waitmovement 23
+	msgbox Route110_EventScript_AquaGruntsScene_Text_1
+	applymovement 25, Common_Movement_WalkInPlaceUp
+	waitmovement 25
+	msgbox Route110_EventScript_AquaGruntsScene_Text_2
+	closemessage
+	delay 8
+	applymovement 22, Route110_Movement_AquaGruntsLeave22
+	applymovement 23, Route110_Movement_AquaGruntsLeave23
+	applymovement 24, Route110_Movement_AquaGruntsLeave24
+	applymovement 25, Route110_Movement_AquaGruntsLeave25
+	applymovement 26, Route110_Movement_AquaGruntsLeave26
+	waitmovement 22
+	removeobject 22
+	removeobject 23
+	removeobject 24
+	removeobject 25
+	removeobject 26
+	delay 64
+	goto Route110_EventScript_BirchScene
+	end
+
+
+Route110_Movement_AquaGruntsLeave22:
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Route110_Movement_AquaGruntsLeave23:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Route110_Movement_AquaGruntsLeave24:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Route110_Movement_AquaGruntsLeave25:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Route110_Movement_AquaGruntsLeave26:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Route110_EventScript_AquaGruntsScene_Text_0:
+	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: Let's keep going through Route\n110 and head for Mt. Chimney!$"
+
+Route110_EventScript_AquaGruntsScene_Text_1:
+	.string "Wow, that's quite far.\pWhy don't we take a rest in\n{COLOR BLUE}Mauville City{COLOR DARK_GRAY}.\lIt's on the way.$"
+
+Route110_EventScript_AquaGruntsScene_Text_2:
+	.string "Great idea!$"

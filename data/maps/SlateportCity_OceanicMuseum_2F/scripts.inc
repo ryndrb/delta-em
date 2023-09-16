@@ -159,7 +159,6 @@ SlateportCity_OceanicMuseum_2F_EventScript_CaptStern_19:
 	removeobject 1
 	playse SE_EXIT
 	waitse
-	setflag FLAG_HIDE_ROUTE_110_TEAM_AQUA
 	compare VAR_REGISTER_BIRCH_STATE, 0
 	goto_if_eq SlateportCity_OceanicMuseum_2F_EventScript_CaptStern_24
 SlateportCity_OceanicMuseum_2F_EventScript_CaptStern_23:

@@ -306,7 +306,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
       "x": 7,
-      "y": 82,
+      "y": 81,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -317,9 +317,9 @@
       "flag": "FLAG_HIDE_ROUTE_110_TEAM_AQUA"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
       "x": 8,
-      "y": 82,
+      "y": 81,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -332,7 +332,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
       "x": 9,
-      "y": 82,
+      "y": 81,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -343,9 +343,9 @@
       "flag": "FLAG_HIDE_ROUTE_110_TEAM_AQUA"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
       "x": 10,
-      "y": 82,
+      "y": 81,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -358,7 +358,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
       "x": 8,
-      "y": 81,
+      "y": 80,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -488,7 +488,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",
       "x": 9,
-      "y": 78,
+      "y": 77,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -518,28 +518,28 @@
       "x": 15,
       "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE",
+      "dest_map": "MAP_ROUTE110_SEASIDE_CYCLING_ROAD_NORTH_ENTRANCE",
       "dest_warp_id": "0"
     },
     {
       "x": 18,
       "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE",
+      "dest_map": "MAP_ROUTE110_SEASIDE_CYCLING_ROAD_NORTH_ENTRANCE",
       "dest_warp_id": "2"
     },
     {
       "x": 16,
       "y": 88,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE110_SEASIDE_CYCLING_ROAD_NORTH_ENTRANCE",
+      "dest_map": "MAP_ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE",
       "dest_warp_id": "0"
     },
     {
       "x": 19,
       "y": 88,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE110_SEASIDE_CYCLING_ROAD_NORTH_ENTRANCE",
+      "dest_map": "MAP_ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE",
       "dest_warp_id": "2"
     }
   ],
@@ -592,38 +592,38 @@
     {
       "type": "trigger",
       "x": 7,
-      "y": 84,
+      "y": 83,
       "elevation": 3,
       "var": "VAR_REGISTER_BIRCH_STATE",
       "var_value": "1",
-      "script": "Route110_EventScript_BirchScene1"
+      "script": "Route110_EventScript_AquaGruntsScene1"
     },
     {
       "type": "trigger",
       "x": 8,
-      "y": 84,
+      "y": 83,
       "elevation": 3,
       "var": "VAR_REGISTER_BIRCH_STATE",
       "var_value": "1",
-      "script": "Route110_EventScript_BirchScene2"
+      "script": "Route110_EventScript_AquaGruntsScene2"
     },
     {
       "type": "trigger",
       "x": 9,
-      "y": 84,
+      "y": 83,
       "elevation": 3,
       "var": "VAR_REGISTER_BIRCH_STATE",
       "var_value": "1",
-      "script": "Route110_EventScript_BirchScene3"
+      "script": "Route110_EventScript_AquaGruntsScene3"
     },
     {
       "type": "trigger",
       "x": 10,
-      "y": 84,
+      "y": 83,
       "elevation": 3,
       "var": "VAR_REGISTER_BIRCH_STATE",
       "var_value": "1",
-      "script": "Route110_EventScript_BirchScene4"
+      "script": "Route110_EventScript_AquaGruntsScene4"
     }
   ],
   "bg_events": [
@@ -661,8 +661,8 @@
     },
     {
       "type": "sign",
-      "x": 14,
-      "y": 88,
+      "x": 12,
+      "y": 83,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route110_EventScript_Route103Sign"
@@ -692,15 +692,15 @@
     {
       "type": "sign",
       "x": 34,
-      "y": 39,
+      "y": 38,
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route110_EventScript_TrainerTipsPrlzSleep"
     },
     {
       "type": "sign",
-      "x": 32,
-      "y": 65,
+      "x": 36,
+      "y": 69,
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route110_EventScript_TrainerTipsRegisterItems"

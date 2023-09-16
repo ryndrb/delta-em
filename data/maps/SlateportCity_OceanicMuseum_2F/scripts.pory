@@ -164,7 +164,6 @@ script SlateportCity_OceanicMuseum_2F_EventScript_CaptStern {
     removeobject(LOCALID_CAPT_STERN)
     playse(SE_EXIT)
     waitse
-	setflag(FLAG_HIDE_ROUTE_110_TEAM_AQUA)
 	if(var(VAR_REGISTER_BIRCH_STATE) == 0){
         setvar(VAR_REGISTER_BIRCH_STATE, 1)
     }

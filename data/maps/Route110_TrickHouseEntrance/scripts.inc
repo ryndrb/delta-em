@@ -755,7 +755,7 @@ Route110_TrickHouseEntrance_Text_ComeToChallengeTrickHouse:
 	.string "Consider your challenge accepted!\p"
 	.string "Enter through the scroll there,\n"
 	.string "and let your challenge commence!\p"
-	.string "I shall be waiting in the back!$"
+	.string "I shall be waiting in the back!\pOne more thing… I have to warn\nyou.\pMy tricks are quite difficult.\nDon't get lost!\pNow I'm really leaving.\nI shall be waiting in the back!$"
 
 Route110_TrickHouseEntrance_Text_ItsAScroll:
 	.string "It's a scroll.$"
