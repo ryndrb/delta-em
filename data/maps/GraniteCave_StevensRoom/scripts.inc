@@ -158,10 +158,10 @@ GraniteCave_StevensRoom_EventScript_Steven_Text_6:
 	.string "If you don't mind me asking…\pDo you feel anything in particular\nwhen you look up at this wall?\pA primal world, lost thousands of\nyears in the past…\pLegendary Pokémon of tremendous\npower became humanity's greatest\lthreat…\pThe terror aroused by that power\nis clear to see in this ancient\lartwork.$"
 
 GraniteCave_StevensRoom_EventScript_Steven_Text_7:
-	.string "…Yes.\pBut not all power is terrible.\pYour Pokémon are clearly quite\ncapable as well.\lLooking at you all together…\pI think you have it takes to become\na Pokémon League Champion.\pAs long as you keep training, that\nis.\p…\pI know, since we've gotten to know\neach other, let's register one\lanother in our PokéNavs.$"
+	.string "…Yes.\pBut not all power is terrible.\pYour Pokémon are clearly quite\ncapable as well.\lLooking at you all together…\pI think you have it takes to become\na Pokémon League Champion.\pAs long as you keep training, that\nis.\p…\pI know, since we've gotten to know\neach other, let's register one\lanother in our Pokénavs.$"
 
 GraniteCave_StevensRoom_EventScript_Steven_Text_8:
-	.string "Registered Steven in the PokéNav.$"
+	.string "Registered Steven in the Pokénav.$"
 
 GraniteCave_StevensRoom_EventScript_Steven_Text_9:
 	.string "Good luck to you.\nI must be going now.$"

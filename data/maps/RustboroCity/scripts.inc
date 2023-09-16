@@ -1121,10 +1121,10 @@ RustboroCity_Text_PleaseComeWithMe:
 	.string "Oh, yes! Young Trainer!\nPlease come with me!$"
 
 RustboroCity_Text_MayHiLetsRegister:
-	.string "{COLOR RED}May{COLOR DARK_GRAY}: Oh! Hey, {PLAYER}!\pHave you been catching lots of\nPokémon?\pI'm doing pretty good on\nthat front, at least.\pI caught so many Pokémon in\nPetalburg Woods that I ran out of\lPoké Balls!\p…\pOh!\pYou have a PokéNav!\nAnd with a Match Call feature, too!\pLet's register each other so we can\ncontact one another anytime!$"
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: Oh! Hey, {PLAYER}!\pHave you been catching lots of\nPokémon?\pI'm doing pretty good on\nthat front, at least.\pI caught so many Pokémon in\nPetalburg Woods that I ran out of\lPoké Balls!\p…\pOh!\pYou have a Pokénav!\nAnd with a Match Call feature, too!\pLet's register each other so we can\ncontact one another anytime!$"
 	
 RustboroCity_Text_RegisteredMay:
-	.string "Registered May\nin the PokéNav.$"
+	.string "Registered May\nin the Pokénav.$"
 
 RustboroCity_Text_MayPassedBrineyWantToBattle:
 	.string "Oh yeah… And I passed by Mr. Briney\nwhen I was in Petalburg Woods.\pHmm. I guess he must have been on\nhis way home to his cottage on\l{COLOR BLUE}Route 104{COLOR DARK_GRAY}.\p{PLAYER}, you just moved here so\nthere's no way you could know, but\lMr. Briney was once a highly\lrespected seafarer.\pBut enough about that!\nI've been itching for a battle!\pHow about it, {PLAYER}?\pReady to test your skills against\nme?$"
@@ -1146,10 +1146,10 @@ RustboroCity_Text_MayMrBrineyHint:
 	.string "{COLOR RED}May{COLOR DARK_GRAY}: Oh yeah… And I passed by\nMr. Briney when I was in Petalburg\lWoods.\pHmm. I guess he must have been on\nhis way home to his cottage on\l{COLOR BLUE}Route 104{COLOR DARK_GRAY}.\p{PLAYER}, you just moved here so\nthere's no way you could know, but\lMr. Briney was once a highly\lrespected seafarer.$"
 
 RustboroCity_Text_BrendanHiLetsRegister:
-	.string "{COLOR RED}{RIVAL}{COLOR DARK_GRAY}: Hey, {PLAYER}.\pHow's your Pokédex?\nCompleted any entries yet?\pMine pretty much rules.\pI went on a Pokémon-catching frenzy\nin Petalburg Woods until I ran out\lof Poké Balls!\p…\pOh?\nYou have a PokéNav!\pAnd a Match Call feature, too.\nCool!\pLet's register each other so we can\nget in touch anytime.$"
+	.string "{COLOR RED}{RIVAL}{COLOR DARK_GRAY}: Hey, {PLAYER}.\pHow's your Pokédex?\nCompleted any entries yet?\pMine pretty much rules.\pI went on a Pokémon-catching frenzy\nin Petalburg Woods until I ran out\lof Poké Balls!\p…\pOh?\nYou have a Pokénav!\pAnd a Match Call feature, too.\nCool!\pLet's register each other so we can\nget in touch anytime.$"
 
 RustboroCity_Text_RegisteredBrendan:
-	.string "Registered Brendan\nin the PokéNav.$"
+	.string "Registered Brendan\nin the Pokénav.$"
 
 RustboroCity_Text_BrendanPassedBrineyWantToBattle:
 	.string "Oh, yeah. I passed by Mr. Briney in\nPetalburg Woods.\pI bet he was on his way home to his\ncottage on {COLOR BLUE}Route 104{COLOR DARK_GRAY}.\pI guess you wouldn't know, since you\njust moved here and all, but they\lsay that old guy used to be an\lamazing sailor!\pBut enough about that.\nI've been itching for a battle!\pWant to have a battle to test how\nfar you've progressed?$"
@@ -1206,10 +1206,10 @@ RustboroCity_Text_CuttersHouse:
 	.string "Cutter's House$"
 
 RustboroCity_Text_DevelopedNewPokenavFeature:
-	.string "I've been working on an exciting new\nfeature for the PokéNav…\lAnd it's turned out splendidly!\p{PLAYER}, could I take a look at your\nPokéNav?\pThe one President Stone provided\nyou with?$"
+	.string "I've been working on an exciting new\nfeature for the Pokénav…\lAnd it's turned out splendidly!\p{PLAYER}, could I take a look at your\nPokénav?\pThe one President Stone provided\nyou with?$"
 
 RustboroCity_Text_AddedMatchCallPleaseCallMrStone:
-	.string "Fantastic!\nThere you go, {PLAYER}!\pI've added a new feature called the\nMatch Call to your PokéNav.\pWith the Match Call, you can easily\nconnect and chat with trainers\lyou've met on your journey, right\lfrom your PokéNav.\pYou know, President Stone should be\none of your first contacts.\pGive it a try!$"
+	.string "Fantastic!\nThere you go, {PLAYER}!\pI've added a new feature called the\nMatch Call to your Pokénav.\pWith the Match Call, you can easily\nconnect and chat with trainers\lyou've met on your journey, right\lfrom your Pokénav.\pYou know, President Stone should be\none of your first contacts.\pGive it a try!$"
 
 RustboroCity_Text_PleaseSelectPokenav:
 	.string "Go ahead, initiate a call with him\nand see how it works.$"

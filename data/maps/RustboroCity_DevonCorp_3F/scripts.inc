@@ -198,10 +198,10 @@ RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor:
 	.string "{COLOR RED}Mr. Stone{COLOR DARK_GRAY}: I'm Mr. Stone, the\nPresident of the Devon Corporation.\pI heard just now how we have quite\na bit to thank you for.\pSo you helped out my staff not just\nonce, but twice!\pThere's a favor I'd like to ask of a\nreliable Trainer like you.\pNow I want you to know I'm a\npresident you can trust.\pI'd never be so mean to ask a favor\nfor nothing in return.\pThat's why I want you to have this!$"
 
 RustboroCity_DevonCorp_3F_Text_ReceivedPokenav:
-	.string "{PLAYER} received a {COLOR RED}PokéNav{COLOR DARK_GRAY}.$"
+	.string "{PLAYER} received a {COLOR RED}Pokénav{COLOR DARK_GRAY}.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp:
-	.string "That device…\pIt's Pokémon Navigator, or PokéNav\nfor short.\pIt is an indispensable tool for any\nTrainer who is traveling out in the\lworld.\p…\pNow let me get to the important\nissue of what it is I need you to\ldo…$"
+	.string "That device…\pIt's Pokémon Navigator, or Pokénav\nfor short.\pIt is an indispensable tool for any\nTrainer who is traveling out in the\lworld.\p…\pNow let me get to the important\nissue of what it is I need you to\ldo…$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneLetterToSteven:
 	.string "I want to ask you to deliver this\n{COLOR BLUE}Letter{COLOR DARK_GRAY} to a man named {COLOR RED}Steven{COLOR DARK_GRAY}.\lYou should find him in {COLOR BLUE}Dewford{COLOR DARK_GRAY}.$"

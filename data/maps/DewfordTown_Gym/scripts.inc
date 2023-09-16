@@ -385,7 +385,7 @@ DewfordTown_Gym_Text_ExplainBulkUp:
 
 DewfordTown_Gym_Text_RegisteredBrawly:
 	.string "Registered Gym Leader Brawly\n"
-	.string "in the PokéNav.$"
+	.string "in the Pokénav.$"
 
 DewfordTown_Gym_Text_BrawlyPostBattle:
 	.string "I can see your talent becoming a\ngiant wave that causes a storm of\lastonishment with Trainers one day!\pI look forward to the day when I\ncan surf your giant wave!$"

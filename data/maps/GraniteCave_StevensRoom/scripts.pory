@@ -53,11 +53,11 @@ script GraniteCave_StevensRoom_EventScript_Steven {
     applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDown)
     applymovement(LOCALID_STEVEN, Common_Movement_WalkInPlaceDown)
     waitmovement(LOCALID_STEVEN)
-    msgbox("…Yes.\pBut not all power is terrible.\pYour Pokémon are clearly quite\ncapable as well.\lLooking at you all together…\pI think you have it takes to become\na Pokémon League Champion.\pAs long as you keep training, that\nis.\p…\pI know, since we've gotten to know\neach other, let's register one\lanother in our PokéNavs.")
+    msgbox("…Yes.\pBut not all power is terrible.\pYour Pokémon are clearly quite\ncapable as well.\lLooking at you all together…\pI think you have it takes to become\na Pokémon League Champion.\pAs long as you keep training, that\nis.\p…\pI know, since we've gotten to know\neach other, let's register one\lanother in our Pokénavs.")
     closemessage
     delay(24)
 	playfanfare(MUS_REGISTER_MATCH_CALL)
-	msgbox("Registered Steven in the PokéNav.")
+	msgbox("Registered Steven in the Pokénav.")
 	waitfanfare
 	closemessage
 	delay(24)

@@ -1301,11 +1301,11 @@ SlateportCity_Text_MaybeThisTrainer:
 	.string "Hmm…\nMaybe, just maybe, this Trainer…$"
 
 SlateportCity_Text_LetsRegisterEachOther:
-	.string "All right!\pI think you're going to become a\ngood friend.\pSo, let's register each other in\nour PokéNavs.$"
+	.string "All right!\pI think you're going to become a\ngood friend.\pSo, let's register each other in\nour Pokénavs.$"
 
 SlateportCity_Text_RegisteredScott:
 	.string "Registered this Scott person\n"
-	.string "in the PokéNav.$"
+	.string "in the Pokénav.$"
 
 SlateportCity_Text_KeepEyeOnTrainersBeSeeingYou:
 	.string "What I'd like to do is tag along with\nyou, but I do want to keep an eye\lon the talents of other people,\ltoo.\pSo, I'll be off to roam other\ntowns a bit more.\lBe seeing you, {PLAYER}!$"
