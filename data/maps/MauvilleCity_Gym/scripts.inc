@@ -77,13 +77,16 @@ MauvilleCity_Gym_EventScript_Wattson::
 	trainerbattle_single TRAINER_WATTSON_1, MauvilleCity_Gym_Text_WattsonIntro, MauvilleCity_Gym_Text_WattsonDefeat, MauvilleCity_Gym_EventScript_WattsonDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, MauvilleCity_Gym_EventScript_WattsonRematch
-	goto_if_unset FLAG_RECEIVED_TM_SHOCK_WAVE, MauvilleCity_Gym_EventScript_GiveShockWave2
+	goto_if_unset FLAG_RECEIVED_TM_SHOCK_WAVE, MauvilleCity_Gym_EventScript_GiveVoltSwitch2
 	goto_if_eq VAR_NEW_MAUVILLE_STATE, 2, MauvilleCity_Gym_EventScript_CompletedNewMauville
 	msgbox MauvilleCity_Gym_Text_WattsonPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 MauvilleCity_Gym_EventScript_WattsonDefeated::
+    msgbox MauvilleCity_Gym_Text_WattsonTakeThisBadge, MSGBOX_DEFAULT
+    closemessage
+    delay 8
 	message MauvilleCity_Gym_Text_ReceivedDynamoBadge
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
@@ -99,7 +102,7 @@ MauvilleCity_Gym_EventScript_WattsonDefeated::
 	special MauvilleGymDeactivatePuzzle
 	special DrawWholeMapView
 	playse SE_UNLOCK
-	call MauvilleCity_Gym_EventScript_GiveShockWave
+	call MauvilleCity_Gym_EventScript_GiveVoltSwitch
 	closemessage
 	delay 30
 	playfanfare MUS_REGISTER_MATCH_CALL
@@ -108,21 +111,23 @@ MauvilleCity_Gym_EventScript_WattsonDefeated::
 	closemessage
 	delay 30
 	setflag FLAG_ENABLE_WATTSON_MATCH_CALL
+	setvar VAR_MAUVILLE_CITY_STATE, 3
+	clearflag FLAG_HIDE_MAUVILLE_CITY_GRUNTS
 	release
 	end
 
-MauvilleCity_Gym_EventScript_GiveShockWave2::
+MauvilleCity_Gym_EventScript_GiveVoltSwitch2::
 	giveitem ITEM_TM_SHOCK_WAVE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT
+	msgbox MauvilleCity_Gym_Text_ExplainVoltSwitch, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_SHOCK_WAVE
 	release
 	end
 
-MauvilleCity_Gym_EventScript_GiveShockWave::
+MauvilleCity_Gym_EventScript_GiveVoltSwitch::
 	giveitem ITEM_TM_SHOCK_WAVE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT
+	msgbox MauvilleCity_Gym_Text_ExplainVoltSwitch, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_SHOCK_WAVE
 	return
 
@@ -257,19 +262,10 @@ MauvilleCity_Gym_EventScript_GymStatue::
 	end
 
 MauvilleCity_Gym_Text_GymGuideAdvice:
-	.string "Hey, how's it going, Champion-\n"
-	.string "bound {PLAYER}?\p"
-	.string "Wattson, the Leader of Mauville\n"
-	.string "Gym, uses Electric-type Pokémon.\p"
-	.string "If you challenge him with Water-type\n"
-	.string "Pokémon, he'll zap them! Bzzt!\p"
-	.string "And, he's put in switch-controlled\n"
-	.string "doors all over his Gym! Eccentric!\p"
-	.string "Hey, go for it!$"
+	.string "{COLOR RED}Guide{COLOR DARK_GRAY}: Yo, how's it goin, Champ-to-be\n{PLAYER}?\pWattson, the Leader of Mauville Gym,\nuses Electric-type Pokémon.\pIf you challenge him with Water-type\nPokémon, he'll zap them! Bzz-zzzt!\pAnd he's put in switch-controlled\nelectric devices all over this Gym!\lEccentric!\pHey, go for it!$"
 
 MauvilleCity_Gym_Text_GymGuidePostVictory:
-	.string "Whoa, you're electrifying!\n"
-	.string "You've powered the door open!$"
+	.string "{COLOR RED}Guide{COLOR DARK_GRAY}: Whoa, you're electrifying!\nYou've powered the door open!$"
 
 MauvilleCity_Gym_Text_KirkIntro:
 	.string "My electric soul, it'll shatter your\n"
@@ -333,49 +329,29 @@ MauvilleCity_Gym_Text_AngeloPostBattle:
 	.string "forehead. It makes me happy!$"
 
 MauvilleCity_Gym_Text_WattsonIntro:
-	.string "I've given up on my plans to convert\n"
-	.string "the city, I have.\p"
-	.string "And so, I put my time into making\n"
-	.string "door traps in my Gym.\p"
-	.string "Oh? Now, what are you doing here?\p"
-	.string "What's that? You say you've gotten\n"
-	.string "past all my rigged doors?\p"
-	.string "Wahahahah!\n"
-	.string "Now, that is amusing!\p"
-	.string "Then, I, Wattson, the Leader of\n"
-	.string "Mauville Gym, shall electrify you!$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Oh?\nNow, what are you doing here?\pWhat?\pYou say you've gotten past all my\nrigid doors?\pWahahahah!\nNow, that is amusing!\pThe plans to reform Mauville are done\nfor now.\pMaking traps for my Gym and battling\nwith young Trainers like you are the\lthings I live for now.\pThen, I, {COLOR RED}Wattson{COLOR DARK_GRAY}, the Leader of Mauville\nGym, shall electrify you!$"
 
 MauvilleCity_Gym_Text_WattsonDefeat:
-	.string "Wahahahah!\n"
-	.string "Fine, I lost!\p"
-	.string "You ended up giving me a thrill!\n"
-	.string "Take this Badge!$"
+	.string "Wahahahah!\nFine, I lost!$"
+
+MauvilleCity_Gym_Text_WattsonTakeThisBadge:
+    .string "I was electrified by you.\nNow, take this Badge!$"
 
 MauvilleCity_Gym_Text_ReceivedDynamoBadge:
-	.string "{PLAYER} received the Dynamo Badge\n"
-	.string "from Wattson.$"
+	.string "{PLAYER} received the Dynamo Badge\nfrom Wattson.$"
 
 MauvilleCity_Gym_Text_ExplainDynamoBadgeTakeThis:
-	.string "With the Dynamo Badge, Pokémon can\n"
-	.string "use Rock Smash out of battle.\p"
-	.string "And, it will make your Pokémon a little\n"
-	.string "bit faster, too.\p"
-	.string "Hmm…\n"
-	.string "You should take this, too!$"
+	.string "With the Dynamo Badge, Pokémon can use\nthe HM Rock Smash outside of battle.\pOne other thing-Pokémon up to Level 40\nwill obey you now, even if you got 'em\lfrom someone else.\pAll righty then, this here's for you,\ntoo!\pGo on, take it with you!$"
 
-MauvilleCity_Gym_Text_ExplainShockWave:
-	.string "That TM34 there contains Shock Wave.\p"
-	.string "It's a trustworthy move that never\n"
-	.string "misses! You can count on it!\p"
-	.string "… … … … … …$"
+MauvilleCity_Gym_Text_ExplainVoltSwitch:
+	.string "Volt Switch is a move where your\nPokémon attacks the opponent and\lthen rushes back to switch places\lwith a party Pokémon in waiting!\pI swell with optimism, seeing a\npromising young Trainer like you!$"
 
 MauvilleCity_Gym_Text_RegisteredWattson:
 	.string "Registered Gym Leader Wattson\n"
 	.string "in the Pokénav.$"
 
 MauvilleCity_Gym_Text_WattsonPostBattle:
-	.string "I swell with optimism, seeing a promising\n"
-	.string "young Trainer like you!$"
+	.string "I swell with optimism, seeing a\npromising young Trainer like you!$"
 
 MauvilleCity_Gym_Text_WattsonGoForthAndEndeavor:
 	.string "Wahahahah!\n"
@@ -418,4 +394,3 @@ MauvilleCity_Gym_Text_WattsonRematchNeedTwoMons:
 	.string "You've only one Pokémon with you!\p"
 	.string "Come see me with two or more\n"
 	.string "Pokémon, all right?$"
-

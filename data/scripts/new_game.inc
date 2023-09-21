@@ -275,5 +275,6 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_SKY_PILLAR_WALLACE
 	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL
 	setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL_FIRST
+	setflag FLAG_HIDE_MAUVILLE_CITY_GRUNTS
 	call EventScript_ResetAllBerries
 	end

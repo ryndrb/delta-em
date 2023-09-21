@@ -48,7 +48,7 @@
 #define FLAG_HIDE_RUSTBORO_CITY_RIVAL_FIRST 0x23
 #define FLAG_RECEIVED_FLOAT_STONE           0x24
 #define FLAG_HIDE_GRANITE_CAVE_ENTHUSIASTS  0x25
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
+#define FLAG_HIDE_MAUVILLE_CITY_GRUNTS      0x26
 #define FLAG_UNUSED_0x027    0x27 // Unused Flag
 #define FLAG_UNUSED_0x028    0x28 // Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag

@@ -175,23 +175,19 @@ MauvilleCity_BikeShop_EventScript_ExitAcroHandbook::
 	end
 
 MauvilleCity_BikeShop_Text_RydelGreeting:
-	.string "Well, well, what have we here?\n"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Well, well, what have we here?\n"
 	.string "A most energetic customer!\p"
-	.string "Me? You may call me Rydel.\n"
+	.string "Me? You may call me {COLOR RED}Rydel{COLOR DARK_GRAY}.\n"
 	.string "I'm the owner of this cycle shop.$"
 
 MauvilleCity_BikeShop_Text_DidYouComeFromFarAway:
-	.string "Rydel: Your Running Shoes…\n"
-	.string "They're awfully filthy.\p"
-	.string "Did you come from far away?$"
+	.string "Your running shoes…\nThey're awfully filthy.\pDid you come from far away?$"
 
 MauvilleCity_BikeShop_Text_GuessYouDontNeedBike:
-	.string "Rydel: Is that right?\p"
-	.string "Then, I guess you have no need for\n"
-	.string "any of my Bikes.$"
+	.string "Is that right?\pThen I guess you have no need for\nany of my Bikes.$"
 
 MauvilleCity_BikeShop_Text_ExplainBikesChooseWhichOne:
-	.string "Rydel: Hm, hm… … … … …\p"
+	.string "Hm, hm…\p"
 	.string "You're saying that you came all this\n"
 	.string "way from Littleroot?\p"
 	.string "My goodness!\n"
@@ -206,10 +202,8 @@ MauvilleCity_BikeShop_Text_ExplainBikesChooseWhichOne:
 	.string "two kinds of Bikes!\p"
 	.string "They are the Mach Bike and\n"
 	.string "the Acro Bike!\p"
-	.string "The Mach Bike is for cyclists who want\n"
-	.string "to feel the wind with their bodies!\p"
-	.string "And an Acro Bike is for those who\n"
-	.string "prefer technical rides!\p"
+	.string "Mach Bikes are for cyclists who want\nto feel the wild, blowing wind with\ltheir bodies!\p"
+	.string "Acro Bikes are for those who prefer\na technical ride!\p"
 	.string "I'm a real sweetheart, so you can\n"
 	.string "have whichever one you like!\p"
 	.string "Which one will you choose?$"
@@ -221,16 +215,13 @@ MauvilleCity_BikeShop_Text_ChoseAcroBike:
 	.string "{PLAYER} chose the Acro Bike.$"
 
 MauvilleCity_BikeShop_Text_ComeBackToSwitchBikes:
-	.string "Rydel: If you get the urge to switch\n"
-	.string "Bikes, just come see me!$"
+	.string "If you get the urge to switch Bikes,\njust come see me!$"
 
 MauvilleCity_BikeShop_Text_WantToSwitchBikes:
-	.string "Rydel: Oh? Were you thinking about\n"
-	.string "switching Bikes?$"
+	.string "{COLOR RED}Rydel{COLOR DARK_GRAY}: Oh? Where you thinking about\nswitching Bikes?$"
 
 MauvilleCity_BikeShop_Text_IllSwitchBikes:
-	.string "Rydel: Okay, no problem!\n"
-	.string "I'll switch Bikes for you!$"
+	.string "OK, no problem!\nI'll switch Bikes for you!$"
 
 MauvilleCity_BikeShop_Text_ExchangedMachForAcro:
 	.string "{PLAYER} got the Mach Bike exchanged\n"
@@ -241,8 +232,7 @@ MauvilleCity_BikeShop_Text_ExchangedAcroForMach:
 	.string "for a Mach Bike.$"
 
 MauvilleCity_BikeShop_Text_HappyYouLikeIt:
-	.string "Rydel: Good, good!\n"
-	.string "I'm happy that you like it!$"
+	.string "Good, good!\nI'm happy you like it!$"
 
 MauvilleCity_BikeShop_Text_OhYourBikeIsInPC:
 	.string "Oh? What happened to that Bike\n"
@@ -317,4 +307,3 @@ MauvilleCity_BikeShop_Text_Jumps:
 	.string "Press it backwards to make the Bike\n"
 	.string "change directions while jumping.\p"
 	.string "Want to read a different page?$"
-
