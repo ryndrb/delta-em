@@ -2985,7 +2985,7 @@ bool32 AI_CanBeInfatuated(u8 battlerAtk, u8 battlerDef, u16 defAbility)
 u32 ShouldTryToFlinch(u8 battlerAtk, u8 battlerDef, u16 atkAbility, u16 defAbility, u16 move)
 {
     if (((AI_DATA->abilities[battlerAtk] != ABILITY_MOLD_BREAKER && (defAbility == ABILITY_SHIELD_DUST || defAbility == ABILITY_INNER_FOCUS))
-      || AI_GetHoldEffect(battlerDef) == HOLD_EFFECT_COVERT_CLOAK
+      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
       || AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_SLOWER)) // Opponent goes first
     {
@@ -3022,7 +3022,7 @@ bool32 ShouldFakeOut(u8 battlerAtk, u8 battlerDef, u16 move)
     if (!gDisableStructs[battlerAtk].isFirstTurn
     || AI_DATA->abilities[battlerAtk] == ABILITY_GORILLA_TACTICS
     || AI_DATA->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_BAND
-    || AI_GetHoldEffect(battlerDef) == HOLD_EFFECT_COVERT_CLOAK
+    || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
     || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
     || (AI_DATA->abilities[battlerAtk] != ABILITY_MOLD_BREAKER
     && (AI_DATA->abilities[battlerDef] == ABILITY_SHIELD_DUST || AI_DATA->abilities[battlerDef] == ABILITY_INNER_FOCUS)))
