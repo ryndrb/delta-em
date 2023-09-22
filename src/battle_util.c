@@ -11366,23 +11366,23 @@ u8 GetTypeEffectiveness(u8 targetId, u32 battler)
 		return 0;
 	else
 	{
-		u16 mod = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type][gBattleMons[targetId].type1];
+		uq4_12_t mod = sTypeEffectivenessTable[moveInfo->moveTypes[gMoveSelectionCursor[battler]]][gBattleMons[targetId].type1];
 
 		if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
 		{
-			u16 mod2 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type][gBattleMons[targetId].type2];
-			uq4_12_multiply(mod, mod2);
+			uq4_12_t mod2 = sTypeEffectivenessTable[moveInfo->moveTypes[gMoveSelectionCursor[battler]]][gBattleMons[targetId].type2];
+			mod = uq4_12_multiply(mod, mod2);
 		}
 
 		if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].effect == EFFECT_TWO_TYPED_MOVE)
 		{
 			u16 mod3 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].argument][gBattleMons[targetId].type1];
-			uq4_12_multiply(mod, mod3);
+			mod = uq4_12_multiply(mod, mod3);
 
 			if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
 			{
 				u16 mod4 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].argument][gBattleMons[targetId].type2];
-				uq4_12_multiply(mod, mod4);
+				mod = uq4_12_multiply(mod, mod4);
 			}
 		}
 
