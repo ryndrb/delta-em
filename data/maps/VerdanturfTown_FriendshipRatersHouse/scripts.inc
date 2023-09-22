@@ -52,21 +52,18 @@ VerdanturfTown_FriendshipRatersHouse_EventScript_AdoresYou::
 	release
 	end
 
-VerdanturfTown_FriendshipRatersHouse_EventScript_Pikachu::
+VerdanturfTown_FriendshipRatersHouse_EventScript_Skitty::
 	lock
 	faceplayer
 	waitse
-	playmoncry SPECIES_PIKACHU, CRY_MODE_NORMAL
-	msgbox VerdanturfTown_FriendshipRatersHouse_Text_Pikachu, MSGBOX_DEFAULT
+	playmoncry SPECIES_SKITTY, CRY_MODE_NORMAL
+	msgbox VerdanturfTown_FriendshipRatersHouse_Text_Skitty, MSGBOX_DEFAULT
 	waitmoncry
 	release
 	end
 
 VerdanturfTown_FriendshipRatersHouse_Text_SeeHowMuchPokemonLikesYou:
-	.string "Let me see your Pokémon.\n"
-	.string "I'll check to see how much it likes you.\p"
-	.string "Oh.\n"
-	.string "Your Pokémon…$"
+	.string "Let me see how friendly your Pokémon is\ntoward you.\pOh.\nYour Pokémon…$"
 
 VerdanturfTown_FriendshipRatersHouse_Text_AdoresYou:
 	.string "It adores you.\n"
@@ -74,8 +71,7 @@ VerdanturfTown_FriendshipRatersHouse_Text_AdoresYou:
 	.string "I even feel happy seeing it.$"
 
 VerdanturfTown_FriendshipRatersHouse_Text_VeryHappy:
-	.string "It seems to be very happy.\n"
-	.string "It obviously likes you a whole lot.$"
+	.string "It seems to be very happy.\nIt's obviously friendly toward you.$"
 
 VerdanturfTown_FriendshipRatersHouse_Text_LikesYouQuiteALot:
 	.string "It likes you quite a lot.\n"
@@ -99,6 +95,5 @@ VerdanturfTown_FriendshipRatersHouse_Text_DetestsYou:
 	.string "Your Pokémon simply detests you.\n"
 	.string "Doesn't that make you uncomfortable?$"
 
-VerdanturfTown_FriendshipRatersHouse_Text_Pikachu:
-	.string "Pikachu: Pika pika!$"
-
+VerdanturfTown_FriendshipRatersHouse_Text_Skitty:
+	.string "Skiski?$"

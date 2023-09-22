@@ -29,7 +29,7 @@ RusturfTunnel_EventScript_Wanda::
 	faceplayer
 	msgbox RusturfTunnel_Text_BoyfriendOnOtherSideOfRock, MSGBOX_DEFAULT
 	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	release
 	end
@@ -60,12 +60,12 @@ RusturfTunnel_EventScript_ClearTunnelScene::
 	call_if_eq VAR_TEMP_1, 2, RusturfTunnel_EventScript_FaceWandasBoyfriend2
 	call_if_eq VAR_TEMP_1, 3, RusturfTunnel_EventScript_FaceWandasBoyfriend3
 	call RusturfTunnel_EventScript_WandasBoyfriendNotice
-	msgbox RusturfTunnel_Text_YouShatteredBoulderTakeHM, MSGBOX_DEFAULT
+	msgbox RusturfTunnel_Text_YouShatteredBoulderTakeStone, MSGBOX_DEFAULT
 	call_if_eq VAR_TEMP_1, 2, RusturfTunnel_EventScript_WandasBoyfriendApproachPlayer
 	call_if_eq VAR_TEMP_1, 3, RusturfTunnel_EventScript_WandasBoyfriendApproachPlayer
-	giveitem ITEM_HM04
-	setflag FLAG_RECEIVED_HM04
-	msgbox RusturfTunnel_Text_ExplainStrength, MSGBOX_DEFAULT
+	giveitem ITEM_AGGRONITE
+	setflag FLAG_RECEIVED_AGGRONITE
+	msgbox RusturfTunnel_Text_ExplainAggronite, MSGBOX_DEFAULT
 	closemessage
 	call_if_eq VAR_TEMP_1, 1, RusturfTunnel_EventScript_BoyfriendApproachWanda1
 	call_if_eq VAR_TEMP_1, 2, RusturfTunnel_EventScript_BoyfriendApproachWanda2
@@ -89,7 +89,7 @@ RusturfTunnel_EventScript_BoyfriendApproachWanda2::
 	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend
 	applymovement LOCALID_WANDAS_BF, RusturfTunnel_Movement_BoyfriendApproachWanda
 	waitmovement 0
-	applymovement LOCALID_WANDA, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_WANDA, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	return
 
@@ -97,14 +97,14 @@ RusturfTunnel_EventScript_BoyfriendApproachWanda3::
 	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend
 	applymovement LOCALID_WANDAS_BF, RusturfTunnel_Movement_BoyfriendApproachWanda
 	waitmovement 0
-	applymovement LOCALID_WANDA, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_WANDA, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	return
 
 RusturfTunnel_EventScript_FaceWandasBoyfriend1::
-	applymovement LOCALID_WANDAS_BF, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_WANDAS_BF, Common_Movement_WalkInPlaceUp
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	return
 
@@ -173,44 +173,44 @@ RusturfTunnel_Movement_WandaExit:
 
 RusturfTunnel_Movement_PlayerWatchWandaExit:
 	delay_8
-	walk_in_place_faster_up
+	walk_in_place_up
 	delay_16
 	delay_16
-	walk_in_place_faster_right
+	walk_in_place_right
 	step_end
 
 RusturfTunnel_Movement_Unused1:
 	walk_left
-	walk_in_place_faster_right
+	walk_in_place_right
 	step_end
 
 RusturfTunnel_Movement_Unused2:
 	walk_down
-	walk_in_place_faster_up
+	walk_in_place_up
 	delay_8
-	walk_in_place_faster_right
+	walk_in_place_right
 	step_end
 
 RusturfTunnel_Movement_Unused3:
 	walk_up
-	walk_in_place_faster_down
+	walk_in_place_down
 	delay_8
-	walk_in_place_faster_right
+	walk_in_place_right
 	step_end
 
 RusturfTunnel_Movement_PlayerWatchBoyfriend1:
 	walk_left
-	walk_in_place_faster_right
+	walk_in_place_right
 	step_end
 
 RusturfTunnel_Movement_PlayerWatchBoyfriend:
 	walk_right
-	walk_in_place_faster_left
+	walk_in_place_left
 	step_end
 
 RusturfTunnel_Movement_BoyfriendFaceRight:
 	walk_up
-	walk_in_place_faster_right
+	walk_in_place_right
 	step_end
 
 RusturfTunnel_Movement_WandasBoyfriendExit1:
@@ -248,17 +248,17 @@ RusturfTunnel_Movement_WandasBoyfriendApproachPlayer:
 	step_end
 
 RusturfTunnel_Movement_BoyfriendApproachWanda1:
-	walk_in_place_fast_up
-	walk_in_place_fast_up
+	walk_in_place_up
+	walk_in_place_up
 	walk_fast_up
 	walk_fast_right
 	step_end
 
 RusturfTunnel_Movement_BoyfriendApproachWanda:
-	walk_in_place_fast_right
-	walk_in_place_fast_right
+	walk_in_place_right
+	walk_in_place_right
 	walk_fast_right
-	walk_in_place_faster_up
+	walk_in_place_up
 	step_end
 
 RusturfTunnel_EventScript_TunnelBlockagePos1::
@@ -404,7 +404,7 @@ RusturfTunnel_Movement_PlayerWatchBrineyExit:
 	delay_16
 	delay_8
 	delay_4
-	walk_in_place_faster_left
+	walk_in_place_left
 	step_end
 
 RusturfTunnel_Movement_BrineyApproachPeeko2:
@@ -454,7 +454,7 @@ RusturfTunnel_Text_LetsGoHomePeeko:
     .string "Come, Peeko!\nHigh time we're under way to home!\p{COLOR RED}Peeko{COLOR DARK_GRAY}: Pikwee!$"
 
 RusturfTunnel_Text_WhyCantTheyKeepDigging:
-	.string "… …\p"
+	.string "…\p"
 	.string "Why can't they keep digging?\n"
 	.string "Is the bedrock too hard?\p"
 	.string "My beloved awaits me in Verdanturf\n"
@@ -470,37 +470,20 @@ RusturfTunnel_Text_ToGetToVerdanturf:
 	.string "you need to go to Dewford, then pass\l"
 	.string "through Slateport and Mauville…$"
 
-RusturfTunnel_Text_YouShatteredBoulderTakeHM:
-	.string "Wow! You shattered that boulder\n"
-	.string "blocking the way.\p"
-	.string "To show you how much I appreciate it,\n"
-	.string "I'd like you to have this HM.$"
+RusturfTunnel_Text_YouShatteredBoulderTakeStone:
+	.string "Wow! You shattered those boulders\nthat blocked the way.\pTo show you how much I appreciate it,\nI'd like you to have this!$"
 
-RusturfTunnel_Text_ExplainStrength:
-	.string "That HM contains Strength.\p"
-	.string "If a muscular Pokémon were to learn\n"
-	.string "that, it would be able to move even\l"
-	.string "large boulders.$"
+RusturfTunnel_Text_ExplainAggronite:
+	.string "I found that when I was digging for the\ntunnel.\pI feel like there's some mysterious\npower coming from it, but I don't\lthink I could do a thing with it.$"
 
 RusturfTunnel_Text_WandaReunion:
-	.string "Wanda!\n"
-	.string "Now I can see you anytime!\p"
-	.string "Wanda: That's…wonderful.\p"
-	.string "Please, take some rest at my home.$"
+	.string "Wanda!\nNow I can see you anytime!\p{COLOR RED}Wanda{COLOR DARK_GRAY}: That's…that's wonderful!\pCome on.\nLet me take you to my place so you\lcan rest.$"
 
 RusturfTunnel_Text_BoyfriendOnOtherSideOfRock:
-	.string "On the other side of this rock…\n"
-	.string "My boyfriend is there.\p"
-	.string "He… He's not just digging the tunnel\n"
-	.string "to come see me.\p"
-	.string "He works his hands raw and rough\n"
-	.string "for the benefit of everyone.$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: On the other side of this rock…\nMy boyfriend labors day after day.\pHe…he's not just digging this tunnel to\ncome see me.\pHe works his hands raw and rough for\nthe benefit of everyone.$"
 
 RusturfTunnel_Text_MikeIntro:
-	.string "What do you call a wild man up in the\n"
-	.string "mountains? A mountain man, right?\p"
-	.string "So why don't they call a Pokémon in\n"
-	.string "the mountains a mountain Pokémon?$"
+	.string "What do you call a wild man up in the\nmountains? A mountain man, right?\pSo why don't they call a Pokémon that\nclimb steep cliffs a Pocragmon?$"
 
 RusturfTunnel_Text_MikeDefeat:
 	.string "My Pokémon…\n"
@@ -510,6 +493,5 @@ RusturfTunnel_Text_MikePostBattle:
 	.string "They halted development here to\n"
 	.string "protect Pokémon, right?\l"
 	.string "There's a feel-good story!$"
-
 
 `

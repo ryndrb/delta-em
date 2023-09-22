@@ -7,6 +7,7 @@ VerdanturfTown_MapScripts::
 VerdanturfTown_OnTransition:
 	setflag FLAG_VISITED_VERDANTURF_TOWN
 	setvar VAR_CONTEST_HALL_STATE, 0
+    call_if_set FLAG_RECEIVED_PIDGEOTITE, VerdanturfTown_EventScript_AzurillNextToGirl
 	end
 
 VerdanturfTown_EventScript_Twin::
@@ -14,14 +15,16 @@ VerdanturfTown_EventScript_Twin::
 	faceplayer
 	goto_if_set FLAG_RUSTURF_TUNNEL_OPENED, VerdanturfTown_EventScript_TwinTunnelOpen
 	msgbox VerdanturfTown_Text_ManTryingToDigTunnel, MSGBOX_DEFAULT
-	applymovement LOCALID_TWIN, Common_Movement_FaceOriginalDirection
+    closemessage
+	applymovement LOCALID_TWIN, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	release
 	end
 
 VerdanturfTown_EventScript_TwinTunnelOpen::
 	msgbox VerdanturfTown_Text_ManDugTunnelForLove, MSGBOX_DEFAULT
-	applymovement LOCALID_TWIN, Common_Movement_FaceOriginalDirection
+    closemessage
+	applymovement LOCALID_TWIN, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	release
 	end
@@ -47,10 +50,6 @@ VerdanturfTown_EventScript_BoyTunnelOpen::
 	release
 	end
 
-VerdanturfTown_EventScript_TownSign::
-	msgbox VerdanturfTown_Text_TownSign, MSGBOX_SIGN
-	end
-
 VerdanturfTown_EventScript_WandasHouseSign::
 	msgbox VerdanturfTown_Text_WandasHouse, MSGBOX_SIGN
 	end
@@ -64,48 +63,25 @@ VerdanturfTown_EventScript_RusturfTunnelSign::
 	end
 
 VerdanturfTown_Text_ManTryingToDigTunnel:
-	.string "My papa told me.\p"
-	.string "He says this tunnel is full of\n"
-	.string "timid Pokémon.\p"
-	.string "They get all scared of loud noise and\n"
-	.string "make a big uproar.\p"
-	.string "So they had to stop the big tunnel\n"
-	.string "project.\p"
-	.string "But there's one man. He's trying to dig\n"
-	.string "the tunnel by himself!$"
+	.string "My papa told me this tunnel is full of\ntimid Pokémon that get all scared of\lloud noises and make a big uproar!\pSo they had to stop the big\ntunnel project, but there's one man\lwho's still trying to dig the tunnel\lby himself!$"
 
 VerdanturfTown_Text_ManDugTunnelForLove:
-	.string "There was a man who dug a tunnel for\n"
-	.string "a lady he loved.\p"
-	.string "I don't really get it, but hey!$"
+	.string "There was a man who dug a tunnel for\na lady he loved.\pThat's really kinds of amazing!$"
 
 VerdanturfTown_Text_AirCleanHere:
-	.string "The way the winds blow, volcanic ash\n"
-	.string "is never blown in this direction.\p"
-	.string "The air is clean and delicious here.\n"
-	.string "Living here should do wonders for even\l"
-	.string "frail and sickly people.$"
+	.string "With the way the winds blow, volcanic\nash is never blown in this direction.\pThat means that the air is clean and\ndelicious here!\pIt could surely do wonders for the\nfrail and sickly.$"
 
 VerdanturfTown_Text_MakeBattleTentDebut:
 	.string "My Pokémon and I, we've been riding\n"
 	.string "a hot winning streak.\p"
 	.string "So I decided to make my Battle Tent\n"
-	.string "debut in this town.$"
+	.string "debut in this town!$"
 
 VerdanturfTown_Text_GuyTryingToBustThroughCave:
-	.string "Did you see the cave next to the\n"
-	.string "Pokémon Mart?\p"
-	.string "There's a guy in there who's trying to\n"
-	.string "bust up boulders so he can bust out\l"
-	.string "through to the other side.\p"
-	.string "It'd be great if we could go through…\n"
-	.string "It'll make it easy to visit Rustboro.$"
+	.string "See that cave by the Poké Mart?\pThere's a guy in there trying to bust\nup boulders so he can bust through\lto the other side.\pIt'd be great if we could get\nthrough…\pThen it'd be real easy to visit\nRustboro!$"
 
 VerdanturfTown_Text_EasyToGetToRustboroNow:
-	.string "That cave next to the Pokémon Mart\n"
-	.string "is now a tunnel to the other side.\p"
-	.string "It's great--it's easy to go shop for\n"
-	.string "new Devon products in Rustboro now.$"
+	.string "We can finally pass through that\ntunnel next to the Poké Mart!\pIt's great!\nIt's easy to go shop for new Devon\lproducts in Rustboro now!$"
 
 VerdanturfTown_Text_TownSign:
 	.string "Verdanturf Town\p"
@@ -125,3 +101,161 @@ VerdanturfTown_Text_RusturfTunnelSign:
 	.string "“The tunnel project has been\n"
 	.string "canceled.”$"
 
+VerdanturfTown_EventScript_AzurillNextToGirl::
+	setobjectxyperm 6, 6, 15
+	setobjectmovementtype 6, MOVEMENT_TYPE_FACE_DOWN
+	return
+
+
+VerdanturfTown_EventScript_GirlAzurillLost::
+	goto_if_unset FLAG_RECEIVED_INTRUIGING_STONE, VerdanturfTown_EventScript_GirlAzurillLost_2
+	msgbox VerdanturfTown_EventScript_GirlAzurillLost_Text_1, MSGBOX_NPC
+	end
+
+VerdanturfTown_EventScript_GirlAzurillLost_2:
+	msgbox VerdanturfTown_EventScript_GirlAzurillLost_Text_0, MSGBOX_NPC
+	setflag FLAG_VERDANTURF_MISSING_AZURILL
+	release
+	end
+
+
+VerdanturfTown_EventScript_Azurill::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_AZURILL, CRY_MODE_NORMAL
+	msgbox VerdanturfTown_EventScript_Azurill_Text_0
+	waitmoncry
+	release
+	end
+
+
+VerdanturfTown_EventScript_TownSign::
+	msgbox VerdanturfTown_Text_TownSign, MSGBOX_SIGN
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	goto_if_set FLAG_VERDANTURF_MISSING_AZURILL, VerdanturfTown_EventScript_TownSign_4
+VerdanturfTown_EventScript_TownSign_1:
+	end
+
+VerdanturfTown_EventScript_TownSign_2:
+	delay 32
+	closemessage
+	fadescreenswapbuffers FADE_TO_BLACK
+	delay 16
+	fadescreenswapbuffers FADE_FROM_BLACK
+	addobject 6
+	delay 32
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	waitse
+	applymovement 6, VerdanturfTown_Movement_AzurillLookAround
+	waitmovement 6
+	playse SE_PIN
+	applymovement 6, Common_Movement_QuestionMark
+	waitmovement 6
+	waitse
+	playmoncry SPECIES_AZURILL, CRY_MODE_NORMAL
+	msgbox VerdanturfTown_EventScript_TownSign_Text_0
+	waitmoncry
+	closemessage
+	fadescreenswapbuffers FADE_TO_BLACK
+	turnobject 5, DIR_SOUTH
+	applymovement OBJ_EVENT_ID_PLAYER, VerdanturfTown_Movement_PlayerToGirl
+	applymovement 6, VerdanturfTown_Movement_AzurillToGirl
+	waitmovement 0
+	fadescreenswapbuffers FADE_FROM_BLACK
+	delay 32
+	msgbox VerdanturfTown_EventScript_TownSign_Text_1
+	delay 8
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox VerdanturfTown_EventScript_TownSign_Text_2
+	waitfanfare
+	closemessage
+	setflag FLAG_RECEIVED_INTRUIGING_STONE
+	goto VerdanturfTown_EventScript_TownSign_1
+
+VerdanturfTown_EventScript_TownSign_3:
+	compare VAR_TEMP_1, 6
+	goto_if_ne VerdanturfTown_EventScript_TownSign_7
+	goto VerdanturfTown_EventScript_TownSign_1
+
+VerdanturfTown_EventScript_TownSign_4:
+	goto_if_unset FLAG_RECEIVED_INTRUIGING_STONE, VerdanturfTown_EventScript_TownSign_3
+	goto VerdanturfTown_EventScript_TownSign_1
+
+VerdanturfTown_EventScript_TownSign_7:
+	compare VAR_TEMP_1, 7
+	goto_if_ne VerdanturfTown_EventScript_TownSign_2
+	goto VerdanturfTown_EventScript_TownSign_1
+
+
+VerdanturfTown_Movement_AzurillLookAround:
+	walk_in_place_left
+	walk_in_place_right
+	walk_in_place_left
+	walk_in_place_right
+	walk_in_place_left
+	delay_16
+	walk_in_place_down
+	step_end
+
+VerdanturfTown_Movement_PlayerToGirl:
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_in_place_up
+	step_end
+
+VerdanturfTown_Movement_AzurillToGirl:
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_in_place_down
+	step_end
+
+VerdanturfTown_EventScript_GirlAzurillLost_Text_0:
+	.string "My Azurill got lost…\pIt disappeared around the sign.\nWhere did it go?$"
+
+VerdanturfTown_EventScript_GirlAzurillLost_Text_1:
+	.string "Thank you for finding my Azurill!$"
+
+VerdanturfTown_EventScript_Azurill_Text_0:
+	.string "Shu!$"
+
+VerdanturfTown_EventScript_TownSign_Text_0:
+	.string "Sh…\pShuu…?$"
+
+VerdanturfTown_EventScript_TownSign_Text_1:
+	.string "Ah!\nAshu!\pThank you for finding my Azurill!\pI'll give you this.\nI just found it.\lIt has a strange shape and it looks\lamazing.$"
+
+VerdanturfTown_EventScript_TownSign_Text_2:
+	.string "{PLAYER} receive an {COLOR RED}Intriguing Stone{COLOR DARK_GRAY}!$"

@@ -1,0 +1,201 @@
+raw `
+.set LOCALID_TWIN, 2
+
+VerdanturfTown_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, VerdanturfTown_OnTransition
+	.byte 0
+
+VerdanturfTown_OnTransition:
+	setflag FLAG_VISITED_VERDANTURF_TOWN
+	setvar VAR_CONTEST_HALL_STATE, 0
+    call_if_set FLAG_RECEIVED_PIDGEOTITE, VerdanturfTown_EventScript_AzurillNextToGirl
+	end
+
+VerdanturfTown_EventScript_Twin::
+	lock
+	faceplayer
+	goto_if_set FLAG_RUSTURF_TUNNEL_OPENED, VerdanturfTown_EventScript_TwinTunnelOpen
+	msgbox VerdanturfTown_Text_ManTryingToDigTunnel, MSGBOX_DEFAULT
+    closemessage
+	applymovement LOCALID_TWIN, Common_Movement_WalkInPlaceLeft
+	waitmovement 0
+	release
+	end
+
+VerdanturfTown_EventScript_TwinTunnelOpen::
+	msgbox VerdanturfTown_Text_ManDugTunnelForLove, MSGBOX_DEFAULT
+    closemessage
+	applymovement LOCALID_TWIN, Common_Movement_WalkInPlaceLeft
+	waitmovement 0
+	release
+	end
+
+VerdanturfTown_EventScript_Man::
+	msgbox VerdanturfTown_Text_AirCleanHere, MSGBOX_NPC
+	end
+
+VerdanturfTown_EventScript_Camper::
+	msgbox VerdanturfTown_Text_MakeBattleTentDebut, MSGBOX_NPC
+	end
+
+VerdanturfTown_EventScript_Boy::
+	lock
+	faceplayer
+	goto_if_set FLAG_RUSTURF_TUNNEL_OPENED, VerdanturfTown_EventScript_BoyTunnelOpen
+	msgbox VerdanturfTown_Text_GuyTryingToBustThroughCave, MSGBOX_DEFAULT
+	release
+	end
+
+VerdanturfTown_EventScript_BoyTunnelOpen::
+	msgbox VerdanturfTown_Text_EasyToGetToRustboroNow, MSGBOX_DEFAULT
+	release
+	end
+
+VerdanturfTown_EventScript_WandasHouseSign::
+	msgbox VerdanturfTown_Text_WandasHouse, MSGBOX_SIGN
+	end
+
+VerdanturfTown_EventScript_BattleTentSign::
+	msgbox VerdanturfTown_Text_BattleTentSign, MSGBOX_SIGN
+	end
+
+VerdanturfTown_EventScript_RusturfTunnelSign::
+	msgbox VerdanturfTown_Text_RusturfTunnelSign, MSGBOX_SIGN
+	end
+
+VerdanturfTown_Text_ManTryingToDigTunnel:
+	.string "My papa told me this tunnel is full of\ntimid Pokémon that get all scared of\lloud noises and make a big uproar!\pSo they had to stop the big\ntunnel project, but there's one man\lwho's still trying to dig the tunnel\lby himself!$"
+
+VerdanturfTown_Text_ManDugTunnelForLove:
+	.string "There was a man who dug a tunnel for\na lady he loved.\pThat's really kinds of amazing!$"
+
+VerdanturfTown_Text_AirCleanHere:
+	.string "With the way the winds blow, volcanic\nash is never blown in this direction.\pThat means that the air is clean and\ndelicious here!\pIt could surely do wonders for the\nfrail and sickly.$"
+
+VerdanturfTown_Text_MakeBattleTentDebut:
+	.string "My Pokémon and I, we've been riding\n"
+	.string "a hot winning streak.\p"
+	.string "So I decided to make my Battle Tent\n"
+	.string "debut in this town!$"
+
+VerdanturfTown_Text_GuyTryingToBustThroughCave:
+	.string "See that cave by the Poké Mart?\pThere's a guy in there trying to bust\nup boulders so he can bust through\lto the other side.\pIt'd be great if we could get\nthrough…\pThen it'd be real easy to visit\nRustboro!$"
+
+VerdanturfTown_Text_EasyToGetToRustboroNow:
+	.string "We can finally pass through that\ntunnel next to the Poké Mart!\pIt's great!\nIt's easy to go shop for new Devon\lproducts in Rustboro now!$"
+
+VerdanturfTown_Text_TownSign:
+	.string "Verdanturf Town\p"
+	.string "“The windswept highlands with the\n"
+	.string "sweet fragrance of grass.”$"
+
+VerdanturfTown_Text_WandasHouse:
+	.string "Wanda's House$"
+
+VerdanturfTown_Text_BattleTentSign:
+	.string "Battle Tent Verdanturf Site\n"
+	.string "“Feast Your Eyes on Battles!”$"
+
+VerdanturfTown_Text_RusturfTunnelSign:
+	.string "Rusturf Tunnel\n"
+	.string "“Linking Rustboro and Verdanturf\p"
+	.string "“The tunnel project has been\n"
+	.string "canceled.”$"
+
+`
+
+const LOCALID_AZURILL = 6
+
+script VerdanturfTown_EventScript_AzurillNextToGirl {
+    setobjectxyperm(LOCALID_AZURILL, 6, 15)
+    setobjectmovementtype(LOCALID_AZURILL, MOVEMENT_TYPE_FACE_DOWN)
+    return
+}
+
+script VerdanturfTown_EventScript_GirlAzurillLost {
+    if(!flag(FLAG_RECEIVED_INTRUIGING_STONE)){
+        msgbox("My Azurill got lost…\pIt disappeared around the sign.\nWhere did it go?", MSGBOX_NPC)
+        setflag(FLAG_VERDANTURF_MISSING_AZURILL)
+        release
+        end
+    }
+    msgbox("Thank you for finding my Azurill!", MSGBOX_NPC)
+    end
+}
+
+script VerdanturfTown_EventScript_Azurill {
+    lock
+    faceplayer
+    waitse
+    playmoncry(SPECIES_AZURILL, CRY_MODE_NORMAL)
+    msgbox("Shu!")
+    waitmoncry
+    release
+    end
+}
+
+script VerdanturfTown_EventScript_TownSign {
+    msgbox(VerdanturfTown_Text_TownSign, MSGBOX_SIGN)
+    getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+    if(flag(FLAG_VERDANTURF_MISSING_AZURILL) && !flag(FLAG_RECEIVED_INTRUIGING_STONE) && !(var(VAR_TEMP_1) == 6 || var(VAR_TEMP_1) == 7)){
+        delay(32)
+        closemessage
+        fadescreenswapbuffers(FADE_TO_BLACK)
+        delay(16)
+        fadescreenswapbuffers(FADE_FROM_BLACK)
+        addobject(LOCALID_AZURILL)
+        delay(32)
+        playse(SE_PIN)
+        applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
+        waitmovement(OBJ_EVENT_ID_PLAYER)
+        waitse
+        applymovement(LOCALID_AZURILL, VerdanturfTown_Movement_AzurillLookAround)
+        waitmovement(LOCALID_AZURILL)
+        playse(SE_PIN)
+        applymovement(LOCALID_AZURILL, Common_Movement_QuestionMark)
+        waitmovement(LOCALID_AZURILL)
+        waitse
+        playmoncry(SPECIES_AZURILL, CRY_MODE_NORMAL)
+        msgbox("Sh…\pShuu…?")
+        waitmoncry
+        closemessage
+        fadescreenswapbuffers(FADE_TO_BLACK)
+        turnobject(5, DIR_SOUTH)
+        applymovement(OBJ_EVENT_ID_PLAYER, VerdanturfTown_Movement_PlayerToGirl)
+        applymovement(LOCALID_AZURILL, VerdanturfTown_Movement_AzurillToGirl)
+        waitmovement(0)
+        fadescreenswapbuffers(FADE_FROM_BLACK)
+        delay(32)
+        msgbox("Ah!\nAshu!\pThank you for finding my Azurill!\pI'll give you this.\nI just found it.\lIt has a strange shape and it looks\lamazing.")
+        delay(8)
+        playfanfare(MUS_OBTAIN_ITEM)
+        msgbox("{PLAYER} receive an {COLOR RED}Intriguing Stone{COLOR DARK_GRAY}!")
+        waitfanfare
+        closemessage
+        setflag(FLAG_RECEIVED_INTRUIGING_STONE)
+    }
+    end
+}
+
+movement VerdanturfTown_Movement_AzurillLookAround {
+    walk_in_place_left
+    walk_in_place_right
+    walk_in_place_left
+    walk_in_place_right
+    walk_in_place_left
+    delay_16
+    walk_in_place_down
+}
+
+movement VerdanturfTown_Movement_PlayerToGirl {
+    walk_faster_down * 8
+    walk_faster_left * 9
+    walk_in_place_up
+}
+
+movement VerdanturfTown_Movement_AzurillToGirl {
+    walk_faster_down * 8
+    walk_faster_left * 9
+    walk_in_place_down
+}
+

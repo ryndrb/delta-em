@@ -147,24 +147,24 @@ RustboroCity_DevonCorp_3F_Movement_PlayerApproachDesk:
 RustboroCity_DevonCorp_3F_EventScript_MrStone::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_EXP_SHARE, RustboroCity_DevonCorp_3F_EventScript_MrStoneAfterFavor
-	goto_if_set FLAG_DELIVERED_STEVEN_LETTER, RustboroCity_DevonCorp_3F_EventScript_GiveExpShare
+	goto_if_set FLAG_RECEIVED_PIDGEOTITE, RustboroCity_DevonCorp_3F_EventScript_MrStoneAfterFavor
+	goto_if_set FLAG_DELIVERED_STEVEN_LETTER, RustboroCity_DevonCorp_3F_EventScript_GivePidgeotite
 	msgbox RustboroCity_DevonCorp_3F_Text_CountingOnYou, MSGBOX_DEFAULT
 	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneGoFindMrBriney, MSGBOX_DEFAULT
 	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	release
 	end
 
-RustboroCity_DevonCorp_3F_EventScript_GiveExpShare::
-	msgbox RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter, MSGBOX_DEFAULT
-	giveitem ITEM_EXP_SHARE
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_EXP_SHARE
-	msgbox RustboroCity_DevonCorp_3F_Text_ExplainExpShare, MSGBOX_DEFAULT
+RustboroCity_DevonCorp_3F_EventScript_GivePidgeotite::
+	msgbox RustboroCity_DevonCorp_3F_Text_NoticeIntriguingStone, MSGBOX_DEFAULT
+    giveitem ITEM_PIDGEOTITE, 1
+    goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+    setflag FLAG_RECEIVED_PIDGEOTITE
+    msgbox RustboroCity_DevonCorp_3F_Text_Connoisseur, MSGBOX_DEFAULT
 	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	release
 	end
@@ -172,7 +172,7 @@ RustboroCity_DevonCorp_3F_EventScript_GiveExpShare::
 RustboroCity_DevonCorp_3F_EventScript_MrStoneAfterFavor::
 	msgbox RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends, MSGBOX_DEFAULT
 	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	release
 	end
@@ -212,28 +212,14 @@ RustboroCity_DevonCorp_3F_Text_MrStoneGoFindMrBriney:
 RustboroCity_DevonCorp_3F_Text_CountingOnYou:
 	.string "{COLOR RED}Mr. Stone{COLOR DARK_GRAY}: Deliver that {COLOR BLUE}Letter{COLOR DARK_GRAY} to\n{COLOR RED}Steven{COLOR DARK_GRAY} in {COLOR BLUE}Dewford Town{COLOR DARK_GRAY} for me!$"
 
-RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter:
-	.string "Mr. Stone: You delivered my Letter?\n"
-	.string "Thank you kindly!\p"
-	.string "This is my way of thanking you.\n"
-	.string "It should help you, a Trainer.$"
+RustboroCity_DevonCorp_3F_Text_NoticeIntriguingStone:
+	.string "{COLOR RED}Mr. Stone{COLOR DARK_GRAY}: Hm? Ah.\nThat Intriguing Stone you have…\pOn second look, it seems to be a\nPidgeotite, doesn't it?$"
 
-RustboroCity_DevonCorp_3F_Text_ExplainExpShare:
-	.string "Mr. Stone: A Pokémon holding that\n"
-	.string "Exp. Share will be given some of the\l"
-	.string "Exp Points from battle.\p"
-	.string "It will get Exp Points even if it didn't\n"
-	.string "actually battle.\p"
-	.string "I would say Exp. Share is quite useful\n"
-	.string "for raising weak Pokémon.$"
+RustboroCity_DevonCorp_3F_Text_Connoisseur:
+    .string "To be carrying around a Mega Stone like\nthat…\pIt looks like you're also a bit of a\nconnoisseur.$"
 
 RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends:
-	.string "Mr. Stone: Since my youth, I've immersed\n"
-	.string "myself in work.\p"
-	.string "Consequently, I'm not familiar with\n"
-	.string "trends and that sort of thing.\p"
-	.string "But do young people all want to be\n"
-	.string "Trainers in the Pokémon League?$"
+	.string "{COLOR RED}Mr. Stone{COLOR DARK_GRAY}: Since my youth, I've immersed\nmyself in work.\pConsequently, I'm not familiar with\ntrends and all that sort of thing.\pBut do young people all want to be\nTrainers in the Pokémon League?$"
 
 RustboroCity_DevonCorp_3F_Text_ThisIs3rdFloorWaitHere:
 	.string "This is the top floor of the\nDevon Corporation.\pOur president's office is on this\nfloor.\pI can't tell you how grateful\nI am for what you've done for our\lcompany.\pCould you wait here for just a\nmoment?$"
@@ -257,4 +243,3 @@ RustboroCity_DevonCorp_3F_Text_RepeatAndTimerHugelyPopular:
 RustboroCity_DevonCorp_3F_Text_RareRocksDisplay:
 	.string "It's a collection of rare rocks and\n"
 	.string "stones assembled by the President.$"
-

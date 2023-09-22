@@ -1067,3 +1067,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/Dewford_Manor_1F/scripts.inc"
 
 	.include "data/maps/PetalburgWoods_2/scripts.inc"
+
+	.include "data/maps/Verdanturf_Meadow/scripts.inc"

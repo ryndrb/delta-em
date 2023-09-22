@@ -16,10 +16,4 @@ VerdanturfTown_House_Text_TrainersGatherAtPokemonLeague:
 	.string "all frighteningly well skilled.$"
 
 VerdanturfTown_House_Text_DefeatEliteFourInARow:
-	.string "In the Pokémon League, I think the\n"
-	.string "rules say that you have to battle the\l"
-	.string "Elite Four all in a row.\p"
-	.string "If you lose to any of them, you have\n"
-	.string "to begin your challenge again from the\l"
-	.string "first one.$"
-
+	.string "In the Pokémon League, the rules say\nyou have to battle the Elite Four all\lin a row.\pIf you lose to any of them, you have\nto begin your challenge over again\lfrom the first one.$"

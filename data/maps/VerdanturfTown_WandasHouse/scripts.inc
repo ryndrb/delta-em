@@ -20,7 +20,7 @@ VerdanturfTown_WandasHouse_EventScript_WallysUncle::
 	faceplayer
 	goto_if_set FLAG_DEFEATED_WALLY_VICTORY_ROAD, VerdanturfTown_WandasHouse_EventScript_WallysUncleEverGrande
 	goto_if_set FLAG_DEFEATED_LAVARIDGE_GYM, VerdanturfTown_WandasHouse_EventScript_WallysUncleSlippedOff
-	msgbox VerdanturfTown_WandasHouse_Text_WallysNextDoor, MSGBOX_DEFAULT
+	msgbox VerdanturfTown_WandasHouse_Text_WallysGoneAway, MSGBOX_DEFAULT
 	release
 	end
 
@@ -100,16 +100,8 @@ VerdanturfTown_WandasHouse_Text_StrongerSpeechShort:
 	.string "When I do, I'm going to challenge you\n"
 	.string "to another battle.$"
 
-VerdanturfTown_WandasHouse_Text_WallysNextDoor:
-	.string "Uncle: Oh! {PLAYER}{KUN}!\n"
-	.string "Wally's next door.\p"
-	.string "But, boy, there's something I have to\n"
-	.string "tell you.\p"
-	.string "This natural environment is doing\n"
-	.string "wonders for Wally's health.\p"
-	.string "Maybe it's not just the environment.\n"
-	.string "It could be Pokémon that are giving\l"
-	.string "the boy hope.$"
+VerdanturfTown_WandasHouse_Text_WallysGoneAway:
+	.string "{COLOR RED}Uncle{COLOR DARK_GRAY}: Oh!\nSo you did come visit!\pIf you're looking for Wally, though, I'm\nafraid he's gone.\pAfter he lost to you in Mauville, he said\nhe had to train more, and we haven't\lseen him since.\pIt must be his Pokémon that have lit\nsuch a fire in that boy and given him\lso much hope to live for…$"
 
 VerdanturfTown_WandasHouse_Text_WallySlippedOff:
 	.string "Wally's gone away…\n"
@@ -123,20 +115,10 @@ VerdanturfTown_WandasHouse_Text_WallyGoneThatFar:
 	.string "my little brother's son.$"
 
 VerdanturfTown_WandasHouse_Text_MeetWanda:
-	.string "Wanda: You are?\n"
-	.string "Oh, right, I get it!\p"
-	.string "You're the {PLAYER} who Wally was\n"
-	.string "telling me about.\p"
-	.string "I'm Wally's cousin.\n"
-	.string "Glad to meet you!\p"
-	.string "I think Wally's become a lot more lively\n"
-	.string "and healthy since he came here.$"
+	.string "{COLOR RED}Wanda{COLOR DARK_GRAY}: Oh!\nYou're the {PLAYER} who Wally was\ltelling me about.\pI'm Wally's cousin, Wanda!$"
 
 VerdanturfTown_WandasHouse_Text_DontWorryAboutWally:
-	.string "Wanda: Don't worry about Wally.\n"
-	.string "He'll be just fine.\p"
-	.string "I know my little cousin, and he has\n"
-	.string "Pokémon with him, too.$"
+	.string "{COLOR RED}Wanda{COLOR DARK_GRAY}: Don't you worry about Wally.\nHe'll be just fine, I'm sure.\pI know my little cousin, and he has his\nPokémon with him, too!$"
 
 VerdanturfTown_WandasHouse_Text_CanSeeGirlfriendEveryDay:
 	.string "Thanks to you, I can see my girlfriend\n"
@@ -152,9 +134,7 @@ VerdanturfTown_WandasHouse_Text_DaughtersBoyfriendDriven:
 	.string "so she goes out to the tunnel a lot.$"
 
 VerdanturfTown_WandasHouse_Text_DaughtersBoyfriendWasDigging:
-	.string "It's amazing. My daughter's boyfriend\n"
-	.string "was digging the tunnel by hand!\p"
-	.string "It's so incredible!$"
+	.string "It's amazing.\nMy daughter's boyfriend was digging\lthe tunnel by hand!\lIt's so incredible!$"
 
 VerdanturfTown_WandasHouse_Text_IfAnythingHappenedToWally:
 	.string "If anything were to happen to Wally,\n"
@@ -165,4 +145,3 @@ VerdanturfTown_WandasHouse_Text_WallyWasInEverGrande:
 	.string "Wally was in Ever Grande?\p"
 	.string "His parents in Petalburg would be\n"
 	.string "astonished to hear that!$"
-

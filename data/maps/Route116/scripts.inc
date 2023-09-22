@@ -59,7 +59,7 @@ Route116_EventScript_GiveRepeatBall::
 	setflag FLAG_MET_DEVON_EMPLOYEE
 	giveitem ITEM_REPEAT_BALL
 	goto_if_eq VAR_RESULT, FALSE, Route116_EventScript_NoRoomForRepeatBall
-	msgbox Route116_Text_NewBallAvailableAtMart, MSGBOX_DEFAULT
+	msgbox Route116_Text_TryItOut, MSGBOX_DEFAULT
 	closemessage
 	call_if_eq VAR_FACING, DIR_NORTH, Route116_EventScript_DevonEmployeeExit
 	call_if_eq VAR_FACING, DIR_SOUTH, Route116_EventScript_DevonEmployeeExit
@@ -382,29 +382,10 @@ Route116_Text_GoonHightailedItOutOfTunnel:
 	.string "the tunnel! I can go back to digging!$"
 
 Route116_Text_ThankYouTokenOfAppreciation:
-	.string "Oh! It's you!\p"
-	.string "You're that person who not only helped\n"
-	.string "me in Petalburg Woods, but also got\l"
-	.string "back my stolen package and then even\l"
-	.string "graciously delivered it to Slateport!\p"
-	.string "Capt. Stern informed us that the\n"
-	.string "package arrived, too!\p"
-	.string "I thank you very, very much!\p"
-	.string "Why, if I were a rain cloud, I would\n"
-	.string "shower you with gratitude and hail\l"
-	.string "you as a hero!\p"
-	.string "For you, the most wonderful Trainer,\n"
-	.string "I bear good news!\p"
-	.string "Recently, our company developed\n"
-	.string "a new kind of Poké Ball.\p"
-	.string "As a token of our appreciation, this\n"
-	.string "is our gift to our wonderful Trainer!$"
+	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Oh!\nIt's you!\pYou're that Trainer who helped me\nin Petalburg Woods and also got back\lmy case that was stolen and then\lgraciously delivered it to Slateport!\pCaptain Stern informed us that the\ncase arrived safely!\pI thank you very, very much.\pIf I were a rain cloud, I would shower\nyou with gratitude and hail you as a\lhero!\pFor you, wonderful Trainer, I bear good\nnews!\pRecently, our company developed a new\nkind of Poké Ball.\pAs token of our appreciation for all\nyour help, we would like to give you\lone!$"
 
-Route116_Text_NewBallAvailableAtMart:
-	.string "Our new Poké Ball will be available\n"
-	.string "at the Pokémon Mart in Rustboro.\p"
-	.string "Please do try it out!\n"
-	.string "Thank you and bye-bye!$"
+Route116_Text_TryItOut:
+	.string "Please do try it out!\nThat you and bye-bye!$"
 
 Route116_Text_BagIsJamPacked:
 	.string "Your Bag is jam-packed.\n"
@@ -417,19 +398,14 @@ Route116_Text_TokenOfAppreciation:
 	.string "for our most wonderful Trainer!$"
 
 Route116_Text_CanYouHelpMeFindGlasses:
-	.string "I dropped my glasses…\n"
-	.string "Can you help me find them?$"
+	.string "I dropped my glasses.\nCan you help me find them?$"
 
 Route116_Text_MayISeeThoseGlasses:
 	.string "Those glasses!\n"
 	.string "May I see them for a second?$"
 
 Route116_Text_NotWhatImLookingForMaybeTheyArentHere:
-	.string "Hmm…\n"
-	.string "These are Blackglasses.\l"
-	.string "They're not what I'm looking for…\p"
-	.string "Maybe my glasses aren't around\n"
-	.string "here…$"
+	.string "Hmm…\nThese are Black Glasses.\lThey're not what I'm looking for…\pMaybe my glasses aren't around here…$"
 
 Route116_Text_CantFindGlassesNotHere:
 	.string "Hmm…\n"

@@ -406,6 +406,7 @@
 #define MAP_DEWFORD_MEADOW                           (111 | (24 << 8))
 #define MAP_DEWFORD_MANOR_1F                         (112 | (24 << 8))
 #define MAP_PETALBURG_WOODS_2                        (113 | (24 << 8))
+#define MAP_VERDANTURF_MEADOW                        (114 | (24 << 8))
 
 // gMapGroup_IndoorDynamic
 #define MAP_SECRET_BASE_RED_CAVE1    (0 | (25 << 8))

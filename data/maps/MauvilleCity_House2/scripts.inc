@@ -47,12 +47,10 @@ MauvilleCity_House2_Text_BuyHarborMailAtSlateport:
 	.string "Pokémon Mart in Slateport…$"
 
 MauvilleCity_House2_Text_TradeHarborMailForCoinCase:
-	.string "Oh! You have Harbor Mail?\n"
-	.string "Will you trade it for a Coin Case?$"
+	.string "Oh!\nYou have Harbor Mail?\pWill you trade it for a Coin Case?$"
 
 MauvilleCity_House2_Text_IllTradeYouCoinCase:
-	.string "Oh, I'm so happy!\n"
-	.string "Okay, I'll trade you a Coin Case!$"
+	.string "Oh, I'm so happy!\nOK, I'll trade you a Coin Case!$"
 
 MauvilleCity_House2_Text_UseCoinCaseAtGameCorner:
 	.string "That Coin Case can be used\n"
@@ -62,4 +60,3 @@ MauvilleCity_House2_Text_ThatsDisappointing:
 	.string "Oh, that's disappointing.\p"
 	.string "A Coin Case is needed for the\n"
 	.string "Game Corner.$"
-

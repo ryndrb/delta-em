@@ -127,7 +127,6 @@ MauvilleCity_EventScript_BattleWallyPrompt::
 MauvilleCity_EventScript_DefeatedWally::
 	removeobject LOCALID_WALLY
 	removeobject LOCALID_WALLYS_UNCLE
-	clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY
 	clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE
 	setflag FLAG_DEFEATED_WALLY_MAUVILLE
 	setvar VAR_WALLY_CALL_STEP_COUNTER, 0

@@ -1,0 +1,22 @@
+raw `
+VerdanturfTown_House_MapScripts::
+	.byte 0
+
+VerdanturfTown_House_EventScript_Woman1::
+	msgbox VerdanturfTown_House_Text_TrainersGatherAtPokemonLeague, MSGBOX_NPC
+	end
+
+VerdanturfTown_House_EventScript_Woman2::
+	msgbox VerdanturfTown_House_Text_DefeatEliteFourInARow, MSGBOX_NPC
+	end
+
+VerdanturfTown_House_Text_TrainersGatherAtPokemonLeague:
+	.string "Far away, deep in Ever Grande City,\n"
+	.string "is the Pokémon League.\p"
+	.string "The Trainers who gather there are\n"
+	.string "all frighteningly well skilled.$"
+
+VerdanturfTown_House_Text_DefeatEliteFourInARow:
+	.string "In the Pokémon League, the rules say\nyou have to battle the Elite Four all\lin a row.\pIf you lose to any of them, you have\nto begin your challenge over again\lfrom the first one.$"
+
+`

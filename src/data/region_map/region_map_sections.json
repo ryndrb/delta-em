@@ -1727,6 +1727,14 @@
       "y": 14,
       "width": 1,
       "height": 1
+    },
+    {
+      "map_section": "MAPSEC_VERDANTURF_MEADOW",
+      "name": "Verdanturf Meadow",
+      "x": 4,
+      "y": 7,
+      "width": 1,
+      "height": 1
     }
   ]
 }

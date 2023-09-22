@@ -4470,6 +4470,16 @@
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/PetalburgWoods_2/border.bin",
       "blockdata_filepath": "data/layouts/PetalburgWoods_2/map.bin"
+    },
+    {
+      "id": "LAYOUT_VERDANTURF_MEADOW",
+      "name": "Verdanturf_Meadow_Layout",
+      "width": 15,
+      "height": 17,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/Verdanturf_Meadow/border.bin",
+      "blockdata_filepath": "data/layouts/Verdanturf_Meadow/map.bin"
     }
   ]
 }

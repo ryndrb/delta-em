@@ -630,7 +630,7 @@ MauvilleCity_GameCorner_Text_ThisIsMauvilleGameCorner:
 	.string "This is Mauville Game Corner.$"
 
 MauvilleCity_GameCorner_Text_NeedCoinCaseForCoins:
-	.string "Okay, you wanted some Coins for\n"
+	.string "OK, you wanted some Coins for\n"
 	.string "the games?\p"
 	.string "But you don't have a Coin Case for\n"
 	.string "stowing the Coins.$"
@@ -775,4 +775,3 @@ MauvilleCity_GameCorner_Text_HeresSomeSlotsInfo:
 MauvilleCity_GameCorner_Text_CantPlayWithNoCoinCase:
 	.string "You can't play if you don't have\n"
 	.string "a Coin Case.$"
-

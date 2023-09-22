@@ -49,10 +49,10 @@
 #define FLAG_RECEIVED_FLOAT_STONE           0x24
 #define FLAG_HIDE_GRANITE_CAVE_ENTHUSIASTS  0x25
 #define FLAG_HIDE_MAUVILLE_CITY_GRUNTS      0x26
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
+#define FLAG_RECEIVED_AGGRONITE             0x27
+#define FLAG_RECEIVED_INTRUIGING_STONE      0x28
+#define FLAG_VERDANTURF_MISSING_AZURILL     0x29
+#define FLAG_HIDE_VERDANTURF_AZURILL        0x2A
 #define FLAG_UNUSED_0x02B    0x2B // Unused Flag
 #define FLAG_UNUSED_0x02C    0x2C // Unused Flag
 #define FLAG_UNUSED_0x02D    0x2D // Unused Flag
@@ -294,7 +294,7 @@
 #define FLAG_RECEIVED_TM_THIEF               0x10D
 #define FLAG_CONTEST_SKETCH_CREATED          0x10E  // Set but never read
 #define FLAG_EVIL_TEAM_ESCAPED_STERN_SPOKE   0x10F
-#define FLAG_RECEIVED_EXP_SHARE              0x110
+#define FLAG_RECEIVED_PIDGEOTITE             0x110
 #define FLAG_POKERUS_EXPLAINED               0x111
 #define FLAG_RECEIVED_RUNNING_SHOES          0x112
 #define FLAG_RECEIVED_QUICK_CLAW             0x113
