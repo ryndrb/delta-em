@@ -1248,6 +1248,8 @@ SECTIONS {
         sound/songs/midi/ph_nurse_blend.o(.rodata);
         sound/songs/midi/ph_nurse_held.o(.rodata);
         sound/songs/midi/ph_nurse_solo.o(.rodata);
+        sound/songs/midi/mus_zinnia_theme.o(.rodata);
+        sound/songs/midi/mus_wally_theme.o(.rodata);
     } =0
 
     lib_rodata :
