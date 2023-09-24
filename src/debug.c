@@ -4337,7 +4337,10 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(MUS_HG_OBTAIN_B_POINTS) \
     X(MUS_HG_WIN_MINIGAME) \
     X(MUS_ZINNIA_THEME) \
+    X(MUS_ZINNIA_BATTLE) \
+    X(MUS_ZINNIA_SORROW) \
     X(MUS_WALLY_THEME) \
+    X(MUS_WALLY_BATTLE) \
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \

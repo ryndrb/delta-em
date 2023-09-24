@@ -1611,7 +1611,10 @@ SECTIONS {
         sound/songs/midi/mus_hg_obtain_b_points.o(.rodata);
         sound/songs/midi/mus_hg_win_minigame.o(.rodata);
         sound/songs/midi/mus_zinnia_theme.o(.rodata);
+        sound/songs/midi/mus_zinnia_battle.o(.rodata);
+        sound/songs/midi/mus_zinnia_sorrow.o(.rodata);
         sound/songs/midi/mus_wally_theme.o(.rodata);
+        sound/songs/midi/mus_wally_battle.o(.rodata);
     } =0
 
     lib_rodata :

@@ -2343,5 +2343,14 @@ $(MID_SUBDIR)/mus_hg_win_minigame.s: %.s: %.mid
 $(MID_SUBDIR)/mus_zinnia_theme.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G274 -V078
 
+$(MID_SUBDIR)/mus_zinnia_battle.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G276 -V078
+
+$(MID_SUBDIR)/mus_zinnia_sorrow.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G274 -V084
+
 $(MID_SUBDIR)/mus_wally_theme.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G274 -V078
+
+$(MID_SUBDIR)/mus_wally_battle.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G275 -V078

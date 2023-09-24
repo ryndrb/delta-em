@@ -951,9 +951,12 @@
 #define MUS_HG_WIN_MINIGAME               898 // Cleared Wobbuffet Pop!
 
 #define MUS_ZINNIA_THEME                  899
-#define MUS_WALLY_THEME                   900
+#define MUS_ZINNIA_BATTLE                 900
+#define MUS_ZINNIA_SORROW                 901
+#define MUS_WALLY_THEME                   902
+#define MUS_WALLY_BATTLE                  903
 
-#define HG_MUSIC_END                      MUS_WALLY_THEME
+#define HG_MUSIC_END                      MUS_WALLY_BATTLE
 
 #define SONGS_END                         HG_MUSIC_END
 #define END_MUS                           SONGS_END

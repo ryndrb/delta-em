@@ -901,7 +901,10 @@ gSongTable::
 	song mus_hg_obtain_b_points, 2, 2
 	song mus_hg_win_minigame, 2, 2
 	song mus_zinnia_theme, 0, 0
+	song mus_zinnia_battle, 0, 0
+	song mus_zinnia_sorrow, 0, 0
 	song mus_wally_theme, 0, 0
+	song mus_wally_battle, 0, 0
 
 	.align 2
 dummy_song_header:
