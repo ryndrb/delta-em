@@ -23,7 +23,6 @@ PetalburgCity_EventScript_MoveGymBoyToWestEntrance::
 
 PetalburgCity_EventScript_DisableMapNameAndMusic::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
-	savebgm MUS_FOLLOW_ME
 	return
 
 PetalburgCity_EventScript_SetGymDoorsUnlocked::
@@ -744,10 +743,10 @@ PetalburgCity_Text_ThisIsGymSign:
 	.string "whenever you're looking for a Gym.$"
 
 PetalburgCity_Text_WaterReflection:
-	.string "My face is reflected in the water.\pIt's shining grin full of hope…\pOr maybe it's a look of somber\nsilence struggling with fear…\pWhat do you see in your face?$"
+	.string "My face is reflected in the water.\pIt's shining grin full of hope…\pOr maybe it's a look of somber silence\nstruggling with fear…\pWhat do you see in your face?$"
 
 PetalburgCity_Text_FullPartyExplanation:
-	.string "Let's say you have six Pokémon in\nyour team and then you catch\lanother one…\pDo you know what happens?\pIt's automatically sent to a storage\nBox over the PC network!$"
+	.string "Let's say you have six Pokémon in your\nteam and then you catch another one…\pDo you know what happens?\pIt's automatically sent to a storage\nBox over the PC network!$"
 
 PetalburgCity_Text_GymSign:
 	.string "Petalburg City Pokémon Gym\n"

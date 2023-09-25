@@ -128,6 +128,7 @@ PetalburgCity_Gym_EventScript_BeginWallyTutorial::
 	addobject LOCALID_WALLY
 	playse SE_DOOR
 	delay 24
+	playbgm MUS_WALLY_THEME, TRUE
     msgbox PetalburgCity_Gym_Text_WallyIdLikeAPokemon, MSGBOX_DEFAULT
 	closemessage
 	call PetalburgCity_Gym_EventScript_WallyArrive
@@ -148,7 +149,6 @@ PetalburgCity_Gym_EventScript_BeginWallyTutorial::
 	msgbox PetalburgCity_Gym_Text_WouldYouReallyComeWithMe, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_DONT_TRANSITION_MUSIC
-	playbgm MUS_FOLLOW_ME, FALSE
 	call PetalburgCity_Gym_EventScript_ExitGymWithWally
 	removeobject LOCALID_WALLY
 	setflag FLAG_HIDE_PETALBURG_CITY_WALLYS_MOM
@@ -158,6 +158,7 @@ PetalburgCity_Gym_EventScript_BeginWallyTutorial::
 	clearflag FLAG_HIDE_PETALBURG_GYM_WALLY
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
 	special InitBirchState
+	fadenewbgm MUS_DUMMY
 	warp MAP_PETALBURG_CITY, 15, 8
 	waitstate
 	release
@@ -179,6 +180,7 @@ PetalburgCity_Gym_EventScript_ExitGymWithWally::
 
 PetalburgCity_Gym_EventScript_NormanAddressPlayer::
 	applymovement LOCALID_NORMAN, Common_Movement_WalkInPlaceDown
+	delay 8
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	return
@@ -1015,19 +1017,19 @@ PetalburgCity_Gym_Text_DadOhYoureWallyRight:
 	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: Hm? Aren't you…\pYou're Wally, right?$"
 
 PetalburgCity_Gym_Text_WallyIveNeverCaughtAPokemon:
-	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Y-yes… I'm supposed to go\nstay with my relatives in\lVerdanturf Town for a while.\pBut I thought I might be lonely by\nmyself, so I wanted to bring a\lPokémon with me.\pBut I've never caught a Pokémon by\nmyself…\lI'm not sure if I can.$"
+	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Y-yes… I'm supposed to go stay\nwith my relatives in Verdanturf Town\lfor a while.\pBut I thought I might be lonely\nby myself, so I wanted to bring a\lPokémon with me.\pBut I've never caught a Pokémon by\nmyself…\lI'm not sure if I can.$"
 
 PetalburgCity_Gym_Text_DadHmISee:
-	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: Mm-hmm. I see.$"
+	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: Mm-hmm.\nI see.$"
 
 PetalburgCity_Gym_Text_DadPlayerGoWithWally:
-	.string "{PLAYER}!\nYou heard all that, right?\pYou go with Wally, and make sure\nthat he safely catches a Pokémon.$"
+	.string "{PLAYER}!\nYou heard all that, right?\pYou go with Wally, and make sure that he\nsafely catches a Pokémon.$"
 
 PetalburgCity_Gym_Text_IllLoanYouMyZigzagoon:
 	.string "Wally, here.\pI'll lend you one of my Pokémon.\pWally received {COLOR RED}Zigzagoon{COLOR DARK_GRAY}!$"
 
 PetalburgCity_Gym_Text_WallyThankYouAndDadGivesPokeBall:
-	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Oh, wow…\nYour Pokémon, sir?\p{COLOR RED}Dad{COLOR DARK_GRAY}: Hm…\pI'll give you a Poké Ball, too, so\ngo give it your best!\pWally received a {COLOR RED}Poké Ball{COLOR DARK_GRAY}!$"
+	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Oh, wow…\nYour Pokémon, sir?\p{COLOR RED}Dad{COLOR DARK_GRAY}: Hm…\pI'll give you a Poké Ball, too, so go\ngive it your best!\pWally received a {COLOR RED}Poké Ball{COLOR DARK_GRAY}!$"
 
 PetalburgCity_Gym_Text_WallyOhWowThankYou:
 	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Th-thank you, Mr. Norman!$"
@@ -1042,13 +1044,13 @@ PetalburgCity_Gym_Text_WallyReturnMon:
 	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Yes, it did! Thank you!\pLet me give you back your Pokémon,\nsir.$"
 
 PetalburgCity_Gym_Text_WallyThankPlayerBye:
-	.string "And you, {PLAYER}…\pThank you so much for coming with\nme.\pIt was all thanks to you two that I\nwas able to catch Ralts.\pMy very own Ralts…\pI will always, always treasure it!\p…\pI'm going to try my best together\nwith Ralts.\lYou do your best, too, {PLAYER}!\pOh, but my mom's waiting for me.\nI've got to get going!\pI hope we'll meet again, {PLAYER}!\nAnd you, too, Mr. Norman!$"
+	.string "And you, {PLAYER}…\pThank you so much for coming with me.\pIt was all thanks to you two that I\nwas able to catch Ralts.\pMy very own Ralts…\pI will always, always treasure it!\p…\pI'm going to try my best together with\nRalts.\pYou do your best, too, {PLAYER}!\pOh, but my mom's waiting for me.\nI've got to get going!\pI hope we'll meet again, {PLAYER}!\nAnd you, too, Mr. Norman!$"
 
 PetalburgCity_Gym_Text_DadGoCollectBadges:
-	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: Hmm.\nThat boy will be worth keeping an\leye on.\pBut for now…\p{PLAYER}!\pIf you want to become strong as a\nTrainer, listen to my advice.\pFirst head for {COLOR BLUE}Rustboro City{COLOR DARK_GRAY}, which\nlies beyond this town.\pThere you should challenge the {COLOR BLUE}Gym\nLeader{COLOR DARK_GRAY}, {COLOR BLUE}Roxanne{COLOR DARK_GRAY}.\pAfter her, go on to the other\nPokémon Gyms and defeat their\lLeaders as well.\pCollect badges from them,\nunderstand?\pOf course, I'm a Gym Leader, too.\nI'm sure we'll battle one day.\pBut that will only be after you've\nbecome strong, {PLAYER}.$"
+	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: Hmm.\pThat boy will be worth keeping an eye\non.\pBut for now…\p{PLAYER}!\pIf you want to become strong as a\nTrainer, listen to my advice.\pFirst head for {COLOR BLUE}Rustboro City{COLOR DARK_GRAY}, which\nlies beyond this town.\pThere you should challenge the {COLOR BLUE}Gym\nLeader{COLOR DARK_GRAY}, {COLOR BLUE}Roxanne{COLOR DARK_GRAY}.\pAfter her, go on to the other Pokémon\nGyms and defeat their Leaders as well.\pCollect badges from them,\nunderstand?\pOf course, I'm a Gym Leader, too.\nI'm sure we'll battle one day.\pBut that will only be after you've\nbecome strong, {PLAYER}.$"
 
 PetalburgCity_Gym_Text_NormanGoToRustboro:
-	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: Hm?\pWeren't you going to go to the\nPokémon Gym in Rustboro?\pSorry, but I don't get pleasure from\nbattling greenhorn Trainers.\lThere's no challenge.\pI want you to grow stronger before I\nwould consider taking you on in\lbattle.\pCome back when you've got at least,\nhmmm… four badges!\pThen I'll take you on, {PLAYER}.$"
+	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: Hm?\pWeren't you going to go to the\nPokémon Gym in Rustboro?\pSorry, but I don't get pleasure from\nbattling greenhorn Trainers.\lThere's no challenge.\pI want you to grow stronger before\nI would consider taking you on in\lbattle.\pCome back when you've got at least,\nhmmm…{PAUSE 32} four badges!\pThen I'll take you on, {PLAYER}.$"
 
 PetalburgCity_Gym_Text_NormanGoToDewford:
 	.string "Dad: I see… So, you've beaten\n"
@@ -1475,10 +1477,10 @@ PetalburgCity_Gym_EventScript_NormanChallenger_Text_2:
 	.string "{COLOR RED}Norman{COLOR DARK_GRAY}: Come back and challenge me\nagain anytime.\pI'll be looking forward to seeing you\nand your Pokémon again when you're\la bit stronger.$"
 
 PetalburgCity_Gym_EventScript_NormanChallenger_Text_3:
-	.string "Yes, sir!\nThank you, sir!\pI'm gonna do special training with my\nPokémon.\lThen I'll challenge this Gym again!\pThank you for the battle,\nMr. Norman!$"
+	.string "Yes, sir!\nThank you, sir!\pI'm gonna do special training with my\nPokémon.\lThen I'll challenge this Gym again!\pThank you for the battle, Mr. Norman!$"
 
 PetalburgCity_Gym_EventScript_NormanChallenger_Text_4:
 	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: Hm?$"
 
 PetalburgCity_Gym_EventScript_NormanChallenger_Text_5:
-	.string "Why if it isn't {PLAYER}!\pSo you've finished moving in?\pI see…\pWell…\pYou know, I sure was surprised that\nyou managed to get here by\lyourself.\pAh… I see. You're making a good\nstart on your team!\pMm-hmm! Then I guess you're going to\nbecome a Trainer like me, {PLAYER}?\pNow that's something to look forward\nto!$"
+	.string "Why if it isn't {PLAYER}!\pSo you've finished moving in?\pI see…\pWell…\pYou know, I sure was surprised that\nyou managed to get here by yourself.\pAh…\nI see.\pYou're making a good start on your\nteam!\pMm-hmm! Then I guess you're going to\nbecome a Trainer like me, {PLAYER}?\pNow that's something to look forward\nto!$"

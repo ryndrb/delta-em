@@ -97,6 +97,7 @@ MauvilleCity_EventScript_UncleAskPlayerToBattleWally::
 
 MauvilleCity_EventScript_Wally::
 	lockall
+	playbgm MUS_WALLY_THEME, TRUE
 	goto_if_set FLAG_DECLINED_WALLY_BATTLE_MAUVILLE, MauvilleCity_EventScript_WallyRequestBattleAgain
 	msgbox MauvilleCity_Text_WallyWantToChallengeGym, MSGBOX_DEFAULT
 	msgbox MauvilleCity_Text_UncleYourePushingIt, MSGBOX_DEFAULT
@@ -190,6 +191,7 @@ MauvilleCity_EventScript_BattleWally::
 MauvilleCity_EventScript_DeclineWallyBattle::
 	setflag FLAG_DECLINED_WALLY_BATTLE_MAUVILLE
 	msgbox MauvilleCity_Text_WallyMyUncleWontKnowImStrong, MSGBOX_DEFAULT
+	fadedefaultbgm
 	release
 	end
 
@@ -455,6 +457,7 @@ MauvilleCity_Text_BeenCheckingOutTV:
 	.string "Hi, have you been checking out TVs?$"
 
 MauvilleCity_EventScript_MovePlayerDown::
+	fadescreenswapbuffers FADE_TO_BLACK
 	switch VAR_FACING
 	case DIR_NORTH, MauvilleCity_EventScript_MovePlayerDown_3
 	case DIR_EAST, MauvilleCity_EventScript_MovePlayerDown_4
@@ -463,6 +466,7 @@ MauvilleCity_EventScript_MovePlayerDown_1:
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp
 	applymovement LOCALID_WALLY, Common_Movement_WalkInPlaceDown
 	waitmovement OBJ_EVENT_ID_PLAYER
+	fadescreenswapbuffers FADE_FROM_BLACK
 	return
 
 MauvilleCity_EventScript_MovePlayerDown_3:
@@ -612,6 +616,7 @@ MauvilleCity_EventScript_WallyFrontOfGym::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
 	waitmovement OBJ_EVENT_ID_PLAYER
 	waitse
+	fadescreenswapbuffers FADE_TO_BLACK
 	switch VAR_TEMP_0
 	case 1, MauvilleCity_EventScript_WallyFrontOfGym_3
 	case 2, MauvilleCity_EventScript_WallyFrontOfGym_4
@@ -620,6 +625,7 @@ MauvilleCity_EventScript_WallyFrontOfGym::
 MauvilleCity_EventScript_WallyFrontOfGym_1:
 	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_MAUVILLE_CITY_STATE, 2
+	fadescreenswapbuffers FADE_FROM_BLACK
 	goto MauvilleCity_EventScript_Wally
 	release
 	end
@@ -681,6 +687,7 @@ MauvilleCity_EventScript_WallyAndUncleExit::
 	applymovement LOCALID_WALLY, MauvilleCity_Movement_WallyExit
 	waitmovement LOCALID_WALLY
 	delay 32
+	fadedefaultbgm
 	applymovement LOCALID_WALLYS_UNCLE, MauvilleCity_Movement_WallysUncleApproachPlayer
 	waitmovement LOCALID_WALLYS_UNCLE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp

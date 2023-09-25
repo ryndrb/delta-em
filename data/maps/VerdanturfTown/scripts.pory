@@ -8,7 +8,7 @@ VerdanturfTown_MapScripts::
 VerdanturfTown_OnTransition:
 	setflag FLAG_VISITED_VERDANTURF_TOWN
 	setvar VAR_CONTEST_HALL_STATE, 0
-    call_if_set FLAG_RECEIVED_PIDGEOTITE, VerdanturfTown_EventScript_AzurillNextToGirl
+    call_if_set FLAG_RECEIVED_INTRUIGING_STONE, VerdanturfTown_EventScript_AzurillNextToGirl
 	end
 
 VerdanturfTown_EventScript_Twin::
@@ -144,6 +144,7 @@ script VerdanturfTown_EventScript_TownSign {
         delay(16)
         fadescreenswapbuffers(FADE_FROM_BLACK)
         addobject(LOCALID_AZURILL)
+        clearflag(FLAG_HIDE_VERDANTURF_AZURILL)
         delay(32)
         playse(SE_PIN)
         applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
