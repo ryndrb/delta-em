@@ -32,34 +32,34 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
-      "x": 26,
+      "x": 25,
       "y": 30,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route112_EventScript_MagmaGrunts",
+      "script": "Route112_EventScript_MagmaGruntsLeft",
       "flag": "FLAG_HIDE_ROUTE_112_TEAM_MAGMA"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HIKER",
-      "x": 24,
-      "y": 34,
+      "x": 22,
+      "y": 35,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT_AND_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
+      "trainer_sight_or_berry_tree_id": "3",
       "script": "Route112_EventScript_Brice",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CAMPER",
-      "x": 29,
-      "y": 49,
+      "x": 28,
+      "y": 50,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -84,14 +84,14 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HIKER",
-      "x": 15,
+      "x": 13,
       "y": 40,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "3",
+      "trainer_sight_or_berry_tree_id": "2",
       "script": "Route112_EventScript_Trent",
       "flag": "0"
     },
@@ -100,12 +100,12 @@
       "x": 27,
       "y": 30,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route112_EventScript_MagmaGrunts",
+      "script": "Route112_EventScript_MagmaGruntsRight",
       "flag": "FLAG_HIDE_ROUTE_112_TEAM_MAGMA"
     },
     {
@@ -176,7 +176,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 14,
-      "y": 43,
+      "y": 44,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -188,8 +188,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_5",
-      "x": 31,
-      "y": 7,
+      "x": 27,
+      "y": 8,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
       "movement_range_x": 1,
@@ -211,6 +211,32 @@
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route112_EventScript_Shayla",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_VAR_0",
+      "x": 33,
+      "y": 50,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_ROUTE_112_RIVAL"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+      "x": 26,
+      "y": 30,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route112_EventScript_MagmaGruntsMiddle",
+      "flag": "FLAG_HIDE_ROUTE_112_TEAM_MAGMA"
     }
   ],
   "warp_events": [
@@ -257,7 +283,35 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 38,
+      "y": 49,
+      "elevation": 0,
+      "var": "VAR_ROUTE112_STATE",
+      "var_value": "0",
+      "script": "Route112_EventScript_RivalTrigger1"
+    },
+    {
+      "type": "trigger",
+      "x": 38,
+      "y": 50,
+      "elevation": 0,
+      "var": "VAR_ROUTE112_STATE",
+      "var_value": "0",
+      "script": "Route112_EventScript_RivalTrigger2"
+    },
+    {
+      "type": "trigger",
+      "x": 38,
+      "y": 51,
+      "elevation": 0,
+      "var": "VAR_ROUTE112_STATE",
+      "var_value": "0",
+      "script": "Route112_EventScript_RivalTrigger3"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",
@@ -269,8 +323,8 @@
     },
     {
       "type": "sign",
-      "x": 22,
-      "y": 37,
+      "x": 19,
+      "y": 36,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route112_EventScript_MtChimneyCableCarSign"

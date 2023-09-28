@@ -1,0 +1,275 @@
+raw `
+.set LOCALID_GRUNT_1, 1
+.set LOCALID_GRUNT_2, 6
+
+Route112_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route112_OnTransition
+	.byte 0
+
+Route112_OnTransition:
+    call Common_EventScript_SetupRivalGfxId
+	clearflag FLAG_FORCE_MIRAGE_TOWER_VISIBLE
+	setvar VAR_JAGGED_PASS_ASH_WEATHER, 0
+	end
+
+Route112_EventScript_MtChimneyCableCarSign::
+	msgbox Route112_Text_MtChimneyCableCarSign, MSGBOX_SIGN
+	end
+
+Route112_EventScript_MtChimneySign::
+	msgbox Route112_Text_MtChimneySign, MSGBOX_SIGN
+	end
+
+Route112_EventScript_RouteSignLavaridge::
+	msgbox Route112_Text_RouteSignLavaridge, MSGBOX_SIGN
+	end
+
+Route112_EventScript_Hiker::
+	msgbox Route112_Text_NotEasyToGetBackToLavaridge, MSGBOX_NPC
+	end
+
+Route112_EventScript_Brice::
+	trainerbattle_single TRAINER_BRICE, Route112_Text_BriceIntro, Route112_Text_BriceDefeat
+	msgbox Route112_Text_BricePostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route112_EventScript_Trent::
+	trainerbattle_single TRAINER_TRENT_1, Route112_Text_TrentIntro, Route112_Text_TrentDefeat, Route112_EventScript_RegisterTrent
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route112_EventScript_RematchTrent
+	msgbox Route112_Text_TrentPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route112_EventScript_RegisterTrent::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route112_Text_TrentRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_TRENT_1
+	release
+	end
+
+Route112_EventScript_RematchTrent::
+	trainerbattle_rematch TRAINER_TRENT_1, Route112_Text_TrentRematchIntro, Route112_Text_TrentRematchDefeat
+	msgbox Route112_Text_TrentRematchPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route112_EventScript_Larry::
+	trainerbattle_single TRAINER_LARRY, Route112_Text_LarryIntro, Route112_Text_LarryDefeat
+	msgbox Route112_Text_LarryPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route112_EventScript_Carol::
+	trainerbattle_single TRAINER_CAROL, Route112_Text_CarolIntro, Route112_Text_CarolDefeat
+	msgbox Route112_Text_CarolPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route112_EventScript_Bryant::
+	trainerbattle_single TRAINER_BRYANT, Route112_Text_BryantIntro, Route112_Text_BryantDefeat
+	msgbox Route112_Text_BryantPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route112_EventScript_Shayla::
+	trainerbattle_single TRAINER_SHAYLA, Route112_Text_ShaylaIntro, Route112_Text_ShaylaDefeat
+	msgbox Route112_Text_ShaylaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route112_Text_NotEasyToGetBackToLavaridge:
+	.string "Eh, I'd like to get to Mauville, but if\nI went down these ledges, it'd be no\leasy matter to get back to Lavaridge.$"
+
+Route112_Text_MtChimneyCableCarSign:
+	.string "Mt. Chimney Cable Car\n"
+	.string "“A short walk {UP_ARROW} way!”$"
+
+Route112_Text_MtChimneySign:
+	.string "Mt. Chimney\p"
+	.string "“For Lavaridge Town or the summit,\n"
+	.string "please take the Cable Car.”$"
+
+Route112_Text_RouteSignLavaridge:
+	.string "Route 112\n"
+	.string "{LEFT_ARROW} Lavaridge Town$"
+
+
+`
+
+const LOCALID_RIVAL = 15
+
+script Route112_EventScript_RivalTrigger1 {
+    setvar(VAR_TEMP_0, 1)
+    goto(Route112_EventScript_Rival)
+}
+
+script Route112_EventScript_RivalTrigger2 {
+    setvar(VAR_TEMP_0, 2)
+    goto(Route112_EventScript_Rival)
+}
+
+script Route112_EventScript_RivalTrigger3 {
+    setvar(VAR_TEMP_0, 3)
+    goto(Route112_EventScript_Rival)
+}
+
+script Route112_EventScript_Rival {
+    lock
+    delay(16)
+    playse(SE_PIN)
+    applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
+    waitmovement(LOCALID_RIVAL)
+    waitse
+    delay(8)
+    applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceRight)
+    waitmovement(LOCALID_RIVAL)
+    checkplayergender
+    if(var(VAR_RESULT) == MALE){
+        playbgm(MUS_ENCOUNTER_BRENDAN, FALSE)
+        msgbox("{COLOR RED}May{COLOR DARK_GRAY}: Ah!")
+    }else{
+        playbgm(MUS_ENCOUNTER_MAY, FALSE)
+        msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: Hm?")
+    }
+    closemessage
+    switch(var(VAR_TEMP_0)){
+        case 1: applymovement(LOCALID_RIVAL, Route112_EventScript_RivalGotoPlayer1)
+        case 2: applymovement(LOCALID_RIVAL, Route112_EventScript_RivalGotoPlayer2)
+        case 3: applymovement(LOCALID_RIVAL, Route112_EventScript_RivalGotoPlayer3)
+    }
+    waitmovement(LOCALID_RIVAL)
+    checkplayergender
+    if(var(VAR_RESULT) == MALE){
+        msgbox("{PLAYER}!")
+    }else{
+        msgbox("So it's you, {PLAYER}.")
+    }
+    closemessage
+    applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceLeft)
+    waitmovement(LOCALID_RIVAL)
+    checkplayergender
+    if(var(VAR_RESULT) == MALE){
+        msgbox("Look!\nRight up there!\lThat's Mt. Chimney!")
+        closemessage
+        delay(32)
+        msgbox("It sure is big…\pNo, more like huge…\pIt totally takes my breath away!\pI'd love to take the Cable Car all the\nway to the top someday…")
+    }else{
+        msgbox("You see that mountain up there?\nThat's Mt. Chimney.")
+        closemessage
+        delay(32)
+        msgbox("I dunno, but…\nBut seeing it for real is, like…\lLike a punch in the gut, you know?\pHope I might get to take the Cable Car\nup to the top someday…")
+    }
+    closemessage
+    applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceRight)
+    waitmovement(LOCALID_RIVAL)
+    checkplayergender
+    if(var(VAR_RESULT) == MALE){
+        msgbox("Hm?\nHey, {PLAYER}, don't your Pokémon seem\la bit ragged around the edges?\pHere, let me give them a little boost!")
+    }else{
+        msgbox("Hey, {PLAYER}, doesn't your team seem a\nbit worse for wear?\pHere.\nI'll help them out for you.")
+    }
+    closemessage
+    fadescreenswapbuffers(FADE_TO_BLACK)
+    playse(SE_USE_ITEM)
+    special(HealPlayerParty)
+    waitse
+    fadescreenswapbuffers(FADE_FROM_BLACK)
+    msgbox("Your team's health was restored!")
+    delay(8)
+    checkplayergender
+    if(var(VAR_RESULT) == MALE){
+        msgbox("Here!\nTake this, too!")
+    }else{
+        msgbox("And why don't you take this?")
+    }
+    closemessage
+    applymovement(LOCALID_RIVAL, Route112_EventScript_RivalWalkRight)
+    waitmovement(LOCALID_RIVAL)
+    delay(8)
+    giveitem(ITEM_HM_STRENGTH)
+    setflag(FLAG_RECEIVED_HM_STRENGTH)
+    checkplayergender
+    if(var(VAR_RESULT) == MALE){
+        msgbox("I bet you can find all kinds of\nways to use it in the mountains that\llie ahead!\pBut it won't work outside of battle\nif you don't have a Badge from\lLavaridge Gym.")
+    }else{
+        msgbox("I bet you can find all kinds of\nways to use it in the mountains that\llie ahead!\pOh…\pBut it won't work out here if you don't\nhave a Badge from Lavaridge Gym.")
+    }
+    closemessage
+    delay(16)
+    playse(SE_PIN)
+    applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
+    waitmovement(LOCALID_RIVAL)
+    waitse
+    checkplayergender
+    if(var(VAR_RESULT) == MALE){
+        msgbox("Gasp!\nWhat am I doing nattering away here?\pI'm supposed to be on my way to\nFallarbor to visit Professor Cozmo!\pI'm off for now, {PLAYER}, but let's\nbattle next time!")
+    }else{
+        msgbox("Bah!\pThis is not time to be giving you\ntricks!\pI'm supposed to be heading to Fallarbor\nto visit Professor Cozmo right now!\pSee you later, {PLAYER}.\nNext time let's have a battle, OK?")
+    }
+    closemessage
+    switch(var(VAR_TEMP_0)){
+        case 1: applymovement(LOCALID_RIVAL, Route112_EventScript_RivalExit1)
+        case 2: applymovement(LOCALID_RIVAL, Route112_EventScript_RivalExit2)
+        case 3: applymovement(LOCALID_RIVAL, Route112_EventScript_RivalExit3)
+    }
+    applymovement(OBJ_EVENT_ID_PLAYER, Route112_EventScript_PlayerWatchRivalExit)
+    waitmovement(LOCALID_RIVAL)
+    removeobject(LOCALID_RIVAL)
+    setvar(VAR_ROUTE112_STATE, 1)
+    fadedefaultbgm
+    release
+    end
+
+}
+
+movement Route112_EventScript_RivalGotoPlayer1 {
+    walk_right * 2
+    walk_up
+    walk_right
+}
+
+movement Route112_EventScript_RivalGotoPlayer2 {
+    walk_right * 3
+}
+
+movement Route112_EventScript_RivalGotoPlayer3 {
+    walk_right * 2
+    walk_down
+    walk_right
+}
+
+movement Route112_EventScript_RivalWalkRight {
+    walk_right
+}
+
+movement Route112_EventScript_RivalExit1 {
+    walk_fast_down
+    walk_fast_right * 9
+}
+
+movement Route112_EventScript_RivalExit2 {
+    walk_fast_up
+    walk_fast_right * 9
+}
+
+movement Route112_EventScript_RivalExit3 {
+    walk_fast_up
+    walk_fast_right * 9
+}
+
+movement Route112_EventScript_PlayerWatchRivalExit {
+    delay_16 * 2
+    walk_in_place_right
+}
+
+script Route112_EventScript_MagmaGruntsLeft {
+    msgbox("{COLOR RED}Grunt{COLOR DARK_GRAY}: Grumble…\pWhat happened to the others who went\nto Fallarbor?\lThey're late…", MSGBOX_NPC)
+    end
+}
+
+script Route112_EventScript_MagmaGruntsMiddle {
+    msgbox("{COLOR RED}Grunt{COLOR DARK_GRAY}: Grumble…\pYou two never cease to complain…\nGrumble…", MSGBOX_NPC)
+    end
+}
+
+script Route112_EventScript_MagmaGruntsRight {
+    msgbox("{COLOR RED}Grunt{COLOR DARK_GRAY}: Grumble…\pI'd like to ride the Cable Car to the\ntop, too…", MSGBOX_NPC)
+    end
+}

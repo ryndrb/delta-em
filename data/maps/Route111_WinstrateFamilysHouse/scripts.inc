@@ -11,7 +11,9 @@ Route111_WinstrateFamilysHouse_EventScript_Victor::
 	faceplayer
 	setvar VAR_0x8008, LOCALID_VICTOR
 	msgbox Route111_WinstrateFamilysHouse_Text_MySonIsStrongerThanYou, MSGBOX_DEFAULT
-	goto Route111_WinstrateFamilysHouse_EventScript_FaceOriginalDirection
+	closemessage
+	applymovement VAR_0x8008, Common_Movement_WalkInPlaceRight
+	waitmovement 0
 	end
 
 Route111_WinstrateFamilysHouse_EventScript_Victoria::
@@ -23,12 +25,16 @@ Route111_WinstrateFamilysHouse_EventScript_Victoria::
 	giveitem ITEM_MACHO_BRACE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_MACHO_BRACE
-	goto Route111_WinstrateFamilysHouse_EventScript_FaceOriginalDirection
+	closemessage
+	applymovement VAR_0x8008, Common_Movement_WalkInPlaceLeft
+	waitmovement 0
 	end
 
 Route111_WinstrateFamilysHouse_EventScript_ReceivedMachoBrace::
 	msgbox Route111_WinstrateFamilysHouse_Text_PassionateAboutBattles, MSGBOX_DEFAULT
-	goto Route111_WinstrateFamilysHouse_EventScript_FaceOriginalDirection
+	closemessage
+	applymovement VAR_0x8008, Common_Movement_WalkInPlaceLeft
+	waitmovement 0
 	end
 
 Route111_WinstrateFamilysHouse_EventScript_Vivi::
@@ -36,7 +42,9 @@ Route111_WinstrateFamilysHouse_EventScript_Vivi::
 	faceplayer
 	setvar VAR_0x8008, LOCALID_VIVI
 	msgbox Route111_WinstrateFamilysHouse_Text_StrongerFamilyMembers, MSGBOX_DEFAULT
-	goto Route111_WinstrateFamilysHouse_EventScript_FaceOriginalDirection
+	closemessage
+	applymovement VAR_0x8008, Common_Movement_WalkInPlaceLeft
+	waitmovement 0
 	end
 
 Route111_WinstrateFamilysHouse_EventScript_Vicky::
@@ -46,62 +54,32 @@ Route111_WinstrateFamilysHouse_EventScript_Vicky::
 	goto_if_set FLAG_TEMP_4, Route111_WinstrateFamilysHouse_EventScript_AlreadySpokenTo
 	msgbox Route111_WinstrateFamilysHouse_Text_GrandsonStrong, MSGBOX_DEFAULT
 	setflag FLAG_TEMP_4
-	goto Route111_WinstrateFamilysHouse_EventScript_FaceOriginalDirection
+	closemessage
+	applymovement VAR_0x8008, Common_Movement_WalkInPlaceUp
+	waitmovement 0
 	end
 
 Route111_WinstrateFamilysHouse_EventScript_AlreadySpokenTo::
 	msgbox Route111_WinstrateFamilysHouse_Text_GrandsonStrongShort, MSGBOX_DEFAULT
-	goto Route111_WinstrateFamilysHouse_EventScript_FaceOriginalDirection
-	end
-
-Route111_WinstrateFamilysHouse_EventScript_FaceOriginalDirection::
 	closemessage
-	applymovement VAR_0x8008, Common_Movement_FaceOriginalDirection
+	applymovement VAR_0x8008, Common_Movement_WalkInPlaceUp
 	waitmovement 0
-	release
 	end
 
 Route111_WinstrateFamilysHouse_Text_MySonIsStrongerThanYou:
-	.string "You're the first Trainer I've seen who\n"
-	.string "deploys Pokémon so masterfully.\p"
-	.string "But, I should tell you--my son is\n"
-	.string "stronger than you.\p"
-	.string "He even took the Pokémon League\n"
-	.string "challenge, I'll have you know.$"
+	.string "You're the first Trainer I've seen\ndeploy Pokémon with such mastery.\pBut I should warn you--my son is\nstronger than you.\pHe even challenged the Pokémon League,\nI'll have you know!$"
 
 Route111_WinstrateFamilysHouse_Text_LikeYouToHaveMachoBrace:
-	.string "We use this Macho Brace to more\n"
-	.string "effectively strengthen our Pokémon\l"
-	.string "in training.\p"
-	.string "Since you've beaten all of us here,\n"
-	.string "I don't know if you need it, but we\l"
-	.string "would like you to have our Macho Brace.$"
+	.string "Our family uses this Macho Brace\nto strengthen our Pokémon more\leffectively during their training.\pYou may not need it, considering that\nyou beat the whole lot of us, but I\lhope you'll accept it anyway!$"
 
 Route111_WinstrateFamilysHouse_Text_PassionateAboutBattles:
-	.string "When it comes to Pokémon battles,\n"
-	.string "we tend to be pretty passionate.$"
+	.string "When it comes to Pokémon battles, we're\npretty passionate!$"
 
 Route111_WinstrateFamilysHouse_Text_StrongerFamilyMembers:
-	.string "Mommy is stronger than Daddy.\p"
-	.string "I'm stronger than Mommy.\p"
-	.string "And Grandma's stronger than me!\p"
-	.string "But my big brother is even stronger\n"
-	.string "than Grandma.$"
+	.string "Mom is stronger than Dad.\pI'm stronger than Mom.\pAnd Grandma's stronger than me!\pBut my big brother is even stronger\nthan Grandma is!$"
 
 Route111_WinstrateFamilysHouse_Text_GrandsonStrong:
-	.string "There's no question that you're strong.\p"
-	.string "But if you were to battle my grandson,\n"
-	.string "you'd end up crying in frustration.\p"
-	.string "He's much stronger than any Trainer\n"
-	.string "our family knows.\p"
-	.string "He must be challenging the Pokémon\n"
-	.string "League Champion by now.\p"
-	.string "Knowing my grandson, he could be the\n"
-	.string "Champion already!$"
+	.string "There's no question that you're\nstrong.\pBut if you ever battle my grandson,\nyou'll end up crying in frustration.\pHe's stronger that any other Trainer we\nknow!\pMy grandson must be challenging the\nPokémon League Champion by now.\pKnowing my grandson, he could be the\nChampion already!\lEe-hee-hee-hee-hee!$"
 
 Route111_WinstrateFamilysHouse_Text_GrandsonStrongShort:
-	.string "My grandson must be challenging the\n"
-	.string "Pokémon League Champion by now.\p"
-	.string "Knowing my grandson, he could be the\n"
-	.string "Champion already!$"
-
+	.string "My grandson must be challenging the\nPokémon League Champion by now.\pKnowing my grandson, he could be the\nChampion already!\lEe-hee-hee-hee-hee!$"

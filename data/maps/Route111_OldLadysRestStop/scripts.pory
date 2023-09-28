@@ -1,0 +1,45 @@
+raw `
+Route111_OldLadysRestStop_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route111_OldLadysRestStop_OnTransition
+	.byte 0
+
+Route111_OldLadysRestStop_OnTransition:
+	setflag FLAG_LANDMARK_OLD_LADY_REST_SHOP
+	end
+
+Route111_OldLadysRestStop_EventScript_OldLady::
+	lock
+	faceplayer
+	msgbox Route111_OldLadysRestStop_Text_RestUpHere, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Route111_OldLadysRestStop_EventScript_Rest
+	goto_if_eq VAR_RESULT, NO, Route111_OldLadysRestStop_EventScript_DeclineRest
+	end
+
+Route111_OldLadysRestStop_EventScript_Rest::
+	msgbox Route111_OldLadysRestStop_Text_TakeYourTimeRestUp, MSGBOX_DEFAULT
+	closemessage
+	call Common_EventScript_OutOfCenterPartyHeal
+	msgbox Route111_OldLadysRestStop_Text_StillTiredTakeAnotherRest, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Route111_OldLadysRestStop_EventScript_Rest
+	goto_if_eq VAR_RESULT, NO, Route111_OldLadysRestStop_EventScript_DeclineRest
+	end
+
+Route111_OldLadysRestStop_EventScript_DeclineRest::
+	msgbox Route111_OldLadysRestStop_Text_DontNeedToBeShy, MSGBOX_DEFAULT
+	release
+	end
+
+Route111_OldLadysRestStop_Text_RestUpHere:
+	.string "Oh, dear me.\pAren't you and your Pokémon\nexhausted!\pYou ought to stop and rest a bit\nhere.\pYes, indeedy.\nThat's exactly what you should do.$"
+
+Route111_OldLadysRestStop_Text_TakeYourTimeRestUp:
+	.string "That's right.\nTake your time and rest up!$"
+
+Route111_OldLadysRestStop_Text_StillTiredTakeAnotherRest:
+	.string "Oh, dear me.\nAre you and your Pokémon still tired?\pYou should take another little rest\nhere.\pYes, indeedy.\nThat's what you should do.$"
+
+Route111_OldLadysRestStop_Text_DontNeedToBeShy:
+	.string "Really?\pAre you sure that's wise?\nNo need to be shy about it!$"
+
+
+`

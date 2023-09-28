@@ -53,8 +53,8 @@
 #define FLAG_RECEIVED_INTRUIGING_STONE      0x28
 #define FLAG_VERDANTURF_MISSING_AZURILL     0x29
 #define FLAG_HIDE_VERDANTURF_AZURILL        0x2A
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
+#define FLAG_HIDE_ROUTE_112_RIVAL           0x2B
+#define FLAG_HIDE_ROUTE_113_RIVAL           0x2C
 #define FLAG_UNUSED_0x02D    0x2D // Unused Flag
 #define FLAG_UNUSED_0x02E    0x2E // Unused Flag
 #define FLAG_UNUSED_0x02F    0x2F // Unused Flag
