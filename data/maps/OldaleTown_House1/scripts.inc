@@ -6,5 +6,5 @@ OldaleTown_House1_EventScript_Woman::
 	end
 
 OldaleTown_House1_Text_LeftPokemonGoesOutFirst:
-	.string "Try switching around the order your\nPokémon are in, according to the\lsituation.\pIt could give you an advantage.$"
+	.string "Try switching around the order\nyour Pokémon are in, according to the\lsituation.\pIt could give you an advantage.$"
 

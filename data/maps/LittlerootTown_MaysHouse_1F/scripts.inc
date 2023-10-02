@@ -170,7 +170,7 @@ LittlerootTown_MaysHouse_1F_EventScript_GoSeeRoom::
 	end
 
 RivalsHouse_1F_Text_OhYoureTheNewNeighbor:
-	.string "Oh, hello.\nAnd you are?\p…\pOh, you're {PLAYER}, our new next-\ndoor neighbor! Welcome.\pWe have a daughter about the same\nage as you.\pShe has been so excited about making\na new friend.\pShe should be in {COLOR BLUE}her room upstairs{COLOR DARK_GRAY}.\pI hope you'll go and introduce\nyourself.$"
+	.string "Oh, hello.\nAnd you are?\p…\pOh, you're {PLAYER}, our new next-door\nneighbor! Welcome.\pWe have a daughter about the same\nage as you.\pShe has been so excited about making\na new friend.\pShe should be in {COLOR BLUE}her room upstairs{COLOR DARK_GRAY}.\pI hope you'll go and introduce yourself.$"
 
 RivalsHouse_1F_Text_LikeChildLikeFather:
 	.string "Where is that husband of mine?\pIt was so good of you to visit,\n{PLAYER}, and yet he's nowhere to be\lfound!$"

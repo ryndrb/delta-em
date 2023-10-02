@@ -134,13 +134,13 @@ PlayersHouse_1F_Text_IsntItNiceInHere:
 	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: See, {PLAYER}?\nIsn't it nice in here, too?$"
 
 PlayersHouse_1F_Text_MoversPokemonGoSetClock:
-	.string "The moving company's Pokémon\neven help with the unpacking and\lcleanup.\lThey really make moving a cinch!\p…\pYou should go and see your new room\nupstairs, {PLAYER}!\pDad even bought a new clock for it\nto help celebrate the big move.\pYou'll need to set the time, though!$"
+	.string "The moving company's Pokémon even help\nwith the unpacking and cleanup.\lThey really make moving a cinch!\p…\pYou should go and see your new room\nupstairs, {PLAYER}!\pDad even bought a new clock for it to\nhelp celebrate the big move.\pYou'll need to set the time, though!$"
 
 PlayersHouse_1F_Text_ArentYouInterestedInRoom:
 	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Well, {PLAYER}?\pDon't you want to see your new room?$"
 
 PlayersHouse_1F_Text_GoSetTheClock:
-	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: {PLAYER}, go set the clock in\nyour room, honey.\pI hung it on the wall, right between\nthe TV and the stairs.$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: {PLAYER}, go set the clock in your\nroom, honey.\pI hung it on the wall, right between the\nTV and the stairs.$"
 
 PlayersHouse_1F_Text_OhComeQuickly:
 	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Oh! {PLAYER}! {PLAYER}!!!\nQuick! Come quickly!$"
@@ -152,7 +152,7 @@ PlayersHouse_1F_Text_ItsOverWeMissedHim:
 	.string "Oh…\nIt's already ended.\pLooks like your dad was on, but we\nmissed his part.\pWhat a shame.$"
 
 PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor:
-	.string "But that reminds me…\pOne of Dad's friends lives in this\ntown.\p{COLOR BLUE}Professor Birch{COLOR DARK_GRAY} is his name.\pHe lives {COLOR BLUE}right next door{COLOR DARK_GRAY}, so\nyou should go over and introduce\lyourself.$"
+	.string "But that reminds me…\pOne of Dad's friends lives in this\ntown.\p{COLOR BLUE}Professor Birch{COLOR DARK_GRAY} is his name.\pHe lives {COLOR BLUE}right next door{COLOR DARK_GRAY}, so you should\ngo over and introduce yourself.$"
 
 PlayersHouse_1F_Text_SeeYouHoney:
 	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Now take care out there, honey!$"
@@ -170,7 +170,7 @@ PlayersHouse_1F_Text_GotDadsBadgeHeresSomethingFromMom:
 	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Oh?\nDid Dad give you that badge!?\pThen here's something from your Mom!$"
 
 PlayersHouse_1F_Text_DontPushYourselfTooHard:
-	.string "It's a wonderful thing to try\nhard at your passion, but don't\lpush yourself too hard, dear.\pYou can always come home if you\nneed to.\pGood luck, honey!$"
+	.string "It's a wonderful thing to try hard at\nyour passion, but don't push yourself\ltoo hard, dear.\pYou can always come home if you need\nto.\pGood luck, honey!$"
 
 PlayersHouse_1F_Text_IsThatAPokenav:
 	.string "Mom: What is that, honey? A Pokénav?\n"
@@ -257,6 +257,6 @@ PlayersHouse_1F_Text_StillUnknownPokemon:
 	.string "There are still unknown Pokémon.$"
 
 PlayersHouse_1F_Text_OhYoureTheNewNeighbor:
-	.string "Oh, hello.\nAnd you are?\p…\pOh, you're {PLAYER}, our new next-\ndoor neighbor! Welcome.\pWe have a son who is about the same\nage as you.\pHe has been so excited about making\na new friend.\pHe should be in {COLOR BLUE}his room upstairs{COLOR DARK_GRAY}.\pI hope you'll go and introduce\nyourself.$"
+	.string "Oh, hello.\nAnd you are?\p…\pOh, you're {PLAYER}, our new next-door\nneighbor! Welcome.\pWe have a son who is about the same\nage as you.\pHe has been so excited about making a\nnew friend.\pHe should be in {COLOR BLUE}his room upstairs{COLOR DARK_GRAY}.\pI hope you'll go and introduce yourself.$"
 
 `

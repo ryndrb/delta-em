@@ -1052,10 +1052,10 @@ RustboroCity_Text_WeShortenItToDevon:
 	.string "The Devon Corporation…\pThat's kind of a mouthful, so we just\nsay Devon.\pThe company makes all sorts of\nconvenient products.$"
 
 RustboroCity_Text_SneakyLookingManWentAroundCorner:
-	.string "Hm? Did I see a sneaky-looking man?\nCome to think of it, yes!\pA shady-looking fellow just went\naround the corner there.$"
+	.string "Hm? Did I see a sneaky-looking man?\nCome to think of it, yes!\pA shady-looking fellow just went around\nthe corner there.$"
 
 RustboroCity_Text_HaveYouChallengedGym:
-	.string "Have you taken on a Pokémon Gym\nyet?\pOnce you get a shiny Gym Badge in\nyour hand, that's when you really\lstart to feel like a Trainer.$"
+	.string "Have you taken on a Pokémon Gym yet?\pOnce you get a shiny Gym Badge in your\nhand, that's when you really start to\lfeel like a Trainer.$"
 
 RustboroCity_Text_HeyThatsRustborosGymBadge:
 	.string "Hey, that's Rustboro's Gym Badge!\p"
@@ -1063,7 +1063,7 @@ RustboroCity_Text_HeyThatsRustborosGymBadge:
 	.string "Rustboro's is the coolest, I'd say.$"
 
 RustboroCity_Text_YoureNewAroundHere:
-	.string "Oh? Who might you be?\pYou're a new face around these\nparts?\pHave you just transferred into the\nPokémon Trainers' School?$"
+	.string "Oh?\nWho might you be?\pYou're a new face around these\nparts?\pHave you just transferred into the\nPokémon Trainers' School?$"
 
 RustboroCity_Text_GymLeaderIsntEasyWithFire:
 	.string "I challenged the Gym Leader, but…\p"
@@ -1073,7 +1073,7 @@ RustboroCity_Text_GymLeaderIsntEasyWithFire:
 	.string "well against Rock-type Pokémon…$"
 
 RustboroCity_Text_MrBrineyWalksInTheTunnel:
-	.string "Every now and then I see that\nold sailor who lives by the sea,\lMr. Briney, taking a stroll through\lthe tunnel.$"
+	.string "Every now and then I see that old\nsailor who lives by the sea, Mr. Briney\ltaking a stroll through the tunnel.$"
 
 RustboroCity_Text_MrBrineyLovesPeeko:
 	.string "The old sailor Mr. Briney lives in\n"
@@ -1084,10 +1084,10 @@ RustboroCity_Text_MrBrineyLovesPeeko:
 	.string "that Peeko.$"
 
 RustboroCity_Text_WowYouHavePokemon:
-	.string "Oh, you are with your Pokémon!\pWhen I'm an adult, someday I'll go\nto places with Pokémon, too.$"
+	.string "Oh, you are with your Pokémon!\pWhen I'm an adult, someday I'll go to\nplaces with Pokémon, too.$"
 
 RustboroCity_Text_CatchRarePokemonIfIGoToSchool:
-	.string "So this is the\nPokémon's Trainers' School!\pIf I enroll in this school, do you\nthink I'll be able to catch rare\lPokémon easily, too?$"
+	.string "So this is the\nPokémon's Trainers' School!\pIf I enroll in this school, do you think\nI'll be able to catch rare Pokémon\leasily, too?$"
 
 RustboroCity_Text_PokemonCanChangeLookFromExp:
 	.string "If a Pokémon gains experience\nthrough battle, the way it looks\lcan sometimes change!$"
@@ -1105,13 +1105,13 @@ RustboroCity_Text_WaitDontTakeMyGoods:
 	.string "Wait! Pleeeaaase!\pDon't take those parts!$"
 
 RustboroCity_Text_HelpMeIWasRobbed:
-	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Oh, you there!\pYou're that fantastic Trainer who\nhelped me in Petalburg Woods!\pHelp me! I was robbed by\nTeam Aqua!\pI have to get the Devon Parts\nback!\pIf I don't…\nI'm going to be in serious trouble…$"
+	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Oh, you there!\pYou're that fantastic Trainer who\nhelped me in Petalburg Woods!\pHelp me!\nI was robbed by Team Aqua!\pI have to get the Devon Parts back!\pIf I don't…\nI'm going to be in serious trouble…$"
 
 RustboroCity_Text_ShadyCharacterTookOffTowardsTunnel:
 	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: I think that shady\ncharacter took off towards the\ltunnel over there.$"
 
 RustboroCity_Text_YouGotItThankYou:
-	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Oh! How did it go?\nDid you get my Devon Parts?\pYou did! You got them back!\pYou really are a great Trainer!\pI know! As my thanks, I'll give you\na Great Ball!$"
+	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Oh!\nHow did it go?\lDid you get my Devon Parts?\pYou did!\nYou got them back!\pYou really are a great Trainer!\pI know!\pAs my thanks, I'll give you a Great Ball!$"
 
 RustboroCity_Text_YoureLoadedWithItems:
 	.string "You're loaded with items.\n"
@@ -1121,19 +1121,19 @@ RustboroCity_Text_PleaseComeWithMe:
 	.string "Oh, yes! Young Trainer!\nPlease come with me!$"
 
 RustboroCity_Text_MayHiLetsRegister:
-	.string "{COLOR RED}May{COLOR DARK_GRAY}: Oh! Hey, {PLAYER}!\pHave you been catching lots of\nPokémon?\pI'm doing pretty good on\nthat front, at least.\pI caught so many Pokémon in\nPetalburg Woods that I ran out of\lPoké Balls!\p…\pOh!\pYou have a Pokénav!\nAnd with a Match Call feature, too!\pLet's register each other so we can\ncontact one another anytime!$"
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: Oh! Hey, {PLAYER}!\pHave you been catching lots of\nPokémon?\pI'm doing pretty good on that front,\nat least.\pI caught so many Pokémon in Petalburg\nWoods that I ran out of Poké Balls!\p…\pOh!\pYou have a Pokénav!\nAnd with a Match Call feature, too!\pLet's register each other so we can\ncontact one another anytime!$"
 	
 RustboroCity_Text_RegisteredMay:
 	.string "Registered May\nin the Pokénav.$"
 
 RustboroCity_Text_MayPassedBrineyWantToBattle:
-	.string "Oh yeah… And I passed by Mr. Briney\nwhen I was in Petalburg Woods.\pHmm. I guess he must have been on\nhis way home to his cottage on\l{COLOR BLUE}Route 104{COLOR DARK_GRAY}.\p{PLAYER}, you just moved here so\nthere's no way you could know, but\lMr. Briney was once a highly\lrespected seafarer.\pBut enough about that!\nI've been itching for a battle!\pHow about it, {PLAYER}?\pReady to test your skills against\nme?$"
+	.string "Oh yeah… And I passed by Mr. Briney\nwhen I was in Petalburg Woods.\pHmm. I guess he must have been on his\nway home to his cottage on {COLOR BLUE}Route 104{COLOR DARK_GRAY}.\p{PLAYER}, you just moved here so\nthere's no way you could know, but\lMr. Briney was once a highly\lrespected seafarer.\pBut enough about that!\nI've been itching for a battle!\pHow about it, {PLAYER}?\pReady to test your skills against me?$"
 
 RustboroCity_Text_MayOhHaventRaisedPokemonEnough:
 	.string "Oh?\nWhat's the matter?\pHave you not caught or raised your\nPokémon very much?\pThat is not very good for a Trainer!$"
 
 RustboroCity_Text_MayWantToBattle:
-	.string "{COLOR RED}May{COLOR DARK_GRAY}: How about it, {PLAYER}?\pReady to test your skills against\nme?$"
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: How about it, {PLAYER}?\pReady to test your skills against me?$"
 
 RustboroCity_Text_MayImNotGoingToLose:
 	.string "You just became a Trainer, {PLAYER}.\nI'm not going to lose!$"
@@ -1143,16 +1143,16 @@ RustboroCity_Text_MayDefeat:
 	.string "You're better than I expected!$"
 
 RustboroCity_Text_MayMrBrineyHint:
-	.string "{COLOR RED}May{COLOR DARK_GRAY}: Oh yeah… And I passed by\nMr. Briney when I was in Petalburg\lWoods.\pHmm. I guess he must have been on\nhis way home to his cottage on\l{COLOR BLUE}Route 104{COLOR DARK_GRAY}.\p{PLAYER}, you just moved here so\nthere's no way you could know, but\lMr. Briney was once a highly\lrespected seafarer.$"
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: Oh yeah…\nAnd I passed by Mr. Briney when I was\lin Petalburg Woods.\pHmm. I guess he must have been on his\nway home to his cottage on {COLOR BLUE}Route 104{COLOR DARK_GRAY}.\p{PLAYER}, you just moved here so\nthere's no way you could know, but\lMr. Briney was once a highly\lrespected seafarer.$"
 
 RustboroCity_Text_BrendanHiLetsRegister:
-	.string "{COLOR RED}{RIVAL}{COLOR DARK_GRAY}: Hey, {PLAYER}.\pHow's your Pokédex?\nCompleted any entries yet?\pMine pretty much rules.\pI went on a Pokémon-catching frenzy\nin Petalburg Woods until I ran out\lof Poké Balls!\p…\pOh?\nYou have a Pokénav!\pAnd a Match Call feature, too.\nCool!\pLet's register each other so we can\nget in touch anytime.$"
+	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: Hey, {PLAYER}.\pHow's your Pokédex?\nCompleted any entries yet?\pMine pretty much rules.\pI went on a Pokémon-catching frenzy\nin Petalburg Woods until I ran out of\lPoké Balls!\p…\pOh?\nYou have a Pokénav!\pAnd a Match Call feature, too.\nCool!\pLet's register each other so we can get\nin touch anytime.$"
 
 RustboroCity_Text_RegisteredBrendan:
 	.string "Registered Brendan\nin the Pokénav.$"
 
 RustboroCity_Text_BrendanPassedBrineyWantToBattle:
-	.string "Oh, yeah. I passed by Mr. Briney in\nPetalburg Woods.\pI bet he was on his way home to his\ncottage on {COLOR BLUE}Route 104{COLOR DARK_GRAY}.\pI guess you wouldn't know, since you\njust moved here and all, but they\lsay that old guy used to be an\lamazing sailor!\pBut enough about that.\nI've been itching for a battle!\pWant to have a battle to test how\nfar you've progressed?$"
+	.string "Oh, yeah. I passed by Mr. Briney in\nPetalburg Woods.\pI bet he was on his way home to his\ncottage on {COLOR BLUE}Route 104{COLOR DARK_GRAY}.\pI guess you wouldn't know, since you\njust moved here and all, but they say\lthat old guy used to be an amazing\lsailor!\pBut enough about that.\nI've been itching for a battle!\pWant to have a battle to test how\nfar you've progressed?$"
 
 RustboroCity_Text_BrendanNoConfidenceInPokemon:
 	.string "What's the matter?\pDon't have any confidence in your\nPokémon?$"
@@ -1168,7 +1168,7 @@ RustboroCity_Text_BrendanDefeat:
 	.string "You're pretty good.$"
 
 RustboroCity_Text_BrendanMrBrineyHint:
-	.string "Oh, yeah. I passed by Mr. Briney in\nPetalburg Woods.\pI bet he was on his way home to his\ncottage on {COLOR BLUE}Route 104{COLOR DARK_GRAY}.\pI guess you wouldn't know, since you\njust moved here and all, but they\lsay that old guy used to be an\lamazing sailor!$"
+	.string "Oh, yeah. I passed by Mr. Briney in\nPetalburg Woods.\pI bet he was on his way home to his\ncottage on {COLOR BLUE}Route 104{COLOR DARK_GRAY}.\pI guess you wouldn't know, since you\njust moved here and all, but they say\lthat old guy used to be an amazing\lsailor!$"
 
 RustboroCity_Text_TunnelNearingCompletion:
 	.string "“Timesaving tunnel nearing\n"
@@ -1206,7 +1206,7 @@ RustboroCity_Text_CuttersHouse:
 	.string "Cutter's House$"
 
 RustboroCity_Text_DevelopedNewPokenavFeature:
-	.string "I've been working on an exciting new\nfeature for the Pokénav…\lAnd it's turned out splendidly!\p{PLAYER}, could I take a look at your\nPokénav?\pThe one President Stone provided\nyou with?$"
+	.string "I've been working on an exciting new\nfeature for the Pokénav…\lAnd it's turned out splendidly!\p{PLAYER}, could I take a look at\nyour Pokénav?\pThe one President Stone provided you\nwith?$"
 
 RustboroCity_Text_AddedMatchCallPleaseCallMrStone:
 	.string "Fantastic!\nThere you go, {PLAYER}!\pI've added a new feature called the\nMatch Call to your Pokénav.\pWith the Match Call, you can easily\nconnect and chat with trainers\lyou've met on your journey, right\lfrom your Pokénav.\pYou know, President Stone should be\none of your first contacts.\pGive it a try!$"
@@ -1635,7 +1635,7 @@ RustboroCity_EventScript_RivalTriggerGreet_Text_3:
 	.string "It's a real city, huh?\nNothing like Littleroot.$"
 
 RustboroCity_EventScript_RivalTriggerGreet_Text_4:
-	.string "Oh, and {PLAYER}, have you heard?\nThere's a Pokémon Gym here, too!\pOnce I catch a couple more\nPokémon, I'll be sure take it on\lwith my team!\pSee you later!$"
+	.string "Oh, and {PLAYER}, have you heard?\nThere's a Pokémon Gym here, too!\pOnce I catch a couple more Pokémon, I'll\nbe sure take it on with my team!\pSee you later!$"
 
 RustboroCity_EventScript_RivalTriggerGreet_Text_5:
-	.string "Oh, did you know?\nThere's a Pokémon Gym here, too.\pSoon as I gather a few more\nPokémon, I'll be trying my team\lagainst it!\pSee ya!$"
+	.string "Oh, did you know?\nThere's a Pokémon Gym here, too.\pSoon as I gather a few more Pokémon,\nI'll be trying my team against it!\pSee ya!$"

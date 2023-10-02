@@ -48,12 +48,12 @@ script GraniteCave_StevensRoom_EventScript_Steven {
     applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUp)
     applymovement(LOCALID_STEVEN, Common_Movement_WalkInPlaceUp)
     waitmovement(LOCALID_STEVEN)
-    msgbox("If you don't mind me asking…\pDo you feel anything in particular\nwhen you look up at this wall?\pA primal world, lost thousands of\nyears in the past…\pLegendary Pokémon of tremendous\npower became humanity's greatest\lthreat…\pThe terror aroused by that power\nis clear to see in this ancient\lartwork.")
+    msgbox("If you don't mind me asking…\pDo you feel anything in particular\nwhen you look up at this wall?\pA primal world, lost thousands of\nyears in the past…\pLegendary Pokémon of tremendous\npower became humanity's greatest\lthreat…\pThe terror aroused by that power is\nclear to see in this ancient artwork.")
     closemessage
     applymovement(OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDown)
     applymovement(LOCALID_STEVEN, Common_Movement_WalkInPlaceDown)
     waitmovement(LOCALID_STEVEN)
-    msgbox("…Yes.\pBut not all power is terrible.\pYour Pokémon are clearly quite\ncapable as well.\lLooking at you all together…\pI think you have it takes to become\na Pokémon League Champion.\pAs long as you keep training, that\nis.\p…\pI know, since we've gotten to know\neach other, let's register one\lanother in our Pokénavs.")
+    msgbox("…Yes.\pBut not all power is terrible.\pYour Pokémon are clearly quite capable\nas well. Looking at you all together…\pI think you have it takes to become\na Pokémon League Champion.\pAs long as you keep training, that is.\p…\pI know, since we've gotten to know each\nother, let's register one another in\lour Pokénavs.")
     closemessage
     delay(24)
 	playfanfare(MUS_REGISTER_MATCH_CALL)
@@ -106,6 +106,6 @@ movement GraniteCave_StevensRoom_Movement_PlayerWatchStevenLeave {
 }
 
 script GraniteCave_StevensRoom_EventScript_CavePainting{
-    msgbox("It is a cave painting the depicts\ngiant Pokémon-like creatures\lwreaking havoc.\pThere are symbols resembling the\ncharacters Omega and Alpha on\leach of the beast's arms.", MSGBOX_SIGN)
+    msgbox("It is a cave painting the depicts giant\nPokémon creatures wreaking havoc.\pThere are symbols resembling the\ncharacters Omega and Alpha on each\lof the beast's arms.", MSGBOX_SIGN)
     end
 }

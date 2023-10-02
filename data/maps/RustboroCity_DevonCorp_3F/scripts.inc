@@ -195,19 +195,19 @@ RustboroCity_DevonCorp_3F_EventScript_RareRocksDisplay::
 	end
 
 RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor:
-	.string "{COLOR RED}Mr. Stone{COLOR DARK_GRAY}: I'm Mr. Stone, the\nPresident of the Devon Corporation.\pI heard just now how we have quite\na bit to thank you for.\pSo you helped out my staff not just\nonce, but twice!\pThere's a favor I'd like to ask of a\nreliable Trainer like you.\pNow I want you to know I'm a\npresident you can trust.\pI'd never be so mean to ask a favor\nfor nothing in return.\pThat's why I want you to have this!$"
+	.string "{COLOR RED}Mr. Stone{COLOR DARK_GRAY}: I'm Mr. Stone, the\nPresident of the Devon Corporation.\pI heard just now how we have quite a\nbit to thank you for.\pSo you helped out my staff not just\nonce, but twice!\pThere's a favor I'd like to ask of a\nreliable Trainer like you.\pNow I want you to know I'm a president\nyou can trust.\pI'd never be so mean to ask a favor\nfor nothing in return.\pThat's why I want you to have this!$"
 
 RustboroCity_DevonCorp_3F_Text_ReceivedPokenav:
 	.string "{PLAYER} received a {COLOR RED}Pokénav{COLOR DARK_GRAY}.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp:
-	.string "That device…\pIt's Pokémon Navigator, or Pokénav\nfor short.\pIt is an indispensable tool for any\nTrainer who is traveling out in the\lworld.\p…\pNow let me get to the important\nissue of what it is I need you to\ldo…$"
+	.string "That device…\pIt's Pokémon Navigator, or Pokénav\nfor short.\pIt is an indispensable tool for any\nTrainer who is traveling out in the\lworld.\p…\pNow let me get to the important issue\nof what it is I need you to do…$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneLetterToSteven:
 	.string "I want to ask you to deliver this\n{COLOR BLUE}Letter{COLOR DARK_GRAY} to a man named {COLOR RED}Steven{COLOR DARK_GRAY}.\lYou should find him in {COLOR BLUE}Dewford{COLOR DARK_GRAY}.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneGoFindMrBriney:
-	.string "You'll have to cross the sea to\nreach Dewford, of course.\pI'll ask {COLOR RED}Mr. Briney{COLOR DARK_GRAY}, the old sailor\nwho lives in that hut on {COLOR BLUE}Route 104{COLOR DARK_GRAY},\lto help with the crossing.\pGo find him, and he should agree to\nhelp you.\pI'm counting on you, young Trainer!\pIf you're ever unsure of what to do,\njust come and talk with me again!$"
+	.string "You'll have to cross the sea to reach\nDewford, of course.\pI'll ask {COLOR RED}Mr. Briney{COLOR DARK_GRAY}, the old sailor who\nlives in that hut on {COLOR BLUE}Route 104{COLOR DARK_GRAY}, to\lhelp with the crossing.\pGo find him, and he should agree to\nhelp you.\pI'm counting on you, young Trainer!\pIf you're ever unsure of what to do,\njust come and talk with me again!$"
 
 RustboroCity_DevonCorp_3F_Text_CountingOnYou:
 	.string "{COLOR RED}Mr. Stone{COLOR DARK_GRAY}: Deliver that {COLOR BLUE}Letter{COLOR DARK_GRAY} to\n{COLOR RED}Steven{COLOR DARK_GRAY} in {COLOR BLUE}Dewford Town{COLOR DARK_GRAY} for me!$"
@@ -233,7 +233,7 @@ RustboroCity_DevonCorp_3F_Text_PleaseGoAhead:
 	.string "Please, go ahead.$"
 
 RustboroCity_DevonCorp_3F_Text_VisitCaptSternShipyard:
-	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Mr. Briney is an old and\ndear friend of Mr. Stone's.\pThe two of them, along with one\nother friend, used to travel all\lthe corners of the world together\lin their youth.$"
+	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Mr. Briney is an old and\ndear friend of Mr. Stone's.\pThe two of them, along with one other\nfriend, used to travel all the corners\lof the world together in their youth.$"
 
 RustboroCity_DevonCorp_3F_Text_RepeatAndTimerHugelyPopular:
 	.string "Devon's new products, the Repeat Ball\n"

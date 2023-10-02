@@ -352,37 +352,37 @@ PetalburgWoods_Text_NotAOneToBeFound:
 	.string "{COLOR RED}???{COLOR DARK_GRAY}: Hmmm…\nNot a one to be found…$"
 
 PetalburgWoods_Text_HaveYouSeenShroomish:
-	.string "{COLOR RED}???{COLOR DARK_GRAY}: Hello, have you seen\nany Pokémon called Shroomish\laround here?\pI really love that Pokémon.$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Hello, have you seen any Pokémon\ncalled Shroomish around here?\pI really love that Pokémon.$"
 
 PetalburgWoods_Text_IWasGoingToAmbushYou:
-	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: I was going to ambush you,\nbut you had to dawdle in Petalburg\lWoods forever, didn't you?\pI got sick of waiting, so here I am!$"
+	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: I was going to ambush you, but\nyou had to dawdle in Petalburg Woods\lforever, didn't you?\pI got sick of waiting, so here I am!$"
 
 PetalburgWoods_Text_HandOverThosePapers:
-	.string "You! Devon Researcher!\pHand over those papers!$"
+	.string "You!\nDevon Researcher!\pHand over those papers!$"
 
 PetalburgWoods_Text_YouHaveToHelpMe:
 	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Aiyeeeh!\pYou're a Pokémon Trainer, aren't you?\nYou've got to help me, please!$"
 
 PetalburgWoods_Text_NoOneCrossesTeamAqua:
-	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: Huh? What do you think you're\ndoing?\pWhat, you're going to protect him?\pNo one who crosses Team Aqua gets\nany mercy, not even a kid!\pCome on and battle me!$"
+	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: Huh?\nWhat do you think you're doing?\pWhat, you're going to protect him?\pNo one who crosses Team Aqua gets\nany mercy, not even a kid!\pCome on and battle me!$"
 
 PetalburgWoods_Text_YoureKiddingMe:
 	.string "You're so strong!$"
 
 PetalburgWoods_Text_YouveGotSomeNerve:
-	.string "Grrr… You've got some nerve meddling\nwith Team Aqua!\lCome on and battle me again!\pI wish I could say that, but I'm out\nof Pokémon…\pAnd, hey, we of Team Aqua are also\nafter something in Rustboro.\pI'll let you go for today!$"
+	.string "Grrr… You've got some nerve meddling\nwith Team Aqua!\lCome on and battle me again!\pI wish I could say that, but I'm out of\nPokémon…\pAnd, hey, we of Team Aqua are also\nafter something in Rustboro.\pI'll let you go for today!$"
 
 PetalburgWoods_Text_ThatWasAwfullyClose:
 	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Whew…\nThat was awfully close!\pThanks to you, he didn't rob me of\nthese important papers.\pI know!\nI'll give you this as my thanks!$"
 
 PetalburgWoods_Text_ExplainExpShare:
-    .string "The Exp. Share is a super high-tech\ndevice.\pI had to strain every fiber\nof my brain and body to develop\lthis device.\pTurn the switch on, and battle\nexperience will be shared by all\lparty Pokémon!\lPlease give it a try!\pAnd with this, I'll restore your\nPokémon's health.\pIt's another technical advance that\nI'm proud of!$"
+    .string "The Exp. Share is a super high-tech\ndevice.\pI had to strain every fiber of my brain\nand body to develop this device.\pTurn the switch on, and battle\nexperience will be shared by all party\lPokémon!\lPlease give it a try!\pAnd with this, I'll restore your\nPokémon's health.\pIt's another technical advance that\nI'm proud of!$"
 
 PetalburgWoods_Text_PokemonHealed:
     .string "You had your Pokémon's HP restored!$"
 
 PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro:
-	.string "…Ah!\pDidn't that Team Aqua thug\nsay they were after something in\lRustboro, too?\pUh-oh! It's a crisis!\nI can't be wasting time!$"
+	.string "…Ah!\pDidn't that Team Aqua thug say they\nwere after something in Rustboro,\ltoo?\pUh-oh!\nIt's a crisis!\lI can't be wasting time!$"
 
 PetalburgWoods_Text_YoureLoadedWithItems:
 	.string "You're loaded with items.\n"
@@ -509,12 +509,12 @@ script PetalburgWoods_EventScript_ZiniaReport {
     delay(8)
     applymovement(LOCALID_ZINIA, PetalburgWoods_Movement_ZiniaMoveLeft)
     waitmovement(LOCALID_ZINIA)
-    msgbox("{COLOR RED}???{COLOR DARK_GRAY}: …This is the Petalburg recon\nteam checking in.\pI'm afraid I have to begin with an\napology, Ms. Shelly…\lIt's not good news…\pThe mission is a no-go…\pA little something cropped up and\ngot in the way…\p…Roger that.\p…Got it.\nWill do.\pI'll continue investigating that\nenergy we detected.")
+    msgbox("{COLOR RED}???{COLOR DARK_GRAY}: …This is the Petalburg recon\nteam checking in.\pI'm afraid I have to begin with an\napology, Ms. Shelly…\lIt's not good news…\pThe mission is a no-go…\pA little something cropped up and got\nin the way…\p…Roger that.\p…Got it.\nWill do.\pI'll continue investigating that energy\nwe detected.")
     closemessage
     delay(24)
     applymovement(LOCALID_ZINIA, PetalburgWoods_Movement_ZiniaLookAround)
     waitmovement(LOCALID_ZINIA)
-    msgbox("…\p…Phew!\pBut that kid sure had some promise\nas a Trainer, I'd say.\p…")
+    msgbox("…\p…Phew!\pBut that kid sure had some promise as\na Trainer, I'd say.\p…")
     closemessage
     applymovement(LOCALID_ZINIA, Common_Movement_WalkInPlaceLeft)
     waitmovement(LOCALID_ZINIA)

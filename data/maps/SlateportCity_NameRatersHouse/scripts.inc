@@ -62,25 +62,25 @@ SlateportCity_NameRatersHouse_EventScript_NewNameDifferent::
 	end
 
 SlateportCity_NameRatersHouse_Text_PleasedToRateMonNickname:
-	.string "Hello, hello!\nI am the official Name Rater!\pI can more or less tell your\nPokémon's fortune by its name.\pWant me to rate the nicknames of\nyour Pokémon?$"
+	.string "Hello, hello!\nI am the official Name Rater!\pI can more or less tell your Pokémon's\nfortune by its name.\pWant me to rate the nicknames of your\nPokémon?$"
 
 SlateportCity_NameRatersHouse_Text_CritiqueWhichMonNickname:
 	.string "Which Pokémon's nickname should I\nrate for you?$"
 
 SlateportCity_NameRatersHouse_Text_FineNameSuggestBetterOne:
-	.string "Hmmm. {STR_VAR_1}, is it?\pYou picked quite a find nickname.\pBut I think we could give it\nsomething even better.\lWhat do you say?$"
+	.string "Hmmm. {STR_VAR_1}, is it?\pYou picked quite a find nickname.\pBut I think we could give it something\neven better. What do you say?$"
 
 SlateportCity_NameRatersHouse_Text_WhatShallNewNameBe:
 	.string "I see! What would you like the new\nnickname to be?$"
 
 SlateportCity_NameRatersHouse_Text_MonShallBeKnownAsName:
-	.string "Done! From now on, this Pokémon will\nbe known as {STR_VAR_1}!\pYou're right, that does seem to fit\nit better.\lNicely done!$"
+	.string "Done! From now on, this Pokémon will\nbe known as {STR_VAR_1}!\pYou're right, that does seem to fit\nit better. Nicely done!$"
 
 SlateportCity_NameRatersHouse_Text_DoVisitAgain:
 	.string "OK! Come see me again if you change\nyour mind.$"
 
 SlateportCity_NameRatersHouse_Text_NameNoDifferentYetSuperior:
-	.string "Done! From now on, this Pokémon will\nbe known as {STR_VAR_1}!\pIt looks no different from\nbefore, but we both know this name\lis vastly superior!\lHow fortunate for you!$"
+	.string "Done! From now on, this Pokémon will\nbe known as {STR_VAR_1}!\pIt looks no different from before,\nbut we both know this name is vastly\lsuperior! How fortunate for you!$"
 
 SlateportCity_NameRatersHouse_Text_MagnificentName:
 	.string "Hmmm… {STR_VAR_1} it is!\p"

@@ -913,13 +913,13 @@ LittlerootTown_EventScript_MomSaysBye::
 	return
 
 LittlerootTown_Text_OurNewHomeLetsGoInside:
-	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: {PLAYER}!\nYou're here at last!\pWasn't it tough riding in the back\nof the bumpy truck all that way?\pWell, this is Littleroot Town.\nWhat do you think?\pThis is going to be our new home!\pIt has a quaint feel, but it looks\nlike it should be a nice place to\llive, don't you think?\pAnd you get your own room this time,\n{PLAYER}!\pCome on.\nYou have to see the inside!$"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: {PLAYER}!\nYou're here at last!\pWasn't it tough riding in the back of\nthe bumpy truck all that way?\pWell, this is Littleroot Town.\nWhat do you think?\pThis is going to be our new home!\pIt has a quaint feel, but it looks\nlike it should be a nice place to live,\ldon't you think?\pAnd you get your own room this time,\n{PLAYER}!\pCome on.\nYou have to see the inside!$"
 
 LittlerootTown_Text_WaitPlayer:
 	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Wait, {PLAYER}!$"
 
 LittlerootTown_Text_TakeCarePlayer:
-	.string "Did you introduce yourself to\nProfessor Birch?\pOh!\nWhat an adorable Pokémon!\lYou got it from the professor?\lHow nice!\pYou are your father's child, all\nright…\pYou look good together with a\nPokémon!\p…\pTo think that you have your very own\nPokémon now…\lYour father will be overjoyed.\pBut don't push yourself too hard.\pIf anything happens, you can always\ncome home, honey.$"
+	.string "Did you introduce yourself to\nProfessor Birch?\pOh!\nWhat an adorable Pokémon!\lYou got it from the professor?\lHow nice!\pYou are your father's child, all right…\pYou look good together with a\nPokémon!\p…\pTo think that you have your very own\nPokémon now…\lYour father will be overjoyed.\pBut don't push yourself too hard.\pIf anything happens, you can always\ncome home, honey.$"
 
 LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "If you use a PC, you can store items\n"
@@ -927,7 +927,7 @@ LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "The power of science is staggering!$"
 
 LittlerootTown_Text_BirchSpendsDaysInLab:
-	.string "Professor Birch will spend days on\nend in his lab researching\lsomething, then he'll suddenly go\lout into the field to gather more\ldata…\pWhen does he ever spend time at\nhome?$"
+	.string "Professor Birch will spend days on\nend in his lab researching something,\lthen he'll suddenly go out into\lthe field to gather more data…\pWhen does he ever spend time at home?$"
 
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
 	.string "It's not safe to out there if you\ndon't have any Pokémon with you.$"

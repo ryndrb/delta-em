@@ -370,7 +370,7 @@ DewfordTown_Gym_Text_CristianPostBattle:
 	.string "Go after that Badge!$"
 
 DewfordTown_Gym_Text_BrawlyIntro:
-	.string "{COLOR RED}Brawly{COLOR DARK_GRAY}: I'm Brawly!\nDewford's Gym Leader!\pI've been churned in the rough waves\nof these parts…\pAnd I've grown tough using the cave\nat the outskirts of this town as my\ltrainer ground, as well as using\lthe equipment in this Gym.\pSo you want to challenge me?\pLet me see what you're made of!$"
+	.string "{COLOR RED}Brawly{COLOR DARK_GRAY}: I'm Brawly!\nDewford's Gym Leader!\pI've been churned in the rough waves\nof these parts…\pAnd I've grown tough using the cave\nat the outskirts of this town as my\ltrainer ground, as well as using the\lequipment in this Gym.\pSo you want to challenge me?\pLet me see what you're made of!$"
 
 DewfordTown_Gym_Text_BrawlyDefeat:
 	.string "Whoa, wow!\pYou made a much bigger splash than\nI expected!$"
@@ -379,7 +379,7 @@ DewfordTown_Gym_Text_ReceivedKnuckleBadge:
 	.string "OK, you've got me.\nTake this Gym Badge!\p{PLAYER} received the {COLOR RED}Knuckle Badge{COLOR DARK_GRAY}\nfrom Brawly.$"
 
 DewfordTown_Gym_Text_KnuckleBadgeInfoTakeThis:
-	.string "The Knuckle Badge makes all\nPokémon up to Level 30, even those\lyou get in trades, obey without\lquestion.\pHmmm…\nYou know what?\pI think you can make full use of\nthis, too.\pI'm sure this will help your Pokémon\nbulk up muscle!$"
+	.string "The Knuckle Badge makes all Pokémon up\nto Level 30, even those you get in\ltrades, obey without question.\pHmmm…\nYou know what?\pI think you can make full use of this,\ntoo.\pI'm sure this will help your Pokémon\nbulk up muscle!$"
 
 DewfordTown_Gym_Text_ExplainBulkUp:
 	.string "Bulk Up temporarily enhances the\nPokémon's muscle power.\pThe move boosts both Attack and\nDefense of the Pokémon.$"
@@ -389,7 +389,7 @@ DewfordTown_Gym_Text_RegisteredBrawly:
 	.string "in the Pokénav.$"
 
 DewfordTown_Gym_Text_BrawlyPostBattle:
-	.string "I can see your talent becoming a\ngiant wave that causes a storm of\lastonishment with Trainers one day!\pI look forward to the day when I\ncan surf your giant wave!$"
+	.string "I can see your talent becoming a\ngiant wave that causes a storm of\lastonishment with Trainers one day!\pI look forward to the day when I can\nsurf your giant wave!$"
 
 DewfordTown_Gym_Text_GymStatue:
 	.string "Dewford Town Pokémon Gym$"
@@ -430,10 +430,10 @@ DewfordTown_Gym_Text_BrawlyRematchNeedTwoMons:
 
 script DewfordTown_Gym_EventScript_BrawlyBeenGraniteCave {
     if(var(VAR_TEMP_0) == 1){
-        msgbox("I can see your talent becoming a\ngiant wave that causes a storm of\lastonishment with Trainers one day!\pI look forward to the day when I\ncan surf your giant wave!\pBy the way, have you been to\n{COLOR BLUE}Granite Cave{COLOR DARK_GRAY}?\pIt's located to the north of this\ntown.\pIt's full of fascinating stuff\nlike rare stones and wall paintings\lthousands years of old.\pMy friend {COLOR RED}Steven{COLOR DARK_GRAY} rushed to the cave\nafter I told him about it.")
+        msgbox("I can see your talent becoming a\ngiant wave that causes a storm of\lastonishment with Trainers one day!\pI look forward to the day when I can\nsurf your giant wave!\pBy the way, have you been to\n{COLOR BLUE}Granite Cave{COLOR DARK_GRAY}?\pIt's located to the north of this\ntown.\pIt's full of fascinating stuff like rare\nstones and wall paintings thousands\lyears of old.\pMy friend {COLOR RED}Steven{COLOR DARK_GRAY} rushed to the cave\nafter I told him about it.")
         setvar(VAR_TEMP_0, 0)
     }else{
-        msgbox("By the way, have you been to\n{COLOR BLUE}Granite Cave{COLOR DARK_GRAY}?\pIt's located to the north of this\ntown.\pIt's full of fascinating stuff\nlike rare stones and wall paintings\lthousands years of old.\pMy friend {COLOR RED}Steven{COLOR DARK_GRAY} rushed to the cave\nafter I told him about it.")
+        msgbox("By the way, have you been to\n{COLOR BLUE}Granite Cave{COLOR DARK_GRAY}?\pIt's located to the north of this\ntown.\pIt's full of fascinating stuff like rare\nstones and wall paintings thousands\lyears of old.\pMy friend {COLOR RED}Steven{COLOR DARK_GRAY} rushed to the cave\nafter I told him about it.")
     }
     closemessage
     release

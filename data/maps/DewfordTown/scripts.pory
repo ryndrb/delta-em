@@ -646,7 +646,7 @@ DewfordTown_Text_HallSign:
 	.string "“Everyone's information exchange!”$"
 
 Route104_Text_LandedInDewfordDeliverLetter:
-	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Ahoy!\nWe've struck land in Dewford.\pI suppose you'll be heading\nashore to deliver that letter to\lwhat's-his-name or whomever.\pIf you're ever feeling lost and\nadrift though, try calling in on\lthe island's Pokémon Gym.\pThe Leader, Brawly, surely knows\neveryone and everything that goes\lon in his town!$"
+	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Ahoy!\nWe've struck land in Dewford.\pI suppose you'll be heading\nashore to deliver that letter to\lwhat's-his-name or whomever.\pIf you're ever feeling lost and adrift\nthough, try calling in on the island's\lPokémon Gym.\pThe Leader, Brawly, surely knows\neveryone and everything that goes\lon in his town!$"
 
 DewfordTown_Text_SetSailBackToPetalburg:
 	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Have you delivered that\nletter yet?\pOr were you meaning to sail back to\nPetalburg way, maybe?$"
@@ -655,7 +655,7 @@ DewfordTown_Text_PetalburgWereSettingSail2:
 	.string "Petalburg City, or thereabouts?\nAnchors aweigh!\pPeeko, we're setting sail, my darling!$"
 
 DewfordTown_Text_GoDeliverIllBeWaiting:
-	.string "Then you go on and deliver that\nletter. I have the deck.\pIf you're ever feeling lost and\nadrift though, try calling in on\lthe island's Pokémon Gym.\pThe Leader, Brawly, surely knows\neveryone and everything that goes\lon in his town!$"
+	.string "Then you go on and deliver that\nletter. I have the deck.\pIf you're ever feeling lost and adrift\nthough, try calling in on the island's\lPokémon Gym.\pThe Leader, Brawly, surely knows\neveryone and everything that goes\lon in his town!$"
 
 DewfordTown_Text_BrineyLandedInDewford:
 	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Ahoy!\nWe've hit land in Dewford!\pYou just go on and tell me whenever\nyou want to set sail again, {PLAYER}!$"
@@ -763,10 +763,10 @@ script DewfordTown_EventScript_Briney_Continue {
     }
     if(var(VAR_MR_BRINEY_DIALOGUE_STATE) == 0){
         setvar(VAR_MR_BRINEY_DIALOGUE_STATE, 1)
-        message("{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Oho!\pIt looks as though you have\ndelivered your chit good and\lproper.\pAh, but that reminds me!\pI've had a message from President\nStone, saying he has another favor\lto ask.\pIt's about the {COLOR BLUE}Devon Parts{COLOR DARK_GRAY} that you\nrecovered for him before.\pSeems as though they should\ngo to some fellow called {COLOR RED}Stern{COLOR DARK_GRAY} at\l{COLOR BLUE}Slateport's shipyard{COLOR DARK_GRAY}.\pThis old seadog will see you there\nsafely!\pWeigh anchors!\nWe're for Slateport!")
+        message("{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Oho!\pIt looks as though you have delivered\nyour chit good and proper.\pAh, but that reminds me!\pI've had a message from President\nStone, saying he has another favor\lto ask.\pIt's about the {COLOR BLUE}Devon Parts{COLOR DARK_GRAY} that you\nrecovered for him before.\pSeems as though they should go to some\nfellow called {COLOR RED}Stern{COLOR DARK_GRAY} at {COLOR BLUE}Slateport's\lshipyard{COLOR DARK_GRAY}.\pThis old seadog will see you there\nsafely!\pWeigh anchors!\nWe're for Slateport!")
     }elif(var(VAR_MR_BRINEY_DIALOGUE_STATE) == 1 && !flag(FLAG_DELIVERED_DEVON_GOODS)){
         if(!flag(FLAG_DELIVERED_DEVON_GOODS)){
-            message("{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Ahoy! I know exactly\nwhat you want to say!\pYou've still got to deliver that\ncase to young Stern in Slateport.\lAin't that so?\pYou just leave it up to this old\nseadog!\pWeigh anchors!\nWe're for Slateport!")
+            message("{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Ahoy!\nI know exactly what you want to say!\pYou've still got to deliver that case to\nyoung Stern in Slateport.\lAin't that so?\pYou just leave it up to this old\nseadog!\pWeigh anchors!\nWe're for Slateport!")
         }else{
             setvar(VAR_MR_BRINEY_DIALOGUE_STATE, 2)
         }

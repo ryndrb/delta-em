@@ -13,5 +13,5 @@ OldaleTown_House2_Text_PokemonLevelUp:
 	.string "Pokémon grow stronger by battling\nand leveling up.$"
 
 OldaleTown_House2_Text_YoullGoFurtherWithStrongPokemon:
-	.string "The stronger your Pokémon become,\nthe farther you'll be able to\ltravel!$"
+	.string "The stronger your Pokémon become,\nthe farther you'll be able to travel!$"
 

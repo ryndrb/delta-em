@@ -33,8 +33,8 @@ RustboroCity_CuttersHouse_Text_YouCanPutThisHMToGoodUse:
 	.string "Go on, take it!$"
 
 RustboroCity_CuttersHouse_Text_ExplainCut:
-	.string "Any Pokémon that's learned Cut\ncan chop down prickly trees if the\lTrainer has earned the Stone\lBadge.\pHMs like this can be used outside of\nbattle, too, with the right badges!$"
+	.string "Any Pokémon that's learned Cut can\nchop down prickly trees if the\lTrainer has earned the Stone Badge.\pHMs like this can be used outside of\nbattle, too, with the right badges!$"
 
 RustboroCity_CuttersHouse_Text_DadHelpedClearLandOfTrees:
-	.string "My dad helped make Rustboro City\nwhat it is today.\pHe had his Pokémon use Cut to clear\nthe land of trees and expand the\lcity.$"
+	.string "My dad helped make Rustboro City\nwhat it is today.\pHe had his Pokémon use Cut to clear\nthe land of trees and expand the city.$"
 

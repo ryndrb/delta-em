@@ -81,7 +81,7 @@ RustboroCity_DevonCorp_1F_EventScript_ProductsDisplay::
 	end
 
 RustboroCity_DevonCorp_1F_Text_WelcomeToDevonCorp:
-	.string "Hello and welcome to the\nDevon Corporation.\pWe are the proud producers of\nitems and medicine that enhance\lyour life.$"
+	.string "Hello and welcome to the\nDevon Corporation.\pWe are the proud producers of items\nand medicine that enhance your life.$"
 
 RustboroCity_DevonCorp_1F_Text_StaffGotRobbed:
 	.string "One of our research staff went and\ngot robbed of something important.$"
@@ -93,7 +93,7 @@ RustboroCity_DevonCorp_1F_Text_ThoseShoesAreOurProduct:
 	.string "using something we made.$"
 
 RustboroCity_DevonCorp_1F_Text_RobberWasntVeryBright:
-	.string "That stolen case…\pSure, it's important, but it's not like\nit would be much good to anyone\lelse.\pBecause those you know about the\nenergy are…\p…No! Nothing! Nothing, really!\nUhahaheh…$"
+	.string "That stolen case…\pSure, it's important, but it's not like\nit would be much good to anyone else.\pBecause those you know about the\nenergy are…\p…No!\nNothing!\lNothing, really!\lUhahaheh…$"
 
 RustboroCity_DevonCorp_1F_Text_SoundsLikeStolenGoodsRecovered:
 	.string "It sounds like they've recovered\n"

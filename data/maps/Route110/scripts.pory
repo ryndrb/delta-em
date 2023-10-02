@@ -788,7 +788,7 @@ Route110_Text_AquaActionsBringSmiles:
 	.string "Team Aqua's actions should bring\nsmiles to people's faces!$"
 
 Route110_Text_MayRoute110Intro:
-	.string "{COLOR RED}May{COLOR DARK_GRAY}: Hey, {PLAYER}!\nIt's been ages!\lNice, timing, too.\pI was just searching for Pokémon,\nyou know?\pMy dad is always going on about\nhow nature used to be even more\ldiverse, way back in the day.\pHe says that there used to be\nway more kinds of Pokémon that\lthere are now!\pSo that's why we do fieldwork, him\nand me.\pWe really want to find out what\nhappened to those Pokémon in the\lpast.\pOn my journey up to now, I've\nmet a lot of different Pokémon, and\lI think I've gotten to understand a\llot of them, too.$"
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: Hey, {PLAYER}!\nIt's been ages!\lNice, timing, too.\pI was just searching for Pokémon, you\nknow?\pMy dad is always going on about how\nnature used to be even more diverse,\lway back in the day.\pHe says that there used to be way more\nkinds of Pokémon that there are now!\pSo that's why we do fieldwork, him and\nme.\pWe really want to find out what\nhappened to those Pokémon in the\lpast.\pOn my journey up to now, I've met a\nlot of different Pokémon, and I think\lI've gotten to understand a lot of\lthem, too.$"
 
 Route110_Text_MayLetsBattle:
 	.string "Me and my Pokémon have really grown.\nSo… How about a little battle?$"
@@ -800,16 +800,16 @@ Route110_Text_MayMonWornOut:
 	.string "{PLAYER}, you've been busy training,\ntoo, haven't you?\pOops!\nBut look at us!\lOur teams looks pretty tired.\lLet's get them taken care of first.$"
 
 Route110_Text_MayTakeThis:
-	.string "And now I think you deserve a\nreward, too!\pHere, this is from me!$"
+	.string "And now I think you deserve a reward,\ntoo!\pHere, this is from me!$"
 
 Route110_Text_MayExplainItemfinder:
-	.string "That's a {COLOR BLUE}Dowsing Machine{COLOR DARK_GRAY}.\pTry it out-if there's a hidden\nitem anywhere near you, that little\lthing will react to tell you.\pPay attention, and it'll lead you\nright to items!\pAnd it's fun to see all those waving\nbits above your head.\lTry it, and I bet you'll get hooked!\pCareful-you won't be able to sneak\nup on Pokémon while you wear it!\pSee you later then, {PLAYER}!\nLet's meet again!\pI hope we'll both be able to meet\neven more Pokémon on our journeys!$"
+	.string "That's a {COLOR BLUE}Dowsing Machine{COLOR DARK_GRAY}.\pTry it out-if there's a hidden item\nanywhere near you, that little thing\lwill react to tell you.\pPay attention, and it'll lead you right\nto items!\pAnd it's fun to see all those waving\nbits above your head.\lTry it, and I bet you'll get hooked!\pCareful--you won't be able to sneak\nup on Pokémon while you wear it!\pSee you later then, {PLAYER}!\nLet's meet again!\pI hope we'll both be able to meet even\nmore Pokémon on our journeys!$"
 
 Route110_Text_BrendanRoute110Intro:
-	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: Hey, {PLAYER}.\nSo this is where you've been.\lHow've things been going?\pI was just checking out the\nPokémon around here to help with\lmy dad's research.\pHe says that long, long time ago,\nnature used to be way more diverse\land there were lots more kinds of\lPokémon, too.\pMy dad and I want to learn more\nabout those Pokémon from the past,\lyou know?\lThat's why we do fieldwork.\lAnd this journey has really helped.\pI've met a lot of Pokémon on my way\nhere and learned about them, too.$"
+	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: Hey, {PLAYER}.\nSo this is where you've been.\lHow've things been going?\pI was just checking out the Pokémon\naround here to help with my dad's\lresearch.\pHe says that long, long time ago,\nnature used to be way more diverse\land there were lots more kinds of\lPokémon, too.\pMy dad and I want to learn more about\nthose Pokémon from the past, you\lknow? That's why we do fieldwork.\lAnd this journey has really helped.\pI've met a lot of Pokémon on my way\nhere and learned about them, too.$"
 
 Route110_Text_BrendanLetsBattle:
-	.string "Which reminds me!\pCome on!\nIt's the first time we've met in\lages, so let's have a battle!\pShow me what you and your team\nhave accomplished on your journey,\l{PLAYER}!$"
+	.string "Which reminds me!\pCome on! It's the first time we've met\nin ages, so let's have a battle!\pShow me what you and your team\nhave accomplished on your journey,\l{PLAYER}!$"
 
 Route110_Text_BrendanDefeated:
 	.string "Whoa!\nNot bad!$"
@@ -824,7 +824,7 @@ Route110_Text_BrendanTakeThis:
 	.string "And this is for you.$"
 
 Route110_Text_BrendanExplainItemfinder:
-	.string "That's a {COLOR BLUE}Dowsing Machine{COLOR DARK_GRAY}.\pUse it to root around for items that\naren't visible.\pIf it senses something nearby, it'll\nreact, see?\pTruth is, once I started using it, I\ngot pretty hooked on it.\lIt's addicting!\lBut I recommend you give it a try.\pCareful though, you won't be able\nto sneak up on Pokémon while you\lwear it!\pI guess I'm off to get started\nsurveying the next area then.\pI hope you meet a lot of Pokémon,\ntoo, {PLAYER}!$"
+	.string "That's a {COLOR BLUE}Dowsing Machine{COLOR DARK_GRAY}.\pUse it to root around for items that\naren't visible.\pIf it senses something nearby, it'll\nreact, see?\pTruth is, once I started using it, I\ngot pretty hooked on it.\lIt's addicting!\lBut I recommend you give it a try.\pCareful though, you won't be able to\nsneak up on Pokémon while you wear it!\pI guess I'm off to get started\nsurveying the next area then.\pI hope you meet a lot of Pokémon, too,\n{PLAYER}!$"
 
 Route110_Text_RideBikeAtFullSpeed:
 	.string "Wouldn't it be great to ride a Bike\nat full speed on the Cycling Road?$"
@@ -976,10 +976,10 @@ Route110_Text_ThereIsNoRecord:
 	.string "challenge. There is no record…$"
 
 Route110_Text_ImagineSeeingYouHere:
-	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: Oh, {PLAYER}!\nImagine seeing you here!\pI hope you haven't had any trouble\nwith those troublesome Team Aqua.\pI heard they've been causing quite a\nruckus in some towns lately.\pBut anyway, how has your journey\nbeen so far?\pAnd speaking of which, where might\nmy {RIVAL} be?$"
+	.string "{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: Oh, {PLAYER}!\nImagine seeing you here!\pI hope you haven't had any trouble with\nthose troublesome Team Aqua/Magma.\pI heard they've been causing quite a\nruckus in some towns lately.\pBut anyway, how has your journey been\nso far?\pAnd speaking of which, where might my\n{RIVAL} be?$"
 
 Route110_Text_HeardYouInstallMatchCall:
-	.string "Oh, I see!\nYou two are running separately.\lWell, that's fine.\pOh, yes, I heard that your Pokénav\nhad the Match Call system installed.\pWell, then, I should register you in\nmy Pokénav as well.\pThat way, even when we're apart, I\ncan rate your Pokédex anytime.$"
+	.string "Oh, I see!\nYou two are running separately.\lWell, that's fine.\pOh, yes, I heard that your Pokénav had\nthe Match Call system installed.\pWell, then, I should register you in my\nPokénav as well.\pThat way, even when we're apart, I can\nrate your Pokédex anytime.$"
 
 Route110_Text_RegisteredBirchInPokenav:
 	.string "Registered Prof. Birch\n"
@@ -1029,7 +1029,7 @@ script Route110_EventScript_AquaGruntsScene {
     msgbox("{COLOR RED}Grunt{COLOR DARK_GRAY}: Let's keep going through Route\n110 and head for Mt. Chimney!")
     applymovement(LOCALID_GRUNT_23, Common_Movement_WalkInPlaceUp)
     waitmovement(LOCALID_GRUNT_23)
-    msgbox("Wow, that's quite far.\pWhy don't we take a rest in\n{COLOR BLUE}Mauville City{COLOR DARK_GRAY}.\lIt's on the way.")
+    msgbox("Wow, that's quite far.\pWhy don't we take a rest in{COLOR BLUE}Mauville\nCity{COLOR DARK_GRAY}. It's on the way.")
     applymovement(LOCALID_GRUNT_25, Common_Movement_WalkInPlaceUp)
     waitmovement(LOCALID_GRUNT_25)
     msgbox("Great idea!")

@@ -335,13 +335,13 @@ MaysHouse_2F_EventScript_Notebook::
 	end
 
 MaysHouse_2F_Text_Notebook:
-	.string "There are some notes on the page,\nwritten in spare, angular script.\p“This'll be on the test! Don't\nforget!\pEach Pokémon can learn up to four\nmoves!\pWhich moves you teach a Pokémon\nwill show how good of Trainer you\lare!”$"
+	.string "There are some notes on the page,\nwritten in spare, angular script.\p“This'll be on the test! Don't\nforget!\pEach Pokémon can learn up to four\nmoves!\pWhich moves you teach a Pokémon will\nshow how good of Trainer you are!”$"
 
 RivalsHouse_2F_Text_MayWhoAreYouIntro:
 	.string "Huh!?\pWho… are you?$"
 
 RivalsHouse_2F_Text_MayWhoAreYou:
-	.string "Oh!\nYou must be {PLAYER}!\lYour move was today, huh?\pWell, I'm {COLOR RED}May{COLOR DARK_GRAY}!\nGlad to meet you!\pI…I actually have this dream of\nbecoming friend with Pokémon all\lover the world.\pAnd when Dad-oh, I mean, Professor\nBirch-told me about your move\lhere, {PLAYER}…\pWell, I was hoping you would be nice\nand we could be friends.\p…B-but that's just silly, isn't it?\pI've just met you.\nRight, {PLAYER}?\pSo what am I talking about…\pHee hee…\pOh no!\nI forgot!\pI was supposed to be going out to\nhelp Dad catch some wild Pokémon!\p{PLAYER}, I'll see you later!$"
+	.string "Oh!\nYou must be {PLAYER}!\lYour move was today, huh?\pWell, I'm {COLOR RED}May{COLOR DARK_GRAY}!\nGlad to meet you!\pI…I actually have this dream of\nbecoming friend with Pokémon all over\lthe world.\pAnd when Dad--oh, I mean, Professor\nBirch--told me about your move here,\l{PLAYER}…\pWell, I was hoping you would be nice\nand we could be friends.\p…B-but that's just silly, isn't it?\pI've just met you.\nRight, {PLAYER}?\pSo what am I talking about…\pHee hee…\pOh no!\nI forgot!\pI was supposed to be going out to\nhelp Dad catch some wild Pokémon!\p{PLAYER}, I'll see you later!$"
 
 RivalsHouse_2F_Text_MayGettingReady:
 	.string "{COLOR RED}???{COLOR DARK_GRAY}: Pokémon fully restored, items\nall ready and…$"
@@ -350,7 +350,7 @@ RivalsHouse_2F_Text_BrendanWhoAreYouIntro:
 	.string "Y-you…\pWho are you?$"
 
 RivalsHouse_2F_Text_BrendanWhoAreYou:
-	.string "{PLAYER}?\pOh, you're the new kid who just\nmoved in next door!?\pHuh…\nI didn't know that you'd be a girl.\pDad-I mean, Professor Birch-told me\nyou were the kid of a Gym Leader,\lso I sort of hoped you'd be a guy.\pMy name's {COLOR RED}Brendan{COLOR DARK_GRAY}.\pWell, I guess we are still\nneighbors, so…\pNice to meet you!\nLet's be friends, OK?\pHuh?\nHey, {PLAYER}…\lDon't you have any Pokémon?\pIf you want, I can go catch you\none.\pAw, wait I forgot…\pI'm supposed to be going out to help\nmy dad catch some wild Pokémon.\pSome other time, OK?$"
+	.string "{PLAYER}?\pOh, you're the new kid who just moved\nin next door!?\pHuh…\nI didn't know that you'd be a girl.\pDad-I mean, Professor Birch-told me\nyou were the kid of a Gym Leader,\lso I sort of hoped you'd be a guy.\pMy name's {COLOR RED}Brendan{COLOR DARK_GRAY}.\pWell, I guess we are still neighbors,\nso…\pNice to meet you!\nLet's be friends, OK?\pHuh?\nHey, {PLAYER}…\lDon't you have any Pokémon?\pIf you want, I can go catch you one.\pAw, wait I forgot…\pI'm supposed to be going out to help\nmy dad catch some wild Pokémon.\pSome other time, OK?$"
 
 RivalsHouse_2F_Text_BrendanGettingReady:
 	.string "{COLOR RED}???{COLOR DARK_GRAY}: Pokémon fully restored… Items\nall ready and…$"

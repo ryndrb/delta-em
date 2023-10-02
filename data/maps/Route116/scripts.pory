@@ -358,29 +358,16 @@ Route116_EventScript_Johnson::
 	end
 
 Route116_Text_ScoundrelMadeOffWithPeeko:
-	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Ohhh, what am I to do?\pWe were just out on our walk, Peeko\nand I, when we were attacked by an\lodd thug…\pAnd then the scoundrel made off with\nmy darling Peeko!\pWhere are yooouuu!? Peeeeeeko!$"
+	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Ohhh, what am I to do?\pWe were just out on our walk, Peeko\nand I, when we were attacked by an\lodd thug…\pAnd then the scoundrel made off with\nmy darling Peeko!\pWhere are yooouuu!?\nPeeeeeeko!$"
 
 Route116_Text_WantToDigTunnel:
 	.string "Grrrrrroar!\pThat goofy goon hightailed it out of\nthe tunnel!\pI can go back to digging!$"
 
 Route116_Text_DiggingTunnelWhenGoonOrderedMeOut:
-	.string "Grrrrr!\n"
-	.string "What's going on?\p"
-	.string "I was digging the tunnel without any\n"
-	.string "tools when some goon ordered me out!\p"
-	.string "That tunnel's filled with Pokémon\n"
-	.string "that react badly to loud noises.\l"
-	.string "They could cause an uproar.\p"
-	.string "That's why we stopped using heavy\n"
-	.string "equipment for tunneling…\p"
-	.string "I'm worried that the goon will do\n"
-	.string "something stupid and startle the\l"
-	.string "Pokémon into an uproar.$"
+	.string "Grrrrr!\nWhat's going on?\pI was digging the tunnel without any\ntools when some goon ordered me out!\pThat tunnel's filled with Pokémon that\nreact badly to loud noises.\lThey could cause an uproar.\pThat's why we stopped using heavy\nequipment for tunneling…\pI'm worried that the goon will do\nsomething stupid and startle the\lPokémon into an uproar.$"
 
 Route116_Text_GoonHightailedItOutOfTunnel:
-	.string "Nnn… Roar!\p"
-	.string "That goofy goon hightailed it out of\n"
-	.string "the tunnel! I can go back to digging!$"
+	.string "Nnn…\nRoar!\pThat goofy goon hightailed it out of\nthe tunnel!\lI can go back to digging!$"
 
 Route116_Text_ThankYouTokenOfAppreciation:
 	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Oh!\nIt's you!\pYou're that Trainer who helped me\nin Petalburg Woods and also got back\lmy case that was stolen and then\lgraciously delivered it to Slateport!\pCaptain Stern informed us that the\ncase arrived safely!\pI thank you very, very much.\pIf I were a rain cloud, I would shower\nyou with gratitude and hail you as a\lhero!\pFor you, wonderful Trainer, I bear good\nnews!\pRecently, our company developed a new\nkind of Poké Ball.\pAs token of our appreciation for all\nyour help, we would like to give you\lone!$"

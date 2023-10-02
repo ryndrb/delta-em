@@ -298,22 +298,22 @@ OldaleTown_Text_SavingMyProgress:
 	.string "progress.$"
 
 OldaleTown_Text_IWorkAtPokemonMart:
-	.string "Hi there!\nI work at the Poké Mart.\pFrom what I can see, you're a\nnovice Trainer.\lAm I right? OK.\pBeing super kindhearted as I am, I'm\ngoing to give you useful advice.$"
+	.string "Hi there!\nI work at the Poké Mart.\pFrom what I can see, you're a novice\nTrainer. Am I right? OK.\pBeing super kindhearted as I am, I'm\ngoing to give you useful advice.$"
 
 OldaleTown_Text_ThisIsAPokemonMart:
-	.string "First of all, that's a Poké Mart\nthere.\lJust look for our blue roof.\pWe sell a variety of goods, including\nPoké Balls for catching Pokémon!$"
+	.string "First of all, that's a Poké Mart there.\nJust look for our blue roof.\pWe sell a variety of goods, including\nPoké Balls for catching Pokémon!$"
 
 OldaleTown_Text_HereHaveThisPotion:
 	.string "I'd like you to have these as part\nof a special promotion!$"
 
 OldaleTown_Text_PotionExplanation:
-	.string "Potions can be used anytime, so they\ncan be very useful to have.\pThat's it.\nThat was the advice from me-\lthe supremely kindhearted clerk.\lHave a great journey!$"
+	.string "Potions can be used anytime, so they\ncan be very useful to have.\pThat's it.\nThat was the advice from me--the\lsupremely kindhearted clerk.\lHave a great journey!$"
 
 OldaleTown_Text_WaitDontComeInHere:
-	.string "Aaaaah! Wait!\nPlease don't wander around here!\pI've just discovered a set of\nincredibly rare Pokémon prints!\pWait until I finish sketching them,\nOK?$"
+	.string "Aaaaah! Wait!\nPlease don't wander around here!\pI've just discovered a set of\nincredibly rare Pokémon prints!\pWait until I finish sketching them, OK?$"
 
 OldaleTown_Text_DiscoveredFootprints:
-	.string "I've just discovered a set of\nincredibly rare Pokémon prints!\pWait until I finish sketching them,\nOK?$"
+	.string "I've just discovered a set of\nincredibly rare Pokémon prints!\pWait until I finish sketching them, OK?$"
 
 OldaleTown_Text_FinishedSketchingFootprints:
 	.string "I thought I was sketching some rare\nPokémon footprints…\pIt turned out they were my own\nfootprints!$"

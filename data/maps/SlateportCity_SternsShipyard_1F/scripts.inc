@@ -71,19 +71,19 @@ SlateportCity_SternsShipyard_1F_EventScript_Briney::
 	end
 
 SlateportCity_SternsShipyard_1F_Text_CantMakeHeadsOrTails:
-	.string "{COLOR RED}???{COLOR DARK_GRAY}: Umm…\nIf this goes here, and that goes\lover there…\pThen where does thing go?\nAnd about the that doohickey?\pAaargh!\nI can't make heads or tails of this!$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Umm…\nIf this goes here, and that goes over\lthere…\pThen where does thing go?\nAnd about the that doohickey?\pAaargh!\nI can't make heads or tails of this!$"
 
 SlateportCity_SternsShipyard_1F_Text_MeetDockDeliverToStern:
-	.string "Hm?\nYou…\pOh, sorry.\nI'm {COLOR RED}Dock{COLOR DARK_GRAY}.\pCaptain Stern commissioned me to draw\nup designs for ferry.\pOh! Those parts you have…\nThose are the Devon Parts!\pBut…hmmm…\nThis won't do…\pI guess Captain Stern is probably off\nat the Oceanic Museum again.\pSorry, but could I ask you to\nfind the captain and give the parts\lto him?$"
+	.string "Hm?\nYou…\pOh, sorry.\nI'm {COLOR RED}Dock{COLOR DARK_GRAY}.\pCaptain Stern commissioned me to draw\nup designs for ferry.\pOh! Those parts you have…\nThose are the Devon Parts!\pBut…hmmm…\nThis won't do…\pI guess Captain Stern is probably off\nat the Oceanic Museum again.\pSorry, but could I ask you to find the\ncaptain and give the parts to him?$"
 
 SlateportCity_SternsShipyard_1F_Text_CouldYouFindStern:
 	.string "{COLOR RED}Dock{COLOR DARK_GRAY}: I guess Captain Stern is\nprobably off at the Oceanic Museum\lagain.\pSorry, but find the captain and\ndeliver the parts directly to him!$"
 
 SlateportCity_SternsShipyard_1F_Text_CouldUseAdviceFromVeteran:
-	.string "{COLOR RED}Dock{COLOR DARK_GRAY}: Shipbuilding is an art.\pA lot of things can't be figured out\nby calculations on paper.\pI really could use some advice\nfrom a veteran sailor who knows the\lseas…$"
+	.string "{COLOR RED}Dock{COLOR DARK_GRAY}: Shipbuilding is an art.\pA lot of things can't be figured out\nby calculations on paper.\pI really could use some advice from a\nveteran sailor who knows the seas…$"
 
 SlateportCity_SternsShipyard_1F_Text_BrineyJoinedUs:
-	.string "{COLOR RED}Dock{COLOR DARK_GRAY}: Hey!\pMr. Briney agreed to join us\nand lend us his knowledge and\lexpertise.\pThe help of a legendary sailor\nmeans ferry plans are really coming\ltogether!$"
+	.string "{COLOR RED}Dock{COLOR DARK_GRAY}: Hey!\pMr. Briney agreed to join us and lend us\nhis knowledge and expertise.\pThe help of a legendary sailor\nmeans ferry plans are really coming\ltogether!$"
 
 SlateportCity_SternsShipyard_1F_Text_FerryIsReady:
 	.string "Dock: The ferry is finally ready!\p"

@@ -172,26 +172,26 @@ RustboroCity_Gym_Text_MarcPostBattle:
 	.string "pick the Rock type at her young age.$"
 
 RustboroCity_Gym_Text_RoxanneIntro:
-	.string "{COLOR RED}Roxanne{COLOR DARK_GRAY}: Just as I expected…\pI knew you and your Pokémon would\nbe able to go this far.\pNow, would you kindly demonstrate\nhow you battle with your Pokémon?$"
+	.string "{COLOR RED}Roxanne{COLOR DARK_GRAY}: Just as I expected…\pI knew you and your Pokémon would be\nable to go this far.\pNow, would you kindly demonstrate how\nyou battle with your Pokémon?$"
 
 RustboroCity_Gym_Text_RoxanneDefeat:
 	.string "So…I lost…\pIt seems that I still have much more\nto learn…$"
 
 RustboroCity_Gym_Text_RoxanneGiveTM:
-	.string "I understand.\pThe Pokémon League's rules state\nthat Trainers receive this if they\ldefeat a Gym Leader.\pPlease accept the official\nPokémon League Stone Badge.$"
+	.string "I understand.\pThe Pokémon League's rules state that\nTrainers receive this if they defeat\la Gym Leader.\pPlease accept the official Pokémon\nLeague Stone Badge.$"
 
 RustboroCity_Gym_Text_ReceivedStoneBadge:
 	.string "{PLAYER} received the {COLOR RED}Stone Badge{COLOR DARK_GRAY}\n"
 	.string "from Roxanne.$"
 
 RustboroCity_Gym_Text_StoneBadgeInfoTakeThis:
-	.string "The Stone Badge enables Pokémon\nto use the HM move Cut outside of\lbattle.\pAll Pokémon up to Level 20, even\nthose you get in trades, will obey\lyou.\pAnd…\nPlease take this with you, too.$"
+	.string "The Stone Badge enables Pokémon\nto use the HM move Cut outside of\lbattle.\pAll Pokémon up to Level 20, even those\nyou get in trades, will obey you.\pAnd…\nPlease take this with you, too.$"
 
 RustboroCity_Gym_Text_ExplainRockTomb:
-	.string "The move Rock Tomb not only inflicts\ndamage by dropping rocks, it also\llower's the target's Speed.\pIf you use a TM, it instantly teaches\nthe move to a Pokémon.\pYou can use a TM as many times as\nyou want, so please try it out!$"
+	.string "The move Rock Tomb not only inflicts\ndamage by dropping rocks, it also\llower's the target's Speed.\pIf you use a TM, it instantly teaches\nthe move to a Pokémon.\pYou can use a TM as many times as you\nwant, so please try it out!$"
 
 RustboroCity_Gym_Text_RoxannePostBattle:
-	.string "{COLOR RED}Roxanne{COLOR DARK_GRAY}: Since you are so\nstrong, you should challenge other\lGym Leaders.\pBy battling many Trainers, you should\nlearn many things.$"
+	.string "{COLOR RED}Roxanne{COLOR DARK_GRAY}: Since you are so strong, you\nshould challenge other Gym Leaders.\pBy battling many Trainers, you should\nlearn many things.$"
 
 RustboroCity_Gym_Text_GymStatue:
 	.string "Rustboro City Pokémon Gym$"
@@ -307,4 +307,4 @@ RustboroCity_Gym_Movement_RoxanneHeadsBack:
 	step_end
 
 RustboroCity_Gym_EventScript_WelcomeToGym_Text_0:
-	.string "{COLOR RED}???{COLOR DARK_GRAY}: Hello.\pYou must be a new challenger.\pI am {COLOR RED}Roxanne{COLOR DARK_GRAY}, the Rustboro City\nPokémon Gym Leader.\pI became a Gym Leader so that\nI may apply in battle all that I've\llearned at the Pokémon Trainers'\lSchool.\pIf you defeat me in a Pokémon\nbattle, I'll present you with a Gym\lBadge as proof of your strength as\la Trainer.\pPlease take up the challenge.\pI look forward to seeing you as a\nchallenger.\pUntil then, farewell.$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Hello.\pYou must be a new challenger.\pI am {COLOR RED}Roxanne{COLOR DARK_GRAY}, the Rustboro City\nPokémon Gym Leader.\pI became a Gym Leader so that I may\napply in battle all that I've learned\lat the Pokémon Trainers' School.\pIf you defeat me in a Pokémon battle,\nI'll present you with a Gym Badge as\lproof of your strength as a Trainer.\pPlease take up the challenge.\pI look forward to seeing you as a\nchallenger.\pUntil then, farewell.$"

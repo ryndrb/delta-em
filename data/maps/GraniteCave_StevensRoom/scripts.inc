@@ -155,10 +155,10 @@ GraniteCave_StevensRoom_EventScript_Steven_Text_5:
 	.string "Why, thank you…\pIt must have been some trouble to\ntrack me down.\pI suppose I must repay you in some\nway.\pLet me see…\pI will give you this TM.\nPlease accept it.\pIt contains my favorite move, Steel\nWing.$"
 
 GraniteCave_StevensRoom_EventScript_Steven_Text_6:
-	.string "If you don't mind me asking…\pDo you feel anything in particular\nwhen you look up at this wall?\pA primal world, lost thousands of\nyears in the past…\pLegendary Pokémon of tremendous\npower became humanity's greatest\lthreat…\pThe terror aroused by that power\nis clear to see in this ancient\lartwork.$"
+	.string "If you don't mind me asking…\pDo you feel anything in particular\nwhen you look up at this wall?\pA primal world, lost thousands of\nyears in the past…\pLegendary Pokémon of tremendous\npower became humanity's greatest\lthreat…\pThe terror aroused by that power is\nclear to see in this ancient artwork.$"
 
 GraniteCave_StevensRoom_EventScript_Steven_Text_7:
-	.string "…Yes.\pBut not all power is terrible.\pYour Pokémon are clearly quite\ncapable as well.\lLooking at you all together…\pI think you have it takes to become\na Pokémon League Champion.\pAs long as you keep training, that\nis.\p…\pI know, since we've gotten to know\neach other, let's register one\lanother in our Pokénavs.$"
+	.string "…Yes.\pBut not all power is terrible.\pYour Pokémon are clearly quite capable\nas well. Looking at you all together…\pI think you have it takes to become\na Pokémon League Champion.\pAs long as you keep training, that is.\p…\pI know, since we've gotten to know each\nother, let's register one another in\lour Pokénavs.$"
 
 GraniteCave_StevensRoom_EventScript_Steven_Text_8:
 	.string "Registered Steven in the Pokénav.$"
@@ -167,4 +167,4 @@ GraniteCave_StevensRoom_EventScript_Steven_Text_9:
 	.string "Good luck to you.\nI must be going now.$"
 
 GraniteCave_StevensRoom_EventScript_CavePainting_Text_0:
-	.string "It is a cave painting the depicts\ngiant Pokémon-like creatures\lwreaking havoc.\pThere are symbols resembling the\ncharacters Omega and Alpha on\leach of the beast's arms.$"
+	.string "It is a cave painting the depicts giant\nPokémon creatures wreaking havoc.\pThere are symbols resembling the\ncharacters Omega and Alpha on each\lof the beast's arms.$"
