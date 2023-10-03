@@ -511,3 +511,15 @@ const u16 gObjectEventPal_Delta_May_Underwater[] = INCBIN_U16("graphics/object_e
 const u32 gObjectEventPic_Delta_May[] = INCBIN_U32("graphics/object_events/pics/people/delta/may_walking.4bpp");
 const u16 gObjectEventPal_Delta_May[] = INCBIN_U16("graphics/object_events/pics/people/delta/may_walking.gbapal");
 const u32 gObjectEventPic_Delta_May_Watering[] = INCBIN_U32("graphics/object_events/pics/people/delta/may_watering.4bpp");
+
+const u32 gObjectEventPic_Matt[] = INCBIN_U32("graphics/object_events/pics/people/team_aqua/matt.4bpp");
+const u16 gObjectEventPal_Matt[] = INCBIN_U16("graphics/object_events/pics/people/team_aqua/matt.gbapal");
+
+const u32 gObjectEventPic_Shelly[] = INCBIN_U32("graphics/object_events/pics/people/team_aqua/shelly.4bpp");
+const u16 gObjectEventPal_Shelly[] = INCBIN_U16("graphics/object_events/pics/people/team_aqua/shelly.gbapal");
+
+const u32 gObjectEventPic_Courtney[] = INCBIN_U32("graphics/object_events/pics/people/team_magma/courtney.4bpp");
+const u16 gObjectEventPal_Courtney[] = INCBIN_U16("graphics/object_events/pics/people/team_magma/courtney.gbapal");
+
+const u32 gObjectEventPic_Tabitha[] = INCBIN_U32("graphics/object_events/pics/people/team_magma/tabitha.4bpp");
+const u16 gObjectEventPal_Tabitha[] = INCBIN_U16("graphics/object_events/pics/people/team_magma/tabitha.gbapal");
