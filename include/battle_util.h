@@ -38,6 +38,7 @@
 #define ABILITYEFFECT_ON_TERRAIN                 15
 #define ABILITYEFFECT_SWITCH_IN_TERRAIN          16
 #define ABILITYEFFECT_SWITCH_IN_WEATHER          17
+#define ABILITYEFFECT_OPPORTUNIST                18
 // Special cases
 #define ABILITYEFFECT_MUD_SPORT                  252 // Only used if B_SPORT_TURNS < GEN_6
 #define ABILITYEFFECT_WATER_SPORT                253 // Only used if B_SPORT_TURNS < GEN_6
@@ -147,6 +148,7 @@ bool32 TryChangeBattleWeather(u32 battler, u32 weatherEnumId, bool32 viaAbility)
 u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 moveArg);
 bool32 TryPrimalReversion(u32 battler);
 bool32 IsNeutralizingGasOnField(void);
+bool32 IsMoldBreakerTypeAbility(u32 ability);
 u32 GetBattlerAbility(u32 battler);
 u32 IsAbilityOnSide(u32 battler, u32 ability);
 u32 IsAbilityOnOpposingSide(u32 battler, u32 ability);
@@ -249,6 +251,8 @@ bool32 ChangeTypeBasedOnTerrain(u32 battler);
 void RemoveConfusionStatus(u32 battler);
 u8 GetBattlerGender(u32 battler);
 bool32 AreBattlersOfOppositeGender(u32 battler1, u32 battler2);
+bool32 AreBattlersOfSameGender(u32 battler1, u32 battler2);
 u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance);
+u8 GetBattlerType(u32 battler, u8 typeIndex);
 
 #endif // GUARD_BATTLE_UTIL_H

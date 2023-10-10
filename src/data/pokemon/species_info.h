@@ -3353,7 +3353,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_AMORPHOUS, EGG_GROUP_AMORPHOUS},
-        .abilities = {ABILITY_LEVITATE, ABILITY_NEUTRALIZING_GAS, ABILITY_POISON_ABSORB},
+        #if P_UPDATED_ABILITIES >= GEN_8
+            .abilities = {ABILITY_LEVITATE, ABILITY_NEUTRALIZING_GAS, ABILITY_STENCH},
+        #else
+            .abilities = {ABILITY_LEVITATE, ABILITY_NONE},
+        #endif
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
     },
@@ -3376,7 +3380,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_AMORPHOUS, EGG_GROUP_AMORPHOUS},
-        .abilities = {ABILITY_LEVITATE, ABILITY_NEUTRALIZING_GAS, ABILITY_POISON_ABSORB},
+        #if P_UPDATED_ABILITIES >= GEN_8
+            .abilities = {ABILITY_LEVITATE, ABILITY_NEUTRALIZING_GAS, ABILITY_POISON_ABSORB},
+        #else
+            .abilities = {ABILITY_LEVITATE, ABILITY_NONE},
+        #endif
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = TRUE,
     },
@@ -7155,7 +7163,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_GRASS},
-        .abilities = {ABILITY_CHLOROPHYLL, ABILITY_EARLY_BIRD, ABILITY_LEAF_GUARD},
+        #if P_UPDATED_ABILITIES >= GEN_9
+            .abilities = {ABILITY_CHLOROPHYLL, ABILITY_WIND_RIDER, ABILITY_LEAF_GUARD},
+        #else
+            .abilities = {ABILITY_CHLOROPHYLL, ABILITY_EARLY_BIRD, ABILITY_PICKPOCKET},
+        #endif
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
     },
@@ -9915,7 +9927,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_TORRENT, ABILITY_COMPETITIVE, ABILITY_DEFIANT},
+        #if P_UPDATED_ABILITIES >= GEN_9
+            .abilities = {ABILITY_TORRENT, ABILITY_COMPETITIVE, ABILITY_DEFIANT},
+        #else
+            .abilities = {ABILITY_TORRENT, ABILITY_NONE, ABILITY_DEFIANT},
+        #endif
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
     },
@@ -9937,7 +9953,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_TORRENT, ABILITY_COMPETITIVE, ABILITY_DEFIANT},
+        #if P_UPDATED_ABILITIES >= GEN_9
+            .abilities = {ABILITY_TORRENT, ABILITY_COMPETITIVE, ABILITY_DEFIANT},
+        #else
+            .abilities = {ABILITY_TORRENT, ABILITY_NONE, ABILITY_DEFIANT},
+        #endif
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
     },
@@ -9959,7 +9979,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_TORRENT, ABILITY_COMPETITIVE, ABILITY_DEFIANT},
+        #if P_UPDATED_ABILITIES >= GEN_9
+            .abilities = {ABILITY_TORRENT, ABILITY_COMPETITIVE, ABILITY_DEFIANT},
+        #else
+            .abilities = {ABILITY_TORRENT, ABILITY_NONE, ABILITY_DEFIANT},
+        #endif
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
     },
@@ -11696,7 +11720,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
         #else
             .eggGroups = { EGG_GROUP_AMORPHOUS, EGG_GROUP_AMORPHOUS},
         #endif
-        .abilities = {ABILITY_STEADFAST, ABILITY_JUSTIFIED, ABILITY_SHARPNESS},
+        #if P_UPDATED_ABILITIES >= GEN_9
+            .abilities = {ABILITY_STEADFAST, ABILITY_JUSTIFIED, ABILITY_SHARPNESS},
+        #else
+            .abilities = {ABILITY_STEADFAST, ABILITY_NONE, ABILITY_JUSTIFIED},
+        #endif
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
     },
@@ -16922,9 +16950,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         #if P_UPDATED_EGG_GROUPS >= GEN_8
-            .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_MONSTER},
-        #else
             .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_MINERAL},
+        #else
+            .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_MONSTER},
         #endif
         .abilities = {ABILITY_STURDY, ABILITY_ICE_BODY, ABILITY_ICE_SCALES},
         .bodyColor = BODY_COLOR_BLUE,
@@ -16948,9 +16976,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         #if P_UPDATED_EGG_GROUPS >= GEN_8
-            .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_MONSTER},
-        #else
             .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_MINERAL},
+        #else
+            .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_MONSTER},
         #endif
         .abilities = {ABILITY_STURDY, ABILITY_ICE_BODY, ABILITY_ICE_SCALES},
         .bodyColor = BODY_COLOR_BLUE,
@@ -23100,7 +23128,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_INTIMIDATE, ABILITY_FLASH_FIRE, ABILITY_ROCK_HEAD},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
-	    .flags = SPECIES_FLAG_HISUIAN_FORM,
+        .flags = SPECIES_FLAG_HISUIAN_FORM,
     },
 
     [SPECIES_ARCANINE_HISUIAN] =
@@ -23123,7 +23151,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_INTIMIDATE, ABILITY_FLASH_FIRE, ABILITY_ROCK_HEAD},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
-	    .flags = SPECIES_FLAG_HISUIAN_FORM,
+        .flags = SPECIES_FLAG_HISUIAN_FORM,
     },
 
     [SPECIES_VOLTORB_HISUIAN] =
@@ -23146,7 +23174,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SOUNDPROOF, ABILITY_STATIC, ABILITY_AFTERMATH},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
-	    .flags = SPECIES_FLAG_HISUIAN_FORM,
+        .flags = SPECIES_FLAG_HISUIAN_FORM,
     },
 
     [SPECIES_ELECTRODE_HISUIAN] =
@@ -23169,7 +23197,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SOUNDPROOF, ABILITY_STATIC, ABILITY_AFTERMATH},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
-	    .flags = SPECIES_FLAG_HISUIAN_FORM,
+        .flags = SPECIES_FLAG_HISUIAN_FORM,
     },
 
     [SPECIES_TYPHLOSION_HISUIAN] =
@@ -23192,7 +23220,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_BLAZE, ABILITY_FLASH_FIRE, ABILITY_CURSED_BODY},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
-	    .flags = SPECIES_FLAG_HISUIAN_FORM,
+        .flags = SPECIES_FLAG_HISUIAN_FORM,
     },
 
     [SPECIES_QWILFISH_HISUIAN] =
@@ -23207,7 +23235,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .catchRate = 45,
         .expYield = 88,
         .evYield_Attack    = 1,
-	    .itemRare = ITEM_POISON_BARB,
+        .itemRare = ITEM_POISON_BARB,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -23216,7 +23244,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_POISON_POINT, ABILITY_SWIFT_SWIM, ABILITY_INTIMIDATE},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
-	    .flags = SPECIES_FLAG_HISUIAN_FORM,
+        .flags = SPECIES_FLAG_HISUIAN_FORM,
     },
 
     [SPECIES_SNEASEL_HISUIAN] =
@@ -23237,10 +23265,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 35,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_INNER_FOCUS, ABILITY_KEEN_EYE, ABILITY_POISON_TOUCH},
+        .abilities = {ABILITY_INNER_FOCUS, ABILITY_KEEN_EYE, ABILITY_PICKPOCKET},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = TRUE,
-	    .flags = SPECIES_FLAG_HISUIAN_FORM,
+        .flags = SPECIES_FLAG_HISUIAN_FORM,
     },
 
 #if P_GEN_5_POKEMON == TRUE
@@ -23264,7 +23292,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TORRENT, ABILITY_SHARPNESS, ABILITY_FATAL_PRECISION},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
-	    .flags = SPECIES_FLAG_HISUIAN_FORM,
+        .flags = SPECIES_FLAG_HISUIAN_FORM,
     },
 
     [SPECIES_LILLIGANT_HISUIAN] =
@@ -23288,7 +23316,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_CHLOROPHYLL, ABILITY_HUSTLE, ABILITY_LEAF_GUARD},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = TRUE,
-	    .flags = SPECIES_FLAG_HISUIAN_FORM,
+        .flags = SPECIES_FLAG_HISUIAN_FORM,
     },
 
     [SPECIES_ZORUA_HISUIAN] =
@@ -23311,7 +23339,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_ILLUSION, ABILITY_ILLUSION, ABILITY_PRANKSTER},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
-	    .flags = SPECIES_FLAG_HISUIAN_FORM,
+        .flags = SPECIES_FLAG_HISUIAN_FORM,
     },
 
     [SPECIES_ZOROARK_HISUIAN] =
@@ -23334,7 +23362,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_ILLUSION, ABILITY_ILLUSION, ABILITY_PRANKSTER},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
-	    .flags = SPECIES_FLAG_HISUIAN_FORM,
+        .flags = SPECIES_FLAG_HISUIAN_FORM,
     },
 
     [SPECIES_BRAVIARY_HISUIAN] =
@@ -23357,7 +23385,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FATAL_PRECISION, ABILITY_SHEER_FORCE, ABILITY_DEFIANT},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
-	    .flags = SPECIES_FLAG_HISUIAN_FORM,
+        .flags = SPECIES_FLAG_HISUIAN_FORM,
     },
 #endif
 
@@ -23383,7 +23411,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SAP_SIPPER, ABILITY_REGENERATOR, ABILITY_GOOEY},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
-	    .flags = SPECIES_FLAG_HISUIAN_FORM,
+        .flags = SPECIES_FLAG_HISUIAN_FORM,
     },
 
     [SPECIES_GOODRA_HISUIAN] =
@@ -23406,7 +23434,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SAP_SIPPER, ABILITY_REGENERATOR, ABILITY_GOOEY},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
-	    .flags = SPECIES_FLAG_HISUIAN_FORM,
+        .flags = SPECIES_FLAG_HISUIAN_FORM,
     },
 
     [SPECIES_AVALUGG_HISUIAN] =
@@ -23429,7 +23457,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_STURDY, ABILITY_STRONG_JAW, ABILITY_SOLID_ROCK},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
-	    .flags = SPECIES_FLAG_HISUIAN_FORM,
+        .flags = SPECIES_FLAG_HISUIAN_FORM,
     },
 #endif
 
@@ -23454,7 +23482,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_OVERGROW, ABILITY_STRIKER, ABILITY_LONG_REACH},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
-	    .flags = SPECIES_FLAG_HISUIAN_FORM,
+        .flags = SPECIES_FLAG_HISUIAN_FORM,
     },
 #endif
 

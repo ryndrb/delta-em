@@ -237,7 +237,7 @@ EWRAM_DATA u32 gFieldStatuses = 0;
 EWRAM_DATA struct FieldTimer gFieldTimers = {0};
 EWRAM_DATA u8 gBattlerAbility = 0;
 EWRAM_DATA u16 gPartnerSpriteId = 0;
-EWRAM_DATA struct TotemBoost gTotemBoosts[MAX_BATTLERS_COUNT] = {0};
+EWRAM_DATA struct QueuedStatBoost gQueuedStatBoosts[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA bool8 gHasFetchedBall = FALSE;
 EWRAM_DATA u8 gLastUsedBall = 0;
 EWRAM_DATA u16 gLastThrownBall = 0;
@@ -2835,8 +2835,7 @@ static void SpriteCB_BattleSpriteSlideLeft(struct Sprite *sprite)
     }
 }
 
-// Unused
-static void SetIdleSpriteCallback(struct Sprite *sprite)
+static void UNUSED SetIdleSpriteCallback(struct Sprite *sprite)
 {
     sprite->callback = SpriteCB_Idle;
 }
@@ -3792,14 +3791,13 @@ static void TryDoEventsBeforeFirstTurn(void)
     // Totem boosts
     for (i = 0; i < gBattlersCount; i++)
     {
-        if (gTotemBoosts[i].stats != 0)
+        if (gQueuedStatBoosts[i].stats != 0 && !gProtectStructs[i].eatMirrorHerb && gProtectStructs[i].activateOpportunist == 0)
         {
             gBattlerAttacker = i;
             BattleScriptExecute(BattleScript_TotemVar);
             return;
         }
     }
-    memset(gTotemBoosts, 0, sizeof(gTotemBoosts));  // erase all totem boosts just to be safe
 
     // Check neutralizing gas
     if (AbilityBattleEffects(ABILITYEFFECT_NEUTRALIZINGGAS, 0, 0, 0, 0) != 0)
@@ -3823,6 +3821,9 @@ static void TryDoEventsBeforeFirstTurn(void)
         if (ItemBattleEffects(ITEMEFFECT_ON_SWITCH_IN, gBattlerByTurnOrder[gBattleStruct->switchInItemsCounter++], FALSE))
             return;
     }
+    
+    if (AbilityBattleEffects(ABILITYEFFECT_OPPORTUNIST, 0, 0, 0, 0))
+        return;
 
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
     {
@@ -3856,6 +3857,8 @@ static void TryDoEventsBeforeFirstTurn(void)
     gMoveResultFlags = 0;
 
     gRandomTurnNumber = Random();
+    
+    memset(gQueuedStatBoosts, 0, sizeof(gQueuedStatBoosts));  // erase all totem boosts just to be safe
 
     SetAiLogicDataForTurn(AI_DATA); // get assumed abilities, hold effects, etc of all battlers
 
@@ -4381,6 +4384,11 @@ static void HandleTurnActionSelectionState(void)
                             else if (gBattleResources->bufferB[battler][2] & RET_ULTRA_BURST)
                                 gBattleStruct->burst.toBurst |= gBitTable[battler];
                             gBattleCommunication[battler]++;
+
+                            if (gTestRunnerEnabled)
+                            {
+                                TestRunner_Battle_CheckChosenMove(battler, gChosenMoveByBattler[battler], gBattleStruct->moveTarget[battler]);
+                            }
                         }
                         break;
                     }
@@ -5754,9 +5762,9 @@ void SetTotemBoost(void)
     {
         if (*(&gSpecialVar_0x8001 + i))
         {
-            gTotemBoosts[battler].stats |= (1 << i);
-            gTotemBoosts[battler].statChanges[i] = *(&gSpecialVar_0x8001 + i);
-            gTotemBoosts[battler].stats |= 0x80;  // used as a flag for the "totem flared to life" script
+            gQueuedStatBoosts[battler].stats |= (1 << i);
+            gQueuedStatBoosts[battler].statChanges[i] = *(&gSpecialVar_0x8001 + i);
+            gQueuedStatBoosts[battler].stats |= 0x80;  // used as a flag for the "totem flared to life" script
         }
     }
 }

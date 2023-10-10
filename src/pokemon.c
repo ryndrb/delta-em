@@ -55,6 +55,17 @@
 #include "constants/union_room.h"
 #include "constants/weather.h"
 
+#define DAY_EVO_HOUR_BEGIN       12
+#define DAY_EVO_HOUR_END         HOURS_PER_DAY
+
+#define DUSK_EVO_HOUR_BEGIN      17
+#define DUSK_EVO_HOUR_END        18
+
+#define NIGHT_EVO_HOUR_BEGIN     0
+#define NIGHT_EVO_HOUR_END       12
+
+#define FRIENDSHIP_EVO_THRESHOLD 220
+
 struct SpeciesItem
 {
     u16 species;
@@ -3497,7 +3508,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         {
             u32 totalRerolls = 0;
             if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
-                totalRerolls += I_SHINY_CHARM_REROLLS;
+                totalRerolls += I_SHINY_CHARM_ADDITIONAL_ROLLS;
             if (LURE_STEP_COUNT != 0)
                 totalRerolls += 1;
 
@@ -5951,7 +5962,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
 
                             dataSigned += temp2;
                         }
-                        else // Decreasing EV (HP or Atk)
+                        else if (evChange < 0) // Decreasing EV (HP or Atk)
                         {
                             if (dataSigned == 0)
                             {
@@ -5967,6 +5978,13 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                             #endif
                             if (dataSigned < 0)
                                 dataSigned = 0;
+                        }
+                        else // Reset EV (HP or Atk)
+                        {
+                            if (dataSigned == 0)
+                                break;
+
+                            dataSigned = 0;
                         }
 
                         // Update EVs and stats
@@ -6131,7 +6149,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
 
                             dataSigned += temp2;
                         }
-                        else // Decreasing EV
+                        else if (evChange < 0) // Decreasing EV
                         {
                             if (dataSigned == 0)
                             {
@@ -6147,6 +6165,13 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                             #endif
                             if (dataSigned < 0)
                                 dataSigned = 0;
+                        }
+                        else // Reset EV
+                        {
+                            if (dataSigned == 0)
+                                break;
+
+                            dataSigned = 0;
                         }
 
                         // Update EVs and stats
@@ -6477,50 +6502,50 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
             switch (gEvolutionTable[species][i].method)
             {
             case EVO_FRIENDSHIP:
-                if (friendship >= 220)
+                if (friendship >= FRIENDSHIP_EVO_THRESHOLD)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_FRIENDSHIP_DAY:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 12 && gLocalTime.hours < 24 && friendship >= 220)
+                if (gLocalTime.hours >= DAY_EVO_HOUR_BEGIN && gLocalTime.hours < DAY_EVO_HOUR_END && friendship >= FRIENDSHIP_EVO_THRESHOLD)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL_DAY:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 12 && gLocalTime.hours < 24 && gEvolutionTable[species][i].param <= level)
+                if (gLocalTime.hours >= DAY_EVO_HOUR_BEGIN && gLocalTime.hours < DAY_EVO_HOUR_END && gEvolutionTable[species][i].param <= level)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_FRIENDSHIP_NIGHT:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 0 && gLocalTime.hours < 12 && friendship >= 220)
+                if (gLocalTime.hours >= NIGHT_EVO_HOUR_BEGIN && gLocalTime.hours < NIGHT_EVO_HOUR_END && friendship >= FRIENDSHIP_EVO_THRESHOLD)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL_NIGHT:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 0 && gLocalTime.hours < 12 && gEvolutionTable[species][i].param <= level)
+                if (gLocalTime.hours >= NIGHT_EVO_HOUR_BEGIN && gLocalTime.hours < NIGHT_EVO_HOUR_END && gEvolutionTable[species][i].param <= level)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_ITEM_HOLD_NIGHT:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 0 && gLocalTime.hours < 12 && heldItem == gEvolutionTable[species][i].param)
+                if (gLocalTime.hours >= NIGHT_EVO_HOUR_BEGIN && gLocalTime.hours < NIGHT_EVO_HOUR_END && heldItem == gEvolutionTable[species][i].param)
                 {
-                    heldItem = 0;
+                    heldItem = ITEM_NONE;
                     SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 }
                 break;
             case EVO_ITEM_HOLD_DAY:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 12 && gLocalTime.hours < 24 && heldItem == gEvolutionTable[species][i].param)
+                if (gLocalTime.hours >= DAY_EVO_HOUR_BEGIN && gLocalTime.hours < DAY_EVO_HOUR_END && heldItem == gEvolutionTable[species][i].param)
                 {
-                    heldItem = 0;
+                    heldItem = ITEM_NONE;
                     SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 }
                 break;
             case EVO_LEVEL_DUSK:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 17 && gLocalTime.hours < 18 && gEvolutionTable[species][i].param <= level)
+                if (gLocalTime.hours >= DUSK_EVO_HOUR_BEGIN && gLocalTime.hours < DUSK_EVO_HOUR_END && gEvolutionTable[species][i].param <= level)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL:
@@ -6571,7 +6596,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_FRIENDSHIP_MOVE_TYPE:
-                if (friendship >= 220)
+                if (friendship >= FRIENDSHIP_EVO_THRESHOLD)
                 {
                     for (j = 0; j < MAX_MON_MOVES; j++)
                     {
@@ -6730,12 +6755,12 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                 break;
             case EVO_ITEM_NIGHT:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 0 && gLocalTime.hours < 12 && gEvolutionTable[species][i].param == evolutionItem)
+                if (gLocalTime.hours >= NIGHT_EVO_HOUR_BEGIN && gLocalTime.hours < NIGHT_EVO_HOUR_END && gEvolutionTable[species][i].param == evolutionItem)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_ITEM_DAY:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 12 && gLocalTime.hours < 24 && gEvolutionTable[species][i].param == evolutionItem)
+                if (gLocalTime.hours >= DAY_EVO_HOUR_BEGIN && gLocalTime.hours < DAY_EVO_HOUR_END && gEvolutionTable[species][i].param == evolutionItem)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             }
@@ -8212,9 +8237,9 @@ void BattleAnimateBackSprite(struct Sprite *sprite, u16 species)
     }
 }
 
-// Unused, identical to GetOpposingLinkMultiBattlerId but for the player
+// Identical to GetOpposingLinkMultiBattlerId but for the player
 // "rightSide" from that team's perspective, i.e. B_POSITION_*_RIGHT
-static u8 GetOwnOpposingLinkMultiBattlerId(bool8 rightSide)
+static u8 UNUSED GetOwnOpposingLinkMultiBattlerId(bool8 rightSide)
 {
     s32 i;
     s32 battlerId = 0;
@@ -8561,12 +8586,12 @@ u16 GetFormChangeTargetSpeciesBoxMon(struct BoxPokemon *boxMon, u16 method, u32 
                         {
                         case DAY:
                             RtcCalcLocalTime();
-                            if (gLocalTime.hours >= 12 && gLocalTime.hours < 24)
+                            if (gLocalTime.hours >= DAY_EVO_HOUR_BEGIN && gLocalTime.hours < DAY_EVO_HOUR_END)
                                 targetSpecies = formChanges[i].targetSpecies;
                             break;
                         case NIGHT:
                             RtcCalcLocalTime();
-                            if (gLocalTime.hours >= 0 && gLocalTime.hours < 12)
+                            if (gLocalTime.hours >= NIGHT_EVO_HOUR_BEGIN && gLocalTime.hours < NIGHT_EVO_HOUR_END)
                                 targetSpecies = formChanges[i].targetSpecies;
                             break;
                         default:

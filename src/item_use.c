@@ -758,7 +758,7 @@ static void ItemUseOnFieldCB_WailmerPailBerry(u8 taskId)
 
 static bool8 TryToWaterSudowoodo(void)
 {
-    u16 x, y;
+    s16 x, y;
     u8 elevation;
     u8 objId;
     GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
@@ -792,6 +792,12 @@ void ItemUseOutOfBattle_AbilityCapsule(u8 taskId)
 void ItemUseOutOfBattle_AbilityPatch(u8 taskId)
 {
     gItemUseCB = ItemUseCB_AbilityPatch;
+    SetUpItemUseCallback(taskId);
+}
+
+void ItemUseOutOfBattle_ResetEVs(u8 taskId)
+{
+    gItemUseCB = ItemUseCB_ResetEVs;
     SetUpItemUseCallback(taskId);
 }
 

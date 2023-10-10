@@ -324,23 +324,31 @@
 #define ABILITY_ARMOR_TAIL 296
 #define ABILITY_EARTH_EATER 297
 #define ABILITY_MYCELIUM_MIGHT 298
+#define ABILITY_HOSPITALITY 299
+#define ABILITY_MINDS_EYE 300
+#define ABILITY_EMBODY_ASPECT_TEAL 301
+#define ABILITY_EMBODY_ASPECT_HEARTHFLAME 302
+#define ABILITY_EMBODY_ASPECT_WELLSPRING 303
+#define ABILITY_EMBODY_ASPECT_CORNERSTONE 304
+#define ABILITY_TOXIC_CHAIN 305
+#define ABILITY_SUPERSWEET_SYRUP 306
 
-#define ABILITIES_COUNT_GEN9 299
+#define ABILITIES_COUNT_GEN9 307
 
 // New Added Abilities
-#define ABILITY_PYROMANCY 300                       // Fire attacks are 5x more likely to inflict a burn
-#define ABILITY_FATAL_PRECISION 301                 // Super Effective Moves from this Pokemon can’t miss and receive a 20% damage boost
-#define ABILITY_ADRENALINE 302                      // Boosts Speed by 1.5x, Attack by 1.2x on first turn
-#define ABILITY_GROUNDED 303                        // Powers up ground moves (similar to Rocky Payload)
-#define ABILITY_POISON_ABSORB 304                   // Restore 1/4 HP when hit by Poison-type moves.
-#define ABILITY_STRIKER 305                         // Boosts kicking moves by 1.2x. Moves affected by Striker #####NEED TO UPDATE AFFECTED MOVES
-#define ABILITY_PSYCH 306                           // Doubles Special Attack (special Huge/Pure Power).
-#define ABILITY_SELF_SUFFICIENT 307                 // Heals 1/16 at the end of every turn.
-#define ABILITY_CHLOROPLAST 308                     // Moves function as if it's sunny, regardless of weather
-#define ABILITY_POWER_FIST 309                      // Punching moves do special damage and get 20% boost
-#define ABILITY_BLITZ_BOXER 310                     // Punching moves go first.
+#define ABILITY_PYROMANCY                               (ABILITIES_COUNT_GEN9 + 1) // Fire attacks are 5x more likely to inflict a burn
+#define ABILITY_FATAL_PRECISION                         (ABILITIES_COUNT_GEN9 + 2) // Super Effective Moves from this Pokemon can’t miss and receive a 20% damage boost
+#define ABILITY_ADRENALINE                              (ABILITIES_COUNT_GEN9 + 3) // Boosts Speed by 1.5x, Attack by 1.2x on first turn
+#define ABILITY_GROUNDED                                (ABILITIES_COUNT_GEN9 + 4) // Powers up ground moves (similar to Rocky Payload)
+#define ABILITY_POISON_ABSORB                           (ABILITIES_COUNT_GEN9 + 5) // Restore 1/4 HP when hit by Poison-type moves.
+#define ABILITY_STRIKER                                 (ABILITIES_COUNT_GEN9 + 6) // Boosts kicking moves by 1.2x. Moves affected by Striker #####NEED TO UPDATE AFFECTED MOVES
+#define ABILITY_PSYCH                                   (ABILITIES_COUNT_GEN9 + 7) // Doubles Special Attack (special Huge/Pure Power).
+#define ABILITY_SELF_SUFFICIENT                         (ABILITIES_COUNT_GEN9 + 8) // Heals 1/16 at the end of every turn.
+#define ABILITY_CHLOROPLAST                             (ABILITIES_COUNT_GEN9 + 9) // Moves function as if it's sunny, regardless of weather
+#define ABILITY_POWER_FIST                              (ABILITIES_COUNT_GEN9 + 10) // Punching moves do special damage and get 20% boost
+#define ABILITY_BLITZ_BOXER                             (ABILITIES_COUNT_GEN9 + 11) // Punching moves go first.
 
-#define ABILITIES_COUNT_ADDED 311
+#define ABILITIES_COUNT_ADDED                           (ABILITIES_COUNT_GEN9 + 12)
 
 #define ABILITIES_COUNT ABILITIES_COUNT_ADDED
 
