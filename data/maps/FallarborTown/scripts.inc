@@ -3,6 +3,7 @@ FallarborTown_MapScripts::
 	.byte 0
 
 FallarborTown_OnTransition:
+    call Common_EventScript_SetupRivalGfxId
 	setflag FLAG_VISITED_FALLARBOR_TOWN
 	setvar VAR_CONTEST_HALL_STATE, 0
 	clearflag FLAG_CONTEST_SKETCH_CREATED
@@ -52,10 +53,7 @@ FallarborTown_EventScript_MoveTutorSign::
 	end
 
 FallarborTown_Text_ShadyCharactersCozmosHome:
-	.string "Something's happening,\n"
-	.string "and I don't like it!\p"
-	.string "I've seen shady characters wandering\n"
-	.string "in and out of Prof. Cozmo's home…$"
+	.string "What's up, what's up?\pI saw some shady fellows scuttling in\nand out of Professor Cozmo's lab.$"
 
 FallarborTown_Text_RegionKnownForMeteors:
 	.string "This region's been known for meteors\n"
@@ -64,12 +62,10 @@ FallarborTown_Text_RegionKnownForMeteors:
 	.string "by a falling meteorite long ago.$"
 
 FallarborTown_Text_MyPreciousAzurill:
-	.string "See! Take a look!\n"
-	.string "This is my precious Azurill!\p"
-	.string "It's slick and smooth and plushy, too!$"
+	.string "See!\nTake a look!\lThis is my precious Azurill!\pIt's slick and smooth plushy!\pIf you, too, have a Azurill with you,\nyou can pet its slick and smooth and\lplushy fur as much as you want!$"
 
 FallarborTown_Text_Azurill:
-	.string "Azurill: Rooreelooo.$"
+	.string "Ri-i-i-i-i-ill.$"
 
 FallarborTown_Text_HaveYouChallengedFlannery:
 	.string "Have you already challenged Flannery,\n"
@@ -93,3 +89,230 @@ FallarborTown_Text_MoveTutorSign:
 	.string "Move Tutor's House\n"
 	.string "“New moves taught to Pokémon.”$"
 
+FallarborTown_EventScript_RivalTrigger1::
+	setvar VAR_TEMP_0, 1
+	goto FallarborTown_EventScript_Rival
+	return
+
+
+FallarborTown_EventScript_RivalTrigger2::
+	setvar VAR_TEMP_0, 2
+	goto FallarborTown_EventScript_Rival
+	return
+
+
+FallarborTown_EventScript_RivalTrigger3::
+	setvar VAR_TEMP_0, 3
+	goto FallarborTown_EventScript_Rival
+	return
+
+
+FallarborTown_EventScript_RivalTrigger4::
+	setvar VAR_TEMP_0, 4
+	goto FallarborTown_EventScript_Rival
+	return
+
+
+FallarborTown_EventScript_RivalTrigger5::
+	setvar VAR_TEMP_0, 5
+	goto FallarborTown_EventScript_Rival
+	return
+
+
+FallarborTown_EventScript_Rival::
+	lock
+	delay 8
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	waitse
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	switch VAR_TEMP_0
+	case 1, FallarborTown_EventScript_Rival_3
+	case 2, FallarborTown_EventScript_Rival_4
+	case 3, FallarborTown_EventScript_Rival_5
+	case 4, FallarborTown_EventScript_Rival_6
+	case 5, FallarborTown_EventScript_Rival_7
+FallarborTown_EventScript_Rival_1:
+	waitmovement OBJ_EVENT_ID_PLAYER
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq FallarborTown_EventScript_Rival_9
+	msgbox FallarborTown_EventScript_Rival_Text_1
+FallarborTown_EventScript_Rival_8:
+	closemessage
+	applymovement 5, FallarborTown_Movement_RivalGetInsideCozmoHouse
+	applymovement OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGetInsideCozmoHouse
+	waitmovement OBJ_EVENT_ID_PLAYER
+	opendoor 6, 15
+	waitdooranim
+	applymovement 5, FallarborTown_Movement_RivalInside
+	applymovement OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerInside
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_DOOR
+	removeobject 5
+	closedoor 6, 15
+	waitdooranim
+	setvar VAR_FALLARBOR_TOWN_STATE, 1
+	warpsilent MAP_FALLARBOR_TOWN_COZMOS_HOUSE, 4, 8
+	waitstate
+	release
+	end
+
+FallarborTown_EventScript_Rival_3:
+	applymovement OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGotoRival1
+	applymovement 5, FallarborTown_Movement_RivalGotoPlayer1
+	goto FallarborTown_EventScript_Rival_1
+
+FallarborTown_EventScript_Rival_4:
+	applymovement OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGotoRival2
+	applymovement 5, FallarborTown_Movement_RivalGotoPlayer2
+	goto FallarborTown_EventScript_Rival_1
+
+FallarborTown_EventScript_Rival_5:
+	applymovement OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGotoRival3
+	applymovement 5, FallarborTown_Movement_RivalGotoPlayer3
+	goto FallarborTown_EventScript_Rival_1
+
+FallarborTown_EventScript_Rival_6:
+	applymovement OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGotoRival4
+	applymovement 5, FallarborTown_Movement_RivalGotoPlayer4
+	goto FallarborTown_EventScript_Rival_1
+
+FallarborTown_EventScript_Rival_7:
+	applymovement OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGotoRival5
+	applymovement 5, FallarborTown_Movement_RivalGotoPlayer5
+	goto FallarborTown_EventScript_Rival_1
+
+FallarborTown_EventScript_Rival_9:
+	msgbox FallarborTown_EventScript_Rival_Text_0
+	goto FallarborTown_EventScript_Rival_8
+
+
+FallarborTown_Movement_PlayerGotoRival1:
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+FallarborTown_Movement_PlayerGotoRival2:
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+FallarborTown_Movement_PlayerGotoRival3:
+	walk_down
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+FallarborTown_Movement_PlayerGotoRival4:
+	walk_down
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	step_end
+
+FallarborTown_Movement_PlayerGotoRival5:
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	step_end
+
+FallarborTown_Movement_RivalGotoPlayer1:
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_up
+	walk_up
+	step_end
+
+FallarborTown_Movement_RivalGotoPlayer2:
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_up
+	walk_up
+	step_end
+
+FallarborTown_Movement_RivalGotoPlayer3:
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_up
+	walk_up
+	step_end
+
+FallarborTown_Movement_RivalGotoPlayer4:
+	delay_16
+	delay_16
+	delay_16
+	walk_up
+	walk_up
+	step_end
+
+FallarborTown_Movement_RivalGotoPlayer5:
+	delay_16
+	delay_16
+	walk_up
+	walk_up
+	step_end
+
+FallarborTown_Movement_RivalGetInsideCozmoHouse:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_in_place_up
+	step_end
+
+FallarborTown_Movement_PlayerGetInsideCozmoHouse:
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+FallarborTown_Movement_RivalInside:
+	walk_up
+	set_invisible
+	step_end
+
+FallarborTown_Movement_PlayerInside:
+	delay_16
+	walk_left
+	walk_up
+	set_invisible
+	step_end
+
+FallarborTown_EventScript_Rival_Text_0:
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: Arghhh, what a disaster!\nOh! {PLAYER}! Help!\lYou've got to come with me!$"
+
+FallarborTown_EventScript_Rival_Text_1:
+	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: {PLAYER}! C'mere!\nEverything's a mess!$"

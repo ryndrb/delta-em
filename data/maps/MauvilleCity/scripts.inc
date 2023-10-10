@@ -4,6 +4,7 @@
 
 MauvilleCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MauvilleCity_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MauvilleCity_OnFrameTable
 	.byte 0
 
 MauvilleCity_OnTransition:
@@ -13,6 +14,7 @@ MauvilleCity_OnTransition:
 	setflag FLAG_SYS_TV_START
 	clearflag FLAG_MAUVILLE_GYM_BARRIERS_STATE
 	setvar VAR_MAUVILLE_GYM_STATE, 0
+	call Common_EventScript_SetupRivalGfxId
 	call_if_set FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON, MauvilleCity_EventScript_MoveWattsonBackToGym
     call_if_eq VAR_MAUVILLE_CITY_STATE, 0, MauvilleCity_EventScript_MoveWallyUncleToBeginning
 	end
@@ -29,6 +31,10 @@ MauvilleCity_EventScript_MoveWallyUncleToBeginning::
     setobjectxyperm LOCALID_WALLY, 28, 11
     setobjectxyperm LOCALID_WALLYS_UNCLE, 27, 11
     return
+
+MauvilleCity_OnFrameTable::
+	map_script_2 VAR_MAUVILLE_CITY_STATE, 5, MauvilleCity_EventScript_RivalAfterCozmoEvent
+	.2byte 0
 
 MauvilleCity_EventScript_Boy::
 	msgbox MauvilleCity_Text_NurseHurtMonBackToHealth, MSGBOX_NPC
@@ -801,6 +807,35 @@ MauvilleCity_EventScript_TeamAquaGruntsExit:
 	walk_up
 	step_end
 
+MauvilleCity_EventScript_RivalAfterCozmoEvent::
+	lock
+	delay 16
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq MauvilleCity_EventScript_RivalAfterCozmoEvent_2
+	msgbox MauvilleCity_EventScript_RivalAfterCozmoEvent_Text_1
+MauvilleCity_EventScript_RivalAfterCozmoEvent_1:
+	closemessage
+	applymovement 14, Common_Movement_WalkInPlaceRight
+	delay 8
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MauvilleCity_EventScript_RivalAfterCozmoEvent_Text_2
+	closemessage
+	setvar VAR_MAUVILLE_CITY_STATE, 6
+	release
+	end
+
+MauvilleCity_EventScript_RivalAfterCozmoEvent_2:
+	msgbox MauvilleCity_EventScript_RivalAfterCozmoEvent_Text_0
+	goto MauvilleCity_EventScript_RivalAfterCozmoEvent_1
+
+
+MauvilleCity_EventScript_Rival::
+	msgbox MauvilleCity_EventScript_Rival_Text_0, MSGBOX_NPC
+	end
+
+
 MauvilleCity_EventScript_WallyAndUncleIntro_Text_0:
 	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Wow!\nSo this is Mauville City!$"
 
@@ -842,3 +877,15 @@ MauvilleCity_EventScript_TeamAquaGrunts_Text_1:
 
 MauvilleCity_EventScript_TeamAquaGrunts_Text_2:
 	.string "Mt. Chimney…\pIt'll be a long walk going along Route\n112 to get there.\lI wish I'd brought some snacks…$"
+
+MauvilleCity_EventScript_RivalAfterCozmoEvent_Text_0:
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: We've arrived in Mauville City!$"
+
+MauvilleCity_EventScript_RivalAfterCozmoEvent_Text_1:
+	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: All right, made it to Mauville\nCity.$"
+
+MauvilleCity_EventScript_RivalAfterCozmoEvent_Text_2:
+	.string "Up ahead here is {COLOR BLUE}Mt. Chimney{COLOR DARK_GRAY}, huh?\pThat's the place those nut jobs at\nMeteor Falls were talking about going\lto.\pBe careful, {PLAYER}.\nIt might get dangerous around here.$"
+
+MauvilleCity_EventScript_Rival_Text_0:
+	.string "{COLOR RED}{RIVAL}{COLOR DARK_GRAY}: Up ahead here is {COLOR BLUE}Mt. Chimney{COLOR DARK_GRAY},\nhuh?\pThat's the place those nut jobs at\nMeteor Falls were talking about going\lto.\pBe careful, {PLAYER}.\nIt might get dangerous around here.$"

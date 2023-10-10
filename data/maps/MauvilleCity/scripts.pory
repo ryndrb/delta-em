@@ -5,6 +5,7 @@ raw `
 
 MauvilleCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MauvilleCity_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MauvilleCity_OnFrameTable
 	.byte 0
 
 MauvilleCity_OnTransition:
@@ -14,6 +15,7 @@ MauvilleCity_OnTransition:
 	setflag FLAG_SYS_TV_START
 	clearflag FLAG_MAUVILLE_GYM_BARRIERS_STATE
 	setvar VAR_MAUVILLE_GYM_STATE, 0
+	call Common_EventScript_SetupRivalGfxId
 	call_if_set FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON, MauvilleCity_EventScript_MoveWattsonBackToGym
     call_if_eq VAR_MAUVILLE_CITY_STATE, 0, MauvilleCity_EventScript_MoveWallyUncleToBeginning
 	end
@@ -30,6 +32,10 @@ MauvilleCity_EventScript_MoveWallyUncleToBeginning::
     setobjectxyperm LOCALID_WALLY, 28, 11
     setobjectxyperm LOCALID_WALLYS_UNCLE, 27, 11
     return
+
+MauvilleCity_OnFrameTable::
+	map_script_2 VAR_MAUVILLE_CITY_STATE, 5, MauvilleCity_EventScript_RivalAfterCozmoEvent
+	.2byte 0
 
 MauvilleCity_EventScript_Boy::
 	msgbox MauvilleCity_Text_NurseHurtMonBackToHealth, MSGBOX_NPC
@@ -459,6 +465,10 @@ MauvilleCity_Text_BeenCheckingOutTV:
 
 `
 
+const LOCALID_MAGMA_GRUNT12 = 12
+const LOCALID_MAGMA_GRUNT13 = 13
+const LOCALID_RIVAL = 14
+
 script MauvilleCity_EventScript_MovePlayerDown {
 	fadescreenswapbuffers(FADE_TO_BLACK)
 	switch(var(VAR_FACING)){
@@ -700,9 +710,6 @@ movement MauvilleCity_Movement_PlayerWatchUncleLeave {
     walk_in_place_left
 }
 
-const LOCALID_MAGMA_GRUNT12 = 12
-const LOCALID_MAGMA_GRUNT13 = 13
-
 script MauvilleCity_EventScript_TeamAquaGrunts {
 	lock
 	delay(16)
@@ -727,4 +734,30 @@ script MauvilleCity_EventScript_TeamAquaGrunts {
 
 movement MauvilleCity_EventScript_TeamAquaGruntsExit {
 	walk_up * 5
+}
+
+script MauvilleCity_EventScript_RivalAfterCozmoEvent {
+	lock
+	delay(16)
+	checkplayergender
+	if(var(VAR_RESULT) == MALE){
+		msgbox("{COLOR RED}May{COLOR DARK_GRAY}: We've arrived in Mauville City!")
+	}else{
+		msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: All right, made it to Mauville\nCity.")
+	}
+	closemessage
+	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceRight)
+	delay(8)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	msgbox("Up ahead here is {COLOR BLUE}Mt. Chimney{COLOR DARK_GRAY}, huh?\pThat's the place those nut jobs at\nMeteor Falls were talking about going\lto.\pBe careful, {PLAYER}.\nIt might get dangerous around here.")
+	closemessage
+	setvar(VAR_MAUVILLE_CITY_STATE, 6)
+	release
+	end
+}
+
+script MauvilleCity_EventScript_Rival {
+	msgbox("{COLOR RED}{RIVAL}{COLOR DARK_GRAY}: Up ahead here is {COLOR BLUE}Mt. Chimney{COLOR DARK_GRAY},\nhuh?\pThat's the place those nut jobs at\nMeteor Falls were talking about going\lto.\pBe careful, {PLAYER}.\nIt might get dangerous around here.", MSGBOX_NPC)
+	end
 }

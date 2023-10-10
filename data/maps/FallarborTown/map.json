@@ -27,10 +27,10 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
-      "x": 8,
+      "x": 7,
       "y": 11,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -41,9 +41,9 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
       "x": 11,
-      "y": 9,
+      "y": 8,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -53,12 +53,12 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
-      "x": 11,
-      "y": 15,
+      "x": 12,
+      "y": 18,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
-      "movement_range_y": 1,
+      "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FallarborTown_EventScript_Gentleman",
@@ -67,15 +67,28 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_AZURILL",
       "x": 8,
-      "y": 12,
+      "y": 11,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 1,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FallarborTown_EventScript_Azurill",
       "flag": "FLAG_HIDE_FALLARBOR_AZURILL"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_VAR_0",
+      "x": 11,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_FALLARBOR_TOWN_RIVAL"
     }
   ],
   "warp_events": [
@@ -87,7 +100,7 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 8,
+      "x": 9,
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_FALLARBOR_TOWN_BATTLE_TENT_LOBBY",
@@ -102,20 +115,66 @@
     },
     {
       "x": 6,
-      "y": 17,
+      "y": 15,
       "elevation": 0,
       "dest_map": "MAP_FALLARBOR_TOWN_COZMOS_HOUSE",
       "dest_warp_id": "0"
     },
     {
-      "x": 1,
+      "x": 2,
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_FALLARBOR_TOWN_MOVE_RELEARNERS_HOUSE",
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_FALLARBOR_TOWN_STATE",
+      "var_value": "0",
+      "script": "FallarborTown_EventScript_RivalTrigger1"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_FALLARBOR_TOWN_STATE",
+      "var_value": "0",
+      "script": "FallarborTown_EventScript_RivalTrigger2"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_FALLARBOR_TOWN_STATE",
+      "var_value": "0",
+      "script": "FallarborTown_EventScript_RivalTrigger3"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_FALLARBOR_TOWN_STATE",
+      "var_value": "0",
+      "script": "FallarborTown_EventScript_RivalTrigger4"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 12,
+      "elevation": 0,
+      "var": "VAR_FALLARBOR_TOWN_STATE",
+      "var_value": "0",
+      "script": "FallarborTown_EventScript_RivalTrigger5"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",
@@ -135,7 +194,7 @@
     },
     {
       "type": "sign",
-      "x": 6,
+      "x": 7,
       "y": 8,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
@@ -167,7 +226,7 @@
     },
     {
       "type": "sign",
-      "x": 3,
+      "x": 4,
       "y": 7,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
@@ -176,7 +235,7 @@
     {
       "type": "hidden_item",
       "x": 2,
-      "y": 15,
+      "y": 14,
       "elevation": 3,
       "item": "ITEM_NUGGET",
       "flag": "FLAG_HIDDEN_ITEM_FALLARBOR_TOWN_NUGGET"

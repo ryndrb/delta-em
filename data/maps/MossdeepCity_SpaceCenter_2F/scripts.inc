@@ -341,7 +341,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_MaxieTrainer::
 	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_TabithaTrainer::
-	trainerbattle TRAINER_BATTLE_SET_TRAINER_B, TRAINER_TABITHA_MOSSDEEP, 0, MossdeepCity_SpaceCenter_Text_TabithaDefeat, MossdeepCity_SpaceCenter_Text_TabithaDefeat
+	trainerbattle TRAINER_BATTLE_SET_TRAINER_B, TRAINER_TABITHA_METEOR_FALLS, 0, MossdeepCity_SpaceCenter_Text_TabithaDefeat, MossdeepCity_SpaceCenter_Text_TabithaDefeat
 	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_RivalRayquazaCall::

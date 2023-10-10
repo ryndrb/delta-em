@@ -59,14 +59,7 @@ FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale::
 	end
 
 FallarborTown_MoveRelearnersHouse_Text_ImTheMoveTutor:
-	.string "I'm the Move Tutor.\p"
-	.string "I know all the moves that Pokémon\n"
-	.string "learn--every one of them--and I can\l"
-	.string "teach Pokémon those moves.\p"
-	.string "I can teach a move to a Pokémon\n"
-	.string "of yours if you'd like.\p"
-	.string "I'll do it for a Heart Scale.\n"
-	.string "I'm collecting those now.$"
+	.string "I'm the Pokémon Move Maniac!\pI know every move Pokémon can learn\nby leveling up, and I can teach 'em to\lyour Pokémon!\pI'm totally into collecting Heart\nScales right now, so bring me one and\lI'll share the maniacal magic of moves!$"
 
 FallarborTown_MoveRelearnersHouse_Text_ThatsAHeartScaleWantMeToTeachMove:
 	.string "Oh! That's it! That's an honest to\n"
@@ -90,10 +83,8 @@ FallarborTown_MoveRelearnersHouse_Text_HandedOverHeartScale:
 	.string "in exchange.$"
 
 FallarborTown_MoveRelearnersHouse_Text_ComeBackWithHeartScale:
-	.string "If your Pokémon need to learn a move,\n"
-	.string "come back with a Heart Scale.$"
+	.string "If any of your Pokémon needs to\nremember a move, bring me a Heart\lScale!$"
 
 FallarborTown_MoveRelearnersHouse_Text_CantTeachEgg:
-	.string "Hunh? There isn't a single move that\n"
+	.string "Huh? There isn't a single move that\n"
 	.string "I can teach an Egg.$"
-

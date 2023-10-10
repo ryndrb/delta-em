@@ -1,0 +1,393 @@
+raw `
+.set LOCALID_WIFE, 2
+.set LOCALID_COZMO, 1
+
+FallarborTown_CozmosHouse_MapScripts::
+    map_script MAP_SCRIPT_ON_TRANSITION, FallarborTown_CozmosHouse_OnTransition
+    map_script MAP_SCRIPT_ON_FRAME_TABLE, FallarborTown_CozmosHouse_OnFrameTable
+	.byte 0
+
+FallarborTown_CozmosHouse_OnTransition:
+    call Common_EventScript_SetupRivalGfxId
+	goto_if_eq VAR_FALLARBOR_TOWN_STATE, 3, FallarborTown_CozmosHouse_MoveCosmoWifeInFrontOfDoor2
+	goto_if_unset FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, FallarborTown_CozmosHouse_MoveEveyoneAtBack
+    goto_if_eq VAR_FALLARBOR_TOWN_STATE, 1, FallarborTown_CozmosHouse_MoveCosmoWifeInFrontOfDoor1
+    end
+
+FallarborTown_CozmosHouse_MoveEveyoneAtBack:
+	setobjectxyperm LOCALID_WIFE, 4, 5
+	setobjectxyperm LOCALID_COZMO, 4, 4
+	setobjectxyperm LOCALID_RIVAL, 7, 4
+    setobjectmovementtype LOCALID_WIFE, MOVEMENT_TYPE_FACE_UP
+	setobjectmovementtype LOCALID_COZMO, MOVEMENT_TYPE_FACE_DOWN
+	setobjectmovementtype LOCALID_RIVAL, MOVEMENT_TYPE_LOOK_AROUND
+    return
+
+FallarborTown_CozmosHouse_MoveCosmoWifeInFrontOfDoor2:
+	setobjectxyperm LOCALID_WIFE, 3, 6
+	setobjectxyperm LOCALID_COZMO, 4, 7
+    setobjectmovementtype LOCALID_WIFE, MOVEMENT_TYPE_FACE_UP
+	setobjectmovementtype LOCALID_COZMO, MOVEMENT_TYPE_FACE_UP
+    return
+
+FallarborTown_CozmosHouse_MoveCosmoWifeInFrontOfDoor1:
+    setobjectxyperm LOCALID_WIFE, 4, 6
+    setobjectmovementtype LOCALID_WIFE, MOVEMENT_TYPE_FACE_DOWN
+    return
+
+FallarborTown_CozmosHouse_OnFrameTable:
+	map_script_2 VAR_FALLARBOR_TOWN_STATE, 1, FallarborTown_CozmosHouse_EventScript_CozmosAbducted
+	map_script_2 VAR_FALLARBOR_TOWN_STATE, 3, FallarborTown_CozmosHouse_EventScript_CozmosReturn
+	.2byte 0
+
+FallarborTown_CozmosHouse_EventScript_ProfCozmo::
+	lock
+	faceplayer
+	goto_if_unset FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, FallarborTown_CozmosHouse_EventScript_CrooksAtMtChimney
+	goto_if_set FLAG_RECEIVED_TM_RETURN, FallarborTown_CozmosHouse_EventScript_GaveMeteorite
+	checkitem ITEM_METEORITE
+	goto_if_eq VAR_RESULT, TRUE, FallarborTown_CozmosHouse_EventScript_PlayerHasMeteorite
+	msgbox FallarborTown_CozmosHouse_Text_MeteoriteWillNeverBeMineNow, MSGBOX_DEFAULT
+	release
+	end
+
+FallarborTown_CozmosHouse_EventScript_PlayerHasMeteorite::
+	call_if_unset FLAG_TEMP_2, FallarborTown_CozmosHouse_EventScript_NoticeMeteorite
+	call_if_set FLAG_TEMP_2, FallarborTown_CozmosHouse_EventScript_AskForMeteorite
+	goto_if_eq VAR_RESULT, NO, FallarborTown_CozmosHouse_EventScript_DeclineGiveMeteorite
+	msgbox FallarborTown_CozmosHouse_Text_PleaseUseThisTM, MSGBOX_DEFAULT
+	giveitem ITEM_TM_RETURN
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setvar VAR_0x8004, ITEM_METEORITE
+	call Common_EventScript_PlayerHandedOverTheItem
+	setflag FLAG_RECEIVED_TM_RETURN
+	msgbox FallarborTown_CozmosHouse_Text_ReallyGoingToHelpMyResearch, MSGBOX_DEFAULT
+	release
+	end
+
+FallarborTown_CozmosHouse_EventScript_NoticeMeteorite::
+	msgbox FallarborTown_CozmosHouse_Text_MeteoriteWillNeverBeMineNow, MSGBOX_DEFAULT
+	msgbox FallarborTown_CozmosHouse_Text_IsThatMeteoriteMayIHaveIt, MSGBOX_YESNO
+	return
+
+FallarborTown_CozmosHouse_EventScript_AskForMeteorite::
+	msgbox FallarborTown_CozmosHouse_Text_MayIHaveMeteorite, MSGBOX_YESNO
+	return
+
+FallarborTown_CozmosHouse_EventScript_DeclineGiveMeteorite::
+	setflag FLAG_TEMP_2
+	msgbox FallarborTown_CozmosHouse_Text_CrushedWithDisappointment, MSGBOX_DEFAULT
+	release
+	end
+
+FallarborTown_CozmosHouse_EventScript_GaveMeteorite::
+	msgbox FallarborTown_CozmosHouse_Text_ReallyGoingToHelpMyResearch, MSGBOX_DEFAULT
+	release
+	end
+
+FallarborTown_CozmosHouse_EventScript_CozmosWife::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_TM_RETURN, FallarborTown_CozmosHouse_EventScript_CozmoIsHappy
+	goto_if_set FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, FallarborTown_CozmosHouse_EventScript_CozmoIsSad
+	msgbox FallarborTown_CozmosHouse_Text_PleaseSaveCozmo, MSGBOX_DEFAULT
+	release
+	end
+
+FallarborTown_CozmosHouse_EventScript_CozmoIsSad::
+	msgbox FallarborTown_CozmosHouse_Text_FeelSorryForCozmo, MSGBOX_DEFAULT
+	release
+	end
+
+FallarborTown_CozmosHouse_EventScript_CozmoIsHappy::
+	msgbox FallarborTown_CozmosHouse_Text_CozmoIsSoHappy, MSGBOX_DEFAULT
+	release
+	end
+
+FallarborTown_CozmosHouse_Text_MeteoriteWillNeverBeMineNow:
+	.string "Prof. Cozmo: Oh…\n"
+	.string "I never should have let myself be\l"
+	.string "conned into telling Team Magma where\l"
+	.string "you can find Meteorites…\p"
+	.string "That Meteorite from Meteor Falls…\n"
+	.string "It's never going to be mine now…$"
+
+FallarborTown_CozmosHouse_Text_IsThatMeteoriteMayIHaveIt:
+	.string "Oh!\n"
+	.string "Hah?\p"
+	.string "That item…\p"
+	.string "Could it be?\p"
+	.string "Is it the Meteorite that Team Magma\n"
+	.string "took from Meteor Falls?\p"
+	.string "Please, may I have it?\p"
+	.string "I'm not asking for it for free.\n"
+	.string "How about in exchange for this TM?$"
+
+FallarborTown_CozmosHouse_Text_PleaseUseThisTM:
+	.string "Prof. Cozmo: This TM, it represents\n"
+	.string "my feeling of gratitude.\l"
+	.string "Please use it!$"
+
+FallarborTown_CozmosHouse_Text_ReallyGoingToHelpMyResearch:
+	.string "Prof. Cozmo: Oh, I can't believe it.\n"
+	.string "This is really, really great!\p"
+	.string "This is really going to help my research!$"
+
+FallarborTown_CozmosHouse_Text_CrushedWithDisappointment:
+	.string "Prof. Cozmo: Oh, but…\n"
+	.string "I'm crushed with disappointment…$"
+
+FallarborTown_CozmosHouse_Text_MayIHaveMeteorite:
+	.string "Prof. Cozmo: Please, may I have that\n"
+	.string "Meteorite?\p"
+	.string "I'm not asking for it for free.\n"
+	.string "How about in exchange for this TM?$"
+
+FallarborTown_CozmosHouse_Text_PleaseSaveCozmo:
+	.string "Professor Cozmo was taken to Meteor\nFalls, beyond Route 114.\pPlease save the professor from that\nTeam Magma!$"
+
+FallarborTown_CozmosHouse_Text_FeelSorryForCozmo:
+	.string "Poor Prof. Cozmo…\n"
+	.string "He's so depressed… I feel sorry for him.$"
+
+FallarborTown_CozmosHouse_Text_CozmoIsSoHappy:
+	.string "As long a the professor is safe and\nsound, I don't need anything else…$"
+
+
+`
+
+const LOCALID_RIVAL = 3
+
+script FallarborTown_CozmosHouse_EventScript_CozmosAbducted {
+    lock
+    delay(8)
+    applymovement(OBJ_EVENT_ID_PLAYER, FallarborTown_CozmosHouse_Movement_PlayerGoUp)
+    applymovement(LOCALID_RIVAL, FallarborTown_CozmosHouse_Movement_RivalGoUp)
+    waitmovement(LOCALID_RIVAL)
+    checkplayergender
+    if(var(VAR_RESULT) == MALE){
+        msgbox("{COLOR RED}May{COLOR DARK_GRAY}: Y-you see…\pProfessor Cozmo…\pHe got abducted by some weird guys\ncalling themselves Team Something or\lOther…")
+    }else{
+        msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: It's ridiculous…\nProfessor Cozmo…\pThey say he was just up and kidnapped\nby some nuts calling themselves Team\lSomething or Other…")
+    }
+    closemessage
+    applymovement(LOCALID_WIFE, Common_Movement_WalkInPlaceDown)
+    delay(8)
+    applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceRight)
+    waitmovement(LOCALID_RIVAL)
+    msgbox("Those shady characters…\nThey called themselves Team Magma.\pIt seems as though they plan to do\nsomething with the Meteorite that\lthe Professor has been researching.\pThe professor is just too gullible.\nIf you show the least bit of interest\lin this research, he would happily go\lwith you anywhere, without question.")
+    closemessage
+    applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceDown)
+    waitmovement(LOCALID_RIVAL)
+    checkplayergender
+    if(var(VAR_RESULT) == MALE){
+        msgbox("{COLOR RED}May{COLOR DARK_GRAY}: {PLAYER}, please…\nYou've got to help me save him!\pThey can't be planning to do anything\ngood with Professor Cozmo's research.\pWe have to do something!\pI…I'm going to head after them right\naway! Let's meet up at Meteor Falls!\pI'm counting on you, {PLAYER}!")
+    }else{
+        msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: {PLAYER}…\nI know it's a lot ask, but we've gotta\lhelp Cozmo!\pI can't just stand by here and watch\nthem use his life's work for their own\lcorrupt reasons!\pI'm going to head to Meteor Falls right\naway.\pCome catch up to me as soon as you\ncan.\pI'm counting on you, {PLAYER}!")
+    }
+    closemessage
+    applymovement(LOCALID_RIVAL, FallarborTown_CozmosHouse_Movement_RivalExit)
+    applymovement(OBJ_EVENT_ID_PLAYER, FallarborTown_CozmosHouse_Movement_PlayerWatchRivalExit)
+    waitmovement(LOCALID_RIVAL)
+    playse(SE_EXIT)
+    waitse
+    removeobject(LOCALID_RIVAL)
+    setvar(VAR_FALLARBOR_TOWN_STATE, 2)
+    release
+    end
+}
+
+movement FallarborTown_CozmosHouse_Movement_RivalGoUp {
+    walk_up * 2
+    walk_in_place_down
+}
+
+movement FallarborTown_CozmosHouse_Movement_PlayerGoUp {
+    walk_up
+}
+
+movement FallarborTown_CozmosHouse_Movement_RivalExit {
+    walk_down * 2
+    walk_in_place_down
+    set_invisible
+}
+
+movement FallarborTown_CozmosHouse_Movement_PlayerWatchRivalExit {
+    walk_in_place_left
+    walk_in_place_down
+}
+
+script FallarborTown_CozmosHouse_EventScript_CozmosReturn {
+	lock
+	delay(8)
+	applymovement(LOCALID_WIFE, Common_Movement_WalkInPlaceDown)
+	waitmovement(LOCALID_WIFE)
+	delay(8)
+	playse(SE_PIN)
+	applymovement(LOCALID_WIFE, Common_Movement_ExclamationMark)
+	waitmovement(LOCALID_WIFE)
+	waitse
+	msgbox("Ahh! Professor!\pThank the stars above Professor,\nyou're back!")
+	closemessage
+	applymovement(LOCALID_COZMO, Common_Movement_WalkUp)
+	waitmovement(LOCALID_COZMO)
+	applymovement(LOCALID_COZMO, Common_Movement_WalkInPlaceLeft)
+	applymovement(LOCALID_RIVAL, Common_Movement_WalkUp)
+	delay(8)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	applymovement(LOCALID_WIFE, Common_Movement_WalkInPlaceRight)
+	waitmovement(LOCALID_WIFE)
+	msgbox("{COLOR RED}Cozmo{COLOR DARK_GRAY}: Hah…haha…\pThanks to these children, I have\nsomehow returned.")
+	closemessage
+	delay(8)
+	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceRight)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+	delay(8)
+	applymovement(LOCALID_COZMO, Common_Movement_WalkInPlaceDown)
+	delay(8)
+	applymovement(LOCALID_WIFE, Common_Movement_WalkInPlaceDown)
+	waitmovement(LOCALID_WIFE)
+	checkplayergender
+    if(var(VAR_RESULT) == MALE){
+        msgbox("{COLOR RED}May{COLOR DARK_GRAY}: Those nuts back there…\pWhat do you think they're hoping to do\nwith the professor's Meteorite?\pFrom the look of them, they kind of\nseem like bad guys, but…\pWe've both got to be careful.\pThough I'm not worried a bit if it's you\nand your team, {PLAYER}!")
+    }else{
+        msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: Those crazy jerks…\pWhat do you think they wanted with the\nprofessor's Meteorite anyway?\pI've gotta say, they didn't look like\nthe good guys…but…\pI guess we'd both better be careful\nfrom here on out.\pNot that I'm really worried about you,\n{PLAYER}.\pYou and your team'd be fine for sure.")
+    }
+    closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
+	delay(8)
+	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceUp)
+	waitmovement(LOCALID_RIVAL)
+	msgbox("{COLOR RED}Cozmo{COLOR DARK_GRAY}: But I need to thank you, as well.\nYou truly saved me from disaster.\pI hope you take this TM as some small\nform of repayment.")
+	delay(8)
+	//giveitem(ITEM_TM_SMACK_DOWN, 1) // once implemented
+	setflag(FLAG_RECEIVED_TM_RETURN)
+	delay(16)
+	checkplayergender
+    if(var(VAR_RESULT) == MALE){
+        msgbox("{COLOR RED}May{COLOR DARK_GRAY}: Wow!\nThanks, Professor!")
+    }else{
+        msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: Thank you, Professor.")
+    }
+    closemessage
+	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceRight)
+	delay(8)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	checkplayergender
+    if(var(VAR_RESULT) == MALE){
+        msgbox("We-e-ell…\pWhat're are you gonna do next,\n{PLAYER}?\pI'm thinking of checking out the next\nGym on my list.\pIt's the one in Mauville City.\pWhy don't you come with me, {PLAYER}?\nTo Mauville!", MSGBOX_YESNO)
+		if(var(VAR_RESULT) == NO){
+			msgbox("Oh. Right.\nWell, tell me if you change your mind!\pMauville's right in the middle of Hoenn,\nso you can go to all sorts of places\lfrom there.\pEven Mt. Chimney, the place those guys\nwere talking about at Meteor Falls, in\lfact.\pIt's just a pretty short trip from\nMauville.")
+			closemessage
+			call(FallarborTown_CozmosHouse_EventScript_MoveEveryone)
+			release
+			end
+		}
+    }else{
+        msgbox("Now that that's over with…\pWhat're you planning to do next,\n{PLAYER}?\pI'm thinking of going for my next Gym\nBadge.\pThe one from Mauville City.\pWanna make a trip together, {PLAYER}?\nTo Mauville, that is.", MSGBOX_YESNO)
+		if(var(VAR_RESULT) == NO){
+			msgbox("Ah, right.\nWell, tell me if you change your mind.\pMauville's right in the middle of Hoenn,\nso you can go to all sorts of places\lfrom there.\pEven Mt. Chimney, the place those guys\nwere talking about at Meteor Falls, is\la pretty short trip from Mauville.")
+			closemessage
+			call(FallarborTown_CozmosHouse_EventScript_MoveEveryone)
+			release
+			end
+		}
+    }
+	checkplayergender
+    if(var(VAR_RESULT) == MALE){
+        msgbox("Right!\nLet's hit the road!")
+    }else{
+        msgbox("Cool.\nLet's go then.")
+    }
+    closemessage
+	fadescreen(FADE_TO_BLACK)
+	setflag(FLAG_REMOVE_WARP_FADE)
+	setflag(FLAG_HIDE_COZMOS_HOUSE_RIVAL)
+	setvar(VAR_FALLARBOR_TOWN_STATE, 4)
+	setvar(VAR_MAUVILLE_CITY_STATE, 5)
+	clearflag(FLAG_HIDE_MAUVILLE_CITY_RIVAL)
+	delay(128)
+	warpsilent(MAP_MAUVILLE_CITY, 16, 8)
+	waitstate
+	release
+	end
+}
+
+script FallarborTown_CozmosHouse_EventScript_CrooksAtMtChimney {
+	msgbox("{COLOR RED}Cozmo{COLOR DARK_GRAY}: Those crooks who took my\nMeteorite…\pWhat will they next at {COLOR BLUE}Mt. Chimney{COLOR DARK_GRAY}?", MSGBOX_NPC)
+	applymovement(LOCALID_COZMO, Common_Movement_WalkInPlaceDown)
+	waitmovement(LOCALID_COZMO)
+	end
+}
+
+script FallarborTown_CozmosHouse_EventScript_MoveEveryone {
+	fadescreen(FADE_TO_BLACK)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
+	applymovement(LOCALID_COZMO, FallarborTown_CozmosHouse_Movement_MoveEveryone_Cozmo)
+	applymovement(LOCALID_WIFE, FallarborTown_CozmosHouse_Movement_MoveEveryone_CozmosWife)
+	applymovement(LOCALID_RIVAL, FallarborTown_CozmosHouse_Movement_MoveEveryone_Rival)
+	waitmovement(LOCALID_RIVAL)
+	fadescreen(FADE_FROM_BLACK)
+	setvar(VAR_FALLARBOR_TOWN_STATE, 4)
+	return
+}
+
+movement FallarborTown_CozmosHouse_Movement_MoveEveryone_Cozmo {
+	walk_faster_up * 2
+	walk_in_place_down
+}
+
+movement FallarborTown_CozmosHouse_Movement_MoveEveryone_CozmosWife {
+	walk_faster_right
+	walk_faster_up
+}
+
+movement FallarborTown_CozmosHouse_Movement_MoveEveryone_Rival {
+	walk_faster_right * 4
+	walk_faster_up * 3
+	walk_in_place_down
+}
+
+script FallarborTown_CozmosHouse_EventScript_Rival {
+	lock
+	faceplayer
+	checkplayergender
+	if(var(VAR_RESULT) == MALE){
+		msgbox("{COLOR RED}May{COLOR DARK_GRAY}: Why don't you come with me,\n{PLAYER}? To Mauville!", MSGBOX_YESNO)
+		if(var(VAR_RESULT) == YES){
+			msgbox("Right!\nLet's hit the road!")
+			closemessage
+			fadescreen(FADE_TO_BLACK)
+			setflag(FLAG_REMOVE_WARP_FADE)
+			setflag(FLAG_HIDE_COZMOS_HOUSE_RIVAL)
+			setvar(VAR_MAUVILLE_CITY_STATE, 5)
+			clearflag(FLAG_HIDE_MAUVILLE_CITY_RIVAL)
+			delay(128)
+			warpsilent(MAP_MAUVILLE_CITY, 16, 8)
+			waitstate
+		}else{
+			msgbox("Oh. Right.\nWell, tell me if you change your mind!\pMauville's right in the middle of Hoenn,\nso you can go to all sorts of places\lfrom there.\pEven Mt. Chimney, the place those guys\nwere talking about at Meteor Falls, in\lfact.\pIt's just a pretty short trip from\nMauville.")
+		}
+	}else{
+		msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: Wanna make a trip together,\n{PLAYER}? To Mauville, that is.", MSGBOX_YESNO)
+		if(var(VAR_RESULT) == YES){
+			msgbox("Cool.\nLet's go then.")
+			closemessage
+			fadescreen(FADE_TO_BLACK)
+			setflag(FLAG_REMOVE_WARP_FADE)
+			setflag(FLAG_HIDE_COZMOS_HOUSE_RIVAL)
+			setvar(VAR_MAUVILLE_CITY_STATE, 5)
+			clearflag(FLAG_HIDE_MAUVILLE_CITY_RIVAL)
+			delay(128)
+			warpsilent(MAP_MAUVILLE_CITY, 16, 8)
+			waitstate
+		}else{
+			msgbox("Ah, right.\nWell, tell me if you change your mind.\pMauville's right in the middle of Hoenn,\nso you can go to all sorts of places\lfrom there.\pEven Mt. Chimney, the place those guys\nwere talking about at Meteor Falls, is\la pretty short trip from Mauville.")
+		}
+	}
+	closemessage
+	release
+	end
+}

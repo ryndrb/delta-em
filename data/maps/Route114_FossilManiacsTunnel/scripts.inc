@@ -56,15 +56,7 @@ Route114_FossilManiacsTunnel_EventScript_PlayerRevivedFossil::
 	end
 
 Route114_FossilManiacsTunnel_Text_LookInDesertForFossils:
-	.string "I'm the Fossil Maniac…\n"
-	.string "I'm a nice guy who loves Fossils…\p"
-	.string "Do you want a Fossil?\p"
-	.string "But the Fossils around these parts all\n"
-	.string "belong to me… None for you…\p"
-	.string "If you can't bear to go without\n"
-	.string "a Fossil, look in a desert where there\l"
-	.string "are boulders and sand that may hide\l"
-	.string "Fossils…$"
+	.string "I'm the Fossil Maniac…\nI'm a nice guy who loves Fossils…\pDo you want a Fossil?\pBut the Fossils around these parts\nall belong to me… None for you…\pIf you can't go without a Fossil, try\nthe desert on Route 111…\pFrom what I've heard, the Fossils\nburied in the sand sometimes rise to\lthe surface due to sandstorms…$"
 
 Route114_FossilManiacsTunnel_Text_DevonCorpRevivingFossils:
 	.string "You found a Fossil, didn't you?\n"
@@ -90,4 +82,3 @@ Route114_FossilManiacsTunnel_Text_NotSafeThatWay:
 	.string "underneath now…\p"
 	.string "But I've left it alone because I don't\n"
 	.string "think there are any Fossils there…$"
-

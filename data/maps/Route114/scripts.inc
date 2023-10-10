@@ -5,6 +5,7 @@ Route114_MapScripts::
 	.byte 0
 
 Route114_OnTransition:
+    call Common_EventScript_SetupRivalGfxId
 	call_if_eq VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_HideMapNamePopup
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_NORTH, AbnormalWeather_StartGroudonWeather
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_SOUTH, AbnormalWeather_StartGroudonWeather
@@ -183,8 +184,7 @@ Route114_Text_AllMyMonDoesIsRoarTakeThis:
 	.string "this TM away…$"
 
 Route114_Text_ExplainRoar:
-	.string "TM05 contains Roar.\n"
-	.string "A Roar sends Pokémon scurrying.$"
+	.string "A Roar can scare the opposing Pokémon\naway.$"
 
 Route114_Text_Poochyena:
 	.string "Bow! Bowwow!$"
@@ -200,3 +200,97 @@ Route114_Text_FossilManiacsHouseSign:
 Route114_Text_LanettesHouse:
 	.string "Lanette's House$"
 
+Route114_EventScript_Sign::
+	msgbox Route114_EventScript_Sign_Text_0, MSGBOX_SIGN
+	end
+
+
+Route114_EventScript_Rival::
+	lock
+	delay 8
+	special SpawnCameraObject
+	addobject 28
+	applymovement OBJ_EVENT_ID_CAMERA, Route114_Movement_CameraPanToRivalDown
+	waitmovement OBJ_EVENT_ID_CAMERA
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq Route114_EventScript_Rival_2
+	msgbox Route114_EventScript_Rival_Text_1
+Route114_EventScript_Rival_1:
+	closemessage
+	playse SE_PIN
+	applymovement 28, Common_Movement_ExclamationMark
+	waitmovement 28
+	waitse
+	applymovement 28, Route114_Movement_RivalJumpUp
+	waitmovement 28
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq Route114_EventScript_Rival_6
+	msgbox Route114_EventScript_Rival_Text_3
+Route114_EventScript_Rival_5:
+	closemessage
+	applymovement 28, Route114_Movement_RivalExit
+	waitmovement 28
+	removeobject 28
+	delay 16
+	applymovement OBJ_EVENT_ID_CAMERA, Route114_Movement_CameraPanToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	setvar VAR_ROUTE114_STATE, 1
+	release
+	end
+
+Route114_EventScript_Rival_2:
+	msgbox Route114_EventScript_Rival_Text_0
+	goto Route114_EventScript_Rival_1
+
+Route114_EventScript_Rival_6:
+	msgbox Route114_EventScript_Rival_Text_2
+	goto Route114_EventScript_Rival_5
+
+
+Route114_Movement_CameraPanToRivalDown:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+Route114_Movement_RivalJumpUp:
+	jump_in_place_left
+	step_end
+
+Route114_Movement_RivalExit:
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	step_end
+
+Route114_Movement_CameraPanToPlayer:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Route114_EventScript_Sign_Text_0:
+	.string "Route 114$"
+
+Route114_EventScript_Rival_Text_0:
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: You guys are--\nWhere are you taking the professor!?$"
+
+Route114_EventScript_Rival_Text_1:
+	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: You guys are--\nWhere are you taking the professor!?$"
+
+Route114_EventScript_Rival_Text_2:
+	.string "H-hey!\nWait up!$"
+
+Route114_EventScript_Rival_Text_3:
+	.string "H-hey!\nStop right there!$"

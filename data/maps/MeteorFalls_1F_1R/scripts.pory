@@ -1,0 +1,620 @@
+raw `
+.set LOCALID_TABITHA, 5
+.set LOCALID_MAGMA_GRUNT_2, 6
+.set LOCALID_ARCHIE, 7
+.set LOCALID_AQUA_GRUNT_1, 8
+.set LOCALID_AQUA_GRUNT_2, 9
+
+MeteorFalls_1F_1R_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, MeteorFalls_1F_1R_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, MeteorFalls_1F_1R_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, MeteorFalls_1F_1R_OnResume
+	.byte 0
+
+MeteorFalls_1F_1R_OnLoad::
+	call_if_set FLAG_SYS_GAME_CLEAR, MeteorFalls_1F_1R_EventScript_OpenStevensCave
+	end
+
+MeteorFalls_1F_1R_EventScript_OpenStevensCave::
+	setmetatile 4, 1, METATILE_MeteorFalls_CaveEntrance_Top, TRUE
+	setmetatile 3, 2, METATILE_MeteorFalls_CaveEntrance_Left, TRUE
+	setmetatile 4, 2, METATILE_MeteorFalls_CaveEntrance_Bottom, FALSE
+	setmetatile 5, 2, METATILE_MeteorFalls_CaveEntrance_Right, TRUE
+	return
+
+MeteorFalls_1F_1R_EventScript_ProfCozmo::
+	lock
+	faceplayer
+	goto_if_set FLAG_MET_PROF_COZMO, MeteorFalls_1F_1R_EventScript_MetCozmo
+	setflag FLAG_MET_PROF_COZMO
+	msgbox MeteorFalls_1F_1R_Text_MeetProfCozmo, MSGBOX_DEFAULT
+	release
+	end
+
+MeteorFalls_1F_1R_EventScript_MetCozmo::
+	msgbox MeteorFalls_1F_1R_Text_WhatsTeamMagmaDoingAtMtChimney, MSGBOX_DEFAULT
+	release
+	end
+
+MeteorFalls_1F_1R_Text_MeetProfCozmo:
+	.string "I… I'm Cozmo…\n"
+	.string "I'm a Professor…\p"
+	.string "Team Magma asked me to guide them\n"
+	.string "to Meteor Falls…\p"
+	.string "But they tricked me.\n"
+	.string "They even took my Meteorite away…\p"
+	.string "And then another similar bunch,\n"
+	.string "Team Aqua showed up.\p"
+	.string "After that…\n"
+	.string "I don't understand any of it.\p"
+	.string "But that Team Magma…\p"
+	.string "What are they going to do with that\n"
+	.string "Meteorite at Mt. Chimney?$"
+
+MeteorFalls_1F_1R_Text_WhatsTeamMagmaDoingAtMtChimney:
+	.string "Prof. Cozmo: But that Team Magma…\p"
+	.string "What are they going to do with that\n"
+	.string "Meteorite at Mt. Chimney?$"
+
+`
+
+const LOCALID_TABITHA = 5
+const LOCALID_COZMO = 10
+const LOCALID_RIVAL = 11
+
+script MeteorFalls_1F_1R_OnTransition {
+	call(Common_EventScript_SetupRivalGfxId)
+	if(var(VAR_METEOR_FALLS_STATE) == 1){
+		call(MeteorFalls_1F_1R_EventScript_MagmaFacingRight)
+	}
+	end
+}
+
+script MeteorFalls_1F_1R_OnResume {
+	if(var(VAR_METEOR_FALLS_STATE) == 1){
+		call(MeteorFalls_1F_1R_EventScript_MagmaFacingRight)
+	}
+	end
+}
+
+script MeteorFalls_1F_1R_EventScript_MagmaFacingRight {
+	setobjectmovementtype(LOCALID_TABITHA, MOVEMENT_TYPE_FACE_RIGHT)
+	setobjectmovementtype(LOCALID_MAGMA_GRUNT_2, MOVEMENT_TYPE_FACE_RIGHT)
+	return
+}
+
+script MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteSceneTrigger1 {
+	setvar(VAR_TEMP_0, 1)
+	goto(MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene)
+}
+
+script MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteSceneTrigger2 {
+	setvar(VAR_TEMP_0, 2)
+	goto(MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene)
+}
+
+script MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene {
+    lock
+	delay(8)
+	if(var(VAR_METEOR_FALLS_STATE) == 1){
+		setvar(VAR_TEMP_1, 2)
+		call(MeteorFalls_1F_1R_EventScript_DoubleBattle)
+	}else{
+		checkplayergender
+		if(var(VAR_RESULT) == MALE){
+			msgbox("{COLOR RED}May{COLOR DARK_GRAY}: Give it up, you bozos!\nLet the professor go!")
+		}else{
+			msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: Hey! You jerks!\nLet Professor Cozmo go!")
+		}
+		closemessage
+		applymovement(LOCALID_TABITHA, Common_Movement_WalkInPlaceRight)
+		delay(8)
+		applymovement(LOCALID_MAGMA_GRUNT_2, Common_Movement_WalkInPlaceRight)
+		waitmovement(LOCALID_MAGMA_GRUNT_2)
+		msgbox("{COLOR RED}???{COLOR DARK_GRAY}: Hyuh?\pWhat have we here?\nWhy has this child suddenly appeared?")
+		closemessage
+		delay(8)
+		playse(SE_PIN)
+		applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
+		delay(8)
+		switch(var(VAR_TEMP_0)){
+			case 1: applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceRight)
+			case 2: applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceDown)
+		}
+		waitmovement(LOCALID_RIVAL)
+		setvar(VAR_METEOR_FALLS_STATE, 1)
+		checkplayergender
+		if(var(VAR_RESULT) == MALE){
+			msgbox("{COLOR RED}May{COLOR DARK_GRAY}: {PLAYER}!\nYou came!\pWe've got to save Professor Cozmo from\nthese people!\pThere are two of them…\nAnd two of us…\p{PLAYER}, please!\nBattle together with me!", MSGBOX_YESNO)
+			if(var(VAR_RESULT) == NO){
+				msgbox("What!?\pAh!\nI get it!\pYou've got to get ready first?\nI'll hold them here, so hurry!!")
+				closemessage
+				applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight)
+				delay(8)
+				applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceLeft)
+				waitmovement(LOCALID_RIVAL)
+				release
+				end
+			}
+			msgbox("Thanks a mill!")
+		}else{
+			msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: {PLAYER}!\nYou finally made it, huh!\pWe've gotta protect the professor from\nthese lunatics or else!\pThere's two of them…\nAnd two of us, huh?\pSorry to ask, {PLAYER}, but…\nBattle alongside me!", MSGBOX_YESNO)
+			if(var(VAR_RESULT) == NO){
+				msgbox("So even you get nervous, huh…\pI get it.\nI'll wait till you get ready.")
+				closemessage
+				applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight)
+				delay(8)
+				applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceLeft)
+				waitmovement(LOCALID_RIVAL)
+				release
+				end
+			}
+			msgbox("Thanks, pal!")
+		}
+		closemessage
+		setvar(VAR_TEMP_1, 1)
+		call(MeteorFalls_1F_1R_EventScript_DoubleBattle)
+	}
+	delay(16)
+	msgbox("{COLOR RED}Tabitha{COLOR DARK_GRAY}: Hyuhn!?\nAn unexpected development!?")
+	closemessage
+	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceDown)
+	waitmovement(LOCALID_RIVAL)
+	checkplayergender
+	if(var(VAR_RESULT) == MALE){
+		msgbox("{COLOR RED}May{COLOR DARK_GRAY}: We did it, {PLAYER}!")
+	}else{
+		msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: All right!\nWe beat 'em!")
+	}
+	closemessage
+	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceLeft)
+	waitmovement(LOCALID_RIVAL)
+	msgbox("{COLOR RED}Tabitha{COLOR DARK_GRAY}: You children!\nI would like you stay out of my way!\pTeam Magma's scientific prowess,\nMt. Chimney's energy…\pAnd the hidden power of the meteorite!\nIf we combine them all,\la super-ancient Pokémon…")
+	closemessage
+	delay(16)
+	fadenewbgm(MUS_DUMMY)
+	msgbox("{COLOR RED}???{COLOR DARK_GRAY}: Bwahahahahahaha!\pYou lost to this scamp?\nWhat a pathetic bunch!\pYou lazy stooges will be the downfall\nof Team Magma!")
+	closemessage
+	delay(8)
+	applymovement(LOCALID_RIVAL, MeteorFalls_1F_1R_Movement_RivalLookAround)
+	waitmovement(LOCALID_RIVAL)
+	checkplayergender
+	if(var(VAR_RESULT) == MALE){
+		msgbox("{COLOR RED}May{COLOR DARK_GRAY}: Wh-who's there!?")
+	}else{
+		msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: Who's that!?")
+	}
+	closemessage
+	delay(8)
+	playse(SE_PIN)
+	applymovement(LOCALID_TABITHA, Common_Movement_ExclamationMark)
+	applymovement(LOCALID_MAGMA_GRUNT_2, Common_Movement_QuestionMark)
+	applymovement(LOCALID_COZMO, Common_Movement_QuestionMark)
+	applymovement(LOCALID_RIVAL, Common_Movement_QuestionMark)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	waitse
+	applymovement(LOCALID_TABITHA, Common_Movement_WalkInPlaceLeft)
+	applymovement(LOCALID_MAGMA_GRUNT_2, Common_Movement_WalkInPlaceLeft)
+	delay(8)
+	applymovement(LOCALID_COZMO, Common_Movement_WalkInPlaceLeft)
+	waitmovement(LOCALID_COZMO)
+	playbgm(MUS_ENCOUNTER_AQUA, FALSE)
+	special(SpawnCameraObject)
+	addobject(LOCALID_ARCHIE)
+	addobject(LOCALID_AQUA_GRUNT_1)
+	addobject(LOCALID_AQUA_GRUNT_2)
+	applymovement(LOCALID_AQUA_GRUNT_1, MeteorFalls_1F_1R_Movement_AquaGrunt1GotoScene)
+	applymovement(LOCALID_ARCHIE, MeteorFalls_1F_1R_Movement_ArchieGotoScene)
+	applymovement(LOCALID_AQUA_GRUNT_2, MeteorFalls_1F_1R_Movement_AquaGrunt2GotoScene)
+	applymovement(OBJ_EVENT_ID_CAMERA, MeteorFalls_1F_1R_Movement_CameraInMiddleOfScene)
+	waitmovement(LOCALID_AQUA_GRUNT_2)
+	delay(16)
+	msgbox("{COLOR RED}Tabitha{COLOR DARK_GRAY}: Hyahya! Even Team Aqua is\nmaking an appearance!\pThe odds do not appear to be in my\nfavor…")
+	closemessage
+	applymovement(LOCALID_TABITHA, Common_Movement_WalkInPlaceDown)
+	waitmovement(LOCALID_TABITHA)
+	msgbox("You there!\nI'll have the meteorite now!")
+	closemessage
+	applymovement(LOCALID_MAGMA_GRUNT_2, Common_Movement_WalkInPlaceRight)
+	waitmovement(LOCALID_MAGMA_GRUNT_2)
+	msgbox("{COLOR RED}Grunt{COLOR DARK_GRAY}: Yes, sir!")
+	closemessage
+	applymovement(LOCALID_MAGMA_GRUNT_2, Common_Movement_WalkInPlaceUp)
+	delay(8)
+	applymovement(LOCALID_COZMO, Common_Movement_WalkInPlaceDown)
+	waitmovement(LOCALID_COZMO)
+	delay(16)
+	playse(SE_PIN)
+	applymovement(LOCALID_COZMO, Common_Movement_ExclamationMark)
+	waitmovement(LOCALID_COZMO)
+	applymovement(LOCALID_COZMO, MeteorFalls_1F_1R_Movement_CozmoPushedBack)
+	waitmovement(LOCALID_COZMO)
+	waitse
+	msgbox("{COLOR RED}Cozmo{COLOR DARK_GRAY}: Wha-wha-wha-what!?")
+	closemessage
+	applymovement(LOCALID_MAGMA_GRUNT_2, Common_Movement_WalkUp)
+	waitmovement(LOCALID_MAGMA_GRUNT_2)
+	msgbox("{COLOR RED}Grunt{COLOR DARK_GRAY}: Come now!\nHand over the meteorite!")
+	closemessage
+	applymovement(LOCALID_COZMO, MeteorFalls_1F_1R_Movement_CozmoThowMeteorite)
+	waitmovement(LOCALID_COZMO)
+	playse(SE_LEDGE)
+	msgbox("{COLOR RED}Cozmo{COLOR DARK_GRAY}: Augh!?")
+	closemessage
+	delay(8)
+	playse(SE_PIN)
+	applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
+	waitmovement(LOCALID_RIVAL)
+	waitse
+	msgbox("{COLOR RED}{RIVAL}{COLOR DARK_GRAY}: Professor!")
+	closemessage 
+	playse(SE_LEDGE)
+	applymovement(LOCALID_RIVAL, MeteorFalls_1F_1R_Movement_RivalGotoCozmo)
+	applymovement(LOCALID_COZMO, MeteorFalls_1F_1R_Movement_CozmoSpin)
+	applymovement(LOCALID_MAGMA_GRUNT_2, MeteorFalls_1F_1R_Movement_StealMeteorite)
+	waitmovement(LOCALID_MAGMA_GRUNT_2)
+	delay(16)
+	applymovement(LOCALID_TABITHA, Common_Movement_WalkInPlaceLeft)
+	delay(8)
+	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceDown)
+	waitmovement(LOCALID_RIVAL)
+	msgbox("{COLOR RED}Tabitha{COLOR DARK_GRAY}: Ahyahya! The Meteorite is in\nthe palm of my hand!\pWell, well, well…\nAdios to each and every one of you!\pAt long last I'm off to {COLOR BLUE}Mt. Chimney{COLOR DARK_GRAY}!")
+	closemessage
+	applymovement(LOCALID_TABITHA, MeteorFalls_1F_1R_Movement_TabithaExit)
+	applymovement(LOCALID_MAGMA_GRUNT_2, MeteorFalls_1F_1R_Movement_MagmaGrunt2Exit)
+	applymovement(OBJ_EVENT_ID_PLAYER, MeteorFalls_1F_1R_Movement_PlayerWatchTeamExit)
+	waitmovement(LOCALID_MAGMA_GRUNT_2)
+	msgbox("{COLOR RED}Archie{COLOR DARK_GRAY}: Tch!")
+	msgbox("{COLOR RED}Grunt{COLOR DARK_GRAY}: Archie!\nWe will go after those monsters!")
+	msgbox("{COLOR RED}Archie{COLOR DARK_GRAY}: That's right!\nWe're not letting them get away!")
+	closemessage
+	delay(8)
+	applymovement(LOCALID_ARCHIE, MeteorFalls_1F_1R_Movement_ArchieApproachPlayer)
+	applymovement(LOCALID_AQUA_GRUNT_1, MeteorFalls_1F_1R_Movement_AquaGrunt1ApproachPlayer)
+	applymovement(LOCALID_AQUA_GRUNT_2, MeteorFalls_1F_1R_Movement_AquaGrunt2ApproachPlayer)
+	applymovement(OBJ_EVENT_ID_PLAYER, MeteorFalls_1F_1R_Movement_PlayerTurnToAqua)
+	applymovement(OBJ_EVENT_ID_CAMERA, MeteorFalls_1F_1R_Movement_CameraBackToPlayer)
+	waitmovement(LOCALID_AQUA_GRUNT_2)
+	special(RemoveCameraObject)
+	msgbox("{COLOR RED}Archie{COLOR DARK_GRAY}: Oh? What's this?\pHaven't I seen you before?\nAt Slateport Museum?\pAh, so your name is {PLAYER}.\pLooks like you were getting into it\nwith Team Magma there, 'less my eyes\ldeceive me.\pIt's not like I'm in a position to argue\nif that's what you're up to, hey?\pBut I'll tell you this much, again…\pIf you next get in the way of Team\nAqua, you won't get off so lightly.\pSo steer clear and keep your nose\nclean, scamp!\pI imagine I'll be seeing you again!\nWaha! Bwahahahahah!")
+	closemessage
+	delay(8)
+	applymovement(LOCALID_ARCHIE, MeteorFalls_1F_1R_Movement_ArchieExit)
+	applymovement(LOCALID_AQUA_GRUNT_1, MeteorFalls_1F_1R_Movement_AquaGrunt1Exit)
+	applymovement(LOCALID_AQUA_GRUNT_2, MeteorFalls_1F_1R_Movement_AquaGrunt2Exit)
+	applymovement(OBJ_EVENT_ID_PLAYER, MeteorFalls_1F_1R_Movement_PlayerWatchTeamExit)
+	waitmovement(LOCALID_AQUA_GRUNT_2)
+	removeobject(LOCALID_ARCHIE)
+	removeobject(LOCALID_AQUA_GRUNT_1)
+	removeobject(LOCALID_AQUA_GRUNT_2)
+	fadedefaultbgm
+	delay(16)
+	applymovement(LOCALID_RIVAL, MeteorFalls_1F_1R_Movement_RivalGotoPlayer)
+	waitmovement(LOCALID_RIVAL)
+	checkplayergender
+	if(var(VAR_RESULT) == MALE){
+		msgbox("{COLOR RED}May{COLOR DARK_GRAY}: Oh bother!\pI have no idea what's going on anymore\nwith all these people!")
+	}else{
+		msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: Oh man…\nWhat's with those lunatics?")
+	}
+	closemessage
+	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceLeft)
+	delay(8)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	checkplayergender
+	if(var(VAR_RESULT) == MALE){
+		msgbox("Never mind those nuts!\nProfessor, you doing OK!?")
+	}else{
+		msgbox("Forget those guys!\nProfessor!\pHey! Professor Cozmo!\nHang in there, OK?")
+	}
+	msgbox("{COLOR RED}Cozmo{COLOR DARK_GRAY}: B-but…they…\nI…only…")
+	closemessage
+	applymovement(LOCALID_RIVAL, MeteorFalls_1F_1R_Movement_RivalGoCheckCozmo)
+	applymovement(OBJ_EVENT_ID_PLAYER, MeteorFalls_1F_1R_Movement_PlayerGoCheckCozmo)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	checkplayergender
+	if(var(VAR_RESULT) == MALE){
+		msgbox("{COLOR RED}May{COLOR DARK_GRAY}: Looks like he's still pretty out of\nit…")
+	}else{
+		msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: I think he's still pretty out\nof it…")
+	}
+	closemessage
+	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceLeft)
+	delay(8)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	msgbox("{PLAYER}…\pNever mind what's happened!\nI've got to get the professor back to\lhis lab in Fallarbor!")
+	closemessage
+	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceUp)
+	waitmovement(LOCALID_RIVAL)
+	msgbox("OK, Profesor…\nEasy now…")
+	closemessage
+	delay(8)
+	setflag(FLAG_HIDE_ROUTE_112_TEAM_MAGMA)
+	setflag(FLAG_MET_ARCHIE_METEOR_FALLS)
+	setflag(FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT)
+	setflag(FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO)
+	clearflag(FLAG_HIDE_COZMOS_HOUSE_RIVAL)
+	clearflag(FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO)
+	setvar(VAR_METEOR_FALLS_STATE, 2)
+	setvar(VAR_FALLARBOR_TOWN_STATE, 3)
+	fadescreen(FADE_TO_BLACK)
+	setflag(FLAG_REMOVE_WARP_FADE)
+	fadenewbgm(MUS_DUMMY)
+	delay(128)
+	warp(MAP_FALLARBOR_TOWN_COZMOS_HOUSE, 4, 8)
+	waitstate
+	release
+	end
+}
+
+movement MeteorFalls_1F_1R_Movement_RivalLookAround {
+	walk_in_place_up
+	delay_16
+	walk_in_place_down
+	delay_16
+	walk_in_place_left
+	delay_16
+}
+
+movement MeteorFalls_1F_1R_Movement_AquaGrunt1GotoScene {
+	walk_right * 6
+	walk_up * 4
+	walk_in_place_right
+}
+
+movement MeteorFalls_1F_1R_Movement_ArchieGotoScene {
+	walk_right * 7
+	walk_up * 3
+	walk_in_place_right
+}
+
+movement MeteorFalls_1F_1R_Movement_AquaGrunt2GotoScene {
+	walk_right * 8
+	walk_up * 2
+	walk_in_place_right
+}
+
+movement MeteorFalls_1F_1R_Movement_CozmoPushedBack {
+	lock_facing_direction
+	walk_up
+	unlock_facing_direction
+}
+
+movement MeteorFalls_1F_1R_Movement_CozmoThowMeteorite {
+	jump_in_place_up
+}
+
+movement MeteorFalls_1F_1R_Movement_RivalGotoCozmo {
+	walk_up
+	walk_left * 2
+}
+
+movement MeteorFalls_1F_1R_Movement_CozmoSpin {
+	delay_16
+	walk_in_place_faster_right
+	walk_in_place_faster_up
+	walk_in_place_faster_left
+	walk_in_place_faster_down
+}
+
+movement MeteorFalls_1F_1R_Movement_StealMeteorite {
+	walk_in_place_up
+	delay_16
+	delay_16
+	walk_down
+	walk_right
+	walk_in_place_left
+}
+
+movement MeteorFalls_1F_1R_Movement_TabithaExit {
+	walk_right * 10
+}
+
+movement MeteorFalls_1F_1R_Movement_MagmaGrunt2Exit {
+	walk_right
+	walk_up
+	walk_right * 9
+}
+
+movement MeteorFalls_1F_1R_Movement_PlayerWatchTeamExit {
+	delay_16 * 2
+	walk_in_place_up
+	delay_16
+	walk_in_place_right
+}
+
+movement MeteorFalls_1F_1R_Movement_ArchieApproachPlayer {
+	walk_right * 3
+	walk_down
+	walk_right
+}
+
+movement MeteorFalls_1F_1R_Movement_AquaGrunt1ApproachPlayer {
+	walk_down
+	walk_right * 4
+}
+
+movement MeteorFalls_1F_1R_Movement_AquaGrunt2ApproachPlayer {
+	delay_16
+	walk_right * 2
+	delay_16
+	walk_right
+}
+
+movement MeteorFalls_1F_1R_Movement_PlayerTurnToAqua {
+	delay_16 * 3
+	walk_in_place_left
+}
+
+movement MeteorFalls_1F_1R_Movement_ArchieExit {
+	walk_up
+	walk_right * 9
+}
+
+movement MeteorFalls_1F_1R_Movement_AquaGrunt1Exit {
+	walk_right * 9
+}
+
+movement MeteorFalls_1F_1R_Movement_AquaGrunt2Exit {
+	walk_up
+	walk_right * 10
+}
+
+movement MeteorFalls_1F_1R_Movement_RivalGotoPlayer {
+	walk_down
+	walk_right
+}
+
+movement MeteorFalls_1F_1R_Movement_RivalGoCheckCozmo {
+	delay_16
+	walk_left
+	walk_in_place_up
+}
+
+movement MeteorFalls_1F_1R_Movement_PlayerGoCheckCozmo {
+	walk_left * 3
+	walk_up
+}
+
+script MeteorFalls_1F_1R_EventScript_DoubleBattle {
+	if(var(VAR_TEMP_1) == 2){
+		switch(var(VAR_TEMP_0)){
+			case 1: applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceRight)
+			case 2: applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceDown)
+		}
+		waitmovement(LOCALID_RIVAL)
+		checkplayergender
+		if(var(VAR_RESULT) == MALE){
+			msgbox("{COLOR RED}May{COLOR DARK_GRAY}: There are two of them…\nAnd two of us…\p{PLAYER}, please!\nBattle together with me!", MSGBOX_YESNO)
+			if(var(VAR_RESULT) == NO){
+				msgbox("What!?\pAh!\nI get it!\pYou've got to get ready first?\nI'll hold them here, so hurry!!")
+				closemessage
+				applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight)
+				applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceLeft)
+				waitmovement(OBJ_EVENT_ID_PLAYER)
+				release
+				end
+			}
+			msgbox("Thanks a mill!")
+		}else{
+			msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: There's two of them…\nAnd two of us, huh?\pSorry to ask, {PLAYER}, but…\nBattle alongside me!", MSGBOX_YESNO)
+			if(var(VAR_RESULT) == NO){
+				msgbox("So even you get nervous, huh…\pI get it.\nI'll wait till you get ready.")
+				closemessage
+				applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight)
+				applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceLeft)
+				waitmovement(OBJ_EVENT_ID_PLAYER)
+				release
+				end
+			}
+			msgbox("Thanks, pal!")
+		}
+		closemessage
+	}
+	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceLeft)
+	switch(var(VAR_TEMP_0)){
+		case 1: 
+			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown)
+			waitmovement(OBJ_EVENT_ID_PLAYER)
+			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft)
+		case 2: 
+			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft)
+	}
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	delay(8)
+	playse(SE_PIN)
+	applymovement(LOCALID_TABITHA, Common_Movement_QuestionMark)
+	waitse
+	waitmovement(LOCALID_TABITHA)
+	msgbox("{COLOR RED}???{COLOR DARK_GRAY}: Ahyahyahya!\nIsn't this amusing!?\pIs it really your intention to oppose\nme, a Team Magma Admin, just the two\lof you?\pMmm…\nVery well then!\pI'll show you how terrifying adults can\nbe! Ahyahyahya!\pI'm going to give you some very\nthorough coaching!")
+	delay(8)
+	checkplayergender
+	if(var(VAR_RESULT) == MALE){
+		msgbox("{COLOR RED}May{COLOR DARK_GRAY}: This'll be my first time battling\nbeside you, {PLAYER}!\pI've got to do my best!")
+	}else{
+		msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: All right!\nLet's do this!")
+	}
+	closemessage
+	delay(8)
+	call(MeteorFalls_1F_1R_EventScript_ChoosePartyForMultiBattle)
+	return
+}
+
+script MeteorFalls_1F_1R_EventScript_ChoosePartyForMultiBattle {
+	special(HealPlayerParty)
+	choose_mons
+	if(var(VAR_RESULT) == 0){
+		goto(MeteorFalls_1F_1R_EventScript_CancelledMultiBattle)
+	}
+	checkplayergender
+	if(var(VAR_RESULT) == MALE){
+		switch(var(VAR_STARTER_MON)){
+			case 0: multi_2_vs_2(TRAINER_GRUNT_MAGMA_METEOR_FALLS, MeteorFalls_1F_1R_Text_MagmaGruntDefeat, TRAINER_TABITHA_METEOR_FALLS, MeteorFalls_1F_1R_Text_TabithaDefeat, TRAINER_MAY_METEOR_FALLS_TORCHIC, TRAINER_BACK_PIC_MAY)
+			case 1: multi_2_vs_2(TRAINER_GRUNT_MAGMA_METEOR_FALLS, MeteorFalls_1F_1R_Text_MagmaGruntDefeat, TRAINER_TABITHA_METEOR_FALLS, MeteorFalls_1F_1R_Text_TabithaDefeat, TRAINER_MAY_METEOR_FALLS_MUDKIP, TRAINER_BACK_PIC_MAY)
+			case 2: multi_2_vs_2(TRAINER_GRUNT_MAGMA_METEOR_FALLS, MeteorFalls_1F_1R_Text_MagmaGruntDefeat, TRAINER_TABITHA_METEOR_FALLS, MeteorFalls_1F_1R_Text_TabithaDefeat, TRAINER_MAY_METEOR_FALLS_TREECKO, TRAINER_BACK_PIC_MAY)
+		}
+	}else{
+		switch(var(VAR_STARTER_MON)){
+			case 0: multi_2_vs_2(TRAINER_GRUNT_MAGMA_METEOR_FALLS, MeteorFalls_1F_1R_Text_MagmaGruntDefeat, TRAINER_TABITHA_METEOR_FALLS, MeteorFalls_1F_1R_Text_TabithaDefeat, TRAINER_BRENDAN_METEOR_FALLS_TORCHIC, TRAINER_BACK_PIC_BRENDAN)
+			case 1: multi_2_vs_2(TRAINER_GRUNT_MAGMA_METEOR_FALLS, MeteorFalls_1F_1R_Text_MagmaGruntDefeat, TRAINER_TABITHA_METEOR_FALLS, MeteorFalls_1F_1R_Text_TabithaDefeat, TRAINER_BRENDAN_METEOR_FALLS_MUDKIP, TRAINER_BACK_PIC_BRENDAN)
+			case 2: multi_2_vs_2(TRAINER_GRUNT_MAGMA_METEOR_FALLS, MeteorFalls_1F_1R_Text_MagmaGruntDefeat, TRAINER_TABITHA_METEOR_FALLS, MeteorFalls_1F_1R_Text_TabithaDefeat, TRAINER_BRENDAN_METEOR_FALLS_TREECKO, TRAINER_BACK_PIC_BRENDAN)
+		}
+	}
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if(var(VAR_RESULT) == B_OUTCOME_LOST){
+		fadescreen(FADE_TO_BLACK)
+		special(Script_FadeOutMapMusic)
+		waitstate
+		special(SetCB2WhiteOut)
+		waitstate
+		end
+	}
+	special(HealPlayerParty)
+	return
+}
+
+script MeteorFalls_1F_1R_EventScript_CancelledMultiBattle {
+	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceDown)
+	waitmovement(LOCALID_RIVAL)
+	checkplayergender
+	if(var(VAR_RESULT) == MALE){
+		msgbox("What!?\pAh!\nI get it!\pYou've got to get ready first?\nI'll hold them here, so hurry!!")
+		closemessage
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight)
+		applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceLeft)
+		waitmovement(OBJ_EVENT_ID_PLAYER)
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight)
+		waitmovement(OBJ_EVENT_ID_PLAYER)
+	}else{
+		msgbox("So even you get nervous, huh…\pI get it.\nI'll wait till you get ready.")
+		closemessage
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight)
+		applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceLeft)
+		waitmovement(OBJ_EVENT_ID_PLAYER)
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight)
+		waitmovement(OBJ_EVENT_ID_PLAYER)
+	}
+	release
+	end
+}
+
+movement MeteorFalls_1F_1R_Movement_CameraInMiddleOfScene {
+	delay_16 * 9
+	walk_left * 2
+}
+
+movement MeteorFalls_1F_1R_Movement_CameraBackToPlayer {
+	delay_16 * 3
+	walk_right * 2
+}
+
+text MeteorFalls_1F_1R_Text_TabithaDefeat {
+	"Hyuhn?"
+}
+
+text MeteorFalls_1F_1R_Text_MagmaGruntDefeat {
+	"S-so strong."
+}
