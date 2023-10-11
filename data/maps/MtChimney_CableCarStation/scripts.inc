@@ -86,8 +86,7 @@ MtChimney_CableCarStation_Movement_ExitCableCar:
 	step_end
 
 MtChimney_CableCarStation_Text_CableCarReadyGetOn:
-	.string "The Cable Car is ready to go down.\n"
-	.string "Would you like to be on it?$"
+	.string "The Cable Car is ready to depart.\nWould you like to board it?$"
 
 MtChimney_CableCarStation_Text_StepThisWay:
 	.string "Please step this way.$"
@@ -95,3 +94,10 @@ MtChimney_CableCarStation_Text_StepThisWay:
 MtChimney_CableCarStation_Text_RideAnotherTime:
 	.string "Please ride with us another time.$"
 
+MtChimney_CableCarStation_EventScript_Hiker::
+	msgbox MtChimney_CableCarStation_EventScript_Hiker_Text_0, MSGBOX_NPC
+	end
+
+
+MtChimney_CableCarStation_EventScript_Hiker_Text_0:
+	.string "I know something…\pThe receptionists at the base and peak\nare twins!$"

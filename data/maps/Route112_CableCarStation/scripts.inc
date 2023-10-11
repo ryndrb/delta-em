@@ -62,7 +62,7 @@ Route112_CableCarStation_Movement_LeadPlayerToCableCar:
 	walk_up
 	walk_up
 	walk_right
-	walk_in_place_faster_left
+	walk_in_place_left
 	step_end
 
 Route112_CableCarStation_Movement_FollowPlayerOutFromCableCar:
@@ -87,12 +87,10 @@ Route112_CableCarStation_Movement_ExitCableCar:
 	step_end
 
 Route112_CableCarStation_Text_CableCarReadyGetOn:
-	.string "The Cable Car is ready to go up.\n"
-	.string "Would you like to be on it?$"
+	.string "The Cable Car is ready to depart.\nWould you like to board it?$"
 
 Route112_CableCarStation_Text_StepThisWay:
 	.string "Please step this way.$"
 
 Route112_CableCarStation_Text_RideAnotherTime:
 	.string "Please ride with us another time.$"
-

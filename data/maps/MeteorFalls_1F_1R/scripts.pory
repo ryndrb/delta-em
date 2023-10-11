@@ -265,6 +265,8 @@ script MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene {
 	applymovement(LOCALID_MAGMA_GRUNT_2, MeteorFalls_1F_1R_Movement_MagmaGrunt2Exit)
 	applymovement(OBJ_EVENT_ID_PLAYER, MeteorFalls_1F_1R_Movement_PlayerWatchTeamExit)
 	waitmovement(LOCALID_MAGMA_GRUNT_2)
+	removeobject(LOCALID_TABITHA)
+	removeobject(LOCALID_MAGMA_GRUNT_2)
 	msgbox("{COLOR RED}Archie{COLOR DARK_GRAY}: Tch!")
 	msgbox("{COLOR RED}Grunt{COLOR DARK_GRAY}: Archie!\nWe will go after those monsters!")
 	msgbox("{COLOR RED}Archie{COLOR DARK_GRAY}: That's right!\nWe're not letting them get away!")
