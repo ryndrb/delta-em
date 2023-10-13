@@ -58,6 +58,8 @@ LavaridgeTown_Gym_1F_EventScript_Flannery::
 	end
 
 LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated::
+    msgbox LavaridgeTown_Gym_1F_Text_GivePlayerHeatBadge, MSGBOX_DEFAULT
+    delay 8
 	message LavaridgeTown_Gym_1F_Text_ReceivedHeatBadge
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
@@ -185,18 +187,10 @@ LavaridgeTown_Gym_1F_EventScript_GymStatue::
 	end
 
 LavaridgeTown_Gym_1F_Text_GymGuideAdvice:
-	.string "Hey, how's it going, Champion-\n"
-	.string "bound {PLAYER}?\p"
-	.string "Lavaridge's Gym Leader Flannery\n"
-	.string "uses Fire-type Pokémon.\p"
-	.string "Her passion for Pokémon burns stronger\n"
-	.string "and hotter than a volcano.\p"
-	.string "Don't get too close to her--you'll burn!\n"
-	.string "Hose her down with water and then\l"
-	.string "go for it!$"
+	.string "{COLOR RED}Guide{COLOR DARK_GRAY}: Yo, how's it going, Champ-to-be\n{PLAYER}?\pLavaridge's Gym Leader Flannery uses\nFire-type Pokémon.\pHer passion for Pokémon burns stronger\nand hotter than a volcano.\pDon't get too close to her or you might\nget burned.\pHose her down with water and then go\nfor it!$"
 
 LavaridgeTown_Gym_1F_Text_GymGuidePostVictory:
-	.string "Yow! That was a scorching-hot battle!$"
+	.string "Yow! That was a scorching hot battle!$"
 
 LavaridgeTown_Gym_1F_Text_ColeIntro:
 	.string "Owowowowow!\n"
@@ -303,62 +297,30 @@ LavaridgeTown_Gym_B1F_Text_EliPostBattle:
 	.string "Hehehehe.$"
 
 LavaridgeTown_Gym_1F_Text_FlanneryIntro:
-	.string "Welcome… No, wait.\p"
-	.string "Puny Trainer, how good to see you've\n"
-	.string "made it here!\p"
-	.string "I have been entrusted with the…\n"
-	.string "No, wait.\p"
-	.string "I am Flannery, and I'm the Gym\n"
-	.string "Leader here!\p"
-	.string "Uh…\n"
-	.string "Dare not underestimate me, though\l"
-	.string "I have been Leader only a short time!\p"
-	.string "With skills inherited from my grand-\n"
-	.string "father, I shall, uh…demonstrate the\l"
-	.string "hot moves we have honed on this land!$"
+	.string "{COLOR RED}Flannery{COLOR DARK_GRAY}: WELCOME!\p…\pNo, wait.\nI mean…\pPuny Trainer, you've done well to make\nit this far!\pLet's see. I'm, uh, honored to be serving\nas the Gym Leader of…\p…\pNo, I mean…\nI'm Flannery, and I'm in charge here!\p…\pUh…\nYou'd better not underestimate me\ljust 'cause I've only been a Leader a\lshort time!\pWith the skills inherited from my\ngrandfather, I'm gonna, uh,\ldemonstrate the hot moves we've\lhoned in this land!\pHAIYAAAAAAAAAAAAA!$"
 
 LavaridgeTown_Gym_1F_Text_FlanneryDefeat:
-	.string "Oh…\n"
-	.string "I guess I was trying too hard…\p"
-	.string "I… I've only recently become\n"
-	.string "a Gym Leader.\p"
-	.string "I tried too hard to be someone\n"
-	.string "I'm not.\p"
-	.string "I have to do things my natural way. If\n"
-	.string "I don't, my Pokémon will be confused.\p"
-	.string "Thanks for teaching me that.\n"
-	.string "For that, you deserve this.$"
+	.string "Oh…\nI guess I was trying too hard…$"
+
+LavaridgeTown_Gym_1F_Text_GivePlayerHeatBadge:
+    .string "I…I've only recently become a Gym\nLeader.\pI guess I was trying too hard to be\nsomeone I'm not.\pWhen I don't act like myself, no wonder\nPokémon that battle at my side get\lconfused.\pThank you for teaching me that.\nYou deserve this.$"
 
 LavaridgeTown_Gym_1F_Text_ReceivedHeatBadge:
 	.string "{PLAYER} received the Heat Badge\n"
 	.string "from Flannery.$"
 
 LavaridgeTown_Gym_1F_Text_ExplainHeatBadgeTakeThis:
-	.string "If you have a Heat Badge, all Pokémon\n"
-	.string "up to Level 50, even those you get in\l"
-	.string "trades from other people, will obey\l"
-	.string "you completely.\p"
-	.string "And, it lets Pokémon use the HM move\n"
-	.string "Strength outside of battle.\p"
-	.string "This is a token of my appreciation.\n"
-	.string "Don't be shy about taking it!$"
+	.string "If you have a Heat Badge, all Pokémon\nup to Level 50, even those you get in\ltrades from other people, will obey\lyou completely.\pAnd, it lets Pokémon use the HM move\nStrength outside of battle.\pThis is a token of my appreciation.\nDon't be shy about taking it!$"
 
 LavaridgeTown_Gym_1F_Text_ExplainOverheat:
-	.string "That TM50 contains Overheat.\p"
-	.string "That move inflicts serious damage on\n"
-	.string "the opponent.\p"
-	.string "But it also sharply cuts the Sp. Atk\n"
-	.string "of the Pokémon using it. It might not\l"
-	.string "be suitable for longer battles.$"
+	.string "Overheat is a Fire-type move\nthat inflicts serious damage on the\ltarget.\pBut it also sharply cuts the Sp. Atk of\nthe Pokémon using it.\pIt might not be suitable for longer\nbattles.$"
 
 LavaridgeTown_Gym_1F_Text_RegisteredFlannery:
 	.string "Registered Gym Leader Flannery\n"
 	.string "in the Pokénav.$"
 
 LavaridgeTown_Gym_1F_Text_FlanneryPostBattle:
-	.string "Your power reminds me of someone…\p"
-	.string "Oh! I know! You battle like Norman,\n"
-	.string "the Gym Leader of Petalburg.$"
+	.string "{COLOR RED}Flannery{COLOR DARK_GRAY}: Your power reminds me of\nsomeone…\pOh!\nI know!\pYou battle like Norman, the Gym Leader\nof Petalburg.$"
 
 LavaridgeTown_Gym_1F_Text_GymStatue:
 	.string "Lavaridge Town Pokémon Gym$"

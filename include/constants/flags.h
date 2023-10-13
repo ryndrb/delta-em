@@ -59,8 +59,8 @@
 #define FLAG_HIDE_COZMOS_HOUSE_RIVAL        0x2E
 #define FLAG_HIDE_ROUTE_114_RIVAL           0x2F
 #define FLAG_HIDE_MAUVILLE_CITY_RIVAL       0x30
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
+#define FLAG_RECEIVED_SWORDS_DANCE          0x31
+#define FLAG_HIDE_PETALBURG_CITY_RIVAL      0x32
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag
@@ -974,7 +974,7 @@
 #define FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA                             0x39F
 #define FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO                        0x3A0
 #define FLAG_HIDE_LAVARIDGE_TOWN_RIVAL                              0x3A1
-#define FLAG_HIDE_LAVARIDGE_TOWN_RIVAL_ON_BIKE                      0x3A2
+#define FLAG_UNUSED_0x3A2                                           0x3A2 // Unused
 #define FLAG_HIDE_RUSTURF_TUNNEL_ROCK_1                             0x3A3
 #define FLAG_HIDE_RUSTURF_TUNNEL_ROCK_2                             0x3A4
 #define FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL                      0x3A5

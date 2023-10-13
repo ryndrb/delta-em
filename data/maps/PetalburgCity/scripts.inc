@@ -11,10 +11,12 @@ PetalburgCity_MapScripts::
 
 PetalburgCity_OnTransition:
 	setflag FLAG_VISITED_PETALBURG_CITY
+	call Common_EventScript_SetupRivalGfxId
 	call_if_eq VAR_PETALBURG_CITY_STATE, 0, PetalburgCity_EventScript_MoveGymBoyToWestEntrance
 	call_if_eq VAR_PETALBURG_CITY_STATE, 2, PetalburgCity_EventScript_DisableMapNameAndMusic
 	call_if_eq VAR_PETALBURG_CITY_STATE, 4, PetalburgCity_EventScript_DisableMapNameAndMusic
 	call_if_eq VAR_PETALBURG_GYM_STATE, 8, PetalburgCity_EventScript_SetGymDoorsUnlocked
+	call_if_ge VAR_LAVARIDGE_TOWN_STATE, 2, PetalburgCity_EventScript_HideLavaridgeRival
 	end
 
 PetalburgCity_EventScript_MoveGymBoyToWestEntrance::
@@ -29,9 +31,14 @@ PetalburgCity_EventScript_SetGymDoorsUnlocked::
 	setvar VAR_PETALBURG_GYM_STATE, 7
 	return
 
+PetalburgCity_EventScript_HideLavaridgeRival::
+	setflag FLAG_HIDE_LAVARIDGE_TOWN_RIVAL
+	return
+
 PetalburgCity_OnFrame:
 	map_script_2 VAR_PETALBURG_CITY_STATE, 2, PetalburgCity_EventScript_WallyTutorial
 	map_script_2 VAR_PETALBURG_CITY_STATE, 4, PetalburgCity_EventScript_WalkToWallyHouse
+	map_script_2 VAR_PETALBURG_CITY_STATE_2, 2, PetalburgCity_EventScript_RivalTeleportDone
 	.2byte 0
 
 PetalburgCity_EventScript_WallyTutorial::
@@ -787,8 +794,55 @@ PetalburgCity_EventScript_OliviaHouseSign::
 	end
 
 
+PetalburgCity_EventScript_RivalTeleportDone::
+	lock
+	applymovement 10, Common_Movement_WalkInPlaceRight
+	delay 8
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq PetalburgCity_EventScript_RivalTeleportDone_2
+	msgbox PetalburgCity_EventScript_RivalTeleportDone_Text_1
+PetalburgCity_EventScript_RivalTeleportDone_1:
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerWatchRivalExit
+	applymovement 10, PetalburgCity_Movement_RivalExit
+	waitmovement 10
+	removeobject 10
+	setvar VAR_PETALBURG_CITY_STATE_2, 3
+	release
+	end
+
+PetalburgCity_EventScript_RivalTeleportDone_2:
+	msgbox PetalburgCity_EventScript_RivalTeleportDone_Text_0
+	goto PetalburgCity_EventScript_RivalTeleportDone_1
+
+
+PetalburgCity_Movement_PlayerWatchRivalExit:
+	delay_16
+	walk_in_place_down
+	step_end
+
+PetalburgCity_Movement_RivalExit:
+	walk_down
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
 PetalburgCity_EventScript_WilburHouseSign_Text_0:
 	.string "Wilbur's House$"
 
 PetalburgCity_EventScript_OliviaHouseSign_Text_0:
 	.string "Olivia's House$"
+
+PetalburgCity_EventScript_RivalTeleportDone_Text_0:
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: Well, we made it!\nThe Petalburg City Gym!\pGood luck taking on the Gym Leader,\n{PLAYER}.\lI'm cheering for you!\pLater!$"
+
+PetalburgCity_EventScript_RivalTeleportDone_Text_1:
+	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: So we're here.\nPetalburg City.\p{PLAYER}, you do your best with the Gym.\nI'm behind you all the way.\pSee ya!$"

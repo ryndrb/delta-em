@@ -1,5 +1,4 @@
-.set LOCALID_RIVAL_ON_BIKE, 7
-.set LOCALID_RIVAL, 8
+.set LOCALID_RIVAL, 7
 
 LavaridgeTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LavaridgeTown_OnTransition
@@ -11,8 +10,7 @@ LavaridgeTown_OnTransition:
 	call_if_set FLAG_WHITEOUT_TO_LAVARIDGE, LavaridgeTown_EventScript_ClearLavaridgeWhiteOut
 	call_if_set FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, LavaridgeTown_EventScript_ShowMtChimneyTrainers
 	call Common_EventScript_SetupRivalGfxId
-	call Common_EventScript_SetupRivalOnBikeGfxId
-	call_if_eq VAR_LAVARIDGE_TOWN_STATE, 1, LavaridgeTown_EventScript_CheckSetRivalPos
+	call_if_eq VAR_LAVARIDGE_TOWN_STATE, 2, LavaridgeTown_EventScript_SetRivalPos
 	call_if_eq VAR_LAVARIDGE_TOWN_STATE, 1, LavaridgeTown_EventScript_HideMapNamePopup
 	end
 
@@ -20,16 +18,9 @@ LavaridgeTown_EventScript_ClearLavaridgeWhiteOut::
 	clearflag FLAG_WHITEOUT_TO_LAVARIDGE
 	return
 
-LavaridgeTown_EventScript_CheckSetRivalPos::
-	getplayerxy VAR_0x8004, VAR_0x8005
-	goto_if_eq VAR_0x8004, 9, LavaridgeTown_EventScript_SetRivalPos
-	return
-
 LavaridgeTown_EventScript_SetRivalPos::
-	setobjectxyperm LOCALID_RIVAL, 11, 9
-	setobjectxyperm LOCALID_RIVAL_ON_BIKE, 9, 8
-	setobjectmovementtype LOCALID_RIVAL_ON_BIKE, MOVEMENT_TYPE_FACE_UP
-	clearflag FLAG_HIDE_LAVARIDGE_TOWN_RIVAL
+	setobjectxyperm LOCALID_RIVAL, 6, 16
+    setobjectmovementtype LOCALID_RIVAL, MOVEMENT_TYPE_FACE_DOWN
 	return
 
 LavaridgeTown_EventScript_ShowMtChimneyTrainers::
@@ -43,161 +34,6 @@ LavaridgeTown_EventScript_HideMapNamePopup::
 LavaridgeTown_OnFrame:
 	map_script_2 VAR_LAVARIDGE_TOWN_STATE, 1, LavaridgeTown_EventScript_RivalGiveGoGoggles
 	.2byte 0
-
-LavaridgeTown_EventScript_RivalGiveGoGoggles::
-	lockall
-	getplayerxy VAR_0x8008, VAR_0x8009
-	call_if_eq VAR_0x8008, 9, LavaridgeTown_EventScript_RivalNoticePlayer
-	call_if_ne VAR_0x8008, 9, LavaridgeTown_EventScript_RivalExitHerbShop
-	delay 20
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LavaridgeTown_EventScript_PlayMayMusic
-	call_if_eq VAR_RESULT, FEMALE, LavaridgeTown_EventScript_PlayBrendanMusic
-	call_if_eq VAR_0x8008, 9, LavaridgeTown_EventScript_RivalApproachPlayer1
-	call_if_ne VAR_0x8008, 9, LavaridgeTown_EventScript_RivalApproachPlayer2
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, LavaridgeTown_EventScript_MayGiveGoGoggles
-	goto_if_eq VAR_RESULT, FEMALE, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-	end
-
-LavaridgeTown_EventScript_MayGiveGoGoggles::
-	msgbox LavaridgeTown_Text_MayNiceBadgesTakeThis, MSGBOX_DEFAULT
-	giveitem ITEM_GO_GOGGLES
-	setflag FLAG_RECEIVED_GO_GOGGLES
-	msgbox LavaridgeTown_Text_MayExplainGoGogglesChallengeDad, MSGBOX_DEFAULT
-	goto LavaridgeTown_EventScript_RivalExit
-	end
-
-LavaridgeTown_EventScript_BrendanGiveGoGoggles::
-	msgbox LavaridgeTown_Text_BrendanNiceBadgesTakeThis, MSGBOX_DEFAULT
-	giveitem ITEM_GO_GOGGLES
-	setflag FLAG_RECEIVED_GO_GOGGLES
-	msgbox LavaridgeTown_Text_BrendanExplainGoGogglesChallengeDad, MSGBOX_DEFAULT
-	goto LavaridgeTown_EventScript_RivalExit
-	end
-
-LavaridgeTown_EventScript_RivalExit::
-	closemessage
-	removeobject LOCALID_RIVAL
-	addobject LOCALID_RIVAL_ON_BIKE
-	delay 30
-	call_if_eq VAR_0x8008, 9, LavaridgeTown_EventScript_RivalExit1
-	call_if_ne VAR_0x8008, 9, LavaridgeTown_EventScript_RivalExit2
-	removeobject LOCALID_RIVAL_ON_BIKE
-	setvar VAR_LAVARIDGE_TOWN_STATE, 2
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	releaseall
-	end
-
-LavaridgeTown_EventScript_PlayMayMusic::
-	playbgm MUS_ENCOUNTER_MAY, TRUE
-	return
-
-LavaridgeTown_EventScript_PlayBrendanMusic::
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	return
-
-LavaridgeTown_EventScript_RivalNoticePlayer::
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	playse SE_PIN
-	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_RIVAL, Common_Movement_Delay48
-	waitmovement 0
-	return
-
-LavaridgeTown_EventScript_RivalExitHerbShop::
-	opendoor 12, 15
-	waitdooranim
-	addobject LOCALID_RIVAL
-	applymovement LOCALID_RIVAL, LavaridgeTown_Movement_RivalExitHerbShop
-	waitmovement 0
-	closedoor 12, 15
-	waitdooranim
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	playse SE_PIN
-	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_RIVAL, Common_Movement_Delay48
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	return
-
-LavaridgeTown_EventScript_RivalApproachPlayer1::
-	applymovement LOCALID_RIVAL, LavaridgeTown_Movement_RivalApproachPlayer1
-	waitmovement 0
-	return
-
-LavaridgeTown_EventScript_RivalApproachPlayer2::
-	applymovement LOCALID_RIVAL, LavaridgeTown_Movement_RivalApproachPlayer2
-	waitmovement 0
-	return
-
-LavaridgeTown_EventScript_RivalExit1::
-	applymovement OBJ_EVENT_ID_PLAYER, LavaridgeTown_Movement_PlayerWatchRivalExit
-	applymovement LOCALID_RIVAL_ON_BIKE, LavaridgeTown_Movement_RivalExit1
-	waitmovement 0
-	return
-
-LavaridgeTown_EventScript_RivalExit2::
-	applymovement LOCALID_RIVAL_ON_BIKE, LavaridgeTown_Movement_RivalExit2
-	waitmovement 0
-	return
-
-LavaridgeTown_Movement_RivalExit2:
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	step_end
-
-LavaridgeTown_Movement_PlayerWatchRivalExit:
-	delay_16
-	delay_8
-	walk_in_place_faster_right
-	step_end
-
-LavaridgeTown_Movement_RivalExit1:
-	walk_fast_down
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	step_end
-
-LavaridgeTown_Movement_RivalApproachPlayer2:
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
-LavaridgeTown_Movement_RivalApproachPlayer1:
-	walk_left
-	walk_left
-	walk_up
-	step_end
-
-LavaridgeTown_Movement_RivalExitHerbShop:
-	walk_down
-	step_end
 
 LavaridgeTown_EventScript_HotSpringsTrigger::
 	specialvar VAR_RESULT, GetPlayerFacingDirection
@@ -276,62 +112,8 @@ LavaridgeTown_EventScript_HerbShopSign::
 	msgbox LavaridgeTown_Text_HerbShopSign, MSGBOX_SIGN
 	end
 
-LavaridgeTown_Text_MayNiceBadgesTakeThis:
-	.string "May: {PLAYER}{KUN}! Long time no see!\p"
-	.string "Oh? While I visited the hot springs,\n"
-	.string "you got the Lavaridge Gym Badge.\p"
-	.string "You must have collected\n"
-	.string "good Pokémon…\l"
-	.string "No, I believe you raised some.\p"
-	.string "I guess it would be okay for you to\n"
-	.string "have this.$"
-
-LavaridgeTown_Text_MayExplainGoGogglesChallengeDad:
-	.string "May: With those Go-Goggles, you'll\n"
-	.string "have no trouble getting through the\l"
-	.string "desert near Route 111.\p"
-	.string "But, wow, {PLAYER}{KUN}…\n"
-	.string "Challenging Gyms…\p"
-	.string "You're trying hard because you don't\n"
-	.string "want to lose to me, I bet!\p"
-	.string "{PLAYER}{KUN}, I think I should challenge\n"
-	.string "your dad in Petalburg Gym.\p"
-	.string "See you again!$"
-
-LavaridgeTown_Text_BrendanNiceBadgesTakeThis:
-	.string "Brendan: {PLAYER}, hey, it's been a while.\n"
-	.string "How's it going?\p"
-	.string "Hmm…\n"
-	.string "That's a decent collection of Badges.\p"
-	.string "All right, then.\n"
-	.string "You may as well have this.$"
-
-LavaridgeTown_Text_BrendanExplainGoGogglesChallengeDad:
-	.string "Brendan: Keep those with you if you're\n"
-	.string "planning on going into that desert near\l"
-	.string "Route 111.\p"
-	.string "There should be some Pokémon that\n"
-	.string "are exclusively desert-dwellers.\l"
-	.string "You might look around for those.\p"
-	.string "As for me…\n"
-	.string "I'm considering challenging Norman,\l"
-	.string "the Gym Leader of Petalburg.\p"
-	.string "Unlike you, {PLAYER}, your dad looks like\n"
-	.string "he really is tough.\p"
-	.string "See you around!$"
-
 LavaridgeTown_Text_HaveEggWillYouTakeIt:
-	.string "I have here an Egg.\p"
-	.string "I'd hoped to hatch it by covering it in\n"
-	.string "hot sand by the hot springs.\l"
-	.string "But that doesn't seem to be enough…\p"
-	.string "I've heard it would be best if it were\n"
-	.string "kept together with Pokémon and\l"
-	.string "carried about.\p"
-	.string "You are a Trainer, yes?\n"
-	.string "And your Pokémon radiate vitality.\p"
-	.string "So, what say you?\n"
-	.string "Will you take this Egg to hatch?$"
+	.string "I have here an Egg.\pI'd hoped to hatch it by covering it\nin hot sand by the hot springs.\lBut that doesn't seem to be enough…\pI've heard it would be best if it\nwere kept together with Pokémon and\lcarried about.\pYou are a Trainer, yes?\nAnd your Pokémon radiate vitality.\pSo, what say you?\nWill you take this Egg to hatch?$"
 
 LavaridgeTown_Text_HopeYoullWalkPlentyWithEgg:
 	.string "Good! I hope you'll walk plenty with\n"
@@ -355,13 +137,7 @@ LavaridgeTown_Text_EverySoOftenEggFoundAtDayCare:
 	.string "Or at least that's how the rumor goes.$"
 
 LavaridgeTown_Text_HotSpringsNeverRunDry:
-	.string "We draw as much hot water as we need,\n"
-	.string "and yet the hot springs never run dry.\p"
-	.string "Isn't it magical?\p"
-	.string "These hot springs appear near active\n"
-	.string "volcanoes. Veins of water under the\l"
-	.string "ground are heated by magma to well up\l"
-	.string "as hot springs.$"
+	.string "We draw as much hot water as we need,\nand yet the hot springs never run dry.\pIsn't it magical?\pThese hot springs appear near active\nvolcanoes.\pVeins of water under the ground are\nheated by magma to well up as hot\lsprings.$"
 
 LavaridgeTown_Text_PokemonNippedBackside:
 	.string "Being buried in this hot sand is…\n"
@@ -407,3 +183,251 @@ LavaridgeTown_Text_HerbShopSign:
 	.string "Pokémon Herb Shop\n"
 	.string "“Bitter taste--better cure!”$"
 
+LavaridgeTown_EventScript_BlackBelt::
+	lock
+	faceplayer
+	goto_if_unset FLAG_RECEIVED_SWORDS_DANCE, LavaridgeTown_EventScript_BlackBelt_2
+LavaridgeTown_EventScript_BlackBelt_1:
+	msgbox LavaridgeTown_EventScript_BlackBelt_Text_3
+	closemessage
+	end
+
+LavaridgeTown_EventScript_BlackBelt_2:
+	msgbox LavaridgeTown_EventScript_BlackBelt_Text_0, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq LavaridgeTown_EventScript_BlackBelt_4
+	msgbox LavaridgeTown_EventScript_BlackBelt_Text_2
+	delay 8
+	setflag FLAG_RECEIVED_SWORDS_DANCE
+	goto LavaridgeTown_EventScript_BlackBelt_1
+
+LavaridgeTown_EventScript_BlackBelt_4:
+	msgbox LavaridgeTown_EventScript_BlackBelt_Text_1
+	closemessage
+	end
+
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles::
+	lock
+	opendoor 11, 14
+	waitdooranim
+	addobject LOCALID_RIVAL
+	clearflag FLAG_HIDE_LAVARIDGE_TOWN_RIVAL
+	applymovement LOCALID_RIVAL, Common_Movement_WalkDown
+	waitmovement LOCALID_RIVAL
+	closedoor 11, 14
+	waitdooranim
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_RIVAL
+	playse SE_PIN
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement LOCALID_RIVAL
+	waitse
+	delay 16
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq LavaridgeTown_EventScript_RivalGiveGoGoggles_2
+	playbgm MUS_ENCOUNTER_MAY, FALSE
+LavaridgeTown_EventScript_RivalGiveGoGoggles_1:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	delay 8
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	applymovement LOCALID_RIVAL, LavaridgeTown_EventScript_RivalApproachPlayer
+	waitmovement LOCALID_RIVAL
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq LavaridgeTown_EventScript_RivalGiveGoGoggles_6
+	msgbox LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_6
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement LOCALID_RIVAL
+	msgbox LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_7
+	delay 8
+	giveitem ITEM_GO_GOGGLES
+	setflag FLAG_RECEIVED_GO_GOGGLES
+	msgbox LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_8
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement LOCALID_RIVAL
+	setvar VAR_LAVARIDGE_TOWN_STATE, 2
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	msgbox LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_9, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq LavaridgeTown_EventScript_RivalGiveGoGoggles_12
+	msgbox LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_11
+	closemessage
+LavaridgeTown_EventScript_RivalGiveGoGoggles_5:
+	fadedefaultbgm
+	release
+	end
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles_2:
+	playbgm MUS_ENCOUNTER_MAY, FALSE
+	goto LavaridgeTown_EventScript_RivalGiveGoGoggles_1
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles_6:
+	msgbox LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_0
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement LOCALID_RIVAL
+	msgbox LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_1
+	delay 8
+	giveitem ITEM_GO_GOGGLES
+	setflag FLAG_RECEIVED_GO_GOGGLES
+	msgbox LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_2
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement LOCALID_RIVAL
+	setvar VAR_LAVARIDGE_TOWN_STATE, 2
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	msgbox LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_3, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq LavaridgeTown_EventScript_RivalGiveGoGoggles_9
+	msgbox LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_5
+	closemessage
+	goto LavaridgeTown_EventScript_RivalGiveGoGoggles_5
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles_9:
+	msgbox LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_4
+	closemessage
+	call LavaridgeTown_EventScript_AcceptedRivalOffer
+	waitstate
+	goto LavaridgeTown_EventScript_RivalGiveGoGoggles_5
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles_12:
+	msgbox LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_10
+	closemessage
+	call LavaridgeTown_EventScript_AcceptedRivalOffer
+	waitstate
+	goto LavaridgeTown_EventScript_RivalGiveGoGoggles_5
+
+
+LavaridgeTown_EventScript_RivalApproachPlayer:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+LavaridgeTown_EventScript_Rival::
+	lock
+	faceplayer
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq LavaridgeTown_EventScript_Rival_2
+	msgbox LavaridgeTown_EventScript_Rival_Text_1, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq LavaridgeTown_EventScript_Rival_8
+	msgbox LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_11
+	closemessage
+LavaridgeTown_EventScript_Rival_1:
+	release
+	end
+
+LavaridgeTown_EventScript_Rival_2:
+	msgbox LavaridgeTown_EventScript_Rival_Text_0, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq LavaridgeTown_EventScript_Rival_5
+	msgbox LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_5
+	closemessage
+	goto LavaridgeTown_EventScript_Rival_1
+
+LavaridgeTown_EventScript_Rival_5:
+	msgbox LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_4
+	closemessage
+	call LavaridgeTown_EventScript_AcceptedRivalOffer
+	waitstate
+	goto LavaridgeTown_EventScript_Rival_1
+
+LavaridgeTown_EventScript_Rival_8:
+	msgbox LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_10
+	closemessage
+	call LavaridgeTown_EventScript_AcceptedRivalOffer
+	goto LavaridgeTown_EventScript_Rival_1
+
+
+LavaridgeTown_EventScript_AcceptedRivalOffer::
+	delay 8
+	applymovement LOCALID_RIVAL, LavaridgeTown_Movement_PlayerRivalExit
+	applymovement OBJ_EVENT_ID_PLAYER, LavaridgeTown_Movement_PlayerRivalExit
+	delay 16
+	fadescreen FADE_TO_BLACK
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setflag FLAG_REMOVE_WARP_FADE
+	setflag FLAG_HIDE_LAVARIDGE_TOWN_RIVAL
+	clearflag FLAG_HIDE_PETALBURG_CITY_RIVAL
+	setvar VAR_PETALBURG_CITY_STATE_2, 2
+	delay 64
+	warpsilent MAP_PETALBURG_CITY, 15, 12
+	waitstate
+	return
+
+
+LavaridgeTown_Movement_PlayerRivalExit:
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	step_end
+
+LavaridgeTown_EventScript_BlackBelt_Text_0:
+	.string "Dance and soul make power!\pSoul is the way of karate for me!\pYou understand, yes?$"
+
+LavaridgeTown_EventScript_BlackBelt_Text_1:
+	.string "OK! OK!\nYou good kid!$"
+
+LavaridgeTown_EventScript_BlackBelt_Text_2:
+	.string "Oh…\nI so sad and wretched…\pYou take this and you understand way\nof karate of me, fool Trainer!$"
+
+LavaridgeTown_EventScript_BlackBelt_Text_3:
+	.string "Suh-words Dance!\pYou use soulful dance for to make\npower of Pokémon go up, up!\pIt is the way of karate I seek!$"
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_0:
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: {PLAYER}!\pWow, it's a relief to see you in one\npiece!\pOh, well, you know…\nThe last I saw you was right after\lbattling those Team Whatsit people…\pSo I was a bit worried thinking\nabout what might have happened to\lyou after that, {PLAYER}…\p…What?\nYou battled them AGAIN after that?\lAnd you BEAT them!\pYou really are something else,\n{PLAYER}.\lI-I mean, you and your team are.\lI'm pretty impressed by you all!\pAnd that pretty stone that's sparkling\nthere…\pIs that the Meteorite you got back\nfrom them?$"
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_1:
+	.string "Oh, that's right!\nHere! Here!\pI've been thinking of giving these to\nyou.$"
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_2:
+	.string "If you put on those Go-Goggles,\nyou'll be all set into the desert on\lRoute 111.$"
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_3:
+	.string "…Oh! And isn't that--\nThat's Lavaridge's Gym Badge!\pSo you beat Flannery, too?\pI guess you really are training your\nPokémon right…\pNext up will be challenging your dad,\nNorman, in Petalburg, right?\pI'm headed to Petalburg's Gym next\nmyself…\pDo you want to go back together?\nBack to Petalburg?$"
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_4:
+	.string "Aye aye!\nThen let's hit the road!$"
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_5:
+	.string "Oh, yeah?\pWell, I'll still be in Lavaridge for\na while, so find me if you think you'd\llike a little company on the road\lafter all.$"
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_6:
+	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: {PLAYER}, hey!\nSo you were all right, huh?\pOh, well, you know…\nThe last time I saw you, you were\lmixed up with those “Team Whatsit”\lpeople…\pSo I just wondered if you'd gotten back\non the road after that.\pIt was, like, I don't know…\nI guess I was a bit…worried?\pWhat?\nYou battled them AGAIN after that?\lAnd you even managed to beat them?\pYou really are something else,\n{PLAYER}…\lYou and your Pokémon.\lYour team.\pAnd that…that sparkle there…\nIs that the Meteorite you got back\lfrom them?$"
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_7:
+	.string "…Oh, right!\nI forgot to give you these before.$"
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_8:
+	.string "Keep those with you if you're\nplanning on going into that desert\lnear Route 111.\pThere should be some Pokémon\nthat only make their habitat in the\ldesert, you know.\pYou might check 'em out--if you're up to\nit.$"
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_9:
+	.string "And…\nHuh?\pYou got the Lavaridge Badge!\pSo you even beat Flannery, huh?\pLooks like you've been taking proper\ncare of your Pokémon.\pGuess that means…that you'll be headed\nto Petalburg City next, huh?\lTo challenge your dad at his Gym?\pW-ell, if you are…\pI just happened to be thinking of going\nto Petalburg myself, so…\pHow about it?\nWanna go back to Petalburg together?$"
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_10:
+	.string "Y-yeah?\nThen let's hit it!$"
+
+LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_11:
+	.string "O-oh…\nYeah, I get it…\pBut, well, I'll probably still be here in\nLavaridge for a while.\pSo if you decide to head for Petalburg,\num, let me know.$"
+
+LavaridgeTown_EventScript_Rival_Text_0:
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: Do you want to go back together?\nBack to Petalburg?$"
+
+LavaridgeTown_EventScript_Rival_Text_1:
+	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: How about it?\nWanna go back to Petalburg together?$"
