@@ -200,52 +200,34 @@ LavaridgeTown_Gym_1F_Text_ColeDefeat:
 	.string "I'm blinded by sweat in my eyes…$"
 
 LavaridgeTown_Gym_1F_Text_ColePostBattle:
-	.string "Being buried in hot sand promotes\n"
-	.string "circulation.\p"
-	.string "It's effective for healing pain in\n"
-	.string "your joints.$"
+	.string "Being buried in hot sand promotes\ncirculation.\pIt's effective for healing pain in your\njoints.$"
 
 LavaridgeTown_Gym_1F_Text_AxleIntro:
-	.string "I'm trying to relieve my stress.\n"
-	.string "Don't come along and stress me out!$"
+	.string "I'm trying to relieve my stress.\nDon't come along and stress me out!$"
 
 LavaridgeTown_Gym_1F_Text_AxleDefeat:
 	.string "I hope Flannery flames you good!$"
 
 LavaridgeTown_Gym_1F_Text_AxlePostBattle:
-	.string "Haaah… Whew…\p"
-	.string "If you spend too much time buried in\n"
-	.string "hot sand, it tuckers you out…$"
+	.string "Haaah…\nWhew…\pIf you spend too much time buried in\nhot sand, it tuckers you out…$"
 
 LavaridgeTown_Gym_B1F_Text_KeeganIntro:
-	.string "You must be getting tired by now.\n"
-	.string "You'd like to rest in the hot sand,\l"
-	.string "wouldn't you?\p"
-	.string "But you should know that maintaining\n"
-	.string "your willpower is an important ability\l"
-	.string "for all Trainers.$"
+	.string "You must be getting tired by now.\nYou'd like to rest in the hot sand,\lwouldn't you?\pBut you should know that maintaining\nyour willpower is an important ability\lfor all Trainers.$"
 
 LavaridgeTown_Gym_B1F_Text_KeeganDefeat:
 	.string "Play with fire, and be burned…$"
 
 LavaridgeTown_Gym_B1F_Text_KeeganPostBattle:
-	.string "Your skill is real…\n"
-	.string "But our Leader Flannery is strong.\p"
-	.string "If you don't watch yourself, you'll be\n"
-	.string "burned seriously.$"
+	.string "Your skill is real…\nBut our Leader Flannery is strong.\pIf you don't watch yourself, you'll be\nburned seriously.$"
 
 LavaridgeTown_Gym_1F_Text_GeraldIntro:
-	.string "Can your Pokémon withstand\n"
-	.string "392-degree heat?$"
+	.string "Can your Pokémon withstand 392-degree\nheat?$"
 
 LavaridgeTown_Gym_1F_Text_GeraldDefeat:
 	.string "It didn't burn hotly enough…$"
 
 LavaridgeTown_Gym_1F_Text_GeraldPostBattle:
-	.string "The temperature of magma is\n"
-	.string "392 degrees.\p"
-	.string "Your Pokémon beat me, so they should\n"
-	.string "easily survive in magma.$"
+	.string "The temperature of magma is 392\ndegrees.\pYour Pokémon beat me, so they should\neasily survive in magma.$"
 
 LavaridgeTown_Gym_1F_Text_DanielleIntro:
 	.string "Um…\n"
@@ -279,22 +261,17 @@ LavaridgeTown_Gym_B1F_Text_JeffDefeat:
 	.string "Something didn't go right.$"
 
 LavaridgeTown_Gym_B1F_Text_JeffPostBattle:
-	.string "Well, so what? I say so what?\n"
-	.string "I can walk on hot coals barefoot!\p"
-	.string "…Don't even think about trying it!$"
+	.string "Well, so what?\nI say so what?\lI can walk on hot coals barefoot!\p…Don't even think about trying it!$"
 
 LavaridgeTown_Gym_B1F_Text_EliIntro:
-	.string "As much as I love mountains,\n"
-	.string "I especially love volcanoes.$"
+	.string "As much as I love mountains, I\nespecially love volcanoes.$"
 
 LavaridgeTown_Gym_B1F_Text_EliDefeat:
 	.string "Well, it seems to me I lost without\n"
 	.string "ever being in control.$"
 
 LavaridgeTown_Gym_B1F_Text_EliPostBattle:
-	.string "I stay here because I became a fan\n"
-	.string "of Flannery's power.\p"
-	.string "Hehehehe.$"
+	.string "I stay here because I became a fan of\nFlannery's power.\pHehehehe.$"
 
 LavaridgeTown_Gym_1F_Text_FlanneryIntro:
 	.string "{COLOR RED}Flannery{COLOR DARK_GRAY}: WELCOME!\p…\pNo, wait.\nI mean…\pPuny Trainer, you've done well to make\nit this far!\pLet's see. I'm, uh, honored to be serving\nas the Gym Leader of…\p…\pNo, I mean…\nI'm Flannery, and I'm in charge here!\p…\pUh…\nYou'd better not underestimate me\ljust 'cause I've only been a Leader a\lshort time!\pWith the skills inherited from my\ngrandfather, I'm gonna, uh,\ldemonstrate the hot moves we've\lhoned in this land!\pHAIYAAAAAAAAAAAAA!$"

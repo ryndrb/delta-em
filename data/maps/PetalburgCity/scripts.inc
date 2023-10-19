@@ -37,7 +37,7 @@ PetalburgCity_EventScript_HideLavaridgeRival::
 
 PetalburgCity_OnFrame:
 	map_script_2 VAR_PETALBURG_CITY_STATE, 2, PetalburgCity_EventScript_WallyTutorial
-	map_script_2 VAR_PETALBURG_CITY_STATE, 4, PetalburgCity_EventScript_WalkToWallyHouse
+	map_script_2 VAR_PETALBURG_CITY_STATE, 4, PetalburgCity_EventScript_WallysDadGivesPlayerSurf
 	map_script_2 VAR_PETALBURG_CITY_STATE_2, 2, PetalburgCity_EventScript_RivalTeleportDone
 	.2byte 0
 
@@ -80,31 +80,6 @@ PetalburgCity_EventScript_WallyTutorial::
 	releaseall
 	end
 
-PetalburgCity_EventScript_WalkToWallyHouse::
-	lockall
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-	applymovement LOCALID_WALLYS_DAD, PetalburgCity_Movement_WalkToWallyHouseWallysDad
-	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_WalkToWallyHousePlayer
-	waitmovement 0
-	setvar VAR_0x8004, 7
-	setvar VAR_0x8005, 5
-	opendoor VAR_0x8004, VAR_0x8005
-	waitdooranim
-	applymovement LOCALID_WALLYS_DAD, PetalburgCity_Movement_WalkInsideHouseWallysDad
-	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_WalkInsideHousePlayer
-	waitmovement 0
-	setflag FLAG_HIDE_PETALBURG_CITY_WALLYS_DAD
-	hideobjectat OBJ_EVENT_ID_PLAYER, MAP_PETALBURG_CITY
-	closedoor VAR_0x8004, VAR_0x8005
-	waitdooranim
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
-	fadedefaultbgm
-	clearflag FLAG_DONT_TRANSITION_MUSIC
-	warp MAP_PETALBURG_CITY_WALLYS_HOUSE, 2, 4
-	waitstate
-	releaseall
-	end
-
 PetalburgCity_EventScript_Boy::
 	lock
 	faceplayer
@@ -118,56 +93,6 @@ PetalburgCity_EventScript_Boy::
 PetalburgCity_EventScript_WallysMom::
 	msgbox PetalburgCity_Text_WhereIsWally, MSGBOX_NPC
 	end
-
-PetalburgCity_Movement_WalkToWallyHousePlayer:
-	delay_8
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-PetalburgCity_Movement_WalkInsideHousePlayer:
-	walk_up
-	walk_up
-	step_end
-
-PetalburgCity_Movement_WalkToWallyHouseWallysDad:
-	delay_8
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-PetalburgCity_Movement_WalkInsideHouseWallysDad:
-	walk_up
-	set_invisible
-	step_end
 
 PetalburgCity_Movement_WallyTutorialPlayer:
 	delay_8
@@ -835,6 +760,243 @@ PetalburgCity_Movement_RivalExit:
 	walk_down
 	step_end
 
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf::
+	lock
+	opendoor 15, 8
+	waitdooranim
+	addobject 11
+	delay 8
+	applymovement 11, PetalburgCity_Movement_NormanExitDoor
+	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerMoveAside
+	waitmovement OBJ_EVENT_ID_PLAYER
+	closedoor 15, 8
+	waitdooranim
+	playse SE_PIN
+	applymovement 11, Common_Movement_ExclamationMark
+	delay 8
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	delay 16
+	applymovement LOCALID_WALLY, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_WALLY
+	playse SE_PIN
+	applymovement LOCALID_WALLY, Common_Movement_ExclamationMark
+	waitmovement LOCALID_WALLY
+	delay 8
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_0
+	closemessage
+	applymovement LOCALID_WALLYS_DAD, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_WALLYS_DAD
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_1
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_2
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_3
+	applymovement LOCALID_WALLYS_DAD, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_WALLYS_DAD
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_4
+	closemessage
+	applymovement LOCALID_WALLYS_DAD, Common_Movement_WalkInPlaceRight
+	waitmovement LOCALID_WALLYS_DAD
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_5
+	closemessage
+	applymovement LOCALID_WALLYS_DAD, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_WALLYS_DAD
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_6
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_WALLYS_DAD, Common_Movement_ExclamationMark
+	waitmovement LOCALID_WALLYS_DAD
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_7
+	delay 8
+	giveitem ITEM_HM_SURF
+	setflag FLAG_RECEIVED_HM_SURF
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_8
+	closemessage
+	delay 8
+	applymovement 11, Common_Movement_WalkInPlaceLeft
+	delay 8
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_9
+	closemessage
+	applymovement LOCALID_WALLY, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_WALLY
+	applymovement 11, Common_Movement_WalkInPlaceDown
+	delay 8
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_10
+	closemessage
+	applymovement LOCALID_WALLY, Common_Movement_WalkInPlaceLeft
+	delay 8
+	applymovement LOCALID_WALLYS_DAD, Common_Movement_WalkInPlaceRight
+	waitmovement LOCALID_WALLY
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_11
+	closemessage
+	applymovement LOCALID_WALLY, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_WALLY
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_12
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_13
+	closemessage
+	applymovement 11, Common_Movement_WalkInPlaceLeft
+	delay 8
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_14
+	closemessage
+	applymovement LOCALID_WALLY, Common_Movement_WalkInPlaceDown
+	waitmovement LOCALID_WALLY
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_15
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_16
+	closemessage
+	delay 16
+	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerExit
+	applymovement LOCALID_WALLY, PetalburgCity_Movement_WallyExit
+	applymovement 11, Common_Movement_WalkInPlaceDown
+	waitmovement LOCALID_WALLY
+	delay 64
+	fadenewbgm MUS_DUMMY
+	applymovement LOCALID_WALLYS_DAD, PetalburgCity_Movement_WallyDadGoUp
+	waitmovement LOCALID_WALLYS_DAD
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_17
+	delay 16
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_18
+	closemessage
+	applymovement LOCALID_WALLYS_DAD, Common_Movement_WalkInPlaceRight
+	waitmovement LOCALID_WALLYS_DAD
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_19
+	delay 16
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_20
+	closemessage
+	applymovement 11, Common_Movement_WalkInPlaceLeft
+	waitmovement 11
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_21
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_22
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_23
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_24
+	closemessage
+	fadescreen FADE_TO_BLACK
+	applymovement OBJ_EVENT_ID_CAMERA, PetalburgCity_Movement_CameraBackToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
+	fadedefaultbgm
+	special RemoveCameraObject
+	removeobject 11
+	removeobject LOCALID_WALLYS_DAD
+	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_WalkTowardsRoute103
+	applymovement LOCALID_WALLY, PetalburgCity_Movement_WalkTowardsRoute103
+	delay 80
+	fadescreen FADE_FROM_BLACK
+	waitmovement LOCALID_WALLY
+	delay 32
+	applymovement LOCALID_WALLY, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_WALLY
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_25
+	closemessage
+	delay 24
+	playse SE_SUCCESS
+	waitse
+	delay 16
+	playse SE_SUCCESS
+	waitse
+	delay 32
+	msgbox PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_26
+	closemessage
+	delay 16
+	applymovement LOCALID_WALLY, PetalburgCity_Movement_WalkTowardsMauville
+	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_WalkTowardsMauville
+	delay 32
+	fadescreen FADE_TO_BLACK
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setflag FLAG_REMOVE_WARP_FADE
+	setflag FLAG_HIDE_PETALBURG_CITY_WALLY
+	clearflag FLAG_HIDE_MAUVILLE_CITY_WALLY
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	clearflag FLAG_DONT_TRANSITION_MUSIC
+	setvar VAR_PETALBURG_CITY_STATE, 5
+	setvar VAR_MAUVILLE_CITY_STATE, 7
+	warpsilent MAP_MAUVILLE_CITY, 35, 8
+	waitstate
+	fadescreen FADE_FROM_BLACK
+	release
+	end
+
+
+PetalburgCity_Movement_NormanExitDoor:
+	delay_16
+	walk_down
+	step_end
+
+PetalburgCity_Movement_PlayerMoveAside:
+	walk_left
+	walk_in_place_right
+	step_end
+
+PetalburgCity_Movement_PlayerExit:
+	walk_down
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	step_end
+
+PetalburgCity_Movement_WallyExit:
+	delay_16
+	delay_16
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	step_end
+
+PetalburgCity_Movement_WallyDadGoUp:
+	walk_slow_up
+	walk_slow_up
+	walk_in_place_down
+	step_end
+
+PetalburgCity_Movement_CameraBackToPlayer:
+	walk_right
+	walk_right
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	step_end
+
+PetalburgCity_Movement_WalkTowardsRoute103:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+PetalburgCity_Movement_WalkTowardsMauville:
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
 PetalburgCity_EventScript_WilburHouseSign_Text_0:
 	.string "Wilbur's House$"
 
@@ -846,3 +1008,84 @@ PetalburgCity_EventScript_RivalTeleportDone_Text_0:
 
 PetalburgCity_EventScript_RivalTeleportDone_Text_1:
 	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: So we're here.\nPetalburg City.\p{PLAYER}, you do your best with the Gym.\nI'm behind you all the way.\pSee ya!$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_0:
+	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Ah!\p{PLAYER}!\nMr. Norman!$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_1:
+	.string "I haven't seen the two of you in some\ntime. What a coincidence!\pI just came back to my parent's house\nto grab something I'd forgotten.$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_2:
+	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: You look like you've been\nworking hard, Wally.\lIt's clear even without a battle.$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_3:
+	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: R-really?\nYou really think so?\pHehe… Thank you!\nThat's so nice of you to say!$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_4:
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Ah.\n{PLAYER}, isn't it?\pI'm glad to see you here.\nI'm {COLOR RED}Wally's father{COLOR DARK_GRAY}, of course.$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_5:
+	.string "As you can see, Wally's health has\nthoroughly improved.$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_6:
+	.string "It's all thanks to you and your\nfather.\pYou two helped Wally catch his first\nPokémon that day.\pIt's because of you that he has a\npartner of his own now.\pThat partner is why he's grown so\nstrong.\pThat's my firm belief.\nSo, I thank you.$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_7:
+	.string "Yeah, that's it.\pSometimes words aren't enough.\nIt would delight me if you'd take this.$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_8:
+	.string "If you're cleared to use Surf\noutside of battle, you'll be able to\lcross seas with your Pokémon.$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_9:
+	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: {PLAYER}…\pConsidering how much you and Wally\nhave grown, you should be able to\lhandle what lies beyond the sea on\l{COLOR BLUE}Route 118{COLOR DARK_GRAY} now.\pThere are far stronger Pokémon and\nTrainers waiting for you on Hoenn's\least coast.\pContinue your journey and your\nadventures there.\lI know you'll do your best.$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_10:
+	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Yes, sir!\pI will do my best to become as strong as\n{PLAYER}, sir!$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_11:
+	.string "I guess I had better start out, then.\nI'm off for now, Dad!\lSee you next time!$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_12:
+	.string "Um. Come on, {PLAYER}!\nLet's go together!$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_13:
+	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: Wally…\pI look forward to seeing you and your\nPokémon grow stronger together.$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_14:
+	.string "{PLAYER}?\nWell, take care of yourself out there.\pDon't forget to drop by Littleroot to\nvisit your mother from time to time!$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_15:
+	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: OK!\nWe're off!$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_16:
+	.string "{COLOR RED}Wally's Dad{COLOR DARK_GRAY}: Be safe out there!$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_17:
+	.string "{COLOR RED}Wally's Dad{COLOR DARK_GRAY}: …$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_18:
+	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: …$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_19:
+	.string "{COLOR RED}Wally's Dad{COLOR DARK_GRAY}: I don't know what it is,\nbut…$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_20:
+	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: …Hm?$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_21:
+	.string "{COLOR RED}Wally's Dad{COLOR DARK_GRAY}: Seeing my little boy all\ngrown up and going off on his own…\pAs a father, it makes me happy and a\nlittle sad…$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_22:
+	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: Hahaha!\nWhat a coincidence!\pI caught myself thinking the same\nthing.$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_23:
+	.string "{COLOR RED}Wally's Dad{COLOR DARK_GRAY}: Hohoho!\nIs that so?\p…\nBut if only…\pIf only my boy keeps growing strong\nand healthy like that…\lI wouldn't ask for anything else.$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_24:
+	.string "{COLOR RED}Dad{COLOR DARK_GRAY}: Yes.\nI know exactly what you mean.$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_25:
+	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Mr. Norman told us to keep going\nbeyond {COLOR BLUE}Route 118{COLOR DARK_GRAY}, didn't he…\pLet me check my AreaNav…$"
+
+PetalburgCity_EventScript_WallysDadGivesPlayerSurf_Text_26:
+	.string "{COLOR BLUE}Route 118{COLOR DARK_GRAY} is the one east of Mauville\nCity, huh?\p{PLAYER}!\nSince we're both here anyway, let's go\lto Mauville together!\pI'm definitely planning on going to\ncheck out Route 118 like your dad\lsaid!$"

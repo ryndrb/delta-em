@@ -61,7 +61,7 @@
 #define FLAG_HIDE_MAUVILLE_CITY_RIVAL       0x30
 #define FLAG_RECEIVED_SWORDS_DANCE          0x31
 #define FLAG_HIDE_PETALBURG_CITY_RIVAL      0x32
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
+#define FLAG_HIDE_PETALBURG_CITY_NORMAN     0x33
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag
 #define FLAG_UNUSED_0x036    0x36 // Unused Flag
@@ -187,7 +187,7 @@
 #define FLAG_RECEIVED_TM_BULK_UP             0xA6
 #define FLAG_RECEIVED_TM_SHOCK_WAVE          0xA7
 #define FLAG_RECEIVED_TM_OVERHEAT            0xA8
-#define FLAG_RECEIVED_TM_FACADE              0xA9
+#define FLAG_RECEIVED_TM_FACADE              0xA9 // Will be replace by Flag TM Retaliate
 #define FLAG_RECEIVED_TM_AERIAL_ACE          0xAA
 #define FLAG_RECEIVED_TM_CALM_MIND           0xAB
 #define FLAG_RECEIVED_TM_WATER_PULSE         0xAC

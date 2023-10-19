@@ -17,6 +17,7 @@ MauvilleCity_OnTransition:
 	call Common_EventScript_SetupRivalGfxId
 	call_if_set FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON, MauvilleCity_EventScript_MoveWattsonBackToGym
     call_if_eq VAR_MAUVILLE_CITY_STATE, 0, MauvilleCity_EventScript_MoveWallyUncleToBeginning
+	call_if_eq VAR_MAUVILLE_CITY_STATE, 7, MauvilleCity_EventScript_MoveWallyCloseToRoute118
 	end
 
 MauvilleCity_EventScript_MoveWattsonBackToGym::
@@ -32,8 +33,14 @@ MauvilleCity_EventScript_MoveWallyUncleToBeginning::
     setobjectxyperm LOCALID_WALLYS_UNCLE, 27, 11
     return
 
+MauvilleCity_EventScript_MoveWallyCloseToRoute118::
+	setobjectmovementtype LOCALID_WALLY, MOVEMENT_TYPE_FACE_RIGHT
+    setobjectxyperm LOCALID_WALLY, 35, 9
+	return
+
 MauvilleCity_OnFrameTable::
 	map_script_2 VAR_MAUVILLE_CITY_STATE, 5, MauvilleCity_EventScript_RivalAfterCozmoEvent
+	map_script_2 VAR_MAUVILLE_CITY_STATE, 7, MauvilleCity_EventScript_WallyAfterPetalburgEvent
 	.2byte 0
 
 MauvilleCity_EventScript_Boy::
@@ -836,6 +843,50 @@ MauvilleCity_EventScript_Rival::
 	end
 
 
+MauvilleCity_EventScript_WallyAfterPetalburgEvent::
+	lock
+	delay 16
+	applymovement LOCALID_WALLY, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_WALLY
+	delay 8
+	msgbox MauvilleCity_EventScript_WallyAfterPetalburgEvent_Text_0
+	closemessage
+	applymovement LOCALID_WALLY, Common_Movement_WalkInPlaceRight
+	waitmovement LOCALID_WALLY
+	msgbox MauvilleCity_EventScript_WallyAfterPetalburgEvent_Text_1
+	closemessage
+	applymovement LOCALID_WALLY, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_WALLY
+	msgbox MauvilleCity_EventScript_WallyAfterPetalburgEvent_Text_2
+	closemessage
+	delay 8
+	applymovement OBJ_EVENT_ID_PLAYER, MauvilleCity_Movement_PlayerWatchWallyExitToRoute118
+	applymovement LOCALID_WALLY, MauvilleCity_Movement_WallyExitToRoute118
+	waitmovement LOCALID_WALLY
+	removeobject LOCALID_WALLY
+	setvar VAR_MAUVILLE_CITY_STATE, 8
+	release
+	end
+
+
+MauvilleCity_Movement_WallyExitToRoute118:
+	walk_right
+	walk_right
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+MauvilleCity_Movement_PlayerWatchWallyExitToRoute118:
+	delay_16
+	delay_16
+	walk_in_place_right
+	step_end
+
 MauvilleCity_EventScript_WallyAndUncleIntro_Text_0:
 	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Wow!\nSo this is Mauville City!$"
 
@@ -889,3 +940,12 @@ MauvilleCity_EventScript_RivalAfterCozmoEvent_Text_2:
 
 MauvilleCity_EventScript_Rival_Text_0:
 	.string "{COLOR RED}{RIVAL}{COLOR DARK_GRAY}: Up ahead here is {COLOR BLUE}Mt. Chimney{COLOR DARK_GRAY},\nhuh?\pThat's the place those nut jobs at\nMeteor Falls were talking about going\lto.\pBe careful, {PLAYER}.\nIt might get dangerous around here.$"
+
+MauvilleCity_EventScript_WallyAfterPetalburgEvent_Text_0:
+	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: It's actually pretty far, isn't\nit? All the way here to Mauville…$"
+
+MauvilleCity_EventScript_WallyAfterPetalburgEvent_Text_1:
+	.string "So that must be Route 118 ahead…\pI wonder what kind of Pokémon I'll meet\nthere. I can't wait to find out!$"
+
+MauvilleCity_EventScript_WallyAfterPetalburgEvent_Text_2:
+	.string "I'll see you later, {PLAYER}!\nI'm going straight to Route 118!\pLet's definitely have a battle next\ntime we meet!\lIt's a promise, OK?\pAnd you can't break a promise!$"

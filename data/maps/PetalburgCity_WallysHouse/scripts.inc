@@ -1,7 +1,6 @@
 .set LOCALID_WALLYS_DAD, 1
 
 PetalburgCity_WallysHouse_MapScripts::
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, PetalburgCity_WallysHouse_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, PetalburgCity_WallysHouse_OnWarp
 	.byte 0
 
@@ -12,20 +11,6 @@ PetalburgCity_WallysHouse_OnWarp:
 PetalburgCity_WallysHouse_EventScript_PlayerWallysDadFaceEachOther::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	turnobject LOCALID_WALLYS_DAD, DIR_WEST
-	end
-
-PetalburgCity_WallysHouse_OnFrame:
-	map_script_2 VAR_PETALBURG_CITY_STATE, 4, PetalburgCity_WallysHouse_EventScript_GiveHMSurf
-	.2byte 0
-
-PetalburgCity_WallysHouse_EventScript_GiveHMSurf::
-	lockall
-	msgbox PetalburgCity_WallysHouse_Text_PleaseExcuseUs, MSGBOX_DEFAULT
-	giveitem ITEM_HM_SURF
-	setflag FLAG_RECEIVED_HM_SURF
-	msgbox PetalburgCity_WallysHouse_Text_SurfGoAllSortsOfPlaces, MSGBOX_DEFAULT
-	setvar VAR_PETALBURG_CITY_STATE, 5
-	releaseall
 	end
 
 PetalburgCity_WallysHouse_EventScript_WallysDad::
@@ -73,27 +58,6 @@ PetalburgCity_WallysHouse_Text_ThanksForPlayingWithWally:
 PetalburgCity_WallysHouse_Text_WonderHowWallyIsDoing:
 	.string "I wonder how our Wally is doing?$"
 
-PetalburgCity_WallysHouse_Text_PleaseExcuseUs:
-	.string "{PLAYER}{KUN}! Please excuse us for\n"
-	.string "dragging you here this way.\p"
-	.string "But our Wally's become very healthy\n"
-	.string "since he went to Verdanturf Town.\p"
-	.string "We owe it all to you!\p"
-	.string "When Wally left town, you helped\n"
-	.string "him catch a Pokémon, right?\p"
-	.string "I think that made Wally really\n"
-	.string "happy.\p"
-	.string "Actually, not just Wally.\n"
-	.string "It made me, his father, happy too.\p"
-	.string "Happy that he's gained such a great\n"
-	.string "friend as you.\p"
-	.string "This isn't a bribe or anything, but\n"
-	.string "I'd really like you to have this.$"
-
-PetalburgCity_WallysHouse_Text_SurfGoAllSortsOfPlaces:
-	.string "If your Pokémon can Surf, you'll be\n"
-	.string "able to go to all sorts of places.$"
-
 PetalburgCity_WallysHouse_Text_WallyIsComingHomeSoon:
 	.string "Wally's coming home soon.\n"
 	.string "I'm looking forward to that.$"
@@ -118,4 +82,3 @@ PetalburgCity_WallysHouse_Text_WallyLeftWithoutTelling:
 	.string "he's surprisingly strong-willed.\p"
 	.string "I'm sure that he'll come back safe\n"
 	.string "and sound one day!$"
-

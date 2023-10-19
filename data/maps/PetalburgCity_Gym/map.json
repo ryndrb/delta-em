@@ -123,7 +123,7 @@
       "x": 2,
       "y": 109,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -440,7 +440,33 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_PETALBURG_CITY_STATE_2",
+      "var_value": "3",
+      "script": "PetalburgCity_Gym_EventScript_NormanTrigger1"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_PETALBURG_CITY_STATE_2",
+      "var_value": "3",
+      "script": "PetalburgCity_Gym_EventScript_NormanTrigger2"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_PETALBURG_CITY_STATE_2",
+      "var_value": "3",
+      "script": "PetalburgCity_Gym_EventScript_NormanTrigger3"
+    }
   ],
   "bg_events": [
     {
