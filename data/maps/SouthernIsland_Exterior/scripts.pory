@@ -9,7 +9,6 @@ SouthernIsland_Exterior_MapScripts::
 	.byte 0
 
 SouthernIsland_Exterior_OnTransition:
-	setflag FLAG_LANDMARK_SOUTHERN_ISLAND
     call_if_eq VAR_SOUTHERN_ISLAND_STATE, 3, SouthernIsland_Exterior_EventScript_StevenPos
 	end
 
@@ -180,6 +179,7 @@ script SouthernIsland_Exterior_EventScript_LeaveIsland {
     clearflag(FLAG_HIDE_ROUTE_118_LATIAS)
     setflag(FLAG_HIDE_SOUTHERN_ISLAND_EXTERIOR_LATIAS)
     setflag(FLAG_HIDE_SOUTHERN_ISLAND_EXTERIOR_STEVEN)
+    setflag(FLAG_LANDMARK_SOUTHERN_ISLAND)
     setvar(VAR_SOUTHERN_ISLAND_STATE, 4)
     warpsilent(MAP_ROUTE118, 44, 15)
     waitstate
