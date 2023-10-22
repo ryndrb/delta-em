@@ -12,12 +12,12 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_SAILOR",
-      "x": 13,
-      "y": 23,
+      "x": 0,
+      "y": 0,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -29,8 +29,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SS_TIDAL",
-      "x": 13,
-      "y": 25,
+      "x": -3,
+      "y": 2,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -39,6 +39,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_STEVEN",
+      "x": 15,
+      "y": 18,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SouthernIsland_Exterior_EventScript_Steven",
+      "flag": "FLAG_HIDE_SOUTHERN_ISLAND_EXTERIOR_STEVEN"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LATIAS_2",
+      "x": 14,
+      "y": 22,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SouthernIsland_Exterior_EventScript_Latias",
+      "flag": "FLAG_HIDE_SOUTHERN_ISLAND_EXTERIOR_LATIAS"
     }
   ],
   "warp_events": [
@@ -54,10 +80,29 @@
       "y": 5,
       "elevation": 3,
       "dest_map": "MAP_SOUTHERN_ISLAND_INTERIOR",
-      "dest_warp_id": "1"
+      "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_SOUTHERN_ISLAND_STATE",
+      "var_value": "1",
+      "script": "SouthernIsland_Exterior_EventScript_GetInsideTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_SOUTHERN_ISLAND_STATE",
+      "var_value": "1",
+      "script": "SouthernIsland_Exterior_EventScript_GetInsideTrigger"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

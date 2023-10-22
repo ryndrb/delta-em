@@ -7420,6 +7420,7 @@ extern const u32 gTrainerPalette_YoungCouple[];
 extern const u32 gTrainerPalette_OldCouple[];
 extern const u32 gTrainerPalette_SisAndBro[];
 extern const u32 gTrainerPalette_Steven[];
+extern const u32 gTrainerPalette_StevenBackPic[];
 extern const u32 gTrainerPalette_SalonMaidenAnabel[];
 extern const u32 gTrainerPalette_DomeAceTucker[];
 extern const u32 gTrainerPalette_PalaceMavenSpenser[];

@@ -11841,3 +11841,27 @@ static const struct TrainerMon sParty_GruntMagmaMeteorFalls[] = {
         .species = SPECIES_KOFFING,
     },
 };
+
+static const struct TrainerMon sParty_GruntMagmaSouthernIsland[] = {
+    {
+    .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+    .lvl = 29,
+    .species = SPECIES_KOFFING,
+    },
+};
+
+static const struct TrainerMon sParty_CourtneySouthernIsland[] = {
+    {
+    .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+    .lvl = 31,
+    .species = SPECIES_CAMERUPT,
+    },
+};
+
+static const struct TrainerMon sParty_StevenSouthernIsland[] = {
+    {
+    .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+    .lvl = 31,
+    .species = SPECIES_SKARMORY,
+    },
+};

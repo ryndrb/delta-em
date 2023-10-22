@@ -52,4 +52,4 @@ RustboroCity_Flat2_2F_EventScript_BlondeBoy_Text_0:
 	.string "My dad's a real ace in the Devon\nCorporation, I'll have you know!\lIt's no wonder I'm an ace myself!\pHere. I'll give you something that an\nAce Trainer like me uses!$"
 
 RustboroCity_Flat2_2F_EventScript_BlondeBoy_Text_1:
-	.string "If you have a Pokémon hold a Float\nStone, its weight will be halved.\pAlthough it looks like it'll be a while\nbefore you can use something like\lthis as well as I can.$"
+	.string "If you have a Pokémon hold a Float\nStone, its weight will be halved.\pAlthough it looks like it'll be a\nwhile before you can use something\llike this as well as I can.$"
