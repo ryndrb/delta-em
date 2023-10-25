@@ -453,3 +453,8 @@ movement Route118_Movement_PlayerWatchStevenExit {
     delay_16 * 2
     walk_in_place_up
 }
+
+script Route118_EventScript_PokeFanSecretBase {
+    msgbox("Thanks to that Aarune dude, I've been\nawakened to the adventure that is\lbuilding a Secret Base.\pHe said he would be waiting for me\nwith the Secret Base Guild, but\lFortree City is far away.", MSGBOX_NPC)
+    end
+}

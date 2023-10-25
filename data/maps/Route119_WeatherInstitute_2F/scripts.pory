@@ -1,0 +1,314 @@
+raw `
+.set LOCALID_GRUNT_1, 1
+.set LOCALID_GRUNT_2, 2
+.set LOCALID_SHELLY, 3
+.set LOCALID_GENTLEMAN, 4
+.set LOCALID_SCIENTIST, 5
+.set LOCALID_MAN, 6
+.set LOCALID_GRUNT_3, 7
+.set LOCALID_GRUNT_4, 8
+
+Route119_WeatherInstitute_2F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route119_WeatherInstitute_2F_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route119_WeatherInstitute_2F_OnFrameTable
+	.byte 0
+
+Route119_WeatherInstitute_2F_OnTransition:
+	call_if_eq VAR_WEATHER_INSTITUTE_STATE, 0, Route119_WeatherInstitute_2F_EventScript_SetScientistPosAquaHere
+	call_if_eq VAR_WEATHER_INSTITUTE_STATE, 0, Route119_WeatherInstitute_2F_EventScript_SetInstituteMusic
+	call_if_ge VAR_WEATHER_INSTITUTE_STATE, 2, Route119_WeatherInstitute_2F_EventScript_SetManPosAquaGone
+	call_if_set FLAG_SYS_GAME_CLEAR, Route119_WeatherInstitute_2F_EventScript_SetScientistPosGameClear
+	end
+
+Route119_WeatherInstitute_2F_EventScript_SetScientistPosAquaHere::
+	setobjectxyperm LOCALID_SCIENTIST, 1, 5
+	setobjectmovementtype LOCALID_SCIENTIST, MOVEMENT_TYPE_FACE_RIGHT
+	return
+
+Route119_WeatherInstitute_2F_EventScript_SetInstituteMusic::
+	playbgm MUS_AQUA_MAGMA_HIDEOUT, TRUE
+	return
+
+Route119_WeatherInstitute_2F_EventScript_SetManPosAquaGone::
+	setobjectxyperm LOCALID_MAN, 12, 4
+	setobjectmovementtype LOCALID_MAN, MOVEMENT_TYPE_FACE_RIGHT
+	return
+
+Route119_WeatherInstitute_2F_EventScript_SetScientistPosGameClear::
+	setobjectxyperm LOCALID_SCIENTIST, 2, 2
+	setobjectmovementtype LOCALID_SCIENTIST, MOVEMENT_TYPE_FACE_UP
+	return
+
+Route119_WeatherInstitute_2F_OnFrameTable:
+	map_script_2 VAR_WEATHER_INSTITUTE_STATE, 0, Route119_WeatherInstitute_2F_EventScript_InitEvent
+	.2byte 0
+
+Route119_WeatherInstitute_2F_EventScript_Grunt5::
+	trainerbattle_single TRAINER_GRUNT_WEATHER_INST_5, Route119_WeatherInstitute_2F_Text_Grunt5Intro, Route119_WeatherInstitute_2F_Text_Grunt5Defeat
+	msgbox Route119_WeatherInstitute_2F_Text_Grunt5PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_WeatherInstitute_2F_EventScript_Grunt2::
+	trainerbattle_single TRAINER_GRUNT_WEATHER_INST_2, Route119_WeatherInstitute_2F_Text_Grunt2Intro, Route119_WeatherInstitute_2F_Text_Grunt2Defeat
+	msgbox Route119_WeatherInstitute_2F_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_WeatherInstitute_2F_EventScript_Grunt3::
+	trainerbattle_single TRAINER_GRUNT_WEATHER_INST_3, Route119_WeatherInstitute_2F_Text_Grunt3Intro, Route119_WeatherInstitute_2F_Text_Grunt3Defeat
+	msgbox Route119_WeatherInstitute_2F_Text_Grunt3PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_WeatherInstitute_2F_Movement_GruntApproachShelly:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	step_end
+
+Route119_WeatherInstitute_2F_Movement_ShovePlayerOutOfWay:
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	ride_water_current_up
+	walk_in_place_faster_down
+	step_end
+
+Route119_WeatherInstitute_2F_Movement_PlayerReturnToPosition:
+	slide_down
+	walk_in_place_faster_left
+	step_end
+
+Route119_WeatherInstitute_2F_Movement_ScientistApproachPlayer:
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+Route119_WeatherInstitute_2F_Text_Grunt2Intro:
+	.string "I came here because I heard that\nthe Institute is investigating the\lrelationship between super-ancient\lPokémon and the weather!$"
+
+Route119_WeatherInstitute_2F_Text_Grunt2Defeat:
+	.string "Our plan's being spoiled by a kid?$"
+
+Route119_WeatherInstitute_2F_Text_Grunt2PostBattle:
+	.string "The overwhelming power of a super-\nancient Pokémon to even control the\lweather freely…!\lWe, Team Aqua, definitely need it!$"
+
+Route119_WeatherInstitute_2F_Text_Grunt3Intro:
+	.string "We're Team Aqua!\nWe appear wherever anything rare is\lfound!$"
+
+Route119_WeatherInstitute_2F_Text_Grunt3Defeat:
+	.string "You got me!$"
+
+Route119_WeatherInstitute_2F_Text_Grunt3PostBattle:
+	.string "You don't have any idea what we of Team\nMagma are working toward!\lYou stay out of our way!$"
+
+Route119_WeatherInstitute_2F_Text_Grunt5Intro:
+	.string "Huh?\nWhat's a kid doing here?$"
+
+Route119_WeatherInstitute_2F_Text_Grunt5Defeat:
+	.string "Huh?\nI lost?!$"
+
+Route119_WeatherInstitute_2F_Text_Grunt5PostBattle:
+	.string "Oh, no… I'll catch an earful for losing\nto a kid…\pMaybe I should just take a nap in bed\nand try to forget it all.$"
+
+
+`
+
+script Route119_WeatherInstitute_2F_EventScript_InitEvent {
+	lock
+	delay(16)
+	playse(SE_PIN)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	waitse
+	delay(16)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, Route119_WeatherInstitute_2F_Movement_PanToInitEvent)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	special(RemoveCameraObject)
+	msgbox("{COLOR RED}???{COLOR DARK_GRAY}: Could it be?\pIs this the world…\nArchie hoped to create…")
+	msgbox("{COLOR RED}Scientist{COLOR DARK_GRAY}: Curse you!\nThe precious results of my research!\pGIVE THEM BACK!!!")
+	closemessage
+	applymovement(LOCALID_SCIENTIST, Route119_WeatherInstitute_2F_Movement_TryTakePapers)
+	waitmovement(LOCALID_SCIENTIST)
+	msgbox("{COLOR RED}???{COLOR DARK_GRAY}: Shut your mouth!")
+	closemessage
+	playse(SE_EFFECTIVE)
+	applymovement(LOCALID_SHELLY, Common_Movement_WalkInPlaceLeft)
+	applymovement(LOCALID_SCIENTIST, Route119_WeatherInstitute_2F_Movement_SlappedBack)
+	waitmovement(LOCALID_SCIENTIST)
+	msgbox("{COLOR RED}Scientist{COLOR DARK_GRAY}: Augh?!")
+	closemessage
+	delay(8)
+	applymovement(LOCALID_GENTLEMAN, Common_Movement_WalkInPlaceUp)
+	applymovement(LOCALID_MAN, Common_Movement_WalkInPlaceUp)
+	applymovement(LOCALID_SCIENTIST, Common_Movement_WalkInPlaceFasterDown)
+	waitmovement(LOCALID_SCIENTIST)
+	msgbox("Steady on!\nAre you all right?!")
+	closemessage
+	delay(8)
+	applymovement(LOCALID_GENTLEMAN, Common_Movement_WalkInPlaceRight)
+	delay(8)
+	applymovement(LOCALID_MAN, Common_Movement_WalkInPlaceRight)
+	waitmovement(LOCALID_MAN)
+	msgbox("{COLOR RED}???{COLOR DARK_GRAY}: Fine, I'll give it back.\nI'll give it back, all right?\pThe awakening of the super-\nancient Pokémon will bring out\lextreme weather.\pIf this happened all over the world,\nwhat would become of Pokémon, not to\lmention people?")
+	closemessage
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, Route119_WeatherInstitute_2F_Movement_PanBackToPlayer)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	special(RemoveCameraObject)
+	setvar(VAR_WEATHER_INSTITUTE_STATE, 1)
+	release
+	end
+}
+
+movement Route119_WeatherInstitute_2F_Movement_PanToInitEvent {
+	walk_diag_southwest * 4
+	walk_fast_left * 11
+}
+
+movement Route119_WeatherInstitute_2F_Movement_TryTakePapers {
+	walk_fast_down
+	walk_fast_right
+}
+
+movement Route119_WeatherInstitute_2F_Movement_SlappedBack {
+	walk_fast_left
+	walk_fast_up
+}
+
+movement Route119_WeatherInstitute_2F_Movement_PanBackToPlayer {
+	walk_fast_right * 11
+	walk_diag_northeast * 4
+}
+
+script Route119_WeatherInstitute_2F_EventScript_Shelly {
+	lock
+	delay(16)
+	playse(SE_PIN)
+	applymovement(LOCALID_SHELLY, Common_Movement_ExclamationMark)
+	waitmovement(LOCALID_SHELLY)
+	waitse
+	applymovement(LOCALID_SHELLY, Common_Movement_WalkInPlaceRight)
+	delay(8)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	msgbox("{COLOR RED}???{COLOR DARK_GRAY}: Oh my!\pI'm quite surprise to meet you here.\pYou must be the child I kept hearing\nabout.\pMy name is {COLOR RED}Shelly{COLOR DARK_GRAY}, one of Team Aqua's\nAdmin.\pI guess our paths were destined to\ncross here. Ahaha!")
+	msgbox("Wanna know something?\pI'm feeling healthy and downhearted\nright now.\lI can't get my head straight.\pUmm?\nHelp me take my mind off it.")
+	trainerbattle_no_intro(TRAINER_SHELLY_WEATHER_INSTITUTE, "Hah…hah…\nThat tired me out…")
+	delay(8)
+	msgbox("{COLOR RED}Shelly{COLOR DARK_GRAY}: …\pHmmph.\pI feel a bit more relaxed…\nThanks.\pAs a token of my gratitude, I'll tell you\none thing.\pWhen Team Aqua's…\nNo, when the illustrious Archie's\lambitions have been realized, the\lworld will truly return to its\lbeginnings, to before the birth of\lanything at all.\pThink for yourself about what to do\nwhen you're up against that reality.\pI still haven't figured out for myself\nwhat's wrong and what's right…\pSee ya.\nI'm sure I'll see you again, though.")
+	closemessage
+	delay(8)
+	applymovement(LOCALID_SHELLY, Route119_WeatherInstitute_2F_Movement_ShellyExit1)
+	applymovement(OBJ_EVENT_ID_PLAYER, Route119_WeatherInstitute_2F_Movement_PlayerMoveAside)
+	waitmovement(LOCALID_SHELLY)
+	delay(8)
+	addobject(LOCALID_GRUNT_3)
+	applymovement(LOCALID_GRUNT_3, Route119_WeatherInstitute_2F_Movement_GruntInAHurry)
+	waitmovement(LOCALID_GRUNT_3)
+	msgbox("{COLOR RED}Grunt{COLOR DARK_GRAY}: We have a situation here!\pA Team Magma mob just passed\nthe Weather Institute.\pThey appear to be headed for\nMt. Pyre!")
+	closemessage
+	playse(SE_PIN)
+	applymovement(LOCALID_SHELLY, Common_Movement_ExclamationMark)
+	waitmovement(LOCALID_SHELLY)
+	msgbox("{COLOR RED}Shelly{COLOR DARK_GRAY}: What?!\pWe can't waste any more time here!\nWe have to hurry to Mt. Pyre, too!\pAhaha!\nTeam Magma, just you wait!")
+	closemessage
+	applymovement(LOCALID_SHELLY, Route119_WeatherInstitute_2F_Movement_TeamAquaExit)
+	applymovement(LOCALID_GRUNT_3, Route119_WeatherInstitute_2F_Movement_TeamAquaExit)
+	fadescreen(FADE_TO_BLACK)
+	waitmovement(LOCALID_GRUNT_3)
+	setflag(FLAG_HIDE_ROUTE_119_TEAM_AQUA)
+	setflag(FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M)
+	removeobject(LOCALID_GRUNT_1)
+	removeobject(LOCALID_GRUNT_2)
+	removeobject(LOCALID_SHELLY)
+	removeobject(LOCALID_GRUNT_4)
+	removeobject(LOCALID_GRUNT_3)
+	clearflag(FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS)
+	setvar(VAR_WEATHER_INSTITUTE_STATE, 2)
+	applymovement(OBJ_EVENT_ID_PLAYER, Route119_WeatherInstitute_2F_Movement_PlayerFaceWorkers)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	setobjectxy(LOCALID_SCIENTIST, 2, 5)
+	turnobject(LOCALID_SCIENTIST, DIR_SOUTH)
+	setobjectxy(LOCALID_MAN, 1, 5)
+	fadescreen(FADE_FROM_BLACK)
+	fadedefaultbgm
+	delay(16)
+	applymovement(LOCALID_GENTLEMAN, Common_Movement_WalkRight)
+	waitmovement(LOCALID_GENTLEMAN)
+	msgbox("{COLOR RED}Gentleman{COLOR DARK_GRAY}: Thank you, young one.\nYou helped save us from quite a pinch!")
+	msgbox("{COLOR RED}Man{COLOR DARK_GRAY}: You OK there, mate?")
+	msgbox("{COLOR RED}Scientist{COLOR DARK_GRAY}: Hah… Hah…\nThat truly was a slap in the face…")
+	msgbox("{COLOR RED}Gentleman{COLOR DARK_GRAY}: What could they hope to\ngain by investigating the extreme\lweather patterns of thousands of\lyears ago?")
+	closemessage
+	delay(32)
+	msgbox("Oh, but I am forgetting myself!\pFirst I must thank you properly for\nyour help.\pIt might seem an odd way of rewarding\nyou, but please take this Pokémon as\lmy thanks.")
+	setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CASTFORM)
+	playfanfare(MUS_HG_RECEIVE_POKEMON)
+	givemon(SPECIES_CASTFORM, 25, ITEM_MYSTIC_WATER)
+	msgbox("{PLAYER} received a Castform!")
+	waitfanfare
+	msgbox("{COLOR RED}Man{COLOR DARK_GRAY}: Castform is a Pokémon that\nchanges its form according to the\lcurrent weather conditions.\pWe have many of the living here in the\nInstitute with us.\pThey help us with out research of\nweather phenomena.")
+	msgbox("{COLOR RED}Gentleman{COLOR DARK_GRAY}: Indeed.\pI trust that it might help you on your\nadventure.\pBut as for the data those ruffians\nwere seeking…\pThey wanted to know about the extreme\nweather conditions that ruled\lthousands of years ago because of\lthose two super-ancient Pokémon.\pThose legendary Pokémon held the\nability to reshape the world.\pBy tapping into the boundless energies\nof the natural world, they triggered\la transformation that altered the\lvery fabric of our planet.\p{COLOR RED}Primal Groudon{COLOR DARK_GRAY} and {COLOR RED}Primal Kyogre{COLOR DARK_GRAY}…\pThis transformation caused untold\ndisturbances to the world's climate,\lleading to desolation.\pIt dried up the oceans, and arid lands\nconsumed more of the planet.\pWe refer to this transformation as\n{COLOR RED}Primal Reversion{COLOR DARK_GRAY}…")
+	msgbox("The result of it is the cataclysmic\nforce that wreaked havoc upon the\lworld…\pPrimal Reversion is a mysterious form\nof Evolution, both resembling and\ldiffering from Mega Evolution…\pOr so it has been theorized.\nBut it has never been achieved by any\lPokémon other than those\lsuper-ancient Pokémon.\pAs such, it has largely faded from\nmemory as a method of Evolution.")
+	delay(16)
+	msgbox("{COLOR RED}Scientist{COLOR DARK_GRAY}: If you'll excuse us then…\pWe'll be heading downstairs now , but\ntalk to us when you have a moment.\lWe want to thank you as well.")
+	closemessage
+	delay(8)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	applymovement(LOCALID_SCIENTIST, Route119_WeatherInstitute_2F_Movement_ScientistManExit)
+	applymovement(LOCALID_MAN, Route119_WeatherInstitute_2F_Movement_ScientistManExit)
+	waitmovement(LOCALID_MAN)
+	removeobject(LOCALID_SCIENTIST)
+	removeobject(LOCALID_MAN)
+	clearflag(FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS)
+	release
+	end
+}
+
+movement Route119_WeatherInstitute_2F_Movement_ShellyExit1 {
+	walk_right * 3
+}
+
+movement Route119_WeatherInstitute_2F_Movement_PlayerMoveAside {
+	delay_16
+	walk_up
+	walk_in_place_down
+}
+
+movement Route119_WeatherInstitute_2F_Movement_GruntInAHurry {
+	walk_fast_left * 9
+}
+
+movement Route119_WeatherInstitute_2F_Movement_TeamAquaExit {
+	walk_right * 3
+}
+
+movement Route119_WeatherInstitute_2F_Movement_PlayerFaceWorkers {
+	walk_down
+	walk_left * 2
+}
+
+movement Route119_WeatherInstitute_2F_Movement_ScientistManExit {
+	walk_right
+	walk_down
+	walk_right * 9
+}
+
+script Route119_WeatherInstitute_2F_EventScript_GentlemanMentionWeather {
+	msgbox("I've been researching rain for many\nyears, but it's ridiculous to think\lthat humans can freely change the\lweather.", MSGBOX_NPC)
+	end
+}

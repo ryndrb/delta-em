@@ -20,294 +20,8 @@ Route119_EventScript_TryRemoveKecleon::
 Route119_OnTransition:
 	call Common_EventScript_SetupRivalGfxId
 	call Common_EventScript_SetupRivalOnBikeGfxId
-	call_if_eq VAR_WEATHER_INSTITUTE_STATE, 1, Route119_EventScript_MoveInstituteWorkersDownstairs
 	special SetRoute119Weather
 	end
-
-Route119_EventScript_MoveInstituteWorkersDownstairs::
-	setflag FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS
-	clearflag FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS
-	setvar VAR_WEATHER_INSTITUTE_STATE, 2
-	return
-
-Route119_EventScript_RivalTrigger1::
-	setvar VAR_TEMP_1, 1
-	goto Route119_EventScript_RivalEncounter
-	end
-
-Route119_EventScript_RivalTrigger2::
-	setvar VAR_TEMP_1, 2
-	goto Route119_EventScript_RivalEncounter
-	end
-
-Route119_EventScript_RivalEncounter::
-	lockall
-	addobject LOCALID_RIVAL_ON_BIKE
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, Route119_EventScript_PlayMayMusic
-	call_if_eq VAR_RESULT, FEMALE, Route119_EventScript_PlayBrendanMusic
-	delay 65
-	call_if_eq VAR_TEMP_1, 1, Route119_EventScript_RivalEnter1
-	call_if_eq VAR_TEMP_1, 2, Route119_EventScript_RivalEnter2
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	delay 30
-	call_if_eq VAR_TEMP_1, 1, Route119_EventScript_SetRivalPos1
-	call_if_eq VAR_TEMP_1, 2, Route119_EventScript_SetRivalPos2
-	removeobject LOCALID_RIVAL_ON_BIKE
-	addobject LOCALID_RIVAL
-	delay 30
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, Route119_EventScript_BattleMay
-	goto_if_eq VAR_RESULT, FEMALE, Route119_EventScript_BattleBrendan
-	releaseall
-	end
-
-Route119_EventScript_PlayMayMusic::
-	playbgm MUS_ENCOUNTER_MAY, TRUE
-	return
-
-Route119_EventScript_PlayBrendanMusic::
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	return
-
-Route119_EventScript_BattleMay::
-	msgbox Route119_Text_MayIntro, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route119_EventScript_BattleMayTreecko
-	case 1, Route119_EventScript_BattleMayTorchic
-	case 2, Route119_EventScript_BattleMayMudkip
-	end
-
-Route119_EventScript_BattleMayTreecko::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TREECKO, Route119_Text_MayDefeat
-	goto Route119_EventScript_DefeatedMay
-	end
-
-Route119_EventScript_BattleMayTorchic::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TORCHIC, Route119_Text_MayDefeat
-	goto Route119_EventScript_DefeatedMay
-	end
-
-Route119_EventScript_BattleMayMudkip::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_MUDKIP, Route119_Text_MayDefeat
-	goto Route119_EventScript_DefeatedMay
-	end
-
-Route119_EventScript_DefeatedMay::
-	msgbox Route119_Text_MayPresentForYou, MSGBOX_DEFAULT
-	call Route119_EventScript_GiveFlyHM
-	msgbox Route119_Text_MayExplainFly, MSGBOX_DEFAULT
-	goto Route119_EventScript_RivalExitScottArrive
-	end
-
-Route119_EventScript_BattleBrendan::
-	msgbox Route119_Text_BrendanIntro, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route119_EventScript_BattleBrendanTreecko
-	case 1, Route119_EventScript_BattleBrendanTorchic
-	case 2, Route119_EventScript_BattleBrendanMudkip
-	end
-
-Route119_EventScript_BattleBrendanTreecko::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TREECKO, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
-	end
-
-Route119_EventScript_BattleBrendanTorchic::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TORCHIC, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
-	end
-
-Route119_EventScript_BattleBrendanMudkip::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_MUDKIP, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
-	end
-
-Route119_EventScript_DefeatedBrendan::
-	msgbox Route119_Text_BrendanIllGiveYouThis, MSGBOX_DEFAULT
-	call Route119_EventScript_GiveFlyHM
-	msgbox Route119_Text_BrendanExplainFly, MSGBOX_DEFAULT
-	goto Route119_EventScript_RivalExitScottArrive
-	end
-
-Route119_EventScript_GiveFlyHM::
-	giveitem ITEM_HM_FLY
-	setflag FLAG_RECEIVED_HM_FLY
-	return
-
-Route119_EventScript_RivalExitScottArrive::
-	closemessage
-	call_if_eq VAR_TEMP_1, 1, Route119_EventScript_SetRivalPos1
-	call_if_eq VAR_TEMP_1, 2, Route119_EventScript_SetRivalPos2
-	removeobject LOCALID_RIVAL
-	addobject LOCALID_RIVAL_ON_BIKE
-	delay 30
-	call_if_eq VAR_TEMP_1, 1, Route119_EventScript_RivalExit1
-	call_if_eq VAR_TEMP_1, 2, Route119_EventScript_RivalExit2
-	removeobject LOCALID_RIVAL_ON_BIKE
-	setvar VAR_ROUTE119_STATE, 1
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	delay 60
-	call_if_eq VAR_TEMP_1, 1, Route119_EventScript_SetScottPos1
-	call_if_eq VAR_TEMP_1, 2, Route119_EventScript_SetScottPos2
-	addobject LOCALID_SCOTT
-	applymovement LOCALID_SCOTT, Route119_Movement_ScottEnter
-	waitmovement 0
-	addvar VAR_SCOTT_STATE, 1
-	msgbox Route119_Text_ScottWayToGoBeSeeingYou, MSGBOX_DEFAULT
-	closemessage
-	call_if_eq VAR_TEMP_1, 1, Route119_EventScript_ScottExit1
-	call_if_eq VAR_TEMP_1, 2, Route119_EventScript_ScottExit2
-	removeobject LOCALID_SCOTT
-	releaseall
-	end
-
-Route119_EventScript_SetScottPos1::
-	setobjectxyperm LOCALID_SCOTT, 27, 25
-	return
-
-Route119_EventScript_SetScottPos2::
-	setobjectxyperm LOCALID_SCOTT, 28, 25
-	return
-
-Route119_EventScript_ScottExit1::
-	applymovement LOCALID_SCOTT, Route119_Movement_ScottExit1
-	waitmovement 0
-	return
-
-Route119_EventScript_ScottExit2::
-	applymovement LOCALID_SCOTT, Route119_Movement_ScottExit2
-	waitmovement 0
-	return
-
-Route119_EventScript_RivalEnter1::
-	applymovement LOCALID_RIVAL_ON_BIKE, Route119_Movement_RivalEnter1
-	waitmovement 0
-	return
-
-Route119_EventScript_RivalEnter2::
-	applymovement LOCALID_RIVAL_ON_BIKE, Route119_Movement_RivalEnter2
-	waitmovement 0
-	return
-
-Route119_EventScript_RivalExit1::
-	applymovement OBJ_EVENT_ID_PLAYER, Route119_Movement_PlayerWatchRivalExit1
-	applymovement LOCALID_RIVAL_ON_BIKE, Route119_Movement_RivalExit1
-	waitmovement 0
-	return
-
-Route119_EventScript_RivalExit2::
-	applymovement OBJ_EVENT_ID_PLAYER, Route119_Movement_PlayerWatchRivalExit2
-	applymovement LOCALID_RIVAL_ON_BIKE, Route119_Movement_RivalExit2
-	waitmovement 0
-	return
-
-Route119_EventScript_SetRivalPos1::
-	setobjectxyperm LOCALID_RIVAL, 25, 32
-	setobjectxyperm LOCALID_RIVAL_ON_BIKE, 25, 32
-	return
-
-Route119_EventScript_SetRivalPos2::
-	setobjectxyperm LOCALID_RIVAL, 26, 32
-	setobjectxyperm LOCALID_RIVAL_ON_BIKE, 26, 32
-	return
-
-Route119_Movement_PlayerWatchRivalExit1:
-	delay_16
-	walk_in_place_faster_right
-	delay_8
-	walk_in_place_faster_up
-	step_end
-
-Route119_Movement_PlayerWatchRivalExit2:
-	delay_16
-	walk_in_place_faster_left
-	delay_8
-	walk_in_place_faster_up
-	step_end
-
-Route119_Movement_RivalEnter1:
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
-	step_end
-
-Route119_Movement_RivalEnter2:
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
-	step_end
-
-Route119_Movement_RivalExit1:
-	walk_fast_right
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	step_end
-
-Route119_Movement_RivalExit2:
-	walk_fast_left
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	step_end
-
-Route119_Movement_ScottEnter:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_down
-	step_end
-
-Route119_Movement_ScottExit1:
-	walk_up
-	walk_right
-	walk_right
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-Route119_Movement_ScottExit2:
-	walk_up
-	walk_right
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
 
 Route119_EventScript_CyclingTriathleteM::
 	msgbox Route119_Text_TallGrassSnaresBikeTires, MSGBOX_NPC
@@ -443,7 +157,7 @@ Route119_EventScript_BridgeAquaGrunt1::
 	faceplayer
 	msgbox Route119_Text_StayAwayFromWeatherInstitute, MSGBOX_DEFAULT
 	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	release
 	end
@@ -453,7 +167,7 @@ Route119_EventScript_BridgeAquaGrunt2::
 	faceplayer
 	msgbox Route119_Text_DontGoNearWeatherInstitute, MSGBOX_DEFAULT
 	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	release
 	end
@@ -479,79 +193,6 @@ Route119_EventScript_ScottWonAtFortreeGymCall::
 	releaseall
 	end
 
-Route119_Text_MayIntro:
-	.string "May: {PLAYER}{KUN}!\n"
-	.string "Where were you? I was looking for you!\p"
-	.string "How much stronger have you gotten?\n"
-	.string "Let me check for you!\p"
-	.string "Ready with your Pokémon?\n"
-	.string "Of course you are! Go!$"
-
-Route119_Text_MayDefeat:
-	.string "Achah!\n"
-	.string "{PLAYER}{KUN}, you're strong!\p"
-	.string "I was worried that you might be\n"
-	.string "struggling with your training.$"
-
-Route119_Text_MayPresentForYou:
-	.string "May: But I had absolutely nothing to\n"
-	.string "worry about! Keep it up!\p"
-	.string "And, here! I have a present for you.$"
-
-Route119_Text_MayExplainFly:
-	.string "May: Use Fly, and your Pokémon will\n"
-	.string "instantly carry you to any town you've\l"
-	.string "already visited.\p"
-	.string "But, to use Fly, you have to get\n"
-	.string "the Gym Badge from Fortree City.\l"
-	.string "That's important, so don't forget.\p"
-	.string "You should Fly home and visit\n"
-	.string "Littleroot for a change.\p"
-	.string "I bet your mom's worried about you,\n"
-	.string "{PLAYER}{KUN}.\p"
-	.string "Well, let's meet again somewhere!$"
-
-Route119_Text_BrendanIntro:
-	.string "Brendan: {PLAYER}! So this is where\n"
-	.string "you've been looking for Pokémon?\p"
-	.string "Let me see how good you got.\n"
-	.string "I'll test you!\p"
-	.string "Now!\n"
-	.string "It's a battle, so battle!$"
-
-Route119_Text_BrendanDefeat:
-	.string "Hmm…\n"
-	.string "You've gotten pretty darn decent.$"
-
-Route119_Text_BrendanIllGiveYouThis:
-	.string "Brendan: I'd say you're good enough\n"
-	.string "to search for Pokémon anywhere.\p"
-	.string "Here, I'll give you this.\n"
-	.string "Try it out.$"
-
-Route119_Text_BrendanExplainFly:
-	.string "Brendan: Use Fly, and your Pokémon\n"
-	.string "instantly carries you to any town\l"
-	.string "you've already visited.\p"
-	.string "But you need the Fortree Gym Badge \n"
-	.string "to do that.\p"
-	.string "Anyway, I have to move along.$"
-
-Route119_Text_ScottWayToGoBeSeeingYou:
-	.string "Scott: Hahahah!\n"
-	.string "Way to go, {PLAYER}{KUN}!\p"
-	.string "I just passed by a Trainer riding\n"
-	.string "a Bike.\p"
-	.string "You just beat that Trainer, didn't you?\n"
-	.string "It was pretty obvious that you did.\p"
-	.string "The kid looked really upset with\n"
-	.string "a face all red from anger.\p"
-	.string "I sure seem to run into you often.\n"
-	.string "Are you off to Fortree Gym next?\p"
-	.string "I expect that you'll do well at the Gym.\n"
-	.string "Well, I'll be seeing you!$"
-
-
 Route119_Text_ScottYouWonAtFortreeGym:
 	.string "… … … … … …\n"
 	.string "… … … … … Beep!\p"
@@ -568,23 +209,13 @@ Route119_Text_ScottYouWonAtFortreeGym:
 	.string "… … … … … Click!$"
 
 Route119_Text_StayAwayFromWeatherInstitute:
-	.string "We're standing lookout here.\p"
-	.string "Hey, you! Stay away from the Weather\n"
-	.string "Institute. It's not safe.$"
+	.string "We're standing lookout here.\pHey, you!\pStay away from the Weather Institute.\nIt's not safe.$"
 
 Route119_Text_DontGoNearWeatherInstitute:
-	.string "Lookout duty is surprisingly boring.\p"
-	.string "Hey, you! Please don't go near the\n"
-	.string "Weather Institute.$"
+	.string "Lookout duty is surprisingly boring.\pHey, you!\pPlease don't go near the Weather\nInstitute.$"
 
 Route119_Text_ThoughtFlyByCatchingBirdMons:
-	.string "I thought you Fly by catching a whole\n"
-	.string "flock of Bird Pokémon, and then\l"
-	.string "hanging on to them somehow.\p"
-	.string "But it turns out there's an HM move\n"
-	.string "called Fly!\p"
-	.string "I wish I'd known about that a long\n"
-	.string "time ago…$"
+	.string "I thought how you fly is by catching\na whole flock of bird Pokémon, and\lthen hanging on to them somehow.\pBut it turns out there's an HM move\ncalled Fly!\pI don't know…\nIn a way, my dream came true, but I\lalso feel like I lost my dream…\lIt feels really strange…$"
 
 Route119_Text_TallGrassSnaresBikeTires:
 	.string "Tch…\n"
@@ -605,10 +236,334 @@ Route119_Text_WeatherInstitute:
 	.string "Weather Institute$"
 
 Route119_Text_TrainerTipsDecoration:
-	.string "Trainer Tips\p"
-	.string "Up to sixteen decorations and\n"
-	.string "furniture items can be placed in\l"
-	.string "a Secret Base.\p"
-	.string "Pick your favorite items and create\n"
-	.string "your very own Secret Base exactly the\l"
-	.string "way you want.$"
+	.string "Trainer Tips\pUp to sixteen decorations and\nfurniture items can be placed in a\lSecret Base.\pPick your favorite items and create\nyour very own Secret Base exactly\lthe way you want.$"
+
+Route119_EventScript_RivalTrigger1::
+	setvar VAR_TEMP_1, 1
+	goto Route119_EventScript_RivalEncounter
+	end
+
+
+Route119_EventScript_RivalTrigger2::
+	setvar VAR_TEMP_1, 2
+	goto Route119_EventScript_RivalEncounter
+	end
+
+
+Route119_EventScript_RivalEncounter::
+	lock
+	addobject LOCALID_RIVAL_ON_BIKE
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq Route119_EventScript_RivalEncounter_2
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+Route119_EventScript_RivalEncounter_1:
+	delay 64
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	switch VAR_TEMP_1
+	case 1, Route119_EventScript_RivalEncounter_7
+	case 2, Route119_EventScript_RivalEncounter_8
+Route119_EventScript_RivalEncounter_5:
+	waitmovement LOCALID_RIVAL_ON_BIKE
+	delay 32
+	switch VAR_TEMP_1
+	case 1, Route119_EventScript_RivalEncounter_11
+	case 2, Route119_EventScript_RivalEncounter_12
+Route119_EventScript_RivalEncounter_9:
+	removeobject LOCALID_RIVAL_ON_BIKE
+	addobject LOCALID_RIVAL
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq Route119_EventScript_RivalEncounter_14
+	msgbox Route119_EventScript_RivalEncounter_Text_5
+	closemessage
+	delay 8
+	playse SE_PIN
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement LOCALID_RIVAL
+	waitse
+	msgbox Route119_EventScript_RivalEncounter_Text_6
+	closemessage
+	delay 8
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_RivalEncounter_28
+	case 1, Route119_EventScript_RivalEncounter_29
+	case 2, Route119_EventScript_RivalEncounter_30
+Route119_EventScript_RivalEncounter_26:
+	msgbox Route119_EventScript_RivalEncounter_Text_8
+	closemessage
+	delay 8
+	giveitem ITEM_HM_FLY
+	msgbox Route119_EventScript_RivalEncounter_Text_9
+Route119_EventScript_RivalEncounter_13:
+	closemessage
+	setflag FLAG_RECEIVED_HM_FLY
+	switch VAR_TEMP_1
+	case 1, Route119_EventScript_RivalEncounter_19
+	case 2, Route119_EventScript_RivalEncounter_20
+Route119_EventScript_RivalEncounter_17:
+	removeobject LOCALID_RIVAL
+	addobject LOCALID_RIVAL_ON_BIKE
+	delay 32
+	switch VAR_TEMP_1
+	case 1, Route119_EventScript_RivalEncounter_33
+	case 2, Route119_EventScript_RivalEncounter_34
+Route119_EventScript_RivalEncounter_31:
+	waitmovement LOCALID_RIVAL_ON_BIKE
+	removeobject LOCALID_RIVAL_ON_BIKE
+	setvar VAR_ROUTE119_STATE, 1
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	delay 64
+	switch VAR_TEMP_1
+	case 1, Route119_EventScript_RivalEncounter_37
+	case 2, Route119_EventScript_RivalEncounter_38
+Route119_EventScript_RivalEncounter_35:
+	addobject LOCALID_SCOTT
+	applymovement LOCALID_SCOTT, Route119_Movement_ScottEnter
+	waitmovement LOCALID_SCOTT
+	addvar VAR_SCOTT_STATE, 1
+	msgbox Route119_EventScript_RivalEncounter_Text_10
+	closemessage
+	switch VAR_TEMP_1
+	case 1, Route119_EventScript_RivalEncounter_41
+	case 2, Route119_EventScript_RivalEncounter_42
+Route119_EventScript_RivalEncounter_39:
+	waitmovement LOCALID_SCOTT
+	removeobject LOCALID_SCOTT
+	release
+	end
+
+Route119_EventScript_RivalEncounter_2:
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	goto Route119_EventScript_RivalEncounter_1
+
+Route119_EventScript_RivalEncounter_7:
+	applymovement LOCALID_RIVAL_ON_BIKE, Route119_Movement_RivalEnter1
+	goto Route119_EventScript_RivalEncounter_5
+
+Route119_EventScript_RivalEncounter_8:
+	applymovement LOCALID_RIVAL_ON_BIKE, Route119_Movement_RivalEnter2
+	goto Route119_EventScript_RivalEncounter_5
+
+Route119_EventScript_RivalEncounter_11:
+	setobjectxyperm LOCALID_RIVAL, 26, 32
+	setobjectxyperm LOCALID_RIVAL_ON_BIKE, 26, 32
+	goto Route119_EventScript_RivalEncounter_9
+
+Route119_EventScript_RivalEncounter_12:
+	setobjectxyperm LOCALID_RIVAL, 27, 32
+	setobjectxyperm LOCALID_RIVAL_ON_BIKE, 27, 32
+	goto Route119_EventScript_RivalEncounter_9
+
+Route119_EventScript_RivalEncounter_14:
+	msgbox Route119_EventScript_RivalEncounter_Text_0
+	closemessage
+	delay 8
+	playse SE_PIN
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement LOCALID_RIVAL
+	waitse
+	msgbox Route119_EventScript_RivalEncounter_Text_1
+	closemessage
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_RivalEncounter_23
+	case 1, Route119_EventScript_RivalEncounter_24
+	case 2, Route119_EventScript_RivalEncounter_25
+Route119_EventScript_RivalEncounter_21:
+	msgbox Route119_EventScript_RivalEncounter_Text_3
+	closemessage
+	delay 8
+	giveitem ITEM_HM_FLY
+	msgbox Route119_EventScript_RivalEncounter_Text_4
+	goto Route119_EventScript_RivalEncounter_13
+
+Route119_EventScript_RivalEncounter_19:
+	setobjectxyperm LOCALID_RIVAL, 26, 32
+	setobjectxyperm LOCALID_RIVAL_ON_BIKE, 26, 32
+	goto Route119_EventScript_RivalEncounter_17
+
+Route119_EventScript_RivalEncounter_20:
+	setobjectxyperm LOCALID_RIVAL, 27, 32
+	setobjectxyperm LOCALID_RIVAL_ON_BIKE, 27, 32
+	goto Route119_EventScript_RivalEncounter_17
+
+Route119_EventScript_RivalEncounter_23:
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TREECKO, Route119_EventScript_RivalEncounter_Text_2
+	goto Route119_EventScript_RivalEncounter_21
+
+Route119_EventScript_RivalEncounter_24:
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TORCHIC, Route119_EventScript_RivalEncounter_Text_2
+	goto Route119_EventScript_RivalEncounter_21
+
+Route119_EventScript_RivalEncounter_25:
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_MUDKIP, Route119_EventScript_RivalEncounter_Text_2
+	goto Route119_EventScript_RivalEncounter_21
+
+Route119_EventScript_RivalEncounter_28:
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TREECKO, Route119_EventScript_RivalEncounter_Text_7
+	goto Route119_EventScript_RivalEncounter_26
+
+Route119_EventScript_RivalEncounter_29:
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TORCHIC, Route119_EventScript_RivalEncounter_Text_7
+	goto Route119_EventScript_RivalEncounter_26
+
+Route119_EventScript_RivalEncounter_30:
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_MUDKIP, Route119_EventScript_RivalEncounter_Text_7
+	goto Route119_EventScript_RivalEncounter_26
+
+Route119_EventScript_RivalEncounter_33:
+	applymovement OBJ_EVENT_ID_PLAYER, Route119_Movement_PlayerWatchRivalExit1
+	applymovement LOCALID_RIVAL_ON_BIKE, Route119_Movement_RivalExit1
+	goto Route119_EventScript_RivalEncounter_31
+
+Route119_EventScript_RivalEncounter_34:
+	applymovement OBJ_EVENT_ID_PLAYER, Route119_Movement_PlayerWatchRivalExit2
+	applymovement LOCALID_RIVAL_ON_BIKE, Route119_Movement_RivalExit2
+	goto Route119_EventScript_RivalEncounter_31
+
+Route119_EventScript_RivalEncounter_37:
+	setobjectxyperm LOCALID_SCOTT, 28, 25
+	goto Route119_EventScript_RivalEncounter_35
+
+Route119_EventScript_RivalEncounter_38:
+	setobjectxyperm LOCALID_SCOTT, 29, 25
+	goto Route119_EventScript_RivalEncounter_35
+
+Route119_EventScript_RivalEncounter_41:
+	applymovement LOCALID_SCOTT, Route119_Movement_ScottExit1
+	goto Route119_EventScript_RivalEncounter_39
+
+Route119_EventScript_RivalEncounter_42:
+	applymovement LOCALID_SCOTT, Route119_Movement_ScottExit2
+	goto Route119_EventScript_RivalEncounter_39
+
+
+Route119_Movement_RivalEnter1:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_up
+	step_end
+
+Route119_Movement_RivalEnter2:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_up
+	step_end
+
+Route119_Movement_RivalExit1:
+	walk_fast_right
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_right
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	step_end
+
+Route119_Movement_RivalExit2:
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	step_end
+
+Route119_Movement_PlayerWatchRivalExit1:
+	delay_16
+	walk_in_place_right
+	delay_8
+	walk_in_place_up
+	step_end
+
+Route119_Movement_PlayerWatchRivalExit2:
+	delay_16
+	walk_in_place_left
+	delay_8
+	walk_in_place_up
+	step_end
+
+Route119_Movement_ScottEnter:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_down
+	step_end
+
+Route119_Movement_ScottExit1:
+	walk_up
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Route119_Movement_ScottExit2:
+	walk_up
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Route119_EventScript_RivalEncounter_Text_0:
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: {PLAYER}!\pGosh, where have you been hiding?\nI've been looking all over for you!$"
+
+Route119_EventScript_RivalEncounter_Text_1:
+	.string "Oh… Where did you get that thing on\nyour finger?\lThat's a pretty fancy-looking ring…\p…\pWow! So that's a Mega Ring?\nAnd you can use it for Mega Evolution…\pI guess now you can keep getting even\ncloser to your Pokémon, huh?\lSome guys have all the luck…\pBut I'm not about to lose to you and\nsome accessory!\lLet's see who's best in battle!\pAre your Pokémon all ready?\nOf course they are!\lLet's go!$"
+
+Route119_EventScript_RivalEncounter_Text_2:
+	.string "Achah! You're as strong as I expected,\n{PLAYER}!$"
+
+Route119_EventScript_RivalEncounter_Text_3:
+	.string "Hm!\nWell, you did battle me like I asked,\lso I'll give you a reward.$"
+
+Route119_EventScript_RivalEncounter_Text_4:
+	.string "If you use Fly, your Pokémon will\ncarry you back to anywhere you've\lbeen before.\pBut you must have the Gym Badge\nfrom Fortree City to use Fly outside\lof battle.\pThat's the most important bit, so don't\nforget!\pMaybe you should Fly home and visit\nLittleroot sometimes.\pI bet your mom worries about you,\n{PLAYER}…\pWell, till we meet again!\nAnd next time I won't lose!$"
+
+Route119_EventScript_RivalEncounter_Text_5:
+	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: {PLAYER}!\nYou've been looking for Pokémon here!$"
+
+Route119_EventScript_RivalEncounter_Text_6:
+	.string "Huh?\pThat ring you've got on…\nIt's like, I don't know, really cool…\p…\pWhoa. So that's the Mega Ring?\nAnd you can use if for Mega Evolution…\pSo you'll just keep getting closer\nto your Pokémon and getting even\lstronger…\pAll right, then.\nI guess I've just gotta help you test\lhow strong you've become, huh?\pShow me in battle how much better\nyou've gotten!\pCome on! A battle!\nI'm challenging you to a battle!$"
+
+Route119_EventScript_RivalEncounter_Text_7:
+	.string "Sheesh, {PLAYER}…\nYou've gotten pretty darn decent.$"
+
+Route119_EventScript_RivalEncounter_Text_8:
+	.string "I'd say you're good enough to search\nfor Pokémon anywhere by now.\pHere, I'll give you this, so try it out.\nYou should be able to use it fine.$"
+
+Route119_EventScript_RivalEncounter_Text_9:
+	.string "With Fly, your Pokémon can carry you\nback to just about anyplace you've\lvisited before.\pOf course, you'll need the Fortree Gym\nBadge first, though…\pWell, I'm going on ahead.\nBut I'm definitely winning next time!$"
+
+Route119_EventScript_RivalEncounter_Text_10:
+	.string "{COLOR RED}Scott{COLOR DARK_GRAY}: Hahahah!\nWay to go, {PLAYER}!\pI just passed by a Trainer riding a\nBike.\pYou just beat that Trainer, didn't you?\nIt was pretty obvious that you did.\pThe kid looked really upset with a\nface all red from anger.\pI sure seem to run into you often.\nAre you off to Fortree Gym next?\pI expect that you'll do well at the Gym.\nWell, I'll be seeing you!$"

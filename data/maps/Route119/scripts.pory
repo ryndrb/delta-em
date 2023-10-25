@@ -1,0 +1,428 @@
+raw `
+.set LOCALID_RIVAL, 16
+.set LOCALID_RIVAL_ON_BIKE, 25
+.set LOCALID_SCOTT, 43
+
+Route119_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, Route119_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, Route119_OnTransition
+	.byte 0
+
+Route119_OnResume:
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, Route119_EventScript_TryRemoveKecleon
+	end
+
+Route119_EventScript_TryRemoveKecleon::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	removeobject VAR_LAST_TALKED
+	return
+
+Route119_OnTransition:
+	call Common_EventScript_SetupRivalGfxId
+	call Common_EventScript_SetupRivalOnBikeGfxId
+	special SetRoute119Weather
+	end
+
+Route119_EventScript_CyclingTriathleteM::
+	msgbox Route119_Text_TallGrassSnaresBikeTires, MSGBOX_NPC
+	end
+
+Route119_EventScript_RouteSignFortree::
+	msgbox Route119_Text_RouteSignFortree, MSGBOX_SIGN
+	end
+
+Route119_EventScript_WeatherInstituteSign::
+	msgbox Route119_Text_WeatherInstitute, MSGBOX_SIGN
+	end
+
+Route119_EventScript_Brent::
+	trainerbattle_single TRAINER_BRENT, Route119_Text_BrentIntro, Route119_Text_BrentDefeat
+	msgbox Route119_Text_BrentPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_Donald::
+	trainerbattle_single TRAINER_DONALD, Route119_Text_DonaldIntro, Route119_Text_DonaldDefeat
+	msgbox Route119_Text_DonaldPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_Taylor::
+	trainerbattle_single TRAINER_TAYLOR, Route119_Text_TaylorIntro, Route119_Text_TaylorDefeat
+	msgbox Route119_Text_TaylorPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_Doug::
+	trainerbattle_single TRAINER_DOUG, Route119_Text_DougIntro, Route119_Text_DougDefeat
+	msgbox Route119_Text_DougPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_Greg::
+	trainerbattle_single TRAINER_GREG, Route119_Text_GregIntro, Route119_Text_GregDefeat
+	msgbox Route119_Text_GregPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_Kent::
+	trainerbattle_single TRAINER_KENT, Route119_Text_KentIntro, Route119_Text_KentDefeat
+	msgbox Route119_Text_KentPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_Jackson::
+	trainerbattle_single TRAINER_JACKSON_1, Route119_Text_JacksonIntro, Route119_Text_JacksonDefeat, Route119_EventScript_RegisterJackson
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route119_EventScript_RematchJackson
+	msgbox Route119_Text_JacksonPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route119_EventScript_RegisterJackson::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route119_Text_JacksonRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_JACKSON_1
+	release
+	end
+
+Route119_EventScript_RematchJackson::
+	trainerbattle_rematch TRAINER_JACKSON_1, Route119_Text_JacksonRematchIntro, Route119_Text_JacksonRematchDefeat
+	msgbox Route119_Text_JacksonPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_Catherine::
+	trainerbattle_single TRAINER_CATHERINE_1, Route119_Text_CatherineIntro, Route119_Text_CatherineDefeat, Route119_EventScript_RegisterCatherine
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route119_EventScript_RematchCatherine
+	msgbox Route119_Text_CatherinePostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route119_EventScript_RegisterCatherine::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route119_Text_CatherineRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_CATHERINE_1
+	release
+	end
+
+Route119_EventScript_RematchCatherine::
+	trainerbattle_rematch TRAINER_CATHERINE_1, Route119_Text_CatherineRematchIntro, Route119_Text_CatherineRematchDefeat
+	msgbox Route119_Text_CatherinePostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_Hugh::
+	trainerbattle_single TRAINER_HUGH, Route119_Text_HughIntro, Route119_Text_HughDefeat
+	msgbox Route119_Text_HughPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_Phil::
+	trainerbattle_single TRAINER_PHIL, Route119_Text_PhilIntro, Route119_Text_PhilDefeat
+	msgbox Route119_Text_PhilPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_Yasu::
+	trainerbattle_single TRAINER_YASU, Route119_Text_YasuIntro, Route119_Text_YasuDefeat
+	msgbox Route119_Text_YasuPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_Takashi::
+	trainerbattle_single TRAINER_TAKASHI, Route119_Text_TakashiIntro, Route119_Text_TakashiDefeat
+	msgbox Route119_Text_TakashiPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_Hideo::
+	trainerbattle_single TRAINER_HIDEO, Route119_Text_HideoIntro, Route119_Text_HideoDefeat
+	msgbox Route119_Text_HideoPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_Chris::
+	trainerbattle_single TRAINER_CHRIS, Route119_Text_ChrisIntro, Route119_Text_ChrisDefeat
+	msgbox Route119_Text_ChrisPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_Fabian::
+	trainerbattle_single TRAINER_FABIAN, Route119_Text_FabianIntro, Route119_Text_FabianDefeat
+	msgbox Route119_Text_FabianPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_Dayton::
+	trainerbattle_single TRAINER_DAYTON, Route119_Text_DaytonIntro, Route119_Text_DaytonDefeat
+	msgbox Route119_Text_DaytonPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_Rachel::
+	trainerbattle_single TRAINER_RACHEL, Route119_Text_RachelIntro, Route119_Text_RachelDefeat
+	msgbox Route119_Text_RachelPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_EventScript_BridgeAquaGrunt1::
+	lock
+	faceplayer
+	msgbox Route119_Text_StayAwayFromWeatherInstitute, MSGBOX_DEFAULT
+	closemessage
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight
+	waitmovement 0
+	release
+	end
+
+Route119_EventScript_BridgeAquaGrunt2::
+	lock
+	faceplayer
+	msgbox Route119_Text_DontGoNearWeatherInstitute, MSGBOX_DEFAULT
+	closemessage
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight
+	waitmovement 0
+	release
+	end
+
+Route119_EventScript_Boy1::
+	msgbox Route119_Text_ThoughtFlyByCatchingBirdMons, MSGBOX_NPC
+	end
+
+Route119_EventScript_Boy2::
+	msgbox Route119_Text_CanYourMonMakeSecretBase, MSGBOX_NPC
+	end
+
+Route119_EventScript_TrainerTipsDecoration::
+	msgbox Route119_Text_TrainerTipsDecoration, MSGBOX_SIGN
+	end
+
+Route119_EventScript_ScottWonAtFortreeGymCall::
+	lockall
+	pokenavcall Route119_Text_ScottYouWonAtFortreeGym
+	waitmessage
+	clearflag FLAG_SCOTT_CALL_FORTREE_GYM
+	addvar VAR_SCOTT_STATE, 1
+	releaseall
+	end
+
+Route119_Text_ScottYouWonAtFortreeGym:
+	.string "… … … … … …\n"
+	.string "… … … … … Beep!\p"
+	.string "Scott: Hiya, {PLAYER}{KUN}, it's me!\p"
+	.string "Just as I thought, you won at\n"
+	.string "the Fortree Gym.\p"
+	.string "Your strength…\n"
+	.string "Perhaps you really are the Trainer\l"
+	.string "that I've been searching for.\p"
+	.string "Remember, you have a fan in me.\n"
+	.string "I'll be cheering from the sidelines.\l"
+	.string "Keep up the great work!\p"
+	.string "… … … … … …\n"
+	.string "… … … … … Click!$"
+
+Route119_Text_StayAwayFromWeatherInstitute:
+	.string "We're standing lookout here.\pHey, you!\pStay away from the Weather Institute.\nIt's not safe.$"
+
+Route119_Text_DontGoNearWeatherInstitute:
+	.string "Lookout duty is surprisingly boring.\pHey, you!\pPlease don't go near the Weather\nInstitute.$"
+
+Route119_Text_ThoughtFlyByCatchingBirdMons:
+	.string "I thought how you fly is by catching\na whole flock of bird Pokémon, and\lthen hanging on to them somehow.\pBut it turns out there's an HM move\ncalled Fly!\pI don't know…\nIn a way, my dream came true, but I\lalso feel like I lost my dream…\lIt feels really strange…$"
+
+Route119_Text_TallGrassSnaresBikeTires:
+	.string "Tch…\n"
+	.string "It's a no-go…\p"
+	.string "The tall grass snares Bike tires.\n"
+	.string "There's no way you can cycle here.$"
+
+Route119_Text_CanYourMonMakeSecretBase:
+	.string "Can your Pokémon use its Secret Power\n"
+	.string "on a big pile of grass and make a\l"
+	.string "Secret Base?$"
+
+Route119_Text_RouteSignFortree:
+	.string "Route 119\n"
+	.string "{RIGHT_ARROW} Fortree City$"
+
+Route119_Text_WeatherInstitute:
+	.string "Weather Institute$"
+
+Route119_Text_TrainerTipsDecoration:
+	.string "Trainer Tips\pUp to sixteen decorations and\nfurniture items can be placed in a\lSecret Base.\pPick your favorite items and create\nyour very own Secret Base exactly\lthe way you want.$"
+
+`
+
+script Route119_EventScript_RivalTrigger1 {
+	setvar(VAR_TEMP_1, 1)
+	goto(Route119_EventScript_RivalEncounter)
+	end
+}
+
+script Route119_EventScript_RivalTrigger2 {
+	setvar(VAR_TEMP_1, 2)
+	goto(Route119_EventScript_RivalEncounter)
+	end
+}
+
+script Route119_EventScript_RivalEncounter {
+	lock
+	addobject(LOCALID_RIVAL_ON_BIKE)
+	checkplayergender
+	if(var(VAR_RESULT) == MALE){
+		playbgm(MUS_ENCOUNTER_MAY, TRUE)
+	}else{
+		playbgm(MUS_ENCOUNTER_BRENDAN, TRUE)
+	}
+	delay(64)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	switch(var(VAR_TEMP_1)){
+		case 1: applymovement(LOCALID_RIVAL_ON_BIKE, Route119_Movement_RivalEnter1)
+		case 2: applymovement(LOCALID_RIVAL_ON_BIKE, Route119_Movement_RivalEnter2)
+	}
+	waitmovement(LOCALID_RIVAL_ON_BIKE)
+	delay(32)
+	switch(var(VAR_TEMP_1)){
+		case 1:
+			setobjectxyperm(LOCALID_RIVAL, 26, 32)
+			setobjectxyperm(LOCALID_RIVAL_ON_BIKE, 26, 32)
+		case 2: 
+			setobjectxyperm(LOCALID_RIVAL, 27, 32)
+			setobjectxyperm(LOCALID_RIVAL_ON_BIKE, 27, 32)
+	}
+	removeobject(LOCALID_RIVAL_ON_BIKE)
+	addobject(LOCALID_RIVAL)
+	checkplayergender
+	if(var(VAR_RESULT) == MALE){
+		msgbox("{COLOR RED}May{COLOR DARK_GRAY}: {PLAYER}!\pGosh, where have you been hiding?\nI've been looking all over for you!")
+		closemessage
+		delay(8)
+		playse(SE_PIN)
+		applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
+		waitmovement(LOCALID_RIVAL)
+		waitse
+		msgbox("Oh… Where did you get that thing on\nyour finger?\lThat's a pretty fancy-looking ring…\p…\pWow! So that's a Mega Ring?\nAnd you can use it for Mega Evolution…\pI guess now you can keep getting even\ncloser to your Pokémon, huh?\lSome guys have all the luck…\pBut I'm not about to lose to you and\nsome accessory!\lLet's see who's best in battle!\pAre your Pokémon all ready?\nOf course they are!\lLet's go!")
+		closemessage
+		switch(var(VAR_STARTER_MON)){
+			case 0: trainerbattle_no_intro(TRAINER_MAY_ROUTE_119_TREECKO, "Achah! You're as strong as I expected,\n{PLAYER}!")
+			case 1: trainerbattle_no_intro(TRAINER_MAY_ROUTE_119_TORCHIC, "Achah! You're as strong as I expected,\n{PLAYER}!")
+			case 2: trainerbattle_no_intro(TRAINER_MAY_ROUTE_119_MUDKIP, "Achah! You're as strong as I expected,\n{PLAYER}!")
+		}
+		msgbox("Hm!\nWell, you did battle me like I asked,\lso I'll give you a reward.")
+		closemessage
+		delay(8)
+		giveitem(ITEM_HM_FLY)
+		msgbox("If you use Fly, your Pokémon will\ncarry you back to anywhere you've\lbeen before.\pBut you must have the Gym Badge\nfrom Fortree City to use Fly outside\lof battle.\pThat's the most important bit, so don't\nforget!\pMaybe you should Fly home and visit\nLittleroot sometimes.\pI bet your mom worries about you,\n{PLAYER}…\pWell, till we meet again!\nAnd next time I won't lose!")
+	}else{
+		msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: {PLAYER}!\nYou've been looking for Pokémon here!")
+		closemessage
+		delay(8)
+		playse(SE_PIN)
+		applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
+		waitmovement(LOCALID_RIVAL)
+		waitse
+		msgbox("Huh?\pThat ring you've got on…\nIt's like, I don't know, really cool…\p…\pWhoa. So that's the Mega Ring?\nAnd you can use if for Mega Evolution…\pSo you'll just keep getting closer\nto your Pokémon and getting even\lstronger…\pAll right, then.\nI guess I've just gotta help you test\lhow strong you've become, huh?\pShow me in battle how much better\nyou've gotten!\pCome on! A battle!\nI'm challenging you to a battle!")
+		closemessage
+		delay(8)
+		switch(var(VAR_STARTER_MON)){
+			case 0: trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_119_TREECKO, "Sheesh, {PLAYER}…\nYou've gotten pretty darn decent.")
+			case 1: trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_119_TORCHIC, "Sheesh, {PLAYER}…\nYou've gotten pretty darn decent.")
+			case 2: trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_119_MUDKIP, "Sheesh, {PLAYER}…\nYou've gotten pretty darn decent.")
+		}
+		msgbox("I'd say you're good enough to search\nfor Pokémon anywhere by now.\pHere, I'll give you this, so try it out.\nYou should be able to use it fine.")
+		closemessage
+		delay(8)
+		giveitem(ITEM_HM_FLY)
+		msgbox("With Fly, your Pokémon can carry you\nback to just about anyplace you've\lvisited before.\pOf course, you'll need the Fortree Gym\nBadge first, though…\pWell, I'm going on ahead.\nBut I'm definitely winning next time!")
+	}
+	closemessage
+	setflag(FLAG_RECEIVED_HM_FLY)
+	switch(var(VAR_TEMP_1)){
+		case 1:
+			setobjectxyperm(LOCALID_RIVAL, 26, 32)
+			setobjectxyperm(LOCALID_RIVAL_ON_BIKE, 26, 32)
+		case 2: 
+			setobjectxyperm(LOCALID_RIVAL, 27, 32)
+			setobjectxyperm(LOCALID_RIVAL_ON_BIKE, 27, 32)
+	}
+	removeobject(LOCALID_RIVAL)
+	addobject(LOCALID_RIVAL_ON_BIKE)
+	delay(32)
+	switch(var(VAR_TEMP_1)){
+		case 1: 
+			applymovement(OBJ_EVENT_ID_PLAYER, Route119_Movement_PlayerWatchRivalExit1)
+			applymovement(LOCALID_RIVAL_ON_BIKE, Route119_Movement_RivalExit1)
+		case 2: 
+			applymovement(OBJ_EVENT_ID_PLAYER, Route119_Movement_PlayerWatchRivalExit2)
+			applymovement(LOCALID_RIVAL_ON_BIKE, Route119_Movement_RivalExit2)
+	}
+	waitmovement(LOCALID_RIVAL_ON_BIKE)
+	removeobject(LOCALID_RIVAL_ON_BIKE)
+	setvar(VAR_ROUTE119_STATE, 1)
+	savebgm(MUS_DUMMY)
+	fadedefaultbgm
+	delay(64)
+	switch(var(VAR_TEMP_1)){
+		case 1: setobjectxyperm(LOCALID_SCOTT, 28, 25)
+		case 2: setobjectxyperm(LOCALID_SCOTT, 29, 25)
+	}
+	addobject(LOCALID_SCOTT)
+	applymovement(LOCALID_SCOTT, Route119_Movement_ScottEnter)
+	waitmovement(LOCALID_SCOTT)
+	addvar(VAR_SCOTT_STATE, 1)
+	msgbox("{COLOR RED}Scott{COLOR DARK_GRAY}: Hahahah!\nWay to go, {PLAYER}!\pI just passed by a Trainer riding a\nBike.\pYou just beat that Trainer, didn't you?\nIt was pretty obvious that you did.\pThe kid looked really upset with a\nface all red from anger.\pI sure seem to run into you often.\nAre you off to Fortree Gym next?\pI expect that you'll do well at the Gym.\nWell, I'll be seeing you!")
+	closemessage
+	switch(var(VAR_TEMP_1)){
+		case 1: applymovement(LOCALID_SCOTT, Route119_Movement_ScottExit1)
+		case 2: applymovement(LOCALID_SCOTT, Route119_Movement_ScottExit2)
+	}
+	waitmovement(LOCALID_SCOTT)
+	removeobject(LOCALID_SCOTT)
+	release
+	end
+}
+
+movement Route119_Movement_RivalEnter1 {
+	walk_fast_right * 8
+	walk_fast_up
+}
+
+movement Route119_Movement_RivalEnter2 {
+	walk_fast_right * 9
+	walk_fast_up
+}
+
+movement Route119_Movement_RivalExit1 {
+	walk_fast_right
+	walk_fast_up * 3
+	walk_fast_right
+	walk_fast_up * 4
+}
+
+movement Route119_Movement_RivalExit2 {
+	walk_fast_left
+	walk_fast_up * 3
+	walk_fast_right * 2
+	walk_fast_up * 4
+}
+
+movement Route119_Movement_PlayerWatchRivalExit1 {
+	delay_16
+	walk_in_place_right
+	delay_8
+	walk_in_place_up
+}
+
+movement Route119_Movement_PlayerWatchRivalExit2 {
+	delay_16
+	walk_in_place_left
+	delay_8
+	walk_in_place_up
+}
+
+movement Route119_Movement_ScottEnter {
+	walk_down * 4
+	walk_left * 2
+	walk_down
+}
+
+movement Route119_Movement_ScottExit1 {
+	walk_up
+	walk_right * 2
+	walk_up * 5
+}
+
+movement Route119_Movement_ScottExit2 {
+	walk_up
+	walk_right
+	walk_up * 5
+}

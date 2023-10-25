@@ -482,6 +482,11 @@ Route118_Movement_PlayerWatchStevenExit:
 	walk_in_place_up
 	step_end
 
+Route118_EventScript_PokeFanSecretBase::
+	msgbox Route118_EventScript_PokeFanSecretBase_Text_0, MSGBOX_NPC
+	end
+
+
 Route118_EventScript_Steven_Text_0:
 	.string "{COLOR RED}Steven{COLOR DARK_GRAY}: Why, hello.\pWe met in Granite Cave, didn't we?\pNo, I remember it.\nIt's {PLAYER}…\lRight?\pIt's good to see that your journey is\ngoing well.$"
 
@@ -535,3 +540,6 @@ Route118_EventScript_ReturnFromSouthernIsland_Text_2:
 
 Route118_EventScript_ReturnFromSouthernIsland_Text_3:
 	.string "In the end, you were far greater help\nthan I expected you might be.\pI expect that you and your team will\nbe able to best both Route 119 ahead\land even the Fortree Gym beyond that.\pI'll be curious to see how much\nstronger you might grow next time\lwe meet.\pUntil then, {PLAYER}.$"
+
+Route118_EventScript_PokeFanSecretBase_Text_0:
+	.string "Thanks to that Aarune dude, I've been\nawakened to the adventure that is\lbuilding a Secret Base.\pHe said he would be waiting for me\nwith the Secret Base Guild, but\lFortree City is far away.$"
