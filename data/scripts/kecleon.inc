@@ -48,6 +48,11 @@ Route119_EventScript_Kecleon2::
 	end
 
 EventScript_Kecleon::
+	delay 8
+    playse SE_PIN
+    applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+    waitmovement OBJ_EVENT_ID_PLAYER
+	waitse
 	checkitem ITEM_DEVON_SCOPE
 	goto_if_eq VAR_RESULT, TRUE, EventScript_AskUseDevonScope
 	msgbox Kecleon_Text_SomethingUnseeable, MSGBOX_DEFAULT

@@ -61,14 +61,7 @@ FortreeCity_House1_EventScript_Zigzagoon::
 	end
 
 FortreeCity_House1_Text_YouWillTradeWontYou:
-	.string "Wrooooaaar! I need it!\n"
-	.string "I have to get me a {STR_VAR_1}!\l"
-	.string "I'll do anything for it!\p"
-	.string "…Uh… Did you hear that?\n"
-	.string "My shout from the bottom of my heart?\p"
-	.string "Having heard that, you will trade\n"
-	.string "your {STR_VAR_1} for my {STR_VAR_2},\l"
-	.string "won't you?$"
+	.string "Hi.\nThere's this Pokémon I'm looking for.\pI want a {STR_VAR_1}.\nDo you have one?\pWould you trade it for my {STR_VAR_2}?$"
 
 FortreeCity_House1_Text_MonYouTakeCare:
 	.string "Oh, yeah, right on!\p"
@@ -76,12 +69,10 @@ FortreeCity_House1_Text_MonYouTakeCare:
 	.string "{STR_VAR_2}, you take care!$"
 
 FortreeCity_House1_Text_ThisIsntAMon:
-	.string "Uh, no, I don't think so.\n"
-	.string "That isn't a {STR_VAR_1}.$"
+	.string "Wait!\nThat Pokémon isn't a {STR_VAR_1}.\pI guess you don't want to trade with\nme.$"
 
 FortreeCity_House1_Text_YouWontTradeMe:
-	.string "No? You won't trade me?\n"
-	.string "Even after I bared my heart to you?$"
+	.string "Oh, OK. If you change your mind, please\ncome me.\pI'll be waiting!$"
 
 FortreeCity_House1_Text_GoingToMakeVolbeatStrong:
 	.string "I'm going to make Volbeat super\n"
@@ -94,5 +85,4 @@ FortreeCity_House1_Text_TradingMemoriesWithOthers:
 	.string "memories with other people.$"
 
 FortreeCity_House1_Text_Zigzagoon:
-	.string "Zigzagoon: Gumomoh?$"
-
+	.string "Gumomoh?$"

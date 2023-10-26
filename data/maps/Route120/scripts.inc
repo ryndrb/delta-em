@@ -158,7 +158,9 @@ Route120_EventScript_Steven::
 	lock
 	faceplayer
 	goto_if_set FLAG_NOT_READY_FOR_BATTLE_ROUTE_120, Route120_EventScript_StevenAskReadyForBattle
-	msgbox Route120_Text_StevenGreeting, MSGBOX_YESNO
+	msgbox Route120_Text_StevenGreeting, MSGBOX_DEFAULT
+    delay 16
+    msgbox Route120_Text_StevenHaveYouNotice, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Route120_EventScript_StevenNotReady
 	goto Route120_EventScript_StevenBattleKecleon
 	end
@@ -180,15 +182,20 @@ Route120_EventScript_StevenBattleKecleon::
 	closemessage
 	call_if_eq VAR_FACING, DIR_NORTH, Route120_EventScript_PlayerApproachKecleonNorth
 	call_if_eq VAR_FACING, DIR_WEST, Route120_EventScript_PlayerApproachKecleonWest
-	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	delay 20
-	msgbox Route120_Text_StevenUsedDevonScope, MSGBOX_DEFAULT
+	msgbox Route120_Text_PlayerUsedDevonScope, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_BRIDGE_KECLEON, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_BRIDGE_KECLEON, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	applymovement LOCALID_BRIDGE_KECLEON, Movement_KecleonAppears
 	waitmovement 0
+    playse SE_PIN
+    applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+    msgbox Route120_Text_PokemonBecameVisible, MSGBOX_DEFAULT
+    waitmovement OBJ_EVENT_ID_PLAYER
+    closemessage
 	waitse
 	playmoncry SPECIES_KECLEON, CRY_MODE_ENCOUNTER
 	delay 40
@@ -214,15 +221,29 @@ Route120_EventScript_RemoveBridgeKecleonPostBattle::
 	end
 
 Route120_EventScript_StevenGiveDeconScope::
-	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceFasterDown
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceDown
+    delay 8
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	msgbox Route120_Text_StevenGiveDevonScope, MSGBOX_DEFAULT
 	giveitem ITEM_DEVON_SCOPE
 	setflag FLAG_RECEIVED_DEVON_SCOPE
+    msgbox Route120_Text_StevenOneMoreThing, MSGBOX_DEFAULT
+    giveitem ITEM_SWAMPERTITE, 1
+    giveitem ITEM_BLAZIKENITE, 1
+    giveitem ITEM_SCEPTILITE, 1
+    msgbox Route120_Text_StevenExplainStones, MSGBOX_DEFAULT
+    closemessage
+    delay 8
+    playse SE_PIN
+    applymovement LOCALID_STEVEN, Common_Movement_ExclamationMark
+    waitmovement LOCALID_STEVEN
+    msgbox Route120_Text_StevenSomethingShone, MSGBOX_DEFAULT
+    closemessage
+    delay 32
 	msgbox Route120_Text_StevenGoodbye, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	delay 50
 	setfieldeffectargument 0, 1
@@ -239,7 +260,7 @@ Route120_EventScript_StevenGiveDeconScope::
 	end
 
 Route120_EventScript_PlayerApproachKecleonNorth::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	return
 
@@ -254,7 +275,15 @@ Route120_Movement_ApproachKecleonWest:
 	step_end
 
 Route120_EventScript_BridgeKecleon::
-	msgbox Kecleon_Text_SomethingUnseeable, MSGBOX_NPC
+    lock
+    delay 8
+    playse SE_PIN
+    applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+    waitmovement OBJ_EVENT_ID_PLAYER
+    waitse
+	msgbox Kecleon_Text_SomethingUnseeable, MSGBOX_DEFAULT
+    closemessage
+    release
 	end
 
 Route120_EventScript_RouteSignFortree::
@@ -363,65 +392,49 @@ Route120_EventScript_Callie::
 	end
 
 Route120_Text_StevenGreeting:
-	.string "Steven: Hm? {PLAYER}{KUN}, hi.\n"
-	.string "It's been a while.\p"
-	.string "There's something here that you can't\n"
-	.string "see, right?\p"
-	.string "Now, if I were to use this device on\n"
-	.string "the invisible obstacle…\p"
-	.string "No, no. Rather than describing it,\n"
-	.string "I should just show you.\l"
-	.string "That would be more fun.\p"
-	.string "{PLAYER}{KUN}, are your Pokémon ready for\n"
-	.string "battle?$"
+	.string "{COLOR RED}Steven{COLOR DARK_GRAY}: Hm?\p{PLAYER}?\nSo, we meet again.\pHow has it been? Have you been using\nthe Mega Ring wisely?\pI suppose I needn't even ask, though.\nNot when it comes to you and your\lteam.$"
+
+Route120_Text_StevenHaveYouNotice:
+    .string "I wonder…\nHave you noticed? Hm?\pThere's something here you can't see.\pNow if I were to use this device on the\ninvisible obstacle…\p…\pNo, no… Rather than describing it, I\nshould just show you.\lThat should be more entertaining.\p{PLAYER}…\pAre you and your Pokémon ready for\nbattle?$"
 
 Route120_Text_StevenIllWaitHere:
-	.string "Steven: No?\p"
-	.string "I'll wait here, so you can get ready.$"
+	.string "No?\pI'll wait here, so go get ready.$"
 
 Route120_Text_StevenReadyForBattle:
-	.string "Steven: {PLAYER}{KUN}, are your Pokémon\n"
-	.string "ready for battle?$"
+	.string "{COLOR RED}Steven{COLOR DARK_GRAY}: Are you and your Pokémon ready\nfor battle?$"
 
 Route120_Text_StevenShowMeYourPower:
-	.string "Steven: {PLAYER}{KUN}, show me your true\n"
-	.string "power as a Trainer!$"
+	.string "Good.\pIn that case…\pI want you to take this.\pTry it on.\nI'm sure it will fit you.$"
 
-Route120_Text_StevenUsedDevonScope:
-	.string "Steven used the Devon Scope.\p"
-	.string "An invisible Pokémon became completely\n"
-	.string "visible!\p"
-	.string "The startled Pokémon attacked!$"
+Route120_Text_PlayerUsedDevonScope:
+	.string "{PLAYER} slipped the Devon Scope on.$"
+
+Route120_Text_PokemonBecameVisible:
+    .string "A previously invisible Pokémon became\nvisible to the naked eye!\pThe startled Keckleon attacked!$"
 
 Route120_Text_StevenGiveDevonScope:
-	.string "Steven: I see…\n"
-	.string "Your battle style is intriguing.\p"
-	.string "Your Pokémon have obviously grown\n"
-	.string "since I first met you in Dewford.\p"
-	.string "I'd like you to have this\n"
-	.string "Devon Scope.\p"
-	.string "Who knows, there may be other\n"
-	.string "concealed Pokémon.$"
+	.string "Just as I expected.\pThat's called a Devon Scope.\nIt's a fantastic piece of tech that\llets you see Pokémon in hiding.\pConsider it a gift from me.\nTake it.$"
+
+Route120_Text_StevenOneMoreThing:
+    .string "And one more thing…$"
+
+Route120_Text_StevenExplainStones:
+    .string "These stones rank in my top ten\nfavorite stones in existence.\pI have no doubt that your Pokémon will\nlike them, too.\pYou know, {PLAYER}…\pI like to see Trainers and Pokémon\ntrying their best.\lThat's why I like you so much.$"
+
+Route120_Text_StevenSomethingShone:
+    .string "Hm?\pIt seemed as though something just…\nshone for a moment in your Bag.\pI'm sure I sensed the power of some\nkind of stone…\pA Meteorite…?\nNo, it couldn't be…$"
 
 Route120_Text_StevenGoodbye:
-	.string "Steven: {PLAYER}{KUN}.\p"
-	.string "I enjoy seeing Pokémon and Trainers\n"
-	.string "who strive together.\p"
-	.string "I think you're doing great.\p"
-	.string "Well, let's meet again somewhere.$"
+	.string "Let's meet again someday.$"
 
 Kecleon_Text_SomethingUnseeable:
-	.string "Something unseeable is in the way.$"
+	.string "There's an invisible obstacle in your\nway.$"
 
 Kecleon_Text_WantToUseDevonScope:
-	.string "Something unseeable is in the way.\p"
-	.string "Want to use the Devon Scope?$"
+	.string "There's an invisible obstacle in your\nway.\pWould you like to use the Devon Scope?$"
 
 Kecleon_Text_UseDevonScopeMonAttacked:
-	.string "{PLAYER} used the Devon Scope.\p"
-	.string "An invisible Pokémon became completely\n"
-	.string "visible!\p"
-	.string "The startled Pokémon attacked!$"
+	.string "{PLAYER} slipped the Devon Scope on.\pA previously invisible Pokémon became\nvisible to the naked eye!\pThe startled Keckleon attacked!$"
 
 Route120_Text_RouteSignFortree:
 	.string "Route 120\n"

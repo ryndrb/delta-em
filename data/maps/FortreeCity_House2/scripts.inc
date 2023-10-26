@@ -42,40 +42,22 @@ FortreeCity_House2_EventScript_WrongGuess::
 	end
 
 FortreeCity_House2_Text_HiddenPowersArousedByNature:
-	.string "People… Pokémon…\p"
-	.string "Their hidden powers are aroused by\n"
-	.string "living in natural environments…$"
+	.string "People… Pokémon…\pTheir hidden powers are awakened by\nliving in natural environments…$"
 
 FortreeCity_House2_Text_CoinInWhichHand:
-	.string "Let this old woman see if your hidden\n"
-	.string "power has awoken…\p"
-	.string "I hold a coin in my hand.\p"
-	.string "Now, tell me, have I palmed it in\n"
-	.string "the right hand? Or in the left?$"
+	.string "Let this old woman see if your hidden\npower has awakened.\pLet's see…\pI hold a coin in my hand.\pNow tell me, which hand holds the coin,\nthe right hand or the left?$"
 
 FortreeCity_House2_Text_CorrectTryAgainWhichHand:
-	.string "Oh! Yes, correct!\p"
-	.string "We shall try again.\p"
-	.string "In which hand have I palmed the coin?\n"
-	.string "The right or left?$"
+	.string "You are correct!\pLet us try again.\pI hold a coin in my hand.\pNow tell me, which hand holds the coin\nthe right or the left?$"
 
 FortreeCity_House2_Text_CorrectTryAgainWhichHand2:
-	.string "Oh! Yes, correct!\p"
-	.string "We shall try again.\p"
-	.string "In which hand have I palmed the coin?\n"
-	.string "The right or left?$"
+	.string "Yes, correct again!\pWe shall try once more.\pI hold a coin in my hand.\pNow tell me, which hand holds the coin\nthe right or the left?$"
 
 FortreeCity_House2_Text_YourHiddenPowerHasAwoken:
-	.string "Oh! Splendid!\n"
-	.string "Your hidden power has awoken!\p"
-	.string "Here, take this and awaken the hidden\n"
-	.string "power of your Pokémon.$"
+	.string "Splendid!\nYour hidden power has awakened!\pHere, take this and awaken the hidden\npower of your Pokémon.$"
 
 FortreeCity_House2_Text_ExplainHiddenPower:
-	.string "Hidden Power is a move that changes\n"
-	.string "with the Pokémon.$"
+	.string "Hidden Power varies in type depending\non the Pokémon using it.$"
 
 FortreeCity_House2_Text_YouGuessedWrong:
-	.string "No, too bad.\n"
-	.string "You guessed wrong.$"
-
+	.string "No, too bad.\nYou guessed wrong.$"

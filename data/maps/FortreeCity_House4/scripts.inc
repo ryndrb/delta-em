@@ -47,10 +47,10 @@ FortreeCity_House4_EventScript_ReceivedMentalHerb::
 	end
 
 FortreeCity_House4_Movement_WingullExit:
+    walk_fast_left
 	walk_fast_down
+	walk_fast_left
 	walk_fast_down
-	walk_fast_right
-	walk_in_place_faster_down
 	delay_8
 	step_end
 
@@ -65,18 +65,14 @@ FortreeCity_House4_EventScript_Wingull::
 	end
 
 FortreeCity_House4_Text_BringsWorldCloserTogether:
-	.string "By being together with Pokémon,\n"
-	.string "people make more and more friends.\p"
-	.string "And that brings the world closer\n"
-	.string "together. I think it's wonderful!$"
+	.string "By being together with Pokémon,\npeople make more and more friends.\pAnd that brings the world closer\ntogether.\lI think it's wonderful!$"
 
 FortreeCity_House4_Text_GoBirdPokemon:
 	.string "There!\n"
-	.string "Go, Bird Pokémon!$"
+	.string "Go, bird Pokémon!$"
 
 FortreeCity_House4_Text_AskedWingullToRunErrand:
-	.string "Heheh, I asked my Wingull to run\n"
-	.string "an errand for me.$"
+	.string "Heheh, I asked my Wingull to run\nan errand for me.$"
 
 FortreeCity_House4_Text_WelcomeWingullTakeMentalHerb:
 	.string "Good!\n"
@@ -93,5 +89,4 @@ FortreeCity_House4_Text_FriendsFarAwayThanksToWingull:
 	.string "who live far away.$"
 
 FortreeCity_House4_Text_Wingull:
-	.string "Wingull: Pihyoh!$"
-
+	.string "Kweee!$"

@@ -21,15 +21,19 @@ FortreeCity_House5_EventScript_Zigzagoon::
 
 FortreeCity_House5_Text_TreeHousesAreGreat:
 	.string "The tree houses of Fortree are great!\p"
-	.string "I think it's the number one town for\n"
+	.string "I think it's the number-one town for\n"
 	.string "living together with Pokémon.$"
 
 FortreeCity_House5_Text_AdaptedToNature:
-	.string "Pokémon and people have adapted to\n"
-	.string "nature for survival.\p"
-	.string "There's no need to make nature\n"
-	.string "conform to the way we want to live.$"
+	.string "Pokémon and people have adapted to\nnature to survive.\pThere's no need to make nature\nconform to the way we want to live.$"
 
 FortreeCity_House5_Text_Zigzagoon:
-	.string "Zigzagoon: Bufuu!$"
+	.string "Bufuu!$"
 
+FortreeCity_House5_EventScript_Girl::
+	msgbox FortreeCity_House5_EventScript_Girl_Text_0, MSGBOX_NPC
+	end
+
+
+FortreeCity_House5_EventScript_Girl_Text_0:
+	.string "Climbing up and down…\nLiving here is ticket to health, hey?$"

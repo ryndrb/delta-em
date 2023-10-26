@@ -20,12 +20,13 @@ FortreeCity_Gym_EventScript_Winona::
 	trainerbattle_single TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, FortreeCity_Gym_EventScript_WinonaRematch
-	goto_if_unset FLAG_RECEIVED_TM_AERIAL_ACE, FortreeCity_Gym_EventScript_GiveAerialAce2
+	goto_if_unset FLAG_RECEIVED_TM_AERIAL_ACE, FortreeCity_Gym_EventScript_GiveRoost2
 	msgbox FortreeCity_Gym_Text_WinonaPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 FortreeCity_Gym_EventScript_WinonaDefeated::
+    msgbox FortreeCity_Gym_Text_RecognizeTalent, MSGBOX_DEFAULT
 	message FortreeCity_Gym_Text_ReceivedFeatherBadge
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
@@ -34,8 +35,10 @@ FortreeCity_Gym_EventScript_WinonaDefeated::
 	setflag FLAG_BADGE06_GET
 	setvar VAR_0x8008, 6
 	call Common_EventScript_SetGymTrainers
-	call FortreeCity_Gym_EventScript_GiveAerialAce
-	closemessage
+	call FortreeCity_Gym_EventScript_GiveRoost
+    delay 16
+    msgbox FortreeCity_Gym_Text_WinonaPostBattle, MSGBOX_DEFAULT
+    closemessage
 	delay 30
 	playfanfare MUS_REGISTER_MATCH_CALL
 	msgbox FortreeCity_Gym_Text_RegisteredWinona, MSGBOX_DEFAULT
@@ -48,18 +51,18 @@ FortreeCity_Gym_EventScript_WinonaDefeated::
 	release
 	end
 
-FortreeCity_Gym_EventScript_GiveAerialAce2::
+FortreeCity_Gym_EventScript_GiveRoost2::
 	giveitem ITEM_TM_AERIAL_ACE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	msgbox FortreeCity_Gym_Text_ExplainAerialAce, MSGBOX_DEFAULT
+	msgbox FortreeCity_Gym_Text_ExplainRoost, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_AERIAL_ACE
 	release
 	end
 
-FortreeCity_Gym_EventScript_GiveAerialAce::
+FortreeCity_Gym_EventScript_GiveRoost:: @ WILL BE REPLACED BY ROOST
 	giveitem ITEM_TM_AERIAL_ACE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-	msgbox FortreeCity_Gym_Text_ExplainAerialAce, MSGBOX_DEFAULT
+	msgbox FortreeCity_Gym_Text_ExplainRoost, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_AERIAL_ACE
 	return
 
@@ -134,146 +137,95 @@ FortreeCity_Gym_EventScript_GymStatue::
 	end
 
 FortreeCity_Gym_Text_GymGuideAdvice:
-	.string "Yo, how's it going, Champion-\n"
-	.string "bound {PLAYER}?\p"
+	.string "Yo, how's it going, Champ-to-be\n{PLAYER}?\p"
 	.string "Fortree Gym Leader Winona is\n"
 	.string "a master of Flying-type Pokémon.\p"
 	.string "She's waiting at the back of this Gym,\n"
 	.string "behind the rotating doors.\p"
 	.string "She's waiting for new challengers\n"
 	.string "who are trying to take wing!\p"
-	.string "Okay, go for it!$"
+	.string "OK, go for it!$"
 
 FortreeCity_Gym_Text_GymGuidePostVictory:
-	.string "You did it!\n"
-	.string "You've achieved liftoff!$"
+	.string "You did it!\nYou've achieved liftoff!$"
 
 FortreeCity_Gym_Text_JaredIntro:
-	.string "Behold the elegant battle style of\n"
-	.string "Bird Pokémon!$"
+	.string "Behold the elegant battle style of\nBird Pokémon!$"
 
 FortreeCity_Gym_Text_JaredDefeat:
-	.string "You…\n"
-	.string "You're strong…$"
+	.string "You…\nYou're strong…$"
 
 FortreeCity_Gym_Text_JaredPostBattle:
-	.string "A Trainer has to be smart to keep\n"
-	.string "up with unexpected turns of events.\p"
-	.string "Do you have the smarts to get to\n"
-	.string "our Leader?$"
+	.string "A Trainer has to be smart to keep\nup with unexpected turns of events.\pDo you have the smarts to get to\nour Leader?$"
 
 FortreeCity_Gym_Text_EdwardoIntro:
-	.string "The lovers of Bird Pokémon aspire\n"
-	.string "to join this Gym.\p"
-	.string "As a member of the Fortree Gym,\n"
-	.string "I'm not allowed to lose!$"
+	.string "The lovers of Bird Pokémon aspire to\njoin this Gym.\pAs a member of the Fortree Gym, I'm not\nallowed to lose!$"
 
 FortreeCity_Gym_Text_EdwardoDefeat:
-	.string "It was too much of a load for me\n"
-	.string "to bear…$"
+	.string "It was too much of a load for me to\nbear…$"
 
 FortreeCity_Gym_Text_EdwardoPostBattle:
-	.string "The world is huge, and there are\n"
-	.string "countless tough Trainers.\p"
-	.string "I'm going to keep training and make\n"
-	.string "myself even stronger.$"
+	.string "The world is huge, and there are\ncountless tough Trainers.\pI'm going to keep training and make\nmyself even stronger.$"
 
 FortreeCity_Gym_Text_FlintIntro:
-	.string "There's no need for Winona, our Gym\n"
-	.string "Leader, to deal with you!\p"
-	.string "I'm plenty good enough for you!$"
+	.string "There's no need for Winona, our Gym\nLeader, to deal with you!\pI'm plenty good enough for you!$"
 
 FortreeCity_Gym_Text_FlintDefeat:
-	.string "Winona, I…\n"
-	.string "I lost!$"
+	.string "Winona, I…\nI lost!$"
 
 FortreeCity_Gym_Text_FlintPostBattle:
-	.string "Winona is cute and she's strong.\n"
-	.string "She's the ultimate Leader!\p"
-	.string "Blush…$"
+	.string "Winona is cute and she's strong.\nShe's the ultimate Leader!\pBlush…$"
 
 FortreeCity_Gym_Text_AshleyIntro:
-	.string "Winona taught me personally!\n"
-	.string "You can't beat me easily!$"
+	.string "Winona taught me personally!\nYou can't beat me easily!$"
 
 FortreeCity_Gym_Text_AshleyDefeat:
 	.string "I was beaten…$"
 
 FortreeCity_Gym_Text_AshleyPostBattle:
-	.string "Thanks to Winona, the people of\n"
-	.string "Fortree can live without fear.$"
+	.string "Thanks to Winona, the people of\nFortree can live without fear.$"
 
 FortreeCity_Gym_Text_HumbertoIntro:
-	.string "When Winona takes to battle, her face\n"
-	.string "shines with beautiful determination…\p"
-	.string "I'm not letting you witness that\n"
-	.string "lovely sight!$"
+	.string "When Winona takes to battle, her face\nshines with beautiful determination…\pI'm not letting you witness that lovely\nsight!$"
 
 FortreeCity_Gym_Text_HumbertoDefeat:
-	.string "Urk!\n"
-	.string "I couldn't stop you.$"
+	.string "Urk!\nI couldn't stop you.$"
 
 FortreeCity_Gym_Text_HumbertoPostBattle:
-	.string "You'd better watch it!\n"
-	.string "Don't get distracted staring at Winona\l"
-	.string "or you'll go crashing down in a heap!$"
+	.string "You'd better watch it!\nDon't get distracted staring at Winona\lor you'll go crashing down in a heap!$"
 
 FortreeCity_Gym_Text_DariusIntro:
-	.string "You'd better know that there are all\n"
-	.string "sorts of Flying-type Pokémon.\p"
-	.string "You do know that, right?$"
+	.string "You'd better know that there are all\nsorts of Flying-type Pokémon.\pYou do know that, right?$"
 
 FortreeCity_Gym_Text_DariusDefeat:
 	.string "You seem to know your stuff!$"
 
 FortreeCity_Gym_Text_DariusPostBattle:
-	.string "Sure, you beat me all right.\n"
-	.string "But you'd better watch it! Our Leader\l"
-	.string "Winona's Pokémon are all business.$"
+	.string "Sure, you beat me all right.\nBut you'd better watch it! Our Leader\lWinona's Pokémon are all business.$"
 
 FortreeCity_Gym_Text_WinonaIntro:
-	.string "I am Winona. I am the Leader of\n"
-	.string "the Fortree Pokémon Gym.\p"
-	.string "I have become one with Bird Pokémon\n"
-	.string "and have soared the skies…\p"
-	.string "However grueling the battle, we have\n"
-	.string "triumphed with grace…\p"
-	.string "Witness the elegant choreography\n"
-	.string "of Bird Pokémon and I!$"
+	.string "{COLOR RED}Winona{COLOR DARK_GRAY}: I am Winona.\pI am the Leader of Fortree Pokémon\nGym.\pI have become one with bird Pokémon\nand have soared skies…\pHowever grueling the battle, we will\ntriumph with grace…\pWitness the elegant choreography of\nmy bird Pokémon and me!$"
 
 FortreeCity_Gym_Text_WinonaDefeat:
-	.string "Never before have I seen a Trainer\n"
-	.string "command Pokémon with more grace\l"
-	.string "than I…\p"
-	.string "In recognition of your prowess,\n"
-	.string "I present to you this Gym Badge.$"
+	.string "Never before have I seen a Trainer\ncommand Pokémon with more grace\lthan I…$"
+
+FortreeCity_Gym_Text_RecognizeTalent:
+    .string "I recognize your talent and present\nyou with this Gym Badge.$"
 
 FortreeCity_Gym_Text_ReceivedFeatherBadge:
-	.string "{PLAYER} received the Feather Badge\n"
-	.string "from Winona.$"
+	.string "{PLAYER} received the Feather Badge\nfrom Winona.$"
 
 FortreeCity_Gym_Text_ExplainFeatherBadgeTakeThis:
-	.string "With the Feather Badge, all Pokémon up\n"
-	.string "to Lv 70, even those received through\l"
-	.string "trades, will obey your every command.\p"
-	.string "You will also be able to use\n"
-	.string "the HM move Fly outside of battle.\p"
-	.string "And this…\n"
-	.string "This is a gift from me.$"
+	.string "With the Feather Badge, all Pokémon up\nto Lv. 70, even those received through\ltrades, will obey your every command.\pYou will also be able to use\nthe HM move Fly outside of battle.\pAnd this…\nThis is a gift from me.$"
 
-FortreeCity_Gym_Text_ExplainAerialAce:
-	.string "TM40 contains Aerial Ace.\p"
-	.string "Its speed…\n"
-	.string "No Pokémon should be able to avoid it.\p"
-	.string "… … … … … …$"
+FortreeCity_Gym_Text_ExplainRoost:
+	.string "Roost…\pWith this move, the user can restore\nits HP by up to half its max HP by\llanding on the ground and resting its\linjured body.\pHowever, the user loses its Flying-\ntype designation during the turn, so\lbe cautious.$"
 
 FortreeCity_Gym_Text_RegisteredWinona:
-	.string "Registered Gym Leader Winona\n"
-	.string "in the Pokénav.$"
+	.string "Registered Gym Leader Winona\nin the Pokénav.$"
 
 FortreeCity_Gym_Text_WinonaPostBattle:
-	.string "Though I fell to you, I will remain\n"
-	.string "devoted to Bird Pokémon.$"
+	.string "You won against me…\nI know you'll keep aiming higher and\lhigher!\pSomeday, you may even fly up into the\nsky…\lThat's the impression I get from you.$"
 
 FortreeCity_Gym_Text_GymStatue:
 	.string "Fortree City Pokémon Gym$"
