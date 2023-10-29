@@ -128,3 +128,10 @@ Route123_BerryMastersHouse_EventScript_GaveBerry::
 	release
 	end
 
+Route123_BerryMastersHouse_EventScript_Man::
+	msgbox Route123_BerryMastersHouse_EventScript_Man_Text_0
+	end
+
+
+Route123_BerryMastersHouse_EventScript_Man_Text_0:
+	.string "Do you know Gracidea?\pIn the Sinnoh region, people give\nyou a bouquet of Gracidea to convey\ltheir gratitude!\pIt's very old custom!$"

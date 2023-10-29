@@ -210,7 +210,7 @@ static const struct TrainerMon sParty_GruntSpaceCenter1[] = {
     }
 };
 
-static const struct TrainerMon sParty_GruntMtPyre1[] = {
+static const struct TrainerMon sParty_MattMtPyre[] = {
     {
     .lvl = 32,
     .species = SPECIES_ZUBAT,

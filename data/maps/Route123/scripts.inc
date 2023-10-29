@@ -6,26 +6,28 @@ Route123_OnTransition:
 	special SetRoute123Weather
 	end
 
-Route123_EventScript_GigaDrainGirl::
+Route123_EventScript_BigRootGirl::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_TM_GIGA_DRAIN, Route123_EventScript_ReceivedGigaDrain
+	goto_if_set FLAG_RECEIVED_BIG_ROOT, Route123_EventScript_ReceivedBigRoot
 	msgbox Route123_Text_LoveGrassMonsHaveAny, MSGBOX_DEFAULT
 	special IsGrassTypeInParty
 	goto_if_eq VAR_RESULT, FALSE, Route123_EventScript_NoGrassMons
 	msgbox Route123_Text_YouLikeGrassMonsTooHaveThis, MSGBOX_DEFAULT
-	giveitem ITEM_TM_GIGA_DRAIN
+	giveitem ITEM_BIG_ROOT, 1
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_TM_GIGA_DRAIN
+	setflag FLAG_RECEIVED_BIG_ROOT
 	msgbox Route123_Text_CheckTreesWithMyGrassMon, MSGBOX_DEFAULT
 	release
 	end
 
 Route123_EventScript_NoGrassMons::
+    msgbox Route123_Text_NoGrassMons, MSGBOX_DEFAULT
+    closemessage
 	release
 	end
 
-Route123_EventScript_ReceivedGigaDrain::
+Route123_EventScript_ReceivedBigRoot::
 	msgbox Route123_Text_CheckTreesWithMyGrassMon, MSGBOX_DEFAULT
 	release
 	end
@@ -171,19 +173,16 @@ Route123_EventScript_RematchFernando::
 	end
 
 Route123_Text_LoveGrassMonsHaveAny:
-	.string "I love Grass-type Pokémon!\p"
-	.string "Do you have any Grass-type Pokémon?$"
+	.string "I love Grass-type Pokémon!\pHow about you?$"
+
+Route123_Text_NoGrassMons:
+    .string "Oh…\pYou don't travel with any Grass-type\nPokémon…$"
 
 Route123_Text_YouLikeGrassMonsTooHaveThis:
-	.string "Oh?\p"
-	.string "You like Grass-type Pokémon, too,\n"
-	.string "don't you?\p"
-	.string "I'm so happy, you can have this!\n"
-	.string "It's a token of our friendship.$"
+	.string "Oh?\pYou also love Grass-type Pokémon, eh?\pI'm so happy that I want to give you\nthis!\pIt'll be a token of our friendship!$"
 
 Route123_Text_CheckTreesWithMyGrassMon:
-	.string "I check trees with my Grass-type\n"
-	.string "Pokémon. I'm like a tree doctor.$"
+	.string "I check on the health of the\ntrees around here with my Grass-type\lPokémon.\pI guess you could say I'm a tree\ndoctor!$"
 
 Route123_Text_RouteSign:
 	.string "{RIGHT_ARROW} Route 123\n"
@@ -195,4 +194,3 @@ Route123_Text_RouteSignMtPyre:
 
 Route123_Text_BerryMastersHouse:
 	.string "Berry Master's House$"
-

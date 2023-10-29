@@ -1,6 +1,7 @@
+.set LOCALID_OLD_MAN, 1
 .set LOCALID_ARCHIE, 2
 .set LOCALID_OLD_LADY, 3
-.set LOCALID_GRUNT_1, 4
+.set LOCALID_MATT, 4
 .set LOCALID_GRUNT_2, 5
 .set LOCALID_GRUNT_3, 6
 .set LOCALID_GRUNT_4, 7
@@ -11,124 +12,21 @@ MtPyre_Summit_MapScripts::
 	.byte 0
 
 MtPyre_Summit_OnTransition:
+	call_if_eq VAR_MT_PYRE_STATE, 0, MtPyre_Summit_EventScript_SetOldPeoplePositions
 	call_if_eq VAR_MT_PYRE_STATE, 2, MtPyre_Summit_EventScript_SetArchieMaxiePositions
+	end
+
+MtPyre_Summit_EventScript_SetOldPeoplePositions::
+	setobjectxyperm LOCALID_OLD_MAN, 21, 5
+	setobjectxyperm LOCALID_OLD_LADY, 21, 6
+	setobjectmovementtype LOCALID_OLD_MAN, MOVEMENT_TYPE_FACE_DOWN
+	setobjectmovementtype LOCALID_OLD_LADY, MOVEMENT_TYPE_FACE_UP
 	end
 
 MtPyre_Summit_EventScript_SetArchieMaxiePositions::
 	setobjectxyperm LOCALID_MAXIE, 23, 6
 	setobjectxyperm LOCALID_ARCHIE, 22, 6
 	end
-
-MtPyre_Summit_EventScript_TeamAquaTrigger0::
-	lockall
-	setvar VAR_0x8008, 0
-	goto MtPyre_Summit_EventScript_TeamAquaExits
-	end
-
-MtPyre_Summit_EventScript_TeamAquaTrigger1::
-	lockall
-	setvar VAR_0x8008, 1
-	goto MtPyre_Summit_EventScript_TeamAquaExits
-	end
-
-MtPyre_Summit_EventScript_TeamAquaTrigger2::
-	lockall
-	setvar VAR_0x8008, 2
-	goto MtPyre_Summit_EventScript_TeamAquaExits
-	end
-
-MtPyre_Summit_EventScript_TeamAquaExits::
-	playbgm MUS_ENCOUNTER_AQUA, FALSE
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement 0
-	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	delay 50
-	call_if_eq VAR_0x8008, 0, MtPyre_Summit_EventScript_ArchieFacePlayer0
-	call_if_eq VAR_0x8008, 1, MtPyre_Summit_EventScript_ArchieFacePlayer1
-	call_if_eq VAR_0x8008, 2, MtPyre_Summit_EventScript_ArchieFacePlayer2
-	msgbox MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo, MSGBOX_DEFAULT
-	closemessage
-	fadescreen FADE_TO_BLACK
-	removeobject LOCALID_ARCHIE
-	removeobject LOCALID_GRUNT_1
-	removeobject LOCALID_GRUNT_2
-	removeobject LOCALID_GRUNT_3
-	removeobject LOCALID_GRUNT_4
-	setflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
-	setflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
-	fadedefaultbgm
-	fadescreen FADE_FROM_BLACK
-	delay 20
-	setvar VAR_MT_PYRE_STATE, 1
-	call_if_eq VAR_0x8008, 0, MtPyre_Summit_EventScript_OldLadyApproachPlayer0
-	call_if_eq VAR_0x8008, 1, MtPyre_Summit_EventScript_OldLadyApproachPlayer1
-	call_if_eq VAR_0x8008, 2, MtPyre_Summit_EventScript_OldLadyApproachPlayer2
-	msgbox MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis, MSGBOX_DEFAULT
-	giveitem ITEM_MAGMA_EMBLEM
-	setflag FLAG_RECEIVED_RED_OR_BLUE_ORB
-	setflag FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD
-	releaseall
-	end
-
-MtPyre_Summit_EventScript_ArchieFacePlayer0::
-	applymovement LOCALID_ARCHIE, MtPyre_Summit_Movement_ArchieFacePlayer0
-	waitmovement 0
-	return
-
-@ Archie is already facing player
-MtPyre_Summit_EventScript_ArchieFacePlayer1::
-	return
-
-MtPyre_Summit_EventScript_ArchieFacePlayer2::
-	applymovement LOCALID_ARCHIE, MtPyre_Summit_Movement_ArchieFacePlayer2
-	waitmovement 0
-	return
-
-MtPyre_Summit_EventScript_OldLadyApproachPlayer0::
-	applymovement LOCALID_OLD_LADY, MtPyre_Summit_Movement_OldLadyApproachPlayer0
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	return
-
-MtPyre_Summit_EventScript_OldLadyApproachPlayer1::
-	applymovement LOCALID_OLD_LADY, MtPyre_Summit_Movement_OldLadyApproachPlayer1
-	waitmovement 0
-	return
-
-MtPyre_Summit_EventScript_OldLadyApproachPlayer2::
-	applymovement LOCALID_OLD_LADY, MtPyre_Summit_Movement_OldLadyApproachPlayer2
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	return
-
-MtPyre_Summit_Movement_OldLadyApproachPlayer0:
-	walk_down
-	walk_down
-	walk_in_place_faster_left
-	step_end
-
-MtPyre_Summit_Movement_OldLadyApproachPlayer1:
-	walk_down
-	step_end
-
-MtPyre_Summit_Movement_OldLadyApproachPlayer2:
-	walk_down
-	walk_down
-	walk_in_place_faster_right
-	step_end
-
-MtPyre_Summit_Movement_ArchieFacePlayer0:
-	walk_left
-	walk_in_place_faster_down
-	step_end
-
-MtPyre_Summit_Movement_ArchieFacePlayer2:
-	walk_right
-	walk_in_place_faster_down
-	step_end
 
 MtPyre_Summit_EventScript_OldMan::
 	lock
@@ -409,11 +307,6 @@ MtPyre_Summit_Movement_MaxieApproachArchie2:
 	walk_in_place_faster_left
 	step_end
 
-MtPyre_Summit_EventScript_Grunt1::
-	trainerbattle_single TRAINER_GRUNT_MT_PYRE_1, MtPyre_Summit_Text_Grunt1Intro, MtPyre_Summit_Text_Grunt1Defeat
-	msgbox MtPyre_Summit_Text_Grunt1PostBattle, MSGBOX_AUTOCLOSE
-	end
-
 MtPyre_Summit_EventScript_Grunt2::
 	trainerbattle_single TRAINER_GRUNT_MT_PYRE_2, MtPyre_Summit_Text_Grunt2Intro, MtPyre_Summit_Text_Grunt2Defeat
 	msgbox MtPyre_Summit_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
@@ -429,44 +322,21 @@ MtPyre_Summit_EventScript_Grunt4::
 	msgbox MtPyre_Summit_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
 	end
 
-MtPyre_Summit_Text_Grunt1Intro:
-	.string "No! Those Team Magma goons got\n"
-	.string "here ahead of us!\p"
-	.string "We can't fall behind!$"
-
-MtPyre_Summit_Text_Grunt1Defeat:
-	.string "I thought you were one of the Magmas\n"
-	.string "who happened to come back…$"
-
-MtPyre_Summit_Text_Grunt1PostBattle:
-	.string "Yeah, so you are strong…\n"
-	.string "But there're a lot of us!$"
-
 MtPyre_Summit_Text_Grunt2Intro:
-	.string "Hah!\n"
-	.string "Too bad for you!\p"
-	.string "If you came earlier, you only would've\n"
-	.string "had to battle the wimpy Team Magma.\p"
-	.string "But since you arrived now, you have\n"
-	.string "to take on us toughies!$"
+	.string "What's up with you, brat?\nWhat does a single kid expect to do?$"
 
 MtPyre_Summit_Text_Grunt2Defeat:
-	.string "Urgh… I should've let you take on\n"
-	.string "Team Magma first…$"
+	.string "Wow, you're remarkably strong.$"
 
 MtPyre_Summit_Text_Grunt2PostBattle:
 	.string "You don't know anything!\n"
 	.string "So why are you messing with us?$"
 
 MtPyre_Summit_Text_Grunt3Intro:
-	.string "You…\n"
-	.string "We saw you at Mt. Chimney.\p"
-	.string "You don't belong to either Team,\n"
-	.string "so why would you be here?$"
+	.string "Hey, I remember you from Mt. Chimney!\pYou don't belong to either Team, so why\nwould you be here?$"
 
 MtPyre_Summit_Text_Grunt3Defeat:
-	.string "If you're going to mess with anyone,\n"
-	.string "let it be Team Magma…$"
+	.string "Urgggh…\nBeaten by some kid--again!$"
 
 MtPyre_Summit_Text_Grunt3PostBattle:
 	.string "Heh, it doesn't matter!\n"
@@ -475,55 +345,17 @@ MtPyre_Summit_Text_Grunt3PostBattle:
 	.string "he was after!$"
 
 MtPyre_Summit_Text_Grunt4Intro:
-	.string "Oh, I know!\n"
-	.string "You tried to join Team Magma,\l"
-	.string "but they wouldn't have you!\p"
-	.string "Well, don't think that we'll let you\n"
-	.string "join our Team Aqua!$"
+	.string "I'll show exactly how scary Team Aqua\ncan be!$"
 
 MtPyre_Summit_Text_Grunt4Defeat:
-	.string "If you want to join Team Aqua that\n"
-	.string "badly, we can consider it…$"
+	.string "So you think you can pick a fight with\nTeam Aqua all by your lonesome…$"
 
 MtPyre_Summit_Text_Grunt4PostBattle:
 	.string "We have a great combination going\n"
 	.string "with us members and our leader.$"
 
-MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo:
-	.string "Archie: Team Magma's Maxie got ahead\n"
-	.string "of us, but we also got what we wanted.\p"
-	.string "The Red Orb preserved at Mt. Pyre…\n"
-	.string "I, Archie, now have it in my possession!\p"
-	.string "Fufufu… Now we can bring our ultimate\n"
-	.string "objective to fruition!\p"
-	.string "Okay, Team!\n"
-	.string "We're pulling out!$"
-
-MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis:
-	.string "Oh, no…\n"
-	.string "This cannot happen…\p"
-	.string "Not only the Blue Orb, but even\n"
-	.string "the Red Orb has been taken…\p"
-	.string "The Blue Orb and Red Orb must never\n"
-	.string "be separated. They belong together.\p"
-	.string "What are those men trying to do with\n"
-	.string "the two Orbs?\p"
-	.string "… … … … … …\n"
-	.string "… … … … … …\p"
-	.string "Oh, yes. Was it Team Magma who came\n"
-	.string "and took the Blue Orb first?\p"
-	.string "Well, in their haste, they left this\n"
-	.string "behind.\p"
-	.string "I couldn't imagine what exactly it\n"
-	.string "could be.\p"
-	.string "I would like you to have it.\n"
-	.string "Perhaps it will be useful in some way.$"
-
 MtPyre_Summit_Text_OrbsHaveBeenTaken:
-	.string "The Blue Orb and Red Orb taken by\n"
-	.string "those sinister men…\p"
-	.string "They must never be apart…\n"
-	.string "I fear something terrible will happen…$"
+	.string "The Blue Orb and Red Orb taken by\nthose sinister men…\pHaving the two separated can only lead\nto disaster…\pI fear something terrible will happen…$"
 
 MtPyre_Summit_Text_GroudonKyogreAwakened:
 	.string "Oh, my goodness…\p"
@@ -557,39 +389,13 @@ MtPyre_Summit_Text_SuperAncientPokemonTaughtUs:
 	.string "taught us that…$"
 
 MtPyre_Summit_Text_WillYouHearOutMyTale:
-	.string "Mt. Pyre is where we calm the spirits\n"
-	.string "of Pokémon that have passed on…\p"
-	.string "This is a high place where one can\n"
-	.string "see all of Hoenn…\p"
-	.string "The disembodied spirits of Pokémon\n"
-	.string "must find solace here…\p"
-	.string "Is it coincidence that you are here…\p"
-	.string "Will you hear out my tale? A tale long\n"
-	.string "told in the Hoenn region?$"
+	.string "Mt. Pyre exists to soothe the spirits\nof Pokémon that have passed on…\pFrom so high up, we can look down upon\nHoenn.\pSuch a view must bring peace even to\nthose lost Pokémon…\pIs it coincidence that you are here?\pWill you hear my tale? A tale long told\nin the Hoenn region?$"
 
 MtPyre_Summit_Text_GroudonKyogreTale:
-	.string "It happened long, long ago…\p"
-	.string "The world was wracked by a ferocious\n"
-	.string "clash between the Pokémon of the land\l"
-	.string "and the Pokémon of the sea…\p"
-	.string "The Pokémon of the land raised\n"
-	.string "mountains and created continents…\p"
-	.string "The Pokémon of the sea raised huge\n"
-	.string "waves and carved out oceans…\p"
-	.string "Their fierce duel raged without end.\p"
-	.string "The world was engulfed in massive\n"
-	.string "infernos and vicious storms.\p"
-	.string "The Blue Orb and the Red Orb brought\n"
-	.string "an end to the calamity.\p"
-	.string "Light poured from the two Orbs and\n"
-	.string "becalmed the enraged adversaries.\p"
-	.string "The pair, made docile, dove deep into\n"
-	.string "the sea where eventually they\l"
-	.string "disappeared…$"
+	.string "It happened long, long, ago…\pThe world was wracked by an unceasing\nbattle between Groudon, the Pokémon\lof the land, and Kyogre, the Pokémon\lof the sea…\pGroudon raising mountains and creating\ncontinents…\pKyogre raising huge waves and carving\nout oceans…\pTheir fierce duel rage without end.\pThe world was assaulted by merciless\nheat and vicious rains in turn.\pOnly one power was great enough to\nquell this terrible outpouring.\lThat of the Red Orb and the Blue Orb.\pThe light which swelled from the Blue\nOrb quieted Groudon in its rage.\pThe light which poured from the Red Orb\nclamed Kyogre in its fury.\pThe two, now docile, dove deep into the\nsea and disappeared from human eyes…$"
 
 MtPyre_Summit_Text_WellThatTooIsFine:
-	.string "I see…\n"
-	.string "Well, that, too, is fine…$"
+	.string "I see…\nWell, that, too, is fine…$"
 
 MtPyre_Summit_Text_MaxieSilence:
 	.string "Maxie: {PLAYER}…\p"
@@ -623,3 +429,238 @@ MtPyre_Summit_Text_HoennTrioTale:
 	.string "Then, its duty done, the green Pokémon\n"
 	.string "flew off into the wild blue yonder…$"
 
+MtPyre_Summit_EventScript_TeamAquaTrigger1::
+	setvar VAR_TEMP_0, 1
+	goto MtPyre_Summit_EventScript_TeamAquaExits
+	end
+
+
+MtPyre_Summit_EventScript_TeamAquaTrigger2::
+	setvar VAR_TEMP_0, 2
+	goto MtPyre_Summit_EventScript_TeamAquaExits
+	end
+
+
+MtPyre_Summit_EventScript_TeamAquaTrigger3::
+	setvar VAR_TEMP_0, 3
+	goto MtPyre_Summit_EventScript_TeamAquaExits
+	end
+
+
+MtPyre_Summit_EventScript_TeamAquaExits::
+	lockall
+	delay 48
+	applymovement LOCALID_OLD_MAN, Common_Movement_WalkInPlaceRight
+	delay 8
+	applymovement LOCALID_OLD_LADY, Common_Movement_WalkInPlaceRight
+	waitmovement LOCALID_OLD_LADY
+	delay 16
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUp
+	applymovement LOCALID_ARCHIE, Common_Movement_WalkUp
+	waitmovement LOCALID_ARCHIE
+	special RemoveCameraObject
+	delay 48
+	fadescreen FADE_TO_BLACK
+	delay 24
+	fadescreen FADE_FROM_BLACK
+	delay 24
+	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceDown
+	waitmovement LOCALID_ARCHIE
+	delay 8
+	playse SE_PIN
+	applymovement LOCALID_ARCHIE, Common_Movement_ExclamationMark
+	waitmovement LOCALID_ARCHIE
+	waitse
+	applymovement LOCALID_ARCHIE, Common_Movement_WalkDown
+	delay 8
+	applymovement LOCALID_MATT, Common_Movement_WalkInPlaceDown
+	switch VAR_TEMP_0
+	case 1, MtPyre_Summit_EventScript_TeamAquaExits_3
+	case 2, MtPyre_Summit_EventScript_TeamAquaExits_4
+	case 3, MtPyre_Summit_EventScript_TeamAquaExits_5
+MtPyre_Summit_EventScript_TeamAquaExits_1:
+	waitmovement OBJ_EVENT_ID_PLAYER
+	delay 48
+	msgbox MtPyre_Summit_EventScript_TeamAquaExits_Text_0
+	closemessage
+	delay 24
+	msgbox MtPyre_Summit_EventScript_TeamAquaExits_Text_1
+	closemessage
+	applymovement LOCALID_MATT, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_MATT
+	msgbox MtPyre_Summit_EventScript_TeamAquaExits_Text_2
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq MtPyre_Summit_EventScript_TeamAquaExits_7
+	msgbox MtPyre_Summit_EventScript_TeamAquaExits_Text_4
+MtPyre_Summit_EventScript_TeamAquaExits_6:
+	msgbox MtPyre_Summit_EventScript_TeamAquaExits_Text_5
+	closemessage
+	applymovement LOCALID_ARCHIE, MtPyre_Summit_Movement_ArchieBeginExit
+	delay 8
+	applymovement LOCALID_MATT, Common_Movement_WalkInPlaceDown
+	fadescreen FADE_TO_BLACK
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
+	waitmovement LOCALID_ARCHIE
+	removeobject LOCALID_ARCHIE
+	removeobject LOCALID_GRUNT_2
+	removeobject LOCALID_GRUNT_3
+	removeobject LOCALID_GRUNT_4
+	setflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
+	setflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
+	delay 32
+	fadescreen FADE_FROM_BLACK
+	delay 32
+	applymovement LOCALID_MATT, MtPyre_Summit_Movement_MattFacePlayer
+	delay 8
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_MATT
+	special RemoveCameraObject
+	msgbox MtPyre_Summit_EventScript_TeamAquaExits_Text_6
+	trainerbattle_no_intro TRAINER_MATT_MT_PYRE, MtPyre_Summit_EventScript_TeamAquaExits_Text_7
+	msgbox MtPyre_Summit_EventScript_TeamAquaExits_Text_8
+	closemessage
+	applymovement LOCALID_MATT, MtPyre_Summit_Movement_MattExit
+	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_Summit_Movement_PlayerWatchMattExit
+	waitmovement LOCALID_MATT
+	removeobject LOCALID_MATT
+	setvar VAR_MT_PYRE_STATE, 1
+	delay 24
+	applymovement LOCALID_OLD_LADY, MtPyre_Summit_Movement_OldLadyGoSeeOrb
+	applymovement LOCALID_OLD_MAN, MtPyre_Summit_Movement_OldManGoSeeOrb
+	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_Summit_Movement_PlayerApproachOldLady
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MtPyre_Summit_EventScript_TeamAquaExits_Text_9
+	msgbox MtPyre_Summit_EventScript_TeamAquaExits_Text_10
+	closemessage
+	applymovement LOCALID_OLD_LADY, Common_Movement_WalkInPlaceDown
+	waitmovement LOCALID_OLD_LADY
+	delay 8
+	playse SE_PIN
+	applymovement LOCALID_OLD_LADY, Common_Movement_ExclamationMark
+	delay 8
+	applymovement LOCALID_OLD_MAN, Common_Movement_WalkInPlaceDown
+	waitmovement LOCALID_OLD_LADY
+	delay 16
+	msgbox MtPyre_Summit_EventScript_TeamAquaExits_Text_11
+	giveitem ITEM_MAGMA_EMBLEM
+	closemessage
+	setflag FLAG_RECEIVED_RED_OR_BLUE_ORB
+	setflag FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD
+	releaseall
+	end
+
+MtPyre_Summit_EventScript_TeamAquaExits_3:
+	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_Summit_Movement_PlayerFaceArchie1
+	goto MtPyre_Summit_EventScript_TeamAquaExits_1
+
+MtPyre_Summit_EventScript_TeamAquaExits_4:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	goto MtPyre_Summit_EventScript_TeamAquaExits_1
+
+MtPyre_Summit_EventScript_TeamAquaExits_5:
+	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_Summit_Movement_PlayerFaceArchie3
+	goto MtPyre_Summit_EventScript_TeamAquaExits_1
+
+MtPyre_Summit_EventScript_TeamAquaExits_7:
+	msgbox MtPyre_Summit_EventScript_TeamAquaExits_Text_3
+	goto MtPyre_Summit_EventScript_TeamAquaExits_6
+
+
+MtPyre_Summit_Movement_PlayerFaceArchie1:
+	walk_right
+	walk_in_place_up
+	step_end
+
+MtPyre_Summit_Movement_PlayerFaceArchie3:
+	walk_left
+	walk_in_place_up
+	step_end
+
+MtPyre_Summit_Movement_ArchieBeginExit:
+	walk_down
+	walk_left
+	walk_down
+	step_end
+
+MtPyre_Summit_Movement_MattFacePlayer:
+	walk_left
+	walk_in_place_down
+	step_end
+
+MtPyre_Summit_Movement_MattExit:
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+MtPyre_Summit_Movement_PlayerWatchMattExit:
+	delay_16
+	delay_16
+	walk_in_place_left
+	delay_16
+	walk_in_place_down
+	step_end
+
+MtPyre_Summit_Movement_OldManGoSeeOrb:
+	delay_16
+	delay_16
+	walk_right
+	step_end
+
+MtPyre_Summit_Movement_OldLadyGoSeeOrb:
+	walk_right
+	walk_right
+	walk_up
+	step_end
+
+MtPyre_Summit_Movement_PlayerApproachOldLady:
+	delay_16
+	walk_up
+	walk_up
+	step_end
+
+MtPyre_Summit_EventScript_TeamAquaExits_Text_0:
+	.string "{COLOR RED}Archie{COLOR DARK_GRAY}: I thought something was a\nbit noisy and who is it but the usual\lscamp!\pSorry, scampo, but I'm afraid I just\ndon't have time to play with you right\lnow.\pMaxie got ahead of us but we also got\nwhat we wanted.\pThe Blue Orb that's long been enshrined\nhere at Mt. Pyre…\lIt belongs to Team Aqua now!$"
+
+MtPyre_Summit_EventScript_TeamAquaExits_Text_1:
+	.string "…Ma-a-att!$"
+
+MtPyre_Summit_EventScript_TeamAquaExits_Text_2:
+	.string "{COLOR RED}Matt{COLOR DARK_GRAY}: Oh! Boss!$"
+
+MtPyre_Summit_EventScript_TeamAquaExits_Text_3:
+	.string "{COLOR RED}Archie{COLOR DARK_GRAY}: How about you do a favor for\nour lively little visitor, and keep him\lentertained?$"
+
+MtPyre_Summit_EventScript_TeamAquaExits_Text_4:
+	.string "{COLOR RED}Archie{COLOR DARK_GRAY}: How about you do a favor for\nour lively little visitor, and keep her\lentertained?$"
+
+MtPyre_Summit_EventScript_TeamAquaExits_Text_5:
+	.string "You'd better use your full strength,\ntoo, so you don't offend our honored\lguest!\pBwahahahaha!\pWith this Blue Orb in my hands, I won't\neven need the power of the Meteorite\lto awaken the beast from the deep!\pAll I need now is a way to get to the\nplace where it sleeps…\pAll I have to do is get that {COLOR BLUE}submarine{COLOR DARK_GRAY}\nthey're making in Slateport!\pCome on, boys!\nWe're for {COLOR BLUE}Slateport City{COLOR DARK_GRAY}!$"
+
+MtPyre_Summit_EventScript_TeamAquaExits_Text_6:
+	.string "{COLOR RED}Matt{COLOR DARK_GRAY}: All right then, until the\nBoss makes his getaway, I'll be your\lopponent!\pOohh…\nHa! Ha! Hah!$"
+
+MtPyre_Summit_EventScript_TeamAquaExits_Text_7:
+	.string "Muwuhahaha! That battle was fun even\nthough I lost!$"
+
+MtPyre_Summit_EventScript_TeamAquaExits_Text_8:
+	.string "That was fun!\pI knew you'd show me a good time!\pI look forward to facing you again\nsomeday!$"
+
+MtPyre_Summit_EventScript_TeamAquaExits_Text_9:
+	.string "{COLOR RED}Old Man{COLOR DARK_GRAY}: Aye, me, what disaster…\pThe Blue Orb and Red Orb…stolen from\nour safekeeping…$"
+
+MtPyre_Summit_EventScript_TeamAquaExits_Text_10:
+	.string "{COLOR RED}Old Lady{COLOR DARK_GRAY}: The Blue Orb and Red Orb must\nnever be separated.\lThey belong together…\pWhat are those men trying to do with\nthe two Orbs?\pHmm…$"
+
+MtPyre_Summit_EventScript_TeamAquaExits_Text_11:
+	.string "Young one, I beg you… Chase after\nthose thieves and take the orbs!\pThose wretched leader of theirs…\pWas it Team Magma who came and took\nthe Red Orb first?\pWell, in their haste, they left this\nbehind.\pI couldn't imagine what exactly it\ncould be.\pI would like you to have it.\nPerhaps it will be useful in some way.$"

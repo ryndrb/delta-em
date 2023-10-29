@@ -19,7 +19,6 @@ Route121_EventScript_SafariZoneSign::
 
 Route121_EventScript_AquaGruntsMoveOut::
 	lockall
-	playbgm MUS_ENCOUNTER_AQUA, FALSE
 	applymovement LOCALID_GRUNT_2, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	msgbox Route121_Text_OkayMoveOutToMtPyre, MSGBOX_DEFAULT
@@ -28,7 +27,6 @@ Route121_EventScript_AquaGruntsMoveOut::
 	applymovement LOCALID_GRUNT_2, Route121_Movement_Grunt2Exit
 	applymovement LOCALID_GRUNT_3, Route121_Movement_Grunt3Exit
 	waitmovement 0
-	fadedefaultbgm
 	removeobject LOCALID_GRUNT_1
 	removeobject LOCALID_GRUNT_2
 	removeobject LOCALID_GRUNT_3
@@ -173,8 +171,7 @@ Route121_EventScript_RematchCristin::
 	end
 
 Route121_Text_OkayMoveOutToMtPyre:
-	.string "Okay!\n"
-	.string "We're to move out to Mt. Pyre!$"
+	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: OK!\nWe've moving out of Mt. Pyre!\pWe're getting our hands on that orb\nbefore Team Magma does!$"
 
 Route121_Text_AheadLoomsMtPyre:
 	.string "Ahead looms Mt. Pyre…\p"
@@ -190,3 +187,38 @@ Route121_Text_SafariZoneSign:
 	.string "“Filled with rare Pokémon!”\n"
 	.string "Safari Zone$"
 
+Route121_EventScript_Nurse::
+	lock
+	msgbox Route121_EventScript_Nurse_Text_0
+	closemessage
+	fadescreen FADE_TO_BLACK
+	playse SE_USE_ITEM
+	special HealPlayerParty
+	waitse
+	fadescreen FADE_FROM_BLACK
+	delay 8
+	msgbox Route121_EventScript_Nurse_Text_1
+	closemessage
+	release
+	end
+
+
+Route121_EventScript_Skitty::
+	lock
+	waitse
+	playmoncry SPECIES_SKITTY, CRY_MODE_NORMAL
+	msgbox Route121_EventScript_Skitty_Text_0
+	waitmoncry
+	closemessage
+	release
+	end
+
+
+Route121_EventScript_Nurse_Text_0:
+	.string "{COLOR RED}Nurse{COLOR DARK_GRAY}: I am a wandering Pokémon Center\nemployee.\pWhy don't I take care of your Pokémon's\nills in a flash?$"
+
+Route121_EventScript_Nurse_Text_1:
+	.string "I took care of all that ailed your\nPokémon in a flash!$"
+
+Route121_EventScript_Skitty_Text_0:
+	.string "Meenya?$"
