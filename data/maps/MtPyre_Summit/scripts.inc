@@ -481,7 +481,7 @@ MtPyre_Summit_EventScript_TeamAquaExits::
 	case 3, MtPyre_Summit_EventScript_TeamAquaExits_5
 MtPyre_Summit_EventScript_TeamAquaExits_1:
 	waitmovement OBJ_EVENT_ID_PLAYER
-	delay 48
+	delay 32
 	msgbox MtPyre_Summit_EventScript_TeamAquaExits_Text_0
 	closemessage
 	delay 24

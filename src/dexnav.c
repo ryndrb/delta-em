@@ -729,22 +729,22 @@ static bool8 TryStartHiddenMonFieldEffect(u8 environment, u8 xSize, u8 ySize, bo
             else if (IsMapTypeIndoors(currMapType))
             {
                 if (MetatileBehavior_IsTallGrass(metatileBehaviour)) //Grass in cave
-                    fldEffId = FLDEFF_SHAKING_GRASS;
+                    fldEffId = FLDEFF_UNUSED_GRASS;
                 else if (MetatileBehavior_IsLongGrass(metatileBehaviour)) //Really tall grass
-                    fldEffId = FLDEFF_SHAKING_LONG_GRASS;
+                    fldEffId = FLDEFF_UNUSED_GRASS_2;
                 else if (MetatileBehavior_IsSandOrDeepSand(metatileBehaviour))
-                    fldEffId = FLDEFF_SAND_HOLE;
+                    fldEffId = FLDEFF_UNUSED_SAND;
                 else
                     fldEffId = FLDEFF_CAVE_DUST;
             }
             else //outdoor, underwater
             {
                 if (MetatileBehavior_IsTallGrass(metatileBehaviour)) //Regular grass
-                    fldEffId = FLDEFF_SHAKING_GRASS;
+                    fldEffId = FLDEFF_UNUSED_GRASS;
                 else if (MetatileBehavior_IsLongGrass(metatileBehaviour)) //Really tall grass
-                    fldEffId = FLDEFF_SHAKING_LONG_GRASS;
+                    fldEffId = FLDEFF_UNUSED_GRASS_2;
                 else if (MetatileBehavior_IsSandOrDeepSand(metatileBehaviour)) //Desert Sand
-                    fldEffId = FLDEFF_SAND_HOLE;
+                    fldEffId = FLDEFF_UNUSED_SAND;
                 else if (MetatileBehavior_IsMountain(metatileBehaviour)) //Rough Terrain
                     fldEffId = FLDEFF_CAVE_DUST;
                 else

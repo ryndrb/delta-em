@@ -20,9 +20,9 @@
 #define FLDEFF_JUMP_SMALL_SPLASH         16
 #define FLDEFF_LONG_GRASS                17
 #define FLDEFF_JUMP_LONG_GRASS           18
-#define FLDEFF_SHAKING_GRASS             19
-#define FLDEFF_SHAKING_LONG_GRASS        20
-#define FLDEFF_SAND_HOLE                 21
+#define FLDEFF_UNUSED_GRASS              19
+#define FLDEFF_UNUSED_GRASS_2            20
+#define FLDEFF_UNUSED_SAND               21
 #define FLDEFF_WATER_SURFACING           22
 #define FLDEFF_BERRY_TREE_GROWTH_SPARKLE 23
 #define FLDEFF_DEEP_SAND_FOOTPRINTS      24
