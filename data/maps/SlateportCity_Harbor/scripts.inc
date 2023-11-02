@@ -1,11 +1,12 @@
 .set LOCALID_CAPT_STERN, 4
 .set LOCALID_SS_TIDAL, 5
-.set LOCALID_GRUNT, 6
+.set LOCALID_SHELLY, 6
 .set LOCALID_ARCHIE, 7
 .set LOCALID_SUBMARINE, 8
 
 SlateportCity_Harbor_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, SlateportCity_Harbor_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SlateportCity_Harbor_OnFrameTable
 	.byte 0
 
 SlateportCity_Harbor_OnTransition:
@@ -21,144 +22,14 @@ SlateportCity_Harbor_EventScript_ShowSSTidal::
 
 SlateportCity_Harbor_EventScript_ReadyAquaEscapeScene::
 	savebgm MUS_ENCOUNTER_AQUA
-	setobjectxyperm LOCALID_CAPT_STERN, 12, 13
-	setobjectmovementtype LOCALID_CAPT_STERN, MOVEMENT_TYPE_FACE_LEFT
+	setobjectxyperm LOCALID_CAPT_STERN, 8, 12
+	setobjectmovementtype LOCALID_CAPT_STERN, MOVEMENT_TYPE_FACE_UP
 	setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS
 	return
 
-SlateportCity_Harbor_EventScript_AquaEscapeTrigger0::
-	lockall
-	setvar VAR_0x8008, 0
-	goto SlateportCity_Harbor_EventScript_AquaEscapeScene
-	end
-
-SlateportCity_Harbor_EventScript_AquaEscapeTrigger1::
-	lockall
-	setvar VAR_0x8008, 1
-	goto SlateportCity_Harbor_EventScript_AquaEscapeScene
-	end
-
-SlateportCity_Harbor_EventScript_AquaEscapeTrigger2::
-	lockall
-	setvar VAR_0x8008, 2
-	goto SlateportCity_Harbor_EventScript_AquaEscapeScene
-	end
-
-SlateportCity_Harbor_EventScript_AquaEscapeTrigger3::
-	lockall
-	setvar VAR_0x8008, 3
-	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Harbor_Movement_PlayerWalkUp
-	waitmovement 0
-	goto SlateportCity_Harbor_EventScript_AquaEscapeScene
-	end
-
-SlateportCity_Harbor_EventScript_AquaEscapeScene::
-	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceDown
-	waitmovement 0
-	applymovement LOCALID_GRUNT, Common_Movement_WalkInPlaceDown
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp
-	waitmovement 0
-	msgbox SlateportCity_Harbor_Text_ArchieYouAgainHideoutInLilycove, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_GRUNT, SlateportCity_Harbor_Movement_AquaBoardSub
-	applymovement LOCALID_ARCHIE, SlateportCity_Harbor_Movement_AquaBoardSub
-	applymovement LOCALID_SUBMARINE, SlateportCity_Harbor_Movement_SubmarineExit
-	waitmovement 0
-	removeobject LOCALID_GRUNT
-	removeobject LOCALID_ARCHIE
-	removeobject LOCALID_SUBMARINE
-	setvar VAR_SLATEPORT_HARBOR_STATE, 2
-	setflag FLAG_MET_TEAM_AQUA_HARBOR
-	setflag FLAG_HIDE_LILYCOVE_MOTEL_SCOTT
-	call_if_eq VAR_0x8008, 0, SlateportCity_Harbor_EventScript_SternApproachPlayer0
-	call_if_eq VAR_0x8008, 1, SlateportCity_Harbor_EventScript_SternApproachPlayer1
-	call_if_eq VAR_0x8008, 2, SlateportCity_Harbor_EventScript_SternApproachPlayer
-	call_if_eq VAR_0x8008, 3, SlateportCity_Harbor_EventScript_SternApproachPlayer
-	msgbox SlateportCity_Harbor_Text_CaptSternWhyStealMySubmarine, MSGBOX_DEFAULT
-	closemessage
-	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE
-	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE
-	copyobjectxytoperm LOCALID_CAPT_STERN
-	setobjectmovementtype LOCALID_CAPT_STERN, MOVEMENT_TYPE_FACE_RIGHT
-	releaseall
-	end
-
-SlateportCity_Harbor_EventScript_SternApproachPlayer0::
-	applymovement LOCALID_CAPT_STERN, SlateportCity_Harbor_Movement_SternApproachPlayer0
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
-	waitmovement 0
-	return
-
-SlateportCity_Harbor_EventScript_SternApproachPlayer1::
-	applymovement LOCALID_CAPT_STERN, SlateportCity_Harbor_Movement_SternApproachPlayer1
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
-	waitmovement 0
-	return
-
-SlateportCity_Harbor_EventScript_SternApproachPlayer::
-	applymovement LOCALID_CAPT_STERN, SlateportCity_Harbor_Movement_SternApproachPlayer
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
-	waitmovement 0
-	return
-
-SlateportCity_Harbor_Movement_AquaBoardSub:
-	delay_16
-	delay_16
-	jump_up
-	set_invisible
-	step_end
-
-@ Unused, Archie instead shares above identical movement script with Grunt
-SlateportCity_Harbor_Movement_ArchieBoardSub:
-	delay_16
-	delay_16
-	jump_up
-	set_invisible
-	step_end
-
-SlateportCity_Harbor_Movement_SubmarineExit:
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	walk_right
-	walk_right
-	walk_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	step_end
-
-SlateportCity_Harbor_Movement_SternApproachPlayer0:
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	step_end
-
-SlateportCity_Harbor_Movement_SternApproachPlayer1:
-	walk_left
-	walk_left
-	walk_up
-	walk_left
-	step_end
-
-SlateportCity_Harbor_Movement_SternApproachPlayer:
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
-SlateportCity_Harbor_Movement_PlayerWalkUp:
-	walk_up
-	step_end
+SlateportCity_Harbor_OnFrameTable:
+	map_script_2 VAR_SLATEPORT_HARBOR_STATE, 1, SlateportCity_Harbor_EventScript_AquaEscapeScene
+	.2byte 0
 
 SlateportCity_Harbor_EventScript_FerryAttendant::
 	lock
@@ -309,7 +180,7 @@ SlateportCity_Harbor_EventScript_WhyStealSubmarine::
 
 SlateportCity_Harbor_EventScript_TeamAquaLeftNeedDive::
 	setflag FLAG_EVIL_TEAM_ESCAPED_STERN_SPOKE
-	msgbox SlateportCity_Harbor_Text_TeamAquaLeftNeedDive, MSGBOX_DEFAULT
+	msgbox SlateportCity_Harbor_Text_NeedDiveToCatchSub, MSGBOX_DEFAULT
 	release
 	end
 
@@ -441,54 +312,13 @@ SlateportCity_Harbor_Text_SubTooSmallForMe:
 	.string "I wanted to go with Captain Stern on\nthe ocean-floor exploration.\pBut the sub's too small for me.\pIf I squeezed in, there wouldn't be\nany room for the captain…$"
 
 SlateportCity_Harbor_Text_SameThugsTriedToRobAtMuseum:
-	.string "Capt. Stern: Those thugs…\p"
-	.string "They're the same lot who tried to rob\n"
-	.string "the Devon Goods at the Museum.$"
-
-SlateportCity_Harbor_Text_ArchieYouAgainHideoutInLilycove:
-	.string "Archie: Oh?\n"
-	.string "Not you again…\p"
-	.string "You are tenacious to track us here,\n"
-	.string "that much I will give you.\p"
-	.string "But now…\n"
-	.string "No one can stop us! No one!\p"
-	.string "Or, will you follow us back to our\n"
-	.string "Hideout in Lilycove City?\p"
-	.string "Fwahahahaha…$"
+	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: These thugs…\pThey're the same lot who tried to take\nthe Devon Parts at the museum…$"
 
 SlateportCity_Harbor_Text_CaptSternWhyStealMySubmarine:
-	.string "Capt. Stern: Why…\p"
-	.string "Why would Team Aqua steal my\n"
-	.string "Submarine Explorer 1?\p"
-	.string "They can't be after the slumbering\n"
-	.string "Pokémon at the bottom of the sea…\p"
-	.string "But even if I were to chase them,\n"
-	.string "I don't stand a chance against them…$"
-
-SlateportCity_Harbor_Text_TeamAquaLeftNeedDive:
-	.string "Capt. Stern: Oh, {PLAYER}{KUN}…\p"
-	.string "Okay… So Team Aqua left before you\n"
-	.string "could stop them…\p"
-	.string "Oh, no, don't blame yourself.\n"
-	.string "You're not responsible for this.\p"
-	.string "Trying to catch a submarine…\n"
-	.string "It's impossible for most people.\p"
-	.string "You would need a Pokémon that knows\n"
-	.string "how to Dive…\p"
-	.string "Perhaps if you went out to\n"
-	.string "Mossdeep City…\p"
-	.string "A lot of divers live out there, so\n"
-	.string "someone might teach you…$"
+	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: Those criminals…\pWhat are planning to do with my\nSubmarine Explorer 1?\pThey can't be after the super-ancient\nPokémon that slumbers at the bottom\lof the sea…$"
 
 SlateportCity_Harbor_Text_NeedDiveToCatchSub:
-	.string "Capt. Stern: Trying to catch a\n"
-	.string "submarine… It's impossible.\p"
-	.string "You would need a Pokémon that knows\n"
-	.string "how to Dive…\p"
-	.string "Perhaps if you went out to\n"
-	.string "Mossdeep City…\p"
-	.string "A lot of divers live out there, so\n"
-	.string "someone might teach you…$"
+	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: There's no way a normal human\nwould be able to catch that sub.\pAlthough it would be a different story\nif you could teach a Pokémon to swim\lunderwater using Dive…$"
 
 SlateportCity_Harbor_Text_WontBeLongBeforeWeFinishFerry:
 	.string "Capt. Stern: Oh, yes.\n"
@@ -538,3 +368,133 @@ SlateportCity_Harbor_Text_HandedScannerToStern:
 SlateportCity_Harbor_Text_ThisWillHelpResearch:
 	.string "Capt. Stern: Thanks, {PLAYER}{KUN}!\n"
 	.string "This will help our research a lot!$"
+
+SlateportCity_Harbor_EventScript_AquaEscapeScene::
+	lock
+	delay 32
+	msgbox SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_0
+	closemessage
+	delay 16
+	fadescreen FADE_TO_BLACK
+	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Harbor_Movement_PlayerGoFaceAqua
+	waitmovement OBJ_EVENT_ID_PLAYER
+	fadescreen FADE_FROM_BLACK
+	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceDown
+	waitmovement LOCALID_ARCHIE
+	playse SE_PIN
+	applymovement LOCALID_ARCHIE, Common_Movement_ExclamationMark
+	delay 8
+	applymovement LOCALID_SHELLY, Common_Movement_WalkInPlaceDown
+	waitmovement LOCALID_SHELLY
+	msgbox SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_1
+	msgbox SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_2
+	closemessage
+	applymovement LOCALID_SHELLY, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_SHELLY
+	msgbox SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_3
+	closemessage
+	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceUp
+	delay 8
+	applymovement LOCALID_SHELLY, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_SHELLY
+	delay 16
+	applymovement LOCALID_SHELLY, SlateportCity_Harbor_Movement_AquaBoardSub
+	applymovement LOCALID_ARCHIE, SlateportCity_Harbor_Movement_AquaBoardSub
+	applymovement LOCALID_SUBMARINE, SlateportCity_Harbor_Movement_SubmarineExit
+	waitmovement 0
+	removeobject LOCALID_SHELLY
+	removeobject LOCALID_ARCHIE
+	removeobject LOCALID_SUBMARINE
+	setvar VAR_SLATEPORT_HARBOR_STATE, 2
+	setflag FLAG_MET_TEAM_AQUA_HARBOR
+	setflag FLAG_HIDE_LILYCOVE_MOTEL_SCOTT
+	applymovement LOCALID_CAPT_STERN, SlateportCity_Harbor_Movement_SeeSubmarineExit
+	delay 16
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
+	waitmovement LOCALID_CAPT_STERN
+	msgbox SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_4
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_CAPT_STERN, Common_Movement_ExclamationMark
+	waitmovement LOCALID_CAPT_STERN
+	waitse
+	msgbox SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_5
+	closemessage
+	applymovement LOCALID_CAPT_STERN, SlateportCity_Harbor_Movement_GoBackToPlayer
+	waitmovement LOCALID_CAPT_STERN
+	msgbox SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_6
+	closemessage
+	fadedefaultbgm
+	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE
+	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE
+	copyobjectxytoperm LOCALID_CAPT_STERN
+	setobjectmovementtype LOCALID_CAPT_STERN, MOVEMENT_TYPE_FACE_UP
+	release
+	end
+
+
+SlateportCity_Harbor_Movement_PlayerGoFaceAqua:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+SlateportCity_Harbor_Movement_AquaBoardSub:
+	delay_16
+	delay_16
+	jump_up
+	set_invisible
+	step_end
+
+SlateportCity_Harbor_Movement_SubmarineExit:
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_right
+	walk_right
+	walk_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	step_end
+
+SlateportCity_Harbor_Movement_SeeSubmarineExit:
+	walk_right
+	walk_right
+	walk_up
+	walk_in_place_right
+	step_end
+
+SlateportCity_Harbor_Movement_GoBackToPlayer:
+	walk_down
+	walk_left
+	walk_left
+	step_end
+
+SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_0:
+	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: These thugs…\pThey're the same lot who tried to take\nthe Devon Parts at the museum…$"
+
+SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_1:
+	.string "{COLOR RED}Archie{COLOR DARK_GRAY}: Impossible!\pYou actually followed us all the way\nfrom Mt. Pyre?\pGrah-hah!\nYou got me!\pI bow to your persistence and love of\njustice!\pBwaha!\nBwahahahahah!\pIt's a pity, so it is, but we're well\npast the time when you and your best\lefforts could turn the tide.\pWe'll add a few last touches to this\nsubmarine, and we'll all be set to bust\lopen the Seafloor Cavern where that\lgreat Pokémon is sleeping!\pOur plans to return everything to the\nbeginning…\lThey're as good as complete!$"
+
+SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_2:
+	.string "But I know you gotta do what you gotta\ndo, scamp.\pI'm not gonna tell ya to quit chasing\nus…\pFollow us all the way to our {COLOR BLUE}hideout{COLOR DARK_GRAY}\nin {COLOR BLUE}Lilycove{COLOR DARK_GRAY}, if that's your honor\ldemands.\pNow then… Shelly?$"
+
+SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_3:
+	.string "{COLOR RED}Shelly{COLOR DARK_GRAY}: …Got it.$"
+
+SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_4:
+	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: Those criminals…\pWhat are planning to do with my\nSubmarine Explorer 1?$"
+
+SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_5:
+	.string "They can't be!\pThey can't be after the super-ancient\nPokémon that slumbers at the bottom\lof the sea…$"
+
+SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_6:
+	.string "{PLAYER}…\nI'm sorry, but…\pMy stolen submarine…\pIt could bring an unimaginable disaster\nupon the world…\pSomeone has to get to {COLOR BLUE}their hideout{COLOR DARK_GRAY} in\n{COLOR BLUE}Lilycove{COLOR DARK_GRAY} and stop them!\lBut I've got no chance alone!\p{PLAYER}, please…\nMay I ask for your help?\pDo you think you and your Pokémon\ncould put a stop to them and save my\lsub from being used for evil? Please!$"
