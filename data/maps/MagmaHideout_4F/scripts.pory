@@ -1,0 +1,256 @@
+raw `
+.set LOCALID_GROUDON, 1
+.set LOCALID_GRUNT_1, 2
+.set LOCALID_GRUNT_2, 3
+.set LOCALID_GRUNT_3, 4
+.set LOCALID_TABITHA, 5
+.set LOCALID_MAXIE, 6
+.set LOCALID_GROUDON_SLEEPING, 7
+
+MagmaHideout_4F_MapScripts::
+	.byte 0
+
+MagmaHideout_4F_EventScript_Grunt11::
+	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_11, MagmaHideout_4F_Text_Grunt11Intro, MagmaHideout_4F_Text_Grunt11Defeat
+	msgbox MagmaHideout_4F_Text_Grunt11PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+MagmaHideout_4F_EventScript_Grunt12::
+	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_12, MagmaHideout_4F_Text_Grunt12Intro, MagmaHideout_4F_Text_Grunt12Defeat
+	msgbox MagmaHideout_4F_Text_Grunt12PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+MagmaHideout_4F_EventScript_Grunt13::
+	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_13, MagmaHideout_4F_Text_Grunt13Intro, MagmaHideout_4F_Text_Grunt13Defeat
+	msgbox MagmaHideout_4F_Text_Grunt13PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+MagmaHideout_4F_Text_Grunt11Intro:
+	.string "I want to see Groudon, too, but they\n"
+	.string "won't let me see even its tail…\p"
+	.string "It's got me feeling really frustrated.\p"
+	.string "Oh, no!\n"
+	.string "I blabbed about Groudon!$"
+
+MagmaHideout_4F_Text_Grunt11Defeat:
+	.string "I guess it's impossible to win if one\n"
+	.string "doesn't have a calm mind…$"
+
+MagmaHideout_4F_Text_Grunt11PostBattle:
+	.string "I wonder if Groudon even has a tail?$"
+
+MagmaHideout_4F_Text_Grunt12Intro:
+	.string "Fuhahaha!\n"
+	.string "Soon! Very soon!\l"
+	.string "Our grand objective will be achieved!$"
+
+MagmaHideout_4F_Text_Grunt12Defeat:
+	.string "Grrr…\n"
+	.string "I've come so far, but now this?$"
+
+MagmaHideout_4F_Text_Grunt12PostBattle:
+	.string "Maxie, sir!\n"
+	.string "An intruder is headed your way!$"
+
+MagmaHideout_4F_Text_Grunt13Intro:
+	.string "You're not finished yet!\n"
+	.string "You're not getting by me easily!$"
+
+MagmaHideout_4F_Text_Grunt13Defeat:
+	.string "Was I that easy to knock down?$"
+
+MagmaHideout_4F_Text_Grunt13PostBattle:
+	.string "C-come on, one more match…$"
+
+
+`
+
+script MagmaHideout_4F_EventScript_Maxie {
+    lockall
+    delay(24)
+    applymovement(LOCALID_MAXIE, Common_Movement_WalkInPlaceLeft)
+    waitmovement(LOCALID_MAXIE)
+    msgbox("{COLOR RED}Maxie{COLOR DARK_GRAY}: Fuhahaha!\nJust as I predicted.\pEven I, the great Maxie, have\nfound myself wishing for something I\lcannot justify.\pAnd the illogical desire that I\nharbored was to have you present\lhere at this moment.\pHahaha…\nAnd that fool's wish has come true.\pFantastic!\nNothing could please me more!")
+    msgbox("I suppose I should make introductions…\pI present to you my incomparable\npartner, who will assist Team Magma in\ldriving humanity forward to its next\llevel!")
+    closemessage
+    applymovement(LOCALID_MAXIE, Common_Movement_WalkInPlaceUp)
+    waitmovement(LOCALID_MAXIE)
+    delay(16)
+    msgbox("The super-ancient Pokémon…{PAUSE 24}Groudon!")
+    closemessage
+    applymovement(LOCALID_MAXIE, Common_Movement_WalkInPlaceLeft)
+    waitmovement(LOCALID_MAXIE)
+    msgbox("Behold!\pThis great form slumbering in\ndefiance of even the broiling lava\lsurrounding it!")
+    closemessage
+    delay(8)
+    applymovement(LOCALID_MAXIE, Common_Movement_WalkInPlaceUp)
+    waitmovement(LOCALID_MAXIE)
+    delay(32)
+    msgbox("So long have I waited for this day…\pImmeasurably long!\pThis foolish world has held back\nhumanity's progress out of misguided\lidealism regarding the coexistence\lof humans and Pokémon.\pBut this ancient creature can bring\nthat to its rightful end, creating a\lnew land upon which humanity may\lstride freely forward.")
+    closemessage
+    delay(16)
+    playse(SE_BANG)
+    msgbox("Now that I have at last obtained the\npower of {COLOR RED}Primal Groudon{COLOR DARK_GRAY}!")
+    closemessage
+    applymovement(LOCALID_MAXIE, Common_Movement_WalkInPlaceLeft)
+    waitmovement(LOCALID_MAXIE)
+    msgbox("And now, you are the final obstacle\nremaining between me and my goals.\pIt behooves me to use every tool at my\ndisposal to eliminate you.\pIndeed!\nEven Mega Evolution!\pDo not delude yourself that you\nand your Pokémon are the only ones\lcapable of it.\pI must apologize for making you wait\nthrough our encounter at Mt. Chimney\lwithout treating you this sight.\pBrace yourself for my ultimate attack!")
+    closemessage
+    delay(24)
+    msgbox("Fuhahaha!")
+    trainerbattle_no_intro(TRAINER_MAXIE_MAGMA_HIDEOUT, "You've really done it, child.\pYou've shown a power that exceeds that\nof the great Maxie!")
+    msgbox("Hah…\nHah… Hahhh…\p…\nAh.\lAha…\pFuhahaha…\pHahahahaha!\nGAHAHAHAHAHAHA!")
+    closemessage
+    delay(16)
+    msgbox("Splendid.\pJust splendid, my young Trainer.\pNo, it is more than that!\pI should be calling you my young hero!\pBelieving until the very end that\na world where humanity and Pokémon\lcoexist must be the best…\pRejecting my ideals without a second\nthought…\pYes, watching you struggle\ndesperately to halt the beginning of\lthe world's end…\lYou are undoubtedly a hero!")
+    closemessage
+    applymovement(LOCALID_MAXIE, Common_Movement_WalkInPlaceUp)
+    waitmovement(LOCALID_MAXIE)
+    msgbox("So noble…\pAnd yet.\pI will not yield!\nI will not bend!\lMy ideals will not be shaken!\pMy dream for the world's next step will\nnever change!")
+    delay(16)
+    msgbox("I will use the Red Orb to awaken\nGroudon, revert it to its primal form,\land put an end to all else!")
+    fadenewbgm(MUS_DUMMY)
+    delay(24)
+    msgbox("{COLOR RED}???{COLOR DARK_GRAY}: Wait! Maxie!")
+    closemessage
+    delay(16)
+    applymovement(LOCALID_MAXIE, Common_Movement_WalkInPlaceLeft)
+    waitmovement(LOCALID_MAXIE)
+    delay(8)
+    playse(SE_PIN)
+    applymovement(LOCALID_MAXIE, Common_Movement_ExclamationMark)
+    delay(8)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    addobject(LOCALID_TABITHA)
+    setobjectxy(LOCALID_TABITHA, 7, 21)
+    applymovement(LOCALID_TABITHA, MagmaHideout_4F_Movement_TabithaApproachMaxie)
+    applymovement(OBJ_EVENT_ID_PLAYER, MagmaHideout_4F_Movement_PlayerMoveAside)
+    waitmovement(LOCALID_TABITHA)
+    msgbox("{COLOR RED}Maxie{COLOR DARK_GRAY}: Buh?! Tabitha?!")
+    msgbox("{COLOR RED}Tabitha{COLOR DARK_GRAY}: Do stop that now… Please!\nMaxie!\pYou just don't understand!\pWhat Groudon will bring upon\nawakening is an end to the world!")
+    closemessage
+    delay(32)
+    msgbox("{COLOR RED}Maxie{COLOR DARK_GRAY}: Humph.\pDid you think I had not noticed?\nThat I had somehow failed to realized\lyou were after my spot?\pSuch a sad development indeed.\nTo be betrayed by my number two…")
+    closemessage
+    applymovement(LOCALID_MAXIE, Common_Movement_WalkInPlaceUp)
+    waitmovement(LOCALID_MAXIE)
+    delay(16)
+    msgbox("In the end, there is only one being\nupon which I can depend!\lNow, Groudon!\pAbsorb all of the power resting in this\nRed Orb, and reclaim yourself!\pRevert to your primal form!\pThis is the time to take back\nthe great Evolution you lost in the\lancient past!\lReclaim the possibility you once held!")
+    closemessage
+    delay(8)
+    applymovement(LOCALID_TABITHA, Common_Movement_WalkInPlaceUp)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    delay(64)
+    setvar(VAR_RESULT, 1)
+    playse(SE_M_DETECT)
+    dofieldeffectsparkle(18, 42, 0)
+    waitfieldeffect(FLDEFF_SPARKLE)
+    setvar(VAR_RESULT, 0)
+    playfanfare(MUS_AWAKEN_LEGEND)
+    playse(SE_ORB)
+    special(DoOrbEffect)
+    delay(160)
+    removeobject(LOCALID_GROUDON_SLEEPING)
+    addobject(LOCALID_GROUDON)
+    waitstate
+    delay(64)
+    special(FadeOutOrbEffect)
+    waitstate
+    setvar(VAR_0x8004, 1)
+    setvar(VAR_0x8005, 1)
+    setvar(VAR_0x8006, 8)
+    setvar(VAR_0x8007, 5)
+    special(ShakeCamera)
+    waitstate
+    applymovement(LOCALID_GROUDON, MagmaHideout_4F_Movement_GroudonExit)
+    waitmovement(LOCALID_GROUDON)
+    removeobject(LOCALID_GROUDON)
+    delay(8)
+    setvar(VAR_0x8004, 2)
+    setvar(VAR_0x8005, 2)
+    setvar(VAR_0x8006, 8)
+    setvar(VAR_0x8007, 5)
+    special(ShakeCamera)
+    waitstate
+    delay(32)
+    applymovement(LOCALID_MAXIE, Common_Movement_WalkInPlaceLeft)
+    delay(8)
+    applymovement(LOCALID_TABITHA, Common_Movement_WalkInPlaceRight)
+    waitmovement(LOCALID_TABITHA)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    msgbox("{COLOR RED}Maxie{COLOR DARK_GRAY}: Gahahahaha!\nAt last…\pAT LAST!\nI've finally done it!!!\pA new world for human evolution will be\nborn!!!\pWe shall stride forward!!!")
+    delay(16)
+    msgbox("{COLOR RED}Tabitha{COLOR DARK_GRAY}: Ohh… What have you done…\nBoss… What…")
+    closemessage
+    delay(8)
+    playse(SE_BIKE_BELL)
+    waitse
+    playse(SE_PIN)
+    applymovement(LOCALID_MAXIE, Common_Movement_ExclamationMark)
+    waitmovement(LOCALID_MAXIE)
+    waitse
+    msgbox("{COLOR RED}Maxie{COLOR DARK_GRAY}: …Hm?\nA message from our members outside?")
+    closemessage
+    applymovement(LOCALID_MAXIE, Common_Movement_WalkInPlaceRight)
+    waitmovement(LOCALID_MAXIE)
+    msgbox("What is it?\p…\pI should expect so.\nThat is what I have long--\lNo, what WE have long wished for.")
+    closemessage
+    playse(SE_PIN)
+    applymovement(LOCALID_MAXIE, Common_Movement_ExclamationMark)
+    waitmovement(LOCALID_MAXIE)
+    waitse
+    msgbox("What?! It is greater than simulations\npredicted?\pIt will be a risk to our safety of it\ncontinues?!\pThat cannot be…\pIt has only just awoken…\nWhere is it getting so much power from?\pAnd how much more will it gain when it\ndoes undergo Primal Reversion…\pC-continue your readings!\nThen report back!")
+    closemessage
+    applymovement(LOCALID_TABITHA, Common_Movement_WalkRight)
+    waitmovement(LOCALID_TABITHA)
+    msgbox("{COLOR RED}Tabitha{COLOR DARK_GRAY}: Boss?! Maxie?!\nJust what is happening?!")
+    closemessage
+    applymovement(LOCALID_MAXIE, Common_Movement_WalkInPlaceUp)
+    waitmovement(LOCALID_MAXIE)
+    delay(32)
+    msgbox("{COLOR RED}Maxie{COLOR DARK_GRAY}: All that matter is…\pThat I have used the Red Orb to awaken\nGroudon.\pAnd now…\pI will transform this planet to a land\nideal for humanity.")
+    closemessage
+    applymovement(LOCALID_MAXIE, Common_Movement_WalkInPlaceLeft)
+    waitmovement(LOCALID_MAXIE)
+    msgbox("I am going after Groudon, so this is\nwhere we part, young Trainer.")
+    closemessage
+    clearflag(FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN)
+    clearflag(FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY)
+    setvar(VAR_SLATEPORT_CITY_STATE, 1)
+    setflag(FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT)
+    setvar(VAR_SLATEPORT_HARBOR_STATE, 1)
+    fadescreen(FADE_TO_BLACK)
+	removeobject(LOCALID_MAXIE)
+	removeobject(LOCALID_GRUNT_1)
+	removeobject(LOCALID_GRUNT_2)
+	removeobject(LOCALID_GRUNT_3)
+	removeobject(LOCALID_TABITHA)
+	setflag(FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS)
+    fadedefaultbgm
+    delay(32)
+	fadescreen(FADE_FROM_BLACK)
+    releaseall
+    end
+}
+
+movement MagmaHideout_4F_Movement_TabithaApproachMaxie {
+    walk_right * 6
+    delay_16
+    delay_16
+    walk_right
+}
+
+movement MagmaHideout_4F_Movement_PlayerMoveAside {
+    delay_16 * 5
+    walk_down
+    walk_in_place_up
+}
+
+movement MagmaHideout_4F_Movement_GroudonExit {
+    slide_up * 2
+}

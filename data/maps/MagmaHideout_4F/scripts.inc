@@ -9,110 +9,6 @@
 MagmaHideout_4F_MapScripts::
 	.byte 0
 
-MagmaHideout_4F_EventScript_Maxie::
-	lockall
-	playbgm MUS_ENCOUNTER_MAGMA, FALSE
-	msgbox MagmaHideout_4F_Text_MaxieAwakenGroudon, MSGBOX_DEFAULT
-	closemessage
-	delay 20
-	setvar VAR_RESULT, 1
-	playse SE_M_DETECT
-	dofieldeffectsparkle 18, 42, 0
-	waitfieldeffect FLDEFF_SPARKLE
-	setvar VAR_RESULT, 1
-	playfanfare MUS_AWAKEN_LEGEND
-	playse SE_ORB
-	special DoOrbEffect
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	delay 150
-	removeobject LOCALID_GROUDON_SLEEPING
-	addobject LOCALID_GROUDON
-	waitstate
-	delay 60
-	applymovement LOCALID_GROUDON, MagmaHideout_4F_Movement_GroudonApproach
-	waitmovement 0
-	special FadeOutOrbEffect
-	waitstate
-	setvar VAR_0x8004, 1  @ vertical pan
-	setvar VAR_0x8005, 1  @ horizontal pan
-	setvar VAR_0x8006, 8  @ num shakes
-	setvar VAR_0x8007, 5  @ shake delay
-	special ShakeCamera
-	waitstate
-	applymovement LOCALID_GROUDON, MagmaHideout_4F_Movement_GroudonExit
-	waitmovement 0
-	removeobject LOCALID_GROUDON
-	delay 4
-	setvar VAR_0x8004, 2  @ vertical pan
-	setvar VAR_0x8005, 2  @ horizontal pan
-	setvar VAR_0x8006, 8  @ num shakes
-	setvar VAR_0x8007, 5  @ shake delay
-	special ShakeCamera
-	waitstate
-	delay 30
-	applymovement LOCALID_MAXIE, MagmaHideout_4F_Movement_MaxieLookAround
-	waitmovement 0
-	msgbox MagmaHideout_4F_Text_MaxieGroudonWhatsWrong, MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	delay 30
-	applymovement LOCALID_MAXIE, Common_Movement_FacePlayer
-	waitmovement 0
-	msgbox MagmaHideout_4F_Text_MaxieOhItWasYou, MSGBOX_DEFAULT
-	closemessage
-	trainerbattle_no_intro TRAINER_MAXIE_MAGMA_HIDEOUT, MagmaHideout_4F_Text_MaxieDefeat
-	msgbox MagmaHideout_4F_Text_MaxieImGoingAfterGroudon, MSGBOX_DEFAULT
-	closemessage
-	clearflag FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN
-	clearflag FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY
-	setvar VAR_SLATEPORT_CITY_STATE, 1
-	setflag FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT
-	setvar VAR_SLATEPORT_HARBOR_STATE, 1
-	fadescreen FADE_TO_BLACK
-	removeobject LOCALID_MAXIE
-	removeobject LOCALID_GRUNT_1
-	removeobject LOCALID_GRUNT_2
-	removeobject LOCALID_GRUNT_3
-	removeobject LOCALID_TABITHA
-	setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
-	fadescreen FADE_FROM_BLACK
-	releaseall
-	end
-
-MagmaHideout_4F_Movement_GroudonApproach:
-	delay_16
-	delay_16
-	walk_slow_down
-	delay_16
-	delay_16
-	delay_16
-	walk_slow_down
-	delay_16
-	delay_16
-	delay_16
-	step_end
-
-MagmaHideout_4F_Movement_GroudonExit:
-	slide_up
-	slide_up
-	step_end
-
-MagmaHideout_4F_Movement_MaxieLookAround:
-	face_left
-	delay_16
-	face_right
-	delay_16
-	face_left
-	delay_16
-	face_right
-	delay_16
-	face_up
-	delay_16
-	delay_16
-	step_end
-
 MagmaHideout_4F_EventScript_Grunt11::
 	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_11, MagmaHideout_4F_Text_Grunt11Intro, MagmaHideout_4F_Text_Grunt11Defeat
 	msgbox MagmaHideout_4F_Text_Grunt11PostBattle, MSGBOX_AUTOCLOSE
@@ -126,11 +22,6 @@ MagmaHideout_4F_EventScript_Grunt12::
 MagmaHideout_4F_EventScript_Grunt13::
 	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_13, MagmaHideout_4F_Text_Grunt13Intro, MagmaHideout_4F_Text_Grunt13Defeat
 	msgbox MagmaHideout_4F_Text_Grunt13PostBattle, MSGBOX_AUTOCLOSE
-	end
-
-MagmaHideout_4F_EventScript_Tabitha::
-	trainerbattle_single TRAINER_TABITHA_MAGMA_HIDEOUT, MagmaHideout_4F_Text_TabithaIntro, MagmaHideout_4F_Text_TabithaDefeat
-	msgbox MagmaHideout_4F_Text_TabithaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MagmaHideout_4F_Text_Grunt11Intro:
@@ -170,63 +61,280 @@ MagmaHideout_4F_Text_Grunt13Defeat:
 MagmaHideout_4F_Text_Grunt13PostBattle:
 	.string "C-come on, one more match…$"
 
-MagmaHideout_4F_Text_TabithaIntro:
-	.string "Hehehe!\n"
-	.string "You made it this far, so I'll tell you!\p"
-	.string "That's right!\n"
-	.string "Up ahead, Groudon is sleeping!\p"
-	.string "Maxie went to Groudon just seconds\n"
-	.string "ago!\p"
-	.string "It's going to awaken real soon!\n"
-	.string "Hehe! Hehehe!$"
+MagmaHideout_4F_EventScript_Maxie::
+	lockall
+	delay 24
+	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_MAXIE
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_0
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_1
+	closemessage
+	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_MAXIE
+	delay 16
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_2
+	closemessage
+	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_MAXIE
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_3
+	closemessage
+	delay 8
+	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_MAXIE
+	delay 32
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_4
+	closemessage
+	delay 16
+	playse SE_BANG
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_5
+	closemessage
+	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_MAXIE
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_6
+	closemessage
+	delay 24
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_7
+	trainerbattle_no_intro TRAINER_MAXIE_MAGMA_HIDEOUT, MagmaHideout_4F_EventScript_Maxie_Text_8
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_9
+	closemessage
+	delay 16
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_10
+	closemessage
+	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_MAXIE
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_11
+	delay 16
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_12
+	fadenewbgm MUS_DUMMY
+	delay 24
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_13
+	closemessage
+	delay 16
+	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_MAXIE
+	delay 8
+	playse SE_PIN
+	applymovement LOCALID_MAXIE, Common_Movement_ExclamationMark
+	delay 8
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	addobject LOCALID_TABITHA
+	setobjectxy LOCALID_TABITHA, 7, 21
+	applymovement LOCALID_TABITHA, MagmaHideout_4F_Movement_TabithaApproachMaxie
+	applymovement OBJ_EVENT_ID_PLAYER, MagmaHideout_4F_Movement_PlayerMoveAside
+	waitmovement LOCALID_TABITHA
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_14
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_15
+	closemessage
+	delay 32
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_16
+	closemessage
+	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_MAXIE
+	delay 16
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_17
+	closemessage
+	delay 8
+	applymovement LOCALID_TABITHA, Common_Movement_WalkInPlaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	delay 64
+	setvar VAR_RESULT, 1
+	playse SE_M_DETECT
+	dofieldeffectsparkle 18, 42, 0
+	waitfieldeffect FLDEFF_SPARKLE
+	setvar VAR_RESULT, 0
+	playfanfare MUS_AWAKEN_LEGEND
+	playse SE_ORB
+	special DoOrbEffect
+	delay 160
+	removeobject LOCALID_GROUDON_SLEEPING
+	addobject LOCALID_GROUDON
+	waitstate
+	delay 64
+	special FadeOutOrbEffect
+	waitstate
+	setvar VAR_0x8004, 1
+	setvar VAR_0x8005, 1
+	setvar VAR_0x8006, 8
+	setvar VAR_0x8007, 5
+	special ShakeCamera
+	waitstate
+	applymovement LOCALID_GROUDON, MagmaHideout_4F_Movement_GroudonExit
+	waitmovement LOCALID_GROUDON
+	removeobject LOCALID_GROUDON
+	delay 8
+	setvar VAR_0x8004, 2
+	setvar VAR_0x8005, 2
+	setvar VAR_0x8006, 8
+	setvar VAR_0x8007, 5
+	special ShakeCamera
+	waitstate
+	delay 32
+	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceLeft
+	delay 8
+	applymovement LOCALID_TABITHA, Common_Movement_WalkInPlaceRight
+	waitmovement LOCALID_TABITHA
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_18
+	delay 16
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_19
+	closemessage
+	delay 8
+	playse SE_BIKE_BELL
+	waitse
+	playse SE_PIN
+	applymovement LOCALID_MAXIE, Common_Movement_ExclamationMark
+	waitmovement LOCALID_MAXIE
+	waitse
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_20
+	closemessage
+	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceRight
+	waitmovement LOCALID_MAXIE
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_21
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_MAXIE, Common_Movement_ExclamationMark
+	waitmovement LOCALID_MAXIE
+	waitse
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_22
+	closemessage
+	applymovement LOCALID_TABITHA, Common_Movement_WalkRight
+	waitmovement LOCALID_TABITHA
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_23
+	closemessage
+	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_MAXIE
+	delay 32
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_24
+	closemessage
+	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_MAXIE
+	msgbox MagmaHideout_4F_EventScript_Maxie_Text_25
+	closemessage
+	clearflag FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN
+	clearflag FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY
+	setvar VAR_SLATEPORT_CITY_STATE, 1
+	setflag FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT
+	setvar VAR_SLATEPORT_HARBOR_STATE, 1
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_MAXIE
+	removeobject LOCALID_GRUNT_1
+	removeobject LOCALID_GRUNT_2
+	removeobject LOCALID_GRUNT_3
+	removeobject LOCALID_TABITHA
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
+	fadedefaultbgm
+	delay 32
+	fadescreen FADE_FROM_BLACK
+	releaseall
+	end
 
-MagmaHideout_4F_Text_TabithaDefeat:
-	.string "Taken down again…\n"
-	.string "Hehe…$"
 
-MagmaHideout_4F_Text_TabithaPostBattle:
-	.string "…And while you wasted time with me,\n"
-	.string "Maxie should have awakened Groudon…$"
+MagmaHideout_4F_Movement_TabithaApproachMaxie:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	delay_16
+	delay_16
+	walk_right
+	step_end
 
-MagmaHideout_4F_Text_MaxieAwakenGroudon:
-	.string "Maxie: Groudon…\p"
-	.string "Nothing could awaken you from your\n"
-	.string "sleep bathed in magma…\p"
-	.string "This Blue Orb is what you sought.\n"
-	.string "Wasn't it?\p"
-	.string "I have brought you the Blue Orb.\n"
-	.string "Let its shine awaken you!\p"
-	.string "And show me…\n"
-	.string "Show me the full extent of your power!$"
+MagmaHideout_4F_Movement_PlayerMoveAside:
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_down
+	walk_in_place_up
+	step_end
 
-MagmaHideout_4F_Text_MaxieGroudonWhatsWrong:
-	.string "Maxie: Groudon!\n"
-	.string "What's wrong?\p"
-	.string "Wasn't the Blue Orb the key?\p"
-	.string "Groudon!\n"
-	.string "Where have you gone…$"
+MagmaHideout_4F_Movement_GroudonExit:
+	slide_up
+	slide_up
+	step_end
 
-MagmaHideout_4F_Text_MaxieOhItWasYou:
-	.string "Maxie: Oh, so it was you?\p"
-	.string "I've seen you poking around uninvited\n"
-	.string "here and there…\p"
-	.string "I get it now!\n"
-	.string "You must have pulled a cheap stunt!$"
+MagmaHideout_4F_EventScript_Maxie_Text_0:
+	.string "{COLOR RED}Maxie{COLOR DARK_GRAY}: Fuhahaha!\nJust as I predicted.\pEven I, the great Maxie, have\nfound myself wishing for something I\lcannot justify.\pAnd the illogical desire that I\nharbored was to have you present\lhere at this moment.\pHahaha…\nAnd that fool's wish has come true.\pFantastic!\nNothing could please me more!$"
 
-MagmaHideout_4F_Text_MaxieDefeat:
-	.string "What makes you so adept at handling\n"
-	.string "Pokémon?$"
+MagmaHideout_4F_EventScript_Maxie_Text_1:
+	.string "I suppose I should make introductions…\pI present to you my incomparable\npartner, who will assist Team Magma in\ldriving humanity forward to its next\llevel!$"
 
-MagmaHideout_4F_Text_MaxieImGoingAfterGroudon:
-	.string "Maxie: There has to be some reason\n"
-	.string "why Groudon fled…\p"
-	.string "That's what you're trying to say,\n"
-	.string "aren't you?\p"
-	.string "… … … … … …\n"
-	.string "… … … … … …\p"
-	.string "Humph…\n"
-	.string "You think I didn't know that?\p"
-	.string "With Groudon gone, there is no longer\n"
-	.string "any need for this blasted volcano.\p"
-	.string "I am going after Groudon, so this\n"
-	.string "is where we part!$"
+MagmaHideout_4F_EventScript_Maxie_Text_2:
+	.string "The super-ancient Pokémon…{PAUSE 24}Groudon!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_3:
+	.string "Behold!\pThis great form slumbering in\ndefiance of even the broiling lava\lsurrounding it!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_4:
+	.string "So long have I waited for this day…\pImmeasurably long!\pThis foolish world has held back\nhumanity's progress out of misguided\lidealism regarding the coexistence\lof humans and Pokémon.\pBut this ancient creature can bring\nthat to its rightful end, creating a\lnew land upon which humanity may\lstride freely forward.$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_5:
+	.string "Now that I have at last obtained the\npower of {COLOR RED}Primal Groudon{COLOR DARK_GRAY}!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_6:
+	.string "And now, you are the final obstacle\nremaining between me and my goals.\pIt behooves me to use every tool at my\ndisposal to eliminate you.\pIndeed!\nEven Mega Evolution!\pDo not delude yourself that you\nand your Pokémon are the only ones\lcapable of it.\pI must apologize for making you wait\nthrough our encounter at Mt. Chimney\lwithout treating you this sight.\pBrace yourself for my ultimate attack!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_7:
+	.string "Fuhahaha!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_8:
+	.string "You've really done it, child.\pYou've shown a power that exceeds that\nof the great Maxie!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_9:
+	.string "Hah…\nHah… Hahhh…\p…\nAh.\lAha…\pFuhahaha…\pHahahahaha!\nGAHAHAHAHAHAHA!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_10:
+	.string "Splendid.\pJust splendid, my young Trainer.\pNo, it is more than that!\pI should be calling you my young hero!\pBelieving until the very end that\na world where humanity and Pokémon\lcoexist must be the best…\pRejecting my ideals without a second\nthought…\pYes, watching you struggle\ndesperately to halt the beginning of\lthe world's end…\lYou are undoubtedly a hero!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_11:
+	.string "So noble…\pAnd yet.\pI will not yield!\nI will not bend!\lMy ideals will not be shaken!\pMy dream for the world's next step will\nnever change!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_12:
+	.string "I will use the Red Orb to awaken\nGroudon, revert it to its primal form,\land put an end to all else!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_13:
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Wait! Maxie!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_14:
+	.string "{COLOR RED}Maxie{COLOR DARK_GRAY}: Buh?! Tabitha?!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_15:
+	.string "{COLOR RED}Tabitha{COLOR DARK_GRAY}: Do stop that now… Please!\nMaxie!\pYou just don't understand!\pWhat Groudon will bring upon\nawakening is an end to the world!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_16:
+	.string "{COLOR RED}Maxie{COLOR DARK_GRAY}: Humph.\pDid you think I had not noticed?\nThat I had somehow failed to realized\lyou were after my spot?\pSuch a sad development indeed.\nTo be betrayed by my number two…$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_17:
+	.string "In the end, there is only one being\nupon which I can depend!\lNow, Groudon!\pAbsorb all of the power resting in this\nRed Orb, and reclaim yourself!\pRevert to your primal form!\pThis is the time to take back\nthe great Evolution you lost in the\lancient past!\lReclaim the possibility you once held!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_18:
+	.string "{COLOR RED}Maxie{COLOR DARK_GRAY}: Gahahahaha!\nAt last…\pAT LAST!\nI've finally done it!!!\pA new world for human evolution will be\nborn!!!\pWe shall stride forward!!!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_19:
+	.string "{COLOR RED}Tabitha{COLOR DARK_GRAY}: Ohh… What have you done…\nBoss… What…$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_20:
+	.string "{COLOR RED}Maxie{COLOR DARK_GRAY}: …Hm?\nA message from our members outside?$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_21:
+	.string "What is it?\p…\pI should expect so.\nThat is what I have long--\lNo, what WE have long wished for.$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_22:
+	.string "What?! It is greater than simulations\npredicted?\pIt will be a risk to our safety of it\ncontinues?!\pThat cannot be…\pIt has only just awoken…\nWhere is it getting so much power from?\pAnd how much more will it gain when it\ndoes undergo Primal Reversion…\pC-continue your readings!\nThen report back!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_23:
+	.string "{COLOR RED}Tabitha{COLOR DARK_GRAY}: Boss?! Maxie?!\nJust what is happening?!$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_24:
+	.string "{COLOR RED}Maxie{COLOR DARK_GRAY}: All that matter is…\pThat I have used the Red Orb to awaken\nGroudon.\pAnd now…\pI will transform this planet to a land\nideal for humanity.$"
+
+MagmaHideout_4F_EventScript_Maxie_Text_25:
+	.string "I am going after Groudon, so this is\nwhere we part, young Trainer.$"

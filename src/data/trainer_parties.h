@@ -9235,7 +9235,7 @@ static const struct TrainerMon sParty_GruntMagmaHideout16[] = {
     }
 };
 
-static const struct TrainerMon sParty_TabithaMagmaHideout[] = {
+static const struct TrainerMon sParty_Unused732[] = {
     {
     .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
     .lvl = 26,
