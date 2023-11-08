@@ -334,11 +334,7 @@ LilycoveCity_Text_MissingPokemonCameBack:
 	.string "It came back without me noticing!$"
 
 LilycoveCity_Text_ImArtDealer:
-	.string "I'm an Art Dealer.\p"
-	.string "I am a buyer and seller of fine art,\n"
-	.string "especially paintings.\p"
-	.string "I've heard that the Museum here has\n"
-	.string "magnificent works on exhibit…$"
+	.string "I'm an Art Dealer.\nI buy and sell fine art, especially\lpaintings.\pI've heard that the museum here has\nsome magnificent works on exhibit…$"
 
 LilycoveCity_Text_SeaRemainsForeverYoung:
 	.string "Even as we grow old and wrinkled,\nthe sea remains forever young with\lthe vivid brilliance of life…\pFwohoho fwohohohoho…$"
