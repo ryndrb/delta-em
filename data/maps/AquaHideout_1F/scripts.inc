@@ -51,59 +51,22 @@ AquaHideout_1F_EventScript_Grunt1Defeated::
 	end
 
 AquaHideout_1F_Text_OurBossIsSnatchingSomething:
-	.string "What? What? What do you want with \n"
-	.string "Team Aqua?\p"
-	.string "Our Boss isn't here! He's gone off to\n"
-	.string "snatch something important!\p"
-	.string "… …\n"
-	.string "Where did he go?\p"
-	.string "Wahaha! Do you really think I'd tell\n"
-	.string "you something that crucial?$"
+	.string "What? What? What do you want with\nTeam Aqua?\pOur Boss isn't here! He's gone off to\nsnatch something important!\p…\n“Where did he go?”\pWahaha! Do you really think I'd tell you\nsomething that crucial?$"
 
 AquaHideout_1F_Text_WhereMightMagmaHideoutBe:
-	.string "What? What?\n"
-	.string "Are you a Team Magma grunt?\p"
-	.string "I hear that Team Magma is trying to\n"
-	.string "awaken an awesome Pokémon at their\l"
-	.string "Hideout.\p"
-	.string "But where might their Hideout be?$"
+	.string "What? What?\nAre you a Team Magma grunt?\pI hear that Team Magma is trying to\nawaken an awesome Pokémon at their\lHideout.\pBut where might their Hideout be?$"
 
 AquaHideout_1F_Text_BossWentToJackASubmarine:
-	.string "What? What? What do you want with \n"
-	.string "Team Aqua?\p"
-	.string "Our Boss isn't here!\n"
-	.string "He's gone off to jack a submarine!\p"
-	.string "… …\n"
-	.string "Where did he go?\p"
-	.string "Wahaha! Do you really think I'd tell\n"
-	.string "you something that crucial?$"
+	.string "What? What? What do you want with\nTeam Aqua?\pOur Boss isn't here!\nHe's gone off to steal a submarine!\p…\n“Where did he go?”\pWahaha! Do you really think I'd tell you\nsomething that crucial?$"
 
 AquaHideout_1F_Text_BossIsOnRoute122:
-	.string "What? What? What do you want with \n"
-	.string "Team Aqua?\p"
-	.string "Our Boss isn't here! He's on his way to\n"
-	.string "Mt. Pyre on Route 122!\p"
-	.string "… …\n"
-	.string "Why did he go?\p"
-	.string "Wahaha! Do you really think I'd tell\n"
-	.string "you something that crucial?$"
+	.string "What? What? What do you want with\nTeam Aqua?\pOur Boss isn't here! He's on his way to\nMt. Pyre on Route 122!\p…\n“Why did he go?”\pWahaha! Do you really think I'd tell you\nsomething that crucial?$"
 
 AquaHideout_1F_Text_TeamMagmaAtMtChimney:
-	.string "What? What?\n"
-	.string "Are you a Team Magma grunt?\p"
-	.string "I hear that Team Magma is after\n"
-	.string "an awesome Pokémon at Mt. Chimney.\p"
-	.string "But what is that Pokémon like?$"
+	.string "What? What?\nAre you a Team Magma grunt?\pI hear that Team Magma is after an\nawesome Pokémon at Mt. Chimney.\pBut what is that Pokémon like?$"
 
 AquaHideout_1F_Text_BossIsInSlateportCity:
-	.string "What? What? What do you want with\n"
-	.string "Team Aqua?\p"
-	.string "Our Boss isn't here!\n"
-	.string "He's on his way to Slateport City!\p"
-	.string "… …\n"
-	.string "Why did he go?\p"
-	.string "Wahaha! Do you really think I'd tell\n"
-	.string "you something that crucial?$"
+	.string "What? What? What do you want with\nTeam Aqua?\pOur Boss isn't here!\nHe's on his way to Slateport City!\p…\n“Why did he go?”\pWahaha! Do you really think I'd tell you\nsomething that crucial?$"
 
 AquaHideout_1F_Text_Grunt1Intro:
 	.string "Ayiyiyi!\n"
@@ -116,4 +79,3 @@ AquaHideout_1F_Text_Grunt1Defeat:
 AquaHideout_1F_Text_Grunt1PostBattle:
 	.string "I took the loss for the Team,\n"
 	.string "but I did my job…$"
-

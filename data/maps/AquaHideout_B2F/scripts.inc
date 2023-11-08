@@ -13,62 +13,6 @@ AquaHideout_B2F_EventScript_PreventMattNoticing::
 	setvar VAR_TEMP_1, 1
 	return
 
-AquaHideout_B2F_EventScript_MattNoticePlayer::
-	lockall
-	setvar VAR_0x8008, LOCALID_MATT
-	playse SE_PIN
-	applymovement VAR_0x8008, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement VAR_0x8008, Common_Movement_FacePlayer
-	waitmovement 0
-	setvar VAR_TEMP_1, 1
-	releaseall
-	end
-
-AquaHideout_B2F_EventScript_Matt::
-	trainerbattle_single TRAINER_MATT, AquaHideout_B2F_Text_MattIntro, AquaHideout_B2F_Text_MattDefeat, AquaHideout_B2F_EventScript_SubmarineEscape
-	msgbox AquaHideout_B2F_Text_MattPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
-AquaHideout_B2F_EventScript_SubmarineEscape::
-	setvar VAR_0x8008, LOCALID_MATT
-	setvar VAR_0x8009, LOCALID_SUBMARINE
-	applymovement VAR_0x8008, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	delay 20
-	applymovement VAR_0x8008, Common_Movement_FacePlayer
-	waitmovement 0
-	msgbox AquaHideout_B2F_Text_OurBossGotThroughHisPreparations, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_0x8008, Common_Movement_WalkInPlaceFasterLeft
-	applymovement VAR_0x8009, AquaHideout_B2F_Movement_SumbarineDepartLeft
-	waitmovement 0
-	removeobject VAR_0x8009
-	delay 20
-	applymovement VAR_0x8008, Common_Movement_FacePlayer
-	waitmovement 0
-	msgbox AquaHideout_B2F_Text_MattPostBattle, MSGBOX_DEFAULT
-	setflag FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE
-	setflag FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS
-	release
-	end
-
-AquaHideout_B2F_Movement_SumbarineDepartLeft:
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
-@ Unused
-AquaHideout_B2F_Movement_SumbarineDepartRight:
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
 AquaHideout_B2F_EventScript_Grunt4::
 	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_4, AquaHideout_B2F_Text_Grunt4Intro, AquaHideout_B2F_Text_Grunt4Defeat, AquaHideout_B2F_EventScript_Grunt4Defeated
 	msgbox AquaHideout_B2F_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
@@ -88,35 +32,6 @@ AquaHideout_B2F_EventScript_Grunt8::
 	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_8, AquaHideout_B2F_Text_Grunt8Intro, AquaHideout_B2F_Text_Grunt8Defeat
 	msgbox AquaHideout_B2F_Text_Grunt8PostBattle, MSGBOX_AUTOCLOSE
 	end
-
-AquaHideout_B2F_Text_MattIntro:
-	.string "Hehehe…\p"
-	.string "Got here already, did you?\n"
-	.string "We underestimated you!\p"
-	.string "But this is it!\p"
-	.string "I'm a cut above the Grunts you've seen\n"
-	.string "so far.\p"
-	.string "I'm not stalling for time.\n"
-	.string "I'm going to pulverize you!$"
-
-AquaHideout_B2F_Text_MattDefeat:
-	.string "Hehehe…\n"
-	.string "So, I lost, too…$"
-
-AquaHideout_B2F_Text_OurBossGotThroughHisPreparations:
-	.string "Hehehe!\p"
-	.string "While I was toying with you, our Boss\n"
-	.string "got through his preparations!$"
-
-AquaHideout_B2F_Text_MattPostBattle:
-	.string "Hehehe!\p"
-	.string "Our Boss has already gone on his way to\n"
-	.string "some cave under the sea!\p"
-	.string "If you're going to give chase, you'd\n"
-	.string "better search the big, wide sea beyond\l"
-	.string "Lilycove.\p"
-	.string "But will you find it then?\n"
-	.string "Hehehe!$"
 
 AquaHideout_B2F_Text_Grunt4Intro:
 	.string "Wahahah, I grew weary of waiting!\n"
@@ -160,3 +75,105 @@ AquaHideout_B2F_Text_Grunt8Defeat:
 AquaHideout_B2F_Text_Grunt8PostBattle:
 	.string "I'll have to learn about how I can\n"
 	.string "battle more effectively…$"
+
+AquaHideout_B2F_EventScript_MattNoticePlayer::
+	lock
+	delay 8
+	applymovement LOCALID_MATT, Common_Movement_WalkInPlaceRight
+	waitmovement LOCALID_MATT
+	playse SE_PIN
+	applymovement LOCALID_MATT, Common_Movement_ExclamationMark
+	waitmovement LOCALID_MATT
+	waitse
+	msgbox AquaHideout_B2F_EventScript_MattNoticePlayer_Text_0
+	closemessage
+	setvar VAR_TEMP_1, 1
+	release
+	end
+
+
+AquaHideout_B2F_EventScript_SubmarineEscape::
+	lock
+	goto_if_set FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, AquaHideout_B2F_EventScript_SubmarineEscape_2
+	delay 8
+	faceplayer
+	msgbox AquaHideout_B2F_EventScript_SubmarineEscape_Text_1
+	closemessage
+	applymovement LOCALID_MATT, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_MATT
+	delay 16
+	msgbox AquaHideout_B2F_EventScript_SubmarineEscape_Text_2
+	closemessage
+	applymovement LOCALID_MATT, Common_Movement_WalkInPlaceRight
+	waitmovement LOCALID_MATT
+	msgbox AquaHideout_B2F_EventScript_SubmarineEscape_Text_3
+	closemessage
+	delay 24
+	msgbox AquaHideout_B2F_EventScript_SubmarineEscape_Text_4
+	closemessage
+	trainerbattle_no_intro TRAINER_MATT, AquaHideout_B2F_EventScript_SubmarineEscape_Text_5
+	delay 32
+	msgbox AquaHideout_B2F_EventScript_SubmarineEscape_Text_6
+	closemessage
+	delay 8
+	applymovement LOCALID_MATT, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_MATT
+	delay 16
+	applymovement LOCALID_SUBMARINE, AquaHideout_B2F_Movement_SumbarineDepartLeft
+	waitmovement LOCALID_SUBMARINE
+	removeobject LOCALID_SUBMARINE
+	delay 48
+	msgbox AquaHideout_B2F_EventScript_SubmarineEscape_Text_7
+	closemessage
+	delay 32
+	applymovement LOCALID_MATT, Common_Movement_WalkInPlaceRight
+	waitmovement LOCALID_MATT
+	msgbox AquaHideout_B2F_EventScript_SubmarineEscape_Text_8
+	closemessage
+	setflag FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE
+	setflag FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS
+	release
+	end
+
+AquaHideout_B2F_EventScript_SubmarineEscape_2:
+	msgbox AquaHideout_B2F_EventScript_SubmarineEscape_Text_0, MSGBOX_NPC
+	end
+
+
+AquaHideout_B2F_Movement_SumbarineDepartLeft:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+AquaHideout_B2F_EventScript_MattNoticePlayer_Text_0:
+	.string "{COLOR RED}Matt{COLOR DARK_GRAY}: Oh! I knew you'd come!$"
+
+AquaHideout_B2F_EventScript_SubmarineEscape_Text_0:
+	.string "You took me out, so I'll give you an\nidea of what the world will be like if\lmy bro has his way.\pMy bro Archie is headed for the\nbig blue sea that stretches out from\lLilycove City.\pDeep beneath the surface is the\nSeafloor Cavern.\pThat's where the world my bro hopes to\ncreate…\pWhere the beginnings of the primordial\nworld will be felt…\pRegular people and Pokémon can't make\nit there, though.\pHow could you get there?\pWhy don't you look around in towns by\nthe sea and use your own thick head\lto think about it?$"
+
+AquaHideout_B2F_EventScript_SubmarineEscape_Text_1:
+	.string "{COLOR RED}Matt{COLOR DARK_GRAY}: You're the first punk ever\nto sneak into this hideout and make\lit this far!\pI expected nothing less from a crumb\nlike you!\pBut I've got some bad news for you!\pWe already finished upgrading the ship!$"
+
+AquaHideout_B2F_EventScript_SubmarineEscape_Text_2:
+	.string "Look at that drill!\pAs long as we've got that thing, we\ncould KO the seal over the Seafloor\lCavern with one punch!\pMy bro Archie's in the ship!\pCome at me!\nIf you take me out fast, you might be\lable to catch up to him!$"
+
+AquaHideout_B2F_EventScript_SubmarineEscape_Text_3:
+	.string "Before you do, though…\pWe need to settle once and for all who's\nstronger, you and your sorry Pokémon,\lor me and my not-so-sorry Pokémon!\p…Hoo!\p…Haaahh!\pI'm…\pHeating up!$"
+
+AquaHideout_B2F_EventScript_SubmarineEscape_Text_4:
+	.string "Hooah! Full on!\nI'm burning up!\pMe! You! Pokémon!\nMixing it up! Dueling!\pWell! Welll! Wellllll!\pLet's battle it out until we've got\nnothing left!$"
+
+AquaHideout_B2F_EventScript_SubmarineEscape_Text_5:
+	.string "Oho! That hurt just about exactly as\nmuch as I figured!$"
+
+AquaHideout_B2F_EventScript_SubmarineEscape_Text_6:
+	.string "Hah…\nHah… Hah…\pBro!\pIt's all…on you…now…$"
+
+AquaHideout_B2F_EventScript_SubmarineEscape_Text_7:
+	.string "While we were battling it out…\pMy bro Archie finished getting ready…\p…\pI have only one hope…\pFor my bro Archie to finish doing what\nhe set out to do…\pThat's all…\pMy bro Archie is everything to me…\pI live to serve my bro…$"
+
+AquaHideout_B2F_EventScript_SubmarineEscape_Text_8:
+	.string "…All right, then.\pYou took me out, so I'll give you an\nidea of what the world will be like if\lmy bro has his way.\pMy bro Archie is headed for the\nbig blue sea that stretches out from\lLilycove City.\pDeep beneath the surface is the\nSeafloor Cavern.\pThat's where the world my bro hopes to\ncreate…\pWhere the beginnings of the primordial\nworld will be felt…\pRegular people and Pokémon can't make\nit there, though.\pHow could you get there?\pWhy don't you look around in towns by\nthe sea and use your own thick head\lto think about it?$"
