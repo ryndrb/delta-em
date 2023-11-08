@@ -1,11 +1,5 @@
 LilycoveCity_House3_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_House3_OnTransition
 	.byte 0
-
-LilycoveCity_House3_OnTransition:
-	random 4
-	copyvar VAR_TEMP_1, VAR_RESULT
-	end
 
 LilycoveCity_House3_EventScript_PokefanF::
 	lock
@@ -40,7 +34,8 @@ LilycoveCity_House3_EventScript_Man::
 LilycoveCity_House3_EventScript_GameBoyKid1::
 	lock
 	faceplayer
-	switch VAR_TEMP_1
+    random 4
+	switch VAR_RESULT
 	case 0, LilycoveCity_House3_EventScript_WereDoingMultiBattle
 	case 1, LilycoveCity_House3_EventScript_WereMixingRecords
 	case 2, LilycoveCity_House3_EventScript_WereBlendingBerries
@@ -50,7 +45,8 @@ LilycoveCity_House3_EventScript_GameBoyKid1::
 LilycoveCity_House3_EventScript_GameBoyKid2::
 	lock
 	faceplayer
-	switch VAR_TEMP_1
+    random 4
+	switch VAR_RESULT
 	case 0, LilycoveCity_House3_EventScript_WereDoingMultiBattle
 	case 1, LilycoveCity_House3_EventScript_WereMixingRecords
 	case 2, LilycoveCity_House3_EventScript_WereBlendingBerries
@@ -60,7 +56,8 @@ LilycoveCity_House3_EventScript_GameBoyKid2::
 LilycoveCity_House3_EventScript_GameBoyKid3::
 	lock
 	faceplayer
-	switch VAR_TEMP_1
+    random 4
+	switch VAR_RESULT
 	case 0, LilycoveCity_House3_EventScript_WereDoingMultiBattle
 	case 1, LilycoveCity_House3_EventScript_WereMixingRecords
 	case 2, LilycoveCity_House3_EventScript_WereBlendingBerries
@@ -70,7 +67,8 @@ LilycoveCity_House3_EventScript_GameBoyKid3::
 LilycoveCity_House3_EventScript_GameBoyKid4::
 	lock
 	faceplayer
-	switch VAR_TEMP_1
+    random 4
+	switch VAR_RESULT
 	case 0, LilycoveCity_House3_EventScript_WereDoingMultiBattle
 	case 1, LilycoveCity_House3_EventScript_WereMixingRecords
 	case 2, LilycoveCity_House3_EventScript_WereBlendingBerries
@@ -98,20 +96,10 @@ LilycoveCity_House3_EventScript_WereDoingContest::
 	end
 
 LilycoveCity_House3_Text_LearnFromMasterOfPokeblocks:
-	.string "Oh, my, my! Are you traveling alone?\n"
-	.string "But you're so young! Good for you!\p"
-	.string "I'm sure my kids could learn a thing\n"
-	.string "or two from you!\p"
-	.string "Me? I'm a master of {POKEBLOCK}s.\p"
-	.string "If I get serious just a little, why,\n"
-	.string "I can concoct great {POKEBLOCK}s.\p"
-	.string "Would you like to learn from me,\n"
-	.string "a master of {POKEBLOCK}s?$"
+	.string "Oh, my, my! Are you traveling alone?\nBut you're so young! Good for you!\pI'm sure my kids could learn a thing or\ntwo from you!\pMe?\nI'm a Pokéblock Master.\pIf I get just a little serious, why, I\ncan conconct great Pokéblocks.\pWould you like to learn from me, a\nPokéblock Master?$"
 
 LilycoveCity_House3_Text_OhAreYouSure:
-	.string "Oh? Are you sure?\p"
-	.string "You shouldn't always try to do\n"
-	.string "everything by yourself, dear!$"
+	.string "Oh?\nAre you sure?\pYou shouldn't always try to do\neverything by yourself, dear!$"
 
 LilycoveCity_House3_Text_ExplainPokeblocks:
 	.string "Oh, good! You're a smart soul!\n"
@@ -165,4 +153,3 @@ LilycoveCity_House3_Text_GoingToEnterContest:
 	.string "I want to brag about how tough my\n"
 	.string "Pokémon is, so we're going to enter\l"
 	.string "a Contest together.$"
-

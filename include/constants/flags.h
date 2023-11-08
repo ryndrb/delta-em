@@ -70,7 +70,7 @@
 #define FLAG_HIDE_SOUTHERN_ISLAND_INTERIOR_STEVEN    0x39
 #define FLAG_RECEIVED_ROCKY_HELMET          0x3A
 #define FLAG_HIDE_FORTREE_CITY_STEVEN       0x3B
-#define FLAG_UNUSED_0x03C    0x3C // Unused Flag
+#define FLAG_RECEIVED_TM_SLEEP_TALK         0x3C
 #define FLAG_UNUSED_0x03D    0x3D // Unused Flag
 #define FLAG_UNUSED_0x03E    0x3E // Unused Flag
 #define FLAG_UNUSED_0x03F    0x3F // Unused Flag
@@ -308,7 +308,7 @@
 #define FLAG_RECEIVED_FOCUS_BAND             0x11B
 #define FLAG_DECLINED_WALLY_BATTLE_MAUVILLE  0x11C
 #define FLAG_RECEIVED_DEVON_SCOPE            0x11D
-#define FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE  0x11E
+#define FLAG_UNUSED_0x11E                    0x11E // Unused
 #define FLAG_MET_DEVON_EMPLOYEE              0x11F
 #define FLAG_MET_RIVAL_RUSTBORO              0x120
 #define FLAG_RECEIVED_SILK_SCARF             0x121

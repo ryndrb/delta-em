@@ -280,5 +280,6 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_PETALBURG_CITY_RIVAL
 	setflag FLAG_HIDE_PETALBURG_CITY_NORMAN
 	setflag FLAG_HIDE_ROUTE_118_LATIAS
+	setflag FLAG_HIDE_LILYCOVE_CITY_RIVAL
 	call EventScript_ResetAllBerries
 	end

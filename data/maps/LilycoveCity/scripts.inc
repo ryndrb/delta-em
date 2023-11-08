@@ -1,3 +1,4 @@
+.set LOCALID_RIVAL, 17
 .set LOCALID_WOMAN_1, 19
 .set LOCALID_MAN_1, 20
 
@@ -11,8 +12,13 @@ LilycoveCity_OnTransition:
 	setvar VAR_CONTEST_HALL_STATE, 0
 	setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
+    call_if_set FLAG_MET_RIVAL_LILYCOVE, LilycoveCity_EventScript_RivalSceneDone
 	call Common_EventScript_SetupRivalGfxId
 	end
+
+LilycoveCity_EventScript_RivalSceneDone::
+    setvar VAR_TEMP_2, 1
+    return
 
 LilycoveCity_OnLoad:
 	call_if_unset FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, LilycoveCity_EventScript_SetWailmerMetatiles
@@ -202,7 +208,7 @@ LilycoveCity_EventScript_WailmerTrainerGrunt::
 	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
 	waitmovement 0
 	msgbox LilycoveCity_Text_GetLostMessingUpTraining, MSGBOX_DEFAULT
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	setflag FLAG_MET_WAILMER_TRAINER
 	releaseall
@@ -214,11 +220,36 @@ LilycoveCity_EventScript_MetWailmerTrainer::
 	end
 
 LilycoveCity_EventScript_AquaGrunt1::
-	msgbox LilycoveCity_Text_MovedLootIntoHideoutToday, MSGBOX_NPC
+	lock
+	msgbox LilycoveCity_Text_MovedLootIntoHideoutToday, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
+	applymovement 13, Common_Movement_ExclamationMark
+	waitmovement 13
+	delay 8
+	faceplayer
+	msgbox LilycoveCity_Text_AquaGruntNoticePlayer, MSGBOX_DEFAULT
+	closemessage
+	applymovement 13, Common_Movement_WalkInPlaceLeft
+	waitmovement 13
+	release
+	end
 	end
 
 LilycoveCity_EventScript_AquaGrunt2::
-	msgbox LilycoveCity_Text_ChanceToDoBigThings, MSGBOX_NPC
+	lock
+	msgbox LilycoveCity_Text_ChanceToDoBigThings, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
+	applymovement 14, Common_Movement_ExclamationMark
+	waitmovement 14
+	delay 8
+	faceplayer
+	msgbox LilycoveCity_Text_AquaGruntNoticePlayer, MSGBOX_DEFAULT
+	closemessage
+	applymovement 14, Common_Movement_WalkInPlaceRight
+	waitmovement 14
+	release
 	end
 
 LilycoveCity_EventScript_AquaGrunt3::
@@ -227,172 +258,6 @@ LilycoveCity_EventScript_AquaGrunt3::
 
 LilycoveCity_EventScript_AquaGrunt4::
 	msgbox LilycoveCity_Text_IfWorldBecomesOurs, MSGBOX_NPC
-	end
-
-LilycoveCity_EventScript_Rival::
-	lock
-	faceplayer
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, LilycoveCity_EventScript_May
-	goto_if_eq VAR_RESULT, FEMALE, LilycoveCity_EventScript_Brendan
-	end
-
-LilycoveCity_EventScript_May::
-	playbgm MUS_ENCOUNTER_MAY, TRUE
-	call_if_set FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, LilycoveCity_EventScript_MayAskToBattleAgain
-	call_if_unset FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, LilycoveCity_EventScript_MayAskToBattle
-	goto_if_eq VAR_RESULT, NO, LilycoveCity_EventScript_DeclineMayBattle
-	msgbox LilycoveCity_Text_MayWontBeBeaten, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, LilycoveCity_EventScript_BattleMayTreecko
-	case 1, LilycoveCity_EventScript_BattleMayTorchic
-	case 2, LilycoveCity_EventScript_BattleMayMudkip
-	end
-
-LilycoveCity_EventScript_MayAskToBattleAgain::
-	msgbox LilycoveCity_Text_MayBattleMe, MSGBOX_YESNO
-	return
-
-LilycoveCity_EventScript_MayAskToBattle::
-	msgbox LilycoveCity_Text_MayShoppingLetsBattle, MSGBOX_YESNO
-	return
-
-LilycoveCity_EventScript_DeclineMayBattle::
-	setflag FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE
-	msgbox LilycoveCity_Text_MayNotRaisingPokemon, MSGBOX_DEFAULT
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	release
-	end
-
-LilycoveCity_EventScript_Brendan::
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	call_if_set FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, LilycoveCity_EventScript_BrendanAskToBattleAgain
-	call_if_unset FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, LilycoveCity_EventScript_BrendanAskToBattle
-	goto_if_eq VAR_RESULT, NO, LilycoveCity_EventScript_DeclineBrendanBattle
-	msgbox LilycoveCity_Text_BrendanWontBeBeaten, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, LilycoveCity_EventScript_BattleBrendanTreecko
-	case 1, LilycoveCity_EventScript_BattleBrendanTorchic
-	case 2, LilycoveCity_EventScript_BattleBrendanMudkip
-	end
-
-LilycoveCity_EventScript_BrendanAskToBattleAgain::
-	msgbox LilycoveCity_Text_BrendanBattleMe, MSGBOX_YESNO
-	return
-
-LilycoveCity_EventScript_BrendanAskToBattle::
-	msgbox LilycoveCity_Text_BrendanShoppingLetsBattle, MSGBOX_YESNO
-	return
-
-LilycoveCity_EventScript_DeclineBrendanBattle::
-	setflag FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE
-	msgbox LilycoveCity_Text_BrendanNoConfidence, MSGBOX_DEFAULT
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	release
-	end
-
-LilycoveCity_EventScript_BattleMayTreecko::
-	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_TREECKO, LilycoveCity_Text_MayDefeat
-	goto LilycoveCity_EventScript_DefeatedMay
-	end
-
-LilycoveCity_EventScript_BattleMayTorchic::
-	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_TORCHIC, LilycoveCity_Text_MayDefeat
-	goto LilycoveCity_EventScript_DefeatedMay
-	end
-
-LilycoveCity_EventScript_BattleMayMudkip::
-	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_MUDKIP, LilycoveCity_Text_MayDefeat
-	goto LilycoveCity_EventScript_DefeatedMay
-	end
-
-LilycoveCity_EventScript_BattleBrendanTreecko::
-	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_TREECKO, LilycoveCity_Text_BrendanDefeat
-	goto LilycoveCity_EventScript_DefeatedBrendan
-	end
-
-LilycoveCity_EventScript_BattleBrendanTorchic::
-	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_TORCHIC, LilycoveCity_Text_BrendanDefeat
-	goto LilycoveCity_EventScript_DefeatedBrendan
-	end
-
-LilycoveCity_EventScript_BattleBrendanMudkip::
-	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_MUDKIP, LilycoveCity_Text_BrendanDefeat
-	goto LilycoveCity_EventScript_DefeatedBrendan
-	end
-
-LilycoveCity_EventScript_DefeatedMay::
-	msgbox LilycoveCity_Text_MayGoingBackToLittleroot, MSGBOX_DEFAULT
-	setvar VAR_RESULT, FALSE
-	call_if_set FLAG_BADGE06_GET, LilycoveCity_EventScript_CheckFinalBadge
-	call_if_eq VAR_RESULT, FALSE, LilycoveCity_EventScript_MayCollectBadges
-	call_if_eq VAR_RESULT, TRUE, LilycoveCity_EventScript_MayPokemonLeague
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_PICHU_DOLL
-	goto LilycoveCity_EventScript_RivalFlyAway
-	end
-
-LilycoveCity_EventScript_CheckFinalBadge::
-	goto_if_set FLAG_BADGE08_GET, LilycoveCity_EventScript_HasFinalBadge
-	return
-
-LilycoveCity_EventScript_HasFinalBadge::
-	setvar VAR_RESULT, TRUE
-	return
-
-LilycoveCity_EventScript_MayCollectBadges::
-	msgbox LilycoveCity_Text_MayYouGoingToCollectBadges, MSGBOX_DEFAULT
-	return
-
-LilycoveCity_EventScript_MayPokemonLeague::
-	goto_if_set FLAG_SYS_GAME_CLEAR, LilycoveCity_EventScript_MayBattleFrontier
-	msgbox LilycoveCity_Text_MayYouGoingToPokemonLeague, MSGBOX_DEFAULT
-	return
-
-LilycoveCity_EventScript_MayBattleFrontier::
-	msgbox LilycoveCity_Text_MayYouGoingToBattleFrontier, MSGBOX_DEFAULT
-	return
-
-LilycoveCity_EventScript_DefeatedBrendan::
-	msgbox LilycoveCity_Text_BrendanGoingBackToLittleroot, MSGBOX_DEFAULT
-	setvar VAR_RESULT, FALSE
-	call_if_set FLAG_BADGE06_GET, LilycoveCity_EventScript_CheckFinalBadge
-	call_if_eq VAR_RESULT, FALSE, LilycoveCity_EventScript_BrendanCollectBadges
-	call_if_eq VAR_RESULT, TRUE, LilycoveCity_EventScript_BrendanPokemonLeague
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_SWABLU_DOLL
-	goto LilycoveCity_EventScript_RivalFlyAway
-	end
-
-LilycoveCity_EventScript_BrendanCollectBadges::
-	msgbox LilycoveCity_Text_BrendanYouGoingToCollectBadges, MSGBOX_DEFAULT
-	return
-
-LilycoveCity_EventScript_BrendanPokemonLeague::
-	goto_if_set FLAG_SYS_GAME_CLEAR, LilycoveCity_EventScript_BrendanBattleFrontier
-	msgbox LilycoveCity_Text_BrendanYouGoingToPokemonLeague, MSGBOX_DEFAULT
-	return
-
-LilycoveCity_EventScript_BrendanBattleFrontier::
-	msgbox LilycoveCity_Text_BrendanYouGoingToBattleFrontier, MSGBOX_DEFAULT
-	return
-
-LilycoveCity_EventScript_RivalFlyAway::
-	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	delay 50
-	setfieldeffectargument 0, 1
-	dofieldeffect FLDEFF_NPCFLY_OUT
-	delay 15
-	removeobject VAR_LAST_TALKED
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	setflag FLAG_MET_RIVAL_LILYCOVE
-	release
 	end
 
 LilycoveCity_EventScript_SchoolKidM::
@@ -412,153 +277,14 @@ LilycoveCity_EventScript_DontKnowAboutBerryBlender::
 	msgbox LilycoveCity_Text_ExplainBerryBlender, MSGBOX_DEFAULT
 	return
 
-LilycoveCity_Text_MayShoppingLetsBattle:
-	.string "May: Oh, hey?\n"
-	.string "{PLAYER}{KUN}, are you shopping, too?\p"
-	.string "I bought a whole bunch of Dolls and\n"
-	.string "Posters.\p"
-	.string "Of course, I've also caught a lot of\n"
-	.string "Pokémon, and I'm raising them\l"
-	.string "properly, too.\p"
-	.string "Actually, I'm more worried if you're\n"
-	.string "raising Pokémon properly, {PLAYER}{KUN}.\p"
-	.string "I'll battle with you, so you can show\n"
-	.string "me your Pokémon, {PLAYER}{KUN}.$"
-
-LilycoveCity_Text_MayNotRaisingPokemon:
-	.string "May: Oh, why? {PLAYER}{KUN}, haven't you\n"
-	.string "been raising your Pokémon?\p"
-	.string "That's not a very good showing as a\n"
-	.string "Trainer…$"
-
-LilycoveCity_Text_MayBattleMe:
-	.string "May: Come on, battle with me, so I can\n"
-	.string "check out your Pokémon!$"
-
-LilycoveCity_Text_MayWontBeBeaten:
-	.string "May: The Pokémon I raised won't be\n"
-	.string "beaten by your Pokémon, {PLAYER}{KUN}!$"
-
-LilycoveCity_Text_MayDefeat:
-	.string "… … … … … … … …\p"
-	.string "I remember the battle I had with you,\n"
-	.string "{PLAYER}{KUN}, on Route 103.\p"
-	.string "That battle helped you become this\n"
-	.string "strong, {PLAYER}{KUN}, didn't it?$"
-
-LilycoveCity_Text_MayGoingBackToLittleroot:
-	.string "May: I'm thinking of going back to\n"
-	.string "Littleroot soon.\p"
-	.string "I've caught a decent group of Pokémon,\n"
-	.string "and my Pokédex is coming along, so\l"
-	.string "I'm going home to show my dad.$"
-
-LilycoveCity_Text_MayYouGoingToCollectBadges:
-	.string "{PLAYER}{KUN}, what are you going to do?\p"
-	.string "Collect all the Gym Badges and take\n"
-	.string "the Pokémon League challenge?\p"
-	.string "Well, while you're collecting Badges,\n"
-	.string "{PLAYER}{KUN}, I'm going to work on my\l"
-	.string "Pokédex. I'll complete it before you!\p"
-	.string "See you!$"
-
-LilycoveCity_Text_MayYouGoingToPokemonLeague:
-	.string "{PLAYER}{KUN}, what are you going to do?\p"
-	.string "Are you taking the Pokémon League\n"
-	.string "challenge?\p"
-	.string "Or, are you going to complete your\n"
-	.string "Pokédex?\p"
-	.string "I might've lost to you in battling,\n"
-	.string "but I'll finish my Pokédex before you!\p"
-	.string "See you!$"
-
-LilycoveCity_Text_MayYouGoingToBattleFrontier:
-	.string "{PLAYER}{KUN}, what are you going to do?\p"
-	.string "Are you taking the Battle Frontier\n"
-	.string "challenge?\p"
-	.string "Or, are you going to complete your\n"
-	.string "Pokédex?\p"
-	.string "I might've lost to you in battling,\n"
-	.string "but I'll finish my Pokédex before you!\p"
-	.string "See you!$"
-
-LilycoveCity_Text_BrendanShoppingLetsBattle:
-	.string "Brendan: Oh, hey, it's {PLAYER}.\p"
-	.string "I'm running an errand for my dad.\n"
-	.string "No, I'm not buying any Dolls.\p"
-	.string "Anyways, it's been a while.\p"
-	.string "Want to have a battle to see who's been\n"
-	.string "raising Pokémon better?$"
-
-LilycoveCity_Text_BrendanNoConfidence:
-	.string "Brendan: Oh, what's the matter?\n"
-	.string "Don't have the confidence?$"
-
-LilycoveCity_Text_BrendanBattleMe:
-	.string "Brendan: Want to battle to see who's\n"
-	.string "been raising Pokémon better?$"
-
-LilycoveCity_Text_BrendanWontBeBeaten:
-	.string "Brendan: Aww, but you know I'm not\n"
-	.string "going to lose to no {PLAYER}.$"
-
-LilycoveCity_Text_BrendanDefeat:
-	.string "Humph…\n"
-	.string "You've done a lot of raising.\p"
-	.string "That stings a bit--I had a head start\n"
-	.string "on you as a Trainer…$"
-
-LilycoveCity_Text_BrendanGoingBackToLittleroot:
-	.string "Brendan: I…\n"
-	.string "I plan on going home to Littleroot.\p"
-	.string "You know I'm helping out my dad on his\n"
-	.string "Pokédex. It's coming together pretty\l"
-	.string "decently, so I should go show him.$"
-
-LilycoveCity_Text_BrendanYouGoingToCollectBadges:
-	.string "{PLAYER}, what are you going to do?\p"
-	.string "Collect all the Gym Badges and take\n"
-	.string "the Pokémon League challenge?\p"
-	.string "Maybe I'll do that, too…\p"
-	.string "Well, anyway, hang in there!$"
-
-LilycoveCity_Text_BrendanYouGoingToPokemonLeague:
-	.string "{PLAYER}, what are you going to do?\p"
-	.string "Since you're that strong, are you\n"
-	.string "taking the Pokémon League challenge?\p"
-	.string "Heh, even me--if I trained my Pokémon\n"
-	.string "a bit more, I should be stronger than\l"
-	.string "you, {PLAYER}.\p"
-	.string "Well, anyway, hang in there!$"
-
-LilycoveCity_Text_BrendanYouGoingToBattleFrontier:
-	.string "{PLAYER}, what are you going to do?\p"
-	.string "Are you taking the Battle Frontier\n"
-	.string "challenge?\p"
-	.string "Or, are you going to complete your\n"
-	.string "Pokédex?\p"
-	.string "Since you're that strong, you should\n"
-	.string "consider the Battle Frontier.\p"
-	.string "Heh, if I train my Pokémon a bit more,\n"
-	.string "I'll get stronger than you, {PLAYER}.\p"
-	.string "Maybe I should go to the Battle\n"
-	.string "Frontier.\p"
-	.string "Well, anyway, hang in there!$"
-
 LilycoveCity_Text_MovedLootIntoHideoutToday:
-	.string "Fufufu…\p"
-	.string "We moved more loot into our secret\n"
-	.string "Hideout today…\p"
-	.string "Wh-who are you?!\n"
-	.string "I was just talking to myself!$"
+	.string "Fufufu…\pWe've finished moving more loot into\nour secret hideout today.$"
 
 LilycoveCity_Text_ChanceToDoBigThings:
-	.string "I'm just a Grunt, so I don't know what\n"
-	.string "the Boss is thinking…\p"
-	.string "But being on Team Aqua, I know I'll get\n"
-	.string "the chance to do big things!\p"
-	.string "Wh-who are you?!\n"
-	.string "I was just talking to myself!$"
+	.string "I'm just a Grunt, so I have no idea what\nthe Boss is thinking…\lThat's OK with me, though!\pIf I just stay on Team Aqua, someday\nI'll be able to do something awesome!\lSomeday I'll be big time!$"
+
+LilycoveCity_Text_AquaGruntNoticePlayer:
+	.string "Who-who are you?!\nI was just talking to myself!$"
 
 LilycoveCity_Text_DontGoNearCaveInCove:
 	.string "Hey, you!\p"
@@ -567,29 +293,19 @@ LilycoveCity_Text_DontGoNearCaveInCove:
 	.string "I'm an adult, so you just listen to me!$"
 
 LilycoveCity_Text_IfWorldBecomesOurs:
-	.string "If this whole wide world becomes ours,\n"
-	.string "Team Aqua's, it will be a happier\l"
-	.string "place for Pokémon, too.$"
+	.string "If this whole wide world becomes ours,\nTeam Aqua's, then the 101 Skitty at\lmy parents' house and Wailmer that\llive with me should be happier, too!$"
 
 LilycoveCity_Text_WailmerLeapOutOfWater:
-	.string "There! Wailmer!\n"
-	.string "Leap out of the water now!$"
+	.string "There, Wailmer!\nNow leap out of the water and turn!$"
 
 LilycoveCity_Text_GetLostMessingUpTraining:
-	.string "Hunh? What do you want?\p"
-	.string "You're messing up our training,\n"
-	.string "so can you, like, get lost?$"
+	.string "Huh?\nWhat do you want?\pYou're messing with out trainer, so can\nyou, like, get lost?$"
 
 LilycoveCity_Text_ContestHallInTown:
-	.string "There's a Pokémon Contest Hall\n"
-	.string "right in this here town. \p"
-	.string "That means well-raised Pokémon will\n"
-	.string "come from all over the country.\p"
-	.string "My heart swells with excitement!$"
+	.string "A great variety of Pokémon have\ngathered to show off how cute or\ltough they are in the Contest Hall!\pMe, I love a great variety of\nPokémon, so my heart is pounding with\lanticipation!$"
 
 LilycoveCity_Text_StrangeCaveInCove:
-	.string "Have you seen that strange cave in\n"
-	.string "the cove at the edge of town?$"
+	.string "Have you seen that strange cave in\nthe cove at the edge of town?$"
 
 LilycoveCity_Text_GoingToMoveDeleterForHMs:
 	.string "I'm going to teach my Pokémon some new\n"
@@ -598,18 +314,10 @@ LilycoveCity_Text_GoingToMoveDeleterForHMs:
 	.string "and make it forget HM moves.$"
 
 LilycoveCity_Text_ImFromKanto:
-	.string "I came from Kanto.\p"
-	.string "The Hoenn region is beautiful with\n"
-	.string "all its water and verdant nature.\p"
-	.string "Hunh? Wait a second…\p"
-	.string "Could there be rare Pokémon that live\n"
-	.string "only in this area?$"
+	.string "The Hoenn region shines with the\nbeauty of its waterways and verdant\lnature.\pIt makes me realize that it's just as\nlovely a place as home in the Kanto\lregion!$"
 
 LilycoveCity_Text_TeamAquaBeenTrainingWailmer:
-	.string "Team Aqua's been training their\n"
-	.string "Wailmer in the cove.\p"
-	.string "We Sailors can't get our boats out\n"
-	.string "to sea with them in the way!$"
+	.string "Team Aqua's been training their\nWailmer in the cove.\pWe Sailors can't get our boats out\nto sea with them in the way!$"
 
 LilycoveCity_Text_SomeonePuntedTeamAquaOut:
 	.string "Ahoy, did you know?\p"
@@ -619,11 +327,7 @@ LilycoveCity_Text_SomeonePuntedTeamAquaOut:
 	.string "so we can get our boats out again.$"
 
 LilycoveCity_Text_SomeoneStoleMyPokemon:
-	.string "I was taking a relaxing snooze at the\n"
-	.string "seaside inn to the sound of waves…\p"
-	.string "When someone stole my Pokémon!\p"
-	.string "Who's the abductor?\n"
-	.string "Team Aqua? Is it Team Aqua?$"
+	.string "I was at the seaside inn, enjoying\na relaxing snooze to the sound of\lwaves…\pWhen someone stole my Pokémon!\nWho's the abductor?!\lTeam Aqua? Is it Team Aqua?!$"
 
 LilycoveCity_Text_MissingPokemonCameBack:
 	.string "My missing Pokémon…\n"
@@ -637,27 +341,13 @@ LilycoveCity_Text_ImArtDealer:
 	.string "magnificent works on exhibit…$"
 
 LilycoveCity_Text_SeaRemainsForeverYoung:
-	.string "Even as we grow old and wrinkled,\n"
-	.string "the sea remains forever young with\l"
-	.string "the vivid brilliance of life…\p"
-	.string "Fwohoho fwohohohoho…$"
+	.string "Even as we grow old and wrinkled,\nthe sea remains forever young with\lthe vivid brilliance of life…\pFwohoho fwohohohoho…$"
 
 LilycoveCity_Text_SixtyYearsAgoHusbandProposed:
-	.string "It was sixty years ago that my husband\n"
-	.string "proposed to me here.\l"
-	.string "The sea remains as beautiful as ever.\p"
-	.string "Mufufufu mufufufufufu…$"
+	.string "It was 60 years ago that my husband\nproposed to me here.\lThe sea remains as beautiful as ever.\pMufufufu mufufufufu…$"
 
 LilycoveCity_Text_TeamAquaRenovatedCavern:
-	.string "Hm, you know of the peculiar cavern\n"
-	.string "in this cove?\p"
-	.string "That had been a natural formation,\n"
-	.string "but then that Team Aqua lot came\l"
-	.string "along and made their renovations.\p"
-	.string "They call themselves\n"
-	.string "the “nature-loving Team Aqua”!\p"
-	.string "But what they do and what they say\n"
-	.string "don't match at all!$"
+	.string "Hmm, you know of the peculiar cavern in\nthis cove?\pIt was a natural formation, but then\nthat Team Aqua lot came along and\lmade their renovations.\pThey say they're “Team Aqua, for\nhumanity,” but to us they're just a\lbig pain!$"
 
 LilycoveCity_Text_TeamAquaLotGoneForGood:
 	.string "That cave in the cove…\p"
@@ -735,27 +425,240 @@ LilycoveCity_Text_ExplainBerryBlender:
 	.string "its condition will improve by a lot.$"
 
 LilycoveCity_Text_HeardTowerCalledSkyPillar:
-	.string "I heard there's a tower somewhere out\n"
-	.string "on the sea routes.\p"
-	.string "It's called the Sky Pillar, I hear.$"
+	.string "I heard there's a tower somewhere out\non the sea routes.\pIt's called the Sky Pillar, I hear.$"
 
 LilycoveCity_Text_SawTallTowerOnRoute131:
-	.string "I saw this tall tower somewhere\n"
-	.string "around Route 131.\p"
-	.string "Could that possibly be…?$"
+	.string "I saw this tall tower somewhere\naround Route 131.\pCould that possibly be…?$"
 
 LilycoveCity_Text_JustArrivedAndSawRarePokemon:
-	.string "We just arrived here on our\n"
-	.string "honeymoon vacation.\p"
-	.string "We happened to see a Dragon-type\n"
-	.string "Pokémon flying way up in the sky.\p"
-	.string "Do cool Pokémon like that live in\n"
-	.string "the Hoenn region?$"
+	.string "We just arrived here on our honeymoon\nvacation.\pWe happened to see a Dragon-type\nPokémon flying way up in the sky.\pDo cool Pokémon like that live in the\nHoenn region?$"
 
 LilycoveCity_Text_HoneymoonVowToSeeRarePokemon:
-	.string "On our honeymoon, we vowed to see as\n"
-	.string "many rare Pokémon as we can.\p"
-	.string "So we were delighted to see a rare\n"
-	.string "Pokémon as soon as we arrived.\p"
-	.string "I mean, we are totally happy!$"
+	.string "On our honeymoon, we vowed to see as\nmany rare Pokémon as we can.\pSo we were delighted to see a rare\nPokémon as soon as we arrived.\pI mean, we are totally happy!$"
 
+LilycoveCity_EventScript_Rival::
+	lock
+	delay 8
+	opendoor 27, 6
+	waitdooranim
+	addobject LOCALID_RIVAL
+	delay 8
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_PIN
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement LOCALID_RIVAL
+	waitse
+	applymovement OBJ_EVENT_ID_PLAYER, LilycoveCity_Movement_PlayerStepBack
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement LOCALID_RIVAL, Common_Movement_WalkDown
+	waitmovement LOCALID_RIVAL
+	closedoor 27, 6
+	waitdooranim
+	delay 16
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq LilycoveCity_EventScript_Rival_2
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	msgbox LilycoveCity_EventScript_Rival_Text_1
+LilycoveCity_EventScript_Rival_1:
+	closemessage
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceUp
+	waitmovement LOCALID_RIVAL
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq LilycoveCity_EventScript_Rival_6
+	msgbox LilycoveCity_EventScript_Rival_Text_3
+LilycoveCity_EventScript_Rival_5:
+	closemessage
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceDown
+	waitmovement LOCALID_RIVAL
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq LilycoveCity_EventScript_Rival_10
+	msgbox LilycoveCity_EventScript_Rival_Text_8
+	delay 16
+	msgbox LilycoveCity_EventScript_Rival_Text_9
+LilycoveCity_EventScript_Rival_9:
+	closemessage
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq LilycoveCity_EventScript_Rival_14
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_Rival_24
+	case 1, LilycoveCity_EventScript_Rival_25
+	case 2, LilycoveCity_EventScript_Rival_26
+LilycoveCity_EventScript_Rival_22:
+	msgbox LilycoveCity_EventScript_Rival_Text_15, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq LilycoveCity_EventScript_Rival_31
+	msgbox LilycoveCity_EventScript_Rival_Text_17
+LilycoveCity_EventScript_Rival_30:
+	delay 16
+	msgbox LilycoveCity_EventScript_Rival_Text_18
+	closemessage
+	delay 24
+	msgbox LilycoveCity_EventScript_Rival_Text_19
+LilycoveCity_EventScript_Rival_13:
+	closemessage
+	delay 8
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceDown
+	waitmovement LOCALID_RIVAL
+	delay 48
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 16
+	removeobject LOCALID_RIVAL
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	setflag FLAG_MET_RIVAL_LILYCOVE
+	setvar VAR_TEMP_2, 1
+	release
+	end
+
+LilycoveCity_EventScript_Rival_2:
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	msgbox LilycoveCity_EventScript_Rival_Text_0
+	goto LilycoveCity_EventScript_Rival_1
+
+LilycoveCity_EventScript_Rival_6:
+	msgbox LilycoveCity_EventScript_Rival_Text_2
+	goto LilycoveCity_EventScript_Rival_5
+
+LilycoveCity_EventScript_Rival_10:
+	msgbox LilycoveCity_EventScript_Rival_Text_4
+	delay 16
+	msgbox LilycoveCity_EventScript_Rival_Text_5
+	closemessage
+	delay 8
+	playse SE_PIN
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement LOCALID_RIVAL
+	msgbox LilycoveCity_EventScript_Rival_Text_6
+	closemessage
+	delay 24
+	msgbox LilycoveCity_EventScript_Rival_Text_7
+	goto LilycoveCity_EventScript_Rival_9
+
+LilycoveCity_EventScript_Rival_14:
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_Rival_19
+	case 1, LilycoveCity_EventScript_Rival_20
+	case 2, LilycoveCity_EventScript_Rival_21
+LilycoveCity_EventScript_Rival_17:
+	msgbox LilycoveCity_EventScript_Rival_Text_10
+	delay 16
+	msgbox LilycoveCity_EventScript_Rival_Text_11
+	delay 24
+	msgbox LilycoveCity_EventScript_Rival_Text_12, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq LilycoveCity_EventScript_Rival_27
+	msgbox LilycoveCity_EventScript_Rival_Text_14
+	goto LilycoveCity_EventScript_Rival_13
+
+LilycoveCity_EventScript_Rival_19:
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_TREECKO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_Rival_17
+
+LilycoveCity_EventScript_Rival_20:
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_TORCHIC, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_Rival_17
+
+LilycoveCity_EventScript_Rival_21:
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_MUDKIP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_Rival_17
+
+LilycoveCity_EventScript_Rival_24:
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_TREECKO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_Rival_22
+
+LilycoveCity_EventScript_Rival_25:
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_TORCHIC, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_Rival_22
+
+LilycoveCity_EventScript_Rival_26:
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_MUDKIP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_Rival_22
+
+LilycoveCity_EventScript_Rival_27:
+	msgbox LilycoveCity_EventScript_Rival_Text_13
+	goto LilycoveCity_EventScript_Rival_13
+
+LilycoveCity_EventScript_Rival_31:
+	msgbox LilycoveCity_EventScript_Rival_Text_16
+	goto LilycoveCity_EventScript_Rival_30
+
+
+LilycoveCity_Movement_PlayerStepBack:
+	lock_facing_direction
+	walk_down
+	walk_in_place_up
+	unlock_facing_direction
+	step_end
+
+LilycoveCity_EventScript_Rival_Text_0:
+	.string "{COLOR RED}May{COLOR DARK_GRAY}: Heeey! {PLAYER}!\nDon't tell me…\pAre you here for the shopping, too,\n{PLAYER}?$"
+
+LilycoveCity_EventScript_Rival_Text_1:
+	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: Hey, if it isn't {PLAYER}!\nDid you come to do some shopping, too?$"
+
+LilycoveCity_EventScript_Rival_Text_2:
+	.string "We're right in front of the famous\nLilycove Department Store, after all!\pWhen I saw you, I figured maybe you'd\ncome here to do some shopping, same\las me.$"
+
+LilycoveCity_EventScript_Rival_Text_3:
+	.string "You know what I'm talking about…\nThe Lilycove Department Store!\pMy dad asked me to pick him up a few\nthings here.$"
+
+LilycoveCity_EventScript_Rival_Text_4:
+	.string "I'm afraid I already bought up tons of\nstuff!\pLike Pokémon Dolls…and posters…and…$"
+
+LilycoveCity_EventScript_Rival_Text_5:
+	.string "B-but--That's not all I've been doing, of\ncourse!\pI've also caught tons of different\nPokémon, and I've been raising them\lwell, too!$"
+
+LilycoveCity_EventScript_Rival_Text_6:
+	.string "Aughhh!\nYou think I'm lying, don't you!\pThat little hum totally said you think\nI'm lying!$"
+
+LilycoveCity_EventScript_Rival_Text_7:
+	.string "I think the bigger question here is\nwhether you're raising your Pokémon\lright, not me!\pS-so that settles it!\nLet's have a battle!\pLet's test my team and see how\nthey stack up against your passion\lfor Pokémon, {PLAYER}!$"
+
+LilycoveCity_EventScript_Rival_Text_8:
+	.string "It's not like I'm here to buy Dolls or\nsomething, r-right!$"
+
+LilycoveCity_EventScript_Rival_Text_9:
+	.string "A-anyway, it feels like it's been ages\nsince we last ran into each other.\pHow about I battle you so you can\nsee which one of us is doing a better\ljob raising our Pokémon?\pThough I think you and I both know who\nthe winner is gonna be, {PLAYER}!$"
+
+LilycoveCity_EventScript_Rival_Text_10:
+	.string "Ahhh, this reminds me of the battle I\nhad with you back on Route 103!\pYou were able to become this strong\nbecause you battled me back then,\lright, {PLAYER}?$"
+
+LilycoveCity_EventScript_Rival_Text_11:
+	.string "…What would you think if I said\nsomething like that? Hee hee…\pI'm actually thinking that it's\nabout time I went back to Littleroot,\lthough.\pI've caught a lot of different Pokémon,\nand my Pokédex is pretty complete, so\lI think I should go show it to my dad.$"
+
+LilycoveCity_EventScript_Rival_Text_12:
+	.string "…Huh?\pDid something just…sparkle in your\nBag?\pIt was like the light from that\nMeteorite…\p…Oh, nothing!\pSorry!\nJust forget it!\lI'm probably imagining things!\p{PLAYER}, what are you going to do?\pYou going to collect all the Gym\nBadges and take on the Pokémon\lLeague challenge?$"
+
+LilycoveCity_EventScript_Rival_Text_13:
+	.string "Typical, {PLAYER}!\pThen while you're collecting your\nBadges, I guess I'll go and complete\lmy Pokédex!\pI guess I'll be off then!$"
+
+LilycoveCity_EventScript_Rival_Text_14:
+	.string "What, really?\pWell, now you've got me curious!\pIf you aren't focusing on the League,\nthen what else are you hoping to\lachieve?\lI can't wait to see what you'll do!\pBut let's definitely meet up again\nsomewhere!$"
+
+LilycoveCity_EventScript_Rival_Text_15:
+	.string "Boy, that stings a bit…\pI had a head start on you as a Pokémon\nTrainer, but still…\pI, uh…\pI'm planning on going home to\nLittleroot.\pYou know how I've been helping out my\ndad with the Pokédex, and it's been\lcoming together pretty decently.\pSo…I ought to go back home and how it\nto him.\p{PLAYER}, what are you gonna do?\pYou still thinking of collecting all the\nGym Badges and taking on the Pokémon\lLeague challenge?$"
+
+LilycoveCity_EventScript_Rival_Text_16:
+	.string "Yeah?\nI guess I'm not surprised.\pDo your best.\nYou know I'm behind you.$"
+
+LilycoveCity_EventScript_Rival_Text_17:
+	.string "Huh? Really?\nI've gotta say, I always kind of\lthought that you'd go all the way and\laim to be Champion.$"
+
+LilycoveCity_EventScript_Rival_Text_18:
+	.string "…Uhhh. Huh? Did you…\n{PLAYER}, I think there's something…\lThere's something, like, sparkling in\lyour Bag…\pIt's the same kinda light as that\nMeteorite had, the one you showed me\lin Lavaridge…$"
+
+LilycoveCity_EventScript_Rival_Text_19:
+	.string "Ahhh, never mind!\pJust…\nGood luck out there!$"
+
+LilycoveCity_Text_MayDefeat::
+	.string "…$"
+
+LilycoveCity_Text_BrendanDefeat::
+	.string "Hmm…\nYou've raised your team quite a bit.$"

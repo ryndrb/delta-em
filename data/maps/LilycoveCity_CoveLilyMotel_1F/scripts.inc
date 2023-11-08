@@ -46,7 +46,7 @@ LilycoveCity_CoveLilyMotel_1F_EventScript_BlockingTV::
 	waitmovement 0
 	applymovement LOCALID_OWNER, Common_Movement_Delay48
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	msgbox LilycoveCity_CoveLilyMotel_1F_Text_CantSeeTheTV, MSGBOX_DEFAULT
 	closemessage
@@ -76,22 +76,13 @@ LilycoveCity_CoveLilyMotel_1F_Movement_OwnerReturn:
 	step_end
 
 LilycoveCity_CoveLilyMotel_1F_Text_GuestsDoubledByMascot:
-	.string "Hm, so they doubled the guests by\n"
-	.string "using Pokémon as attractions?\p"
-	.string "Hm, well, maybe I should make a cute\n"
-	.string "Pokémon our inn's mascot.\p"
-	.string "I wonder if that will attract more\n"
-	.string "guests to stay with us?$"
+	.string "Hm, so they doubled the guests by\nusing Pokémon as attractions?\pHm, well, maybe I should make a cute\nPokémon our motel's mascot.\pI wonder if that will attract more\nguests to stay with us.$"
 
 LilycoveCity_CoveLilyMotel_1F_Text_NoGuestsWithTeamAqua:
-	.string "Oh, sorry, sorry!\n"
-	.string "I was too involved in watching TV!\p"
-	.string "Since that Team Aqua came to town,\n"
-	.string "the tourists have been staying away.$"
+	.string "Oh, sorry, sorry!\nI was so absorbed in watching TV!\pSince that Team Aqua came to town,\nthe tourists have been staying away.$"
 
 LilycoveCity_CoveLilyMotel_1F_Text_CantSeeTheTV:
-	.string "Hey, down in front!\n"
-	.string "I can't see the TV!$"
+	.string "Hey, down in front!\nI can't see the TV!$"
 
 LilycoveCity_CoveLilyMotel_1F_Text_MonFoundLostItem:
 	.string "Amazing! You're telling me a Pokémon\n"
@@ -128,4 +119,3 @@ LilycoveCity_CoveLilyMotel_1F_Text_BetterGetWorkingOnGuestsDinner:
 	.string "so I guess they must make games.\p"
 	.string "Uh-oh, I'd better get working on\n"
 	.string "their dinner!$"
-

@@ -315,7 +315,7 @@ SlateportCity_Harbor_Text_SameThugsTriedToRobAtMuseum:
 	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: These thugs…\pThey're the same lot who tried to take\nthe Devon Parts at the museum…$"
 
 SlateportCity_Harbor_Text_CaptSternWhyStealMySubmarine:
-	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: Those criminals…\pWhat are planning to do with my\nSubmarine Explorer 1?\pThey can't be after the super-ancient\nPokémon that slumbers at the bottom\lof the sea…$"
+	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: Those criminals…\pWhat are they planning to do with my\nSubmarine Explorer 1?\pThey can't be after the super-ancient\nPokémon that slumbers at the bottom\lof the sea…$"
 
 SlateportCity_Harbor_Text_NeedDiveToCatchSub:
 	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: There's no way a normal human\nwould be able to catch that sub.\pAlthough it would be a different story\nif you could teach a Pokémon to swim\lunderwater using Dive…$"
@@ -491,7 +491,7 @@ SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_3:
 	.string "{COLOR RED}Shelly{COLOR DARK_GRAY}: …Got it.$"
 
 SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_4:
-	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: Those criminals…\pWhat are planning to do with my\nSubmarine Explorer 1?$"
+	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: Those criminals…\pWhat are they planning to do with my\nSubmarine Explorer 1?$"
 
 SlateportCity_Harbor_EventScript_AquaEscapeScene_Text_5:
 	.string "They can't be!\pThey can't be after the super-ancient\nPokémon that slumbers at the bottom\lof the sea…$"

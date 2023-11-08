@@ -1,0 +1,39 @@
+raw `
+LilycoveCity_House2_MapScripts::
+	.byte 0
+
+`
+
+script LilycoveCity_House2_EventScript_FatMan {
+    lock
+    faceplayer
+    if(flag(FLAG_RECEIVED_TM_REST)){
+        if(flag(FLAG_RECEIVED_TM_SLEEP_TALK)){
+            msgbox("Zzz…\pSleep is essential for good health…\nYou've gotta rest to…stay…healthy…\land attack…while…asleep… Zzz…")
+            closemessage
+            release
+            end
+        }
+        msgbox("Zzz… Hm?\nTake this, too?")
+        // giveitem(ITEM_TM_SLEEP_TALK)
+        if(var(VAR_RESULT) == FALSE){
+            goto(Common_EventScript_ShowBagIsFull)
+        }
+        setflag(FLAG_RECEIVED_TM_SLEEP_TALK)
+        release
+        end
+    }
+    msgbox("Zzz…\nHm? Wha--?\pLemme be… I'm still half-asleep…\nHere… Just take this…")
+    giveitem(ITEM_TM_REST)
+    if(var(VAR_RESULT) == FALSE){
+        goto(Common_EventScript_ShowBagIsFull)
+    }
+    setflag(FLAG_RECEIVED_TM_REST)
+    release
+    end
+}
+
+script LilycoveCity_House2_EventScript_BlackBelt {
+    msgbox("What I heard is that in some regions,\nthey wake up Pokémon with a flute.", MSGBOX_NPC)
+    end
+}

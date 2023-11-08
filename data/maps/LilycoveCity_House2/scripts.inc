@@ -4,26 +4,54 @@ LilycoveCity_House2_MapScripts::
 LilycoveCity_House2_EventScript_FatMan::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_TM_REST, LilycoveCity_House2_EventScript_ReceivedRest
-	msgbox LilycoveCity_House2_Text_NotAwakeYetHaveThis, MSGBOX_DEFAULT
+	goto_if_set FLAG_RECEIVED_TM_REST, LilycoveCity_House2_EventScript_FatMan_2
+	msgbox LilycoveCity_House2_EventScript_FatMan_Text_2
 	giveitem ITEM_TM_REST
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	compare VAR_RESULT, FALSE
+	goto_if_eq LilycoveCity_House2_EventScript_FatMan_5
+LilycoveCity_House2_EventScript_FatMan_4:
 	setflag FLAG_RECEIVED_TM_REST
-	msgbox LilycoveCity_House2_Text_SleepIsEssential, MSGBOX_DEFAULT
 	release
 	end
 
-LilycoveCity_House2_EventScript_ReceivedRest::
-	msgbox LilycoveCity_House2_Text_SleepIsEssential, MSGBOX_DEFAULT
+LilycoveCity_House2_EventScript_FatMan_2:
+	goto_if_set FLAG_RECEIVED_TM_SLEEP_TALK, LilycoveCity_House2_EventScript_FatMan_8
+	msgbox LilycoveCity_House2_EventScript_FatMan_Text_1
+	compare VAR_RESULT, FALSE
+	goto_if_eq LilycoveCity_House2_EventScript_FatMan_11
+LilycoveCity_House2_EventScript_FatMan_10:
+	setflag FLAG_RECEIVED_TM_SLEEP_TALK
 	release
 	end
 
-LilycoveCity_House2_Text_NotAwakeYetHaveThis:
-	.string "Huh? What? What's that?\p"
-	.string "I'm not near awake yet…\n"
-	.string "You can have this…$"
+LilycoveCity_House2_EventScript_FatMan_5:
+	goto Common_EventScript_ShowBagIsFull
+	goto LilycoveCity_House2_EventScript_FatMan_4
 
-LilycoveCity_House2_Text_SleepIsEssential:
-	.string "Yawn…\p"
-	.string "Sleep is essential for good health…\n"
-	.string "Sleep and regain health…$"
+LilycoveCity_House2_EventScript_FatMan_8:
+	msgbox LilycoveCity_House2_EventScript_FatMan_Text_0
+	closemessage
+	release
+	end
+
+LilycoveCity_House2_EventScript_FatMan_11:
+	goto Common_EventScript_ShowBagIsFull
+	goto LilycoveCity_House2_EventScript_FatMan_10
+
+
+LilycoveCity_House2_EventScript_BlackBelt::
+	msgbox LilycoveCity_House2_EventScript_BlackBelt_Text_0, MSGBOX_NPC
+	end
+
+
+LilycoveCity_House2_EventScript_FatMan_Text_0:
+	.string "Zzz…\pSleep is essential for good health…\nYou've gotta rest to…stay…healthy…\land attack…while…asleep… Zzz…$"
+
+LilycoveCity_House2_EventScript_FatMan_Text_1:
+	.string "Zzz… Hm?\nTake this, too?$"
+
+LilycoveCity_House2_EventScript_FatMan_Text_2:
+	.string "Zzz…\nHm? Wha--?\pLemme be… I'm still half-asleep…\nHere… Just take this…$"
+
+LilycoveCity_House2_EventScript_BlackBelt_Text_0:
+	.string "What I heard is that in some regions,\nthey wake up Pokémon with a flute.$"

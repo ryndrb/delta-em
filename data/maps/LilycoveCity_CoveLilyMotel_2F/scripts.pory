@@ -1,0 +1,98 @@
+raw `
+LilycoveCity_CoveLilyMotel_2F_MapScripts::
+	.byte 0
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_GameDesigner::
+	lock
+	faceplayer
+	call_if_unset FLAG_TEMP_2, LilycoveCity_CoveLilyMotel_2F_EventScript_ShowMeCompletedDex
+	call_if_set FLAG_TEMP_2, LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma
+	specialvar VAR_RESULT, HasAllHoennMons
+	goto_if_eq VAR_RESULT, TRUE, LilycoveCity_CoveLilyMotel_2F_EventScript_AllHoennMonsFanfare
+	release
+	end
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_ShowMeCompletedDex::
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex, MSGBOX_DEFAULT
+	return
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_AllHoennMonsFanfare::
+	setflag FLAG_TEMP_2
+	playfanfare MUS_OBTAIN_ITEM
+	waitfanfare
+	goto LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma
+	end
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma::
+	message LilycoveCity_CoveLilyMotel_2F_Text_FilledPokedexGiveYouThis
+	waitmessage
+	call Common_EventScript_PlayGymBadgeFanfare
+	special Special_ShowDiploma
+	waitstate
+	release
+	end
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_Programmer::
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ImTheProgrammer, MSGBOX_NPC
+	end
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_GraphicArtist::
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ImTheGraphicArtist, MSGBOX_NPC
+	end
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_FatMan::
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_GirlsAreCute, MSGBOX_NPC
+	end
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_Woman::
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeaBreezeTicklesHeart, MSGBOX_NPC
+	end
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_GameBoyKid::
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_NeverLeaveWithoutGameBoy, MSGBOX_NPC
+	end
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_Scott::
+	lock
+	faceplayer
+	goto_if_set FLAG_MET_SCOTT_IN_LILYCOVE, LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles, MSGBOX_DEFAULT
+	addvar VAR_SCOTT_STATE, 1
+	setflag FLAG_MET_SCOTT_IN_LILYCOVE
+	release
+	end
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott::
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy, MSGBOX_DEFAULT
+	release
+	end
+
+LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex:
+	.string "I'm the Game Designer.\pOh, is that right?\nYou're working on a Pokédex?\pIt's tough trying to complete it, but\ndon't give up.\pIf you do complete it, please come show\nme.$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_FilledPokedexGiveYouThis:
+	.string "Wow!\nThat's awesome!\lYep, it's totally awesome!\pThis Pokédex is completely filled!\nYou really must love Pokémon!\pI'm so impressed!\pLet me give you something in\nrecognition of your feat!$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_ImTheProgrammer:
+	.string "Me?\nYou're talking to me?\lI'm the Programmer.\pI wonder what the Slots are like here.$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_ImTheGraphicArtist:
+	.string "I'm the Graphic Artist!\pAren't the Pokémon of Hoenn\ninteresting?$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_GirlsAreCute:
+	.string "The girl Tubers, they're cute, hey?\nTo battle against a cute Tuber…\pWhoop, it's so awesome!\pAnd the Twins!\nAren't they cute?\lA 2-on-2 battle with Twins…\pWhoop, it's unbearably fun!$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_SeaBreezeTicklesHeart:
+	.string "The sea breeze tickles my heart.\nIt feels wonderful here!$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_NeverLeaveWithoutGameBoy:
+	.string "You never know when and where people\nwill challenge you.\pThat's why I never leave home without\nmy Game Boy Advance.$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles:
+	.string "{COLOR RED}Scott{COLOR DARK_GRAY}: Zzz…\pHuh?!\nOh, sorry, sorry!\lI was snoozing!\pI came to check out this Pokémon\nContest thing.\pI have to admit, it does look quite\nentertaining, but…\pConsider me a purist--I prefer battles\nand tough Trainers.\pBut that's just me.\p{PLAYER}, I hope you'll enjoy everything\nlike the Gyms, Contests, Battle Tent,\lthe whole works!$"
+
+LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy:
+	.string "{COLOR RED}Scott{COLOR DARK_GRAY}: I think it does take strategy\nto win a Contest.\pDevising Contest strategies is one way\nof becoming a better Trainer, I'd say.$"
+
+
+`

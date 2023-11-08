@@ -67,70 +67,28 @@ LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott::
 	end
 
 LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex:
-	.string "I'm the Game Designer.\p"
-	.string "Oh, is that right?\n"
-	.string "You're working on a Pokédex?\p"
-	.string "It's tough trying to complete it,\n"
-	.string "but don't give up.\p"
-	.string "If you do complete it, please come\n"
-	.string "show me.$"
+	.string "I'm the Game Designer.\pOh, is that right?\nYou're working on a Pokédex?\pIt's tough trying to complete it, but\ndon't give up.\pIf you do complete it, please come show\nme.$"
 
 LilycoveCity_CoveLilyMotel_2F_Text_FilledPokedexGiveYouThis:
-	.string "Wow! That's awesome!\n"
-	.string "Yep, it's totally awesome!\p"
-	.string "This Pokédex is completely filled!\n"
-	.string "You really must love Pokémon!\p"
-	.string "I'm so impressed!\p"
-	.string "Let me give you something in\n"
-	.string "recognition of your feat!$"
+	.string "Wow!\nThat's awesome!\lYep, it's totally awesome!\pThis Pokédex is completely filled!\nYou really must love Pokémon!\pI'm so impressed!\pLet me give you something in\nrecognition of your feat!$"
 
 LilycoveCity_CoveLilyMotel_2F_Text_ImTheProgrammer:
-	.string "Me? You're talking to me?\n"
-	.string "I'm the Programmer.\p"
-	.string "I wonder what the Slots are\n"
-	.string "like here.$"
+	.string "Me?\nYou're talking to me?\lI'm the Programmer.\pI wonder what the Slots are like here.$"
 
 LilycoveCity_CoveLilyMotel_2F_Text_ImTheGraphicArtist:
-	.string "I'm the Graphic Artist! Aren't the\n"
-	.string "Pokémon of Hoenn interesting?$"
+	.string "I'm the Graphic Artist!\pAren't the Pokémon of Hoenn\ninteresting?$"
 
 LilycoveCity_CoveLilyMotel_2F_Text_GirlsAreCute:
-	.string "The girl Tubers, they're cute, hey?\n"
-	.string "To battle against a cute Tuber…\p"
-	.string "Whoop, it's so awesome!\p"
-	.string "And the Twins! Aren't they cute?\n"
-	.string "A 2-on-2 battle with Twins…\p"
-	.string "Whoop, it's unbearably fun!$"
+	.string "The girl Tubers, they're cute, hey?\nTo battle against a cute Tuber…\pWhoop, it's so awesome!\pAnd the Twins!\nAren't they cute?\lA 2-on-2 battle with Twins…\pWhoop, it's unbearably fun!$"
 
 LilycoveCity_CoveLilyMotel_2F_Text_SeaBreezeTicklesHeart:
-	.string "The sea breeze tickles my heart.\n"
-	.string "It feels wonderful here!$"
+	.string "The sea breeze tickles my heart.\nIt feels wonderful here!$"
 
 LilycoveCity_CoveLilyMotel_2F_Text_NeverLeaveWithoutGameBoy:
-	.string "You never know when and where\n"
-	.string "people will challenge you.\p"
-	.string "That's why I never leave home without\n"
-	.string "my Game Boy Advance.$"
+	.string "You never know when and where people\nwill challenge you.\pThat's why I never leave home without\nmy Game Boy Advance.$"
 
 LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles:
-	.string "Scott: … … … … …\n"
-	.string "… … … … … Zzz…\p"
-	.string "… … … … … Huh?!\n"
-	.string "Oh, sorry, sorry! I was snoozing!\p"
-	.string "I came to check out this Pokémon\n"
-	.string "Contest thing.\p"
-	.string "I have to admit, it does look quite\n"
-	.string "entertaining, but…\p"
-	.string "Consider me a purist--I prefer\n"
-	.string "battles and tough Trainers.\p"
-	.string "But that's just me.\p"
-	.string "{PLAYER}{KUN}, I hope you'll enjoy everything\n"
-	.string "like the Gyms, Contests, Battle Tent,\l"
-	.string "the whole works!$"
+	.string "{COLOR RED}Scott{COLOR DARK_GRAY}: Zzz…\pHuh?!\nOh, sorry, sorry!\lI was snoozing!\pI came to check out this Pokémon\nContest thing.\pI have to admit, it does look quite\nentertaining, but…\pConsider me a purist--I prefer battles\nand tough Trainers.\pBut that's just me.\p{PLAYER}, I hope you'll enjoy everything\nlike the Gyms, Contests, Battle Tent,\lthe whole works!$"
 
 LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy:
-	.string "Scott: I think it does take strategy\n"
-	.string "to win a Contest.\p"
-	.string "Devising Contest strategies is one way\n"
-	.string "of becoming a better Trainer, I'd say.$"
-
+	.string "{COLOR RED}Scott{COLOR DARK_GRAY}: I think it does take strategy\nto win a Contest.\pDevising Contest strategies is one way\nof becoming a better Trainer, I'd say.$"
