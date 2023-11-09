@@ -284,10 +284,7 @@ Route124_DivingTreasureHuntersHouse_EventScript_ShardTradeBoard::
 	end
 
 Route124_DivingTreasureHuntersHouse_Text_Greeting:
-	.string "I'm the Diving Treasure Hunter!\p"
-	.string "I'm the awesome dude who makes\n"
-	.string "deep-sea dives to gather treasures\l"
-	.string "resting at the bottom.$"
+	.string "I'm the diving Treasure Hunter!\pI'm the awesome dude who goes\ndeep-sea diving to gather treasures\lresting at the bottom of the seas.$"
 
 Route124_DivingTreasureHuntersHouse_Text_HaveYouSeenAnyShards:
 	.string "Tell me, have you seen any Shards of\n"
