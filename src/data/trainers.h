@@ -8784,16 +8784,16 @@ const struct Trainer gTrainers[] = {
         .party = TRAINER_PARTY(sParty_GruntMagmaHideout16),
     },
 
-    [TRAINER_UNUSED_732] = // former magma hideout tabitha
+    [TRAINER_GRUNT_MAGMA_MOSSDEEP] =
     {
-        .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
+        .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MAGMA,
-        .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
-        .trainerName = _("Tabitha"),
+        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
+        .trainerName = _("Grunt"),
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = TRAINER_PARTY(sParty_Unused732),
+        .party = TRAINER_PARTY(sParty_GruntMagmaMossdeep),
     },
 
     [TRAINER_DARCY] =
@@ -8808,16 +8808,16 @@ const struct Trainer gTrainers[] = {
         .party = TRAINER_PARTY(sParty_Darcy),
     },
 
-    [TRAINER_MAXIE_MOSSDEEP] =
+    [TRAINER_TABITHA_MOSSDEEP] =
     {
-        .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
+        .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MAGMA,
-        .trainerPic = TRAINER_PIC_MAGMA_LEADER_MAXIE,
-        .trainerName = _("Maxie"),
+        .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
+        .trainerName = _("Tabitha"),
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-        .party = TRAINER_PARTY(sParty_MaxieMossdeep),
+        .party = TRAINER_PARTY(sParty_TabithaMossdeep),
     },
 
     [TRAINER_PETE] =

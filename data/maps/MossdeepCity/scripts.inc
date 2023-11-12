@@ -1,9 +1,9 @@
-.set LOCALID_GRUNT_1, 10
-.set LOCALID_GRUNT_2, 11
-.set LOCALID_GRUNT_3, 12
-.set LOCALID_GRUNT_4, 13
-.set LOCALID_MAXIE, 14
-.set LOCALID_SCOTT, 16
+.set LOCALID_GRUNT_1, 13
+.set LOCALID_GRUNT_2, 14
+.set LOCALID_GRUNT_3, 15
+.set LOCALID_GRUNT_4, 16
+.set LOCALID_TABITHA, 17
+.set LOCALID_SCOTT, 11
 
 MossdeepCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_OnTransition
@@ -82,20 +82,20 @@ MossdeepCity_EventScript_VisitedMossdeep::
 
 MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter::
 	lockall
-	applymovement LOCALID_MAXIE, MossdeepCity_Movement_MaxieGestureToSpaceCenter
+	applymovement LOCALID_TABITHA, MossdeepCity_Movement_TabithaGestureToSpaceCenter
 	waitmovement 0
 	applymovement LOCALID_GRUNT_1, MossdeepCity_Movement_GruntFaceSpaceCenter
 	applymovement LOCALID_GRUNT_2, MossdeepCity_Movement_GruntFaceSpaceCenter
 	applymovement LOCALID_GRUNT_3, MossdeepCity_Movement_GruntFaceSpaceCenter
 	applymovement LOCALID_GRUNT_4, MossdeepCity_Movement_GruntFaceSpaceCenter
 	waitmovement 0
-	applymovement LOCALID_MAXIE, MossdeepCity_Movement_MaxieEnterSpaceCenter
+	applymovement LOCALID_TABITHA, MossdeepCity_Movement_TabithaEnterSpaceCenter
 	applymovement LOCALID_GRUNT_1, MossdeepCity_Movement_Grunt1EnterSpaceCenter
 	applymovement LOCALID_GRUNT_2, MossdeepCity_Movement_Grunt2EnterSpaceCenter
 	applymovement LOCALID_GRUNT_3, MossdeepCity_Movement_Grunt3EnterSpaceCenter
 	applymovement LOCALID_GRUNT_4, MossdeepCity_Movement_Grunt4EnterSpaceCenter
 	waitmovement 0
-	removeobject LOCALID_MAXIE
+	removeobject LOCALID_TABITHA
 	removeobject LOCALID_GRUNT_1
 	removeobject LOCALID_GRUNT_2
 	removeobject LOCALID_GRUNT_3
@@ -106,26 +106,26 @@ MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter::
 	releaseall
 	end
 
-MossdeepCity_Movement_MaxieGestureToSpaceCenter:
+MossdeepCity_Movement_TabithaGestureToSpaceCenter:
 	delay_16
-	face_right
-	delay_16
-	delay_16
+	walk_in_place_right
 	delay_16
 	delay_16
-	face_left
+	delay_16
+	delay_16
+	walk_in_place_left
 	delay_16
 	delay_16
 	step_end
 
 MossdeepCity_Movement_GruntFaceSpaceCenter:
-	face_right
+	walk_in_place_right
 	delay_16
 	delay_16
 	delay_16
 	step_end
 
-MossdeepCity_Movement_MaxieEnterSpaceCenter:
+MossdeepCity_Movement_TabithaEnterSpaceCenter:
 	walk_down
 	walk_right
 	walk_right
@@ -237,12 +237,13 @@ MossdeepCity_EventScript_KingsRockBoy::
 	msgbox MossdeepCity_Text_YouCanKeepIt, MSGBOX_DEFAULT
 	giveitem ITEM_KINGS_ROCK
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+    msgbox MossdeepCity_Text_IsItFunCollectingRocks, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_KINGS_ROCK
 	release
 	end
 
 MossdeepCity_EventScript_ReceivedKingsRock::
-	msgbox MossdeepCity_Text_StevensHouseOverThere, MSGBOX_DEFAULT
+	msgbox MossdeepCity_Text_IsItFunCollectingRocks, MSGBOX_DEFAULT
 	release
 	end
 
@@ -311,31 +312,19 @@ MossdeepCity_Movement_ScottExitEast:
 	step_end
 
 MossdeepCity_Text_WantKingsRockStevenGaveMe:
-	.string "I got this from Steven, but I don't\n"
-	.string "know what it's good for.\p"
-	.string "I think it's called King's Rock.\n"
-	.string "Do you want it?$"
+	.string "I got this from Steven, but I don't\nknow what it's good for.\pI think it's called King's Rock.\nDo you want it?$"
 
 MossdeepCity_Text_YouCanKeepIt:
-	.string "Why would you want it?\n"
-	.string "You're weird.\p"
-	.string "You can keep it, but keep it a secret\n"
-	.string "from Steven.$"
+	.string "Why would you want it?\nYou're weird.\pYou can keep it, but don't tell Steven I\ngave it away.$"
 
-MossdeepCity_Text_StevensHouseOverThere:
-	.string "Steven's house is right over there!$"
+MossdeepCity_Text_IsItFunCollectingRocks:
+    .string "Is it really that fun collecting rocks?\nI don't get it.$"
 
 MossdeepCity_Text_WhatToDoWithWeirdRock:
-	.string "Yeah, you think so, too! What are you\n"
-	.string "supposed to do with some weird rock?$"
+	.string "Yeah, you think so, too!\pWhat are you supposed to do with some\nweird rock?$"
 
 MossdeepCity_Text_WailmerWatching:
-	.string "Around Mossdeep, you can see wild\n"
-	.string "Wailmer.\p"
-	.string "It's called, uh…\n"
-	.string "What was it now…\p"
-	.string "Wai, Wai, Wai…\p"
-	.string "Wailmer watching!$"
+	.string "Around Mossdeep, you can see wild\nWailmer.\pIt's called, uh…\nWhat is it…\pWai, Wai, Wai…\pWailmer watching!$"
 
 MossdeepCity_Text_SpaceCenterReceivedLetter:
 	.string "The island's Space Center has been\n"
@@ -411,17 +400,7 @@ MossdeepCity_Text_SpaceCenterSign:
 	.string "“The closest place to space.”$"
 
 MossdeepCity_Text_ScottSomethingWrongWithTown:
-	.string "Scott: {PLAYER}{KUN}, feeling good?\n"
-	.string "I'm doing great!\p"
-	.string "I'd heard Mossdeep's Gym Leader is\n"
-	.string "pretty strong, so I decided to come\l"
-	.string "take a look-see for myself.\p"
-	.string "But there's something wrong about\n"
-	.string "this town.\p"
-	.string "People are going on about a warning\n"
-	.string "letter and the Space Center…\p"
-	.string "I don't think it concerns me in any\n"
-	.string "way, though.$"
+	.string "{COLOR RED}Scott{COLOR DARK_GRAY}: {PLAYER}, feeling good?\nI'm doing great!\pI'd heard Mossdeep's Gym Leaders are\npretty strong, so I decided to come\ltake a look-see for myself.\pBut there's something wrong about\nthis town.\pPeople are going on about a warning\nletter and the Space Center…\pI don't think it concerns me in any way,\nthough.$"
 
 MossdeepCity_Text_SootopolisNewGymLeader:
 	.string "Ahh… It feels great letting the waves\n"
@@ -432,4 +411,3 @@ MossdeepCity_Text_SootopolisNewGymLeader:
 	.string "Leader come in.\p"
 	.string "People tell me the new Leader once\n"
 	.string "mentored Wallace.$"
-

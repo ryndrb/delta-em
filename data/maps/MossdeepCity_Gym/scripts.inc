@@ -58,6 +58,7 @@ MossdeepCity_Gym_EventScript_TateAndLiza::
 	end
 
 MossdeepCity_Gym_EventScript_TateAndLizaDefeated::
+    msgbox MossdeepCity_Gym_Text_TateAndLizaAfterBattle, MSGBOX_DEFAULT
 	message MossdeepCity_Gym_Text_ReceivedMindBadge
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
@@ -78,6 +79,7 @@ MossdeepCity_Gym_EventScript_TateAndLizaDefeated::
 	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN
 	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 1
 	call MossdeepCity_Gym_EventScript_GiveCalmMind
+    msgbox MossdeepCity_Gym_Text_TateAndLizaPostBattle, MSGBOX_DEFAULT
 	closemessage
 	delay 30
 	playfanfare MUS_REGISTER_MATCH_CALL
@@ -546,64 +548,33 @@ MossdeepCity_Gym_Text_NicholasPostBattle:
 	.string "invincible Pokémon power next.$"
 
 MossdeepCity_Gym_Text_TateAndLizaIntro:
-	.string "Tate: Hehehe… Were you surprised?\p"
-	.string "Liza: Fufufu… Were you surprised?\p"
-	.string "Tate: That there are two Gym Leaders?\n"
-	.string "Liza: That there are two Gym Leaders?\p"
-	.string "Tate: We're twins!\n"
-	.string "Liza: We're twins!\p"
-	.string "Tate: We don't need to talk because…\n"
-	.string "Liza: We can each determine what…\p"
-	.string "Tate: The other is thinking…\n"
-	.string "Liza: All in our minds!\p"
-	.string "Tate: This combination of ours…\n"
-	.string "Liza: Can you beat it?$"
+	.string "{COLOR RED}Tate{COLOR DARK_GRAY}: Hehehe… Were you surprised?\n{COLOR RED}Liza{COLOR DARK_GRAY}: Tehehe… Were you surprised?\p{COLOR RED}Tate{COLOR DARK_GRAY}: That there are two Gym Leaders?\n{COLOR RED}Liza{COLOR DARK_GRAY}: That there are two Gym Leaders?\p{COLOR RED}Tate{COLOR DARK_GRAY}: We're twins!\n{COLOR RED}Liza{COLOR DARK_GRAY}: We're twins!\p{COLOR RED}Tate{COLOR DARK_GRAY}: …we don't need to talk because…\n{COLOR RED}Liza{COLOR DARK_GRAY}: …we can each tell…\p{COLOR RED}Tate{COLOR DARK_GRAY}: …what the other is thinking…\n{COLOR RED}Liza{COLOR DARK_GRAY}: …all in our minds!\p{COLOR RED}Tate{COLOR DARK_GRAY}: This combination of ours…\n{COLOR RED}Liza{COLOR DARK_GRAY}: Can you beat it?$"
 
 MossdeepCity_Gym_Text_TateAndLizaDefeat:
-	.string "Tate: What?! Our combination…\n"
-	.string "Liza: Was shattered!\p"
-	.string "Tate: It can't be helped. You've won…\n"
-	.string "Liza: So, in recognition, take this.$"
+	.string "Tate: Our… Our…\nLiza: Teamwork.$"
+
+MossdeepCity_Gym_Text_TateAndLizaAfterBattle:
+    .string "{COLOR RED}Tate{COLOR DARK_GRAY}: It can't be helped.\nYou've won.\p{COLOR RED}Liza{COLOR DARK_GRAY}: …so take this recognition!$"
 
 MossdeepCity_Gym_Text_ReceivedMindBadge:
 	.string "{PLAYER} received the Mind Badge\n"
 	.string "from Tate and Liza.$"
 
 MossdeepCity_Gym_Text_ExplainMindBadgeTakeThis:
-	.string "Tate: The Mind Badge enhances the\n"
-	.string "Sp. Atk and Sp. Def of Pokémon.\p"
-	.string "Liza: It also lets you use the HM move\n"
-	.string "Dive outside of battle.\p"
-	.string "Tate: You should also take this, too.$"
+	.string "{COLOR RED}Tate{COLOR DARK_GRAY}: The Mind Badge has the power\nto make all Pokémon up to Level 80,\lincluding those you've received from\lother people, obey you!\p{COLOR RED}Liza{COLOR DARK_GRAY}: It also enables Pokémon to use\nthe HM move called Dive!\p{COLOR RED}Tate{COLOR DARK_GRAY}: And take this, too!$"
 
 MossdeepCity_Gym_Text_ExplainCalmMind:
-	.string "Tate: That TM04 contains…\n"
-	.string "Liza: Calm Mind!\p"
-	.string "Tate: It raises Sp. Atk and…\n"
-	.string "Liza: It raises Sp. Def!\p"
-	.string "Tate: It's a move that's perfect…\n"
-	.string "Liza: For Psychic Pokémon!\p"
-	.string "… … … … … …$"
+	.string "{COLOR RED}Tate{COLOR DARK_GRAY}: Calm Mind…\p{COLOR RED}Liza{COLOR DARK_GRAY}: …comes from relaxing your mind\nand concentrating.\p{COLOR RED}Tate{COLOR DARK_GRAY}: Pokémon's Sp. Atk and…\n{COLOR RED}Liza{COLOR DARK_GRAY}: …Pokémon's Sp. Def…\p{COLOR RED}Tate{COLOR DARK_GRAY}: Will be heightened by this\nmove!\p{COLOR RED}Liza{COLOR DARK_GRAY}: It's a perfect move for Psychic-\ntype Pokémon!$"
 
 MossdeepCity_Gym_Text_RegisteredTateAndLiza:
 	.string "Registered Gym Leaders Tate & Liza\n"
 	.string "in the Pokénav.$"
 
 MossdeepCity_Gym_Text_TateAndLizaPostBattle:
-	.string "Tate: Looks like the bond between you\n"
-	.string "and your Pokémon is far stronger than\l"
-	.string "the bond that we share as twins.\p"
-	.string "Liza: You will become even stronger!\n"
-	.string "We've battled you, so we know.$"
+	.string "{COLOR RED}Tate{COLOR DARK_GRAY}: Looks like the bond between\nyou and your Pokémon is far stronger\lthan the bond we share as twins…\pBut you'll go from here to form even\nmore bonds!\lThat's the future I see for you!\p{COLOR RED}Liza{COLOR DARK_GRAY}: They may be a harsh ordeal\nahead for you and your Pokémon…\pBut that's alright!\nYou and your Pokémon aren't alone!\lYou have each other!\pThat's why we want to face whatever\ntroubles may come your way head-on\land full of courage!$"
 
 MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons:
-	.string "Tate: Hehehe… Were you surprised?\p"
-	.string "Liza: That there are two Gym Leaders?\p"
-	.string "Tate: Oops, you have only one…\n"
-	.string "Liza: Pokémon that can battle.\p"
-	.string "Tate: We can't battle that way!\p"
-	.string "Liza: If you want to challenge us,\n"
-	.string "bring some more Pokémon.$"
+	.string "{COLOR RED}Tate{COLOR DARK_GRAY}: Hehehe… Were you surprised?\n{COLOR RED}Liza{COLOR DARK_GRAY}: Tehehe… Were you surprised?\p{COLOR RED}Tate{COLOR DARK_GRAY}: That there are two Gym Leaders\n{COLOR RED}Liza{COLOR DARK_GRAY}: That there are two Gym Leaders\p{COLOR RED}Tate{COLOR DARK_GRAY}: Oops, you have only one…\n{COLOR RED}Liza{COLOR DARK_GRAY}: Pokémon that can battle.\p{COLOR RED}Tate{COLOR DARK_GRAY}: We can't battle that way!\n{COLOR RED}Liza{COLOR DARK_GRAY}: Bring some more Pokémon!$"
 
 MossdeepCity_Gym_Text_GymStatue:
 	.string "Mossdeep City Pokémon Gym$"

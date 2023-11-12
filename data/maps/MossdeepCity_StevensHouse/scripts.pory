@@ -1,0 +1,172 @@
+raw `
+.set LOCALID_STEVEN, 1
+.set LOCALID_BELDUM_BALL, 2
+
+MossdeepCity_StevensHouse_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, MossdeepCity_StevensHouse_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_StevensHouse_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MossdeepCity_StevensHouse_OnFrame
+	.byte 0
+
+MossdeepCity_StevensHouse_OnLoad:
+	call_if_unset FLAG_SYS_GAME_CLEAR, MossdeepCity_StevensHouse_EventScript_HideStevensNote
+	end
+
+MossdeepCity_StevensHouse_EventScript_HideStevensNote::
+	setmetatile 6, 4, METATILE_GenericBuilding_TableEdge, TRUE
+	return
+
+MossdeepCity_StevensHouse_OnTransition:
+    call_if_eq VAR_STEVENS_HOUSE_STATE, 1, MossdeepCity_StevensHouse_EventScript_SetStevenPos1
+	call_if_eq VAR_STEVENS_HOUSE_STATE, 2, MossdeepCity_StevensHouse_EventScript_SetStevenPos2
+	end
+
+MossdeepCity_StevensHouse_EventScript_SetStevenPos1::
+    setobjectxyperm LOCALID_STEVEN, 3, 4
+	setobjectmovementtype LOCALID_STEVEN, MOVEMENT_TYPE_FACE_UP
+	return
+
+MossdeepCity_StevensHouse_EventScript_SetStevenPos2::
+	setobjectxyperm LOCALID_STEVEN, 6, 5
+	setobjectmovementtype LOCALID_STEVEN, MOVEMENT_TYPE_FACE_UP
+	return
+
+MossdeepCity_StevensHouse_OnFrame:
+	map_script_2 VAR_STEVENS_HOUSE_STATE, 1, MossdeepCity_StevensHouse_EventScript_StevenGivesDive
+	.2byte 0
+
+MossdeepCity_StevensHouse_EventScript_BeldumPokeball::
+	lockall
+	msgbox MossdeepCity_StevensHouse_Text_TakeBallContainingBeldum, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MossdeepCity_StevensHouse_EventScript_LeaveBeldum
+	goto MossdeepCity_StevensHouse_EventScript_GiveBeldum
+	end
+
+MossdeepCity_StevensHouse_EventScript_LeaveBeldum::
+	msgbox MossdeepCity_StevensHouse_Text_LeftPokeBallWhereItWas, MSGBOX_DEFAULT
+	releaseall
+	end
+
+MossdeepCity_StevensHouse_EventScript_GiveBeldum::
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_BELDUM
+	givemon SPECIES_BELDUM, 5
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, MossdeepCity_StevensHouse_EventScript_SendBeldumParty
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, MossdeepCity_StevensHouse_EventScript_SendBeldumPC
+	goto Common_EventScript_NoMoreRoomForPokemon
+	end
+
+MossdeepCity_StevensHouse_EventScript_SendBeldumParty::
+	call MossdeepCity_StevensHouse_EventScript_ReceivedBeldumFanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MossdeepCity_StevensHouse_EventScript_ReceivedBeldum
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	goto MossdeepCity_StevensHouse_EventScript_ReceivedBeldum
+	end
+
+MossdeepCity_StevensHouse_EventScript_SendBeldumPC::
+	call MossdeepCity_StevensHouse_EventScript_ReceivedBeldumFanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MossdeepCity_StevensHouse_EventScript_BeldumTransferredToPC
+	call Common_EventScript_NameReceivedBoxMon
+	goto MossdeepCity_StevensHouse_EventScript_BeldumTransferredToPC
+	end
+
+MossdeepCity_StevensHouse_EventScript_BeldumTransferredToPC::
+	call Common_EventScript_TransferredToPC
+	goto MossdeepCity_StevensHouse_EventScript_ReceivedBeldum
+	end
+
+MossdeepCity_StevensHouse_EventScript_ReceivedBeldumFanfare::
+	bufferspeciesname STR_VAR_2, SPECIES_BELDUM
+	removeobject LOCALID_BELDUM_BALL
+	playfanfare MUS_OBTAIN_ITEM
+	message MossdeepCity_StevensHouse_Text_ObtainedBeldum
+	waitmessage
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_BELDUM
+	return
+
+MossdeepCity_StevensHouse_EventScript_ReceivedBeldum::
+	setflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL
+	setflag FLAG_RECEIVED_BELDUM
+	releaseall
+	end
+
+MossdeepCity_StevensHouse_EventScript_RockDisplay::
+	msgbox MossdeepCity_StevensHouse_Text_CollectionOfRareRocks, MSGBOX_SIGN
+	end
+
+MossdeepCity_StevensHouse_EventScript_Steven::
+	msgbox MossdeepCity_StevensHouse_Text_UnderwateCavernBetweenMossdeepSootopolis, MSGBOX_NPC
+	end
+
+MossdeepCity_StevensHouse_EventScript_Letter::
+	lockall
+	msgbox MossdeepCity_StevensHouse_Text_LetterFromSteven, MSGBOX_DEFAULT
+	releaseall
+	end
+
+MossdeepCity_StevensHouse_Text_UnderwateCavernBetweenMossdeepSootopolis:
+	.string "{COLOR RED}Steven{COLOR DARK_GRAY}: If you were to use {COLOR BLUE}Dive{COLOR DARK_GRAY}\nin the {COLOR BLUE}correct stretch of water along\lRoute 128{COLOR DARK_GRAY}…\pI believe you should be able to reach\nthe entrance to the {COLOR BLUE}Seafloor Cavern{COLOR DARK_GRAY}.\pI will join you when I finish my\nduties.\pPlease do what you can to stop Team\nAqua and Team Magma until then.\pI am trusting you to do this for me!$"
+
+MossdeepCity_StevensHouse_Text_TakeBallContainingBeldum:
+	.string "{PLAYER} checked the Poké Ball.\p"
+	.string "It contained the Pokémon\n"
+	.string "Beldum.\p"
+	.string "Take the Poké Ball?$"
+
+MossdeepCity_StevensHouse_Text_ObtainedBeldum:
+	.string "{PLAYER} obtained a Beldum.$"
+
+MossdeepCity_StevensHouse_Text_NoSpaceForAnotherMon:
+	.string "There is no space for another Pokémon.$"
+
+MossdeepCity_StevensHouse_Text_LeftPokeBallWhereItWas:
+	.string "{PLAYER} left the Poké Ball where\n"
+	.string "it was.$"
+
+MossdeepCity_StevensHouse_Text_LetterFromSteven:
+	.string "It's a letter.\p"
+	.string "… … … … … …\p"
+	.string "To {PLAYER}{KUN}…\p"
+	.string "I've decided to do a little soul-\n"
+	.string "searching and train on the road.\p"
+	.string "I don't plan to return home for some\n"
+	.string "time.\p"
+	.string "I have a favor to ask of you.\p"
+	.string "I want you to take the Poké Ball on\n"
+	.string "the desk.\p"
+	.string "Inside it is a Beldum, my favorite\n"
+	.string "Pokémon.\p"
+	.string "I'm counting on you.\p"
+	.string "May our paths cross someday.\p"
+	.string "Steven Stone$"
+
+MossdeepCity_StevensHouse_Text_CollectionOfRareRocks:
+	.string "It's a collection of rare rocks and\n"
+	.string "stones assembled by Steven.$"
+
+
+`
+
+script MossdeepCity_StevensHouse_EventScript_StevenGivesDive {
+    lock
+    delay(16)
+    msgbox("{COLOR RED}Steve{COLOR DARK_GRAY}: Ah…\nYes…\pI suppose I should welcome you to my\nhome.\pPlease forgive the rather sparse\ndecor…\lNow, where to begin…")
+    msgbox("Let us take a moment to understand\nwhat is happening to our world right\lnow.\pThat rumbling that shook the earth\njust now…\pThe eardrum-rupturing explosion we\nheard…\pThey are proof that a seal, which was\nlong hidden deep undersea, has been\lundone at last.\pThe super-ancient Pokémon that has\nbeen sealed deep beneath Route 128\lsince ancient times…\pIt slept until now in the Seafloor\nCavern.\pThe entrance to that cavern was sealed\nby the power of a certain Pokémon, all\lin effort to keep any human or\lPokémon from ever breaching it.")
+    msgbox("But now it appears that the scheming\nof that terrible team has undone the\lseal.\pThere is no doubt that they intent to\nrevive the super-ancient Pokémon.\pAnd once they do so, it seems they hope\nto make its power their own.")
+    closemessage
+    delay(24)
+    msgbox("{PLAYER}…\pIf that team obtains the power of the\nsuper-ancient Pokémon, it will upset\lthe balance of nature in this world.\pA crisis unlike any other before it\nwill befall every living thing on this\lplanet.\pI plan to do everything in my power to\nquell this situation. That is my duty.\pBut there is a limit to what I can do\nwith my power alone…\pThat is why I'm asking for your help.\nI have great faith in your abilities.\pLend me your strength to help put a\nhalt to these Teams' mad ambitions!\pWith you and I and our Pokémon all\nworking together, we will overcome\lthis disastrous turn of events.\pI don't think it is out of the\nquestion.\pI will entrust you with this.")
+    giveitem(ITEM_HM_DIVE)
+    setflag(FLAG_RECEIVED_HM_DIVE)
+	setflag(FLAG_OMIT_DIVE_FROM_STEVEN_LETTER)
+    msgbox("If you use Dive, you will be able to dive\nto the ocean floor with your Pokémon.\pIf you were to use {COLOR BLUE}Dive{COLOR DARK_GRAY} in the {COLOR BLUE}correct\nstretch of water along Route 128{COLOR DARK_GRAY}…\pI believe you should be able to reach\nthe entrance to the {COLOR BLUE}Seafloor Cavern{COLOR DARK_GRAY}.\pI will join you when I finish my\nduties.\pPlease do what you can to stop Team\nAqua and Team Magma until then.\pI am trusting you to do this for me!")
+    closemessage
+    setflag(FLAG_HIDE_MOSSDEEP_CITY_SCOTT)
+	setflag(FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT)
+	setvar(VAR_STEVENS_HOUSE_STATE, 2)
+    release
+    end
+}

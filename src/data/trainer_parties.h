@@ -9235,27 +9235,12 @@ static const struct TrainerMon sParty_GruntMagmaHideout16[] = {
     }
 };
 
-static const struct TrainerMon sParty_Unused732[] = {
+static const struct TrainerMon sParty_GruntMagmaMossdeep[] = {
     {
     .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
     .lvl = 26,
     .species = SPECIES_NUMEL,
     },
-    {
-    .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
-    .lvl = 28,
-    .species = SPECIES_MIGHTYENA,
-    },
-    {
-    .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
-    .lvl = 30,
-    .species = SPECIES_ZUBAT,
-    },
-    {
-    .iv = TRAINER_PARTY_IVS(9, 9, 9, 9, 9, 9),
-    .lvl = 33,
-    .species = SPECIES_CAMERUPT,
-    }
 };
 
 static const struct TrainerMon sParty_Darcy[] = {
@@ -9269,7 +9254,7 @@ static const struct TrainerMon sParty_Darcy[] = {
     }
 };
 
-static const struct TrainerMon sParty_MaxieMossdeep[] = {
+static const struct TrainerMon sParty_TabithaMossdeep[] = {
     {
     .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
     .lvl = 42,

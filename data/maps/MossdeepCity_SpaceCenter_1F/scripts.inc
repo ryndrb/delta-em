@@ -357,27 +357,16 @@ MossdeepCity_SpaceCenter_1F_Text_MagmaWantsToSpoilMyDream:
 	.string "I'm not having any of that!$"
 
 MossdeepCity_SpaceCenter_1F_Text_StevenMagmaCantBeAllowedToTakeFuel:
-	.string "Steven: {PLAYER}{KUN}, have you read that\n"
-	.string "proclamation already?\p"
-	.string "Team Magma is coming after the rocket\n"
-	.string "fuel on this island.\p"
-	.string "I don't know what they'd need it for,\n"
-	.string "but they can't be allowed to take it.\p"
-	.string "I'll keep an eye on things for\n"
-	.string "a while longer.\p"
-	.string "In the meantime, why don't you go\n"
-	.string "check out the town?$"
+	.string "{COLOR RED}Steven{COLOR DARK_GRAY}: {PLAYER}, have you read that\nproclamation already?\pTeam Magma is coming after the rocket\nfuel on this island.\pI don't know what they'd need it for,\nbut they can't be allowed to take it.\pI'll keep an eye on things for a while\nlonger.\pIn the meantime, why don't you go check\nout the town?$"
 
 MossdeepCity_SpaceCenter_1F_Text_Grunt3Intro:
-	.string "As promised, we've come for\n"
-	.string "the rocket fuel!$"
+	.string "As promised, we've come for the rocket\nfuel!$"
 
 MossdeepCity_SpaceCenter_1F_Text_Grunt3Defeat:
 	.string "Ran out of fuel…$"
 
 MossdeepCity_SpaceCenter_1F_Text_Grunt3PostBattle:
-	.string "Don't think you're on a roll just\n"
-	.string "because you've beaten me!$"
+	.string "Don't think you're on a roll just\nbecause you've beaten me!$"
 
 MossdeepCity_SpaceCenter_1F_Text_Grunt1Intro:
 	.string "We gave you fair warning!\n"
@@ -388,8 +377,7 @@ MossdeepCity_SpaceCenter_1F_Text_Grunt1Defeat:
 	.string "We should've used sneaky treachery…$"
 
 MossdeepCity_SpaceCenter_1F_Text_Grunt1PostBattle:
-	.string "Okay, I get it already! The next time,\n"
-	.string "we'll come unannounced.$"
+	.string "Okay, I get it already!\pThe next time, we'll come unannounced.$"
 
 MossdeepCity_SpaceCenter_1F_Text_Grunt4Intro:
 	.string "The rocket fuel the Space Center has\n"
@@ -401,22 +389,16 @@ MossdeepCity_SpaceCenter_1F_Text_Grunt4Defeat:
 	.string "Even a chintzy cup will do!$"
 
 MossdeepCity_SpaceCenter_1F_Text_Grunt4PostBattle:
-	.string "What are we going to do with\n"
-	.string "the rocket fuel?\p"
-	.string "How would I know?\n"
-	.string "Ask our leader upstairs!$"
+	.string "What are we going to do with the\nrocket fuel?\pHow would I know?\nAsk Tabitha upstairs!$"
 
 MossdeepCity_SpaceCenter_1F_Text_Grunt2Intro:
-	.string "Our leader said no one, but no one,\n"
-	.string "gets past me!$"
+	.string "Tabitha said no one, but no one, gets\npast me!$"
 
 MossdeepCity_SpaceCenter_1F_Text_Grunt2Defeat:
 	.string "Ack! Ack! Aaack!$"
 
 MossdeepCity_SpaceCenter_1F_Text_Grunt2PostBattle:
-	.string "Please, tell our leader that\n"
-	.string "I never abandoned my post.\l"
-	.string "That I stayed to the bitter end…$"
+	.string "Please, tell Tabitha that I never\nabandoned my post.\lThat I stayed to the bitter end…$"
 
 MossdeepCity_SpaceCenter_1F_Text_MagmaIntentToStealNotice:
 	.string "This is…\n"

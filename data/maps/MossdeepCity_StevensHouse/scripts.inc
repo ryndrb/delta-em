@@ -16,10 +16,16 @@ MossdeepCity_StevensHouse_EventScript_HideStevensNote::
 	return
 
 MossdeepCity_StevensHouse_OnTransition:
-	call_if_eq VAR_STEVENS_HOUSE_STATE, 2, MossdeepCity_StevensHouse_EventScript_SetStevenPos
+    call_if_eq VAR_STEVENS_HOUSE_STATE, 1, MossdeepCity_StevensHouse_EventScript_SetStevenPos1
+	call_if_eq VAR_STEVENS_HOUSE_STATE, 2, MossdeepCity_StevensHouse_EventScript_SetStevenPos2
 	end
 
-MossdeepCity_StevensHouse_EventScript_SetStevenPos::
+MossdeepCity_StevensHouse_EventScript_SetStevenPos1::
+    setobjectxyperm LOCALID_STEVEN, 3, 4
+	setobjectmovementtype LOCALID_STEVEN, MOVEMENT_TYPE_FACE_UP
+	return
+
+MossdeepCity_StevensHouse_EventScript_SetStevenPos2::
 	setobjectxyperm LOCALID_STEVEN, 6, 5
 	setobjectmovementtype LOCALID_STEVEN, MOVEMENT_TYPE_FACE_UP
 	return
@@ -27,50 +33,6 @@ MossdeepCity_StevensHouse_EventScript_SetStevenPos::
 MossdeepCity_StevensHouse_OnFrame:
 	map_script_2 VAR_STEVENS_HOUSE_STATE, 1, MossdeepCity_StevensHouse_EventScript_StevenGivesDive
 	.2byte 0
-
-MossdeepCity_StevensHouse_EventScript_StevenGivesDive::
-	lockall
-	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	playse SE_PIN
-	applymovement LOCALID_STEVEN, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_STEVEN, Common_Movement_Delay48
-	waitmovement 0
-	applymovement LOCALID_STEVEN, MossdeepCity_StevensHouse_Movement_StevenApproachPlayer
-	waitmovement 0
-	msgbox MossdeepCity_StevensHouse_Text_YouveEarnedHMDive, MSGBOX_DEFAULT
-	giveitem ITEM_HM_DIVE
-	setflag FLAG_RECEIVED_HM_DIVE
-	setflag FLAG_OMIT_DIVE_FROM_STEVEN_LETTER
-	msgbox MossdeepCity_StevensHouse_Text_ExplainDive, MSGBOX_DEFAULT
-	closemessage
-	delay 20
-	applymovement LOCALID_STEVEN, MossdeepCity_StevensHouse_Movement_StevenReturn
-	waitmovement 0
-	setflag FLAG_HIDE_MOSSDEEP_CITY_SCOTT
-	setflag FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT
-	setvar VAR_STEVENS_HOUSE_STATE, 2
-	releaseall
-	end
-
-MossdeepCity_StevensHouse_Movement_StevenApproachPlayer:
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_in_place_faster_down
-	step_end
-
-MossdeepCity_StevensHouse_Movement_StevenReturn:
-	walk_up
-	walk_right
-	walk_right
-	walk_right
-	walk_in_place_faster_up
-	step_end
 
 MossdeepCity_StevensHouse_EventScript_BeldumPokeball::
 	lockall
@@ -144,38 +106,8 @@ MossdeepCity_StevensHouse_EventScript_Letter::
 	releaseall
 	end
 
-@ Unused, leftover from RS
-MossdeepCity_StevensHouse_EventScript_DiveItemBall::
-	finditem ITEM_HM_DIVE
-	setflag FLAG_RECEIVED_HM_DIVE
-	end
-
-MossdeepCity_StevensHouse_Text_YouveEarnedHMDive:
-	.string "Steven: {PLAYER}{KUN}…\p"
-	.string "As you can see, there's not much here,\n"
-	.string "but this is my home.\p"
-	.string "Thank you for all that you've done.\p"
-	.string "This is my token of appreciation.\n"
-	.string "It's the Hidden Machine Dive.\p"
-	.string "No need to be shy--you've earned\n"
-	.string "this HM.$"
-
-MossdeepCity_StevensHouse_Text_ExplainDive:
-	.string "Steven: While you're using Surf, you\n"
-	.string "should notice dark patches of water.\p"
-	.string "Use Dive if you come to deep water\n"
-	.string "like it. You'll drop to the seafloor.\p"
-	.string "When you want to come back up, use\n"
-	.string "Dive again.\p"
-	.string "In some places, it won't be possible\n"
-	.string "for you to surface, though.$"
-
 MossdeepCity_StevensHouse_Text_UnderwateCavernBetweenMossdeepSootopolis:
-	.string "Steven: Apparently, there's an\n"
-	.string "underwater cavern between\l"
-	.string "Mossdeep and Sootopolis.\p"
-	.string "You know, the one that Capt. Stern\n"
-	.string "found in his submarine.$"
+	.string "{COLOR RED}Steven{COLOR DARK_GRAY}: If you were to use {COLOR BLUE}Dive{COLOR DARK_GRAY}\nin the {COLOR BLUE}correct stretch of water along\lRoute 128{COLOR DARK_GRAY}…\pI believe you should be able to reach\nthe entrance to the {COLOR BLUE}Seafloor Cavern{COLOR DARK_GRAY}.\pI will join you when I finish my\nduties.\pPlease do what you can to stop Team\nAqua and Team Magma until then.\pI am trusting you to do this for me!$"
 
 MossdeepCity_StevensHouse_Text_TakeBallContainingBeldum:
 	.string "{PLAYER} checked the Poké Ball.\p"
@@ -214,3 +146,38 @@ MossdeepCity_StevensHouse_Text_CollectionOfRareRocks:
 	.string "It's a collection of rare rocks and\n"
 	.string "stones assembled by Steven.$"
 
+MossdeepCity_StevensHouse_EventScript_StevenGivesDive::
+	lock
+	delay 16
+	msgbox MossdeepCity_StevensHouse_EventScript_StevenGivesDive_Text_0
+	msgbox MossdeepCity_StevensHouse_EventScript_StevenGivesDive_Text_1
+	msgbox MossdeepCity_StevensHouse_EventScript_StevenGivesDive_Text_2
+	closemessage
+	delay 24
+	msgbox MossdeepCity_StevensHouse_EventScript_StevenGivesDive_Text_3
+	giveitem ITEM_HM_DIVE
+	setflag FLAG_RECEIVED_HM_DIVE
+	setflag FLAG_OMIT_DIVE_FROM_STEVEN_LETTER
+	msgbox MossdeepCity_StevensHouse_EventScript_StevenGivesDive_Text_4
+	closemessage
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SCOTT
+	setflag FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT
+	setvar VAR_STEVENS_HOUSE_STATE, 2
+	release
+	end
+
+
+MossdeepCity_StevensHouse_EventScript_StevenGivesDive_Text_0:
+	.string "{COLOR RED}Steve{COLOR DARK_GRAY}: Ah…\nYes…\pI suppose I should welcome you to my\nhome.\pPlease forgive the rather sparse\ndecor…\lNow, where to begin…$"
+
+MossdeepCity_StevensHouse_EventScript_StevenGivesDive_Text_1:
+	.string "Let us take a moment to understand\nwhat is happening to our world right\lnow.\pThat rumbling that shook the earth\njust now…\pThe eardrum-rupturing explosion we\nheard…\pThey are proof that a seal, which was\nlong hidden deep undersea, has been\lundone at last.\pThe super-ancient Pokémon that has\nbeen sealed deep beneath Route 128\lsince ancient times…\pIt slept until now in the Seafloor\nCavern.\pThe entrance to that cavern was sealed\nby the power of a certain Pokémon, all\lin effort to keep any human or\lPokémon from ever breaching it.$"
+
+MossdeepCity_StevensHouse_EventScript_StevenGivesDive_Text_2:
+	.string "But now it appears that the scheming\nof that terrible team has undone the\lseal.\pThere is no doubt that they intent to\nrevive the super-ancient Pokémon.\pAnd once they do so, it seems they hope\nto make its power their own.$"
+
+MossdeepCity_StevensHouse_EventScript_StevenGivesDive_Text_3:
+	.string "{PLAYER}…\pIf that team obtains the power of the\nsuper-ancient Pokémon, it will upset\lthe balance of nature in this world.\pA crisis unlike any other before it\nwill befall every living thing on this\lplanet.\pI plan to do everything in my power to\nquell this situation. That is my duty.\pBut there is a limit to what I can do\nwith my power alone…\pThat is why I'm asking for your help.\nI have great faith in your abilities.\pLend me your strength to help put a\nhalt to these Teams' mad ambitions!\pWith you and I and our Pokémon all\nworking together, we will overcome\lthis disastrous turn of events.\pI don't think it is out of the\nquestion.\pI will entrust you with this.$"
+
+MossdeepCity_StevensHouse_EventScript_StevenGivesDive_Text_4:
+	.string "If you use Dive, you will be able to dive\nto the ocean floor with your Pokémon.\pIf you were to use {COLOR BLUE}Dive{COLOR DARK_GRAY} in the {COLOR BLUE}correct\nstretch of water along Route 128{COLOR DARK_GRAY}…\pI believe you should be able to reach\nthe entrance to the {COLOR BLUE}Seafloor Cavern{COLOR DARK_GRAY}.\pI will join you when I finish my\nduties.\pPlease do what you can to stop Team\nAqua and Team Magma until then.\pI am trusting you to do this for me!$"

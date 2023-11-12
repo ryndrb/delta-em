@@ -733,9 +733,9 @@
 #define TRAINER_GRUNT_MAGMA_HIDEOUT_14      729
 #define TRAINER_GRUNT_MAGMA_HIDEOUT_15      730
 #define TRAINER_GRUNT_MAGMA_HIDEOUT_16      731
-#define TRAINER_UNUSED_732                  732 // Unused
+#define TRAINER_GRUNT_MAGMA_MOSSDEEP        732
 #define TRAINER_DARCY                       733
-#define TRAINER_MAXIE_MOSSDEEP              734
+#define TRAINER_TABITHA_MOSSDEEP            734
 #define TRAINER_PETE                        735
 #define TRAINER_ISABELLE                    736
 #define TRAINER_ANDRES_1                    737
