@@ -1,0 +1,213 @@
+- [x] Scripting (Main Story)
+    - [x] Part 1
+        - [/] Littleroot Town
+        - [/] Route 101
+        - [/] Oldale Town
+        - [/] Route 103
+        - [/] Route 102
+        - [/] Petalburg City
+    - [x] Part 2
+        - [/] Route 104
+        - [/] Petalburg Woods
+        - [/] Rustboro City
+            - [/] Gym
+        - [/] Route 116
+        - [/] Rusturf Tunnel
+        - [/] Devon Corporation
+    - [x] Part 3
+        - [/] Route 105
+        - [/] Route 106
+        - [/] Dewford Town
+            - [/] Gym
+        - [/] Granite Cave
+        - [/] Route 107
+        - [/] Route 108
+    - [x] Part 4
+        - [/] Route 109
+        - [/] Slateport City
+        - [/] Oceanic Museum
+        - [/] Route 110
+        - [/] Trick House
+    - [x] Part 5
+        - [/] Mauville City
+            - [/] Gym
+    - [x] Part 6
+        - [/] Route 117
+        - [/] Verdanturf Town
+        - [/] Route 116
+        - [/] Rusturf Tunnel
+        - [/] Devon Corporation
+    - [x] Part 7
+        - [/] Route 111 (south)
+        - [/] Route 112 (south)
+        - [/] Fiery Path
+        - [/] Route 112 (north)
+        - [/] Route 111 (north)
+        - [/] Route 113
+    - [x] Part 8
+        - [/] Fallarbor Town
+        - [/] Route 114
+        - [/] Meteor Falls
+        - [/] Route 115
+    - [x] Part 9
+        - [/] Route 112 (south)
+        - [/] Mt. Chimney
+        - [/] Jagged Pass
+        - [/] Lavaridge Town
+            - [/] Gym
+    - [x] Part 10
+        - [/] Route 111 (desert)
+        - [/] Petalburg Gym
+        - [/] Route 118
+        - [/] Southern Island
+    - [x] Part 11
+        - [/] Route 119
+        - [/] Weather Institute
+        - [/] Fortree City
+        - [/] Fortree Gym
+    - [x] Part 12
+        - [/] Route 120
+        - [/] Route 121
+        - [/] Safari Zone
+        - [/] Route 122
+        - [/] Mt. Pyre
+        - [/] Route 123
+    - [x] Part 13
+        - [/] Team Magma Hideout
+        - [/] Slateport Harbor
+        - [/] Lilycove City
+    - [x] Part 14
+        - [/] Team Aqua Hideout
+        - [/] Route 124
+    - [x] Part 15
+        - [/] Mossdeep City
+            - [/] Gym
+        - [/] Space Center
+        - [/] Steven's House
+        - [ ] Route 125
+        - [ ] Shoal Cave
+        - [ ] Route 127
+    - [x] Part 16
+    - [x] Part 17
+    - [x] Part 18
+    - [x] Part 19
+    - [x] Part 20
+    - [x] Part 21
+    - [x] Part 22
+Delta Episode
+    - [x] Part 23
+Post-Game
+    - [x] Part 24
+    - [x] Part 25
+    - [ ] (Kanto?)
+=================================================================================================================
+- [x] Gen Info
+    - [/] Gen 1
+    - [/] Gen 2
+    - [/] Gen 3
+    - [/] Gen 4 (if to be included...)
+    - [/] Gen 5 (if to be included...)
+    - [/] Gen 6 (if to be included...)
+    - [/] Gen 7 (if to be included...)
+    - [/] Gen 8 (if to be included...)
+    - [ ] Gen 9 (if to be included...)
+- [x] New/Old abilities from CFRU and some from Inclement Emerald.
+    - [/] Pyromancy
+    - [/] Fatal Precision
+    - [/] Adrenaline
+    - [/] Grounded
+    - [/] Poison Absorb
+    - [/] Striker
+    - [/] Psych
+    - [/] Self Sufficient
+    - [/] Chloroplast
+    - [/] Power Fist
+    - [/] Blitz Boxer
+    - [x] Ability Changes
+        - [/] Hail boost Ice-type moves
+        - [/] Sandstorm boost Rock-type moves
+        - [/] Illuminate to resist Dark and gives 20% accuracy boost.
+        - [/] Inner Focus gives 10% accuracy.
+        - [/] Merciless triggers for ANY Status.
+        - [/] Can use Slack Off with Truant turn.
+        - [/] Slow Start ONLY halves speed for 3 turns.
+        - [/] Shed Skin 50%.
+        - [/] Honey Gather heals user 1/2 of Max HP 1/4 chance each turn.
+        - [/] Lightning Rod raises higher attacking stat.
+        - [/] Storm Drain raises higher attacking stat.
+        - [/] Sap Sipper raises higher attacking stat.
+        - [/] Unnerve prevents Leftovers.
+        - [/] Flare Boost raises Speed and Attack by 30% each.
+        - [/] Toxic Boost raises Speed and Attack by 30% each.
+        - [/] Iron Fist 30%.
+        - [/] Striker 30%.
+        - [/] Remove 25% penalty on opposite gender Rivalry.
+        - [/] Liquid Voice raise Sound Moves by 20%.
+        - [/] Battle and Shell Armor receives 10% less damage.
+        - [/] Defeatist triggers at 1/4 Max HP.
+        - [/] Flower Gift Special.
+        - [/] Big Pecks boost Flying-type moves by 20%.
+        - [/] Marvel Scale also boosts Sp. Def.
+        - [/] Sniper doubles crit damage.
+        - [/] Damp resist Sound moves.
+        - [/] Immunity resist Poison moves.
+        - [/] Water Compaction resist Water moves.
+        - [/] Magma Armor receives 30% less damage from Water- and Ice-type moves.
+        - [/] Corrosion makes Poison super-effective against Steel.
+        - [/] Shield Dust ignore hazard damage.
+        - [/] Smogon ability descriptions.
+- [x] Difficulty Settings
+    - [ ] Nuzlocke Mode
+    - [ ] Scalemons
+- [/] Add DexNav by Ghoulslash.
+- [/] Add Overworld Expansion by Ghoulslash.
+- [/] Add Dynamic Pals from gruntlucas repo.
+- [/] Add Expanded Bag by AsparagusEduardo.
+- [x] Decapitalization
+    - [/] Hoenn map names.
+- [/] Edit Summary Screen to print EV, IV, and BS.
+- [/] Edit Summary Screen to support three-line ability description (for now).
+- [/] Edit Battle Interface to show Type Effectiveness.
+- [ ] DNS
+    - [ ] Create Time Changer
+    - [/] Clock in Start Menu
+- [x] Items
+    - [ ] Item Placement
+        - [ ] TMs
+        - [ ] Mega Stones
+    - [x] TM Expansion
+    - [ ] Make TM List to USUM version (100)
+    - [x] NPC's TM Gifts Changes and Additions
+        - [ ] Add Devon worker in Rustboro mart to give False Swipe TM
+        - [ ] Change Wattson TM gift to Volt Switch
+        - [ ] Cozmo gives TM Smack Down
+        - [ ] Lavaridge Black Belt gives TM Swords Dance
+        - [ ] Change Facade TM to Retaliate by Norman
+- [x] Overworld Signpost Missing
+    - [ ] Make Seaspray Cave signpost
+    - [/] Make Dewford Manor signpost
+- [ ] Add Potion kid in Route 104.
+- [/] Give Nat Dex at the start
+- [/] Gen 6+ Exp Share
+- [x] Music Changes and Additions
+    - [/] Add Zinia ORAS theme/encounter/music.
+    - [/] Add Wally ORAS theme.
+    - [/] Merge Music Expansion by Cyan (DPPt, HGSS)
+    - [ ] Replace Archie/Maxie event scene music with a more serious one (ORAS).
+- [x] Sprite Changes
+    - [/] Replace Brendan and May sprites to FRLG style.
+    - [/] Replace all NPC OW Sprites to FRLG style.
+    - [ ] Change Captain Stern sprite
+    - [ ] Add TM Ball Sprite
+    - [x] Matching OW sprites for Trainer Front Pics
+        - [/] Team Magma and Aqua Admin
+        - [/] Team Magma and Aqua Boss
+        - [ ] 
+        - [ ] 
+- [/] Clear Wattson Mauville flag capturing Kyogre and Groudon.
+- [X] New Locations
+    - [/] Pocket in Petalbrug Woods
+    - [/] Seaspray Cave
+    - [/] Dewford Meadow
+        - [/] Dewford Manor
+    - [/] Verdanturf Meadow
