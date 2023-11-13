@@ -1,0 +1,228 @@
+raw `
+.set LOCALID_STEVEN, 3
+.set LOCALID_ARCHIE, 4
+.set LOCALID_MAXIE, 5
+.set LOCALID_SHELLY, 11
+
+Route128_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route128_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route128_OnFrame
+	.byte 0
+
+Route128_OnTransition:
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
+	end
+
+Route128_OnFrame:
+	map_script_2 VAR_ROUTE128_STATE, 1, Route128_EventScript_KyogreAwakenedScene
+	.2byte 0
+
+Route128_EventScript_Isaiah::
+	trainerbattle_single TRAINER_ISAIAH_1, Route128_Text_IsaiahIntro, Route128_Text_IsaiahDefeat, Route128_EventScript_RegisterIsaiah
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route128_EventScript_RematchIsaiah
+	msgbox Route128_Text_IsaiahPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route128_EventScript_RegisterIsaiah::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route128_Text_IsaiahRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_ISAIAH_1
+	release
+	end
+
+Route128_EventScript_RematchIsaiah::
+	trainerbattle_rematch TRAINER_ISAIAH_1, Route128_Text_IsaiahRematchIntro, Route128_Text_IsaiahRematchDefeat
+	msgbox Route128_Text_IsaiahPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route128_EventScript_Katelyn::
+	trainerbattle_single TRAINER_KATELYN_1, Route128_Text_KatelynIntro, Route128_Text_KatelynDefeat, Route128_EventScript_RegisterKatelyn
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route128_EventScript_RematchKatelyn
+	msgbox Route128_Text_KatelynPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route128_EventScript_RegisterKatelyn::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route128_Text_KatelynRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_KATELYN_1
+	release
+	end
+
+Route128_EventScript_RematchKatelyn::
+	trainerbattle_rematch TRAINER_KATELYN_1, Route128_Text_KatelynRematchIntro, Route128_Text_KatelynRematchDefeat
+	msgbox Route128_Text_KatelynPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route128_EventScript_Alexa::
+	trainerbattle_single TRAINER_ALEXA, Route128_Text_AlexaIntro, Route128_Text_AlexaDefeat
+	msgbox Route128_Text_AlexaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route128_EventScript_Ruben::
+	trainerbattle_single TRAINER_RUBEN, Route128_Text_RubenIntro, Route128_Text_RubenDefeat
+	msgbox Route128_Text_RubenPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route128_EventScript_Wayne::
+	trainerbattle_single TRAINER_WAYNE, Route128_Text_WayneIntro, Route128_Text_WayneDefeat
+	msgbox Route128_Text_WaynePostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route128_EventScript_Harrison::
+	trainerbattle_single TRAINER_HARRISON, Route128_Text_HarrisonIntro, Route128_Text_HarrisonDefeat
+	msgbox Route128_Text_HarrisonPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route128_EventScript_Carlee::
+	trainerbattle_single TRAINER_CARLEE, Route128_Text_CarleeIntro, Route128_Text_CarleeDefeat
+	msgbox Route128_Text_CarleePostBattle, MSGBOX_AUTOCLOSE
+	end
+
+
+`
+
+script Route128_EventScript_KyogreAwakenedScene {
+    lock
+    delay(24)
+    applymovement(LOCALID_ARCHIE, Route128_Movement_ArchieLookAround)
+    waitmovement(LOCALID_ARCHIE)
+    msgbox("{COLOR RED}Archie{COLOR DARK_GRAY}: This… This is…")
+    closemessage
+    applymovement(LOCALID_ARCHIE, Route128_Movement_ArchieBackUp)
+    waitmovement(LOCALID_ARCHIE)
+    msgbox("{COLOR RED}Shelly{COLOR DARK_GRAY}: How awful…")
+    msgbox("{COLOR RED}Archie{COLOR DARK_GRAY}: …\pI…\pI only wanted…\pI wanted to make…a world where Pokémon\ncould live on…in peace…\pWhere…that…Pokémon…")
+    closemessage
+    delay(24)
+    applymovement(LOCALID_SHELLY, Common_Movement_WalkInPlaceRight)
+    waitmovement(LOCALID_SHELLY)
+    msgbox("{COLOR RED}Shelly{COLOR DARK_GRAY}: Archie…")
+    closemessage
+    delay(16)
+    msgbox("{COLOR RED}Maxie{COLOR DARK_GRAY}: This…\pThis is the power of super-ancient\nPokémon.\pThe balance in this world is faltering.\nAt this rate, it may be lost forever.")
+    closemessage
+    applymovement(LOCALID_MAXIE, Common_Movement_WalkInPlaceDown)
+    delay(8)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    msgbox("You…\pWe will make our way to Sootopolis.\pIt is most likely the case that Groudon\nand Kyogre are also making their way\lto that city.\pIn the deepest reaches of the\nCave of Origin, which lies in the heart\lof Sootopolis City…\pThat is where they'll find the energy\nthey need to reclaim their primal form.\pI expect Groudon and Kyogre will\ngo to that place in search of even\lgreater power.\pWe must follow them to the\nCave of Origin and whatever it takes!\pThere's nothing else we can do!")
+    closemessage
+    applymovement(LOCALID_MAXIE, Route128_Movement_MaxieApproachArchie)
+    waitmovement(LOCALID_MAXIE)
+    msgbox("Archie.\pYou and your team of fools will\naccompany us.\pWe have brought this calamity upon\nourselves.\pIt is only right that we take\nresponsibility and clean up after our\lmistakes.")
+    delay(16)
+    msgbox("{COLOR RED}Archie{COLOR DARK_GRAY}: Ugh!")
+    msgbox("{COLOR RED}Shelly{COLOR DARK_GRAY}: Let's go, Archie!")
+    closemessage
+    applymovement(LOCALID_SHELLY, Route128_Movement_ShellyExit)
+    applymovement(LOCALID_ARCHIE, Route128_Movement_ArchieExit)
+    delay(16)
+    applymovement(LOCALID_MAXIE, Common_Movement_WalkInPlaceLeft)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+	waitmovement(LOCALID_ARCHIE)
+    removeobject(LOCALID_ARCHIE)
+    removeobject(LOCALID_SHELLY)
+    delay(16)
+    applymovement(LOCALID_MAXIE, Common_Movement_WalkInPlaceDown)
+    waitmovement(LOCALID_MAXIE)
+    delay(32)
+    msgbox("{COLOR RED}Maxie{COLOR DARK_GRAY}: …\pAs an adult, I first feel I must\napologize for the way things have\lturned out.\pI am truly sorry…\pBut I must ask for your assistance.\nWon't you help us avert this crisis?\pIf we work together, I believe\nwe'll be able to overcome this\lultimate threat.\pI will expect your arrival in Sootopolis.")
+    closemessage
+    applymovement(LOCALID_MAXIE, Route128_Movement_MaxieExit)
+    waitmovement(LOCALID_MAXIE)
+    removeobject(LOCALID_MAXIE)
+    delay(96)
+    setfieldeffectargument(0, 1)
+    dofieldeffect(FLDEFF_NPCFLY_OUT)
+    waitfieldeffect(FLDEFF_NPCFLY_OUT)
+    addobject(LOCALID_STEVEN)
+    delay(16)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+    applymovement(LOCALID_STEVEN, Common_Movement_WalkInPlaceLeft)
+    waitmovement(LOCALID_STEVEN)
+    msgbox("{COLOR RED}Steven{COLOR DARK_GRAY}: {PLAYER}!\pI'm sorry I could not be here sooner.")
+    closemessage
+    delay(16)
+    applymovement(LOCALID_STEVEN, Route128_Movement_StevenLookAround)
+    waitmovement(LOCALID_STEVEN)
+    msgbox("Terrible…\pSo this is what was being depicted in\nthat painting in Granite Cave.\pIf this doesn't stop, all Hoenn--no,\nthe entire world--will drown.\pNothing could live in such a world--\nneither humans nor Pokémon!\pThis huge rain cloud…\nIs it spreading out from Sootopolis?")
+    closemessage
+    delay(24)
+    msgbox("Come on, Steven… Think!\nWhat are you going to do?")
+    closemessage
+    delay(32)
+    msgbox("…\p…No.\pThere's no point agonizing over the\nsituation from here…\pI have to go to Sootopolis.\nThere must be answers there.")
+    closemessage
+    delay(24)
+    applymovement(LOCALID_STEVEN, Common_Movement_WalkInPlaceLeft)
+    waitmovement(LOCALID_STEVEN)
+    msgbox("{PLAYER}…\pI will count on you to help with this\ncrisis…\pBut…please… Promise you won't do\nanything reckless.\pWell then.\nI'll go ahead to Sootopolis.\pGood luck to you.")
+    closemessage
+    delay(8)
+    applymovement(LOCALID_STEVEN, Common_Movement_WalkInPlaceDown)
+    waitmovement(LOCALID_STEVEN)
+    delay(48)
+    setfieldeffectargument(0, 1)
+    dofieldeffect(FLDEFF_NPCFLY_OUT)
+    delay(16)
+    removeobject(LOCALID_STEVEN)
+    waitfieldeffect(FLDEFF_NPCFLY_OUT)
+    clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+    setvar(VAR_ROUTE128_STATE, 2)
+    release
+    end
+}
+
+movement Route128_Movement_ArchieLookAround {
+    walk_fast_down
+    walk_in_place_left
+    delay_16
+    walk_in_place_right
+    delay_16 * 2
+    walk_in_place_down
+}
+
+movement Route128_Movement_ArchieBackUp {
+    lock_facing_direction
+    walk_slow_up
+    delay_16
+    unlock_facing_direction
+}
+
+movement Route128_Movement_MaxieApproachArchie {
+    walk_left
+    walk_in_place_down
+}
+
+movement Route128_Movement_ShellyExit {
+    walk_fast_left * 2
+    walk_fast_up
+    walk_fast_left
+    walk_fast_up * 5
+}
+
+movement Route128_Movement_ArchieExit {
+    walk_fast_left * 3
+    walk_fast_up
+    walk_fast_left
+    walk_fast_up * 5
+}
+
+movement Route128_Movement_MaxieExit {
+    walk_left * 4
+    walk_up * 5
+}
+
+movement Route128_Movement_StevenLookAround {
+    walk_in_place_right
+    delay_16
+    walk_in_place_up
+    delay_16
+    walk_in_place_down
+}

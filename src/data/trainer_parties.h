@@ -302,7 +302,7 @@ static const struct TrainerMon sParty_ShellyWeatherInstitute[] = {
     }
 };
 
-static const struct TrainerMon sParty_ShellySeafloorCavern[] = {
+static const struct TrainerMon sParty_GruntSeafloorCavern6[] = {
     {
     .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
     .lvl = 37,

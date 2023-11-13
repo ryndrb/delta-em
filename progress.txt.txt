@@ -84,10 +84,12 @@
             - [/] Gym
         - [/] Space Center
         - [/] Steven's House
-        - [ ] Route 125
-        - [ ] Shoal Cave
-        - [ ] Route 127
+        - [/] Route 125
+        - [/] Shoal Cave
+        - [/] Route 127
     - [x] Part 16
+        - [/] Route 128
+        - [/] Seafloor Cavern
     - [x] Part 17
     - [x] Part 18
     - [x] Part 19

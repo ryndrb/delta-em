@@ -1,0 +1,34 @@
+raw `
+SeafloorCavern_Room3_MapScripts::
+	.byte 0
+
+SeafloorCavern_Room3_EventScript_Grunt6::
+	trainerbattle_single TRAINER_GRUNT_SEAFLOOR_CAVERN_6, SeafloorCavern_Room3_Text_Grunt6Intro, SeafloorCavern_Room3_Text_Grunt6Defeat
+	msgbox SeafloorCavern_Room3_Text_Grunt6PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+SeafloorCavern_Room3_EventScript_Grunt5::
+	trainerbattle_single TRAINER_GRUNT_SEAFLOOR_CAVERN_5, SeafloorCavern_Room3_Text_Grunt5Intro, SeafloorCavern_Room3_Text_Grunt5Defeat
+	msgbox SeafloorCavern_Room3_Text_Grunt5PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+SeafloorCavern_Room3_Text_Grunt6Intro:
+	.string "Ahahahaha!\pHow did you manage to get here\nwithout a submarine?\pWhat an impressive child!\pBut… It won't do to have you meddling\nabout here.\pI'm going to give you a little taste\nof pain! Resign yourself to it!$"
+
+SeafloorCavern_Room3_Text_Grunt6Defeat:
+	.string "Ahahahaha!\pOuch!$"
+
+SeafloorCavern_Room3_Text_Grunt6PostBattle:
+	.string "Ahahahaha!\nYou're so darn strong.\pIt's terribly disappointing that you're\nnot a Team Aqua member.\pYou could have enjoyed the fabulous\nworld our Boss has promised as one of\lus…$"
+
+SeafloorCavern_Room3_Text_Grunt5Intro:
+	.string "For our dream to become real, we need\nthe power of Pokémon.\pBut meddlers like you use the power\nof Pokémon to mess with us even at a\lplace like this!\pLife just doesn't work the way we need\nit to!$"
+
+SeafloorCavern_Room3_Text_Grunt5Defeat:
+	.string "Gwah!$"
+
+SeafloorCavern_Room3_Text_Grunt5PostBattle:
+	.string "You know, we don't dare question the\nmotives of our leader.\pBut here you are, just some punk,\ngoing up against our Boss.\pMaybe…\nYou must be something…$"
+
+
+`

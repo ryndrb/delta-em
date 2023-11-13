@@ -396,16 +396,16 @@ const struct Trainer gTrainers[] = {
         .party = TRAINER_PARTY(sParty_ShellyWeatherInstitute),
     },
 
-    [TRAINER_SHELLY_SEAFLOOR_CAVERN] =
+    [TRAINER_GRUNT_SEAFLOOR_CAVERN_6] =
     {
-        .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
+        .trainerClass = TRAINER_CLASS_TEAM_AQUA,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_AQUA,
-        .trainerPic = TRAINER_PIC_AQUA_ADMIN_F,
-        .trainerName = _("Shelly"),
+        .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerName = _("Grunt"),
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-        .party = TRAINER_PARTY(sParty_ShellySeafloorCavern),
+        .party = TRAINER_PARTY(sParty_GruntSeafloorCavern6),
     },
 
     [TRAINER_ARCHIE] =

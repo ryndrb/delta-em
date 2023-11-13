@@ -27,7 +27,7 @@ SeafloorCavern_Entrance_EventScript_Grunt::
 	copyobjectxytoperm LOCALID_GRUNT
 	msgbox SeafloorCavern_Entrance_Text_HearMagmaNearMossdeep, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_GRUNT, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_GRUNT, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	releaseall
 	end
@@ -38,51 +38,28 @@ SeafloorCavern_Entrance_EventScript_GruntSpeechShort::
 	call_if_eq VAR_FACING, DIR_NORTH, SeafloorCavern_Entrance_EventScript_GruntFacePlayerNorth
 	msgbox SeafloorCavern_Entrance_Text_HearMagmaNearMossdeepShort, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_GRUNT, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_GRUNT, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	releaseall
 	end
 
 SeafloorCavern_Entrance_EventScript_GruntFacePlayerEast::
-	applymovement LOCALID_GRUNT, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_GRUNT, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	return
 
 SeafloorCavern_Entrance_EventScript_GruntFacePlayerWest::
-	applymovement LOCALID_GRUNT, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_GRUNT, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	return
 
 SeafloorCavern_Entrance_EventScript_GruntFacePlayerNorth::
-	applymovement LOCALID_GRUNT, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_GRUNT, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	return
 
 SeafloorCavern_Entrance_Text_HearMagmaNearMossdeep:
-	.string "Hey!\n"
-	.string "I remember your face!\p"
-	.string "If you're here, it must mean that\n"
-	.string "you're about to mess with us again!\p"
-	.string "A punk like you, do you really think\n"
-	.string "you can take on Team Aqua?\p"
-	.string "I'd say you're too early by about\n"
-	.string "a trillion years!\p"
-	.string "You're a perfect fit for the likes of\n"
-	.string "Team Magma!\p"
-	.string "Speaking of Team Magma, I hear they\n"
-	.string "were spotted near Mossdeep.\p"
-	.string "That bunch of goons, they sure don't\n"
-	.string "look good near the sea!$"
+	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: Hey!\nI remember your face!\pIf you're here, it must mean that you're\nabout to mess with us again!\pA punk like you, do you really think\nyou can take on Team Aqua?\pI'd say you're too early by about a\ntrillion years!\pYou're a perfect fit for the likes of\nTeam Magma!\pSpeaking of Team Magma, I hear they\nwere spotted near Mossdeep.\pThat bunch of goons, they sure don't\nlook good near the sea!$"
 
 SeafloorCavern_Entrance_Text_HearMagmaNearMossdeepShort:
-	.string "A punk like you, do you really think\n"
-	.string "you can take on Team Aqua?\p"
-	.string "I'd say you're too early by about\n"
-	.string "a trillion years!\p"
-	.string "You're a perfect fit for the likes of\n"
-	.string "Team Magma!\p"
-	.string "Speaking of Team Magma, I hear they\n"
-	.string "were spotted near Mossdeep.\p"
-	.string "That bunch of goons, they sure don't\n"
-	.string "look good near the sea!$"
-
+	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: A punk like you, do you really\nthink you can take on Team Aqua?\pI'd say you're too early by about a\ntrillion years!\pYou're a perfect fit for the likes of\nTeam Magma!\pSpeaking of Team Magma, I hear they\nwere spotted near Mossdeep.\pThat bunch of goons, they sure don't\nlook good near the sea!$"

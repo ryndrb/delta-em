@@ -1,6 +1,7 @@
 .set LOCALID_STEVEN, 3
 .set LOCALID_ARCHIE, 4
 .set LOCALID_MAXIE, 5
+.set LOCALID_SHELLY, 11
 
 Route128_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route128_OnTransition
@@ -14,169 +15,6 @@ Route128_OnTransition:
 Route128_OnFrame:
 	map_script_2 VAR_ROUTE128_STATE, 1, Route128_EventScript_KyogreAwakenedScene
 	.2byte 0
-
-Route128_EventScript_KyogreAwakenedScene::
-	lockall
-	delay 20
-	applymovement LOCALID_ARCHIE, Route128_Movement_ArchieLookAround
-	waitmovement 0
-	msgbox Route128_Text_ArchieWhatHappened, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_ARCHIE, Route128_Movement_ArchieBackUp
-	waitmovement 0
-	msgbox Route128_Text_ArchieIOnlyWanted, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_MAXIE, Route128_Movement_MaxieApproachArchie
-	waitmovement 0
-	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	msgbox Route128_Text_MaxieDoYouUnderstandNow, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_MAXIE, Route128_Movement_MaxieApproachPlayer
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	msgbox Route128_Text_MaxieResposibilityFallsToArchieAndMe, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_ARCHIE, Route128_Movement_ArchieRunLeft
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	applymovement LOCALID_MAXIE, Route128_Movement_MaxieWalkLeft
-	waitmovement 0
-	msgbox Route128_Text_MaxieThisDefiesBelief, MSGBOX_DEFAULT
-	closemessage
-	delay 40
-	applymovement LOCALID_MAXIE, Route128_Movement_MaxieExit
-	applymovement LOCALID_ARCHIE, Route128_Movement_ArchieExit
-	waitmovement 0
-	removeobject LOCALID_MAXIE
-	removeobject LOCALID_ARCHIE
-	delay 100
-	setfieldeffectargument 0, 1
-	dofieldeffect FLDEFF_NPCFLY_OUT
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-	addobject LOCALID_STEVEN
-	applymovement LOCALID_STEVEN, Route128_Movement_StevenApproachPlayer
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	msgbox Route128_Text_StevenWhatIsHappening, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_STEVEN, Route128_Movement_StevenWalkUp
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	msgbox Route128_Text_StevenWholeWorldWillDrown, MSGBOX_DEFAULT
-	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	msgbox Route128_Text_StevenImGoingToSootopolis, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	delay 50
-	setfieldeffectargument 0, 1
-	dofieldeffect FLDEFF_NPCFLY_OUT
-	delay 15
-	removeobject LOCALID_STEVEN
-	waitfieldeffect FLDEFF_NPCFLY_OUT
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
-	setvar VAR_ROUTE128_STATE, 2
-	releaseall
-	end
-
-Route128_Movement_Unused1:
-	walk_fast_left
-	step_end
-
-Route128_Movement_Unused2:
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-Route128_Movement_StevenWalkUp:
-	walk_up
-	step_end
-
-Route128_Movement_StevenApproachPlayer:
-	walk_fast_left
-	step_end
-
-Route128_Movement_ArchieLookAround:
-	walk_fast_down
-	walk_in_place_faster_left
-	delay_16
-	walk_in_place_faster_right
-	delay_16
-	delay_16
-	walk_in_place_faster_down
-	step_end
-
-Route128_Movement_ArchieBackUp:
-	lock_facing_direction
-	walk_slow_up
-	delay_16
-	unlock_facing_direction
-	step_end
-
-Route128_Movement_ArchieRunLeft:
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	walk_in_place_faster_right
-	step_end
-
-Route128_Movement_ArchieExit:
-	delay_16
-	delay_16
-	walk_fast_up
-	walk_fast_left
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	step_end
-
-Route128_Movement_MaxieWalkLeft:
-	walk_left
-	walk_left
-	delay_8
-	delay_4
-	step_end
-
-Route128_Movement_MaxieApproachArchie:
-	walk_left
-	walk_in_place_faster_down
-	step_end
-
-Route128_Movement_MaxieExit:
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	step_end
-
-Route128_Movement_MaxieApproachPlayer:
-	walk_right
-	walk_in_place_faster_down
-	step_end
 
 Route128_EventScript_Isaiah::
 	trainerbattle_single TRAINER_ISAIAH_1, Route128_Text_IsaiahIntro, Route128_Text_IsaiahDefeat, Route128_EventScript_RegisterIsaiah
@@ -245,62 +83,206 @@ Route128_EventScript_Carlee::
 	msgbox Route128_Text_CarleePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route128_Text_ArchieWhatHappened:
-	.string "Archie: What happened…\n"
-	.string "What is this wretched scene…\p"
-	.string "Did I…make a horrible mistake?$"
+Route128_EventScript_KyogreAwakenedScene::
+	lock
+	delay 24
+	applymovement LOCALID_ARCHIE, Route128_Movement_ArchieLookAround
+	waitmovement LOCALID_ARCHIE
+	msgbox Route128_EventScript_KyogreAwakenedScene_Text_0
+	closemessage
+	applymovement LOCALID_ARCHIE, Route128_Movement_ArchieBackUp
+	waitmovement LOCALID_ARCHIE
+	msgbox Route128_EventScript_KyogreAwakenedScene_Text_1
+	msgbox Route128_EventScript_KyogreAwakenedScene_Text_2
+	closemessage
+	delay 24
+	applymovement LOCALID_SHELLY, Common_Movement_WalkInPlaceRight
+	waitmovement LOCALID_SHELLY
+	msgbox Route128_EventScript_KyogreAwakenedScene_Text_3
+	closemessage
+	delay 16
+	msgbox Route128_EventScript_KyogreAwakenedScene_Text_4
+	closemessage
+	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceDown
+	delay 8
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox Route128_EventScript_KyogreAwakenedScene_Text_5
+	closemessage
+	applymovement LOCALID_MAXIE, Route128_Movement_MaxieApproachArchie
+	waitmovement LOCALID_MAXIE
+	msgbox Route128_EventScript_KyogreAwakenedScene_Text_6
+	delay 16
+	msgbox Route128_EventScript_KyogreAwakenedScene_Text_7
+	msgbox Route128_EventScript_KyogreAwakenedScene_Text_8
+	closemessage
+	applymovement LOCALID_SHELLY, Route128_Movement_ShellyExit
+	applymovement LOCALID_ARCHIE, Route128_Movement_ArchieExit
+	delay 16
+	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_ARCHIE
+	removeobject LOCALID_ARCHIE
+	removeobject LOCALID_SHELLY
+	delay 16
+	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceDown
+	waitmovement LOCALID_MAXIE
+	delay 32
+	msgbox Route128_EventScript_KyogreAwakenedScene_Text_9
+	closemessage
+	applymovement LOCALID_MAXIE, Route128_Movement_MaxieExit
+	waitmovement LOCALID_MAXIE
+	removeobject LOCALID_MAXIE
+	delay 96
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	addobject LOCALID_STEVEN
+	delay 16
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
+	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_STEVEN
+	msgbox Route128_EventScript_KyogreAwakenedScene_Text_10
+	closemessage
+	delay 16
+	applymovement LOCALID_STEVEN, Route128_Movement_StevenLookAround
+	waitmovement LOCALID_STEVEN
+	msgbox Route128_EventScript_KyogreAwakenedScene_Text_11
+	closemessage
+	delay 24
+	msgbox Route128_EventScript_KyogreAwakenedScene_Text_12
+	closemessage
+	delay 32
+	msgbox Route128_EventScript_KyogreAwakenedScene_Text_13
+	closemessage
+	delay 24
+	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceLeft
+	waitmovement LOCALID_STEVEN
+	msgbox Route128_EventScript_KyogreAwakenedScene_Text_14
+	closemessage
+	delay 8
+	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceDown
+	waitmovement LOCALID_STEVEN
+	delay 48
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 16
+	removeobject LOCALID_STEVEN
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	setvar VAR_ROUTE128_STATE, 2
+	release
+	end
 
-Route128_Text_ArchieIOnlyWanted:
-	.string "I…\n"
-	.string "I only wanted…$"
 
-Route128_Text_MaxieDoYouUnderstandNow:
-	.string "Maxie: Do you understand now,\n"
-	.string "Archie?\p"
-	.string "Do you finally see how disastrous\n"
-	.string "your dream turned out to be?\p"
-	.string "We have to hurry! We have to do\n"
-	.string "something before the situation goes\l"
-	.string "completely out of control!$"
+Route128_Movement_ArchieLookAround:
+	walk_fast_down
+	walk_in_place_left
+	delay_16
+	walk_in_place_right
+	delay_16
+	delay_16
+	walk_in_place_down
+	step_end
 
-Route128_Text_MaxieResposibilityFallsToArchieAndMe:
-	.string "Maxie: {PLAYER}, don't say anything.\p"
-	.string "I know that I have no right to be\n"
-	.string "critical of Archie…\p"
-	.string "But the way things are now, I doubt\n"
-	.string "that we humans will be capable of\l"
-	.string "doing anything about it.\p"
-	.string "But neither can we stand by and\n"
-	.string "just watch helplessly.\p"
-	.string "The responsibility for putting an end\n"
-	.string "to this falls to Archie and me…$"
+Route128_Movement_ArchieBackUp:
+	lock_facing_direction
+	walk_slow_up
+	delay_16
+	unlock_facing_direction
+	step_end
 
-Route128_Text_MaxieThisDefiesBelief:
-	.string "Maxie: This defies belief…\p"
-	.string "Those super-ancient Pokémon…\p"
-	.string "Their power is unbelievable.\n"
-	.string "They've upset the balance of nature…$"
+Route128_Movement_MaxieApproachArchie:
+	walk_left
+	walk_in_place_down
+	step_end
 
-Route128_Text_StevenWhatIsHappening:
-	.string "Steven: {PLAYER}{KUN}!\n"
-	.string "What is happening?$"
+Route128_Movement_ShellyExit:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	step_end
 
-Route128_Text_StevenWholeWorldWillDrown:
-	.string "This is terrible…\p"
-	.string "After the scorching heat wave ended,\n"
-	.string "this deluge began.\p"
-	.string "If this doesn't stop, all of Hoenn…\n"
-	.string "No, the whole world will drown.\p"
-	.string "This huge rain cloud is spreading\n"
-	.string "from above Sootopolis…\p"
-	.string "What in the world is taking place there?\p"
-	.string "There's no point arguing here…\n"
-	.string "Sootopolis might provide answers…$"
+Route128_Movement_ArchieExit:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	step_end
 
-Route128_Text_StevenImGoingToSootopolis:
-	.string "{PLAYER}{KUN}…\n"
-	.string "I don't know what you intend to do,\l"
-	.string "but don't do anything reckless.\p"
-	.string "Okay.\n"
-	.string "I'm going to Sootopolis.$"
+Route128_Movement_MaxieExit:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
 
+Route128_Movement_StevenLookAround:
+	walk_in_place_right
+	delay_16
+	walk_in_place_up
+	delay_16
+	walk_in_place_down
+	step_end
+
+Route128_EventScript_KyogreAwakenedScene_Text_0:
+	.string "{COLOR RED}Archie{COLOR DARK_GRAY}: This… This is…$"
+
+Route128_EventScript_KyogreAwakenedScene_Text_1:
+	.string "{COLOR RED}Shelly{COLOR DARK_GRAY}: How awful…$"
+
+Route128_EventScript_KyogreAwakenedScene_Text_2:
+	.string "{COLOR RED}Archie{COLOR DARK_GRAY}: …\pI…\pI only wanted…\pI wanted to make…a world where Pokémon\ncould live on…in peace…\pWhere…that…Pokémon…$"
+
+Route128_EventScript_KyogreAwakenedScene_Text_3:
+	.string "{COLOR RED}Shelly{COLOR DARK_GRAY}: Archie…$"
+
+Route128_EventScript_KyogreAwakenedScene_Text_4:
+	.string "{COLOR RED}Maxie{COLOR DARK_GRAY}: This…\pThis is the power of super-ancient\nPokémon.\pThe balance in this world is faltering.\nAt this rate, it may be lost forever.$"
+
+Route128_EventScript_KyogreAwakenedScene_Text_5:
+	.string "You…\pWe will make our way to Sootopolis.\pIt is most likely the case that Groudon\nand Kyogre are also making their way\lto that city.\pIn the deepest reaches of the\nCave of Origin, which lies in the heart\lof Sootopolis City…\pThat is where they'll find the energy\nthey need to reclaim their primal form.\pI expect Groudon and Kyogre will\ngo to that place in search of even\lgreater power.\pWe must follow them to the\nCave of Origin and whatever it takes!\pThere's nothing else we can do!$"
+
+Route128_EventScript_KyogreAwakenedScene_Text_6:
+	.string "Archie.\pYou and your team of fools will\naccompany us.\pWe have brought this calamity upon\nourselves.\pIt is only right that we take\nresponsibility and clean up after our\lmistakes.$"
+
+Route128_EventScript_KyogreAwakenedScene_Text_7:
+	.string "{COLOR RED}Archie{COLOR DARK_GRAY}: Ugh!$"
+
+Route128_EventScript_KyogreAwakenedScene_Text_8:
+	.string "{COLOR RED}Shelly{COLOR DARK_GRAY}: Let's go, Archie!$"
+
+Route128_EventScript_KyogreAwakenedScene_Text_9:
+	.string "{COLOR RED}Maxie{COLOR DARK_GRAY}: …\pAs an adult, I first feel I must\napologize for the way things have\lturned out.\pI am truly sorry…\pBut I must ask for your assistance.\nWon't you help us avert this crisis?\pIf we work together, I believe\nwe'll be able to overcome this\lultimate threat.\pI will expect your arrival in Sootopolis.$"
+
+Route128_EventScript_KyogreAwakenedScene_Text_10:
+	.string "{COLOR RED}Steven{COLOR DARK_GRAY}: {PLAYER}!\pI'm sorry I could not be here sooner.$"
+
+Route128_EventScript_KyogreAwakenedScene_Text_11:
+	.string "Terrible…\pSo this is what was being depicted in\nthat painting in Granite Cave.\pIf this doesn't stop, all Hoenn--no,\nthe entire world--will drown.\pNothing could live in such a world--\nneither humans nor Pokémon!\pThis huge rain cloud…\nIs it spreading out from Sootopolis?$"
+
+Route128_EventScript_KyogreAwakenedScene_Text_12:
+	.string "Come on, Steven… Think!\nWhat are you going to do?$"
+
+Route128_EventScript_KyogreAwakenedScene_Text_13:
+	.string "…\p…No.\pThere's no point agonizing over the\nsituation from here…\pI have to go to Sootopolis.\nThere must be answers there.$"
+
+Route128_EventScript_KyogreAwakenedScene_Text_14:
+	.string "{PLAYER}…\pI will count on you to help with this\ncrisis…\pBut…please… Promise you won't do\nanything reckless.\pWell then.\nI'll go ahead to Sootopolis.\pGood luck to you.$"
