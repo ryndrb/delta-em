@@ -188,7 +188,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectMemento                 @ EFFECT_MEMENTO
 	.4byte BattleScript_EffectHit                     @ EFFECT_FACADE
 	.4byte BattleScript_EffectFocusPunch              @ EFFECT_FOCUS_PUNCH
-	.4byte BattleScript_EffectSmellingsalt            @ EFFECT_SMELLINGSALT
+	.4byte BattleScript_EffectSmellingsalt            @ EFFECT_SMELLING_SALTS
 	.4byte BattleScript_EffectFollowMe                @ EFFECT_FOLLOW_ME
 	.4byte BattleScript_EffectNaturePower             @ EFFECT_NATURE_POWER
 	.4byte BattleScript_EffectCharge                  @ EFFECT_CHARGE
@@ -2113,7 +2113,7 @@ BattleScript_EffectFinalGambit:
 BattleScript_EffectHitSwitchTarget:
 	call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
-	moveendall
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifability BS_TARGET, ABILITY_SUCTION_CUPS, BattleScript_AbilityPreventsPhasingOut
 	jumpifstatus3 BS_TARGET, STATUS3_ROOTED, BattleScript_PrintMonIsRooted
 	jumpiftargetdynamaxed BattleScript_HitSwitchTargetDynamaxed
@@ -8681,6 +8681,13 @@ BattleScript_CostarActivates::
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
+BattleScript_ZeroToHeroActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_ZEROTOHEROTRANSFORMATION
+	waitmessage B_WAIT_TIME_LONG
+	end3
+
 BattleScript_AttackWeakenedByStrongWinds::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_ATTACKWEAKENEDBSTRONGWINDS
@@ -9116,7 +9123,11 @@ BattleScript_WeakArmorDefAnim:
 	printstring STRINGID_TARGETABILITYSTATLOWER
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_WeakArmorActivatesSpeed:
+.if B_WEAK_ARMOR_SPEED >= GEN_7
 	setstatchanger STAT_SPEED, 2, FALSE
+.else
+	setstatchanger STAT_SPEED, 1, FALSE
+.endif
 	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_WeakArmorActivatesEnd
 	jumpifbyte CMP_LESS_THAN, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_WeakArmorSpeedAnim
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_ROSE_EMPTY, BattleScript_WeakArmorActivatesEnd

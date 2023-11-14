@@ -103,16 +103,43 @@ Post-Game
     - [x] Part 25
     - [ ] (Kanto?)
 =================================================================================================================
-- [x] Gen Info
-    - [/] Gen 1
-    - [/] Gen 2
-    - [/] Gen 3
-    - [/] Gen 4 (if to be included...)
-    - [/] Gen 5 (if to be included...)
-    - [/] Gen 6 (if to be included...)
-    - [/] Gen 7 (if to be included...)
-    - [/] Gen 8 (if to be included...)
-    - [ ] Gen 9 (if to be included...)
+- [x] Gen Info (Refactored...painful)
+    - [x] Gen 1
+        - [ ] BST (Types, Abilities)
+        - [ ] Levelup Learnet
+        - [ ] Teachable Learnset
+    - [x] Gen 2
+        - [ ] BST (Types, Abilities)
+        - [ ] Levelup Learnet
+        - [ ] Teachable Learnset
+    - [x] Gen 3
+        - [ ] BST (Types, Abilities)
+        - [ ] Levelup Learnet
+        - [ ] Teachable Learnset
+    - [x] Gen 4 (if to be included...)
+        - [ ] BST (Types, Abilities)
+        - [ ] Levelup Learnet
+        - [ ] Teachable Learnset
+    - [x] Gen 5 (if to be included...)
+        - [ ] BST (Types, Abilities)
+        - [ ] Levelup Learnet
+        - [ ] Teachable Learnset
+    - [x] Gen 6 (if to be included...)
+        - [ ] BST (Types, Abilities)
+        - [ ] Levelup Learnet
+        - [ ] Teachable Learnset
+    - [x] Gen 7 (if to be included...)
+        - [ ] BST (Types, Abilities)
+        - [ ] Levelup Learnet
+        - [ ] Teachable Learnset
+    - [x] Gen 8 (if to be included...)
+        - [ ] BST (Types, Abilities)
+        - [ ] Levelup Learnet
+        - [ ] Teachable Learnset
+    - [x] Gen 9 (if to be included...)
+        - [ ] BST (Types, Abilities)
+        - [ ] Levelup Learnet
+        - [ ] Teachable Learnset
 - [x] New/Old abilities from CFRU and some from Inclement Emerald.
     - [/] Pyromancy
     - [/] Fatal Precision
