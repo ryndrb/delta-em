@@ -91,7 +91,17 @@
         - [/] Route 128
         - [/] Seafloor Cavern
     - [x] Part 17
+        - [/] Route 126
+        - [/] Sootopolis City
+            - [/] Gym
+        - [/] Cave of Origin
+        - [/] Route 129
+        - [/] Route 130
+        - [/] Route 131
+        - [/] Pacifidlog Town
+        - [/] Sky Pillar
     - [x] Part 18
+
     - [x] Part 19
     - [x] Part 20
     - [x] Part 21
@@ -212,6 +222,7 @@ Post-Game
         - [ ] Cozmo gives TM Smack Down
         - [ ] Lavaridge Black Belt gives TM Swords Dance
         - [ ] Change Facade TM to Retaliate by Norman
+        - [ ] Gentleman in Pacifidlog Town gives TM Psyshock
 - [x] Overworld Signpost Missing
     - [ ] Make Seaspray Cave signpost
     - [/] Make Dewford Manor signpost
@@ -240,3 +251,4 @@ Post-Game
     - [/] Dewford Meadow
         - [/] Dewford Manor
     - [/] Verdanturf Meadow
+- [ ] Fix Wallace Rematch

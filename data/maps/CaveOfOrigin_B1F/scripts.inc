@@ -8,15 +8,15 @@ CaveOfOrigin_B1F_EventScript_Wallace::
 	faceplayer
 	msgbox CaveOfOrigin_B1F_Text_WallaceStory, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_WALLACE, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_WALLACE, Common_Movement_WalkInPlaceUp
 	waitmovement 0
-	delay 60
+	delay 64
 	playse SE_PIN
 	applymovement LOCALID_WALLACE, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement LOCALID_WALLACE, Common_Movement_Delay48
 	waitmovement 0
-	delay 30
+	delay 32
 	applymovement LOCALID_WALLACE, Common_Movement_FacePlayer
 	waitmovement 0
 	message CaveOfOrigin_B1F_Text_WhereIsRayquaza
@@ -62,59 +62,19 @@ CaveOfOrigin_B1F_EventScript_AtSkyPillar::
 	end
 
 CaveOfOrigin_B1F_Text_WallaceStory:
-	.string "Ah, so you are {PLAYER}{KUN}?\n"
-	.string "I've heard tales of your exploits.\p"
-	.string "My name is Wallace.\p"
-	.string "I was once the Gym Leader of\n"
-	.string "Sootopolis, but something came up.\p"
-	.string "So now, I've entrusted my mentor Juan\n"
-	.string "with the Gym's operation.\p"
-	.string "… … … … … …\n"
-	.string "… … … … … …\p"
-	.string "Groudon and Kyogre, the two Pokémon\n"
-	.string "wreaking havoc here, are considered\l"
-	.string "to be super-ancient Pokémon.\p"
-	.string "But there aren't just two super-\n"
-	.string "ancient Pokémon.\p"
-	.string "There is one more somewhere.\p"
-	.string "Somewhere, there is a super-\n"
-	.string "ancient Pokémon named Rayquaza.\p"
-	.string "It's said that it was Rayquaza that\n"
-	.string "becalmed the two combatants in\l"
-	.string "the distant past.\p"
-	.string "But even I have no clue as to\n"
-	.string "Rayquaza's whereabouts…$"
+	.string "{COLOR RED}Wallace{COLOR DARK_GRAY}: My name is Wallace.\nI'm this town's Gym Leader.\pI've also been entrusted the\nprotection of the Cave of Origin.\p… … … … …\n… … … … …\pGroudon and Kyogre, the two Pokémon\nwreaking havoc, are considered to be\lsuper-ancient Pokémon.\pBut there aren't just two\nsuper-ancient Pokémon.\pThere is another one somewhere.\pThat Pokémon's name is Rayquaza.\pIt is said that it was Rayquaza that\nbecalmed Groudon and Kyogre in the\ldistant past.\pBut even I have no clue as to\nRayquaza's whereabouts…$"
 
 CaveOfOrigin_B1F_Text_WhereIsRayquaza:
-	.string "Wallace: {PLAYER}{KUN}, do you perhaps\n"
-	.string "know where Rayquaza is now?\p"
-	.string "If you do, please tell me.$"
+	.string "Trainer, do you perhaps know where\nRayquaza is now?\pIf you do, please tell me.$"
 
 CaveOfOrigin_B1F_Text_ButWereInCaveOfOrigin:
-	.string "Wallace: The Cave of Origin?\p"
-	.string "But that's right here!\n"
-	.string "I need you to do better than that!\p"
-	.string "Please, I need you to think about\n"
-	.string "where Rayquaza might be right now.$"
+	.string "The Cave of Origin?\pBut that's right here!\nI need you to do better than that!\pPlease, I need you to think about where\nRayquaza might be right now.$"
 
 CaveOfOrigin_B1F_Text_OldLadyDidntMentionThat:
-	.string "Wallace: Mt. Pyre?\p"
-	.string "But when I met the old lady there\n"
-	.string "earlier, she made no mention of it.\p"
-	.string "I very much doubt that the old lady\n"
-	.string "would try to hide something from me…\p"
-	.string "{PLAYER}{KUN}, could you think about this\n"
-	.string "more carefully for me?$"
+	.string "Mt. Pyre?\pBut when I met the old lady there\nearlier, she made no mention of it.\pI very much doubt that the old lady\nwould try to hide something from me…\p{PLAYER}, could you think about this more\ncarefully for me?$"
 
 CaveOfOrigin_B1F_Text_CantYouRememberSomehow:
-	.string "Wallace: Huh? You don't remember?\n"
-	.string "Hmm… That's a problem…\p"
-	.string "Can't you remember somehow?$"
+	.string "You don't remember?\pHmm…\nThat's a problem…\pCan't you remember somehow?$"
 
 CaveOfOrigin_B1F_Text_WellHeadToSkyPillar:
-	.string "Wallace: The Sky Pillar?\p"
-	.string "That's it!\n"
-	.string "It must be the Sky Pillar!\p"
-	.string "{PLAYER}{KUN}, there's not a moment to lose!\n"
-	.string "We'll head to the Sky Pillar right away!$"
-
+	.string "The Sky Pillar?\pThat's it!\nIt must be the Sky Pillar!\pTrainer, there's not a moment to\nlose!\pWe'll head to the Sky Pillar right away!$"

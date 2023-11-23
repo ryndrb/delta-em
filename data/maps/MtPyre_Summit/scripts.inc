@@ -69,6 +69,12 @@ MtPyre_Summit_EventScript_OldLady::
 
 MtPyre_Summit_EventScript_OldLadyOrbsReturned::
 	msgbox MtPyre_Summit_Text_ThoseTwoMenReturnedOrbs, MSGBOX_DEFAULT
+	msgbox MtPyre_Summit_Text_TakeTheseOrbs, MSGBOX_DEFAULT
+	delay 8
+	giveitem ITEM_RED_ORB, 1
+	giveitem ITEM_BLUE_ORB, 1
+	msgbox MtPyre_Summit_Text_MayTheOrbsGuideYou, MSGBOX_DEFAULT
+	closemessage
 	setflag FLAG_RETURNED_RED_OR_BLUE_ORB
 	release
 	end
@@ -104,7 +110,7 @@ MtPyre_Summit_EventScript_ArchieMaxieTrigger2::
 MtPyre_Summit_EventScript_ArchieMaxieReturnOrbs::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	delay 60
+	delay 64
 	call_if_eq VAR_0x8008, 0, MtPyre_Summit_EventScript_ArchieMaxieBeginExit0
 	call_if_eq VAR_0x8008, 1, MtPyre_Summit_EventScript_ArchieMaxieBeginExit1
 	call_if_eq VAR_0x8008, 2, MtPyre_Summit_EventScript_ArchieMaxieBeginExit2
@@ -113,7 +119,7 @@ MtPyre_Summit_EventScript_ArchieMaxieReturnOrbs::
 	waitmovement 0
 	applymovement LOCALID_MAXIE, Common_Movement_Delay48
 	waitmovement 0
-	delay 30
+	delay 32
 	call_if_eq VAR_0x8008, 0, MtPyre_Summit_EventScript_MaxieApproachPlayer0
 	call_if_eq VAR_0x8008, 1, MtPyre_Summit_EventScript_MaxieApproachPlayer1
 	call_if_eq VAR_0x8008, 2, MtPyre_Summit_EventScript_MaxieApproachPlayer2
@@ -122,7 +128,7 @@ MtPyre_Summit_EventScript_ArchieMaxieReturnOrbs::
 	call_if_eq VAR_0x8008, 0, MtPyre_Summit_EventScript_MaxieApproachArchie0
 	call_if_eq VAR_0x8008, 1, MtPyre_Summit_EventScript_MaxieApproachArchie1
 	call_if_eq VAR_0x8008, 2, MtPyre_Summit_EventScript_MaxieApproachArchie2
-	delay 30
+	delay 32
 	applymovement LOCALID_ARCHIE, MtPyre_Summit_Movement_ArchieExit
 	applymovement LOCALID_MAXIE, MtPyre_Summit_Movement_MaxieExit
 	waitmovement 0
@@ -358,35 +364,19 @@ MtPyre_Summit_Text_OrbsHaveBeenTaken:
 	.string "The Blue Orb and Red Orb taken by\nthose sinister men…\pHaving the two separated can only lead\nto disaster…\pI fear something terrible will happen…$"
 
 MtPyre_Summit_Text_GroudonKyogreAwakened:
-	.string "Oh, my goodness…\p"
-	.string "You say that both Groudon and Kyogre\n"
-	.string "have been awakened?\p"
-	.string "It is said that the Blue Orb and\n"
-	.string "the Red Orb quelled the rage of\l"
-	.string "the two Pokémon…\p"
-	.string "It is also said that the true owner\n"
-	.string "of the Orbs still exists.\p"
-	.string "However, no one knows who, or what\n"
-	.string "exactly, the Orbs belong to.\p"
-	.string "It could be a human, or perhaps\n"
-	.string "a Pokémon, but no one knows.$"
+	.string "Oh, my goodness…\pYou say that both Groudon and Kyogre\nhave been awakened?\pIt is said that the Blue Orb and the\nRed Orb quelled the rage of the two\lPokémon…\pIt is also said that the true owner of\nthe Orbs still exists.\pHowever, no one knows who, or what\nexactly, the Orbs belong to.\pIt could be a human, or perhaps a\nPokémon, but no one knows.$"
 
 MtPyre_Summit_Text_ThoseTwoMenReturnedOrbs:
-	.string "The two men who took the Orbs came\n"
-	.string "back to return them on their own.\p"
-	.string "Those men…\n"
-	.string "Perhaps they are not so evil after all…$"
+	.string "The two men who took the Orbs came\nback to return them on their own.\pThose men…\nPerhaps they are not so evil after all…$"
+
+MtPyre_Summit_Text_TakeTheseOrbs:
+	.string "In gratitude for your role in calming\nGroudon and Kyogre, and for the safe\lreturn of the orbs, I feel compelled\lto reward you, young trainer.\pTake these orbs.\nThey may prove crucial in your journey.$"
+
+MtPyre_Summit_Text_MayTheOrbsGuideYou:
+	.string "May they guide you towards a future of\nbalance and harmony.$"
 
 MtPyre_Summit_Text_SuperAncientPokemonTaughtUs:
-	.string "The embodiments of the land, sea,\n"
-	.string "and the sky…\p"
-	.string "That is said to be the identities of\n"
-	.string "the super-ancient Pokémon…\p"
-	.string "In the same way that we humans and\n"
-	.string "Pokémon have life, our world, too,\l"
-	.string "is alive…\p"
-	.string "The super-ancient Pokémon have\n"
-	.string "taught us that…$"
+	.string "The embodiments of the land, sea, and\nthe sky…\pThat is said to be the identities of\nthe super-ancient Pokémon…\pIn the same way that we humans\nand Pokémon have life, our world, too,\lis alive…\pThe super-ancient Pokémon have taught\nus that…$"
 
 MtPyre_Summit_Text_WillYouHearOutMyTale:
 	.string "Mt. Pyre exists to soothe the spirits\nof Pokémon that have passed on…\pFrom so high up, we can look down upon\nHoenn.\pSuch a view must bring peace even to\nthose lost Pokémon…\pIs it coincidence that you are here?\pWill you hear my tale? A tale long told\nin the Hoenn region?$"
@@ -398,9 +388,7 @@ MtPyre_Summit_Text_WellThatTooIsFine:
 	.string "I see…\nWell, that, too, is fine…$"
 
 MtPyre_Summit_Text_MaxieSilence:
-	.string "Maxie: {PLAYER}…\p"
-	.string "… … … … … …\n"
-	.string "… … … … … …$"
+	.string "{COLOR RED}Maxie{COLOR DARK_GRAY}: …\p… … … … … …\n… … … … … …$"
 
 MtPyre_Summit_Text_HearTheNewLegendOfHoenn:
 	.string "It is my role to pass on the legends\n"

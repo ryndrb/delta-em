@@ -1,0 +1,41 @@
+raw `
+PacifidlogTown_House5_MapScripts::
+	.byte 0
+
+PacifidlogTown_House5_EventScript_MirageIslandWatcher::
+	lock
+	faceplayer
+	specialvar VAR_RESULT, IsMirageIslandPresent
+	goto_if_eq VAR_RESULT, TRUE, PacifidlogTown_House5_EventScript_MirageIslandPresent
+	msgbox PacifidlogTown_House5_Text_AppearDisappear, MSGBOX_DEFAULT
+	release
+	end
+
+PacifidlogTown_House5_EventScript_MirageIslandPresent::
+	msgbox PacifidlogTown_House5_Text_CanSeeMirageIslandToday, MSGBOX_DEFAULT
+	release
+	end
+
+PacifidlogTown_House5_Text_AppearDisappear:
+	.string "They say, here in Hoenn, there are\nplaces called Mirage Spots.\pOne does not simply walk into a Mirage\nspot.\pNot to mention that these places also\nappear and disappear mysteriously.$"
+
+PacifidlogTown_House5_Text_CanSeeMirageIslandToday:
+	.string "Oh!\nOh my!\lI can see a Mirage Spot today!$"
+
+
+`
+
+script PacifidlogTown_House5_EventScript_Gentleman {
+    lock
+    faceplayer
+    if(!flag(FLAG_RECEIVED_TM_PSYSHOCK)){
+        msgbox("I've been to a Mirage Spot…\nI'm sure of it. But I forgot where it is.\pI used to be very good at remembering\nthings…\pI'm so shocked that I can't remember…")
+        delay(8)
+        // giveitem(ITEM_TM_PSYSHOCK, 1)
+        setflag(FLAG_RECEIVED_TM_PSYSHOCK)
+    }
+    msgbox("Mirage Spots…\pIt must be the weather conditions\nthat seem to make them visible at\lsome times and not others.\pOr are they truly appearing and\ndisappearing?")
+    closemessage
+    release
+    end
+}

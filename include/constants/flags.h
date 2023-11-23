@@ -71,9 +71,9 @@
 #define FLAG_RECEIVED_ROCKY_HELMET          0x3A
 #define FLAG_HIDE_FORTREE_CITY_STEVEN       0x3B
 #define FLAG_RECEIVED_TM_SLEEP_TALK         0x3C
-#define FLAG_UNUSED_0x03D    0x3D // Unused Flag
-#define FLAG_UNUSED_0x03E    0x3E // Unused Flag
-#define FLAG_UNUSED_0x03F    0x3F // Unused Flag
+#define FLAG_HIDE_SOOTOPOLIS_RIVAL          0x3D
+#define FLAG_HIDE_ROUTE_131_LADY            0x3E
+#define FLAG_RECEIVED_TM_PSYSHOCK           0x3F
 #define FLAG_UNUSED_0x040    0x40 // Unused Flag
 #define FLAG_UNUSED_0x041    0x41 // Unused Flag
 #define FLAG_UNUSED_0x042    0x42 // Unused Flag
@@ -190,7 +190,7 @@
 #define FLAG_RECEIVED_TM_FACADE              0xA9 // Will be replace by Flag TM Retaliate
 #define FLAG_RECEIVED_TM_AERIAL_ACE          0xAA // Will be replace by Flag TM Roost
 #define FLAG_RECEIVED_TM_CALM_MIND           0xAB
-#define FLAG_RECEIVED_TM_WATER_PULSE         0xAC
+#define FLAG_RECEIVED_TM_WATERFALL           0xAC
 #define FLAG_HIDE_SECRET_BASE_TRAINER        0xAD
 #define FLAG_DECORATION_1                    0xAE
 #define FLAG_DECORATION_2                    0xAF
@@ -334,7 +334,7 @@
 #define FLAG_MET_MAXIE_SOOTOPOLIS            0x135
 #define FLAG_MET_SCOTT_RUSTBORO              0x136
 #define FLAG_WALLACE_GOES_TO_SKY_PILLAR      0x137 // Set after speaking to Wallace within the Cave of Origin.
-#define FLAG_RECEIVED_HM_WATERFALL           0x138
+#define FLAG_UNUSED_0x138                    0x138 // Unused
 #define FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS    0x139
 #define FLAG_RECEIVED_AURORA_TICKET          0x13A
 #define FLAG_RECEIVED_MYSTIC_TICKET          0x13B

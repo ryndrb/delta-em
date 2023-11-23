@@ -143,30 +143,13 @@ SkyPillar_Outside_Text_DoorIsClosed:
 	.string "The door is closed.$"
 
 SkyPillar_Outside_Text_OpenedDoorToSkyPillar:
-	.string "Wallace: Oh, my, I'm terribly sorry!\p"
-	.string "In my haste, I didn't notice that\n"
-	.string "I'd left you behind!\p"
-	.string "I've opened the locked door of\n"
-	.string "the Sky Pillar.\p"
-	.string "{PLAYER}{KUN}, let's be on our way!$"
+	.string "{COLOR RED}Wallace{COLOR DARK_GRAY}: Oh, my, I'm terribly sorry!\pIn my haste, I didn't notice that I'd\nleft you behind!\pI've opened the locked door of the\nSky Pillar.\pTrainer, let's be on our way!$"
 
 SkyPillar_Outside_Text_EarthquakeNotMomentToWaste:
-	.string "Wallace: It's an earthquake!\p"
-	.string "There's not a moment to waste!\n"
-	.string "We've got to hurry!$"
+	.string "It's an earthquake!\pThere's not a moment to waste!\nWe've got to hurry!$"
 
 SkyPillar_Outside_Text_SituationGettingWorse:
-	.string "Wallace: Hmm…\n"
-	.string "The situation is getting worse…$"
+	.string "Hmm…\nThe situation is getting worse…$"
 
 SkyPillar_Outside_Text_GotToGoBackForSootopolis:
-	.string "Wallace: This isn't good…\p"
-	.string "The weather distortion is spreading\n"
-	.string "even here…\p"
-	.string "{PLAYER}{KUN}.\p"
-	.string "Rayquaza should be farther up\n"
-	.string "from here.\p"
-	.string "I'm worried about Sootopolis.\n"
-	.string "I've got to go back.\p"
-	.string "Everything is in your hands now.\n"
-	.string "Don't fail us!$"
+	.string "This isn't good…\pThe weather distortion is spreading\neven here…\p{PLAYER}.\pRayquaza should be farther up from\nhere.\pI'm worried about Sootopolis.\nI've got to go back.\pEverything is in your hands now.\nI implore you to not fail!$"

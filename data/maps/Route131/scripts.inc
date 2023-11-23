@@ -4,6 +4,7 @@ Route131_MapScripts::
 
 Route131_OnTransition:
 	call_if_ge VAR_SOOTOPOLIS_CITY_STATE, 4, Route131_EventScript_CheckSetAbnormalWeather
+	call_if_set FLAG_SYS_GAME_CLEAR, Route131_EventScript_CaveLadyGone
 	call Route131_EventScript_SetLayout
 	end
 
@@ -13,6 +14,10 @@ Route131_EventScript_SetLayout::
 
 Route131_EventScript_CheckSetAbnormalWeather::
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
+	return
+
+Route131_EventScript_CaveLadyGone::
+	setflag FLAG_HIDE_ROUTE_131_LADY
 	return
 
 Route131_EventScript_Richard::
@@ -55,3 +60,16 @@ Route131_EventScript_Kevin::
 	msgbox Route131_Text_KevinPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+Route131_EventScript_CaveLady::
+	lock
+	faceplayer
+	msgbox Route131_EventScript_CaveLady_Text_0
+	closemessage
+	applymovement 9, Common_Movement_WalkInPlaceDown
+	waitmovement 9
+	release
+	end
+
+
+Route131_EventScript_CaveLady_Text_0:
+	.string "Only those who have been\nrecognized as being worthy can go\lbeyond this point…$"

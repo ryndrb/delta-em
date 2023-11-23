@@ -120,12 +120,13 @@ SkyPillar_Top_EventScript_AwakenRayquaza::
 	removeobject LOCALID_RAYQUAZA_SLEEPING
 	msgbox SkyPillar_Top_Text_RayquazaFlewOff, MSGBOX_DEFAULT
 	closemessage
-	delay 20
+	delay 24
 	fadeinbgm 1
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_CameraPanDown
 	waitmovement 0
 	special RemoveCameraObject
+	setflag FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE
 	setvar VAR_SOOTOPOLIS_CITY_STATE, 5
 	setvar VAR_SKY_PILLAR_STATE, 1
 	setvar VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE, 1

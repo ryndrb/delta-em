@@ -20,7 +20,7 @@ PacifidlogTown_EventScript_Girl::
 	end
 
 PacifidlogTown_EventScript_Fisherman::
-	msgbox PacifidlogTown_Text_SkyPillarTooScary, MSGBOX_NPC
+	msgbox PacifidlogTown_Text_LivingByFishing, MSGBOX_NPC
 	end
 
 PacifidlogTown_EventScript_TownSign::
@@ -28,27 +28,15 @@ PacifidlogTown_EventScript_TownSign::
 	end
 
 PacifidlogTown_Text_FastRunningCurrent:
-	.string "The sea between Pacifidlog and\n"
-	.string "Slateport has a fast-running tide.\p"
-	.string "If you decide to Surf, you could end\n"
-	.string "up swept away somewhere else.$"
+	.string "The sea between Pacifidlog and\nSlateport has a swift-running tide.\pIf you try to Surf there, you might end\nup swept away somewhere else.$"
 
 PacifidlogTown_Text_NeatHousesOnWater:
-	.string "See, isn't it neat?\n"
-	.string "These houses are on water!\p"
-	.string "I was born here!$"
+	.string "Look! Look!\nIsn't it neat?\lOur houses are on water!\pAnd I was born here, too!$"
 
-PacifidlogTown_Text_SkyPillarTooScary:
-	.string "The Sky Pillar?\p"
-	.string "…Oh, you must mean that tall, tall\n"
-	.string "tower a little further out.\p"
-	.string "If you asked me, I wouldn't climb it.\n"
-	.string "It's too scary to get up that high.\p"
-	.string "Life at sea level in Pacifidlog,\n"
-	.string "that suits me fine.$"
+PacifidlogTown_Text_LivingByFishing:
+	.string "The folks of Pacifidlog make their\nliving by fishing and diving.$"
 
 PacifidlogTown_Text_TownSign:
 	.string "Pacifidlog Town\p"
 	.string "“Where the morning sun smiles upon\n"
 	.string "the waters.”$"
-
