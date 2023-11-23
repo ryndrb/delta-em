@@ -36,6 +36,7 @@
 #include "strings.h"
 #include "constants/battle_anim.h"
 #include "constants/battle_move_effects.h"
+#include "constants/hold_effects.h"
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/party_menu.h"
@@ -1802,13 +1803,26 @@ static void MoveSelectionDisplaySplitIcons(u32 battler)
 static void MoveSelectionDisplayMoveEffectiveness(u32 battler){
     u8 *txtPtr, moveType, split;
     const u8* string;
+    u32 itemId;
+    struct Pokemon *mon;
     bool8 stab = FALSE;
     u8 stabPalIndex = 5 * 0x10 + 6;
     u8 palIndex = stabPalIndex + 2;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
     u16 move = moveInfo->moves[gMoveSelectionCursor[battler]];
 
-    moveType = moveInfo->moveTypes[gMoveSelectionCursor[battler]];
+    if (move == MOVE_IVY_CUDGEL)
+    {
+        mon = &GetSideParty(GetBattlerSide(battler))[gBattlerPartyIndexes[battler]];
+        itemId = GetMonData(mon, MON_DATA_HELD_ITEM);
+
+        if (ItemId_GetHoldEffect(itemId) == HOLD_EFFECT_MASK)
+            moveType = ItemId_GetSecondaryId(itemId);
+        else
+            moveType = gBattleMoves[MOVE_IVY_CUDGEL].type;
+    }
+    else
+        moveType = moveInfo->moveTypes[gMoveSelectionCursor[battler]];
 
     // Update Palette Fading for Effectiveness
     split = moveInfo->moveSplit[gMoveSelectionCursor[battler]];
