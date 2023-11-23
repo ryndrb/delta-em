@@ -245,38 +245,6 @@ MauvilleCity_Movement_ScottExit:
     walk_left
     step_end
 
-MauvilleCity_EventScript_Wattson::
-	lock
-	faceplayer
-	goto_if_set FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON, MauvilleCity_EventScript_ReceivedThunderbolt
-	goto_if_eq VAR_NEW_MAUVILLE_STATE, 2, MauvilleCity_EventScript_CompletedNewMauville
-	goto_if_set FLAG_GOT_BASEMENT_KEY_FROM_WATTSON, MauvilleCity_EventScript_BegunNewMauville
-	msgbox MauvilleCity_Text_WattsonNeedFavorTakeKey, MSGBOX_DEFAULT
-	giveitem ITEM_BASEMENT_KEY
-	setflag FLAG_GOT_BASEMENT_KEY_FROM_WATTSON
-	msgbox MauvilleCity_Text_WattsonWontBeChallenge, MSGBOX_DEFAULT
-	release
-	end
-
-MauvilleCity_EventScript_BegunNewMauville::
-	msgbox MauvilleCity_Text_WattsonWontBeChallenge, MSGBOX_DEFAULT
-	release
-	end
-
-MauvilleCity_EventScript_CompletedNewMauville::
-	msgbox MauvilleCity_Text_WattsonThanksTakeTM, MSGBOX_DEFAULT
-	giveitem ITEM_TM_THUNDERBOLT
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON
-	msgbox MauvilleCity_Text_WattsonYoungTakeCharge, MSGBOX_DEFAULT
-	release
-	end
-
-MauvilleCity_EventScript_ReceivedThunderbolt::
-	msgbox MauvilleCity_Text_WattsonYoungTakeCharge, MSGBOX_DEFAULT
-	release
-	end
-
 MauvilleCity_EventScript_RegisterWallyCall::
 	lockall
 	pokenavcall MauvilleCity_Text_WallyPokenavCall
@@ -378,42 +346,6 @@ MauvilleCity_Text_RegisteredWally:
 
 MauvilleCity_Text_ScottYouDidntHoldBack:
 	.string "{COLOR RED}Scott{COLOR DARK_GRAY}: Hehe…\nI was watching that match!\pYou're friends with that boy Wally,\naren't you?\pBut you didn't hold anything back and\nbeat him impressively.\pYeah!\nThat's that's what a real Pokémon\lbattle is all about!\pI idolize Trainers like that!\nI'll be cheering for you!$"
-
-MauvilleCity_Text_WattsonNeedFavorTakeKey:
-	.string "Wattson: Oh, {PLAYER}{KUN}!\n"
-	.string "You look like you have a lot of zip!\l"
-	.string "That's a good thing, wahahahaha!\p"
-	.string "Fine! I've decided!\n"
-	.string "I need a favor, {PLAYER}{KUN}!\p"
-	.string "Mauville City has an underground\n"
-	.string "sector called New Mauville.\p"
-	.string "{PLAYER}{KUN}, I'd like you to go there and\n"
-	.string "switch off the Generator.\p"
-	.string "The Generator has been running a bit\n"
-	.string "haywire. It's getting unsafe.\p"
-	.string "Here, this is the Key to get into\n"
-	.string "New Mauville.$"
-
-MauvilleCity_Text_WattsonWontBeChallenge:
-	.string "Wattson: Don't you worry about it.\n"
-	.string "It won't be a challenge to you.\p"
-	.string "The entrance to New Mauville is just\n"
-	.string "a short Surf away from Route 110.\p"
-	.string "That's it, then, you have my trust!\n"
-	.string "Wahahahaha!$"
-
-MauvilleCity_Text_WattsonThanksTakeTM:
-	.string "Wattson: Wahahahaha!\p"
-	.string "I knew it, {PLAYER}{KUN}! I knew I'd made\n"
-	.string "the right choice asking you!\p"
-	.string "This is my thanks--a TM containing\n"
-	.string "Thunderbolt!\p"
-	.string "Go on, you've earned it!$"
-
-MauvilleCity_Text_WattsonYoungTakeCharge:
-	.string "Wattson: Wahahahaha!\p"
-	.string "It pleases me to no end to see\n"
-	.string "the young step up and take charge!$"
 
 MauvilleCity_Text_NurseHurtMonBackToHealth:
 	.string "You know, it's cool to have Pokémon\n"
@@ -887,6 +819,52 @@ MauvilleCity_Movement_PlayerWatchWallyExitToRoute118:
 	walk_in_place_right
 	step_end
 
+MauvilleCity_EventScript_Wattson::
+	lock
+	faceplayer
+	goto_if_set FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON, MauvilleCity_EventScript_Wattson_2
+	compare VAR_NEW_MAUVILLE_STATE, 2
+	goto_if_eq MauvilleCity_EventScript_Wattson_5
+	goto_if_set FLAG_GOT_BASEMENT_KEY_FROM_WATTSON, MauvilleCity_EventScript_Wattson_8
+	msgbox MauvilleCity_EventScript_Wattson_Text_4
+	delay 8
+	giveitem ITEM_BASEMENT_KEY
+	setflag FLAG_GOT_BASEMENT_KEY_FROM_WATTSON
+	msgbox MauvilleCity_EventScript_Wattson_Text_5
+	closemessage
+	release
+	end
+
+MauvilleCity_EventScript_Wattson_2:
+	msgbox MauvilleCity_EventScript_Wattson_Text_0
+	closemessage
+	release
+	end
+
+MauvilleCity_EventScript_Wattson_5:
+	msgbox MauvilleCity_EventScript_Wattson_Text_1
+	delay 8
+	giveitem ITEM_TM_THUNDERBOLT
+	compare VAR_RESULT, FALSE
+	goto_if_eq MauvilleCity_EventScript_Wattson_11
+MauvilleCity_EventScript_Wattson_10:
+	setflag FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON
+	msgbox MauvilleCity_EventScript_Wattson_Text_2
+	closemessage
+	release
+	end
+
+MauvilleCity_EventScript_Wattson_8:
+	msgbox MauvilleCity_EventScript_Wattson_Text_3
+	closemessage
+	release
+	end
+
+MauvilleCity_EventScript_Wattson_11:
+	goto Common_EventScript_ShowBagIsFull
+	goto MauvilleCity_EventScript_Wattson_10
+
+
 MauvilleCity_EventScript_WallyAndUncleIntro_Text_0:
 	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Wow!\nSo this is Mauville City!$"
 
@@ -949,3 +927,21 @@ MauvilleCity_EventScript_WallyAfterPetalburgEvent_Text_1:
 
 MauvilleCity_EventScript_WallyAfterPetalburgEvent_Text_2:
 	.string "I'll see you later, {PLAYER}!\nI'm going straight to Route 118!\pLet's definitely have a battle next\ntime we meet!\lIt's a promise, OK?\pAnd you can't break a promise!$"
+
+MauvilleCity_EventScript_Wattson_Text_0:
+	.string "{COLOR RED}Wattson{COLOR DARK_GRAY}: It pleases me to no end\nto see the young step up and take\lcharge!$"
+
+MauvilleCity_EventScript_Wattson_Text_1:
+	.string "{COLOR RED}Wattson{COLOR DARK_GRAY}: I knew it, {PLAYER}!\pI knew I'd made the right choice\nasking you!\pLet me give you this as a way to say\nsorry for causing you such a hassle.$"
+
+MauvilleCity_EventScript_Wattson_Text_2:
+	.string "By the way, there wasn't anything going\nin New Mauville, right?\pThat was supposed to be a new town,\nthough…\pWe should've been able to build a\nhuge underground city stretching\ldown into the depths.\pThings happened, and its development\nhad to be suspended.\lSince then it's just left to rot.\pAll the equipment inside might have\nseen better days.$"
+
+MauvilleCity_EventScript_Wattson_Text_3:
+	.string "{COLOR RED}Wattson{COLOR DARK_GRAY}: When you get inside, switch\noff the Generator.\pIt has been running a bit haywire.\nIt's getting unsafe.\pI sure am sorry to bug you with all this,\nbut I'm really counting on you!\pYou can {COLOR BLUE}Surf{COLOR DARK_GRAY} from {COLOR BLUE}Route 110{COLOR DARK_GRAY} to get to\nNew Mauville.$"
+
+MauvilleCity_EventScript_Wattson_Text_4:
+	.string "{COLOR RED}Wattson{COLOR DARK_GRAY}: Oh, {PLAYER}, eh?\pYou got here just in time to give\nme a hand at something.\pMauville City has an underground\nsector called New Mauville.\pThere's just one thing, though.\nIt is usually a prohibited area.\pHere, this is the key to get into\nNew Mauville.$"
+
+MauvilleCity_EventScript_Wattson_Text_5:
+	.string "When you get inside, switch off the\nGenerator.\pIt has been running a bit haywire.\nIt's getting unsafe.\pI sure am sorry to bug you with all this,\nbut I'm really counting on you!\pYou can {COLOR BLUE}Surf{COLOR DARK_GRAY} from {COLOR BLUE}Route 110{COLOR DARK_GRAY} to get to\nNew Mauville.$"

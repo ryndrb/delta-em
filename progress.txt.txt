@@ -101,11 +101,23 @@
         - [/] Pacifidlog Town
         - [/] Sky Pillar
     - [x] Part 18
-
+        - [/] New Mauville
     - [x] Part 19
+        - [/] Route 132
+        - [/] Route 133
+        - [/] Route 134
+        - [ ] Sealed Chamber
+        - [ ] Island Cave
+        - [ ] Desert Ruins
+        - [ ] Ancient Tomb
     - [x] Part 20
+        - [ ] Abandoned Ship
+        - [ ] Scorched Slab
     - [x] Part 21
+        - [ ] Evergrande City
+        - [ ] Victory Road
     - [x] Part 22
+        - [ ] Pokemon League
 Delta Episode
     - [x] Part 23
 Post-Game
