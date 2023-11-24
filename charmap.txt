@@ -1376,7 +1376,10 @@ MUS_HG_OBTAIN_CASTLE_POINTS      = 80 03
 MUS_HG_OBTAIN_B_POINTS           = 81 03
 MUS_HG_WIN_MINIGAME              = 82 03
 MUS_ZINNIA_THEME                 = 83 03
-MUS_WALLY_THEME                  = 84 03
+MUS_ZINNIA_BATTLE                = 84 03
+MUS_ZINNIA_SORROW                = 85 03
+MUS_WALLY_THEME                  = 86 03
+MUS_WALLY_BATTLE                 = 87 03
 
 A_BUTTON = F8 00
 B_BUTTON = F8 01

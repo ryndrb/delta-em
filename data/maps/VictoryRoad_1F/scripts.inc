@@ -1,99 +1,17 @@
-.set LOCALID_WALLY_ENTRANCE, 4
+.set LOCALID_WALLY, 8
 
 VictoryRoad_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, VictoryRoad_1F_OnTransition
 	.byte 0
 
 VictoryRoad_1F_OnTransition:
-	call_if_eq VAR_VICTORY_ROAD_1F_STATE, 1, VictoryRoad_1F_EventScript_SetEntranceWallyPos1
-	call_if_eq VAR_VICTORY_ROAD_1F_STATE, 2, VictoryRoad_1F_EventScript_SetEntranceWallyPos2
+	call_if_set FLAG_DEFEATED_WALLY_VICTORY_ROAD, VictoryRoad_1F_EventScript_WallyDefeatedPos
 	end
 
-VictoryRoad_1F_EventScript_SetEntranceWallyPos1::
-	setobjectxyperm LOCALID_WALLY_ENTRANCE, 2, 24
-	setobjectmovementtype LOCALID_WALLY_ENTRANCE, MOVEMENT_TYPE_FACE_DOWN
-	return
-
-VictoryRoad_1F_EventScript_SetEntranceWallyPos2::
-	setobjectxyperm LOCALID_WALLY_ENTRANCE, 3, 24
-	setobjectmovementtype LOCALID_WALLY_ENTRANCE, MOVEMENT_TYPE_FACE_DOWN
-	return
-
-VictoryRoad_1F_EventScript_WallyBattleTrigger1::
-	lockall
-	setvar VAR_0x8008, 1
-	addobject LOCALID_WALLY_ENTRANCE
-	applymovement LOCALID_WALLY_ENTRANCE, VictoryRoad_1F_Movement_WallyApproachPlayer1
-	waitmovement 0
-	goto VictoryRoad_1F_EventScript_WallyEntranceBattle
-	end
-
-VictoryRoad_1F_EventScript_WallyBattleTrigger2::
-	lockall
-	setvar VAR_0x8008, 2
-	addobject LOCALID_WALLY_ENTRANCE
-	applymovement LOCALID_WALLY_ENTRANCE, VictoryRoad_1F_Movement_WallyApproachPlayer2
-	waitmovement 0
-	goto VictoryRoad_1F_EventScript_WallyEntranceBattle
-	end
-
-VictoryRoad_1F_EventScript_WallyEntranceBattle::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	msgbox VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_WALLY_VR_1, VictoryRoad_1F_Text_WallyEntranceDefeat
-	msgbox VictoryRoad_1F_Text_WallyPostEntranceBattle, MSGBOX_DEFAULT
-	clearflag FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY
-	copyobjectxytoperm LOCALID_WALLY_ENTRANCE
-	setflag FLAG_DEFEATED_WALLY_VICTORY_ROAD
-	copyvar VAR_VICTORY_ROAD_1F_STATE, VAR_0x8008
-	releaseall
-	end
-
-VictoryRoad_1F_Movement_WallyApproachPlayer1:
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	step_end
-
-VictoryRoad_1F_Movement_WallyApproachPlayer2:
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	step_end
-
-@ This Wally appears near the entrance once his battle is triggered and remains there until the Hall of Fame is entered
-VictoryRoad_1F_EventScript_EntranceWally::
-	msgbox VictoryRoad_1F_Text_WallyPostEntranceBattle, MSGBOX_NPC
-	end
-
-@ This Wally appears and remains at the exit after the Hall of Fame is entered
-VictoryRoad_1F_EventScript_ExitWally::
-	trainerbattle_single TRAINER_WALLY_VR_2, VictoryRoad_1F_Text_WallyIntro, VictoryRoad_1F_Text_WallyDefeat
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, VictoryRoad_1F_EventScript_RematchWally
-	msgbox VictoryRoad_1F_Text_WallyPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-VictoryRoad_1F_EventScript_RematchWally::
-	trainerbattle_rematch TRAINER_WALLY_VR_2, VictoryRoad_1F_Text_WallyIntro, VictoryRoad_1F_Text_WallyDefeat
-	msgbox VictoryRoad_1F_Text_WallyPostBattle, MSGBOX_AUTOCLOSE
-	end
+VictoryRoad_1F_EventScript_WallyDefeatedPos::
+    setobjectxyperm LOCALID_WALLY, 31, 8
+    setobjectmovementtype LOCALID_WALLY, MOVEMENT_TYPE_WANDER_AROUND
+    return
 
 VictoryRoad_1F_EventScript_Edgar::
 	trainerbattle_single TRAINER_EDGAR, VictoryRoad_1F_Text_EdgarIntro, VictoryRoad_1F_Text_EdgarDefeat
@@ -119,43 +37,6 @@ VictoryRoad_1F_EventScript_Katelynn::
 	trainerbattle_single TRAINER_KATELYNN, VictoryRoad_1F_Text_KatelynnIntro, VictoryRoad_1F_Text_KatelynnDefeat
 	msgbox VictoryRoad_1F_Text_KatelynnPostBattle, MSGBOX_AUTOCLOSE
 	end
-
-VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore:
-	.string "Wally: Hi! {PLAYER}!\p"
-	.string "I bet you're surprised to see me here!\p"
-	.string "I made it all the way here, and it's\n"
-	.string "all thanks to you!\p"
-	.string "{PLAYER}, losing to you that time\n"
-	.string "made me stronger!\p"
-	.string "But I'm not going to lose anymore!\p"
-	.string "I'm going to win! For the Pokémon who\n"
-	.string "gave me courage and strength!\p"
-	.string "Okay… Here I come!$"
-
-VictoryRoad_1F_Text_WallyEntranceDefeat:
-	.string "Wow!\n"
-	.string "{PLAYER}, you are strong, after all!$"
-
-VictoryRoad_1F_Text_WallyPostEntranceBattle:
-	.string "Wally: I couldn't beat you today,\n"
-	.string "{PLAYER}, but one of these days, I'll\l"
-	.string "catch up to you!$"
-
-VictoryRoad_1F_Text_WallyIntro:
-	.string "Wally: Hi! {PLAYER}!\p"
-	.string "I've gotten stronger since that last\n"
-	.string "time! I wanted to show you, {PLAYER}!\p"
-	.string "Okay… Here I come!$"
-
-VictoryRoad_1F_Text_WallyDefeat:
-	.string "Wow!\n"
-	.string "{PLAYER}, you are strong, after all!$"
-
-VictoryRoad_1F_Text_WallyPostBattle:
-	.string "Wally: I couldn't beat you this time,\n"
-	.string "too… But one of these days, {PLAYER},\l"
-	.string "I'm going to catch up to you…\p"
-	.string "And challenge the Pokémon League!$"
 
 VictoryRoad_1F_Text_EdgarIntro:
 	.string "I've made it this far a couple times,\n"
@@ -218,3 +99,141 @@ VictoryRoad_1F_Text_KatelynnDefeat:
 VictoryRoad_1F_Text_KatelynnPostBattle:
 	.string "Humph, go right on ahead.\n"
 	.string "See if I care.$"
+
+VictoryRoad_1F_EventScript_WallyTrigger1::
+	setvar VAR_TEMP_1, 1
+	goto VictoryRoad_1F_EventScript_WallyBattle
+	return
+
+
+VictoryRoad_1F_EventScript_WallyTrigger2::
+	setvar VAR_TEMP_1, 2
+	goto VictoryRoad_1F_EventScript_WallyBattle
+	return
+
+
+VictoryRoad_1F_EventScript_WallyTrigger3::
+	setvar VAR_TEMP_1, 3
+	goto VictoryRoad_1F_EventScript_WallyBattle
+	return
+
+
+VictoryRoad_1F_EventScript_WallyBattle::
+	lock
+	delay 16
+	applymovement LOCALID_WALLY, Common_Movement_WalkInPlaceDown
+	waitmovement LOCALID_WALLY
+	playse SE_PIN
+	applymovement LOCALID_WALLY, Common_Movement_ExclamationMark
+	waitmovement LOCALID_WALLY
+	waitse
+	msgbox VictoryRoad_1F_EventScript_WallyBattle_Text_0
+	closemessage
+	switch VAR_TEMP_1
+	case 1, VictoryRoad_1F_EventScript_WallyBattle_3
+	case 2, VictoryRoad_1F_EventScript_WallyBattle_4
+	case 3, VictoryRoad_1F_EventScript_WallyBattle_5
+VictoryRoad_1F_EventScript_WallyBattle_1:
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox VictoryRoad_1F_EventScript_WallyBattle_Text_1
+	msgbox VictoryRoad_1F_EventScript_WallyBattle_Text_2
+	closemessage
+	delay 32
+	playbgm MUS_WALLY_BATTLE, FALSE
+	msgbox VictoryRoad_1F_EventScript_WallyBattle_Text_3
+	closemessage
+	trainerbattle_no_intro TRAINER_WALLY_VR_1, VictoryRoad_1F_EventScript_WallyBattle_Text_4
+	playbgm MUS_DUMMY, FALSE
+	msgbox VictoryRoad_1F_EventScript_WallyBattle_Text_5
+	closemessage
+	delay 24
+	playbgm MUS_WALLY_THEME, FALSE
+	msgbox VictoryRoad_1F_EventScript_WallyBattle_Text_6
+	closemessage
+	delay 8
+	playse SE_PIN
+	applymovement LOCALID_WALLY, Common_Movement_ExclamationMark
+	waitmovement LOCALID_WALLY
+	msgbox VictoryRoad_1F_EventScript_WallyBattle_Text_7
+	delay 8
+	giveitem ITEM_DAWN_STONE, 1
+	msgbox VictoryRoad_1F_EventScript_WallyBattle_Text_8
+	closemessage
+	fadedefaultbgm
+	applymovement LOCALID_WALLY, Common_Movement_WalkRight
+	waitmovement LOCALID_WALLY
+	applymovement LOCALID_WALLY, Common_Movement_WalkInPlaceDown
+	waitmovement LOCALID_WALLY
+	setflag FLAG_DEFEATED_WALLY_VICTORY_ROAD
+	setvar VAR_VICTORY_ROAD_1F_STATE, 1
+	release
+	end
+
+VictoryRoad_1F_EventScript_WallyBattle_3:
+	applymovement OBJ_EVENT_ID_PLAYER, VictoryRoad_1F_Movement_PlayerGotoWally1
+	delay 24
+	applymovement LOCALID_WALLY, Common_Movement_WalkDown
+	goto VictoryRoad_1F_EventScript_WallyBattle_1
+
+VictoryRoad_1F_EventScript_WallyBattle_4:
+	applymovement OBJ_EVENT_ID_PLAYER, VictoryRoad_1F_Movement_PlayerGotoWally2
+	applymovement LOCALID_WALLY, Common_Movement_WalkDown
+	goto VictoryRoad_1F_EventScript_WallyBattle_1
+
+VictoryRoad_1F_EventScript_WallyBattle_5:
+	applymovement OBJ_EVENT_ID_PLAYER, VictoryRoad_1F_Movement_PlayerGotoWally3
+	delay 24
+	applymovement LOCALID_WALLY, Common_Movement_WalkDown
+	goto VictoryRoad_1F_EventScript_WallyBattle_1
+
+
+VictoryRoad_1F_Movement_PlayerGotoWally1:
+	walk_up
+	walk_right
+	walk_in_place_up
+	step_end
+
+VictoryRoad_1F_Movement_PlayerGotoWally2:
+	walk_up
+	step_end
+
+VictoryRoad_1F_Movement_PlayerGotoWally3:
+	walk_up
+	walk_left
+	walk_in_place_up
+	step_end
+
+VictoryRoad_1F_EventScript_Wally::
+	msgbox VictoryRoad_1F_EventScript_Wally_Text_0, MSGBOX_NPC
+	end
+
+
+VictoryRoad_1F_EventScript_WallyBattle_Text_0:
+	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Ah! {PLAYER}!$"
+
+VictoryRoad_1F_EventScript_WallyBattle_Text_1:
+	.string "I bet you must be surprised to see me\nin a place like this!\pThat promise that we made back then…\nThank you for keeping the end of it.\pIt was really all thanks to you that I\ncould make it this far, {PLAYER}.\pIt was only because I lost to you\nback then that I could become even\lstronger.\pI'm sure that you and your Pokémon\nmust have had to overcome a lot, too…\pTo make it all the way here.\nRight, {PLAYER}?$"
+
+VictoryRoad_1F_EventScript_WallyBattle_Text_2:
+	.string "Everyone's grown so much…\pAnd now we'll finally get to see just\nwhat we all can do.\pStanding here facing you again gives\nme chills…$"
+
+VictoryRoad_1F_EventScript_WallyBattle_Text_3:
+	.string "…But I won't give up!\pI won't lose anymore.\pMy Pokémon have given me the courage\nand strength to fight.\pI have to win for their sake!\pSo get ready… Here I come!$"
+
+VictoryRoad_1F_EventScript_WallyBattle_Text_4:
+	.string "…\pI've lost…$"
+
+VictoryRoad_1F_EventScript_WallyBattle_Text_5:
+	.string "…\p…\pArghhh!!!\p…\p…\p…Hah.$"
+
+VictoryRoad_1F_EventScript_WallyBattle_Text_6:
+	.string "{PLAYER}, you…\nAnd your Pokémon, too…\pThank you for not holding back when\nyou battled against us…\pFor not holding back when you beat\nus…\pAnd…\pGallade… Everyone…\pThank you so much…\pI feel like I've been able to take\nanother step forward thanks to you!$"
+
+VictoryRoad_1F_EventScript_WallyBattle_Text_7:
+	.string "Oh!\nI know!\lI'll give you this to keep.\pI hope it will always remind you of\nyour battle with me…and with Gallade\land the rest of my team.$"
+
+VictoryRoad_1F_EventScript_WallyBattle_Text_8:
+	.string "If you have a male Kirlia as one of\nyour partners, {PLAYER}, I hope that\lyou might use that Dawn Stone on it\lfor me.\pI couldn't beat you this time,\n{PLAYER}.\pBut I'll stay here and continue\ntraining.\pAnd one day… Look out!\nI swear I'll catch up to you one day!\pWhen I do, promise we'll battle again!\nThat's a promise I intend to live up to!$"
+
+VictoryRoad_1F_EventScript_Wally_Text_0:
+	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: I couldn't beat you this time,\n{PLAYER}.\pBut I'll stay here and continue\ntraining.\pAnd one day… Look out!\nI swear I'll catch up to you one day!\pWhen I do, promise we'll battle again!\nThat's a promise I intend to live up to!$"

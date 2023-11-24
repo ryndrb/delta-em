@@ -114,8 +114,8 @@
         - [ ] Abandoned Ship
         - [ ] Scorched Slab
     - [x] Part 21
-        - [ ] Evergrande City
-        - [ ] Victory Road
+        - [/] Evergrande City
+        - [/] Victory Road
     - [x] Part 22
         - [ ] Pokemon League
 Delta Episode

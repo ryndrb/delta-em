@@ -8196,6 +8196,7 @@ u16 GetBattleBGM(void)
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
     {
         u8 trainerClass;
+        u16 trainerId;
 
         if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
             trainerClass = GetFrontierOpponentClass(gTrainerBattleOpponent_A);
@@ -8203,6 +8204,11 @@ u16 GetBattleBGM(void)
             trainerClass = TRAINER_CLASS_EXPERT;
         else
             trainerClass = gTrainers[gTrainerBattleOpponent_A].trainerClass;
+
+        // For Victory Road Wally
+        trainerId = gTrainerBattleOpponent_A;
+        if(trainerId == TRAINER_WALLY_VR_1)
+            return MUS_WALLY_BATTLE;
 
         switch (trainerClass)
         {
