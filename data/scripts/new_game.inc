@@ -278,5 +278,6 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_LILYCOVE_CITY_RIVAL
 	setflag FLAG_HIDE_SOOTOPOLIS_RIVAL
 	setflag FLAG_HIDE_ROUTE_131_LADY
+	setflag FLAG_HIDE_EVER_GRANDE_CITY_RIVAL
 	call EventScript_ResetAllBerries
 	end

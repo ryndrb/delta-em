@@ -61,27 +61,20 @@ EverGrandeCity_SidneysRoom_EventScript_Defeated::
 	setflag FLAG_DEFEATED_ELITE_4_SIDNEY
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
 	msgbox EverGrandeCity_SidneysRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	closemessage
+	playse SE_USE_ITEM
+	special HealPlayerParty
+	waitse
 	release
 	end
 
 EverGrandeCity_SidneysRoom_Text_IntroSpeech:
-	.string "Welcome, challenger!\n"
-	.string "I'm Sidney of the Elite Four.\p"
-	.string "I like that look you're giving me.\n"
-	.string "I guess you'll give me a good match.\l"
-	.string "That's good! Looking real good!\p"
-	.string "All right! You and me, let's enjoy\n"
-	.string "a battle that can only be staged\l"
-	.string "here in the Pokémon League!$"
+	.string "{COLOR RED}Sidney{COLOR DARK_GRAY}: Welcome, challenger!\nI'm Sidney of the Elite Four.\pI like that look you're giving me.\nI guess you'll give me a good match.\lThat's good! Looking real good!\pAll right!\nLet's get down to the kind of\lbattle can happen only here in the\lPokémon League!$"
 
 EverGrandeCity_SidneysRoom_Text_Defeat:
 	.string "Well, how do you like that? I lost!\n"
 	.string "Eh, it was fun, so it doesn't matter.$"
 
 EverGrandeCity_SidneysRoom_Text_PostBattleSpeech:
-	.string "Well, listen to what this loser has\n"
-	.string "to say.\p"
-	.string "You've got what it takes to go far.\n"
-	.string "Now, go on to the next room and enjoy\l"
-	.string "your next battle!$"
+	.string "Well, listen to what this loser has to\nsay.\pYou've got what it takes to go a long\nway!\pGo on the next room and challenge your\nnext battle!$"
 

@@ -57,6 +57,7 @@ enum
     PAGE_EXECUTIVE_DIRECTOR,
     PAGE_EXECUTIVE_PRODUCERS_1,
     PAGE_EXECUTIVE_PRODUCERS_2,
+    PAGE_HACK_CREATOR,
     PAGE_COUNT
 };
 
@@ -221,6 +222,8 @@ static const u8 sCreditsText_MotoyasuTojima[]                 = _("Motoyasu Toji
 static const u8 sCreditsText_NicolaPrattBarlow[]              = _("Nicola Pratt-Barlow");
 static const u8 sCreditsText_ShellieDow[]                     = _("Shellie Dow");
 static const u8 sCreditsText_ErikJohnson[]                    = _("Erik Johnson");
+static const u8 sCreditsText_HackCreator[]                    = _("Hack Creator");
+static const u8 sCreditsText_CreatorName[]                    = _("ryndrb");
 static const struct CreditsEntry sCreditsEntry_EmptyString                      = { 0, FALSE, sCreditsText_EmptyString};
 static const struct CreditsEntry sCreditsEntry_PkmnEmeraldVersion               = { 7,  TRUE, sCreditsText_PkmnEmeraldVersion};
 static const struct CreditsEntry sCreditsEntry_Credits                          = {11,  TRUE, sCreditsText_Credits};
@@ -380,6 +383,8 @@ static const struct CreditsEntry sCreditsEntry_MotoyasuTojima                   
 static const struct CreditsEntry sCreditsEntry_NicolaPrattBarlow                = { 0, FALSE, sCreditsText_NicolaPrattBarlow};
 static const struct CreditsEntry sCreditsEntry_ShellieDow                       = { 0, FALSE, sCreditsText_ShellieDow};
 static const struct CreditsEntry sCreditsEntry_ErikJohnson                      = { 0, FALSE, sCreditsText_ErikJohnson};
+static const struct CreditsEntry sCreditsEntry_HackCreator                      = { 0, TRUE, sCreditsText_HackCreator};
+static const struct CreditsEntry sCreditsEntry_CreatorName                      = { 0, FALSE, sCreditsText_CreatorName};
 
 #define _ &sCreditsEntry_EmptyString
 static const struct CreditsEntry *const sCreditsEntryPointerTable[PAGE_COUNT][ENTRIES_PER_PAGE] =
@@ -780,6 +785,13 @@ static const struct CreditsEntry *const sCreditsEntryPointerTable[PAGE_COUNT][EN
         _,
         &sCreditsEntry_ExecProducers,
         &sCreditsEntry_TsunekazIshihara,
+        _,
+        _,
+    },
+    [PAGE_HACK_CREATOR] = {
+        _,
+        &sCreditsEntry_HackCreator,
+        &sCreditsEntry_CreatorName,
         _,
         _,
     },

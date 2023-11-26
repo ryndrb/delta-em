@@ -117,7 +117,7 @@
         - [/] Evergrande City
         - [/] Victory Road
     - [x] Part 22
-        - [ ] Pokemon League
+        - [/] Pokemon League
 Delta Episode
     - [x] Part 23
 Post-Game
@@ -210,6 +210,7 @@ Post-Game
 - [x] Difficulty Settings
     - [ ] Nuzlocke Mode
     - [ ] Scalemons
+    - [ ] Each Type Pokemon League (18, Post-Game with relevant Trainers?)
 - [/] Add DexNav by Ghoulslash.
 - [/] Add Overworld Expansion by Ghoulslash.
 - [/] Add Dynamic Pals from gruntlucas repo.

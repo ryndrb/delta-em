@@ -58,35 +58,19 @@ EverGrandeCity_DrakesRoom_EventScript_Defeated::
 	setflag FLAG_DEFEATED_ELITE_4_DRAKE
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
 	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	closemessage
+	playse SE_USE_ITEM
+	special HealPlayerParty
+	waitse
 	release
 	end
 
 EverGrandeCity_DrakesRoom_Text_IntroSpeech:
-	.string "I am the last of the Pokémon League\n"
-	.string "Elite Four, Drake the Dragon master!\p"
-	.string "In their natural state, Pokémon are\n"
-	.string "wild living things. They are free.\p"
-	.string "At times, they hinder us.\n"
-	.string "At times, they help us.\p"
-	.string "For us to battle with Pokémon as\n"
-	.string "partners, do you know what it takes?\p"
-	.string "Do you know what is needed?\p"
-	.string "If you don't, then you will never\n"
-	.string "prevail over me!$"
+	.string "{COLOR RED}Drake{COLOR DARK_GRAY}: I'm the last of the Pokémon\nLeague Elite Four, Drake the Dragon\lmaster!\pIn their natural state, Pokémon are\nwild living things. They are free.\pAt times, they hinder us.\nAt times, they help us.\pFor us to battle alongside Pokémon as\npartners, do you what it takes?\pDo you what is needed?\pIf you don't, you will never prevail over\nme!$"
 
 EverGrandeCity_DrakesRoom_Text_Defeat:
 	.string "Superb, it should be said.$"
 
 EverGrandeCity_DrakesRoom_Text_PostBattleSpeech:
-	.string "You deserve every credit for coming\n"
-	.string "this far as a Trainer of Pokémon.\p"
-	.string "You do seem to know what is needed.\p"
-	.string "Yes, what a Trainer needs is a\n"
-	.string "virtuous heart.\p"
-	.string "Pokémon touch the good hearts of\n"
-	.string "Trainers and learn good from wrong.\p"
-	.string "They touch the good hearts of\n"
-	.string "Trainers and grow strong.\p"
-	.string "Go! Go onwards!\n"
-	.string "The Champion is waiting!$"
+	.string "You deserve every credit for coming\nthis far as a Trainer of Pokémon.\pYou do seem to know what is needed.\pYes, what a Trainer needs is a\nvirtuous heart.\pIt is through their contact with\nTrainers that Pokémon learn right or\lwrong.\pThe influence of their Trainers' good\nhearts helps them grow strong!\pGo!\nGo onward!\lThe champion is waiting!$"
 

@@ -55,29 +55,20 @@ EverGrandeCity_GlaciasRoom_EventScript_Defeated::
 	setflag FLAG_DEFEATED_ELITE_4_GLACIA
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
 	msgbox EverGrandeCity_GlaciasRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	closemessage
+	playse SE_USE_ITEM
+	special HealPlayerParty
+	waitse
 	release
 	end
 
 EverGrandeCity_GlaciasRoom_Text_IntroSpeech:
-	.string "Welcome, my name is Glacia\n"
-	.string "of the Elite Four.\p"
-	.string "I've traveled from afar to Hoenn\n"
-	.string "so that I may hone my ice skills.\p"
-	.string "But all I have seen are challenges by\n"
-	.string "weak Trainers and their Pokémon.\p"
-	.string "What about you?\p"
-	.string "It would please me to no end if I could\n"
-	.string "go all out against you!$"
+	.string "{COLOR RED}Glacia{COLOR DARK_GRAY}: Welcome.\nMy name is Glacia of the Elite Four.\pI've traveled from afar to Hoenn so\nthat I may hone my Ice-type moves.\pBut all I have seen are challenges by\nweak Trainers and their Pokémon.\pI wonder what you will show me.\pWhat a relief it would be if I\ncould, for once, have a serious battle\lagainst an opponent!$"
 
 EverGrandeCity_GlaciasRoom_Text_Defeat:
 	.string "You and your Pokémon…\n"
-	.string "How hot your spirits burn!\p"
-	.string "The all-consuming heat overwhelms.\p"
-	.string "It's no surprise that my icy skills\n"
-	.string "failed to harm you.$"
+	.string "How hot your spirits burn!$"
 
 EverGrandeCity_GlaciasRoom_Text_PostBattleSpeech:
-	.string "Advance to the next room.\p"
-	.string "And there, confirm the truly fearsome\n"
-	.string "side of the Pokémon League.$"
+	.string "You and your Pokémon…\pHow fiercely your spirits burn!\pMy icy moves pale in the face of such\nall-consuming flames.\pAdvance to the next room.\pThere you will learn how fearsome the\nPokémon League can truly be!$"
 

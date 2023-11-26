@@ -55,30 +55,20 @@ EverGrandeCity_PhoebesRoom_EventScript_Defeated::
 	setflag FLAG_DEFEATED_ELITE_4_PHOEBE
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
 	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	closemessage
+	playse SE_USE_ITEM
+	special HealPlayerParty
+	waitse
 	release
 	end
 
 EverGrandeCity_PhoebesRoom_Text_IntroSpeech:
-	.string "Ahahaha!\p"
-	.string "I'm Phoebe of the Elite Four.\n"
-	.string "I did my training on Mt. Pyre.\p"
-	.string "While I trained, I gained the ability\n"
-	.string "to commune with Ghost-type Pokémon.\p"
-	.string "Yes, the bond I developed with Pokémon\n"
-	.string "is extremely tight.\p"
-	.string "So, come on, just try and see if you can\n"
-	.string "even inflict damage on my Pokémon!$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Hahaha!\pI'm {COLOR RED}Phoebe{COLOR DARK_GRAY} of the Elite Four.\pI did my training on Mt. Pyre.\pWhile I trained there, I gained the\nability to commune with Ghost-type\lPokémon.\pThe bond I developed with my Pokémon\nis extremely tight.\pCome on!\nJust try and see if you can even\linflict damage on my Pokémon!$"
 
 EverGrandeCity_PhoebesRoom_Text_Defeat:
 	.string "Oh, darn.\n"
 	.string "I've gone and lost.$"
 
 EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech:
-	.string "There's a definite bond between you\n"
-	.string "and your Pokémon, too.\p"
-	.string "I didn't recognize it, so it's only\n"
-	.string "natural that I lost.\p"
-	.string "Yup, I'd like to see how far your bond\n"
-	.string "will carry you.\p"
-	.string "Go ahead, move on to the next room.$"
+	.string "There's a definite bond between you\nand your Pokémon, too.\pI didn't recognize that fact, so it's\nonly natural that I lost.\pYup, I'd like to see how far your bond\nwill carry you.\pGo ahead.\nMove on to the next room.$"
 
