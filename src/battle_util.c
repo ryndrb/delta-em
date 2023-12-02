@@ -1885,12 +1885,13 @@ u32 GetBattlerAffectionHearts(u32 battler)
     return GetMonAffectionHearts(&party[gBattlerPartyIndexes[battler]]);
 }
 
-static void TryToRevertMimicry(void)
+static void TryToRevertMimicryAndFlags(void)
 {
     u32 i;
 
     for (i = 0; i < gBattlersCount; i++)
     {
+        gDisableStructs[i].terrainAbilityDone = FALSE;
         if (GetBattlerAbility(i) == ABILITY_MIMICRY)
             RESTORE_BATTLER_TYPE(i);
     }
@@ -1943,7 +1944,7 @@ static bool32 EndTurnTerrain(u32 terrainFlag, u32 stringTableId)
         if (!(gFieldStatuses & STATUS_FIELD_TERRAIN_PERMANENT) && --gFieldTimers.terrainTimer == 0)
         {
             gFieldStatuses &= ~terrainFlag;
-            TryToRevertMimicry();
+            TryToRevertMimicryAndFlags();
             gBattleCommunication[MULTISTRING_CHOOSER] = stringTableId;
             BattleScriptExecute(BattleScript_TerrainEnds);
             return TRUE;
@@ -2243,6 +2244,8 @@ u8 DoFieldEndTurnEffects(void)
                  && --gWishFutureKnock.weatherDuration == 0)
                 {
                     gBattleWeather &= ~B_WEATHER_SUN_TEMPORARY;
+                    for (i = 0; i < gBattlersCount; i++)
+                        gDisableStructs[i].weatherAbilityDone = FALSE;
                     gBattlescriptCurrInstr = BattleScript_SunlightFaded;
                 }
                 else
@@ -4100,10 +4103,11 @@ bool32 TryChangeBattleWeather(u32 battler, u32 weatherEnumId, bool32 viaAbility)
 
 static bool32 TryChangeBattleTerrain(u32 battler, u32 statusFlag, u8 *timer)
 {
-    if (!(gFieldStatuses & statusFlag))
+    if ((!(gFieldStatuses & statusFlag) && (!gBattleStruct->isSkyBattle)))
     {
         gFieldStatuses &= ~(STATUS_FIELD_MISTY_TERRAIN | STATUS_FIELD_GRASSY_TERRAIN | STATUS_FIELD_ELECTRIC_TERRAIN | STATUS_FIELD_PSYCHIC_TERRAIN);
         gFieldStatuses |= statusFlag;
+        gDisableStructs[battler].terrainAbilityDone = FALSE;
 
         if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERRAIN_EXTENDER)
             *timer = 8;
@@ -5819,6 +5823,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             break;
         case ABILITY_TOXIC_DEBRIS:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+             && (!gBattleStruct->isSkyBattle)
              && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
              && IS_MOVE_PHYSICAL(gCurrentMove)
              && TARGET_TURN_DAMAGED
@@ -6189,10 +6194,11 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_PROTOSYNTHESIS:
-            if (!gSpecialStatuses[battler].weatherAbilityDone && IsBattlerWeatherAffected(battler, B_WEATHER_SUN))
+            if (!gDisableStructs[battler].weatherAbilityDone && IsBattlerWeatherAffected(battler, B_WEATHER_SUN))
             {
-                gSpecialStatuses[battler].weatherAbilityDone = TRUE;
+                gDisableStructs[battler].weatherAbilityDone = TRUE;
                 PREPARE_STAT_BUFFER(gBattleTextBuff1, GetHighestStatId(battler));
+                gBattlerAbility = gBattleScripting.battler = battler;
                 BattleScriptPushCursorAndCallback(BattleScript_ProtosynthesisActivates);
                 effect++;
             }
@@ -6204,9 +6210,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         switch (gLastUsedAbility)
         {
         case ABILITY_MIMICRY:
-            if (!gSpecialStatuses[battler].terrainAbilityDone && ChangeTypeBasedOnTerrain(battler))
+            if (!gDisableStructs[battler].terrainAbilityDone && ChangeTypeBasedOnTerrain(battler))
             {
-                gSpecialStatuses[battler].terrainAbilityDone = TRUE;
+                gDisableStructs[battler].terrainAbilityDone = TRUE;
                 ChangeTypeBasedOnTerrain(battler);
                 gBattlerAbility = gBattleScripting.battler = battler;
                 BattleScriptPushCursorAndCallback(BattleScript_MimicryActivates_End3);
@@ -6214,11 +6220,11 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_QUARK_DRIVE:
-            if (!gSpecialStatuses[battler].terrainAbilityDone && IsBattlerTerrainAffected(battler, STATUS_FIELD_ELECTRIC_TERRAIN))
+            if (!gDisableStructs[battler].terrainAbilityDone && IsBattlerTerrainAffected(battler, STATUS_FIELD_ELECTRIC_TERRAIN))
             {
-                gSpecialStatuses[battler].terrainAbilityDone = TRUE;
-                gBattlerAbility = gBattleScripting.battler = battler;
+                gDisableStructs[battler].terrainAbilityDone = TRUE;
                 PREPARE_STAT_BUFFER(gBattleTextBuff1, GetHighestStatId(battler));
+                gBattlerAbility = gBattleScripting.battler = battler;
                 BattleScriptPushCursorAndCallback(BattleScript_QuarkDriveActivates);
                 effect++;
             }
@@ -6227,7 +6233,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         break;
     }
 
-    if (effect && gLastUsedAbility != 0xFF)
+    if (effect && gLastUsedAbility != 0xFFFF)
         RecordAbilityBattle(battler, gLastUsedAbility);
     if (effect && caseID <= ABILITYEFFECT_MOVE_END)
         gBattlerAbility = battler;
@@ -11486,6 +11492,56 @@ bool32 IsGen6ExpShareEnabled(void)
 #endif
 }
 
+bool8 CanMonParticipateInSkyBattle(struct Pokemon *mon)
+{
+    u16 species = GetMonData(mon, MON_DATA_SPECIES);
+    u16 monAbilityNum = GetMonData(mon, MON_DATA_ABILITY_NUM, NULL);
+
+    bool8 hasLevitateAbility = gSpeciesInfo[species].abilities[monAbilityNum] == ABILITY_LEVITATE;
+    bool8 isFlyingType = gSpeciesInfo[species].types[0] == TYPE_FLYING || gSpeciesInfo[species].types[1] == TYPE_FLYING;
+    bool8 monIsValidAndNotEgg = GetMonData(mon, MON_DATA_SANITY_HAS_SPECIES) && !GetMonData(mon, MON_DATA_IS_EGG);
+
+    if (monIsValidAndNotEgg)
+    {
+        if ((hasLevitateAbility || isFlyingType) && !IsMonBannedFromSkyBattles(species))
+            return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 IsMonBannedFromSkyBattles(u16 species)
+{
+    switch (species)
+    {
+#if B_SKY_BATTLE_STRICT_ELIGIBILITY == TRUE
+        case SPECIES_SPEAROW:
+        case SPECIES_FARFETCHD:
+        case SPECIES_DODUO:
+        case SPECIES_DODRIO:
+        case SPECIES_HOOTHOOT:
+        case SPECIES_NATU:
+        case SPECIES_MURKROW:
+        case SPECIES_DELIBIRD:
+        case SPECIES_TAILLOW:
+        case SPECIES_STARLY:
+        case SPECIES_CHATOT:
+        case SPECIES_SHAYMIN:
+        case SPECIES_PIDOVE:
+        case SPECIES_ARCHEN:
+        case SPECIES_DUCKLETT:
+        case SPECIES_RUFFLET:
+        case SPECIES_VULLABY:
+        case SPECIES_FLETCHLING:
+        case SPECIES_HAWLUCHA:
+        case SPECIES_ROWLET:
+        case SPECIES_PIKIPEK:
+#endif
+        case SPECIES_EGG:
+            return TRUE;
+        default:
+            return FALSE;
+    }
+}
 
 u8 GetBattlerType(u32 battler, u8 typeIndex)
 {
