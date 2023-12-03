@@ -229,7 +229,7 @@ script LavaridgeTown_EventScript_RivalGiveGoGoggles {
     if(var(VAR_RESULT) == MALE){
         playbgm(MUS_ENCOUNTER_MAY, FALSE)
     }else{
-        playbgm(MUS_ENCOUNTER_MAY, FALSE)
+        playbgm(MUS_ENCOUNTER_BRENDAN, FALSE)
     }
     applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
     waitmovement(OBJ_EVENT_ID_PLAYER)
