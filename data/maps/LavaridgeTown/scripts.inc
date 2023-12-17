@@ -227,7 +227,7 @@ LavaridgeTown_EventScript_RivalGiveGoGoggles::
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq LavaridgeTown_EventScript_RivalGiveGoGoggles_2
-	playbgm MUS_ENCOUNTER_MAY, FALSE
+	playbgm MUS_ENCOUNTER_BRENDAN, FALSE
 LavaridgeTown_EventScript_RivalGiveGoGoggles_1:
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
 	waitmovement OBJ_EVENT_ID_PLAYER

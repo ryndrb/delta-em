@@ -1,40 +1,18 @@
 MossdeepCity_House3_MapScripts::
 	.byte 0
 
-MossdeepCity_House3_EventScript_SuperRodFisherman::
+MossdeepCity_House3_EventScript_RetiredFisherman::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_SUPER_ROD, MossdeepCity_House3_EventScript_ReceivedSuperRod
-	msgbox MossdeepCity_House3_Text_YouWantSuperRod, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, MossdeepCity_House3_EventScript_DeclineSuperRod
-	msgbox MossdeepCity_House3_Text_SuperRodIsSuper, MSGBOX_DEFAULT
-	giveitem ITEM_SUPER_ROD
-	setflag FLAG_RECEIVED_SUPER_ROD
-	msgbox MossdeepCity_House3_Text_TryDroppingRodInWater, MSGBOX_DEFAULT
+	msgbox MossdeepCity_House3_EventScript_RetiredFisherman_Text_0
+	msgbox MossdeepCity_House3_EventScript_RetiredFisherman_Text_1
+	closemessage
 	release
 	end
 
-MossdeepCity_House3_EventScript_ReceivedSuperRod::
-	msgbox MossdeepCity_House3_Text_GoAfterSeafloorPokemon, MSGBOX_DEFAULT
-	release
-	end
 
-MossdeepCity_House3_EventScript_DeclineSuperRod::
-	msgbox MossdeepCity_House3_Text_DontYouLikeToFish, MSGBOX_DEFAULT
-	release
-	end
+MossdeepCity_House3_EventScript_RetiredFisherman_Text_0:
+	.string "Ahoy there, lad!\pI'm a fisherman here in good ol' Hoenn,\nand I've spent me entire life on the\lwater.\pBut alas, it's time for me to retire and\nhang up me trusty ol' fishing rod.\pDon't get me wrong, I still love fishing\nas much as the day I started.\lIt's a way of life, you know?\pLike a tune that never ends, a dance\nthat goes on forever.\pAnd I've caught some real whoppers in\nme time, let me tell 'ya!\pFrom the depths of the sea to the\nwinding rivers, I've seen it all!\pBut there's one thing I've always\nwanted to see, and that's a truly\lmassive Magikarp.\pSo 'ere's a request to you, my young\nfriend.\pIf you happen to catch a big one with\nthat trusty ol' fishing rod of yours,\lI'd love to see it.\pIt'd be a fitting end to me career\nas a fisherman, to see a Magikarp\lthat's truly legendary.\pI'll be hanging up me boots soon, but\nI'll never forget the joy that fishing\lhas brought me.$"
 
-MossdeepCity_House3_Text_YouWantSuperRod:
-	.string "Hey there, Trainer!\nA Super Rod really is super!\pSay whatever you want, but this\nbaby can catch Pokémon right off the\lseafloor!\pWhat do you think?\nYou want one, don't you?$"
-
-MossdeepCity_House3_Text_SuperRodIsSuper:
-	.string "You bet, you bet!\pAfter all, a Super Rod is the definition\nof super!$"
-
-MossdeepCity_House3_Text_TryDroppingRodInWater:
-	.string "If there's any water, try dropping in\nyour line and see what bites!$"
-
-MossdeepCity_House3_Text_DontYouLikeToFish:
-	.string "Say wha-a-a-a-at?\nYou mean you don't like fishing?$"
-
-MossdeepCity_House3_Text_GoAfterSeafloorPokemon:
-	.string "You can go after seafloor-dwelling\nPokémon with your Super Rod.$"
+MossdeepCity_House3_EventScript_RetiredFisherman_Text_1:
+	.string "And who knows? Maybe I'll even take up\na new hobby in me retirement.\pBut for now, I'll be content just\nwatching the waves and reminiscing\labout all the good times I've 'ad.$"

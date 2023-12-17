@@ -392,6 +392,47 @@ Route120_EventScript_Callie::
 	msgbox Route120_Text_CalliePostBattle, MSGBOX_AUTOCLOSE
 	end
 
+@@@@@@@@@@@@@@@@@@@@@@
+@ Super Rod Gift
+@@@@@@@@@@@@@@@@@@@@@@
+Route120_House3_EventScript_SuperRodFisherman::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_SUPER_ROD, Route120_House3_EventScript_ReceivedSuperRod
+	msgbox Route120_House3_Text_YouWantSuperRod, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route120_House3_EventScript_DeclineSuperRod
+	msgbox Route120_House3_Text_SuperRodIsSuper, MSGBOX_DEFAULT
+	giveitem ITEM_SUPER_ROD
+	setflag FLAG_RECEIVED_SUPER_ROD
+	msgbox Route120_House3_Text_TryDroppingRodInWater, MSGBOX_DEFAULT
+	release
+	end
+
+Route120_House3_EventScript_ReceivedSuperRod::
+	msgbox Route120_House3_Text_GoAfterSeafloorPokemon, MSGBOX_DEFAULT
+	release
+	end
+
+Route120_House3_EventScript_DeclineSuperRod::
+	msgbox Route120_House3_Text_DontYouLikeToFish, MSGBOX_DEFAULT
+	release
+	end
+
+Route120_House3_Text_YouWantSuperRod:
+	.string "Hey there, Trainer!\nA Super Rod really is super!\pSay whatever you want, but this\nbaby can catch Pokémon right off the\lseafloor!\pWhat do you think?\nYou want one, don't you?$"
+
+Route120_House3_Text_SuperRodIsSuper:
+	.string "You bet, you bet!\pAfter all, a Super Rod is the definition\nof super!$"
+
+Route120_House3_Text_TryDroppingRodInWater:
+	.string "If there's any water, try dropping in\nyour line and see what bites!$"
+
+Route120_House3_Text_DontYouLikeToFish:
+	.string "Say wha-a-a-a-at?\nYou mean you don't like fishing?$"
+
+Route120_House3_Text_GoAfterSeafloorPokemon:
+	.string "You can go after seafloor-dwelling\nPokémon with your Super Rod.$"
+
 Route120_Text_StevenGreeting:
 	.string "{COLOR RED}Steven{COLOR DARK_GRAY}: Hm?\p{PLAYER}?\nSo, we meet again.\pHow has it been? Have you been using\nthe Mega Ring wisely?\pI suppose I needn't even ask, though.\nNot when it comes to you and your\lteam.$"
 
