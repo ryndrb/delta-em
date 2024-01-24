@@ -3166,7 +3166,7 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_SEA_OF_FIRE_DAMAGE:
-            if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SEA_OF_FIRE)
+            if (IsBattlerAlive(battler) && gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SEA_OF_FIRE)
             {
                 gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
                 BtlController_EmitStatusAnimation(battler, BUFFER_A, FALSE, STATUS1_BURN);
@@ -3339,7 +3339,8 @@ bool32 HandleFaintedMonActions(void)
                 && gCurrentTurnActionNumber != gBattlersCount)
             {
                 gAbsentBattlerFlags |= gBitTable[gBattlerFainted];
-                return FALSE;
+                if (gBattleStruct->faintedActionsState != 1)
+                    return FALSE;
             }
             break;
         case 3:
@@ -4218,11 +4219,14 @@ static uq4_12_t GetSupremeOverlordModifier(u32 battler)
     return modifier;
 }
 
-static bool32 HadMoreThanHalfHpNowHasLess(u32 battler)
+static inline bool32 HadMoreThanHalfHpNowHasLess(u32 battler)
 {
+    u32 cutoff = gBattleMons[battler].maxHP / 2;
+    if (gBattleMons[battler].maxHP % 2 == 1)
+        cutoff++;
     // Had more than half of hp before, now has less
-     return (gBattleStruct->hpBefore[battler] >= gBattleMons[battler].maxHP / 2
-             && gBattleMons[battler].hp < gBattleMons[battler].maxHP / 2);
+     return (gBattleStruct->hpBefore[battler] >= cutoff
+             && gBattleMons[battler].hp < cutoff);
 }
 
 u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 moveArg)
@@ -4284,7 +4288,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         {
             // overworld weather started rain, so just do electric terrain anim
             gFieldStatuses = (STATUS_FIELD_ELECTRIC_TERRAIN | STATUS_FIELD_TERRAIN_PERMANENT);
-            gBattleCommunication[MULTISTRING_CHOOSER] = 2;
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_SET_ELECTRIC;
             BattleScriptPushCursorAndCallback(BattleScript_OverworldTerrain);
             effect++;
         }
@@ -4293,7 +4297,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !(gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN))
         {
             gFieldStatuses = (STATUS_FIELD_MISTY_TERRAIN | STATUS_FIELD_TERRAIN_PERMANENT);
-            gBattleCommunication[MULTISTRING_CHOOSER] = 0;
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_SET_MISTY;
             BattleScriptPushCursorAndCallback(BattleScript_OverworldTerrain);
             effect++;
         }
@@ -4708,6 +4712,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_SHIELDS_DOWN:
             if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT))
             {
+                gBattlerAttacker = battler;
                 BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeEnd3);
                 effect++;
             }
@@ -4991,6 +4996,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             case ABILITY_POWER_CONSTRUCT:
                 if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT))
                 {
+                    gBattlerAttacker = battler;
                     BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeEnd3);
                     effect++;
                 }
@@ -5012,6 +5018,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             case ABILITY_HUNGER_SWITCH:
                 if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_TURN_END))
                 {
+                    gBattlerAttacker = battler;
                     BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeEnd3NoPopup);
                     effect++;
                 }
@@ -5074,7 +5081,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gBattlescriptCurrInstr = BattleScript_DazzlingProtected;
                 effect = 1;
             }
-            else if (BlocksPrankster(move, gBattlerAttacker, gBattlerTarget, TRUE) && !(IS_MOVE_STATUS(move) && targetAbility == ABILITY_MAGIC_BOUNCE))
+            else if (GetChosenMovePriority(gBattlerAttacker) > 0
+                     && BlocksPrankster(move, gBattlerAttacker, gBattlerTarget, TRUE)
+                     && !(IS_MOVE_STATUS(move) && (targetAbility == ABILITY_MAGIC_BOUNCE || gProtectStructs[gBattlerTarget].bounceMove)))
             {
                 if (!(gBattleTypeFlags & BATTLE_TYPE_DOUBLE) || !(moveTarget & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY)))
                     CancelMultiTurnMoves(gBattlerAttacker); // Don't cancel moves that can hit two targets bc one target might not be protected
@@ -5332,8 +5341,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
              && TARGET_TURN_DAMAGED
              && IsBattlerAlive(battler)
             // Had more than half of hp before, now has less
-             && gBattleStruct->hpBefore[battler] > gBattleMons[battler].maxHP / 2
-             && gBattleMons[battler].hp < gBattleMons[battler].maxHP / 2
+             && HadMoreThanHalfHpNowHasLess(battler)
              && (gMultiHitCounter == 0 || gMultiHitCounter == 1)
              && !(TestSheerForceFlag(gBattlerAttacker, gCurrentMove))
              && (CanBattlerSwitch(battler) || !(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
@@ -6864,6 +6872,10 @@ static u8 ItemHealHp(u32 battler, u32 itemId, bool32 end2, bool32 percentHeal)
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_ItemHealHP_RemoveItemRet;
         }
+        if (gBattleResources->flags->flags[battler] & RESOURCE_FLAG_EMERGENCY_EXIT
+         && GetNonDynamaxMaxHP(battler) > gBattleMons[battler].maxHP / 2)
+            gBattleResources->flags->flags[battler] &= ~RESOURCE_FLAG_EMERGENCY_EXIT;
+
         return ITEM_HP_CHANGE;
     }
     return 0;
@@ -7849,7 +7861,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             if (IsBattlerAlive(gBattlerAttacker)
                 && !(TestSheerForceFlag(gBattlerAttacker, gCurrentMove))
                 && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD
-                && !gSpecialStatuses[gBattlerAttacker].magicianStolen
+                && !gSpecialStatuses[gBattlerAttacker].preventLifeOrbDamage
                 && gSpecialStatuses[gBattlerAttacker].damagedMons)
             {
                 gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerAttacker) / 10;
