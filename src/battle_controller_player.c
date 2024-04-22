@@ -170,8 +170,8 @@ static EWRAM_DATA bool8 sBallSwapped = FALSE;
 // unknown unused data
 static const u8 sUnused[] = {0x48, 0x48, 0x20, 0x5a, 0x50, 0x50, 0x50, 0x58};
 
-static const u8 sSplitIcons_Gfx[] = INCBIN_U8("graphics/interface/split_icons.4bpp");
-static const u16 sSplitIcons_Pal[] = INCBIN_U16("graphics/interface/split_icons.gbapal");
+static const u8 sSplitIcons_Gfx[] = INCBIN_U8("graphics/interface/category_icons.4bpp");
+static const u16 sSplitIcons_Pal[] = INCBIN_U16("graphics/interface/category_icons.gbapal");
 static const u16 sUserInterfaceGfx_TypeHighlightingPal[] = INCBIN_U16( "graphics/battle_interface/gUserInterfaceGfx_TypeHighlighting.gbapal");
 static const u8 sText_StabMoveInterfaceType[] = {0xFC, 0x05, 0x05, 0xFC, 0x04, 0x09, 0x0E, 0x08, 0xFF};
 

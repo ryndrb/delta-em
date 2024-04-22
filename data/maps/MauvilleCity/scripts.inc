@@ -829,7 +829,6 @@ MauvilleCity_EventScript_Wattson::
 	msgbox MauvilleCity_EventScript_Wattson_Text_4
 	delay 8
 	giveitem ITEM_BASEMENT_KEY
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_GOT_BASEMENT_KEY_FROM_WATTSON
 	msgbox MauvilleCity_EventScript_Wattson_Text_5
 	closemessage
