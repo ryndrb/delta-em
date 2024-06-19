@@ -1602,6 +1602,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .name = _("Disguise"),
         .description = COMPOUND_STRING("The first hit this Pokémon\ntakes is blocked, and it\ntakes 1/8 HP damage instead."),
         .aiRating = 8,
+        .breakable = TRUE,
         .cantBeCopied = TRUE,
         .cantBeSwapped = TRUE,
         .cantBeTraced = TRUE,
