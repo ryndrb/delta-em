@@ -3437,9 +3437,9 @@ static void PrintStats(void)
     u8 evsOffset = 52;
     u8 ivsOffset = 74;
     u8 i, y = 1;
-    u8 bst[5];
-    u8 monEv[5];
-    u8 monIv[5];
+    u8 bst[6];
+    u8 monEv[6];
+    u8 monIv[6];
 
     bst[0] = gSpeciesInfo[sum->species].baseHP;
     bst[1] = gSpeciesInfo[sum->species].baseAttack;

@@ -1812,11 +1812,13 @@ static void MoveSelectionDisplayMoveEffectiveness(u32 battler){
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
     u16 move = moveInfo->moves[gMoveSelectionCursor[battler]];
 
+    moveType = moveInfo->moveTypes[gMoveSelectionCursor[battler]];
+
     // Update Palette Fading for Effectiveness
     split = moveInfo->moveSplit[gMoveSelectionCursor[battler]];
 
     if(!(gBattleTypeFlags & BATTLE_TYPE_LINK)){
-        u8 foePosition;
+        u8 foePosition = 0;
         const u16* palPtr = sUserInterfaceGfx_TypeHighlightingPal;
         stab = split != DAMAGE_CATEGORY_STATUS
             && (moveType == moveInfo->monType1
