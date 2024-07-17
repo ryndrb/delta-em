@@ -118,6 +118,21 @@ int main(int argc, char *argv[])
         return str;
     });
 
+    env.add_callback("contains", 2, [](Arguments& args) {
+        string str = args.at(0)->get<string>();
+        string substr = args.at(1)->get<string>();
+
+        auto it = std::search(
+            str.begin(), str.end(),
+            substr.begin(), substr.end(),
+            [](char ch1, char ch2) {
+                return std::toupper(ch1) == std::toupper(ch2);
+            }
+        );
+
+        return it != str.end();
+    });
+
     try
     {
         env.write_with_json_file(templateFilepath, jsonfilepath, outputFilepath);

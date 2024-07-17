@@ -97,7 +97,7 @@ static void BuildAreaGlowTilemap(void);
 static void SetAreaHasMon(u16, u16);
 static void SetSpecialMapHasMon(u16, u16);
 static u16 GetRegionMapSectionId(u8, u8);
-static bool8 MapHasSpecies(const struct WildPokemonHeader *, u16);
+static bool8 MapHasSpecies(const struct WildPokemonHeader *, u16, u16);
 static bool8 MonListHasSpecies(const struct WildPokemonInfo *, u16, u16);
 static void DoAreaGlow(void);
 static void Task_ShowPokedexAreaScreen(u8);
@@ -290,7 +290,7 @@ static void FindMapsWithMon(u16 species)
         // Add regular species to the area map
         for (i = 0; gWildMonHeaders[i].mapGroup != MAP_GROUP(UNDEFINED); i++)
         {
-            if (MapHasSpecies(&gWildMonHeaders[i], species))
+            if (MapHasSpecies(&gWildMonHeaders[i], species, i))
             {
                 switch (gWildMonHeaders[i].mapGroup)
                 {
@@ -378,7 +378,7 @@ static u16 GetRegionMapSectionId(u8 mapGroup, u8 mapNum)
     return Overworld_GetMapHeaderByGroupAndId(mapGroup, mapNum)->regionMapSectionId;
 }
 
-static bool8 MapHasSpecies(const struct WildPokemonHeader *info, u16 species)
+static bool8 MapHasSpecies(const struct WildPokemonHeader *info, u16 species, u16 headerId)
 {
     // If this is a header for Altering Cave, skip it if it's not the current Altering Cave encounter set
     if (GetRegionMapSectionId(info->mapGroup, info->mapNum) == MAPSEC_ALTERING_CAVE)
@@ -388,7 +388,7 @@ static bool8 MapHasSpecies(const struct WildPokemonHeader *info, u16 species)
             return FALSE;
     }
 
-    if (MonListHasSpecies(info->landMonsInfo, species, LAND_WILD_COUNT))
+    if (MonListHasSpecies(GetProperLandMonsWithTime(headerId), species, LAND_WILD_COUNT))
         return TRUE;
     if (MonListHasSpecies(info->waterMonsInfo, species, WATER_WILD_COUNT))
         return TRUE;

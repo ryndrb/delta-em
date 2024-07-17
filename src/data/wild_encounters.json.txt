@@ -1,5 +1,6 @@
 {{ doNotModifyHeader }}
 
+{% set night_header_flag = false %}
 ## for wild_encounter_group in wild_encounter_groups
 {% if wild_encounter_group.for_maps %}
 ## for wild_encounter_field in wild_encounter_group.fields
@@ -80,6 +81,7 @@ const struct WildPokemonInfo {{ encounter.base_label }}_HiddenMonsInfo = { {{enc
 const struct WildPokemonHeader {{ wild_encounter_group.label }}[] =
 {
 ## for encounter in wild_encounter_group.encounters
+{% if not contains(encounter.base_label, "_Night") %}
     {
         .mapGroup = {% if wild_encounter_group.for_maps %}MAP_GROUP({{ removePrefix(encounter.map, "MAP_") }}){% else %}0{% endif %},
         .mapNum = {% if wild_encounter_group.for_maps %}MAP_NUM({{ removePrefix(encounter.map, "MAP_") }}){% else %}{{ loop.index1 }}{% endif %},
@@ -87,8 +89,9 @@ const struct WildPokemonHeader {{ wild_encounter_group.label }}[] =
         .waterMonsInfo = {% if existsIn(encounter, "water_mons") %}&{{ encounter.base_label }}_WaterMonsInfo{% else %}NULL{% endif %},
         .rockSmashMonsInfo = {% if existsIn(encounter, "rock_smash_mons") %}&{{ encounter.base_label }}_RockSmashMonsInfo{% else %}NULL{% endif %},
         .fishingMonsInfo = {% if existsIn(encounter, "fishing_mons") %}&{{ encounter.base_label }}_FishingMonsInfo{% else %}NULL{% endif %},
-		.hiddenMonsInfo = {% if existsIn(encounter, "hidden_mons") %}&{{ encounter.base_label }}_HiddenMonsInfo{% else %}NULL{% endif %},
+        .hiddenMonsInfo = {% if existsIn(encounter, "hidden_mons") %}&{{ encounter.base_label }}_HiddenMonsInfo{% else %}NULL{% endif %},
     },
+{% endif %}
 ## endfor
     {
         .mapGroup = MAP_GROUP(UNDEFINED),
@@ -97,7 +100,37 @@ const struct WildPokemonHeader {{ wild_encounter_group.label }}[] =
         .waterMonsInfo = NULL,
         .rockSmashMonsInfo = NULL,
         .fishingMonsInfo = NULL,
-		.hiddenMonsInfo = NULL,
+        .hiddenMonsInfo = NULL,
     },
 };
+
+{% if night_header_flag == false %}
+const struct WildPokemonHeader gWildMonHeaders_Night[] =
+{
+## for encounter in wild_encounter_group.encounters
+{% if contains(encounter.base_label, "_Night") %}
+    {
+        .mapGroup = {% if wild_encounter_group.for_maps %}MAP_GROUP({{ removePrefix(encounter.map, "MAP_") }}){% else %}0{% endif %},
+        .mapNum = {% if wild_encounter_group.for_maps %}MAP_NUM({{ removePrefix(encounter.map, "MAP_") }}){% else %}{{ loop.index1 }}{% endif %},
+        .landMonsInfo = {% if existsIn(encounter, "land_mons") %}&{{ encounter.base_label }}_LandMonsInfo{% else %}NULL{% endif %},
+        .waterMonsInfo = {% if existsIn(encounter, "water_mons") %}&{{ encounter.base_label }}_WaterMonsInfo{% else %}NULL{% endif %},
+        .rockSmashMonsInfo = {% if existsIn(encounter, "rock_smash_mons") %}&{{ encounter.base_label }}_RockSmashMonsInfo{% else %}NULL{% endif %},
+        .fishingMonsInfo = {% if existsIn(encounter, "fishing_mons") %}&{{ encounter.base_label }}_FishingMonsInfo{% else %}NULL{% endif %},
+        .hiddenMonsInfo = {% if existsIn(encounter, "hidden_mons") %}&{{ encounter.base_label }}_HiddenMonsInfo{% else %}NULL{% endif %},
+    },
+{% endif %}
+## endfor
+    {
+        .mapGroup = MAP_GROUP(UNDEFINED),
+        .mapNum = MAP_NUM(UNDEFINED),
+        .landMonsInfo = NULL,
+        .waterMonsInfo = NULL,
+        .rockSmashMonsInfo = NULL,
+        .fishingMonsInfo = NULL,
+        .hiddenMonsInfo = NULL,
+    },
+};
+{% set night_header_flag = true %}
+{% endif %}
+
 ## endfor

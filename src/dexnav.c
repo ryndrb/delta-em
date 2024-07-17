@@ -1533,7 +1533,7 @@ static u8 DexNavGeneratePotential(u8 searchLevel)
 static u8 GetEncounterLevelFromMapData(u16 species, u8 environment)
 {
     u16 headerId = GetCurrentMapWildMonHeaderId();
-    const struct WildPokemonInfo *landMonsInfo = gWildMonHeaders[headerId].landMonsInfo;
+    const struct WildPokemonInfo *landMonsInfo = GetProperLandMonsWithTime(headerId);
     const struct WildPokemonInfo *waterMonsInfo = gWildMonHeaders[headerId].waterMonsInfo;
     const struct WildPokemonInfo *hiddenMonsInfo = gWildMonHeaders[headerId].hiddenMonsInfo;
     u8 min = 100;
@@ -1745,7 +1745,7 @@ static bool8 CapturedAllLandMons(u16 headerId)
 {
     u16 i, species;
     int count = 0;
-    const struct WildPokemonInfo* landMonsInfo = gWildMonHeaders[headerId].landMonsInfo;
+    const struct WildPokemonInfo* landMonsInfo = GetProperLandMonsWithTime(headerId);
         
     if (landMonsInfo != NULL)
     {        
@@ -1954,7 +1954,7 @@ static void DexNavLoadEncounterData(void)
     u16 species;
     u32 i;
     u16 headerId = GetCurrentMapWildMonHeaderId();
-    const struct WildPokemonInfo* landMonsInfo = gWildMonHeaders[headerId].landMonsInfo;
+    const struct WildPokemonInfo* landMonsInfo = GetProperLandMonsWithTime(headerId);
     const struct WildPokemonInfo* waterMonsInfo = gWildMonHeaders[headerId].waterMonsInfo;
     const struct WildPokemonInfo* hiddenMonsInfo = gWildMonHeaders[headerId].hiddenMonsInfo;
     
@@ -2558,7 +2558,7 @@ bool8 TryFindHiddenPokemon(void)
             }
             else
             {
-                species = gWildMonHeaders[headerId].landMonsInfo->wildPokemon[ChooseWildMonIndex_Land()].species;
+                species = GetProperLandMonsWithTime(headerId)->wildPokemon[ChooseWildMonIndex_Land()].species;
                 environment = ENCOUNTER_TYPE_LAND;
             }
             break;
