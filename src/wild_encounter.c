@@ -1148,10 +1148,17 @@ const struct WildPokemonInfo *GetProperLandMonsWithTime(u16 headerId)
     if (timeOfDay == TIME_MORNING || timeOfDay == TIME_DAY)
         return gWildMonHeaders[headerId].landMonsInfo;
     if (timeOfDay == TIME_EVENING || timeOfDay == TIME_NIGHT) {
-        if (gWildMonHeaders_Night[headerId].mapGroup == gSaveBlock1Ptr->location.mapGroup
-        && gWildMonHeaders_Night[headerId].mapNum == gSaveBlock1Ptr->location.mapNum
-        && gWildMonHeaders_Night[headerId].mapGroup != MAP_GROUP(UNDEFINED))
-            return gWildMonHeaders_Night[headerId].landMonsInfo;
+        u16 i;
+        for (i = 0; ; i++)
+        {
+            if (gWildMonHeaders_Night[i].mapGroup == MAP_GROUP(UNDEFINED))
+                break;
+
+            if (gWildMonHeaders_Night[i].mapGroup == gSaveBlock1Ptr->location.mapGroup
+            && gWildMonHeaders_Night[i].mapNum == gSaveBlock1Ptr->location.mapNum) {
+                return gWildMonHeaders_Night[i].landMonsInfo;
+            }
+        }
     }
 
     return gWildMonHeaders[headerId].landMonsInfo;
