@@ -70,7 +70,7 @@ EWRAM_DATA bool8 gIsSurfingEncounter = 0;
 
 #include "data/wild_encounters.h"
 
-static const struct WildPokemon sWildFeebas = {20, 25, SPECIES_FEEBAS};
+static const struct WildPokemon sWildFeebas = {5, 10, SPECIES_FEEBAS};
 
 static const u16 sRoute119WaterTileData[] =
 {
@@ -130,6 +130,15 @@ static bool8 CheckFeebas(void)
         GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
         x -= MAP_OFFSET;
         y -= MAP_OFFSET;
+
+        // Always appear under bridge
+        if (y == 35 || y == 36) {
+            if (Random() % 100 > 49)
+                return TRUE;
+            else
+                return FALSE;
+        } else
+            return FALSE;
 
         // Get which third of the map the player is in
         if (y >= sRoute119WaterTileData[3 * 0 + 0] && y <= sRoute119WaterTileData[3 * 0 + 1])

@@ -4424,8 +4424,8 @@
     {
       "id": "LAYOUT_SEASPRAY_CAVE_B1F",
       "name": "Seaspray_Cave_B1F_Layout",
-      "width": 52,
-      "height": 30,
+      "width": 31,
+      "height": 31,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/Seaspray_Cave_B1F/border.bin",
