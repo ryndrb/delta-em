@@ -247,7 +247,7 @@ script SouthernIsland_Interior_EventScript_Latios {
 		applymovement(LOCALID_STEVEN, Common_Movement_WalkInPlaceDown)
     	waitmovement(LOCALID_STEVEN)
 	} while(var(VAR_RESULT) == 0)
-    multi_2_vs_2(TRAINER_COURTNEY_SOUTHERN_ISLAND, "…\nSlurp.", TRAINER_GRUNT_MAGMA_SOUTHERN_ISLAND, "That's just too strong, right?!", TRAINER_STEVEN_SOUTHERN_ISLAND)
+	multi_2_vs_2(TRAINER_GRUNT_MAGMA_SOUTHERN_ISLAND, "That's just too strong, right?!", TRAINER_COURTNEY_SOUTHERN_ISLAND, "…\nSlurp.", PARTNER_STEVEN_SOUTHERN_ISLAND)
 	specialvar(VAR_RESULT, GetBattleOutcome)
 	if(var(VAR_RESULT) == B_OUTCOME_LOST){
 		setflag(FLAG_HIDE_SOUTHERN_ISLAND_INTERIOR_MAGMA)

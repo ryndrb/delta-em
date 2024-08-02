@@ -40,9 +40,6 @@
 #include "constants/event_objects.h"
 #include "constants/moves.h"
 
-extern const u8 MossdeepCity_SpaceCenter_2F_EventScript_TabithaTrainer[];
-extern const u8 MossdeepCity_SpaceCenter_2F_EventScript_GruntTrainer[];
-
 // EWRAM vars.
 EWRAM_DATA const struct BattleFrontierTrainer *gFacilityTrainers = NULL;
 EWRAM_DATA const struct FacilityMon *gFacilityTrainerMons = NULL;
@@ -3054,7 +3051,7 @@ static void FillPartnerParty(u16 trainerId)
                     thirdIdPart = partnerName[k];
                 }
             }
-            if (trainerId == TRAINER_PARTNER(PARTNER_STEVEN))
+            if (trainerId == TRAINER_PARTNER(PARTNER_STEVEN_SOUTHERN_ISLAND) || trainerId == TRAINER_PARTNER(PARTNER_STEVEN_MOSSDEEP_SPACE_CENTER))
                 otID = STEVEN_OTID;
             else
                 otID = ((firstIdPart % 72) * 1000) + ((secondIdPart % 23) * 10) + (thirdIdPart % 37) % 65536;

@@ -240,7 +240,7 @@ SouthernIsland_Interior_EventScript_Latios_16:
 	compare VAR_RESULT, 0
 	goto_if_eq SouthernIsland_Interior_EventScript_Latios_16
 SouthernIsland_Interior_EventScript_Latios_14:
-	multi_2_vs_2 TRAINER_COURTNEY_SOUTHERN_ISLAND, SouthernIsland_Interior_EventScript_Latios_Text_10, TRAINER_GRUNT_MAGMA_SOUTHERN_ISLAND, SouthernIsland_Interior_EventScript_Latios_Text_11, TRAINER_STEVEN_SOUTHERN_ISLAND
+	multi_2_vs_2 TRAINER_GRUNT_MAGMA_SOUTHERN_ISLAND, SouthernIsland_Interior_EventScript_Latios_Text_10, TRAINER_COURTNEY_SOUTHERN_ISLAND, SouthernIsland_Interior_EventScript_Latios_Text_11, PARTNER_STEVEN_SOUTHERN_ISLAND
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq SouthernIsland_Interior_EventScript_Latios_19
@@ -498,10 +498,10 @@ SouthernIsland_Interior_EventScript_Latios_Text_9:
 	.string "{COLOR RED}Courtney{COLOR DARK_GRAY}: …\pWell then…\pDeleting…$"
 
 SouthernIsland_Interior_EventScript_Latios_Text_10:
-	.string "…\nSlurp.$"
+	.string "That's just too strong, right?!$"
 
 SouthernIsland_Interior_EventScript_Latios_Text_11:
-	.string "That's just too strong, right?!$"
+	.string "…\nSlurp.$"
 
 SouthernIsland_Interior_EventScript_Latios_Text_12:
 	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: Puyah?!$"

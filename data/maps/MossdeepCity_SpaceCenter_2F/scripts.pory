@@ -263,14 +263,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_ChoosePartyForMultiBattle::
 	goto MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt
 
 MossdeepCity_SpaceCenter_2F_EventScript_DoStevenMultiBattle::
-	special ReducePlayerPartyToSelectedMons
-	frontier_set FRONTIER_DATA_SELECTED_MON_ORDER
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 0
-	special DoSpecialTrainerBattle
-	waitstate
-	frontier_saveparty
-	special LoadPlayerParty
+	multi_2_vs_2 TRAINER_GRUNT_MAGMA_MOSSDEEP, MossdeepCity_SpaceCenter_Text_GruntDefeat, TRAINER_TABITHA_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_TabithaDefeat, PARTNER_STEVEN_MOSSDEEP_SPACE_CENTER
 	switch VAR_RESULT
 	case 1, MossdeepCity_SpaceCenter_2F_EventScript_DefeatedTabitha
 	fadescreen FADE_TO_BLACK
@@ -378,14 +371,6 @@ MossdeepCity_SpaceCenter_2F_EventScript_StevenFacePlayerSouth::
 MossdeepCity_SpaceCenter_2F_EventScript_StevenFacePlayerWest::
 	turnobject LOCALID_STEVEN, DIR_EAST
 	return
-
-MossdeepCity_SpaceCenter_2F_EventScript_TabithaTrainer::
-	trainerbattle TRAINER_BATTLE_SET_TRAINER_A, TRAINER_TABITHA_MOSSDEEP, 0, MossdeepCity_SpaceCenter_2F_Text_YetAgain, MossdeepCity_SpaceCenter_2F_Text_YetAgain
-	end
-
-MossdeepCity_SpaceCenter_2F_EventScript_GruntTrainer::
-	trainerbattle TRAINER_BATTLE_SET_TRAINER_B, TRAINER_GRUNT_MAGMA_MOSSDEEP, 0, MossdeepCity_SpaceCenter_Text_GruntDefeat, MossdeepCity_SpaceCenter_Text_GruntDefeat
-	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_RivalRayquazaCall::
 	lockall
@@ -500,7 +485,7 @@ MossdeepCity_SpaceCenter_2F_Text_StevenAreYouReadyToBattle:
 MossdeepCity_SpaceCenter_2F_Text_StevenHurryGetReadyQuickly:
 	.string "Then, hurry!\nGet ready quickly!$"
 
-MossdeepCity_SpaceCenter_2F_Text_YetAgain:
+MossdeepCity_SpaceCenter_2F_Text_TabithaDefeat:
 	.string "Yet again?\nHyuhn!$"
 
 MossdeepCity_SpaceCenter_Text_GruntDefeat:
