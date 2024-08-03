@@ -1,0 +1,7 @@
+mapscripts AshenWoods_MapScripts {
+    MAP_SCRIPT_ON_RESUME: AshenWoods_OnResume
+}
+
+script AshenWoods_OnResume {
+    setstepcallback(STEP_CB_ASH)
+}

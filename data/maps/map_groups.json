@@ -92,7 +92,8 @@
     "Underwater_Route128",
     "Underwater_Route129",
     "Underwater_Route105",
-    "Underwater_Route125"
+    "Underwater_Route125",
+    "Route111_MirageRuinsExterior"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -436,7 +437,16 @@
     "Dewford_Meadow",
     "Dewford_Manor_1F",
     "PetalburgWoods_2",
-    "Verdanturf_Meadow"
+    "Verdanturf_Meadow",
+    "Ember_Path",
+    "AlteringCave_1F",
+    "AlteringCave_B1F",
+    "AshenWoods",
+    "MirageRuins",
+    "MirageRuins_B1F",
+    "MirageRuins_2F",
+    "MirageRuins_3F",
+    "MirageTower_B1F"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

@@ -4194,8 +4194,8 @@
     {
       "id": "LAYOUT_ALTERING_CAVE",
       "name": "AlteringCave_Layout",
-      "width": 32,
-      "height": 24,
+      "width": 40,
+      "height": 23,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/AlteringCave/border.bin",
@@ -4480,6 +4480,106 @@
       "secondary_tileset": "gTileset_Mauville",
       "border_filepath": "data/layouts/Verdanturf_Meadow/border.bin",
       "blockdata_filepath": "data/layouts/Verdanturf_Meadow/map.bin"
+    },
+    {
+      "id": "LAYOUT_EMBER_PATH",
+      "name": "Ember_Path_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lavaridge",
+      "border_filepath": "data/layouts/Ember_Path/border.bin",
+      "blockdata_filepath": "data/layouts/Ember_Path/map.bin"
+    },
+    {
+      "id": "LAYOUT_ALTERING_CAVE_1F",
+      "name": "AlteringCave_1F_Layout",
+      "width": 40,
+      "height": 23,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/AlteringCave_1F/border.bin",
+      "blockdata_filepath": "data/layouts/AlteringCave_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ALTERING_CAVE_B1F",
+      "name": "AlteringCave_B1F_Layout",
+      "width": 40,
+      "height": 23,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/AlteringCave_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/AlteringCave_B1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ASHEN_WOODS",
+      "name": "AshenWoods_Layout",
+      "width": 36,
+      "height": 46,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lavaridge",
+      "border_filepath": "data/layouts/AshenWoods/border.bin",
+      "blockdata_filepath": "data/layouts/AshenWoods/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_RUINS",
+      "name": "MirageRuins_Layout",
+      "width": 17,
+      "height": 135,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageTower",
+      "border_filepath": "data/layouts/MirageRuins/border.bin",
+      "blockdata_filepath": "data/layouts/MirageRuins/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_RUINS_B1F",
+      "name": "MirageRuins_B1F_Layout",
+      "width": 40,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageTower",
+      "border_filepath": "data/layouts/MirageRuins_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/MirageRuins_B1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_RUINS_2F",
+      "name": "MirageRuins_2F_Layout",
+      "width": 21,
+      "height": 17,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageTower",
+      "border_filepath": "data/layouts/MirageRuins_2F/border.bin",
+      "blockdata_filepath": "data/layouts/MirageRuins_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_RUINS_3F",
+      "name": "MirageRuins_3F_Layout",
+      "width": 21,
+      "height": 17,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageTower",
+      "border_filepath": "data/layouts/MirageRuins_3F/border.bin",
+      "blockdata_filepath": "data/layouts/MirageRuins_3F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE111_MIRAGE_RUINS_EXTERIOR",
+      "name": "Route111_MirageRuinsExterior_Layout",
+      "width": 26,
+      "height": 28,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/Route111_MirageRuinsExterior/border.bin",
+      "blockdata_filepath": "data/layouts/Route111_MirageRuinsExterior/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_TOWER_B1F",
+      "name": "MirageTower_B1F_Layout",
+      "width": 21,
+      "height": 17,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageTower",
+      "border_filepath": "data/layouts/MirageTower_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/MirageTower_B1F/map.bin"
     }
   ]
 }

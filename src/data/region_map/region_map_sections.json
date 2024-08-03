@@ -1735,6 +1735,30 @@
       "y": 7,
       "width": 1,
       "height": 1
+    },
+    {
+      "map_section": "MAPSEC_EMBER_PATH",
+      "name": "Ember Path",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_ASHEN_WOODS",
+      "name": "Ashen Woods",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_MIRAGE_RUINS",
+      "name": "Mirage Ruins",
+      "x": 8,
+      "y": 0,
+      "width": 1,
+      "height": 1
     }
   ]
 }

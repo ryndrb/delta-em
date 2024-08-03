@@ -1082,3 +1082,23 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/PetalburgWoods_2/scripts.inc"
 
 	.include "data/maps/Verdanturf_Meadow/scripts.inc"
+
+	.include "data/maps/Ember_Path/scripts.inc"
+
+	.include "data/maps/AlteringCave_1F/scripts.inc"
+
+	.include "data/maps/AlteringCave_B1F/scripts.inc"
+
+	.include "data/maps/AshenWoods/scripts.inc"
+
+	.include "data/maps/MirageRuins/scripts.inc"
+
+	.include "data/maps/MirageRuins_B1F/scripts.inc"
+
+	.include "data/maps/MirageRuins_2F/scripts.inc"
+
+	.include "data/maps/MirageRuins_3F/scripts.inc"
+
+	.include "data/maps/Route111_MirageRuinsExterior/scripts.inc"
+
+	.include "data/maps/MirageTower_B1F/scripts.inc"
