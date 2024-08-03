@@ -1,12 +1,137 @@
 === PARTNER_NONE ===
-Name:
+Name: 
 Class: Pkmn Trainer 1
 Pic: Brendan
 Gender: Male
 Music: Male
 
-=== PARTNER_STEVEN ===
-Name: STEVEN
+=== PARTNER_MAY_METEOR_FALLS_TREECKO ===
+Name: May
+Class: Rival
+Pic: May
+Gender: Male
+Music: Male
+
+Wailmer
+Level: 18
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Shroomish
+Level: 18
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Combusken
+Level: 20
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== PARTNER_MAY_METEOR_FALLS_TORCHIC ===
+Name: May
+Class: Rival
+Pic: May
+Gender: Male
+Music: Male
+
+Shroomish
+Level: 18
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Slugma
+Level: 18
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Marshtomp
+Level: 20
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== PARTNER_MAY_METEOR_FALLS_MUDKIP ===
+Name: May
+Class: Rival
+Pic: May
+Gender: Male
+Music: Male
+
+Slugma
+Level: 18
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Wailmer
+Level: 18
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Grovyle
+Level: 20
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== PARTNER_BRENDAN_METEOR_FALLS_TREECKO ===
+Name: Brendan
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+
+Wailmer
+Level: 18
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Shroomish
+Level: 18
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Combusken
+Level: 20
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== PARTNER_BRENDAN_METEOR_FALLS_TORCHIC ===
+Name: Brendan
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+
+Shroomish
+Level: 18
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Slugma
+Level: 18
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Marshtomp
+Level: 20
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== PARTNER_BRENDAN_METEOR_FALLS_MUDKIP ===
+Name: Brendan
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+
+Slugma
+Level: 18
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Wailmer
+Level: 18
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Grovyle
+Level: 20
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== PARTNER_STEVEN_SOUTHERN_ISLAND ===
+Name: Steven
+Class: Rival
+Pic: Steven
+Gender: Male
+Music: Male
+
+Skarmory
+Level: 31
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== PARTNER_STEVEN_MOSSDEEP_SPACE_CENTER ===
+Name: Steven
 Class: Rival
 Pic: Steven
 Gender: Male
