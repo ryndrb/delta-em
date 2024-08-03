@@ -31,6 +31,7 @@ extern const struct WildPokemonHeader gWildMonHeaders[];
 extern const struct WildPokemonHeader gWildMonHeaders_Night[];
 extern bool8 gIsFishingEncounter;
 extern bool8 gIsSurfingEncounter;
+extern u8 gChainFishingDexNavStreak;
 
 void DisableWildEncounters(bool8 disabled);
 u8 PickWildMonNature(void);
@@ -49,6 +50,7 @@ u8 ChooseWildMonIndex_WaterRock(void);
 u8 ChooseHiddenMonIndex(void);
 bool32 MapHasNoEncounterData(void);
 bool8 StandardWildEncounter_Debug(void);
+u32 CalculateChainFishingShinyRolls(void);
 const struct WildPokemonInfo *GetProperLandMonsWithTime(u16 headerId);
 
 #endif // GUARD_WILD_ENCOUNTER_H

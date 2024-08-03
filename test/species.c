@@ -1,4 +1,5 @@
 #include "global.h"
+#include "string_util.h"
 #include "test/test.h"
 #include "constants/form_change_types.h"
 
@@ -10,7 +11,10 @@ TEST("Form species ID tables are shared between all forms")
 
     for (i = 0; i < NUM_SPECIES; i++)
     {
-        if (gSpeciesInfo[i].formSpeciesIdTable) PARAMETRIZE { species = i; }
+        if (gSpeciesInfo[i].formSpeciesIdTable)
+        {
+            PARAMETRIZE_LABEL("%S", gSpeciesInfo[i].speciesName) { species = i; }
+        }
     }
 
     formSpeciesIdTable = gSpeciesInfo[species].formSpeciesIdTable;
@@ -30,7 +34,10 @@ TEST("Form change tables contain only forms in the form species ID table")
 
     for (i = 0; i < NUM_SPECIES; i++)
     {
-        if (gSpeciesInfo[i].formChangeTable) PARAMETRIZE { species = i; }
+        if (gSpeciesInfo[i].formChangeTable)
+        {
+            PARAMETRIZE_LABEL("%S", gSpeciesInfo[i].speciesName) { species = i; }
+        }
     }
 
     formChangeTable = gSpeciesInfo[species].formChangeTable;
@@ -60,7 +67,10 @@ TEST("Form change targets have the appropriate species flags")
 
     for (i = 0; i < NUM_SPECIES; i++)
     {
-        if (gSpeciesInfo[i].formChangeTable) PARAMETRIZE { species = i; }
+        if (gSpeciesInfo[i].formChangeTable)
+        {
+            PARAMETRIZE_LABEL("%S", gSpeciesInfo[i].speciesName) { species = i; }
+        }
     }
 
     formChangeTable = gSpeciesInfo[species].formChangeTable;
@@ -105,18 +115,13 @@ TEST("No species has two evolutions that use the evolution tracker")
 
     for (i = 0; evolutions[i].method != EVOLUTIONS_END; i++)
     {
-        if (evolutions[i].method == EVO_LEVEL_MOVE_TWENTY_TIMES
-    #ifdef EVO_DEFEAT_WITH_ITEM
-         || evolutions[i].method == EVO_DEFEAT_WITH_ITEM
-    #endif //EVO_DEFEAT_WITH_ITEM
-    #ifdef EVO_OVERWORLD_STEPS
-         || evolutions[i].method == EVO_OVERWORLD_STEPS
-    #endif //EVO_OVERWORLD_STEPS
+        if (evolutions[i].method == EVO_USE_MOVE_TWENTY_TIMES
+         || evolutions[i].method == EVO_DEFEAT_THREE_WITH_ITEM
         )
             evolutionTrackerEvolutions++;
 
-        if (evolutions[i].method == EVO_LEVEL_RECOIL_DAMAGE_MALE
-         || evolutions[i].method == EVO_LEVEL_RECOIL_DAMAGE_FEMALE)
+        if (evolutions[i].method == EVO_RECOIL_DAMAGE_MALE
+         || evolutions[i].method == EVO_RECOIL_DAMAGE_FEMALE)
         {
             // Special handling for these since they can be combined as the evolution tracker field is used for the same purpose
             if (!hasGenderBasedRecoil)
@@ -128,4 +133,19 @@ TEST("No species has two evolutions that use the evolution tracker")
     }
 
     EXPECT(evolutionTrackerEvolutions < 2);
+}
+
+extern const u8 gFallbackPokedexText[];
+
+TEST("Every species has a description")
+{
+    u32 i;
+    u32 species = SPECIES_NONE;
+    for (i = 1; i < NUM_SPECIES; i++)
+    {
+        if (IsSpeciesEnabled(i))
+            PARAMETRIZE { species = i; }
+    }
+
+    EXPECT_NE(StringCompare(GetSpeciesPokedexDescription(species), gFallbackPokedexText), 0);
 }

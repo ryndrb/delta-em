@@ -881,7 +881,11 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_SNOW_WARNING] =
     {
         .name = _("Snow Warning"),
+    #if B_SNOW_WARNING >= GEN_9
         .description = COMPOUND_STRING("On switch-in, this Pokémon\nsummons Snow."),
+    #else
+        .description = COMPOUND_STRING("Summons hail in battle."),
+    #endif
         .aiRating = 8,
     },
 
@@ -2548,7 +2552,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     #else
         .name = _("SuprswtSyrup"),
     #endif
-        .description = COMPOUND_STRING("Lowers the foe's Speed."),
+        .description = COMPOUND_STRING("Lowers the foe's Evasion."),
         .aiRating = 5,
     },
 
