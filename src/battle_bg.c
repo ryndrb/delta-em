@@ -218,41 +218,41 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
         .paletteNum = 5,
         .baseBlock = 0x0340,
     },
-    [B_WIN_EFFECTIVENESS] = {
+    [B_WIN_PP] = {
         .bg = 0,
-        .tilemapLeft = 26,
-        .tilemapTop = 57,
-        .width = 3,
+        .tilemapLeft = 21,
+        .tilemapTop = 55,
+        .width = 4,
         .height = 2,
         .paletteNum = 5,
         .baseBlock = 0x0290,
     },
-    [B_WIN_SPLIT_ICONS] = {
-        .bg = 0,
-        .tilemapLeft = 26,
-        .tilemapTop = 55,
-        .width = 3,
-        .height = 2,
-        .paletteNum = 8,
-        .baseBlock = 0x0296,
-    },
-    [B_WIN_PP_REMAINING] = {
+    [B_WIN_DUMMY] = {
         .bg = 0,
         .tilemapLeft = 21,
         .tilemapTop = 57,
-        .width = 6,
+        .width = 0,
+        .height = 0,
+        .paletteNum = 5,
+        .baseBlock = 0x0298,
+    },
+    [B_WIN_PP_REMAINING] = {
+        .bg = 0,
+        .tilemapLeft = 25,
+        .tilemapTop = 55,
+        .width = 4,
         .height = 2,
         .paletteNum = 5,
-        .baseBlock = 0x029C,
+        .baseBlock = 0x0298,
     },
     [B_WIN_MOVE_TYPE] = {
         .bg = 0,
         .tilemapLeft = 21,
-        .tilemapTop = 55,
-        .width = 6,
+        .tilemapTop = 57,
+        .width = 8,
         .height = 2,
-        .paletteNum = 10,
-        .baseBlock = 0x02a8,
+        .paletteNum = 5,
+        .baseBlock = 0x02a0,
     },
     [B_WIN_SWITCH_PROMPT] = {
         .bg = 0,
@@ -261,7 +261,7 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
         .width = 8,
         .height = 4,
         .paletteNum = 5,
-        .baseBlock = 0x02b4,
+        .baseBlock = 0x02b0,
     },
     [B_WIN_YESNO] = {
         .bg = 0,
@@ -448,7 +448,7 @@ static const struct WindowTemplate sBattleArenaWindowTemplates[] =
         .paletteNum = 5,
         .baseBlock = 0x0330,
     },
-    [B_WIN_EFFECTIVENESS] = {
+    [B_WIN_PP] = {
         .bg = 0,
         .tilemapLeft = 21,
         .tilemapTop = 55,
@@ -457,7 +457,7 @@ static const struct WindowTemplate sBattleArenaWindowTemplates[] =
         .paletteNum = 5,
         .baseBlock = 0x0290,
     },
-    [B_WIN_SPLIT_ICONS] = {
+    [B_WIN_DUMMY] = {
         .bg = 0,
         .tilemapLeft = 21,
         .tilemapTop = 57,

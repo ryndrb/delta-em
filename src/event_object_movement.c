@@ -200,13 +200,13 @@ static bool8 GetFollowerInfo(u16 *species, u8 *form, u8 *shiny);
 static u8 LoadDynamicFollowerPalette(u16 species, u8 form, bool32 shiny);
 static const struct ObjectEventGraphicsInfo *SpeciesToGraphicsInfo(u16 species, u8 form);
 static bool8 NpcTakeStep(struct Sprite *);
+bool8 IsElevationMismatchAt(u8, s16, s16);
 static bool8 AreElevationsCompatible(u8, u8);
 static u16 PackGraphicsId(const struct ObjectEventTemplate *template);
 static void CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(u16 graphicsId, u16 movementType, struct SpriteTemplate *spriteTemplate, const struct SubspriteTable **subspriteTables);
 
 static const struct SpriteFrameImage sPicTable_PechaBerryTree[];
 
-// LTODO remove this?
 const u8 gReflectionEffectPaletteMap[16] = {
         [PALSLOT_PLAYER]                 = PALSLOT_PLAYER_REFLECTION,
         [PALSLOT_PLAYER_REFLECTION]      = PALSLOT_PLAYER_REFLECTION,
@@ -461,178 +461,13 @@ const u8 gInitialMovementTypeFacingDirections[] = {
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_RIGHT] = DIR_EAST,
 };
 
-#define OBJ_EVENT_PAL_TAG_BRENDAN                 0x1100
-#define OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION      0x1101
-#define OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION       0x1102
-#define OBJ_EVENT_PAL_TAG_NPC_1                   0x1103
-#define OBJ_EVENT_PAL_TAG_NPC_2                   0x1104
-#define OBJ_EVENT_PAL_TAG_NPC_3                   0x1105
-#define OBJ_EVENT_PAL_TAG_NPC_4                   0x1106
-#define OBJ_EVENT_PAL_TAG_NPC_1_REFLECTION        0x1107
-#define OBJ_EVENT_PAL_TAG_NPC_2_REFLECTION        0x1108
-#define OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION        0x1109
-#define OBJ_EVENT_PAL_TAG_NPC_4_REFLECTION        0x110A
-#define OBJ_EVENT_PAL_TAG_QUINTY_PLUMP            0x110B
-#define OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION 0x110C
-#define OBJ_EVENT_PAL_TAG_TRUCK                   0x110D
-#define OBJ_EVENT_PAL_TAG_VIGOROTH                0x110E
-#define OBJ_EVENT_PAL_TAG_ZIGZAGOON               0x110F
-#define OBJ_EVENT_PAL_TAG_MAY                     0x1110
-#define OBJ_EVENT_PAL_TAG_MAY_REFLECTION          0x1111
-#define OBJ_EVENT_PAL_TAG_MOVING_BOX              0x1112
-#define OBJ_EVENT_PAL_TAG_CABLE_CAR               0x1113
-#define OBJ_EVENT_PAL_TAG_SSTIDAL                 0x1114
-#define OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER       0x1115
-#define OBJ_EVENT_PAL_TAG_KYOGRE                  0x1116
-#define OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION       0x1117
-#define OBJ_EVENT_PAL_TAG_GROUDON                 0x1118
-#define OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION      0x1119
-#define OBJ_EVENT_PAL_TAG_UNUSED                  0x111A
-#define OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW        0x111B
-#define OBJ_EVENT_PAL_TAG_POOCHYENA               0x111C
-#define OBJ_EVENT_PAL_TAG_RED_LEAF                0x111D
-#define OBJ_EVENT_PAL_TAG_DEOXYS                  0x111E
-#define OBJ_EVENT_PAL_TAG_BIRTH_ISLAND_STONE      0x111F
-#define OBJ_EVENT_PAL_TAG_HO_OH                   0x1120
-#define OBJ_EVENT_PAL_TAG_LUGIA                   0x1121
-#define OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x1122
-#define OBJ_EVENT_PAL_TAG_RS_MAY                  0x1123
-
-#define OBJ_EVENT_PAL_TAG_DELTA_BRENDAN           0x1124
-#define OBJ_EVENT_PAL_TAG_DELTA_BRENDAN_UNDERWATER 0x1125
-#define OBJ_EVENT_PAL_TAG_DELTA_MAY               0x1126
-#define OBJ_EVENT_PAL_TAG_DELTA_MAY_UNDERWATER    0x1127
-
-#define OBJ_EVENT_PAL_TAG_ARTIST                    0x1128
-#define OBJ_EVENT_PAL_TAG_BEAUTY                    0x1129
-#define OBJ_EVENT_PAL_TAG_BLACK_BELT                0x112A
-#define OBJ_EVENT_PAL_TAG_BOY_1                     0x112B
-#define OBJ_EVENT_PAL_TAG_BOY_2                     0x112C
-#define OBJ_EVENT_PAL_TAG_BOY_3                     0x112D
-#define OBJ_EVENT_PAL_TAG_BUG_CATCHER               0x112E
-#define OBJ_EVENT_PAL_TAG_CAMERA_MAN                0x112F
-#define OBJ_EVENT_PAL_TAG_CAMPER                    0x1130
-#define OBJ_EVENT_PAL_TAG_CONTEST_JUDGE             0x1131
-#define OBJ_EVENT_PAL_TAG_COOK                      0x1132
-#define OBJ_EVENT_PAL_TAG_CYCLING_TRAINER_F         0x1133
-#define OBJ_EVENT_PAL_TAG_CYCLING_TRAINER_M         0x1134         
-#define OBJ_EVENT_PAL_TAG_DEVON_EMPLOYEE            0x1135
-#define OBJ_EVENT_PAL_TAG_EXPERT_F                  0x1136
-#define OBJ_EVENT_PAL_TAG_EXPERT_M                  0x1137
-#define OBJ_EVENT_PAL_TAG_FAT_MAN                   0x1138
-#define OBJ_EVENT_PAL_TAG_FISHER_MAN                0x1139
-#define OBJ_EVENT_PAL_TAG_GAMEBOY_KID               0x113A
-#define OBJ_EVENT_PAL_TAG_GENTLEMAN                 0x113B
-#define OBJ_EVENT_PAL_TAG_GIRL_1                    0x113C
-#define OBJ_EVENT_PAL_TAG_GIRL_2                    0x113D
-#define OBJ_EVENT_PAL_TAG_GIRL_3                    0x113E
-#define OBJ_EVENT_PAL_TAG_HEX_MANIAC                0x113F
-#define OBJ_EVENT_PAL_TAG_HIKER                     0x1140
-#define OBJ_EVENT_PAL_TAG_HOT_SPRINGS_OLD_WOMAN     0x1141
-#define OBJ_EVENT_PAL_TAG_LASS                      0x1142
-#define OBJ_EVENT_PAL_TAG_LEAF                      0x1143
-#define OBJ_EVENT_PAL_TAG_LINK_RECEPTIONIST         0x1144
-#define OBJ_EVENT_PAL_TAG_LITTLE_BOY                0x1145
-#define OBJ_EVENT_PAL_TAG_LITTLE_GIRL               0x1146
-#define OBJ_EVENT_PAL_TAG_MAN_1                     0x1147
-#define OBJ_EVENT_PAL_TAG_MAN_2                     0x1148
-#define OBJ_EVENT_PAL_TAG_MAN_3                     0x1149
-#define OBJ_EVENT_PAL_TAG_MAN_4                     0x114A
-#define OBJ_EVENT_PAL_TAG_MAN_5                     0x114B
-#define OBJ_EVENT_PAL_TAG_MANIAC                    0x114C
-#define OBJ_EVENT_PAL_TAG_MART_EMPLOYEE             0x114D
-#define OBJ_EVENT_PAL_TAG_MAUVILLE_OLD_MAN_1        0x114E
-#define OBJ_EVENT_PAL_TAG_MAUVILLE_OLD_MAN_2        0x114F
-#define OBJ_EVENT_PAL_TAG_MOM                       0x1150
-#define OBJ_EVENT_PAL_TAG_MYSTERY_EVENT_DELIVERY_MAN 0x1151
-#define OBJ_EVENT_PAL_TAG_NINJA_BOY                 0x1152
-#define OBJ_EVENT_PAL_TAG_NURSE                     0x1153
-#define OBJ_EVENT_PAL_TAG_OLD_MAN                   0x1154
-#define OBJ_EVENT_PAL_TAG_OLD_WOMAN                 0x1155
-#define OBJ_EVENT_PAL_TAG_PIC_NICKER                0x1156
-#define OBJ_EVENT_PAL_TAG_POKEFAN_F                 0x1157
-#define OBJ_EVENT_PAL_TAG_POKEFAN_M                 0x1158
-#define OBJ_EVENT_PAL_TAG_PROF_BIRCH                0x1159
-#define OBJ_EVENT_PAL_TAG_PSYCHIC_M                 0x115A
-#define OBJ_EVENT_PAL_TAG_RED                       0x115B
-#define OBJ_EVENT_PAL_TAG_REPORTER_F                0x115C
-#define OBJ_EVENT_PAL_TAG_REPORTER_M                0x115D
-#define OBJ_EVENT_PAL_TAG_RICH_BOY                  0x115E
-#define OBJ_EVENT_PAL_TAG_ROOFTOP_SALE_WOMAN        0x115F
-#define OBJ_EVENT_PAL_TAG_RS_LITTLE_BOY             0x1160
-#define OBJ_EVENT_PAL_TAG_RUNNING_TRIATHLETE_F      0x1161
-#define OBJ_EVENT_PAL_TAG_RUNNING_TRIATHLETE_M      0x1162
-#define OBJ_EVENT_PAL_TAG_SAILOR                    0x1163
-#define OBJ_EVENT_PAL_TAG_SCHOOL_KID_M              0x1164
-#define OBJ_EVENT_PAL_TAG_SCIENTIST_1               0x1165
-#define OBJ_EVENT_PAL_TAG_SCIENTIST_2               0x1166
-#define OBJ_EVENT_PAL_TAG_SCOTT                     0x1167
-#define OBJ_EVENT_PAL_TAG_STEVEN                    0x1168
-#define OBJ_EVENT_PAL_TAG_SWIMMER_F                 0x1169
-#define OBJ_EVENT_PAL_TAG_SWIMMER_M                 0x116A
-#define OBJ_EVENT_PAL_TAG_TEALA                     0x116B
-#define OBJ_EVENT_PAL_TAG_TUBER_F                   0x116C
-#define OBJ_EVENT_PAL_TAG_TUBER_M                   0x116D
-#define OBJ_EVENT_PAL_TAG_TUBER_M_SWIMMING          0x116E
-#define OBJ_EVENT_PAL_TAG_TWIN                      0x116F
-#define OBJ_EVENT_PAL_TAG_UNION_ROOM_ATTENDANT      0x1170
-#define OBJ_EVENT_PAL_TAG_UNUSED_WOMAN              0x1171
-#define OBJ_EVENT_PAL_TAG_WALLACE                   0x1172
-#define OBJ_EVENT_PAL_TAG_WALLY                     0x1173
-#define OBJ_EVENT_PAL_TAG_WOMAN_1                   0x1174
-#define OBJ_EVENT_PAL_TAG_WOMAN_2                   0x1175
-#define OBJ_EVENT_PAL_TAG_WOMAN_3                   0x1176
-#define OBJ_EVENT_PAL_TAG_WOMAN_4                   0x1177
-#define OBJ_EVENT_PAL_TAG_WOMAN_5                   0x1178
-#define OBJ_EVENT_PAL_TAG_YOUNGSTER                 0x1179
-
-#define OBJ_EVENT_PAL_TAG_DRAKE                     0x117A
-#define OBJ_EVENT_PAL_TAG_GLACIA                    0x117B
-#define OBJ_EVENT_PAL_TAG_PHOEBE                    0x117C
-#define OBJ_EVENT_PAL_TAG_SIDNEY                    0x117D
-
-#define OBJ_EVENT_PAL_TAG_ANABEL                    0x117E
-#define OBJ_EVENT_PAL_TAG_BRANDON                   0x117F
-#define OBJ_EVENT_PAL_TAG_GRETA                     0x1180
-#define OBJ_EVENT_PAL_TAG_LUCY                      0x1181
-#define OBJ_EVENT_PAL_TAG_NOLAND                    0x1182
-#define OBJ_EVENT_PAL_TAG_SPENSER                   0x1183
-#define OBJ_EVENT_PAL_TAG_TUCKER                    0x1184
-
-#define OBJ_EVENT_PAL_TAG_BRAWLY                    0x1185
-#define OBJ_EVENT_PAL_TAG_FLANNERY                  0x1186
-#define OBJ_EVENT_PAL_TAG_JUAN                      0x1187
-#define OBJ_EVENT_PAL_TAG_LIZA                      0x1188    
-#define OBJ_EVENT_PAL_TAG_NORMAN                    0x1189    
-#define OBJ_EVENT_PAL_TAG_ROXANNE                   0x118A
-#define OBJ_EVENT_PAL_TAG_TATE                      0x118B
-#define OBJ_EVENT_PAL_TAG_WATTSON                   0x118C
-#define OBJ_EVENT_PAL_TAG_WINONA                    0x118D
-
-#define OBJ_EVENT_PAL_TAG_AQUA_MEMBER_F             0x118E
-#define OBJ_EVENT_PAL_TAG_AQUA_MEMBER_M             0x118F
-#define OBJ_EVENT_PAL_TAG_ARCHIE                    0x1190
-
-#define OBJ_EVENT_PAL_TAG_MAGMA_MEMBER_F            0x1191
-#define OBJ_EVENT_PAL_TAG_MAGMA_MEMBER_M            0x1192
-#define OBJ_EVENT_PAL_TAG_MAXIE                     0x1193
-
-#define OBJ_EVENT_PAL_TAG_MATT                      0x1194
-#define OBJ_EVENT_PAL_TAG_SHELLY                    0x1195
-#define OBJ_EVENT_PAL_TAG_COURTNEY                  0x1196
-#define OBJ_EVENT_PAL_TAG_TABITHA                   0x1197
-#define OBJ_EVENT_PAL_TAG_LATIAS                    0x1198
-#define OBJ_EVENT_PAL_TAG_LATIOS                    0x1199
-
-#define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
-
+#include "data/object_events/object_event_graphics_info_pointers.h"
 #include "data/field_effects/field_effect_object_template_pointers.h"
 #include "data/object_events/object_event_pic_tables.h"
 #include "data/object_events/object_event_anims.h"
 #include "data/object_events/base_oam.h"
 #include "data/object_events/object_event_subsprites.h"
 #include "data/object_events/object_event_graphics_info.h"
-#include "data/object_events/object_event_graphics_info_pointers.h"
 #include "data/object_events/object_event_graphics_info_followers.h"
 
 static const struct SpritePalette sObjectEventSpritePalettes[] = {
@@ -826,7 +661,6 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
 #endif //OW_FOLLOWERS_POKEBALLS
     {gObjectEventPal_Substitute,            OBJ_EVENT_PAL_TAG_SUBSTITUTE},
     {gObjectEventPaletteEmotes,             OBJ_EVENT_PAL_TAG_EMOTES},
-
 #ifdef BUGFIX
     {NULL,                                  OBJ_EVENT_PAL_TAG_NONE},
 #else
@@ -1720,8 +1554,6 @@ void RemoveObjectEventByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
 
 static void RemoveObjectEventInternal(struct ObjectEvent *objectEvent)
 {
-    u8 paletteNum;
-
     struct SpriteFrameImage image;
     image.size = GetObjectEventGraphicsInfo(objectEvent->graphicsId)->size;
     gSprites[objectEvent->spriteId].images = &image;
@@ -2874,6 +2706,7 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
         }
         if (subspriteTables != NULL)
             SetSubspriteTables(sprite, subspriteTables);
+
         sprite->coordOffsetEnabled = TRUE;
         sprite->sObjEventId = objectEventId;
         objectEvent->spriteId = i;
@@ -3576,7 +3409,7 @@ u8 GetObjectEventBerryTreeId(u8 objectEventId)
 
 static const struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
 {
-    struct ObjectEventTemplate *templates;
+    const struct ObjectEventTemplate *templates;
     const struct MapHeader *mapHeader;
     u8 count;
 
@@ -3674,6 +3507,37 @@ void OverrideSecretBaseDecorationSpriteScript(u8 localId, u8 mapNum, u8 mapGroup
             break;
         }
     }
+}
+
+void InitObjectEventPalettes(u8 reflectionType)
+{
+    FreeAndReserveObjectSpritePalettes();
+    sCurrentSpecialObjectPaletteTag = OBJ_EVENT_PAL_TAG_NONE;
+    sCurrentReflectionType = reflectionType;
+    if (reflectionType == 1)
+    {
+        PatchObjectPaletteRange(sObjectPaletteTagSets[sCurrentReflectionType], PALSLOT_PLAYER, PALSLOT_NPC_4 + 1);
+        gReservedSpritePaletteCount = 8;
+    }
+    else
+    {
+        PatchObjectPaletteRange(sObjectPaletteTagSets[sCurrentReflectionType], PALSLOT_PLAYER, PALSLOT_NPC_4_REFLECTION + 1);
+    }
+}
+
+u16 GetObjectPaletteTag(u8 palSlot)
+{
+    u8 i;
+
+    if (palSlot < PALSLOT_NPC_SPECIAL)
+        return sObjectPaletteTagSets[sCurrentReflectionType][palSlot];
+
+    for (i = 0; sSpecialObjectReflectionPaletteSets[i].tag != OBJ_EVENT_PAL_TAG_NONE; i++)
+    {
+        if (sSpecialObjectReflectionPaletteSets[i].tag == sCurrentSpecialObjectPaletteTag)
+            return sSpecialObjectReflectionPaletteSets[i].data[sCurrentReflectionType];
+    }
+    return OBJ_EVENT_PAL_TAG_NONE;
 }
 
 movement_type_empty_callback(MovementType_None)

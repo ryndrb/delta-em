@@ -238,7 +238,6 @@ void CopyMonLevelAndBaseStatsToBattleMon(u32 battler, struct Pokemon *mon);
 void CopyMonAbilityAndTypesToBattleMon(u32 battler, struct Pokemon *mon);
 void RecalcBattlerStats(u32 battler, struct Pokemon *mon);
 bool32 IsAlly(u32 battlerAtk, u32 battlerDef);
-bool8 CheckTableForMovesEffect(u16 move, const u8 table[]);
 bool32 IsGen6ExpShareEnabled(void);
 bool32 MoveHasAdditionalEffect(u32 move, u32 moveEffect);
 bool32 MoveHasAdditionalEffectWithChance(u32 move, u32 moveEffect, u32 chance);

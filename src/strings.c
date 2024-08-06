@@ -1849,12 +1849,6 @@ const u8 gText_PokeBalls[] = _("Poké Balls");
 const u8 gText_Berry[] = _("Berry");
 const u8 gText_Berries[] = _("Berries");
 
-// Move Menu Strings
-const u8 gText_BattleUI_SuperEffective[] = _("{UP_ARROW_2}{SHIFT_RIGHT 13}");
-const u8 gText_BattleUI_NotVeryEffective[] = _("{DOWN_ARROW_2}{SHIFT_RIGHT 13}");
-const u8 gText_BattleUI_NoEffect[] = _("{BIG_MULT_X}");
-const u8 gText_BattleUI_STAB[] = _("{PLUS}");
-
 // Start Menu Clock
 const u8 gText_Clock_AM[] = _("AM");
 const u8 gText_Clock_PM[] = _("PM");

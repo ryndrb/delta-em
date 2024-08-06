@@ -143,7 +143,7 @@ const u8 gTowerFemaleFacilityClasses[20] =
     FACILITY_CLASS_LASS
 };
 
-const u16 gTowerMaleTrainerGfxIds[30] =
+const u8 gTowerMaleTrainerGfxIds[30] =
 {
     OBJ_EVENT_GFX_HIKER,
     OBJ_EVENT_GFX_TUBER_M,
@@ -3524,7 +3524,7 @@ static void FillTentTrainerParty_(u16 trainerId, u8 firstMonId, u8 monCount)
 
 u16 FacilityClassToGraphicsId(u8 facilityClass)
 {
-    u16 trainerObjectGfxId;
+    u8 trainerObjectGfxId;
     u8 i;
 
     // Search male classes.

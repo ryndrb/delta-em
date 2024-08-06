@@ -3040,13 +3040,6 @@ extern const u8 gText_BoxName[];
 extern const u8 gText_PkmnsNickname[];
 extern const u8 gText_TellHimTheWords[];
 
-// Move Menu Strings
-extern const u8 gText_BattleUI_SuperEffective[];
-extern const u8 gText_BattleUI_NotVeryEffective[];
-extern const u8 gText_BattleUI_NoEffect[];
-extern const u8 gText_BattleUI_STAB[];
-extern const u8 StringNull[];
-
 // Start Menu Clock
 extern const u8 gText_Clock_TimeBase_12[];
 extern const u8 gText_Clock_TimeBase_Fin[];

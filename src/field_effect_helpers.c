@@ -35,9 +35,9 @@ static void UpdateFeetInFlowingWaterFieldEffect(struct Sprite *);
 static void UpdateAshFieldEffect_Wait(struct Sprite *);
 static void UpdateAshFieldEffect_Show(struct Sprite *);
 static void UpdateAshFieldEffect_End(struct Sprite *);
-void SynchroniseSurfAnim(struct ObjectEvent *, struct Sprite *);
-void SynchroniseSurfPosition(struct ObjectEvent *, struct Sprite *);
-void UpdateBobbingEffect(struct ObjectEvent *, struct Sprite *, struct Sprite *);
+static void SynchroniseSurfAnim(struct ObjectEvent *, struct Sprite *);
+static void SynchroniseSurfPosition(struct ObjectEvent *, struct Sprite *);
+static void UpdateBobbingEffect(struct ObjectEvent *, struct Sprite *, struct Sprite *);
 static void SpriteCB_UnderwaterSurfBlob(struct Sprite *);
 static u32 ShowDisguiseFieldEffect(u8, u8, u8);
 u32 FldEff_Shadow(void);
@@ -90,8 +90,6 @@ static s16 GetReflectionVerticalOffset(struct ObjectEvent *objectEvent)
     return GetObjectEventGraphicsInfo(objectEvent->graphicsId)->height - 2;
 }
 
-#define OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION 0x1102
-
 static void LoadObjectReflectionPalette(struct ObjectEvent *objectEvent, struct Sprite *reflectionSprite)
 {
     u8 bridgeType;
@@ -104,8 +102,6 @@ static void LoadObjectReflectionPalette(struct ObjectEvent *objectEvent, struct 
     if ((bridgeType = MetatileBehavior_GetBridgeType(objectEvent->previousMetatileBehavior))
         || (bridgeType = MetatileBehavior_GetBridgeType(objectEvent->currentMetatileBehavior)))
     {
-        // When walking on a bridge high above water (Route 120), the reflection is a solid dark blue color.
-        // This is so the sprite blends in with the dark water metatile underneath the bridge.
         reflectionSprite->sReflectionVerticalOffset = bridgeReflectionVerticalOffsets[bridgeType - 1];
         LoadObjectHighBridgeReflectionPalette(objectEvent, reflectionSprite);
     }
@@ -274,8 +270,7 @@ extern const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[];
 
 u8 CreateWarpArrowSprite(void)
 {
-    u8 spriteId;
-    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_ARROW], 0, 0, 82);
+    u8 spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_ARROW], 0, 0, 82);
     if (spriteId != MAX_SPRITES)
     {
         struct Sprite *sprite = &gSprites[spriteId];
@@ -1033,8 +1028,7 @@ u32 FldEff_UnusedGrass(void)
         sprite->oam.priority = gFieldEffectArguments[3];
         sprite->sWaitFldEff = FLDEFF_UNUSED_GRASS;
     }
-    
-    return spriteId;
+    return 0;
 }
 
 u32 FldEff_UnusedGrass2(void)
@@ -1050,8 +1044,7 @@ u32 FldEff_UnusedGrass2(void)
         sprite->oam.priority = gFieldEffectArguments[3];
         sprite->sWaitFldEff = FLDEFF_UNUSED_GRASS_2;
     }
-    
-    return spriteId;
+    return 0;
 }
 
 u32 FldEff_UnusedSand(void)
@@ -1067,7 +1060,7 @@ u32 FldEff_UnusedSand(void)
         sprite->oam.priority = gFieldEffectArguments[3];
         sprite->sWaitFldEff = FLDEFF_UNUSED_SAND;
     }
-    return spriteId;
+    return 0;
 }
 
 u32 FldEff_WaterSurfacing(void)
@@ -1083,8 +1076,7 @@ u32 FldEff_WaterSurfacing(void)
         sprite->oam.priority = gFieldEffectArguments[3];
         sprite->sWaitFldEff = FLDEFF_WATER_SURFACING;
     }
-    
-    return spriteId;
+    return 0;
 }
 
 // Sprite data for FLDEFF_ASH
@@ -1242,7 +1234,7 @@ void UpdateSurfBlobFieldEffect(struct Sprite *sprite)
     sprite->oam.priority = playerSprite->oam.priority;
 }
 
-void SynchroniseSurfAnim(struct ObjectEvent *playerObj, struct Sprite *sprite)
+static void SynchroniseSurfAnim(struct ObjectEvent *playerObj, struct Sprite *sprite)
 {
     // Indexes into sAnimTable_SurfBlob
     u8 surfBlobDirectionAnims[] = {
@@ -1287,7 +1279,7 @@ void SynchroniseSurfPosition(struct ObjectEvent *playerObj, struct Sprite *sprit
     }
 }
 
-void UpdateBobbingEffect(struct ObjectEvent *playerObj, struct Sprite *playerSprite, struct Sprite *sprite)
+static void UpdateBobbingEffect(struct ObjectEvent *playerObj, struct Sprite *playerSprite, struct Sprite *sprite)
 {
     // The frame interval at which to update the blob's y movement.
     // Normally every 4th frame, but every 8th frame while dismounting.
@@ -1482,7 +1474,7 @@ u32 FldEff_BerryTreeGrowthSparkle(void)
         UpdateSpritePaletteByTemplate(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_SPARKLE], sprite);
         sprite->sWaitFldEff = FLDEFF_BERRY_TREE_GROWTH_SPARKLE;
     }
-    return spriteId;
+    return 0;
 }
 
 // Sprite data for FLDEFF_TREE_DISGUISE / FLDEFF_MOUNTAIN_DISGUISE / FLDEFF_SAND_DISGUISE
@@ -1521,8 +1513,8 @@ static u32 ShowDisguiseFieldEffect(u8 fldEff, u8 fldEffObj, u8 paletteNum)
     if (spriteId != MAX_SPRITES)
     {
         struct Sprite *sprite = &gSprites[spriteId];
+        UpdateSpritePaletteByTemplate(gFieldEffectObjectTemplatePointers[fldEffObj], sprite);
         sprite->coordOffsetEnabled ++;
-        sprite->oam.paletteNum = paletteNum;
         sprite->sFldEff = fldEff;
         sprite->sLocalId = gFieldEffectArguments[0];
         sprite->sMapNum = gFieldEffectArguments[1];
@@ -1610,7 +1602,7 @@ u32 FldEff_Sparkle(void)
         gSprites[spriteId].oam.priority = gFieldEffectArguments[2];
         gSprites[spriteId].coordOffsetEnabled = TRUE;
     }
-    return spriteId;
+    return 0;
 }
 
 void UpdateSparkleFieldEffect(struct Sprite *sprite)

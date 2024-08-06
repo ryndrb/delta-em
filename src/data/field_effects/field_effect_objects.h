@@ -1087,8 +1087,8 @@ static const struct SpriteFrameImage sPicTable_SandDisguisePlaceholder[] = {
 };
 
 const struct SpriteTemplate gFieldEffectObjectTemplate_SandDisguisePlaceholder = {
-    .tileTag = 0xFFFF,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_1,
+    .tileTag = TAG_NONE,
+    .paletteTag = TAG_NONE,
     .oam = &gObjectEventBaseOam_16x32,
     .anims = sAnimTable_TreeDisguise,
     .images = sPicTable_SandDisguisePlaceholder,

@@ -10035,6 +10035,3 @@ BattleScript_EffectSnow::
 	call BattleScript_CheckPrimalWeather
 	setfieldweather ENUM_WEATHER_SNOW
 	goto BattleScript_MoveWeatherChange
-
-.global StringNull
-StringNull: .byte 0xFF

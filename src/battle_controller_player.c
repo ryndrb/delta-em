@@ -12,13 +12,10 @@
 #include "battle_gimmick.h"
 #include "bg.h"
 #include "data.h"
-#include "graphics.h"
 #include "item.h"
 #include "item_menu.h"
 #include "link.h"
-#include "list_menu.h"
 #include "main.h"
-#include "menu.h"
 #include "m4a.h"
 #include "palette.h"
 #include "party_menu.h"
@@ -34,7 +31,6 @@
 #include "text.h"
 #include "util.h"
 #include "window.h"
-#include "strings.h"
 #include "constants/battle_anim.h"
 #include "constants/battle_move_effects.h"
 #include "constants/battle_partner.h"
@@ -88,6 +84,7 @@ static void PlayerBufferRunCommand(u32 battler);
 static void HandleInputChooseTarget(u32 battler);
 static void HandleInputChooseMove(u32 battler);
 static void MoveSelectionDisplayPpNumber(u32 battler);
+static void MoveSelectionDisplayPpString(u32 battler);
 static void MoveSelectionDisplayMoveType(u32 battler);
 static void MoveSelectionDisplayMoveNames(u32 battler);
 static void MoveSelectionDisplayMoveDescription(u32 battler);
@@ -518,7 +515,6 @@ static void HandleInputChooseTarget(u32 battler)
                     i = 0;
             } while (i == 0);
         }
-
         gSprites[gBattlerSpriteIds[gMultiUsePlayerCursor]].callback = SpriteCB_ShowAsMoveTarget;
     }
     else if (JOY_NEW(DPAD_RIGHT | DPAD_DOWN))
@@ -764,7 +760,7 @@ static void HandleInputChooseMove(u32 battler)
                 gMultiUsePlayerCursor = GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
             else
                 gMultiUsePlayerCursor = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
-            
+
             gSprites[gBattlerSpriteIds[gMultiUsePlayerCursor]].callback = SpriteCB_ShowAsMoveTarget;
             break;
         case 2:
@@ -987,8 +983,6 @@ static void HandleMoveSwitching(u32 battler)
         {
             struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
             s32 i;
-            u8 slot1 = gMoveSelectionCursor[battler];
-            u8 slot2 = gMultiUsePlayerCursor;
 
             // swap moves and pp
             i = moveInfo->moves[gMoveSelectionCursor[battler]];
@@ -1002,16 +996,6 @@ static void HandleMoveSwitching(u32 battler)
             i = moveInfo->maxPp[gMoveSelectionCursor[battler]];
             moveInfo->maxPp[gMoveSelectionCursor[battler]] = moveInfo->maxPp[gMultiUsePlayerCursor];
             moveInfo->maxPp[gMultiUsePlayerCursor] = i;
-
-            //Swap Move Types Details
-	        i = moveInfo->moveTypes[slot1];
-	        moveInfo->moveTypes[slot1] = moveInfo->moveTypes[slot2];
-	        moveInfo->moveTypes[slot2] = i;
-
-            //Swap Move Split Details
-	        i = moveInfo->moveSplit[slot1];
-	        moveInfo->moveSplit[slot1] = moveInfo->moveSplit[slot2];
-	        moveInfo->moveSplit[slot2] = i;
 
             if (gDisableStructs[battler].mimickedMoves & gBitTable[gMoveSelectionCursor[battler]])
             {
@@ -1081,6 +1065,7 @@ static void HandleMoveSwitching(u32 battler)
         gBattlerControllerFuncs[battler] = HandleInputChooseMove;
         gMoveSelectionCursor[battler] = gMultiUsePlayerCursor;
         MoveSelectionCreateCursorAt(gMoveSelectionCursor[battler], 0);
+        MoveSelectionDisplayPpString(battler);
         MoveSelectionDisplayPpNumber(battler);
         MoveSelectionDisplayMoveType(battler);
         AssignUsableZMoves(battler, moveInfo->moves);
@@ -1091,6 +1076,7 @@ static void HandleMoveSwitching(u32 battler)
         MoveSelectionDestroyCursorAt(gMultiUsePlayerCursor);
         MoveSelectionCreateCursorAt(gMoveSelectionCursor[battler], 0);
         gBattlerControllerFuncs[battler] = HandleInputChooseMove;
+        MoveSelectionDisplayPpString(battler);
         MoveSelectionDisplayPpNumber(battler);
         MoveSelectionDisplayMoveType(battler);
     }
@@ -1701,6 +1687,12 @@ static void MoveSelectionDisplayMoveNames(u32 battler)
     }
 }
 
+static void MoveSelectionDisplayPpString(u32 battler)
+{
+    StringCopy(gDisplayedStringBattle, gText_MoveInterfacePP);
+    BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP);
+}
+
 static void MoveSelectionDisplayPpNumber(u32 battler)
 {
     u8 *txtPtr;
@@ -2125,6 +2117,7 @@ void InitMoveSelectionsVarsAndStrings(u32 battler)
     MoveSelectionDisplayMoveNames(battler);
     gMultiUsePlayerCursor = 0xFF;
     MoveSelectionCreateCursorAt(gMoveSelectionCursor[battler], 0);
+    MoveSelectionDisplayPpString(battler);
     MoveSelectionDisplayPpNumber(battler);
     MoveSelectionDisplayMoveType(battler);
 }

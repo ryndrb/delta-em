@@ -4950,7 +4950,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                  && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
                 {
                     BattleScriptPushCursorAndCallback(BattleScript_RainDishActivates);
-                    gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 8;
+                    gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / (gLastUsedAbility == ABILITY_RAIN_DISH ? 8 : 8);
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     gBattleMoveDamage *= -1;
@@ -11748,18 +11748,6 @@ bool32 MoveEffectIsGuaranteed(u32 battler, u32 battlerAbility, const struct Addi
 bool32 IsAlly(u32 battlerAtk, u32 battlerDef)
 {
     return (GetBattlerSide(battlerAtk) == GetBattlerSide(battlerDef));
-}
-
-bool8 CheckTableForMovesEffect(u16 move, const u8 table[])
-{
-    u32 i;
-	for (i = 0; table[i] != 0xFF; ++i)
-	{
-		if (gMovesInfo[move].effect == table[i])
-			return TRUE;
-	}
-
-	return FALSE;
 }
 
 bool32 IsGen6ExpShareEnabled(void)

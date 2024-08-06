@@ -499,7 +499,6 @@ void AddBagVisualSprite(u8 bagPocketId)
     u8 *spriteId = &gBagMenu->spriteIds[ITEMMENUSPRITE_BAG];
     *spriteId = CreateSprite(&sBagSpriteTemplate, 68, 66, 0);
     SetBagVisualPocketId(bagPocketId, FALSE);
-    //SetBagVisualPocketId(-1, FALSE);
 }
 
 #define sPocketId data[0]
