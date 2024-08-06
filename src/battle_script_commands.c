@@ -1193,9 +1193,9 @@ static void Cmd_attackcanceler(void)
 {
     CMD_ARGS();
 
-    s32 i, moveType;
+    s32 i;
     u16 attackerAbility = GetBattlerAbility(gBattlerAttacker);
-    GET_MOVE_TYPE(gCurrentMove, moveType);
+    u32 moveType = GetMoveType(gCurrentMove);
 
     // Weight-based moves are blocked by Dynamax.
     if ((GetActiveGimmick(gBattlerTarget) == GIMMICK_DYNAMAX) && IsMoveBlockedByDynamax(gCurrentMove))
@@ -1702,7 +1702,6 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
 
 static void AccuracyCheck(bool32 recalcDragonDarts, const u8 *nextInstr, const u8 *failInstr, u16 move)
 {
-    u32 type;
     u32 moveTarget = GetBattlerMoveTargetType(gBattlerAttacker, move);
     u32 abilityAtk = GetBattlerAbility(gBattlerAttacker);
     u32 abilityDef = GetBattlerAbility(gBattlerTarget);
@@ -1731,8 +1730,8 @@ static void AccuracyCheck(bool32 recalcDragonDarts, const u8 *nextInstr, const u
     else
     {
         u32 accuracy;
+        u32 type = GetMoveType(move);
 
-        GET_MOVE_TYPE(move, type);
         if (JumpIfMoveAffectedByProtect(move))
             return;
         if (AccuracyCalcHelper(move))
@@ -1972,9 +1971,7 @@ static void Cmd_damagecalc(void)
 {
     CMD_ARGS();
 
-    u8 moveType;
-
-    GET_MOVE_TYPE(gCurrentMove, moveType);
+    u32 moveType = GetMoveType(gCurrentMove);
     if (gMovesInfo[gCurrentMove].effect == EFFECT_SHELL_SIDE_ARM)
         gBattleStruct->swapDamageCategory = (gBattleStruct->shellSideArmCategory[gBattlerAttacker][gBattlerTarget] != gMovesInfo[gCurrentMove].category);
     gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, 0, gIsCriticalHit, TRUE, TRUE);
@@ -1985,9 +1982,7 @@ static void Cmd_typecalc(void)
 {
     CMD_ARGS();
 
-    u8 moveType;
-
-    GET_MOVE_TYPE(gCurrentMove, moveType);
+    u32 moveType = GetMoveType(gCurrentMove);
     CalcTypeEffectivenessMultiplier(gCurrentMove, moveType, gBattlerAttacker, gBattlerTarget, GetBattlerAbility(gBattlerTarget), TRUE);
 
     gBattlescriptCurrInstr = cmd->nextInstr;
@@ -1998,11 +1993,9 @@ static void Cmd_adjustdamage(void)
     CMD_ARGS();
 
     u8 holdEffect, param;
-    u32 moveType;
     u32 affectionScore = GetBattlerAffectionHearts(gBattlerTarget);
     u32 rand = Random() % 100;
-
-    GET_MOVE_TYPE(gCurrentMove, moveType);
+    u32 moveType = GetMoveType(gCurrentMove);
 
     if (DoesSubstituteBlockMove(gBattlerAttacker, gBattlerTarget, gCurrentMove))
         goto END;
@@ -2950,8 +2943,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
 
             if (B_STATUS_TYPE_IMMUNITY == GEN_1)
             {
-                u8 moveType = 0;
-                GET_MOVE_TYPE(gCurrentMove, moveType);
+                u32 moveType = GetMoveType(gCurrentMove);
                 if (primary == FALSE && certain == FALSE && IS_BATTLER_OF_TYPE(gEffectBattler, moveType))
                     break;
             }
@@ -2964,8 +2956,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
         case STATUS1_FREEZE:
             if (B_STATUS_TYPE_IMMUNITY == GEN_1)
             {
-                u8 moveType = 0;
-                GET_MOVE_TYPE(gCurrentMove, moveType);
+                u32 moveType = GetMoveType(gCurrentMove);
                 if (primary == FALSE && certain == FALSE && IS_BATTLER_OF_TYPE(gEffectBattler, moveType))
                     break;
             }
@@ -3004,8 +2995,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
             }
             if (B_STATUS_TYPE_IMMUNITY == GEN_1)
             {
-                u8 moveType = 0;
-                GET_MOVE_TYPE(gCurrentMove, moveType);
+                u32 moveType = GetMoveType(gCurrentMove);
                 if (primary == FALSE && certain == FALSE && IS_BATTLER_OF_TYPE(gEffectBattler, moveType))
                     break;
             }
@@ -3075,8 +3065,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
         case STATUS1_FROSTBITE:
             if (B_STATUS_TYPE_IMMUNITY == GEN_1)
             {
-                u8 moveType = 0;
-                GET_MOVE_TYPE(gCurrentMove, moveType);
+                u32 moveType = GetMoveType(gCurrentMove);
                 if (primary == FALSE && certain == FALSE && IS_BATTLER_OF_TYPE(gEffectBattler, moveType))
                     break;
             }
@@ -5418,7 +5407,7 @@ static void Cmd_moveend(void)
     endState = cmd->endState;
 
     holdEffectAtk = GetBattlerHoldEffect(gBattlerAttacker, TRUE);
-    GET_MOVE_TYPE(gCurrentMove, moveType);
+    moveType = GetMoveType(gCurrentMove);
 
     do
     {
@@ -5909,7 +5898,7 @@ static void Cmd_moveend(void)
                     else
                     {
                         gLastLandedMoves[gBattlerTarget] = gCurrentMove;
-                        GET_MOVE_TYPE(gCurrentMove, gLastHitByType[gBattlerTarget]);
+                        gLastHitByType[gBattlerTarget] = GetMoveType(gCurrentMove);
                     }
                 }
                 else
