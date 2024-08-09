@@ -437,11 +437,11 @@ struct SpeciesInfo /*0xC4*/
             u32 isHisuianForm:1;
             u32 isPaldeanForm:1;
             u32 cannotBeTraded:1;
-            u32 allPerfectIVs:1;
+            u32 perfectIVCount:3;   // This species will always generate with the specified amount of perfect IVs.
             u32 dexForceRequired:1; // This species will be taken into account for Pokédex ratings even if they have the "isMythical" flag set.
             u32 tmIlliterate:1;     // This species will be unable to learn the universal moves.
             u32 isFrontierBanned:1; // This species is not allowed to participate in Battle Frontier facilities.
-            u32 padding4:14;
+            u32 padding4:12;
             // Move Data
  /* 0x80 */ const struct LevelUpMove *levelUpLearnset;
  /* 0x84 */ const u16 *teachableLearnset;
@@ -881,5 +881,7 @@ const u8 *GetMoveName(u16 moveId);
 const u8 *GetMoveAnimationScript(u16 moveId);
 void UpdateDaysPassedSinceFormChange(u16 days);
 void TrySetDayLimitToFormChange(struct Pokemon *mon);
+u8 CheckDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler);
+u8 CalculateHiddenPowerType(struct Pokemon *mon);
 
 #endif // GUARD_POKEMON_H
