@@ -278,6 +278,7 @@ static void PrintHeldItemName(void);
 static void PrintSkillsPageText(void);
 static void HandleStatDynamic(u8*, s8, u32, u32, u32);
 static void BufferStat(void);
+static const u8* GetArrowToPrint(s8 statIndex);
 static void PrintStats(void);
 static void PrintExpPointsNextLevel(void);
 static void PrintBattleMoves(void);
@@ -3455,13 +3456,22 @@ static void BufferStat(void)
     Free(speedString);
 }
 
+static const u8* GetArrowToPrint(s8 statIndex)
+{
+    if (statIndex == 0 || gNaturesInfo[sMonSummaryScreen->summary.mintNature].statUp == gNaturesInfo[sMonSummaryScreen->summary.mintNature].statDown)
+        return gText_ExpandedPlaceholder_Empty;
+    else if (statIndex == gNaturesInfo[sMonSummaryScreen->summary.mintNature].statUp)
+        return gText_UpArrow;
+    else if (statIndex == gNaturesInfo[sMonSummaryScreen->summary.mintNature].statDown)
+        return gText_DownArrow;
+    else
+        return gText_ExpandedPlaceholder_Empty;
+}
+
 static void PrintStats(void)
 {   
     struct PokeSummary *sum = &sMonSummaryScreen->summary;
     u8 windowId = AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_STATS);
-    u8 bstXOffset = 28;
-    u8 evsOffset = 52;
-    u8 ivsOffset = 74;
     u8 i, y = 1;
     u8 bst[6];
     u8 monEv[6];
@@ -3493,14 +3503,30 @@ static void PrintStats(void)
 
     // BST, EV, IV
     for(i = 0; i < 6; i++){
+        // Print Nature Arrows [Up - Down]
+        if (SUMMARY_SCREEN_NATURE_ARROWS && i > 0) {
+            u8 idx = STAT_ATK;
+            if (i == 2) {
+                idx = STAT_DEF;
+            }else if (i == 3) {
+                idx = STAT_SPATK;
+            }else if (i == 4) {
+                idx = STAT_SPDEF;
+            }else if (i == 5) {
+                idx = STAT_SPEED;
+            }
+
+            PrintTextOnWindow(windowId, GetArrowToPrint(idx), 4, y, 0, 2);
+        }
+
         ConvertIntToDecimalStringN(gStringVar1, bst[i], STR_CONV_MODE_RIGHT_ALIGN, 7);
-        PrintTextOnWindow(windowId, gStringVar1, bstXOffset, y, 0, 0);
+        PrintTextOnWindow(windowId, gStringVar1, 28, y, 0, 0);
         
         ConvertIntToDecimalStringN(gStringVar2, monEv[i], STR_CONV_MODE_RIGHT_ALIGN, 7);
-        PrintTextOnWindow(windowId, gStringVar2, evsOffset, y, 0, 0);
+        PrintTextOnWindow(windowId, gStringVar2, 52, y, 0, 0);
 
         ConvertIntToDecimalStringN(gStringVar3, monIv[i], STR_CONV_MODE_RIGHT_ALIGN, 7);
-        PrintTextOnWindow(windowId, gStringVar3, ivsOffset, y, 0, 0);
+        PrintTextOnWindow(windowId, gStringVar3, 76, y, 0, 0);
         y = y + 16;
     }
 }

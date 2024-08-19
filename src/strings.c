@@ -1707,6 +1707,9 @@ const u8 gText_PokeBalls[] = _("Poké Balls");
 const u8 gText_Berry[] = _("Berry");
 const u8 gText_Berries[] = _("Berries");
 
+const u8 gText_UpArrow[] = _("{UP_ARROW_2}");
+const u8 gText_DownArrow[] = _("{DOWN_ARROW_2}");
+
 // Start Menu Clock
 const u8 gText_Clock_AM[] = _("AM");
 const u8 gText_Clock_PM[] = _("PM");

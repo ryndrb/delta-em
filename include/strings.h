@@ -2896,6 +2896,9 @@ extern const u8 gText_BoxName[];
 extern const u8 gText_PkmnsNickname[];
 extern const u8 gText_TellHimTheWords[];
 
+extern const u8 gText_UpArrow[];
+extern const u8 gText_DownArrow[];
+
 // Start Menu Clock
 extern const u8 gText_Clock_TimeBase_12[];
 extern const u8 gText_Clock_TimeBase_Fin[];
