@@ -24,6 +24,7 @@
 #include "dma3.h"
 #include "event_data.h"
 #include "evolution_scene.h"
+#include "field_weather.h"
 #include "graphics.h"
 #include "gpu_regs.h"
 #include "international_string_util.h"
@@ -68,6 +69,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/trainers.h"
+#include "constants/weather.h"
 #include "cable_club.h"
 
 extern const struct BgTemplate gBattleBgTemplates[];
@@ -303,7 +305,7 @@ static const s8 sCenterToCornerVecXs[8] ={-32, -16, -16, -32, -32};
 
 // extra args are money and ball
 #define TRAINER_CLASS(trainerClass, trainerName, ...)   \
-    [TRAINER_CLASS_##trainerClass] =                    \
+    [trainerClass] =                                    \
     {                                                   \
         .name = _(trainerName),                         \
         .money = DEFAULT(5, __VA_ARGS__),               \
@@ -312,72 +314,72 @@ static const s8 sCenterToCornerVecXs[8] ={-32, -16, -16, -32, -32};
 
 const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
 {
-    TRAINER_CLASS(PKMN_TRAINER_1, "{PKMN} TRAINER"),
-    TRAINER_CLASS(PKMN_TRAINER_2, "{PKMN} TRAINER"),
-    TRAINER_CLASS(HIKER, "HIKER", 10),
-    TRAINER_CLASS(TEAM_AQUA, "TEAM AQUA"),
-    TRAINER_CLASS(PKMN_BREEDER, "{PKMN} BREEDER", 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? ITEM_HEAL_BALL : ITEM_FRIEND_BALL),
-    TRAINER_CLASS(COOLTRAINER, "COOLTRAINER", 12, ITEM_ULTRA_BALL),
-    TRAINER_CLASS(BIRD_KEEPER, "BIRD KEEPER", 8),
-    TRAINER_CLASS(COLLECTOR, "COLLECTOR", 15, ITEM_PREMIER_BALL),
-    TRAINER_CLASS(SWIMMER_M, "SWIMMER♂", 2, ITEM_DIVE_BALL),
-    TRAINER_CLASS(TEAM_MAGMA, "TEAM MAGMA"),
-    TRAINER_CLASS(EXPERT, "EXPERT", 10),
-    TRAINER_CLASS(AQUA_ADMIN, "AQUA ADMIN", 10),
-    TRAINER_CLASS(BLACK_BELT, "BLACK BELT", 8, ITEM_ULTRA_BALL),
-    TRAINER_CLASS(AQUA_LEADER, "AQUA LEADER", 20, ITEM_MASTER_BALL),
-    TRAINER_CLASS(HEX_MANIAC, "HEX MANIAC", 6),
-    TRAINER_CLASS(AROMA_LADY, "AROMA LADY", 10),
-    TRAINER_CLASS(RUIN_MANIAC, "RUIN MANIAC", 15),
-    TRAINER_CLASS(INTERVIEWER, "INTERVIEWER", 12),
-    TRAINER_CLASS(TUBER_F, "TUBER", 1),
-    TRAINER_CLASS(TUBER_M, "TUBER", 1),
-    TRAINER_CLASS(LADY, "LADY", 50),
-    TRAINER_CLASS(BEAUTY, "BEAUTY", 20),
-    TRAINER_CLASS(RICH_BOY, "RICH BOY", 50),
-    TRAINER_CLASS(POKEMANIAC, "POKéMANIAC", 15),
-    TRAINER_CLASS(GUITARIST, "GUITARIST", 8),
-    TRAINER_CLASS(KINDLER, "KINDLER", 8),
-    TRAINER_CLASS(CAMPER, "CAMPER", 4),
-    TRAINER_CLASS(PICNICKER, "PICNICKER", 4),
-    TRAINER_CLASS(BUG_MANIAC, "BUG MANIAC", 15),
-    TRAINER_CLASS(PSYCHIC, "PSYCHIC", 6),
-    TRAINER_CLASS(GENTLEMAN, "GENTLEMAN", 20, ITEM_LUXURY_BALL),
-    TRAINER_CLASS(ELITE_FOUR, "ELITE FOUR", 25, ITEM_ULTRA_BALL),
-    TRAINER_CLASS(LEADER, "LEADER", 25),
-    TRAINER_CLASS(SCHOOL_KID, "SCHOOL KID"),
-    TRAINER_CLASS(SR_AND_JR, "SR. AND JR.", 4),
-    TRAINER_CLASS(WINSTRATE, "WINSTRATE", 10),
-    TRAINER_CLASS(POKEFAN, "POKéFAN", 20),
-    TRAINER_CLASS(YOUNGSTER, "YOUNGSTER", 4),
-    TRAINER_CLASS(CHAMPION, "CHAMPION", 50),
-    TRAINER_CLASS(FISHERMAN, "FISHERMAN", 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? ITEM_DIVE_BALL : ITEM_LURE_BALL),
-    TRAINER_CLASS(TRIATHLETE, "TRIATHLETE", 10),
-    TRAINER_CLASS(DRAGON_TAMER, "DRAGON TAMER", 12),
-    TRAINER_CLASS(NINJA_BOY, "NINJA BOY", 3),
-    TRAINER_CLASS(BATTLE_GIRL, "BATTLE GIRL", 6),
-    TRAINER_CLASS(PARASOL_LADY, "PARASOL LADY", 10),
-    TRAINER_CLASS(SWIMMER_F, "SWIMMER♀", 2, ITEM_DIVE_BALL),
-    TRAINER_CLASS(TWINS, "TWINS", 3),
-    TRAINER_CLASS(SAILOR, "SAILOR", 8),
-    TRAINER_CLASS(COOLTRAINER_2, "COOLTRAINER", 5, ITEM_ULTRA_BALL),
-    TRAINER_CLASS(MAGMA_ADMIN, "MAGMA ADMIN", 10),
-    TRAINER_CLASS(RIVAL, "{PKMN} TRAINER", 15),
-    TRAINER_CLASS(BUG_CATCHER, "BUG CATCHER", 4),
-    TRAINER_CLASS(PKMN_RANGER, "{PKMN} RANGER", 12),
-    TRAINER_CLASS(MAGMA_LEADER, "MAGMA LEADER", 20, ITEM_MASTER_BALL),
-    TRAINER_CLASS(LASS, "LASS", 4),
-    TRAINER_CLASS(YOUNG_COUPLE, "YOUNG COUPLE", 8),
-    TRAINER_CLASS(OLD_COUPLE, "OLD COUPLE", 10),
-    TRAINER_CLASS(SIS_AND_BRO, "SIS AND BRO", 3),
-    TRAINER_CLASS(SALON_MAIDEN, "SALON MAIDEN"),
-    TRAINER_CLASS(DOME_ACE, "DOME ACE"),
-    TRAINER_CLASS(PALACE_MAVEN, "PALACE MAVEN"),
-    TRAINER_CLASS(ARENA_TYCOON, "ARENA TYCOON"),
-    TRAINER_CLASS(FACTORY_HEAD, "FACTORY HEAD"),
-    TRAINER_CLASS(PIKE_QUEEN, "PIKE QUEEN"),
-    TRAINER_CLASS(PYRAMID_KING, "PYRAMID KING"),
-    TRAINER_CLASS(RS_PROTAG, "{PKMN} TRAINER"),
+    TRAINER_CLASS(TRAINER_CLASS_PKMN_TRAINER_1, "{PKMN} TRAINER"),
+    TRAINER_CLASS(TRAINER_CLASS_PKMN_TRAINER_2, "{PKMN} TRAINER"),
+    TRAINER_CLASS(TRAINER_CLASS_HIKER, "HIKER", 10),
+    TRAINER_CLASS(TRAINER_CLASS_TEAM_AQUA, "TEAM AQUA"),
+    TRAINER_CLASS(TRAINER_CLASS_PKMN_BREEDER, "{PKMN} BREEDER", 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? ITEM_HEAL_BALL : ITEM_FRIEND_BALL),
+    TRAINER_CLASS(TRAINER_CLASS_COOLTRAINER, "COOLTRAINER", 12, ITEM_ULTRA_BALL),
+    TRAINER_CLASS(TRAINER_CLASS_BIRD_KEEPER, "BIRD KEEPER", 8),
+    TRAINER_CLASS(TRAINER_CLASS_COLLECTOR, "COLLECTOR", 15, ITEM_PREMIER_BALL),
+    TRAINER_CLASS(TRAINER_CLASS_SWIMMER_M, "SWIMMER♂", 2, ITEM_DIVE_BALL),
+    TRAINER_CLASS(TRAINER_CLASS_TEAM_MAGMA, "TEAM MAGMA"),
+    TRAINER_CLASS(TRAINER_CLASS_EXPERT, "EXPERT", 10),
+    TRAINER_CLASS(TRAINER_CLASS_AQUA_ADMIN, "AQUA ADMIN", 10),
+    TRAINER_CLASS(TRAINER_CLASS_BLACK_BELT, "BLACK BELT", 8, ITEM_ULTRA_BALL),
+    TRAINER_CLASS(TRAINER_CLASS_AQUA_LEADER, "AQUA LEADER", 20, ITEM_MASTER_BALL),
+    TRAINER_CLASS(TRAINER_CLASS_HEX_MANIAC, "HEX MANIAC", 6),
+    TRAINER_CLASS(TRAINER_CLASS_AROMA_LADY, "AROMA LADY", 10),
+    TRAINER_CLASS(TRAINER_CLASS_RUIN_MANIAC, "RUIN MANIAC", 15),
+    TRAINER_CLASS(TRAINER_CLASS_INTERVIEWER, "INTERVIEWER", 12),
+    TRAINER_CLASS(TRAINER_CLASS_TUBER_F, "TUBER", 1),
+    TRAINER_CLASS(TRAINER_CLASS_TUBER_M, "TUBER", 1),
+    TRAINER_CLASS(TRAINER_CLASS_LADY, "LADY", 50),
+    TRAINER_CLASS(TRAINER_CLASS_BEAUTY, "BEAUTY", 20),
+    TRAINER_CLASS(TRAINER_CLASS_RICH_BOY, "RICH BOY", 50),
+    TRAINER_CLASS(TRAINER_CLASS_POKEMANIAC, "POKéMANIAC", 15),
+    TRAINER_CLASS(TRAINER_CLASS_GUITARIST, "GUITARIST", 8),
+    TRAINER_CLASS(TRAINER_CLASS_KINDLER, "KINDLER", 8),
+    TRAINER_CLASS(TRAINER_CLASS_CAMPER, "CAMPER", 4),
+    TRAINER_CLASS(TRAINER_CLASS_PICNICKER, "PICNICKER", 4),
+    TRAINER_CLASS(TRAINER_CLASS_BUG_MANIAC, "BUG MANIAC", 15),
+    TRAINER_CLASS(TRAINER_CLASS_PSYCHIC, "PSYCHIC", 6),
+    TRAINER_CLASS(TRAINER_CLASS_GENTLEMAN, "GENTLEMAN", 20, ITEM_LUXURY_BALL),
+    TRAINER_CLASS(TRAINER_CLASS_ELITE_FOUR, "ELITE FOUR", 25, ITEM_ULTRA_BALL),
+    TRAINER_CLASS(TRAINER_CLASS_LEADER, "LEADER", 25),
+    TRAINER_CLASS(TRAINER_CLASS_SCHOOL_KID, "SCHOOL KID"),
+    TRAINER_CLASS(TRAINER_CLASS_SR_AND_JR, "SR. AND JR.", 4),
+    TRAINER_CLASS(TRAINER_CLASS_WINSTRATE, "WINSTRATE", 10),
+    TRAINER_CLASS(TRAINER_CLASS_POKEFAN, "POKéFAN", 20),
+    TRAINER_CLASS(TRAINER_CLASS_YOUNGSTER, "YOUNGSTER", 4),
+    TRAINER_CLASS(TRAINER_CLASS_CHAMPION, "CHAMPION", 50),
+    TRAINER_CLASS(TRAINER_CLASS_FISHERMAN, "FISHERMAN", 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? ITEM_DIVE_BALL : ITEM_LURE_BALL),
+    TRAINER_CLASS(TRAINER_CLASS_TRIATHLETE, "TRIATHLETE", 10),
+    TRAINER_CLASS(TRAINER_CLASS_DRAGON_TAMER, "DRAGON TAMER", 12),
+    TRAINER_CLASS(TRAINER_CLASS_NINJA_BOY, "NINJA BOY", 3),
+    TRAINER_CLASS(TRAINER_CLASS_BATTLE_GIRL, "BATTLE GIRL", 6),
+    TRAINER_CLASS(TRAINER_CLASS_PARASOL_LADY, "PARASOL LADY", 10),
+    TRAINER_CLASS(TRAINER_CLASS_SWIMMER_F, "SWIMMER♀", 2, ITEM_DIVE_BALL),
+    TRAINER_CLASS(TRAINER_CLASS_TWINS, "TWINS", 3),
+    TRAINER_CLASS(TRAINER_CLASS_SAILOR, "SAILOR", 8),
+    TRAINER_CLASS(TRAINER_CLASS_COOLTRAINER_2, "COOLTRAINER", 5, ITEM_ULTRA_BALL),
+    TRAINER_CLASS(TRAINER_CLASS_MAGMA_ADMIN, "MAGMA ADMIN", 10),
+    TRAINER_CLASS(TRAINER_CLASS_RIVAL, "{PKMN} TRAINER", 15),
+    TRAINER_CLASS(TRAINER_CLASS_BUG_CATCHER, "BUG CATCHER", 4),
+    TRAINER_CLASS(TRAINER_CLASS_PKMN_RANGER, "{PKMN} RANGER", 12),
+    TRAINER_CLASS(TRAINER_CLASS_MAGMA_LEADER, "MAGMA LEADER", 20, ITEM_MASTER_BALL),
+    TRAINER_CLASS(TRAINER_CLASS_LASS, "LASS", 4),
+    TRAINER_CLASS(TRAINER_CLASS_YOUNG_COUPLE, "YOUNG COUPLE", 8),
+    TRAINER_CLASS(TRAINER_CLASS_OLD_COUPLE, "OLD COUPLE", 10),
+    TRAINER_CLASS(TRAINER_CLASS_SIS_AND_BRO, "SIS AND BRO", 3),
+    TRAINER_CLASS(TRAINER_CLASS_SALON_MAIDEN, "SALON MAIDEN"),
+    TRAINER_CLASS(TRAINER_CLASS_DOME_ACE, "DOME ACE"),
+    TRAINER_CLASS(TRAINER_CLASS_PALACE_MAVEN, "PALACE MAVEN"),
+    TRAINER_CLASS(TRAINER_CLASS_ARENA_TYCOON, "ARENA TYCOON"),
+    TRAINER_CLASS(TRAINER_CLASS_FACTORY_HEAD, "FACTORY HEAD"),
+    TRAINER_CLASS(TRAINER_CLASS_PIKE_QUEEN, "PIKE QUEEN"),
+    TRAINER_CLASS(TRAINER_CLASS_PYRAMID_KING, "PYRAMID KING"),
+    TRAINER_CLASS(TRAINER_CLASS_RS_PROTAG, "{PKMN} TRAINER"),
 };
 
 static void (* const sTurnActionsFuncsTable[])(void) =
@@ -518,9 +520,7 @@ static void CB2_InitBattleInternal(void)
     gBattle_BG3_X = 0;
     gBattle_BG3_Y = 0;
 
-#if DEBUG_OVERWORLD_MENU == TRUE
-    if (!gIsDebugBattle)
-#endif
+    if (!DEBUG_OVERWORLD_MENU || (DEBUG_OVERWORLD_MENU && !gIsDebugBattle))
     {
         gBattleTerrain = BattleSetup_GetTerrainId();
     }
@@ -553,9 +553,7 @@ static void CB2_InitBattleInternal(void)
     else
         SetMainCallback2(CB2_HandleStartBattle);
 
-#if DEBUG_OVERWORLD_MENU == TRUE
-    if (!gIsDebugBattle)
-#endif
+    if (!DEBUG_OVERWORLD_MENU || (DEBUG_OVERWORLD_MENU && !gIsDebugBattle))
     {
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED)))
         {
@@ -5632,9 +5630,14 @@ static void FreeResetData_ReturnToOvOrDoEvolutions(void)
     }
 
     FreeAllWindowBuffers();
-    if (gBattleStruct != NULL && !(gBattleTypeFlags & BATTLE_TYPE_LINK))
+    if (!(gBattleTypeFlags & BATTLE_TYPE_LINK))
     {
-        ZeroEnemyPartyMons();
+        // To account for Battle Factory and Slateport Battle Tent, enemy parties are zeroed out in the facilitites respective src/xxx.c files
+        // The ZeroEnemyPartyMons() call happens in SaveXXXChallenge function (eg. SaveFactoryChallenge)
+        if (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER))
+        {
+            ZeroEnemyPartyMons();
+        }
         ResetDynamicAiFunc();
         FreeMonSpritesGfx();
         FreeBattleResources();
@@ -5790,151 +5793,244 @@ bool32 TrySetAteType(u32 move, u32 battlerAtk, u32 attackerAbility)
     return FALSE;
 }
 
-void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk)
+// Returns TYPE_NONE if type doesn't change.
+// NULL can be passed to ateBoost to avoid applying ate-ability boosts when opening the summary screen in-battle.
+u32 GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, u8 *ateBoost)
 {
-    u32 moveType, attackerAbility;
-    u16 holdEffect = GetBattlerHoldEffect(battlerAtk, TRUE);
+    u32 moveType = gMovesInfo[move].type;
+    u32 moveEffect = gMovesInfo[move].effect;
+    u32 species, heldItem, holdEffect, ability, type1, type2, type3;
 
     if (move == MOVE_STRUGGLE)
-        return;
+        return TYPE_NORMAL;
 
-    gBattleStruct->dynamicMoveType = 0;
-    gBattleStruct->ateBoost[battlerAtk] = 0;
-    gSpecialStatuses[battlerAtk].gemBoost = FALSE;
-
-    if (gMovesInfo[move].effect == EFFECT_WEATHER_BALL)
+    if (gMain.inBattle)
     {
-        if (WEATHER_HAS_EFFECT)
+        species = gBattleMons[battler].species;
+        heldItem = gBattleMons[battler].item;
+        holdEffect = GetBattlerHoldEffect(battler, TRUE);
+        ability = GetBattlerAbility(battler);
+        type1 = gBattleMons[battler].types[0];
+        type2 = gBattleMons[battler].types[1];
+        type3 = gBattleMons[battler].types[2];
+    }
+    else
+    {
+        species = GetMonData(mon, MON_DATA_SPECIES);
+        heldItem = GetMonData(mon, MON_DATA_HELD_ITEM, 0);
+        holdEffect = ItemId_GetHoldEffect(heldItem);
+        ability = GetMonAbility(mon);
+        type1 = gSpeciesInfo[species].types[0];
+        type2 = gSpeciesInfo[species].types[1];
+        type3 = TYPE_MYSTERY;
+    }
+
+    if (moveEffect == EFFECT_WEATHER_BALL)
+    {
+        if (gMain.inBattle && WEATHER_HAS_EFFECT)
         {
             if (gBattleWeather & B_WEATHER_RAIN && holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA)
-                gBattleStruct->dynamicMoveType = TYPE_WATER | F_DYNAMIC_TYPE_SET;
+                return TYPE_WATER;
             else if (gBattleWeather & B_WEATHER_SANDSTORM)
-                gBattleStruct->dynamicMoveType = TYPE_ROCK | F_DYNAMIC_TYPE_SET;
+                return TYPE_ROCK;
             else if (gBattleWeather & B_WEATHER_SUN && holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA)
-                gBattleStruct->dynamicMoveType = TYPE_FIRE | F_DYNAMIC_TYPE_SET;
-            else if (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW))
-                gBattleStruct->dynamicMoveType = TYPE_ICE | F_DYNAMIC_TYPE_SET;
+                return TYPE_FIRE;
+            else if (gBattleWeather & (B_WEATHER_SNOW | B_WEATHER_HAIL))
+                return TYPE_ICE;
             else
-                gBattleStruct->dynamicMoveType = TYPE_NORMAL | F_DYNAMIC_TYPE_SET;
+                return moveType;
+        }
+        else
+        {
+            switch (gWeatherPtr->currWeather)
+            {
+            case WEATHER_DROUGHT:
+                if (holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA)
+                    return TYPE_FIRE;
+                break;
+            case WEATHER_RAIN:
+            case WEATHER_RAIN_THUNDERSTORM:
+                if (holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA)
+                    return TYPE_WATER;
+                break;
+            case WEATHER_SNOW:
+                return TYPE_ICE;
+            case WEATHER_SANDSTORM:
+                return TYPE_ROCK;
+            }
+            return moveType;
         }
     }
-    else if (gMovesInfo[move].effect == EFFECT_HIDDEN_POWER)
+    else if (moveEffect == EFFECT_HIDDEN_POWER)
     {
-        u8 typeBits  = ((gBattleMons[battlerAtk].hpIV & 1) << 0)
-                     | ((gBattleMons[battlerAtk].attackIV & 1) << 1)
-                     | ((gBattleMons[battlerAtk].defenseIV & 1) << 2)
-                     | ((gBattleMons[battlerAtk].speedIV & 1) << 3)
-                     | ((gBattleMons[battlerAtk].spAttackIV & 1) << 4)
-                     | ((gBattleMons[battlerAtk].spDefenseIV & 1) << 5);
+        u8 typeBits;
+        if (gMain.inBattle)
+        {
+            typeBits = ((gBattleMons[battler].hpIV & 1) << 0)
+                     | ((gBattleMons[battler].attackIV & 1) << 1)
+                     | ((gBattleMons[battler].defenseIV & 1) << 2)
+                     | ((gBattleMons[battler].speedIV & 1) << 3)
+                     | ((gBattleMons[battler].spAttackIV & 1) << 4)
+                     | ((gBattleMons[battler].spDefenseIV & 1) << 5);
+        }
+        else
+        {
+            typeBits = ((GetMonData(mon, MON_DATA_HP_IV) & 1) << 0)
+                     | ((GetMonData(mon, MON_DATA_ATK_IV) & 1) << 1)
+                     | ((GetMonData(mon, MON_DATA_DEF_IV) & 1) << 2)
+                     | ((GetMonData(mon, MON_DATA_SPEED_IV) & 1) << 3)
+                     | ((GetMonData(mon, MON_DATA_SPATK_IV) & 1) << 4)
+                     | ((GetMonData(mon, MON_DATA_SPDEF_IV) & 1) << 5);
+        }
 
         // Subtract 6 instead of 1 below because 5 types are excluded (TYPE_NONE, TYPE_NORMAL, TYPE_MYSTERY, TYPE_FAIRY and TYPE_STELLAR)
         // The final + 2 skips past TYPE_NONE and Normal.
-        gBattleStruct->dynamicMoveType = ((NUMBER_OF_MON_TYPES - 6) * typeBits) / 63 + 2;
-        if (gBattleStruct->dynamicMoveType >= TYPE_MYSTERY)
-            gBattleStruct->dynamicMoveType++;
-        gBattleStruct->dynamicMoveType |= F_DYNAMIC_TYPE_IGNORE_PHYSICALITY | F_DYNAMIC_TYPE_SET;
+        moveType = ((NUMBER_OF_MON_TYPES - 6) * typeBits) / 63 + 2;
+        if (moveType >= TYPE_MYSTERY)
+            moveType++;
+        return (moveType | F_DYNAMIC_TYPE_IGNORE_PHYSICALITY);
     }
-    else if (gMovesInfo[move].effect == EFFECT_CHANGE_TYPE_ON_ITEM && holdEffect == gMovesInfo[move].argument)
+    else if (moveEffect == EFFECT_CHANGE_TYPE_ON_ITEM && holdEffect == gMovesInfo[move].argument)
     {
-        gBattleStruct->dynamicMoveType = ItemId_GetSecondaryId(gBattleMons[battlerAtk].item) | F_DYNAMIC_TYPE_SET;
+        return ItemId_GetSecondaryId(heldItem);
     }
-    else if (gMovesInfo[move].effect == EFFECT_REVELATION_DANCE && GetActiveGimmick(battlerAtk) != GIMMICK_Z_MOVE)
+    else if (moveEffect == EFFECT_REVELATION_DANCE && GetActiveGimmick(battler) != GIMMICK_Z_MOVE)
     {
-        if (GetActiveGimmick(battlerAtk) == GIMMICK_TERA && GetBattlerTeraType(battlerAtk) != TYPE_STELLAR)
-            gBattleStruct->dynamicMoveType = GetBattlerTeraType(battlerAtk);
-        else if (gBattleMons[battlerAtk].types[0] != TYPE_MYSTERY && !(gBattleResources->flags->flags[battlerAtk] & RESOURCE_FLAG_ROOST && gBattleMons[battlerAtk].types[0] == TYPE_FLYING))
-            gBattleStruct->dynamicMoveType = gBattleMons[battlerAtk].types[0] | F_DYNAMIC_TYPE_SET;
-        else if (gBattleMons[battlerAtk].types[1] != TYPE_MYSTERY && !(gBattleResources->flags->flags[battlerAtk] & RESOURCE_FLAG_ROOST && gBattleMons[battlerAtk].types[1] == TYPE_FLYING))
-            gBattleStruct->dynamicMoveType = gBattleMons[battlerAtk].types[1] | F_DYNAMIC_TYPE_SET;
-        else if (gBattleResources->flags->flags[battlerAtk] & RESOURCE_FLAG_ROOST)
-            gBattleStruct->dynamicMoveType = (B_ROOST_PURE_FLYING >= GEN_5 ? TYPE_NORMAL : TYPE_MYSTERY) | F_DYNAMIC_TYPE_SET;
-        else if (gBattleMons[battlerAtk].types[2] != TYPE_MYSTERY)
-            gBattleStruct->dynamicMoveType = gBattleMons[battlerAtk].types[2] | F_DYNAMIC_TYPE_SET;
+        u8 teraType;
+        if (GetActiveGimmick(battler) == GIMMICK_TERA && ((teraType = GetMonData(mon, MON_DATA_TERA_TYPE)) != TYPE_STELLAR))
+            return teraType;
+        else if (type1 != TYPE_MYSTERY && !(gBattleResources->flags->flags[battler] & RESOURCE_FLAG_ROOST && type1 == TYPE_FLYING))
+            return type1;
+        else if (type2 != TYPE_MYSTERY && !(gBattleResources->flags->flags[battler] & RESOURCE_FLAG_ROOST && type2 == TYPE_FLYING))
+            return type2;
+        else if (gBattleResources->flags->flags[battler] & RESOURCE_FLAG_ROOST)
+            return (B_ROOST_PURE_FLYING >= GEN_5 ? TYPE_NORMAL : TYPE_MYSTERY);
+        else if (type3 != TYPE_MYSTERY)
+            return type3;
         else
-            gBattleStruct->dynamicMoveType = TYPE_MYSTERY | F_DYNAMIC_TYPE_SET;
+            return TYPE_MYSTERY;
     }
-    else if (gMovesInfo[move].effect == EFFECT_RAGING_BULL
-            && (gBattleMons[battlerAtk].species == SPECIES_TAUROS_PALDEAN_COMBAT_BREED
-             || gBattleMons[battlerAtk].species == SPECIES_TAUROS_PALDEAN_BLAZE_BREED
-             || gBattleMons[battlerAtk].species == SPECIES_TAUROS_PALDEAN_AQUA_BREED))
+    else if (moveEffect == EFFECT_RAGING_BULL
+             && (species == SPECIES_TAUROS_PALDEAN_COMBAT_BREED
+              || species == SPECIES_TAUROS_PALDEAN_BLAZE_BREED
+              || species == SPECIES_TAUROS_PALDEAN_AQUA_BREED))
     {
-            gBattleStruct->dynamicMoveType = gBattleMons[battlerAtk].types[1] | F_DYNAMIC_TYPE_SET;
+        return type2;
     }
-    else if (gMovesInfo[move].effect == EFFECT_IVY_CUDGEL
-            && (gBattleMons[battlerAtk].species == SPECIES_OGERPON_WELLSPRING_MASK || gBattleMons[battlerAtk].species == SPECIES_OGERPON_WELLSPRING_MASK_TERA
-             || gBattleMons[battlerAtk].species == SPECIES_OGERPON_HEARTHFLAME_MASK || gBattleMons[battlerAtk].species == SPECIES_OGERPON_HEARTHFLAME_MASK_TERA
-             || gBattleMons[battlerAtk].species == SPECIES_OGERPON_CORNERSTONE_MASK || gBattleMons[battlerAtk].species == SPECIES_OGERPON_CORNERSTONE_MASK_TERA ))
+    else if (moveEffect == EFFECT_IVY_CUDGEL
+            && (species == SPECIES_OGERPON_WELLSPRING_MASK || species == SPECIES_OGERPON_WELLSPRING_MASK_TERA
+             || species == SPECIES_OGERPON_HEARTHFLAME_MASK || species == SPECIES_OGERPON_HEARTHFLAME_MASK_TERA
+             || species == SPECIES_OGERPON_CORNERSTONE_MASK || species == SPECIES_OGERPON_CORNERSTONE_MASK_TERA))
     {
-        gBattleStruct->dynamicMoveType = gBattleMons[battlerAtk].types[1] | F_DYNAMIC_TYPE_SET;
+        return type2;
     }
-    else if (gMovesInfo[move].effect == EFFECT_NATURAL_GIFT)
+    else if (moveEffect == EFFECT_NATURAL_GIFT)
     {
-        if (ItemId_GetPocket(gBattleMons[battlerAtk].item) == POCKET_BERRIES)
-            gBattleStruct->dynamicMoveType = gNaturalGiftTable[ITEM_TO_BERRY(gBattleMons[battlerAtk].item)].type;
+        if (ItemId_GetPocket(heldItem) == POCKET_BERRIES)
+            return gNaturalGiftTable[ITEM_TO_BERRY(heldItem)].type;
+        else
+            return moveType;
     }
-    else if (gMovesInfo[move].effect == EFFECT_TERRAIN_PULSE)
+    else if (moveEffect == EFFECT_TERRAIN_PULSE)
     {
-        if (IsBattlerTerrainAffected(battlerAtk, STATUS_FIELD_TERRAIN_ANY))
+        if (gMain.inBattle)
         {
-            if (gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN)
-                gBattleStruct->dynamicMoveType = TYPE_ELECTRIC | F_DYNAMIC_TYPE_SET;
-            else if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN)
-                gBattleStruct->dynamicMoveType = TYPE_GRASS | F_DYNAMIC_TYPE_SET;
-            else if (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN)
-                gBattleStruct->dynamicMoveType = TYPE_FAIRY | F_DYNAMIC_TYPE_SET;
-            else if (gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN)
-                gBattleStruct->dynamicMoveType = TYPE_PSYCHIC | F_DYNAMIC_TYPE_SET;
-            else //failsafe
-                gBattleStruct->dynamicMoveType = TYPE_NORMAL | F_DYNAMIC_TYPE_SET;
+            if (IsBattlerTerrainAffected(battler, STATUS_FIELD_TERRAIN_ANY))
+            {
+                if (gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN)
+                    return TYPE_ELECTRIC;
+                else if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN)
+                    return TYPE_GRASS;
+                else if (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN)
+                    return TYPE_FAIRY;
+                else if (gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN)
+                    return TYPE_PSYCHIC;
+                else //failsafe
+                    return moveType;
+            }
+        }
+        else
+        {
+            switch (gWeatherPtr->currWeather)
+            {
+            case WEATHER_RAIN_THUNDERSTORM:
+                if (B_THUNDERSTORM_TERRAIN)
+                    return TYPE_ELECTRIC;
+                break;
+            case WEATHER_FOG_HORIZONTAL:
+            case WEATHER_FOG_DIAGONAL:
+                if (B_OVERWORLD_FOG >= GEN_8)
+                    return TYPE_FAIRY;
+                break;
+            }
+            return moveType;
         }
     }
-    else if (gMovesInfo[move].effect == EFFECT_TERA_BLAST && GetActiveGimmick(battlerAtk) == GIMMICK_TERA)
+    else if (moveEffect == EFFECT_TERA_BLAST && GetActiveGimmick(battler) == GIMMICK_TERA)
     {
-        gBattleStruct->dynamicMoveType = GetBattlerTeraType(battlerAtk) | F_DYNAMIC_TYPE_SET;
+        return GetMonData(mon, MON_DATA_TERA_TYPE);
     }
-    else if (gMovesInfo[move].effect == EFFECT_TERA_STARSTORM && gBattleMons[battlerAtk].species == SPECIES_TERAPAGOS_STELLAR)
+    else if (moveEffect == EFFECT_TERA_STARSTORM && species == SPECIES_TERAPAGOS_STELLAR)
     {
-        gBattleStruct->dynamicMoveType = TYPE_STELLAR | F_DYNAMIC_TYPE_SET;
+        return TYPE_STELLAR;
     }
 
-    attackerAbility = GetBattlerAbility(battlerAtk);
-    if (gMovesInfo[move].type == TYPE_NORMAL
-     && TrySetAteType(move, battlerAtk, attackerAbility)
-     && GetActiveGimmick(battlerAtk) != GIMMICK_DYNAMAX)
+    if (moveType == TYPE_NORMAL
+     && ((!gMain.inBattle || TrySetAteType(move, battler, ability))
+     && GetActiveGimmick(battler) != GIMMICK_DYNAMAX))
     {
-            gBattleStruct->ateBoost[battlerAtk] = 1;
+        if (gMain.inBattle && ateBoost != NULL)
+            *ateBoost = TRUE;
     }
-    else if (gMovesInfo[move].type != TYPE_NORMAL
-          && gMovesInfo[move].effect != EFFECT_HIDDEN_POWER
-          && gMovesInfo[move].effect != EFFECT_WEATHER_BALL
-          && attackerAbility == ABILITY_NORMALIZE
-          && GetActiveGimmick(battlerAtk) != GIMMICK_Z_MOVE)
+    else if (moveType != TYPE_NORMAL
+          && moveEffect != EFFECT_HIDDEN_POWER
+          && moveEffect != EFFECT_WEATHER_BALL
+          && ability == ABILITY_NORMALIZE
+          && GetActiveGimmick(battler) != GIMMICK_Z_MOVE)
     {
-        gBattleStruct->dynamicMoveType = TYPE_NORMAL | F_DYNAMIC_TYPE_SET;
-        if (GetActiveGimmick(battlerAtk) != GIMMICK_DYNAMAX)
-            gBattleStruct->ateBoost[battlerAtk] = 1;
+        if (gMain.inBattle && ateBoost != NULL && GetActiveGimmick(battler) != GIMMICK_DYNAMAX)
+            *ateBoost = TRUE;
+        return TYPE_NORMAL;
     }
-    else if (gMovesInfo[move].soundMove && attackerAbility == ABILITY_LIQUID_VOICE)
+    else if (gMovesInfo[move].soundMove && ability == ABILITY_LIQUID_VOICE)
     {
-        gBattleStruct->dynamicMoveType = TYPE_WATER | F_DYNAMIC_TYPE_SET;
+        return TYPE_WATER;
     }
-    else if (gMovesInfo[move].effect == EFFECT_AURA_WHEEL && gBattleMons[battlerAtk].species == SPECIES_MORPEKO_HANGRY)
+    else if (moveEffect == EFFECT_AURA_WHEEL && species == SPECIES_MORPEKO_HANGRY)
     {
-        gBattleStruct->dynamicMoveType = TYPE_DARK | F_DYNAMIC_TYPE_SET;
+        return TYPE_DARK;
     }
+
+    return TYPE_NONE;
+}
+
+void SetTypeBeforeUsingMove(u32 move, u32 battler)
+{
+    u32 moveType;
+    u32 heldItem = gBattleMons[battler].item;
+    u32 holdEffect = GetBattlerHoldEffect(battler, TRUE);
+
+    gBattleStruct->dynamicMoveType = 0;
+    gBattleStruct->ateBoost[battler] = FALSE;
+    gSpecialStatuses[battler].gemBoost = FALSE;
+
+    moveType = GetDynamicMoveType(&GetBattlerParty(battler)[gBattlerPartyIndexes[battler]],
+                                  move,
+                                  battler,
+                                  &gBattleStruct->ateBoost[battler]);
+    if (moveType != TYPE_NONE)
+        gBattleStruct->dynamicMoveType = moveType | F_DYNAMIC_TYPE_SET;
 
     moveType = GetMoveType(move);
     if ((gFieldStatuses & STATUS_FIELD_ION_DELUGE && moveType == TYPE_NORMAL)
-        || gStatuses4[battlerAtk] & STATUS4_ELECTRIFIED)
+        || gStatuses4[battler] & STATUS4_ELECTRIFIED)
         gBattleStruct->dynamicMoveType = TYPE_ELECTRIC | F_DYNAMIC_TYPE_SET;
 
     // Check if a gem should activate.
-    moveType = GetMoveType(move);
-    if (holdEffect == HOLD_EFFECT_GEMS
-        && moveType == ItemId_GetSecondaryId(gBattleMons[battlerAtk].item))
+    if (holdEffect == HOLD_EFFECT_GEMS && GetMoveType(move) == ItemId_GetSecondaryId(heldItem))
     {
-        gSpecialStatuses[battlerAtk].gemParam = GetBattlerHoldEffectParam(battlerAtk);
-        gSpecialStatuses[battlerAtk].gemBoost = TRUE;
+        gSpecialStatuses[battler].gemParam = GetBattlerHoldEffectParam(battler);
+        gSpecialStatuses[battler].gemBoost = TRUE;
     }
 }
 
