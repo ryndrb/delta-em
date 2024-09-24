@@ -16,7 +16,7 @@ MauvilleCity_OnTransition:
 	clearflag FLAG_MAUVILLE_GYM_BARRIERS_STATE
 	setvar VAR_MAUVILLE_GYM_STATE, 0
 	call Common_EventScript_SetupRivalGfxId
-	call_if_set FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON, MauvilleCity_EventScript_MoveWattsonBackToGym
+	call_if_set FLAG_RECEIVED_TM_THUNDERBOLT, MauvilleCity_EventScript_MoveWattsonBackToGym
     call_if_eq VAR_MAUVILLE_CITY_STATE, 0, MauvilleCity_EventScript_MoveWallyUncleToBeginning
 	call_if_eq VAR_MAUVILLE_CITY_STATE, 7, MauvilleCity_EventScript_MoveWallyCloseToRoute118
 	end
@@ -741,7 +741,7 @@ movement MauvilleCity_Movement_PlayerWatchWallyExitToRoute118 {
 script MauvilleCity_EventScript_Wattson {
 	lock
 	faceplayer
-	if(flag(FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON)){
+	if(flag(FLAG_RECEIVED_TM_THUNDERBOLT)){
 		msgbox("{COLOR RED}Wattson{COLOR DARK_GRAY}: It pleases me to no end\nto see the young step up and take\lcharge!")
 		closemessage
 		release
@@ -754,7 +754,7 @@ script MauvilleCity_EventScript_Wattson {
 		if(var(VAR_RESULT) == FALSE){
 			goto(Common_EventScript_ShowBagIsFull)
 		}
-		setflag(FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON)
+		setflag(FLAG_RECEIVED_TM_THUNDERBOLT)
 		msgbox("By the way, there wasn't anything going\nin New Mauville, right?\pThat was supposed to be a new town,\nthough…\pWe should've been able to build a\nhuge underground city stretching\ldown into the depths.\pThings happened, and its development\nhad to be suspended.\lSince then it's just left to rot.\pAll the equipment inside might have\nseen better days.")
 		closemessage
 		release
@@ -771,6 +771,13 @@ script MauvilleCity_EventScript_Wattson {
 	giveitem(ITEM_BASEMENT_KEY)
 	setflag(FLAG_GOT_BASEMENT_KEY_FROM_WATTSON)
 	msgbox("When you get inside, switch off the\nGenerator.\pIt has been running a bit haywire.\nIt's getting unsafe.\pI sure am sorry to bug you with all this,\nbut I'm really counting on you!\pYou can {COLOR BLUE}Surf{COLOR DARK_GRAY} from {COLOR BLUE}Route 110{COLOR DARK_GRAY} to get to\nNew Mauville.")
+	closemessage
+	release
+	end
+}
+
+script MauvilleCity_EventScript_RolloutMan {
+	msgbox("Did you know that you can go\nfrom here a long way in that direction\lwithout changing direction?\pI might even be able to roll that way.\pDo you think your Pokémon will want to\nroll, too?")
 	closemessage
 	release
 	end

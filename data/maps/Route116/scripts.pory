@@ -51,15 +51,15 @@ Route116_EventScript_BoyfriendGruntInTunnel::
 Route116_EventScript_DevonEmployee::
 	lock
 	faceplayer
-	goto_if_set FLAG_MET_DEVON_EMPLOYEE, Route116_EventScript_TryGiveRepeatBallAgain
+	goto_if_set FLAG_MET_DEVON_EMPLOYEE, Route116_EventScript_TryGiveTMHyperVoiceAgain
 	msgbox Route116_Text_ThankYouTokenOfAppreciation, MSGBOX_DEFAULT
-	goto Route116_EventScript_GiveRepeatBall
+	goto Route116_EventScript_GiveTMHyperVoice
 	end
 
-Route116_EventScript_GiveRepeatBall::
+Route116_EventScript_GiveTMHyperVoice::
 	setflag FLAG_MET_DEVON_EMPLOYEE
-	giveitem ITEM_REPEAT_BALL
-	goto_if_eq VAR_RESULT, FALSE, Route116_EventScript_NoRoomForRepeatBall
+	giveitem ITEM_TM_HYPER_VOICE
+	goto_if_eq VAR_RESULT, FALSE, Route116_EventScript_NoRoomForTMHyperVoice
 	msgbox Route116_Text_TryItOut, MSGBOX_DEFAULT
 	closemessage
 	call_if_eq VAR_FACING, DIR_NORTH, Route116_EventScript_DevonEmployeeExit
@@ -68,7 +68,7 @@ Route116_EventScript_GiveRepeatBall::
 	call_if_eq VAR_FACING, DIR_EAST, Route116_EventScript_DevonEmployeeExitEast
 	removeobject VAR_LAST_TALKED
 	clearflag FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_EMPLOYEE
-	setflag FLAG_RECEIVED_REPEAT_BALL
+	setflag FLAG_RECEIVED_TM_HYPER_VOICE
 	release
 	end
 
@@ -82,12 +82,12 @@ Route116_EventScript_DevonEmployeeExitEast::
 	waitmovement 0
 	return
 
-Route116_EventScript_TryGiveRepeatBallAgain::
+Route116_EventScript_TryGiveTMHyperVoiceAgain::
 	msgbox Route116_Text_TokenOfAppreciation, MSGBOX_DEFAULT
-	goto Route116_EventScript_GiveRepeatBall
+	goto Route116_EventScript_GiveTMHyperVoice
 	end
 
-Route116_EventScript_NoRoomForRepeatBall::
+Route116_EventScript_NoRoomForTMHyperVoice::
 	msgbox Route116_Text_BagIsJamPacked, MSGBOX_DEFAULT
 	release
 	end
@@ -370,7 +370,7 @@ Route116_Text_GoonHightailedItOutOfTunnel:
 	.string "Nnn…\nRoar!\pThat goofy goon hightailed it out of\nthe tunnel!\lI can go back to digging!$"
 
 Route116_Text_ThankYouTokenOfAppreciation:
-	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Oh!\nIt's you!\pYou're that Trainer who helped me\nin Petalburg Woods and also got back\lmy case that was stolen and then\lgraciously delivered it to Slateport!\pCaptain Stern informed us that the\ncase arrived safely!\pI thank you very, very much.\pIf I were a rain cloud, I would shower\nyou with gratitude and hail you as a\lhero!\pFor you, wonderful Trainer, I bear good\nnews!\pRecently, our company developed a new\nkind of Poké Ball.\pAs token of our appreciation for all\nyour help, we would like to give you\lone!$"
+	.string "{COLOR RED}Researcher{COLOR DARK_GRAY}: Oh!\nIt's you!\pYou're that Trainer who helped me\nin Petalburg Woods and also got back\lmy case that was stolen and then\lgraciously delivered it to Slateport!\pCaptain Stern informed us that the\ncase arrived safely!\pI thank you very, very much.\pIf I were a rain cloud, I would shower\nyou with gratitude and hail you as a\lhero!\pFor you, wonderful Trainer, I bear good\nnews!\pRecently, our company developed a\nspecial Technical Machine containing\lthe move Hyper Voice.\pAs token of our appreciation for all\nyour help, we would like to give you\lTechnical Machine!$"
 
 Route116_Text_TryItOut:
 	.string "Please do try it out!\nThat you and bye-bye!$"

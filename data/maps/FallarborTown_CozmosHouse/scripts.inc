@@ -190,7 +190,7 @@ FallarborTown_CozmosHouse_EventScript_CozmosReturn_1:
 	waitmovement 3
 	msgbox FallarborTown_CozmosHouse_EventScript_CozmosReturn_Text_4
 	delay 8
-	setflag FLAG_RECEIVED_TM_RETURN
+	giveitem ITEM_TM_ROCK_SLIDE, 1
 	delay 16
 	checkplayergender
 	compare VAR_RESULT, MALE

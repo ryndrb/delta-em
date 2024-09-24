@@ -165,6 +165,14 @@
       "elevation": 3,
       "item": "ITEM_ZINC",
       "flag": "FLAG_HIDDEN_ITEM_SAFARI_ZONE_NORTH_EAST_ZINC"
+    },
+    {
+      "type": "hidden_item",
+      "x": 8,
+      "y": 10,
+      "elevation": 0,
+      "item": "ITEM_TM_BODY_PRESS",
+      "flag": "FLAG_HIDDEN_ITEM_SAFARI_ZONE_NORTHEAST_TM_BODY_PRESS"
     }
   ]
 }

@@ -15,7 +15,7 @@ MauvilleCity_OnTransition:
 	clearflag FLAG_MAUVILLE_GYM_BARRIERS_STATE
 	setvar VAR_MAUVILLE_GYM_STATE, 0
 	call Common_EventScript_SetupRivalGfxId
-	call_if_set FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON, MauvilleCity_EventScript_MoveWattsonBackToGym
+	call_if_set FLAG_RECEIVED_TM_THUNDERBOLT, MauvilleCity_EventScript_MoveWattsonBackToGym
     call_if_eq VAR_MAUVILLE_CITY_STATE, 0, MauvilleCity_EventScript_MoveWallyUncleToBeginning
 	call_if_eq VAR_MAUVILLE_CITY_STATE, 7, MauvilleCity_EventScript_MoveWallyCloseToRoute118
 	end
@@ -822,7 +822,7 @@ MauvilleCity_Movement_PlayerWatchWallyExitToRoute118:
 MauvilleCity_EventScript_Wattson::
 	lock
 	faceplayer
-	goto_if_set FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON, MauvilleCity_EventScript_Wattson_2
+	goto_if_set FLAG_RECEIVED_TM_THUNDERBOLT, MauvilleCity_EventScript_Wattson_2
 	compare VAR_NEW_MAUVILLE_STATE, 2
 	goto_if_eq MauvilleCity_EventScript_Wattson_5
 	goto_if_set FLAG_GOT_BASEMENT_KEY_FROM_WATTSON, MauvilleCity_EventScript_Wattson_8
@@ -848,7 +848,7 @@ MauvilleCity_EventScript_Wattson_5:
 	compare VAR_RESULT, FALSE
 	goto_if_eq MauvilleCity_EventScript_Wattson_11
 MauvilleCity_EventScript_Wattson_10:
-	setflag FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON
+	setflag FLAG_RECEIVED_TM_THUNDERBOLT
 	msgbox MauvilleCity_EventScript_Wattson_Text_2
 	closemessage
 	release
@@ -863,6 +863,13 @@ MauvilleCity_EventScript_Wattson_8:
 MauvilleCity_EventScript_Wattson_11:
 	goto Common_EventScript_ShowBagIsFull
 	goto MauvilleCity_EventScript_Wattson_10
+
+
+MauvilleCity_EventScript_RolloutMan::
+	msgbox MauvilleCity_EventScript_RolloutMan_Text_0
+	closemessage
+	release
+	end
 
 
 MauvilleCity_EventScript_WallyAndUncleIntro_Text_0:
@@ -945,3 +952,6 @@ MauvilleCity_EventScript_Wattson_Text_4:
 
 MauvilleCity_EventScript_Wattson_Text_5:
 	.string "When you get inside, switch off the\nGenerator.\pIt has been running a bit haywire.\nIt's getting unsafe.\pI sure am sorry to bug you with all this,\nbut I'm really counting on you!\pYou can {COLOR BLUE}Surf{COLOR DARK_GRAY} from {COLOR BLUE}Route 110{COLOR DARK_GRAY} to get to\nNew Mauville.$"
+
+MauvilleCity_EventScript_RolloutMan_Text_0:
+	.string "Did you know that you can go\nfrom here a long way in that direction\lwithout changing direction?\pI might even be able to roll that way.\pDo you think your Pokémon will want to\nroll, too?$"

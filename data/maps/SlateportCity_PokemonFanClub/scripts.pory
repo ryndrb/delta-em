@@ -354,3 +354,10 @@ SlateportCity_PokemonFanClub_Text_Azumarill:
 	.string "Marimari?$"
 
 `
+
+script SlateportCity_PokemonFanClub_EventScript_SwaggerMan {
+	msgbox("Heh! My Pokémon totally rules!\nIt's cooler that any Pokémon!\pI was lipping off with a swagger\nin my step like that when Chairman\lchewed me out.\pThat took the swagger out my step…")
+	closemessage
+	release
+	end
+}

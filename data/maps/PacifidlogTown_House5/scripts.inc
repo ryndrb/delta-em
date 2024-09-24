@@ -24,7 +24,9 @@ PacifidlogTown_House5_Text_CanSeeMirageIslandToday:
 PacifidlogTown_House5_EventScript_Gentleman::
 	lock
 	faceplayer
-	goto_if_unset FLAG_RECEIVED_TM_PSYSHOCK, PacifidlogTown_House5_EventScript_Gentleman_2
+	checkitem ITEM_TM_PSYSHOCK, 1
+	compare VAR_RESULT, 0
+	goto_if_eq PacifidlogTown_House5_EventScript_Gentleman_2
 PacifidlogTown_House5_EventScript_Gentleman_1:
 	msgbox PacifidlogTown_House5_EventScript_Gentleman_Text_1
 	closemessage
@@ -34,7 +36,7 @@ PacifidlogTown_House5_EventScript_Gentleman_1:
 PacifidlogTown_House5_EventScript_Gentleman_2:
 	msgbox PacifidlogTown_House5_EventScript_Gentleman_Text_0
 	delay 8
-	setflag FLAG_RECEIVED_TM_PSYSHOCK
+	giveitem ITEM_TM_PSYSHOCK
 	goto PacifidlogTown_House5_EventScript_Gentleman_1
 
 

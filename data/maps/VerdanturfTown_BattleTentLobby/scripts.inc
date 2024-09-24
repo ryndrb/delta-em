@@ -222,20 +222,20 @@ VerdanturfTown_BattleTentLobby_Movement_PlayerEnterDoor:
 	set_invisible
 	step_end
 
-VerdanturfTown_BattleTentLobby_EventScript_AttractGiver::
+VerdanturfTown_BattleTentLobby_EventScript_DrainingKissGiver::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_TM_ATTRACT, VerdanturfTown_BattleTentLobby_EventScript_ReceivedAttract
-	msgbox VerdanturfTown_BattleTentLobby_Text_AttractionRunsDeep, MSGBOX_DEFAULT
-	giveitem ITEM_TM_ATTRACT
+	goto_if_set FLAG_RECEIVED_TM_DRAINING_KISS, VerdanturfTown_BattleTentLobby_EventScript_ReceivedDrainingKiss
+	msgbox VerdanturfTown_BattleTentLobby_Text_DrainingRunsDeep, MSGBOX_DEFAULT
+	giveitem ITEM_TM_DRAINING_KISS
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_TM_ATTRACT
-	msgbox VerdanturfTown_BattleTentLobby_Text_AttractionMutual, MSGBOX_DEFAULT
+	setflag FLAG_RECEIVED_TM_DRAINING_KISS
+	msgbox VerdanturfTown_BattleTentLobby_Text_EveryDrain, MSGBOX_DEFAULT
 	release
 	end
 
-VerdanturfTown_BattleTentLobby_EventScript_ReceivedAttract::
-	msgbox VerdanturfTown_BattleTentLobby_Text_AttractionMutual, MSGBOX_DEFAULT
+VerdanturfTown_BattleTentLobby_EventScript_ReceivedDrainingKiss::
+	msgbox VerdanturfTown_BattleTentLobby_Text_EveryDrain, MSGBOX_DEFAULT
 	release
 	end
 
@@ -346,19 +346,11 @@ VerdanturfTown_BattleTentLobby_Text_GentleMonsScaryIfAngry:
 	.string "I bet a gentle Pokémon will be scary\n"
 	.string "if it gets angry!$"
 
-VerdanturfTown_BattleTentLobby_Text_AttractionRunsDeep:
-	.string "My feelings toward my Pokémon…\n"
-	.string "The attraction runs deep…\p"
-	.string "Oh, hi, you didn't see that, did you?\n"
-	.string "Well, it doesn't matter.\p"
-	.string "How would you like this TM for\n"
-	.string "your Pokémon?$"
+VerdanturfTown_BattleTentLobby_Text_DrainingRunsDeep:
+	.string "My connection with my Pokémon…\nIt's like a kiss the drains the soul…\pOh, hi there.\nYou didn't see that, right?\lIt's our little secret.\pHow about I share this TM with you?\nYou Pokémon might like it… too much.$"
 
-VerdanturfTown_BattleTentLobby_Text_AttractionMutual:
-	.string "My feelings toward my Pokémon…\n"
-	.string "I'm sure the attraction is mutual!\p"
-	.string "They battle exactly the way I want\n"
-	.string "them to!$"
+VerdanturfTown_BattleTentLobby_Text_EveryDrain:
+	.string "My bond with my Pokémon…\nI know they feel it too… every kiss.\pThey fight with a passion that drains\nme completely. It's… perfect!$"
 
 VerdanturfTown_BattleTentLobby_Text_TaughtWhatKindsOfMoves:
 	.string "What kind of moves have you taught\n"

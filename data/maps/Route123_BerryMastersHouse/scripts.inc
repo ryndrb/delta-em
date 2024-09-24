@@ -129,9 +129,51 @@ Route123_BerryMastersHouse_EventScript_GaveBerry::
 	end
 
 Route123_BerryMastersHouse_EventScript_Man::
-	msgbox Route123_BerryMastersHouse_EventScript_Man_Text_0
+	msgbox Route123_BerryMastersHouse_EventScript_Man_Text_0, MSGBOX_NPC
+	end
+
+
+Route123_BerryMastersHouse_EventScript_PlayRoughTM::
+	lock
+	faceplayer
+	checkitem ITEM_TM_PLAY_ROUGH, 1
+	compare VAR_RESULT, 1
+	goto_if_eq Route123_BerryMastersHouse_EventScript_PlayRoughTM_2
+	msgbox Route123_BerryMastersHouse_EventScript_PlayRoughTM_Text_0, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq Route123_BerryMastersHouse_EventScript_PlayRoughTM_4
+	msgbox Route123_BerryMastersHouse_EventScript_PlayRoughTM_Text_2
+	delay 8
+	giveitem ITEM_TM_PLAY_ROUGH
+	msgbox Route123_BerryMastersHouse_Text_HavePlayRough
+	closemessage
+	release
+	end
+
+Route123_BerryMastersHouse_EventScript_PlayRoughTM_2:
+	msgbox Route123_BerryMastersHouse_Text_HavePlayRough
+	closemessage
+	release
+	end
+
+Route123_BerryMastersHouse_EventScript_PlayRoughTM_4:
+	msgbox Route123_BerryMastersHouse_EventScript_PlayRoughTM_Text_1
+	closemessage
+	release
 	end
 
 
 Route123_BerryMastersHouse_EventScript_Man_Text_0:
 	.string "Do you know Gracidea?\pIn the Sinnoh region, people give\nyou a bouquet of Gracidea to convey\ltheir gratitude!\pIt's very old custom!$"
+
+Route123_BerryMastersHouse_EventScript_PlayRoughTM_Text_0:
+	.string "Well, well, what do we have here?\pYou've got a certain spark about you…\nI bet you know how to handle yourself\lin battle.\pHow about I give you something to\nreally get your hands dirty…?$"
+
+Route123_BerryMastersHouse_EventScript_PlayRoughTM_Text_1:
+	.string "Oh, playing it safe, huh?\pDon't be shy--it's all in good fun!$"
+
+Route123_BerryMastersHouse_EventScript_PlayRoughTM_Text_2:
+	.string "That's the spirit! I knew you'd be up\nfor a little mischief.$"
+
+Route123_BerryMastersHouse_Text_HavePlayRough::
+	.string "TM Play Rough!\nOooh, don't let the name fool you…\pThis move's all about getting up close\nand personal…\pJust make sure your Pokémon don't get\ncarried away when they use it.\pHave fun, but keep it… under control,\nalright?$"

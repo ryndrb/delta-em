@@ -1,1 +1,68 @@
 mapscripts Verdanturf_Meadow_MapScripts {}
+
+// PETA-like
+script Verdanturf_Meadow_EventScript_GiveAudino {
+    lock
+    faceplayer
+    if(flag(FLAG_RECEIVED_AUDINO) == FALSE) {
+        msgbox("Do you know the Pokémon Audino?\pI'm giving them away to promote Audino\nwelfare!\pSOME Trainers--MONSTERS, really--use\nAudino as punching bags!\p…just to make their teams grow\nfaster.\pTHIS is NOT OKAY!\pTell me, Trainer… are YOU one of those\nSAVAGES?", MSGBOX_YESNO)
+        if (var(VAR_RESULT) == YES) {
+            msgbox("That's HORRIBLE!\pYou're HORRIBLE!\pHow could you treat an Audino--or ANY\nPokémon--like that?\pYou're what's wrong with this world!\pYou don't deserve to raise Pokémon if\nthat's how you see them!")
+            closemessage
+            release
+            end
+        }else{
+            msgbox("Ah, that's a relief… Not all Trainers are\ncruel, heartless monsters!\pAudino may not be the strongest in\nbattle, but it deserve KINDNESS\land RESPECT like any other Pokémon.\pHere, take good CARE of this one!")
+            delay(8)
+            givemon(SPECIES_AUDINO, 25, ITEM_LUCKY_EGG, ITEM_POKE_BALL, NATURE_CAREFUL, 1, FEMALE, 0, 0, 0, 0, 0, 0, 31, 15, 31, 15, 15, 31)
+            if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
+                call(Verdanturf_Meadow_EventScript_ReceivedAudinoFanfare)
+                msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
+                if (var(VAR_RESULT) == NO) {
+                    goto(Verdanturf_Meadow_EventScript_TakeCareOfAudino)
+                }else{
+                    call(Common_EventScript_GetGiftMonPartySlot)
+                    call(Common_EventScript_NameReceivedPartyMon)
+                    goto(Verdanturf_Meadow_EventScript_TakeCareOfAudino)
+                }
+            }elif (var(VAR_RESULT) == MON_GIVEN_TO_PC) {
+                call(Verdanturf_Meadow_EventScript_ReceivedAudinoFanfare)
+                msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
+                if (var(VAR_RESULT) == NO) {
+                    goto(Verdanturf_Meadow_EventScript_SendAudinoToPC)
+                }else{
+                    call(Common_EventScript_NameReceivedBoxMon)
+                    goto(Verdanturf_Meadow_EventScript_SendAudinoToPC)
+                }
+            }else{
+                goto(Common_EventScript_NoMoreRoomForPokemon)
+            }
+        }
+    }
+    goto(Verdanturf_Meadow_EventScript_TakeCareOfAudino)
+    release
+    end
+}
+
+script Verdanturf_Meadow_EventScript_ReceivedAudinoFanfare {
+    playfanfare(MUS_OBTAIN_ITEM)
+    message("{PLAYER} received an Audino!")
+    waitmessage
+    waitfanfare
+    bufferspeciesname(0, SPECIES_AUDINO)
+    return
+}
+
+script Verdanturf_Meadow_EventScript_SendAudinoToPC {
+    call(Common_EventScript_TransferredToPC)
+    goto(Verdanturf_Meadow_EventScript_TakeCareOfAudino)
+}
+
+script Verdanturf_Meadow_EventScript_TakeCareOfAudino {
+    msgbox("Take good care of Audino!")
+    closemessage
+    setflag(FLAG_RECEIVED_AUDINO)
+    delay(8)
+    release
+    end
+}

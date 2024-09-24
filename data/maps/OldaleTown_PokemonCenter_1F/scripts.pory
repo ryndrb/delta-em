@@ -1,0 +1,420 @@
+raw `
+.set LOCALID_NURSE, 1
+
+OldaleTown_PokemonCenter_1F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, OldaleTown_PokemonCenter_1F_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
+	.byte 0
+
+OldaleTown_PokemonCenter_1F_OnTransition:
+	setrespawn HEAL_LOCATION_OLDALE_TOWN
+	call Common_EventScript_UpdateBrineyLocation
+	end
+
+OldaleTown_PokemonCenter_1F_EventScript_Nurse::
+	setvar VAR_0x800B, LOCALID_NURSE
+	call Common_EventScript_PkmnCenterNurse
+	waitmessage
+	waitbuttonpress
+	release
+	end
+
+OldaleTown_PokemonCenter_1F_EventScript_Gentleman::
+	msgbox OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC, MSGBOX_NPC
+	end
+
+OldaleTown_PokemonCenter_1F_EventScript_Boy::
+	msgbox OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat, MSGBOX_NPC
+	end
+
+OldaleTown_PokemonCenter_1F_EventScript_Girl::
+	lock
+	faceplayer
+	goto_if_set FLAG_SYS_POKEDEX_GET, OldaleTown_PokemonCenter_1F_EventScript_WirelessClubAvailable
+	msgbox OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable, MSGBOX_DEFAULT
+	release
+	end
+
+OldaleTown_PokemonCenter_1F_EventScript_WirelessClubAvailable::
+	msgbox OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub, MSGBOX_DEFAULT
+	release
+	end
+
+OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC:
+	.string "That PC in the corner there is\n"
+	.string "for any Pokémon Trainer to use.\p"
+	.string "Naturally, that means you're welcome\n"
+	.string "to use it, too.$"
+
+OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat:
+	.string "Pokémon Centers are great!\p"
+	.string "You can use their services as much\n"
+	.string "as you like, and it's all for free.\l"
+	.string "You never have to worry!$"
+
+OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable:
+	.string "The Pokémon Wireless Club on\n"
+	.string "the second floor was built recently.\p"
+	.string "But they say they're still making\n"
+	.string "adjustments.$"
+
+OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
+	.string "The Pokémon Wireless Club on\n"
+	.string "the second floor was built recently.\p"
+	.string "I traded Pokémon right away.$"
+
+
+`
+
+script PokemonCenter_1F_OldManUtility {
+    lock
+    if (flag(FLAG_TALKED_TO_MOVE_TUTOR) == FALSE) {
+        msgbox("{COLOR RED}Tutor{COLOR DARK_GRAY}: Eh? Who's there?\pAh, a Trainer! I can teach your Pokémon\nsome special moves… moves they can't\llearn anywhere else, not in my day.\pDon't worry, no charge! But… let's\nsee, you'll only get a few moves to\lstart with…\pHmm, yes, yes.\nEarn more Gym Badges, and I might\lremember some new moves for you.\pHah!\nMy memory ain't what it used to be.\lCome back often!")
+        setflag(FLAG_TALKED_TO_MOVE_TUTOR)
+        closemessage
+        end
+    }
+    if (flag(FLAG_BADGE01_GET) == FALSE) {
+        msgbox("{COLOR RED}Tutor{COLOR DARK_GRAY}: Oh dear… it seems I don't have\nany moves I can teach you right now.\pMaybe once you get a Gym Badge or two,\nI'll remember something…\pYes, yes, come back later!")
+        closemessage
+        release
+        end
+    }
+    msgbox("{COLOR RED}Tutor{COLOR DARK_GRAY}: Which set of moves would you\nlike to choose from?")
+    if (flag(FLAG_BADGE07_GET) == TRUE) {
+        dynmultichoice(0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, 
+            "Badge: Stone", "Badge: Knuckle", "Badge: Dynamo", "Badge: Heat", "Badge: Balance", "Badge: Feather", "Badge: Mind",
+        )
+        switch(var(VAR_RESULT)) {
+            case 0: goto(OldaleTown_PokemonCenter_1F_Tutor_1)
+            case 1: goto(OldaleTown_PokemonCenter_1F_Tutor_2)
+            case 2: goto(OldaleTown_PokemonCenter_1F_Tutor_3)
+            case 3: goto(OldaleTown_PokemonCenter_1F_Tutor_4)
+            case 4: goto(OldaleTown_PokemonCenter_1F_Tutor_5)
+            case 5: goto(OldaleTown_PokemonCenter_1F_Tutor_6)
+            case 6: goto(OldaleTown_PokemonCenter_1F_Tutor_7)
+        }
+    } elif (flag(FLAG_BADGE06_GET) == TRUE) {
+        dynmultichoice(0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, 
+            "Badge: Stone", "Badge: Knuckle", "Badge: Dynamo", "Badge: Heat", "Badge: Balance", "Badge: Feather",
+        )
+        switch(var(VAR_RESULT)) {
+            case 0: goto(OldaleTown_PokemonCenter_1F_Tutor_1)
+            case 1: goto(OldaleTown_PokemonCenter_1F_Tutor_2)
+            case 2: goto(OldaleTown_PokemonCenter_1F_Tutor_3)
+            case 3: goto(OldaleTown_PokemonCenter_1F_Tutor_4)
+            case 4: goto(OldaleTown_PokemonCenter_1F_Tutor_5)
+            case 5: goto(OldaleTown_PokemonCenter_1F_Tutor_6)
+        }
+    } elif (flag(FLAG_BADGE05_GET) == TRUE) {
+        dynmultichoice(0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, 
+            "Badge: Stone", "Badge: Knuckle", "Badge: Dynamo", "Badge: Heat", "Badge: Balance",
+        )
+        switch(var(VAR_RESULT)) {
+            case 0: goto(OldaleTown_PokemonCenter_1F_Tutor_1)
+            case 1: goto(OldaleTown_PokemonCenter_1F_Tutor_2)
+            case 2: goto(OldaleTown_PokemonCenter_1F_Tutor_3)
+            case 3: goto(OldaleTown_PokemonCenter_1F_Tutor_4)
+            case 4: goto(OldaleTown_PokemonCenter_1F_Tutor_5)
+        }
+    } elif (flag(FLAG_BADGE04_GET) == TRUE) {
+        dynmultichoice(0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, 
+            "Badge: Stone", "Badge: Knuckle", "Badge: Dynamo", "Badge: Heat",
+        )
+        switch(var(VAR_RESULT)) {
+            case 0: goto(OldaleTown_PokemonCenter_1F_Tutor_1)
+            case 1: goto(OldaleTown_PokemonCenter_1F_Tutor_2)
+            case 2: goto(OldaleTown_PokemonCenter_1F_Tutor_3)
+            case 3: goto(OldaleTown_PokemonCenter_1F_Tutor_4)
+        }
+    } elif (flag(FLAG_BADGE03_GET) == TRUE) {
+        dynmultichoice(0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, 
+            "Badge: Stone", "Badge: Knuckle", "Badge: Dynamo",
+        )
+        switch(var(VAR_RESULT)) {
+            case 0: goto(OldaleTown_PokemonCenter_1F_Tutor_1)
+            case 1: goto(OldaleTown_PokemonCenter_1F_Tutor_2)
+            case 2: goto(OldaleTown_PokemonCenter_1F_Tutor_3)
+        }
+    } elif (flag(FLAG_BADGE02_GET) == TRUE) {
+        dynmultichoice(0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, 
+            "Badge: Stone", "Badge: Knuckle",
+        )
+        switch(var(VAR_RESULT)) {
+            case 0: goto(OldaleTown_PokemonCenter_1F_Tutor_1)
+            case 1: goto(OldaleTown_PokemonCenter_1F_Tutor_2)
+        }
+    } elif (flag(FLAG_BADGE01_GET) == TRUE) {
+        dynmultichoice(0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, 
+            "Badge: Stone"
+        )
+        switch(var(VAR_RESULT)) {
+            case 0: goto(OldaleTown_PokemonCenter_1F_Tutor_1)
+        }
+    }
+    msgbox("{COLOR RED}Tutor{COLOR DARK_GRAY}: Ah, off you go then!")
+    closemessage
+    release
+    end
+}
+
+script OldaleTown_PokemonCenter_1F_Tutor_1 {
+    msgbox("{COLOR RED}Tutor{COLOR DARK_GRAY}: Hmm… let me see now…\nWhich move do you want again?")
+    dynmultichoice(0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, 
+        "Air Cutter", "Block", "Brutal Swing", "Bug Bite", "Fury Cutter", "Hone Claws", "Infestation", "Helping Hand", "Low Sweep", "Mega Drain",
+        "Metronome", "Ominous Wind", "Psych Up", "Rollout", "Seismic Toss", "Silver Wind", "Spite", "Struggle Bug", "Twister", "Vacuum Wave"
+    )
+    switch(var(VAR_RESULT)) {
+        case 0: setvar(VAR_0x8005, MOVE_AIR_CUTTER)
+        case 1: setvar(VAR_0x8005, MOVE_BLOCK)
+        case 2: setvar(VAR_0x8005, MOVE_BRUTAL_SWING)
+        case 3: setvar(VAR_0x8005, MOVE_BUG_BITE)
+        case 4: setvar(VAR_0x8005, MOVE_FURY_CUTTER)
+        case 5: setvar(VAR_0x8005, MOVE_HONE_CLAWS)
+        case 6: setvar(VAR_0x8005, MOVE_INFESTATION)
+        case 7: setvar(VAR_0x8005, MOVE_HELPING_HAND)
+        case 8: setvar(VAR_0x8005, MOVE_LOW_SWEEP)
+        case 9: setvar(VAR_0x8005, MOVE_MEGA_DRAIN)
+        case 10: setvar(VAR_0x8005, MOVE_METRONOME)
+        case 11: setvar(VAR_0x8005, MOVE_OMINOUS_WIND)
+        case 12: setvar(VAR_0x8005, MOVE_PSYCH_UP)
+        case 13: setvar(VAR_0x8005, MOVE_ROLLOUT)
+        case 14: setvar(VAR_0x8005, MOVE_SEISMIC_TOSS)
+        case 15: setvar(VAR_0x8005, MOVE_SILVER_WIND)
+        case 16: setvar(VAR_0x8005, MOVE_SPITE)
+        case 17: setvar(VAR_0x8005, MOVE_STRUGGLE_BUG)
+        case 18: setvar(VAR_0x8005, MOVE_TWISTER)
+        case 19: setvar(VAR_0x8005, MOVE_VACUUM_WAVE)
+        case 127: goto(PokemonCenter_1F_OldManUtility)
+    }
+    closemessage
+    call(MoveTutor_EventScript_OpenPartyMenu)
+    if (var(VAR_RESULT) == 0) {
+        goto(OldaleTown_PokemonCenter_1F_Tutor_1)
+    }
+    closemessage
+    release
+    end
+}
+script OldaleTown_PokemonCenter_1F_Tutor_2 {
+    msgbox("{COLOR RED}Tutor{COLOR DARK_GRAY}: Hmm… let me see now…\nWhich move do you want again?")
+    dynmultichoice(0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, 
+        "Agility", "Chilling Water", "Defog", "Electroweb", "Gastro Acid", "Incinerate", "Hex", "Iron Defense", "Magic Coat", "Pain Split",
+        "Pluck", "Pounce", "Role Play", "Shock Wave", "Swagger", "Synthesis", "Trailblaze", "Uproar", "Water Pulse", "Worry Seed"
+    )
+    switch(var(VAR_RESULT)) {
+        case 0: setvar(VAR_0x8005, MOVE_AGILITY)
+        case 1: setvar(VAR_0x8005, MOVE_CHILLING_WATER)
+        case 2: setvar(VAR_0x8005, MOVE_DEFOG)
+        case 3: setvar(VAR_0x8005, MOVE_ELECTROWEB)
+        case 4: setvar(VAR_0x8005, MOVE_GASTRO_ACID)
+        case 5: setvar(VAR_0x8005, MOVE_INCINERATE)
+        case 6: setvar(VAR_0x8005, MOVE_HEX)
+        case 7: setvar(VAR_0x8005, MOVE_IRON_DEFENSE)
+        case 8: setvar(VAR_0x8005, MOVE_MAGIC_COAT)
+        case 9: setvar(VAR_0x8005, MOVE_PAIN_SPLIT)
+        case 10: setvar(VAR_0x8005, MOVE_PLUCK)
+        case 11: setvar(VAR_0x8005, MOVE_POUNCE)
+        case 12: setvar(VAR_0x8005, MOVE_ROLE_PLAY)
+        case 13: setvar(VAR_0x8005, MOVE_SHOCK_WAVE)
+        case 14: setvar(VAR_0x8005, MOVE_SWAGGER)
+        case 15: setvar(VAR_0x8005, MOVE_SYNTHESIS)
+        case 16: setvar(VAR_0x8005, MOVE_TRAILBLAZE)
+        case 17: setvar(VAR_0x8005, MOVE_UPROAR)
+        case 18: setvar(VAR_0x8005, MOVE_WATER_PULSE)
+        case 19: setvar(VAR_0x8005, MOVE_WORRY_SEED)
+        case 127: goto(PokemonCenter_1F_OldManUtility)
+    }
+    call(MoveTutor_EventScript_OpenPartyMenu)
+    if (var(VAR_RESULT) == 0) {
+        goto(OldaleTown_PokemonCenter_1F_Tutor_2)
+    }
+    closemessage
+    release
+    end
+}
+script OldaleTown_PokemonCenter_1F_Tutor_3 {
+    msgbox("{COLOR RED}Tutor{COLOR DARK_GRAY}: Hmm… let me see now…\nWhich move do you want again?")
+    dynmultichoice(0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, 
+        "Acid Spray", "Aurora Beam", "Breaking Swipe", "Brine", "Confide", "Disable", "Fire Fang", "Gravity", "Ice Fang", "Lash Out",
+        "Magnet Rise", "Recycle", "Revenge", "Rock Blast", "Signal Beam", "Smart Strike", "Soft Boiled", "Thunder Fang", "Trick", "Wake Up Slap"
+    )
+    switch(var(VAR_RESULT)) {
+        case 0: setvar(VAR_0x8005, MOVE_ACID_SPRAY)
+        case 1: setvar(VAR_0x8005, MOVE_AURORA_BEAM)
+        case 2: setvar(VAR_0x8005, MOVE_BREAKING_SWIPE)
+        case 3: setvar(VAR_0x8005, MOVE_BRINE)
+        case 4: setvar(VAR_0x8005, MOVE_CONFIDE)
+        case 5: setvar(VAR_0x8005, MOVE_DISABLE)
+        case 6: setvar(VAR_0x8005, MOVE_FIRE_FANG)
+        case 7: setvar(VAR_0x8005, MOVE_GRAVITY)
+        case 8: setvar(VAR_0x8005, MOVE_ICE_FANG)
+        case 9: setvar(VAR_0x8005, MOVE_LASH_OUT)
+        case 10: setvar(VAR_0x8005, MOVE_MAGNET_RISE)
+        case 11: setvar(VAR_0x8005, MOVE_RECYCLE)
+        case 12: setvar(VAR_0x8005, MOVE_REVENGE)
+        case 13: setvar(VAR_0x8005, MOVE_ROCK_BLAST)
+        case 14: setvar(VAR_0x8005, MOVE_SIGNAL_BEAM)
+        case 15: setvar(VAR_0x8005, MOVE_SMART_STRIKE)
+        case 16: setvar(VAR_0x8005, MOVE_SOFT_BOILED)
+        case 17: setvar(VAR_0x8005, MOVE_THUNDER_FANG)
+        case 18: setvar(VAR_0x8005, MOVE_TRICK)
+        case 19: setvar(VAR_0x8005, MOVE_WAKE_UP_SLAP)
+        case 127: goto(PokemonCenter_1F_OldManUtility)
+    }
+    call(MoveTutor_EventScript_OpenPartyMenu)
+    if (var(VAR_RESULT) == 0) {
+        goto(OldaleTown_PokemonCenter_1F_Tutor_3)
+    }
+    closemessage
+    release
+    end
+}
+script OldaleTown_PokemonCenter_1F_Tutor_4 {
+    msgbox("{COLOR RED}Tutor{COLOR DARK_GRAY}: Hmm… let me see now…\nWhich move do you want again?")
+    dynmultichoice(0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, 
+        "Blaze Kick", "Body Slam", "Charm", "Cross Poison", "Curse", "Drill Run", "Eerie Impulse", "Endeavor", "Fire Punch", "Heal Bell",
+        "Ice Punch", "Leaf Blade", "Psycho Cut", "Razor Shell", "Skitter Smack", "Tailwind", "Tri Attack", "Thunder Punch", "Weather Ball", "Zen Headbutt"
+    )
+    switch(var(VAR_RESULT)) {
+        case 0: setvar(VAR_0x8005, MOVE_BLAZE_KICK)
+        case 1: setvar(VAR_0x8005, MOVE_BODY_SLAM)
+        case 2: setvar(VAR_0x8005, MOVE_CHARM)
+        case 3: setvar(VAR_0x8005, MOVE_CROSS_POISON)
+        case 4: setvar(VAR_0x8005, MOVE_CURSE)
+        case 5: setvar(VAR_0x8005, MOVE_DRILL_RUN)
+        case 6: setvar(VAR_0x8005, MOVE_EERIE_IMPULSE)
+        case 7: setvar(VAR_0x8005, MOVE_ENDEAVOR)
+        case 8: setvar(VAR_0x8005, MOVE_FIRE_PUNCH)
+        case 9: setvar(VAR_0x8005, MOVE_HEAL_BELL)
+        case 10: setvar(VAR_0x8005, MOVE_ICE_PUNCH)
+        case 11: setvar(VAR_0x8005, MOVE_LEAF_BLADE)
+        case 12: setvar(VAR_0x8005, MOVE_PSYCHO_CUT)
+        case 13: setvar(VAR_0x8005, MOVE_RAZOR_SHELL)
+        case 14: setvar(VAR_0x8005, MOVE_SKITTER_SMACK)
+        case 15: setvar(VAR_0x8005, MOVE_TAILWIND)
+        case 16: setvar(VAR_0x8005, MOVE_TRI_ATTACK)
+        case 17: setvar(VAR_0x8005, MOVE_THUNDER_PUNCH)
+        case 18: setvar(VAR_0x8005, MOVE_WEATHER_BALL)
+        case 19: setvar(VAR_0x8005, MOVE_ZEN_HEADBUTT)
+        case 127: goto(PokemonCenter_1F_OldManUtility)
+    }
+    call(MoveTutor_EventScript_OpenPartyMenu)
+    if (var(VAR_RESULT) == 0) {
+        goto(OldaleTown_PokemonCenter_1F_Tutor_4)
+    }
+    closemessage
+    release
+    end
+}
+script OldaleTown_PokemonCenter_1F_Tutor_5 {
+    msgbox("{COLOR RED}Tutor{COLOR DARK_GRAY}: Hmm… let me see now…\nWhich move do you want again?")
+    dynmultichoice(0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, 
+        "Amnesia", "Aqua Tail", "Bounce", "Bug Buzz", "Crunch", "Double Edge", "Dual Chop", "Dynamic Punch", "Electric Terrain", "Grassy Terrain",
+        "Haze", "Misty Terrain", "Muddy Water", "Mystical Fire", "Power Gem", "Psychic Fangs", "Psychic Terrain", "Scorching Sands", "Stored Power", "Teleport"
+    )
+    switch(var(VAR_RESULT)) {
+        case 0: setvar(VAR_0x8005, MOVE_AMNESIA)
+        case 1: setvar(VAR_0x8005, MOVE_AQUA_TAIL)
+        case 2: setvar(VAR_0x8005, MOVE_BOUNCE)
+        case 3: setvar(VAR_0x8005, MOVE_BUG_BUZZ)
+        case 4: setvar(VAR_0x8005, MOVE_CRUNCH)
+        case 5: setvar(VAR_0x8005, MOVE_DOUBLE_EDGE)
+        case 6: setvar(VAR_0x8005, MOVE_DUAL_CHOP)
+        case 7: setvar(VAR_0x8005, MOVE_DYNAMIC_PUNCH)
+        case 8: setvar(VAR_0x8005, MOVE_ELECTRIC_TERRAIN)
+        case 9: setvar(VAR_0x8005, MOVE_GRASSY_TERRAIN)
+        case 10: setvar(VAR_0x8005, MOVE_HAZE)
+        case 11: setvar(VAR_0x8005, MOVE_MISTY_TERRAIN)
+        case 12: setvar(VAR_0x8005, MOVE_MUDDY_WATER)
+        case 13: setvar(VAR_0x8005, MOVE_MYSTICAL_FIRE)
+        case 14: setvar(VAR_0x8005, MOVE_POWER_GEM)
+        case 15: setvar(VAR_0x8005, MOVE_PSYCHIC_FANGS)
+        case 16: setvar(VAR_0x8005, MOVE_PSYCHIC_TERRAIN)
+        case 17: setvar(VAR_0x8005, MOVE_SCORCHING_SANDS)
+        case 18: setvar(VAR_0x8005, MOVE_STORED_POWER)
+        case 19: setvar(VAR_0x8005, MOVE_TELEPORT)
+        case 127: goto(PokemonCenter_1F_OldManUtility)
+    }
+    call(MoveTutor_EventScript_OpenPartyMenu)
+    if (var(VAR_RESULT) == 0) {
+        goto(OldaleTown_PokemonCenter_1F_Tutor_5)
+    }
+    closemessage
+    release
+    end
+}
+script OldaleTown_PokemonCenter_1F_Tutor_6 {
+    msgbox("{COLOR RED}Tutor{COLOR DARK_GRAY}: Hmm… let me see now…\nWhich move do you want again?")
+    dynmultichoice(0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, 
+        "Ancient Power", "Baton Pass", "Encore", "Fire Pledge", "Foul Play", "Grass Pledge", "Heal Block", "Megahorn", "Meteor Mash", "Moonblast",
+        "Phantom Force", "Pollen Puff", "Snatch", "Solar Blade", "Spikes", "Sucker Punch", "Super Fang", "Throat Chop", "Toxic Spikes", "Water Pledge"
+    )
+    switch(var(VAR_RESULT)) {
+        case 0: setvar(VAR_0x8005, MOVE_ANCIENT_POWER)
+        case 1: setvar(VAR_0x8005, MOVE_BATON_PASS)
+        case 2: setvar(VAR_0x8005, MOVE_ENCORE)
+        case 3: setvar(VAR_0x8005, MOVE_FIRE_PLEDGE)
+        case 4: setvar(VAR_0x8005, MOVE_FOUL_PLAY)
+        case 5: setvar(VAR_0x8005, MOVE_GRASS_PLEDGE)
+        case 6: setvar(VAR_0x8005, MOVE_HEAL_BLOCK)
+        case 7: setvar(VAR_0x8005, MOVE_MEGAHORN)
+        case 8: setvar(VAR_0x8005, MOVE_METEOR_MASH)
+        case 9: setvar(VAR_0x8005, MOVE_MOONBLAST)
+        case 10: setvar(VAR_0x8005, MOVE_PHANTOM_FORCE)
+        case 11: setvar(VAR_0x8005, MOVE_POLLEN_PUFF)
+        case 12: setvar(VAR_0x8005, MOVE_SNATCH)
+        case 13: setvar(VAR_0x8005, MOVE_SOLAR_BLADE)
+        case 14: setvar(VAR_0x8005, MOVE_SPIKES)
+        case 15: setvar(VAR_0x8005, MOVE_SUCKER_PUNCH)
+        case 16: setvar(VAR_0x8005, MOVE_SUPER_FANG)
+        case 17: setvar(VAR_0x8005, MOVE_THROAT_CHOP)
+        case 18: setvar(VAR_0x8005, MOVE_TOXIC_SPIKES)
+        case 19: setvar(VAR_0x8005, MOVE_WATER_PLEDGE)
+        case 127: goto(PokemonCenter_1F_OldManUtility)
+    }
+    call(MoveTutor_EventScript_OpenPartyMenu)
+    if (var(VAR_RESULT) == 0) {
+        goto(OldaleTown_PokemonCenter_1F_Tutor_6)
+    }
+    closemessage
+    release
+    end
+}
+script OldaleTown_PokemonCenter_1F_Tutor_7 {
+    msgbox("{COLOR RED}Tutor{COLOR DARK_GRAY}: Hmm… let me see now…\nWhich move do you want again?")
+    dynmultichoice(0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, 
+        "Aurora Veil", "Brave Bird", "Dragon Dance", "Double-Edge", "Flare Blitz", "Focus Punch", "Heat Crash", "Heavy Slam", "Leaf Storm", "Meteor Beam",
+        "Nasty Plot", "Outrage", "Poltergeist", "Power Whip", "Quiver Dance", "Self Destruct", "Sky Attack", "Superpower", "Triple Axel", "Wave Crash"
+    )
+    switch(var(VAR_RESULT)) {
+        case 0: setvar(VAR_0x8005, MOVE_AURORA_VEIL)
+        case 1: setvar(VAR_0x8005, MOVE_BRAVE_BIRD)
+        case 2: setvar(VAR_0x8005, MOVE_DRAGON_DANCE)
+        case 3: setvar(VAR_0x8005, MOVE_FLARE_BLITZ)
+        case 4: setvar(VAR_0x8005, MOVE_FOCUS_PUNCH)
+        case 5: setvar(VAR_0x8005, MOVE_HEAT_CRASH)
+        case 6: setvar(VAR_0x8005, MOVE_HEAVY_SLAM)
+        case 7: setvar(VAR_0x8005, MOVE_LAST_RESORT)
+        case 8: setvar(VAR_0x8005, MOVE_LEAF_STORM)
+        case 9: setvar(VAR_0x8005, MOVE_METEOR_BEAM)
+        case 10: setvar(VAR_0x8005, MOVE_NASTY_PLOT)
+        case 11: setvar(VAR_0x8005, MOVE_OUTRAGE)
+        case 12: setvar(VAR_0x8005, MOVE_POLTERGEIST)
+        case 13: setvar(VAR_0x8005, MOVE_POWER_WHIP)
+        case 14: setvar(VAR_0x8005, MOVE_QUIVER_DANCE)
+        case 15: setvar(VAR_0x8005, MOVE_SELF_DESTRUCT)
+        case 16: setvar(VAR_0x8005, MOVE_SKY_ATTACK)
+        case 17: setvar(VAR_0x8005, MOVE_SUPERPOWER)
+        case 18: setvar(VAR_0x8005, MOVE_TRIPLE_AXEL)
+        case 19: setvar(VAR_0x8005, MOVE_WAVE_CRASH)
+        case 127: goto(PokemonCenter_1F_OldManUtility)
+    }
+    call(MoveTutor_EventScript_OpenPartyMenu)
+    if (var(VAR_RESULT) == 0) {
+        goto(OldaleTown_PokemonCenter_1F_Tutor_7)
+    }
+    closemessage
+    release
+    end
+}

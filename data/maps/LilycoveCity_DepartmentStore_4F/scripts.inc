@@ -18,17 +18,22 @@ LilycoveCity_DepartmentStore_4F_EventScript_ClerkLeft::
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
-	pokemart LilycoveCity_DepartmentStore_4F_Pokemart_AttackTMs
+	pokemart LilycoveCity_DepartmentStore_4F_Pokemart_TMs
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end
 
 	.align 2
-LilycoveCity_DepartmentStore_4F_Pokemart_AttackTMs:
-	.2byte ITEM_TM_FIRE_BLAST
-	.2byte ITEM_TM_THUNDER
-	.2byte ITEM_TM_BLIZZARD
-	.2byte ITEM_TM_HYPER_BEAM
+LilycoveCity_DepartmentStore_4F_Pokemart_TMs:
+	.2byte ITEM_TM_BLIZZARD // 30 000
+	.2byte ITEM_TM_HYDRO_PUMP // 30 000
+	.2byte ITEM_TM_THUNDER // 30 000
+	.2byte ITEM_TM_FIRE_BLAST // 30 000
+	.2byte ITEM_TM_HURRICANE // 30 000
+	.2byte ITEM_TM_FOCUS_BLAST // 30 000
+	.2byte ITEM_TM_STEEL_BEAM // 30 000
+	.2byte ITEM_TM_GUNK_SHOT // 30 000
+	.2byte ITEM_TM_STONE_EDGE // 30 000
 	.2byte ITEM_NONE
 	release
 	end
@@ -46,7 +51,6 @@ LilycoveCity_DepartmentStore_4F_EventScript_ClerkRight::
 	.align 2
 LilycoveCity_DepartmentStore_4F_Pokemart_DefenseTMs:
 	.2byte ITEM_TM_PROTECT
-	.2byte ITEM_TM_SAFEGUARD
 	.2byte ITEM_TM_REFLECT
 	.2byte ITEM_TM_LIGHT_SCREEN
 	.2byte ITEM_NONE
@@ -55,15 +59,13 @@ LilycoveCity_DepartmentStore_4F_Pokemart_DefenseTMs:
 
 LilycoveCity_DepartmentStore_4F_Text_AttackOrDefenseTM:
 	.string "Hmm…\p"
-	.string "An attacking move…\n"
-	.string "Or a defensive move…\p"
 	.string "It's no easy matter to decide which TM\n"
 	.string "moves should be taught to Pokémon…$"
 
 LilycoveCity_DepartmentStore_4F_Text_FiftyDifferentTMs:
 	.string "There are so many different kinds of\n"
 	.string "TM moves.\p"
-	.string "A catalog I read said there are fifty\n"
+	.string "A catalog I read said there are 100\n"
 	.string "different kinds.$"
 
 LilycoveCity_DepartmentStore_4F_Text_PokemonOnlyHaveFourMoves:

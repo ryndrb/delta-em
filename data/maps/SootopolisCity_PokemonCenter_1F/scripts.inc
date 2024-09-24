@@ -70,3 +70,12 @@ SootopolisCity_PokemonCenter_1F_Text_ArentPokemonOurFriends:
 	.string "Aren't Pokémon our friends?\p"
 	.string "Why are they going wild this way?$"
 
+SootopolisCity_PokemonCenter_1F_EventScript_DoubleEdgeWoman::
+	msgbox SootopolisCity_PokemonCenter_1F_EventScript_DoubleEdgeWoman_Text_0
+	closemessage
+	release
+	end
+
+
+SootopolisCity_PokemonCenter_1F_EventScript_DoubleEdgeWoman_Text_0:
+	.string "Sigh…\pSootopolis's Gym Leader is really\nlovably admirable.\pBut that also means I have many\nrivals for his attention.\pI couldn't even catch his eye…$"

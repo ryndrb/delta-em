@@ -48,3 +48,27 @@ PacifidlogTown_PokemonCenter_1F_Text_AncestorsLivedOnBoats:
 	.string "because they were searching for\l"
 	.string "something.$"
 
+PacifidlogTown_PokemonCenter_1F_EventScript_TMExplosion::
+	lock
+	faceplayer
+	checkitem ITEM_TM_EXPLOSION, 1
+	compare VAR_RESULT, 0
+	goto_if_eq PacifidlogTown_PokemonCenter_1F_EventScript_TMExplosion_2
+PacifidlogTown_PokemonCenter_1F_EventScript_TMExplosion_1:
+	msgbox PacifidlogTown_PokemonCenter_1F_EventScript_TMExplosion_Text_1
+	closemessage
+	release
+	end
+
+PacifidlogTown_PokemonCenter_1F_EventScript_TMExplosion_2:
+	msgbox PacifidlogTown_PokemonCenter_1F_EventScript_TMExplosion_Text_0
+	delay 8
+	giveitem ITEM_TM_EXPLOSION
+	goto PacifidlogTown_PokemonCenter_1F_EventScript_TMExplosion_1
+
+
+PacifidlogTown_PokemonCenter_1F_EventScript_TMExplosion_Text_0:
+	.string "I don't intend to be going nowhere fast\nin the sticks like this forever.\pYou watch me, I'll get out to the city\nand become a huge hit.\pSeriously, I'm going to cause a huge\nexplosion of popularity!\p… … … … … …\n… … … … … …\l… … … … … …\pIf you overheard that, I'll happily give\nyou this TM.$"
+
+PacifidlogTown_PokemonCenter_1F_EventScript_TMExplosion_Text_1:
+	.string "For a long time, I've taught Pokémon\nhow to use Explosion, but I have yet\lto ignite my own explosion…\pMaybe it's because deep down, I would\nrather stay here…$"

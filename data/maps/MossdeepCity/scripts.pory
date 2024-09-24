@@ -415,3 +415,78 @@ MossdeepCity_Text_SootopolisNewGymLeader:
 
 
 `
+
+script MossdeepCity_EventScript_DynamicPunchBlackBelt {
+	msgbox("I can't do this anymore!\pIt's utterly hopeless!\pI'm a Fighting-type Trainer, so I\ncan't win at the Mossdeep Gym no\lmatter how hard I try!\pArgh! Punch! Punch! Punch!\nPunch! Punch! Punch!\pWhat, don't look at me that way!\nI'm only hitting the ground!")
+	closemessage
+	release
+	end
+}
+
+const LOCALID_EF_GUY = 18
+script MossdeepCity_EventScript_TMExpandingForce {
+	lock
+	delay(8)
+	faceplayer
+	checkitem(ITEM_TM_EXPANDING_FORCE, 1)
+    if (var(VAR_RESULT) == 0) {
+        msgbox("Ahh… y-you feel it too, don't you?\pYes, yes… the tremors… the whispers!\pWhispers from beyond… THE STARS!\pThey're always calling--calling to\nthose who can hear!\pCan you hear them!? The cosmos… IT\nCALLS!")
+		closemessage
+		delay(8)
+		applymovement(LOCALID_EF_GUY, Common_Movement_WalkInPlaceDown)
+		waitmovement(LOCALID_EF_GUY)
+		delay(8)
+		msgbox("Ke ke ke…\pKE KE… KE!\pThe force--it's expanding!\nIt's growing!\pIt will consume EVERYTHING!\nEverything in its path… Ha ha!\pCan you see it? Can you FEEL it!?")
+		closemessage
+		applymovement(LOCALID_EF_GUY, Common_Movement_WalkInPlaceLeft)
+		applymovement(LOCALID_EF_GUY, Common_Movement_ExclamationMark)
+		waitmovement(LOCALID_EF_GUY)
+		message("Hah!\pAnd you--you seek to control it, don't\nyou?\pYes… YES! You're not like the others…\pYou SEE, don't you!?\nYOU SEE EVERYTHING!")
+		closemessage
+		delay(16)
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark)
+		waitmovement(OBJ_EVENT_ID_PLAYER)
+		delay(8)
+        giveitem(ITEM_TM_EXPANDING_FORCE)
+		msgbox("Take it…!\pExpanding Force… A power… A force\nthat bends the universe!\pBEND IT TO YOUR WILL!\pBut beware… Oh, beware…\nEvery time you use it…\lYOU GET CLOSER!\lCloser to the whispers…\p…to the void… TO THE TRUTH THEY\nHIDE!\pHA HA HA!")
+		closemessage
+    }
+	applymovement(LOCALID_EF_GUY, MossdeepCity_Movement_EFGuy_1)
+	applymovement(OBJ_EVENT_ID_PLAYER, MossdeepCity_Movement_Player_1)
+	waitmovement(LOCALID_EF_GUY)
+	msgbox("Ke ke ke...")
+	closemessage
+	applymovement(LOCALID_EF_GUY, MossdeepCity_Movement_EFGuy_2)
+	waitmovement(LOCALID_EF_GUY)
+	removeobject(LOCALID_EF_GUY)
+	setflag(FLAG_HIDE_MOSSDEEP_CITY_EF_GUY)
+    release
+    end
+}
+
+movement MossdeepCity_Movement_EFGuy_1 {
+	jump_in_place_left
+	delay_16
+	walk_fast_left
+	walk_fast_up * 2
+	walk_fast_left * 2
+	walk_in_place_down
+}
+
+movement MossdeepCity_Movement_EFGuy_2 {
+	walk_in_place_left
+	walk_in_place_down
+	walk_in_place_up
+	walk_in_place_right
+	delay_8
+	jump_in_place_right * 2
+	walk_fast_left * 7
+}
+
+movement MossdeepCity_Movement_Player_1 {
+	lock_facing_direction
+	delay_16 * 2
+	walk_fast_left
+	unlock_facing_direction
+	walk_in_place_up
+}

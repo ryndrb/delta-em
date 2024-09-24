@@ -189,8 +189,7 @@ script FallarborTown_CozmosHouse_EventScript_CozmosReturn {
 	waitmovement(LOCALID_RIVAL)
 	msgbox("{COLOR RED}Cozmo{COLOR DARK_GRAY}: But I need to thank you, as well.\nYou truly saved me from disaster.\pI hope you take this TM as some small\nform of repayment.")
 	delay(8)
-	//giveitem(ITEM_TM_SMACK_DOWN, 1) // once implemented
-	setflag(FLAG_RECEIVED_TM_RETURN)
+	giveitem(ITEM_TM_ROCK_SLIDE, 1)
 	delay(16)
 	checkplayergender
     if(var(VAR_RESULT) == MALE){

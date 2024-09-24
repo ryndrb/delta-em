@@ -133,6 +133,37 @@ Route123_BerryMastersHouse_EventScript_GaveBerry::
 `
 
 script Route123_BerryMastersHouse_EventScript_Man {
-    msgbox("Do you know Gracidea?\pIn the Sinnoh region, people give\nyou a bouquet of Gracidea to convey\ltheir gratitude!\pIt's very old custom!". MSGBOX_NPC)
+    msgbox("Do you know Gracidea?\pIn the Sinnoh region, people give\nyou a bouquet of Gracidea to convey\ltheir gratitude!\pIt's very old custom!", MSGBOX_NPC)
     end
+}
+
+script Route123_BerryMastersHouse_EventScript_PlayRoughTM {
+    lock
+    faceplayer
+    checkitem(ITEM_TM_PLAY_ROUGH, 1)
+    if(var(VAR_RESULT) == 1){
+        msgbox(Route123_BerryMastersHouse_Text_HavePlayRough)
+        closemessage
+        release
+        end
+    }
+	msgbox("Well, well, what do we have here?\pYou've got a certain spark about you…\nI bet you know how to handle yourself\lin battle.\pHow about I give you something to\nreally get your hands dirty…?", MSGBOX_YESNO)
+	if(var(VAR_RESULT) == NO){
+		msgbox("Oh, playing it safe, huh?\pDon't be shy--it's all in good fun!")
+		closemessage
+		release
+		end
+	}else{
+		msgbox("That's the spirit! I knew you'd be up\nfor a little mischief.")
+		delay(8)
+		giveitem(ITEM_TM_PLAY_ROUGH)
+		msgbox(Route123_BerryMastersHouse_Text_HavePlayRough)
+		closemessage
+		release
+		end
+	}
+}
+
+text Route123_BerryMastersHouse_Text_HavePlayRough {
+    "TM Play Rough!\nOooh, don't let the name fool you…\pThis move's all about getting up close\nand personal…\pJust make sure your Pokémon don't get\ncarried away when they use it.\pHave fun, but keep it… under control,\nalright?"
 }

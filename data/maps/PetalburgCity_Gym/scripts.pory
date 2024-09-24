@@ -328,10 +328,10 @@ PetalburgCity_Gym_EventScript_NormanIntroTextF::
 	return
 
 PetalburgCity_Gym_EventScript_GiveFacade::
-	giveitem ITEM_TM42 @ will be replaced by TM Retaliate
+	giveitem ITEM_TM_FACADE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-	setflag ITEM_TM_FACADE @ will be replaced by Flag Retaliate
-	msgbox PetalburgCity_Gym_Text_ExplainRetaliate, MSGBOX_DEFAULT
+	setflag FLAG_RECEIVED_TM_FACADE
+	msgbox PetalburgCity_Gym_Text_ExplainFacade, MSGBOX_DEFAULT
 	closemessage
 	return
 
@@ -895,8 +895,8 @@ PetalburgCity_Gym_Text_ReceivedBalanceBadge:
 PetalburgCity_Gym_Text_ExplainBalanceBadgeTakeThis:
 	.string "Having that Badge will ensure that\nPokémon up to Lv. 60 will obey you,\leven if you received them in trades.\pPokémon that know the HM move Surf will\nalso be able to travel over water now.\pAnd this is my gift to you, {PLAYER}.\nI'm sure you'll be able to use it well.$"
 
-PetalburgCity_Gym_Text_ExplainRetaliate:
-	.string "Retaliate will allow you to take\nrevenge for a fallen team member.\pIts power will be doubled if you have a\nPokémon use it in the very next move\lright after an ally faints.\pI hope you and your Pokémon will be\ndiligent enough to use it wisely.$"
+PetalburgCity_Gym_Text_ExplainFacade:
+	.string "Facade doubles the power of\nmoves if the Pokémon is poisoned,\lparalyzed, or burned.\pIt might be able to turn a\nbad situation into an advantage.$"
 
 PetalburgCity_Gym_Text_Sigh:
 	.string "Sigh.$"

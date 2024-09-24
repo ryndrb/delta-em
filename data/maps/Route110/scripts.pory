@@ -328,16 +328,6 @@ Route110_EventScript_CyclingChallengeResults::
 	case 0, Route110_EventScript_ChallengeReactionWorst
 	end
 
-Route110_EventScript_ChallengeReactionBest::
-	msgbox Route110_Text_ChallengeReactionBest, MSGBOX_DEFAULT
-	goto Route110_EventScript_EndChallenge
-	end
-
-Route110_EventScript_ChallengeReactionGood::
-	msgbox Route110_Text_ChallengeReactionGood, MSGBOX_DEFAULT
-	goto Route110_EventScript_EndChallenge
-	end
-
 Route110_EventScript_ChallengeReactionOk::
 	msgbox Route110_Text_ChallengeReactionOk, MSGBOX_DEFAULT
 	goto Route110_EventScript_EndChallenge
@@ -875,17 +865,6 @@ Route110_Text_CyclingChallengeResultSummary:
 	.string "Total time:\n"
 	.string "… … {STR_VAR_2}!$"
 
-Route110_Text_ChallengeReactionBest:
-	.string "Bravo! Splendid showing!\p"
-	.string "Your love of cycling comes from deep\n"
-	.string "within your heart.\l"
-	.string "You've shaken me to my very soul!$"
-
-Route110_Text_ChallengeReactionGood:
-	.string "Your technique is remarkable.\p"
-	.string "I suggest you speed up a bit while\n"
-	.string "still avoiding collisions.$"
-
 Route110_Text_ChallengeReactionOk:
 	.string "I would consider you a work in\n"
 	.string "progress.\p"
@@ -1070,4 +1049,30 @@ movement Route110_Movement_AquaGruntsLeave25 {
 
 movement Route110_Movement_AquaGruntsLeave26 {
     walk_up * 4
+}
+
+// TM Rewards: Wild Charge, Flame Charge
+
+script Route110_EventScript_ChallengeReactionBest {
+	msgbox("Bravo!\nSplendid showing!\pYour love for cycling comes from deep\nwithing your heart.\pYou've shaken me to my very soul!")
+	checkitem(ITEM_TM_WILD_CHARGE, 1)
+    if(var(VAR_RESULT) == 0){
+		msgbox("Please, take this TM as a reward for\nyour cycling mastery!")
+		delay(8)
+		giveitem(ITEM_TM_WILD_CHARGE)
+    }
+    goto(Route110_EventScript_EndChallenge)
+	end
+}
+
+script Route110_EventScript_ChallengeReactionGood {
+	msgbox("Your technique is remarkable.\pI suggest you speed up a bit while still\navoiding collisions.")
+	checkitem(ITEM_TM_FLAME_CHARGE, 1)
+    if(var(VAR_RESULT) == 0){
+		msgbox("Here, take this TM to commemorate your\neffort.")
+		delay(8)
+		giveitem(ITEM_TM_FLAME_CHARGE)
+    }
+    goto(Route110_EventScript_EndChallenge)
+	end
 }

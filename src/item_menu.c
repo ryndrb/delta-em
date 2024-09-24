@@ -924,13 +924,13 @@ static void GetItemName(u8 *dest, u16 itemId)
         if (itemId >= ITEM_HM01)
         {
             // Get HM number
-            ConvertIntToDecimalStringN(gStringVar1, itemId - ITEM_HM01 + 1, STR_CONV_MODE_LEADING_ZEROS, 1);
+            ConvertIntToDecimalStringN(gStringVar1, itemId - ITEM_HM01 + 1, STR_CONV_MODE_LEADING_ZEROS, 2);
             StringExpandPlaceholders(dest, gText_NumberItem_HM);
         }
         else
         {
             // Get TM number
-            ConvertIntToDecimalStringN(gStringVar1, itemId - ITEM_TM01 + 1, STR_CONV_MODE_LEADING_ZEROS, 2);
+            ConvertIntToDecimalStringN(gStringVar1, itemId - ITEM_TM01 + 1, STR_CONV_MODE_LEADING_ZEROS, 3);
             StringExpandPlaceholders(dest, gText_NumberItem_TMBerry);
         }
         break;
@@ -1013,7 +1013,15 @@ static void PrintItemDescription(int itemIndex)
     const u8 *str;
     if (itemIndex != LIST_CANCEL)
     {
-        str = ItemId_GetDescription(BagGetItemIdByPocketPosition(gBagPosition.pocket + 1, itemIndex));
+        u16 itemIdByPocketPos = BagGetItemIdByPocketPosition(gBagPosition.pocket + 1, itemIndex);
+        // generic desc cause im lazy
+        if (gBagPosition.pocket == TMHM_POCKET) {
+            StringCopy(gStringVar2, GetMoveName(ItemIdToBattleMoveId(itemIdByPocketPos)));
+            StringExpandPlaceholders(gStringVar4, ItemId_GetDescription(itemIdByPocketPos)); 
+            str = gStringVar4;
+        }else {
+            str = ItemId_GetDescription(itemIdByPocketPos);
+        }
     }
     else
     {

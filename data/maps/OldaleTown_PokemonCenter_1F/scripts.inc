@@ -62,3 +62,1526 @@ OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
 	.string "the second floor was built recently.\p"
 	.string "I traded Pokémon right away.$"
 
+PokemonCenter_1F_OldManUtility::
+	lock
+	goto_if_unset FLAG_TALKED_TO_MOVE_TUTOR, PokemonCenter_1F_OldManUtility_2
+	goto_if_unset FLAG_BADGE01_GET, PokemonCenter_1F_OldManUtility_5
+	msgbox PokemonCenter_1F_OldManUtility_Text_2
+	goto_if_set FLAG_BADGE07_GET, PokemonCenter_1F_OldManUtility_8
+	goto_if_set FLAG_BADGE06_GET, PokemonCenter_1F_OldManUtility_9
+	goto_if_set FLAG_BADGE05_GET, PokemonCenter_1F_OldManUtility_10
+	goto_if_set FLAG_BADGE04_GET, PokemonCenter_1F_OldManUtility_11
+	goto_if_set FLAG_BADGE03_GET, PokemonCenter_1F_OldManUtility_12
+	goto_if_set FLAG_BADGE02_GET, PokemonCenter_1F_OldManUtility_13
+	goto_if_set FLAG_BADGE01_GET, PokemonCenter_1F_OldManUtility_14
+PokemonCenter_1F_OldManUtility_7:
+	msgbox PokemonCenter_1F_OldManUtility_Text_10
+	closemessage
+	release
+	end
+
+PokemonCenter_1F_OldManUtility_2:
+	msgbox PokemonCenter_1F_OldManUtility_Text_0
+	setflag FLAG_TALKED_TO_MOVE_TUTOR
+	closemessage
+	end
+
+PokemonCenter_1F_OldManUtility_5:
+	msgbox PokemonCenter_1F_OldManUtility_Text_1
+	closemessage
+	release
+	end
+
+PokemonCenter_1F_OldManUtility_8:
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, PokemonCenter_1F_OldManUtility_Text_3, PokemonCenter_1F_OldManUtility_Text_4, PokemonCenter_1F_OldManUtility_Text_5, PokemonCenter_1F_OldManUtility_Text_6, PokemonCenter_1F_OldManUtility_Text_7, PokemonCenter_1F_OldManUtility_Text_8, PokemonCenter_1F_OldManUtility_Text_9
+	switch VAR_RESULT
+	case 0, PokemonCenter_1F_OldManUtility_23
+	case 1, PokemonCenter_1F_OldManUtility_24
+	case 2, PokemonCenter_1F_OldManUtility_25
+	case 3, PokemonCenter_1F_OldManUtility_26
+	case 4, PokemonCenter_1F_OldManUtility_27
+	case 5, PokemonCenter_1F_OldManUtility_28
+	case 6, PokemonCenter_1F_OldManUtility_29
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_9:
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, PokemonCenter_1F_OldManUtility_Text_3, PokemonCenter_1F_OldManUtility_Text_4, PokemonCenter_1F_OldManUtility_Text_5, PokemonCenter_1F_OldManUtility_Text_6, PokemonCenter_1F_OldManUtility_Text_7, PokemonCenter_1F_OldManUtility_Text_8
+	switch VAR_RESULT
+	case 0, PokemonCenter_1F_OldManUtility_31
+	case 1, PokemonCenter_1F_OldManUtility_32
+	case 2, PokemonCenter_1F_OldManUtility_33
+	case 3, PokemonCenter_1F_OldManUtility_34
+	case 4, PokemonCenter_1F_OldManUtility_35
+	case 5, PokemonCenter_1F_OldManUtility_36
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_10:
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, PokemonCenter_1F_OldManUtility_Text_3, PokemonCenter_1F_OldManUtility_Text_4, PokemonCenter_1F_OldManUtility_Text_5, PokemonCenter_1F_OldManUtility_Text_6, PokemonCenter_1F_OldManUtility_Text_7
+	switch VAR_RESULT
+	case 0, PokemonCenter_1F_OldManUtility_38
+	case 1, PokemonCenter_1F_OldManUtility_39
+	case 2, PokemonCenter_1F_OldManUtility_40
+	case 3, PokemonCenter_1F_OldManUtility_41
+	case 4, PokemonCenter_1F_OldManUtility_42
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_11:
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, PokemonCenter_1F_OldManUtility_Text_3, PokemonCenter_1F_OldManUtility_Text_4, PokemonCenter_1F_OldManUtility_Text_5, PokemonCenter_1F_OldManUtility_Text_6
+	switch VAR_RESULT
+	case 0, PokemonCenter_1F_OldManUtility_44
+	case 1, PokemonCenter_1F_OldManUtility_45
+	case 2, PokemonCenter_1F_OldManUtility_46
+	case 3, PokemonCenter_1F_OldManUtility_47
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_12:
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, PokemonCenter_1F_OldManUtility_Text_3, PokemonCenter_1F_OldManUtility_Text_4, PokemonCenter_1F_OldManUtility_Text_5
+	switch VAR_RESULT
+	case 0, PokemonCenter_1F_OldManUtility_49
+	case 1, PokemonCenter_1F_OldManUtility_50
+	case 2, PokemonCenter_1F_OldManUtility_51
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_13:
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, PokemonCenter_1F_OldManUtility_Text_3, PokemonCenter_1F_OldManUtility_Text_4
+	switch VAR_RESULT
+	case 0, PokemonCenter_1F_OldManUtility_53
+	case 1, PokemonCenter_1F_OldManUtility_54
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_14:
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, PokemonCenter_1F_OldManUtility_Text_3
+	switch VAR_RESULT
+	case 0, PokemonCenter_1F_OldManUtility_56
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_23:
+	goto OldaleTown_PokemonCenter_1F_Tutor_1
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_24:
+	goto OldaleTown_PokemonCenter_1F_Tutor_2
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_25:
+	goto OldaleTown_PokemonCenter_1F_Tutor_3
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_26:
+	goto OldaleTown_PokemonCenter_1F_Tutor_4
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_27:
+	goto OldaleTown_PokemonCenter_1F_Tutor_5
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_28:
+	goto OldaleTown_PokemonCenter_1F_Tutor_6
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_29:
+	goto OldaleTown_PokemonCenter_1F_Tutor_7
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_31:
+	goto OldaleTown_PokemonCenter_1F_Tutor_1
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_32:
+	goto OldaleTown_PokemonCenter_1F_Tutor_2
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_33:
+	goto OldaleTown_PokemonCenter_1F_Tutor_3
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_34:
+	goto OldaleTown_PokemonCenter_1F_Tutor_4
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_35:
+	goto OldaleTown_PokemonCenter_1F_Tutor_5
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_36:
+	goto OldaleTown_PokemonCenter_1F_Tutor_6
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_38:
+	goto OldaleTown_PokemonCenter_1F_Tutor_1
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_39:
+	goto OldaleTown_PokemonCenter_1F_Tutor_2
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_40:
+	goto OldaleTown_PokemonCenter_1F_Tutor_3
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_41:
+	goto OldaleTown_PokemonCenter_1F_Tutor_4
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_42:
+	goto OldaleTown_PokemonCenter_1F_Tutor_5
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_44:
+	goto OldaleTown_PokemonCenter_1F_Tutor_1
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_45:
+	goto OldaleTown_PokemonCenter_1F_Tutor_2
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_46:
+	goto OldaleTown_PokemonCenter_1F_Tutor_3
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_47:
+	goto OldaleTown_PokemonCenter_1F_Tutor_4
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_49:
+	goto OldaleTown_PokemonCenter_1F_Tutor_1
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_50:
+	goto OldaleTown_PokemonCenter_1F_Tutor_2
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_51:
+	goto OldaleTown_PokemonCenter_1F_Tutor_3
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_53:
+	goto OldaleTown_PokemonCenter_1F_Tutor_1
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_54:
+	goto OldaleTown_PokemonCenter_1F_Tutor_2
+	goto PokemonCenter_1F_OldManUtility_7
+
+PokemonCenter_1F_OldManUtility_56:
+	goto OldaleTown_PokemonCenter_1F_Tutor_1
+	goto PokemonCenter_1F_OldManUtility_7
+
+
+OldaleTown_PokemonCenter_1F_Tutor_1::
+	msgbox OldaleTown_PokemonCenter_1F_Tutor_1_Text_0
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, OldaleTown_PokemonCenter_1F_Tutor_1_Text_1, OldaleTown_PokemonCenter_1F_Tutor_1_Text_2, OldaleTown_PokemonCenter_1F_Tutor_1_Text_3, OldaleTown_PokemonCenter_1F_Tutor_1_Text_4, OldaleTown_PokemonCenter_1F_Tutor_1_Text_5, OldaleTown_PokemonCenter_1F_Tutor_1_Text_6, OldaleTown_PokemonCenter_1F_Tutor_1_Text_7, OldaleTown_PokemonCenter_1F_Tutor_1_Text_8, OldaleTown_PokemonCenter_1F_Tutor_1_Text_9, OldaleTown_PokemonCenter_1F_Tutor_1_Text_10, OldaleTown_PokemonCenter_1F_Tutor_1_Text_11, OldaleTown_PokemonCenter_1F_Tutor_1_Text_12, OldaleTown_PokemonCenter_1F_Tutor_1_Text_13, OldaleTown_PokemonCenter_1F_Tutor_1_Text_14, OldaleTown_PokemonCenter_1F_Tutor_1_Text_15, OldaleTown_PokemonCenter_1F_Tutor_1_Text_16, OldaleTown_PokemonCenter_1F_Tutor_1_Text_17, OldaleTown_PokemonCenter_1F_Tutor_1_Text_18, OldaleTown_PokemonCenter_1F_Tutor_1_Text_19, OldaleTown_PokemonCenter_1F_Tutor_1_Text_20
+	switch VAR_RESULT
+	case 0, OldaleTown_PokemonCenter_1F_Tutor_1_3
+	case 1, OldaleTown_PokemonCenter_1F_Tutor_1_4
+	case 2, OldaleTown_PokemonCenter_1F_Tutor_1_5
+	case 3, OldaleTown_PokemonCenter_1F_Tutor_1_6
+	case 4, OldaleTown_PokemonCenter_1F_Tutor_1_7
+	case 5, OldaleTown_PokemonCenter_1F_Tutor_1_8
+	case 6, OldaleTown_PokemonCenter_1F_Tutor_1_9
+	case 7, OldaleTown_PokemonCenter_1F_Tutor_1_10
+	case 8, OldaleTown_PokemonCenter_1F_Tutor_1_11
+	case 9, OldaleTown_PokemonCenter_1F_Tutor_1_12
+	case 10, OldaleTown_PokemonCenter_1F_Tutor_1_13
+	case 11, OldaleTown_PokemonCenter_1F_Tutor_1_14
+	case 12, OldaleTown_PokemonCenter_1F_Tutor_1_15
+	case 13, OldaleTown_PokemonCenter_1F_Tutor_1_16
+	case 14, OldaleTown_PokemonCenter_1F_Tutor_1_17
+	case 15, OldaleTown_PokemonCenter_1F_Tutor_1_18
+	case 16, OldaleTown_PokemonCenter_1F_Tutor_1_19
+	case 17, OldaleTown_PokemonCenter_1F_Tutor_1_20
+	case 18, OldaleTown_PokemonCenter_1F_Tutor_1_21
+	case 19, OldaleTown_PokemonCenter_1F_Tutor_1_22
+	case 127, OldaleTown_PokemonCenter_1F_Tutor_1_23
+OldaleTown_PokemonCenter_1F_Tutor_1_1:
+	closemessage
+	call MoveTutor_EventScript_OpenPartyMenu
+	compare VAR_RESULT, 0
+	goto_if_eq OldaleTown_PokemonCenter_1F_Tutor_1_25
+OldaleTown_PokemonCenter_1F_Tutor_1_24:
+	closemessage
+	release
+	end
+
+OldaleTown_PokemonCenter_1F_Tutor_1_3:
+	setvar VAR_0x8005, MOVE_AIR_CUTTER
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_4:
+	setvar VAR_0x8005, MOVE_BLOCK
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_5:
+	setvar VAR_0x8005, MOVE_BRUTAL_SWING
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_6:
+	setvar VAR_0x8005, MOVE_BUG_BITE
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_7:
+	setvar VAR_0x8005, MOVE_FURY_CUTTER
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_8:
+	setvar VAR_0x8005, MOVE_HONE_CLAWS
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_9:
+	setvar VAR_0x8005, MOVE_INFESTATION
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_10:
+	setvar VAR_0x8005, MOVE_HELPING_HAND
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_11:
+	setvar VAR_0x8005, MOVE_LOW_SWEEP
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_12:
+	setvar VAR_0x8005, MOVE_MEGA_DRAIN
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_13:
+	setvar VAR_0x8005, MOVE_METRONOME
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_14:
+	setvar VAR_0x8005, MOVE_OMINOUS_WIND
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_15:
+	setvar VAR_0x8005, MOVE_PSYCH_UP
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_16:
+	setvar VAR_0x8005, MOVE_ROLLOUT
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_17:
+	setvar VAR_0x8005, MOVE_SEISMIC_TOSS
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_18:
+	setvar VAR_0x8005, MOVE_SILVER_WIND
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_19:
+	setvar VAR_0x8005, MOVE_SPITE
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_20:
+	setvar VAR_0x8005, MOVE_STRUGGLE_BUG
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_21:
+	setvar VAR_0x8005, MOVE_TWISTER
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_22:
+	setvar VAR_0x8005, MOVE_VACUUM_WAVE
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_23:
+	goto PokemonCenter_1F_OldManUtility
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_1
+
+OldaleTown_PokemonCenter_1F_Tutor_1_25:
+	goto OldaleTown_PokemonCenter_1F_Tutor_1
+	goto OldaleTown_PokemonCenter_1F_Tutor_1_24
+
+
+OldaleTown_PokemonCenter_1F_Tutor_2::
+	msgbox OldaleTown_PokemonCenter_1F_Tutor_1_Text_0
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, OldaleTown_PokemonCenter_1F_Tutor_2_Text_0, OldaleTown_PokemonCenter_1F_Tutor_2_Text_1, OldaleTown_PokemonCenter_1F_Tutor_2_Text_2, OldaleTown_PokemonCenter_1F_Tutor_2_Text_3, OldaleTown_PokemonCenter_1F_Tutor_2_Text_4, OldaleTown_PokemonCenter_1F_Tutor_2_Text_5, OldaleTown_PokemonCenter_1F_Tutor_2_Text_6, OldaleTown_PokemonCenter_1F_Tutor_2_Text_7, OldaleTown_PokemonCenter_1F_Tutor_2_Text_8, OldaleTown_PokemonCenter_1F_Tutor_2_Text_9, OldaleTown_PokemonCenter_1F_Tutor_2_Text_10, OldaleTown_PokemonCenter_1F_Tutor_2_Text_11, OldaleTown_PokemonCenter_1F_Tutor_2_Text_12, OldaleTown_PokemonCenter_1F_Tutor_2_Text_13, OldaleTown_PokemonCenter_1F_Tutor_2_Text_14, OldaleTown_PokemonCenter_1F_Tutor_2_Text_15, OldaleTown_PokemonCenter_1F_Tutor_2_Text_16, OldaleTown_PokemonCenter_1F_Tutor_2_Text_17, OldaleTown_PokemonCenter_1F_Tutor_2_Text_18, OldaleTown_PokemonCenter_1F_Tutor_2_Text_19
+	switch VAR_RESULT
+	case 0, OldaleTown_PokemonCenter_1F_Tutor_2_3
+	case 1, OldaleTown_PokemonCenter_1F_Tutor_2_4
+	case 2, OldaleTown_PokemonCenter_1F_Tutor_2_5
+	case 3, OldaleTown_PokemonCenter_1F_Tutor_2_6
+	case 4, OldaleTown_PokemonCenter_1F_Tutor_2_7
+	case 5, OldaleTown_PokemonCenter_1F_Tutor_2_8
+	case 6, OldaleTown_PokemonCenter_1F_Tutor_2_9
+	case 7, OldaleTown_PokemonCenter_1F_Tutor_2_10
+	case 8, OldaleTown_PokemonCenter_1F_Tutor_2_11
+	case 9, OldaleTown_PokemonCenter_1F_Tutor_2_12
+	case 10, OldaleTown_PokemonCenter_1F_Tutor_2_13
+	case 11, OldaleTown_PokemonCenter_1F_Tutor_2_14
+	case 12, OldaleTown_PokemonCenter_1F_Tutor_2_15
+	case 13, OldaleTown_PokemonCenter_1F_Tutor_2_16
+	case 14, OldaleTown_PokemonCenter_1F_Tutor_2_17
+	case 15, OldaleTown_PokemonCenter_1F_Tutor_2_18
+	case 16, OldaleTown_PokemonCenter_1F_Tutor_2_19
+	case 17, OldaleTown_PokemonCenter_1F_Tutor_2_20
+	case 18, OldaleTown_PokemonCenter_1F_Tutor_2_21
+	case 19, OldaleTown_PokemonCenter_1F_Tutor_2_22
+	case 127, OldaleTown_PokemonCenter_1F_Tutor_2_23
+OldaleTown_PokemonCenter_1F_Tutor_2_1:
+	call MoveTutor_EventScript_OpenPartyMenu
+	compare VAR_RESULT, 0
+	goto_if_eq OldaleTown_PokemonCenter_1F_Tutor_2_25
+OldaleTown_PokemonCenter_1F_Tutor_2_24:
+	closemessage
+	release
+	end
+
+OldaleTown_PokemonCenter_1F_Tutor_2_3:
+	setvar VAR_0x8005, MOVE_AGILITY
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_4:
+	setvar VAR_0x8005, MOVE_CHILLING_WATER
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_5:
+	setvar VAR_0x8005, MOVE_DEFOG
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_6:
+	setvar VAR_0x8005, MOVE_ELECTROWEB
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_7:
+	setvar VAR_0x8005, MOVE_GASTRO_ACID
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_8:
+	setvar VAR_0x8005, MOVE_INCINERATE
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_9:
+	setvar VAR_0x8005, MOVE_HEX
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_10:
+	setvar VAR_0x8005, MOVE_IRON_DEFENSE
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_11:
+	setvar VAR_0x8005, MOVE_MAGIC_COAT
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_12:
+	setvar VAR_0x8005, MOVE_PAIN_SPLIT
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_13:
+	setvar VAR_0x8005, MOVE_PLUCK
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_14:
+	setvar VAR_0x8005, MOVE_POUNCE
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_15:
+	setvar VAR_0x8005, MOVE_ROLE_PLAY
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_16:
+	setvar VAR_0x8005, MOVE_SHOCK_WAVE
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_17:
+	setvar VAR_0x8005, MOVE_SWAGGER
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_18:
+	setvar VAR_0x8005, MOVE_SYNTHESIS
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_19:
+	setvar VAR_0x8005, MOVE_TRAILBLAZE
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_20:
+	setvar VAR_0x8005, MOVE_UPROAR
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_21:
+	setvar VAR_0x8005, MOVE_WATER_PULSE
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_22:
+	setvar VAR_0x8005, MOVE_WORRY_SEED
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_23:
+	goto PokemonCenter_1F_OldManUtility
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_1
+
+OldaleTown_PokemonCenter_1F_Tutor_2_25:
+	goto OldaleTown_PokemonCenter_1F_Tutor_2
+	goto OldaleTown_PokemonCenter_1F_Tutor_2_24
+
+
+OldaleTown_PokemonCenter_1F_Tutor_3::
+	msgbox OldaleTown_PokemonCenter_1F_Tutor_1_Text_0
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, OldaleTown_PokemonCenter_1F_Tutor_3_Text_0, OldaleTown_PokemonCenter_1F_Tutor_3_Text_1, OldaleTown_PokemonCenter_1F_Tutor_3_Text_2, OldaleTown_PokemonCenter_1F_Tutor_3_Text_3, OldaleTown_PokemonCenter_1F_Tutor_3_Text_4, OldaleTown_PokemonCenter_1F_Tutor_3_Text_5, OldaleTown_PokemonCenter_1F_Tutor_3_Text_6, OldaleTown_PokemonCenter_1F_Tutor_3_Text_7, OldaleTown_PokemonCenter_1F_Tutor_3_Text_8, OldaleTown_PokemonCenter_1F_Tutor_3_Text_9, OldaleTown_PokemonCenter_1F_Tutor_3_Text_10, OldaleTown_PokemonCenter_1F_Tutor_3_Text_11, OldaleTown_PokemonCenter_1F_Tutor_3_Text_12, OldaleTown_PokemonCenter_1F_Tutor_3_Text_13, OldaleTown_PokemonCenter_1F_Tutor_3_Text_14, OldaleTown_PokemonCenter_1F_Tutor_3_Text_15, OldaleTown_PokemonCenter_1F_Tutor_3_Text_16, OldaleTown_PokemonCenter_1F_Tutor_3_Text_17, OldaleTown_PokemonCenter_1F_Tutor_3_Text_18, OldaleTown_PokemonCenter_1F_Tutor_3_Text_19
+	switch VAR_RESULT
+	case 0, OldaleTown_PokemonCenter_1F_Tutor_3_3
+	case 1, OldaleTown_PokemonCenter_1F_Tutor_3_4
+	case 2, OldaleTown_PokemonCenter_1F_Tutor_3_5
+	case 3, OldaleTown_PokemonCenter_1F_Tutor_3_6
+	case 4, OldaleTown_PokemonCenter_1F_Tutor_3_7
+	case 5, OldaleTown_PokemonCenter_1F_Tutor_3_8
+	case 6, OldaleTown_PokemonCenter_1F_Tutor_3_9
+	case 7, OldaleTown_PokemonCenter_1F_Tutor_3_10
+	case 8, OldaleTown_PokemonCenter_1F_Tutor_3_11
+	case 9, OldaleTown_PokemonCenter_1F_Tutor_3_12
+	case 10, OldaleTown_PokemonCenter_1F_Tutor_3_13
+	case 11, OldaleTown_PokemonCenter_1F_Tutor_3_14
+	case 12, OldaleTown_PokemonCenter_1F_Tutor_3_15
+	case 13, OldaleTown_PokemonCenter_1F_Tutor_3_16
+	case 14, OldaleTown_PokemonCenter_1F_Tutor_3_17
+	case 15, OldaleTown_PokemonCenter_1F_Tutor_3_18
+	case 16, OldaleTown_PokemonCenter_1F_Tutor_3_19
+	case 17, OldaleTown_PokemonCenter_1F_Tutor_3_20
+	case 18, OldaleTown_PokemonCenter_1F_Tutor_3_21
+	case 19, OldaleTown_PokemonCenter_1F_Tutor_3_22
+	case 127, OldaleTown_PokemonCenter_1F_Tutor_3_23
+OldaleTown_PokemonCenter_1F_Tutor_3_1:
+	call MoveTutor_EventScript_OpenPartyMenu
+	compare VAR_RESULT, 0
+	goto_if_eq OldaleTown_PokemonCenter_1F_Tutor_3_25
+OldaleTown_PokemonCenter_1F_Tutor_3_24:
+	closemessage
+	release
+	end
+
+OldaleTown_PokemonCenter_1F_Tutor_3_3:
+	setvar VAR_0x8005, MOVE_ACID_SPRAY
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_4:
+	setvar VAR_0x8005, MOVE_AURORA_BEAM
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_5:
+	setvar VAR_0x8005, MOVE_BREAKING_SWIPE
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_6:
+	setvar VAR_0x8005, MOVE_BRINE
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_7:
+	setvar VAR_0x8005, MOVE_CONFIDE
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_8:
+	setvar VAR_0x8005, MOVE_DISABLE
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_9:
+	setvar VAR_0x8005, MOVE_FIRE_FANG
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_10:
+	setvar VAR_0x8005, MOVE_GRAVITY
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_11:
+	setvar VAR_0x8005, MOVE_ICE_FANG
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_12:
+	setvar VAR_0x8005, MOVE_LASH_OUT
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_13:
+	setvar VAR_0x8005, MOVE_MAGNET_RISE
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_14:
+	setvar VAR_0x8005, MOVE_RECYCLE
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_15:
+	setvar VAR_0x8005, MOVE_REVENGE
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_16:
+	setvar VAR_0x8005, MOVE_ROCK_BLAST
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_17:
+	setvar VAR_0x8005, MOVE_SIGNAL_BEAM
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_18:
+	setvar VAR_0x8005, MOVE_SMART_STRIKE
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_19:
+	setvar VAR_0x8005, MOVE_SOFT_BOILED
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_20:
+	setvar VAR_0x8005, MOVE_THUNDER_FANG
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_21:
+	setvar VAR_0x8005, MOVE_TRICK
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_22:
+	setvar VAR_0x8005, MOVE_WAKE_UP_SLAP
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_23:
+	goto PokemonCenter_1F_OldManUtility
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_1
+
+OldaleTown_PokemonCenter_1F_Tutor_3_25:
+	goto OldaleTown_PokemonCenter_1F_Tutor_3
+	goto OldaleTown_PokemonCenter_1F_Tutor_3_24
+
+
+OldaleTown_PokemonCenter_1F_Tutor_4::
+	msgbox OldaleTown_PokemonCenter_1F_Tutor_1_Text_0
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, OldaleTown_PokemonCenter_1F_Tutor_4_Text_0, OldaleTown_PokemonCenter_1F_Tutor_4_Text_1, OldaleTown_PokemonCenter_1F_Tutor_4_Text_2, OldaleTown_PokemonCenter_1F_Tutor_4_Text_3, OldaleTown_PokemonCenter_1F_Tutor_4_Text_4, OldaleTown_PokemonCenter_1F_Tutor_4_Text_5, OldaleTown_PokemonCenter_1F_Tutor_4_Text_6, OldaleTown_PokemonCenter_1F_Tutor_4_Text_7, OldaleTown_PokemonCenter_1F_Tutor_4_Text_8, OldaleTown_PokemonCenter_1F_Tutor_4_Text_9, OldaleTown_PokemonCenter_1F_Tutor_4_Text_10, OldaleTown_PokemonCenter_1F_Tutor_4_Text_11, OldaleTown_PokemonCenter_1F_Tutor_4_Text_12, OldaleTown_PokemonCenter_1F_Tutor_4_Text_13, OldaleTown_PokemonCenter_1F_Tutor_4_Text_14, OldaleTown_PokemonCenter_1F_Tutor_4_Text_15, OldaleTown_PokemonCenter_1F_Tutor_4_Text_16, OldaleTown_PokemonCenter_1F_Tutor_4_Text_17, OldaleTown_PokemonCenter_1F_Tutor_4_Text_18, OldaleTown_PokemonCenter_1F_Tutor_4_Text_19
+	switch VAR_RESULT
+	case 0, OldaleTown_PokemonCenter_1F_Tutor_4_3
+	case 1, OldaleTown_PokemonCenter_1F_Tutor_4_4
+	case 2, OldaleTown_PokemonCenter_1F_Tutor_4_5
+	case 3, OldaleTown_PokemonCenter_1F_Tutor_4_6
+	case 4, OldaleTown_PokemonCenter_1F_Tutor_4_7
+	case 5, OldaleTown_PokemonCenter_1F_Tutor_4_8
+	case 6, OldaleTown_PokemonCenter_1F_Tutor_4_9
+	case 7, OldaleTown_PokemonCenter_1F_Tutor_4_10
+	case 8, OldaleTown_PokemonCenter_1F_Tutor_4_11
+	case 9, OldaleTown_PokemonCenter_1F_Tutor_4_12
+	case 10, OldaleTown_PokemonCenter_1F_Tutor_4_13
+	case 11, OldaleTown_PokemonCenter_1F_Tutor_4_14
+	case 12, OldaleTown_PokemonCenter_1F_Tutor_4_15
+	case 13, OldaleTown_PokemonCenter_1F_Tutor_4_16
+	case 14, OldaleTown_PokemonCenter_1F_Tutor_4_17
+	case 15, OldaleTown_PokemonCenter_1F_Tutor_4_18
+	case 16, OldaleTown_PokemonCenter_1F_Tutor_4_19
+	case 17, OldaleTown_PokemonCenter_1F_Tutor_4_20
+	case 18, OldaleTown_PokemonCenter_1F_Tutor_4_21
+	case 19, OldaleTown_PokemonCenter_1F_Tutor_4_22
+	case 127, OldaleTown_PokemonCenter_1F_Tutor_4_23
+OldaleTown_PokemonCenter_1F_Tutor_4_1:
+	call MoveTutor_EventScript_OpenPartyMenu
+	compare VAR_RESULT, 0
+	goto_if_eq OldaleTown_PokemonCenter_1F_Tutor_4_25
+OldaleTown_PokemonCenter_1F_Tutor_4_24:
+	closemessage
+	release
+	end
+
+OldaleTown_PokemonCenter_1F_Tutor_4_3:
+	setvar VAR_0x8005, MOVE_BLAZE_KICK
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_4:
+	setvar VAR_0x8005, MOVE_BODY_SLAM
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_5:
+	setvar VAR_0x8005, MOVE_CHARM
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_6:
+	setvar VAR_0x8005, MOVE_CROSS_POISON
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_7:
+	setvar VAR_0x8005, MOVE_CURSE
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_8:
+	setvar VAR_0x8005, MOVE_DRILL_RUN
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_9:
+	setvar VAR_0x8005, MOVE_EERIE_IMPULSE
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_10:
+	setvar VAR_0x8005, MOVE_ENDEAVOR
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_11:
+	setvar VAR_0x8005, MOVE_FIRE_PUNCH
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_12:
+	setvar VAR_0x8005, MOVE_HEAL_BELL
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_13:
+	setvar VAR_0x8005, MOVE_ICE_PUNCH
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_14:
+	setvar VAR_0x8005, MOVE_LEAF_BLADE
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_15:
+	setvar VAR_0x8005, MOVE_PSYCHO_CUT
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_16:
+	setvar VAR_0x8005, MOVE_RAZOR_SHELL
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_17:
+	setvar VAR_0x8005, MOVE_SKITTER_SMACK
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_18:
+	setvar VAR_0x8005, MOVE_TAILWIND
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_19:
+	setvar VAR_0x8005, MOVE_TRI_ATTACK
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_20:
+	setvar VAR_0x8005, MOVE_THUNDER_PUNCH
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_21:
+	setvar VAR_0x8005, MOVE_WEATHER_BALL
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_22:
+	setvar VAR_0x8005, MOVE_ZEN_HEADBUTT
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_23:
+	goto PokemonCenter_1F_OldManUtility
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_1
+
+OldaleTown_PokemonCenter_1F_Tutor_4_25:
+	goto OldaleTown_PokemonCenter_1F_Tutor_4
+	goto OldaleTown_PokemonCenter_1F_Tutor_4_24
+
+
+OldaleTown_PokemonCenter_1F_Tutor_5::
+	msgbox OldaleTown_PokemonCenter_1F_Tutor_1_Text_0
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, OldaleTown_PokemonCenter_1F_Tutor_5_Text_0, OldaleTown_PokemonCenter_1F_Tutor_5_Text_1, OldaleTown_PokemonCenter_1F_Tutor_5_Text_2, OldaleTown_PokemonCenter_1F_Tutor_5_Text_3, OldaleTown_PokemonCenter_1F_Tutor_5_Text_4, OldaleTown_PokemonCenter_1F_Tutor_5_Text_5, OldaleTown_PokemonCenter_1F_Tutor_5_Text_6, OldaleTown_PokemonCenter_1F_Tutor_5_Text_7, OldaleTown_PokemonCenter_1F_Tutor_5_Text_8, OldaleTown_PokemonCenter_1F_Tutor_5_Text_9, OldaleTown_PokemonCenter_1F_Tutor_5_Text_10, OldaleTown_PokemonCenter_1F_Tutor_5_Text_11, OldaleTown_PokemonCenter_1F_Tutor_5_Text_12, OldaleTown_PokemonCenter_1F_Tutor_5_Text_13, OldaleTown_PokemonCenter_1F_Tutor_5_Text_14, OldaleTown_PokemonCenter_1F_Tutor_5_Text_15, OldaleTown_PokemonCenter_1F_Tutor_5_Text_16, OldaleTown_PokemonCenter_1F_Tutor_5_Text_17, OldaleTown_PokemonCenter_1F_Tutor_5_Text_18, OldaleTown_PokemonCenter_1F_Tutor_5_Text_19
+	switch VAR_RESULT
+	case 0, OldaleTown_PokemonCenter_1F_Tutor_5_3
+	case 1, OldaleTown_PokemonCenter_1F_Tutor_5_4
+	case 2, OldaleTown_PokemonCenter_1F_Tutor_5_5
+	case 3, OldaleTown_PokemonCenter_1F_Tutor_5_6
+	case 4, OldaleTown_PokemonCenter_1F_Tutor_5_7
+	case 5, OldaleTown_PokemonCenter_1F_Tutor_5_8
+	case 6, OldaleTown_PokemonCenter_1F_Tutor_5_9
+	case 7, OldaleTown_PokemonCenter_1F_Tutor_5_10
+	case 8, OldaleTown_PokemonCenter_1F_Tutor_5_11
+	case 9, OldaleTown_PokemonCenter_1F_Tutor_5_12
+	case 10, OldaleTown_PokemonCenter_1F_Tutor_5_13
+	case 11, OldaleTown_PokemonCenter_1F_Tutor_5_14
+	case 12, OldaleTown_PokemonCenter_1F_Tutor_5_15
+	case 13, OldaleTown_PokemonCenter_1F_Tutor_5_16
+	case 14, OldaleTown_PokemonCenter_1F_Tutor_5_17
+	case 15, OldaleTown_PokemonCenter_1F_Tutor_5_18
+	case 16, OldaleTown_PokemonCenter_1F_Tutor_5_19
+	case 17, OldaleTown_PokemonCenter_1F_Tutor_5_20
+	case 18, OldaleTown_PokemonCenter_1F_Tutor_5_21
+	case 19, OldaleTown_PokemonCenter_1F_Tutor_5_22
+	case 127, OldaleTown_PokemonCenter_1F_Tutor_5_23
+OldaleTown_PokemonCenter_1F_Tutor_5_1:
+	call MoveTutor_EventScript_OpenPartyMenu
+	compare VAR_RESULT, 0
+	goto_if_eq OldaleTown_PokemonCenter_1F_Tutor_5_25
+OldaleTown_PokemonCenter_1F_Tutor_5_24:
+	closemessage
+	release
+	end
+
+OldaleTown_PokemonCenter_1F_Tutor_5_3:
+	setvar VAR_0x8005, MOVE_AMNESIA
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_4:
+	setvar VAR_0x8005, MOVE_AQUA_TAIL
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_5:
+	setvar VAR_0x8005, MOVE_BOUNCE
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_6:
+	setvar VAR_0x8005, MOVE_BUG_BUZZ
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_7:
+	setvar VAR_0x8005, MOVE_CRUNCH
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_8:
+	setvar VAR_0x8005, MOVE_DOUBLE_EDGE
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_9:
+	setvar VAR_0x8005, MOVE_DUAL_CHOP
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_10:
+	setvar VAR_0x8005, MOVE_DYNAMIC_PUNCH
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_11:
+	setvar VAR_0x8005, MOVE_ELECTRIC_TERRAIN
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_12:
+	setvar VAR_0x8005, MOVE_GRASSY_TERRAIN
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_13:
+	setvar VAR_0x8005, MOVE_HAZE
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_14:
+	setvar VAR_0x8005, MOVE_MISTY_TERRAIN
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_15:
+	setvar VAR_0x8005, MOVE_MUDDY_WATER
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_16:
+	setvar VAR_0x8005, MOVE_MYSTICAL_FIRE
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_17:
+	setvar VAR_0x8005, MOVE_POWER_GEM
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_18:
+	setvar VAR_0x8005, MOVE_PSYCHIC_FANGS
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_19:
+	setvar VAR_0x8005, MOVE_PSYCHIC_TERRAIN
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_20:
+	setvar VAR_0x8005, MOVE_SCORCHING_SANDS
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_21:
+	setvar VAR_0x8005, MOVE_STORED_POWER
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_22:
+	setvar VAR_0x8005, MOVE_TELEPORT
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_23:
+	goto PokemonCenter_1F_OldManUtility
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_1
+
+OldaleTown_PokemonCenter_1F_Tutor_5_25:
+	goto OldaleTown_PokemonCenter_1F_Tutor_5
+	goto OldaleTown_PokemonCenter_1F_Tutor_5_24
+
+
+OldaleTown_PokemonCenter_1F_Tutor_6::
+	msgbox OldaleTown_PokemonCenter_1F_Tutor_1_Text_0
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, OldaleTown_PokemonCenter_1F_Tutor_6_Text_0, OldaleTown_PokemonCenter_1F_Tutor_6_Text_1, OldaleTown_PokemonCenter_1F_Tutor_6_Text_2, OldaleTown_PokemonCenter_1F_Tutor_6_Text_3, OldaleTown_PokemonCenter_1F_Tutor_6_Text_4, OldaleTown_PokemonCenter_1F_Tutor_6_Text_5, OldaleTown_PokemonCenter_1F_Tutor_6_Text_6, OldaleTown_PokemonCenter_1F_Tutor_6_Text_7, OldaleTown_PokemonCenter_1F_Tutor_6_Text_8, OldaleTown_PokemonCenter_1F_Tutor_6_Text_9, OldaleTown_PokemonCenter_1F_Tutor_6_Text_10, OldaleTown_PokemonCenter_1F_Tutor_6_Text_11, OldaleTown_PokemonCenter_1F_Tutor_6_Text_12, OldaleTown_PokemonCenter_1F_Tutor_6_Text_13, OldaleTown_PokemonCenter_1F_Tutor_6_Text_14, OldaleTown_PokemonCenter_1F_Tutor_6_Text_15, OldaleTown_PokemonCenter_1F_Tutor_6_Text_16, OldaleTown_PokemonCenter_1F_Tutor_6_Text_17, OldaleTown_PokemonCenter_1F_Tutor_6_Text_18, OldaleTown_PokemonCenter_1F_Tutor_6_Text_19
+	switch VAR_RESULT
+	case 0, OldaleTown_PokemonCenter_1F_Tutor_6_3
+	case 1, OldaleTown_PokemonCenter_1F_Tutor_6_4
+	case 2, OldaleTown_PokemonCenter_1F_Tutor_6_5
+	case 3, OldaleTown_PokemonCenter_1F_Tutor_6_6
+	case 4, OldaleTown_PokemonCenter_1F_Tutor_6_7
+	case 5, OldaleTown_PokemonCenter_1F_Tutor_6_8
+	case 6, OldaleTown_PokemonCenter_1F_Tutor_6_9
+	case 7, OldaleTown_PokemonCenter_1F_Tutor_6_10
+	case 8, OldaleTown_PokemonCenter_1F_Tutor_6_11
+	case 9, OldaleTown_PokemonCenter_1F_Tutor_6_12
+	case 10, OldaleTown_PokemonCenter_1F_Tutor_6_13
+	case 11, OldaleTown_PokemonCenter_1F_Tutor_6_14
+	case 12, OldaleTown_PokemonCenter_1F_Tutor_6_15
+	case 13, OldaleTown_PokemonCenter_1F_Tutor_6_16
+	case 14, OldaleTown_PokemonCenter_1F_Tutor_6_17
+	case 15, OldaleTown_PokemonCenter_1F_Tutor_6_18
+	case 16, OldaleTown_PokemonCenter_1F_Tutor_6_19
+	case 17, OldaleTown_PokemonCenter_1F_Tutor_6_20
+	case 18, OldaleTown_PokemonCenter_1F_Tutor_6_21
+	case 19, OldaleTown_PokemonCenter_1F_Tutor_6_22
+	case 127, OldaleTown_PokemonCenter_1F_Tutor_6_23
+OldaleTown_PokemonCenter_1F_Tutor_6_1:
+	call MoveTutor_EventScript_OpenPartyMenu
+	compare VAR_RESULT, 0
+	goto_if_eq OldaleTown_PokemonCenter_1F_Tutor_6_25
+OldaleTown_PokemonCenter_1F_Tutor_6_24:
+	closemessage
+	release
+	end
+
+OldaleTown_PokemonCenter_1F_Tutor_6_3:
+	setvar VAR_0x8005, MOVE_ANCIENT_POWER
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_4:
+	setvar VAR_0x8005, MOVE_BATON_PASS
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_5:
+	setvar VAR_0x8005, MOVE_ENCORE
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_6:
+	setvar VAR_0x8005, MOVE_FIRE_PLEDGE
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_7:
+	setvar VAR_0x8005, MOVE_FOUL_PLAY
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_8:
+	setvar VAR_0x8005, MOVE_GRASS_PLEDGE
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_9:
+	setvar VAR_0x8005, MOVE_HEAL_BLOCK
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_10:
+	setvar VAR_0x8005, MOVE_MEGAHORN
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_11:
+	setvar VAR_0x8005, MOVE_METEOR_MASH
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_12:
+	setvar VAR_0x8005, MOVE_MOONBLAST
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_13:
+	setvar VAR_0x8005, MOVE_PHANTOM_FORCE
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_14:
+	setvar VAR_0x8005, MOVE_POLLEN_PUFF
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_15:
+	setvar VAR_0x8005, MOVE_SNATCH
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_16:
+	setvar VAR_0x8005, MOVE_SOLAR_BLADE
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_17:
+	setvar VAR_0x8005, MOVE_SPIKES
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_18:
+	setvar VAR_0x8005, MOVE_SUCKER_PUNCH
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_19:
+	setvar VAR_0x8005, MOVE_SUPER_FANG
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_20:
+	setvar VAR_0x8005, MOVE_THROAT_CHOP
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_21:
+	setvar VAR_0x8005, MOVE_TOXIC_SPIKES
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_22:
+	setvar VAR_0x8005, MOVE_WATER_PLEDGE
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_23:
+	goto PokemonCenter_1F_OldManUtility
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_1
+
+OldaleTown_PokemonCenter_1F_Tutor_6_25:
+	goto OldaleTown_PokemonCenter_1F_Tutor_6
+	goto OldaleTown_PokemonCenter_1F_Tutor_6_24
+
+
+OldaleTown_PokemonCenter_1F_Tutor_7::
+	msgbox OldaleTown_PokemonCenter_1F_Tutor_1_Text_0
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, OldaleTown_PokemonCenter_1F_Tutor_7_Text_0, OldaleTown_PokemonCenter_1F_Tutor_7_Text_1, OldaleTown_PokemonCenter_1F_Tutor_7_Text_2, OldaleTown_PokemonCenter_1F_Tutor_7_Text_3, OldaleTown_PokemonCenter_1F_Tutor_7_Text_4, OldaleTown_PokemonCenter_1F_Tutor_7_Text_5, OldaleTown_PokemonCenter_1F_Tutor_7_Text_6, OldaleTown_PokemonCenter_1F_Tutor_7_Text_7, OldaleTown_PokemonCenter_1F_Tutor_7_Text_8, OldaleTown_PokemonCenter_1F_Tutor_7_Text_9, OldaleTown_PokemonCenter_1F_Tutor_7_Text_10, OldaleTown_PokemonCenter_1F_Tutor_7_Text_11, OldaleTown_PokemonCenter_1F_Tutor_7_Text_12, OldaleTown_PokemonCenter_1F_Tutor_7_Text_13, OldaleTown_PokemonCenter_1F_Tutor_7_Text_14, OldaleTown_PokemonCenter_1F_Tutor_7_Text_15, OldaleTown_PokemonCenter_1F_Tutor_7_Text_16, OldaleTown_PokemonCenter_1F_Tutor_7_Text_17, OldaleTown_PokemonCenter_1F_Tutor_7_Text_18, OldaleTown_PokemonCenter_1F_Tutor_7_Text_19
+	switch VAR_RESULT
+	case 0, OldaleTown_PokemonCenter_1F_Tutor_7_3
+	case 1, OldaleTown_PokemonCenter_1F_Tutor_7_4
+	case 2, OldaleTown_PokemonCenter_1F_Tutor_7_5
+	case 3, OldaleTown_PokemonCenter_1F_Tutor_7_6
+	case 4, OldaleTown_PokemonCenter_1F_Tutor_7_7
+	case 5, OldaleTown_PokemonCenter_1F_Tutor_7_8
+	case 6, OldaleTown_PokemonCenter_1F_Tutor_7_9
+	case 7, OldaleTown_PokemonCenter_1F_Tutor_7_10
+	case 8, OldaleTown_PokemonCenter_1F_Tutor_7_11
+	case 9, OldaleTown_PokemonCenter_1F_Tutor_7_12
+	case 10, OldaleTown_PokemonCenter_1F_Tutor_7_13
+	case 11, OldaleTown_PokemonCenter_1F_Tutor_7_14
+	case 12, OldaleTown_PokemonCenter_1F_Tutor_7_15
+	case 13, OldaleTown_PokemonCenter_1F_Tutor_7_16
+	case 14, OldaleTown_PokemonCenter_1F_Tutor_7_17
+	case 15, OldaleTown_PokemonCenter_1F_Tutor_7_18
+	case 16, OldaleTown_PokemonCenter_1F_Tutor_7_19
+	case 17, OldaleTown_PokemonCenter_1F_Tutor_7_20
+	case 18, OldaleTown_PokemonCenter_1F_Tutor_7_21
+	case 19, OldaleTown_PokemonCenter_1F_Tutor_7_22
+	case 127, OldaleTown_PokemonCenter_1F_Tutor_7_23
+OldaleTown_PokemonCenter_1F_Tutor_7_1:
+	call MoveTutor_EventScript_OpenPartyMenu
+	compare VAR_RESULT, 0
+	goto_if_eq OldaleTown_PokemonCenter_1F_Tutor_7_25
+OldaleTown_PokemonCenter_1F_Tutor_7_24:
+	closemessage
+	release
+	end
+
+OldaleTown_PokemonCenter_1F_Tutor_7_3:
+	setvar VAR_0x8005, MOVE_AURORA_VEIL
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_4:
+	setvar VAR_0x8005, MOVE_BRAVE_BIRD
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_5:
+	setvar VAR_0x8005, MOVE_DRAGON_DANCE
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_6:
+	setvar VAR_0x8005, MOVE_FLARE_BLITZ
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_7:
+	setvar VAR_0x8005, MOVE_FOCUS_PUNCH
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_8:
+	setvar VAR_0x8005, MOVE_HEAT_CRASH
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_9:
+	setvar VAR_0x8005, MOVE_HEAVY_SLAM
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_10:
+	setvar VAR_0x8005, MOVE_LAST_RESORT
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_11:
+	setvar VAR_0x8005, MOVE_LEAF_STORM
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_12:
+	setvar VAR_0x8005, MOVE_METEOR_BEAM
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_13:
+	setvar VAR_0x8005, MOVE_NASTY_PLOT
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_14:
+	setvar VAR_0x8005, MOVE_OUTRAGE
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_15:
+	setvar VAR_0x8005, MOVE_POLTERGEIST
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_16:
+	setvar VAR_0x8005, MOVE_POWER_WHIP
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_17:
+	setvar VAR_0x8005, MOVE_QUIVER_DANCE
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_18:
+	setvar VAR_0x8005, MOVE_SELF_DESTRUCT
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_19:
+	setvar VAR_0x8005, MOVE_SKY_ATTACK
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_20:
+	setvar VAR_0x8005, MOVE_SUPERPOWER
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_21:
+	setvar VAR_0x8005, MOVE_TRIPLE_AXEL
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_22:
+	setvar VAR_0x8005, MOVE_WAVE_CRASH
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_23:
+	goto PokemonCenter_1F_OldManUtility
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_1
+
+OldaleTown_PokemonCenter_1F_Tutor_7_25:
+	goto OldaleTown_PokemonCenter_1F_Tutor_7
+	goto OldaleTown_PokemonCenter_1F_Tutor_7_24
+
+
+PokemonCenter_1F_OldManUtility_Text_0:
+	.string "{COLOR RED}Tutor{COLOR DARK_GRAY}: Eh? Who's there?\pAh, a Trainer! I can teach your Pokémon\nsome special moves… moves they can't\llearn anywhere else, not in my day.\pDon't worry, no charge! But… let's\nsee, you'll only get a few moves to\lstart with…\pHmm, yes, yes.\nEarn more Gym Badges, and I might\lremember some new moves for you.\pHah!\nMy memory ain't what it used to be.\lCome back often!$"
+
+PokemonCenter_1F_OldManUtility_Text_1:
+	.string "{COLOR RED}Tutor{COLOR DARK_GRAY}: Oh dear… it seems I don't have\nany moves I can teach you right now.\pMaybe once you get a Gym Badge or two,\nI'll remember something…\pYes, yes, come back later!$"
+
+PokemonCenter_1F_OldManUtility_Text_2:
+	.string "{COLOR RED}Tutor{COLOR DARK_GRAY}: Which set of moves would you\nlike to choose from?$"
+
+PokemonCenter_1F_OldManUtility_Text_3:
+	.string "Badge: Stone$"
+
+PokemonCenter_1F_OldManUtility_Text_4:
+	.string "Badge: Knuckle$"
+
+PokemonCenter_1F_OldManUtility_Text_5:
+	.string "Badge: Dynamo$"
+
+PokemonCenter_1F_OldManUtility_Text_6:
+	.string "Badge: Heat$"
+
+PokemonCenter_1F_OldManUtility_Text_7:
+	.string "Badge: Balance$"
+
+PokemonCenter_1F_OldManUtility_Text_8:
+	.string "Badge: Feather$"
+
+PokemonCenter_1F_OldManUtility_Text_9:
+	.string "Badge: Mind$"
+
+PokemonCenter_1F_OldManUtility_Text_10:
+	.string "{COLOR RED}Tutor{COLOR DARK_GRAY}: Ah, off you go then!$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_0:
+	.string "{COLOR RED}Tutor{COLOR DARK_GRAY}: Hmm… let me see now…\nWhich move do you want again?$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_1:
+	.string "Air Cutter$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_2:
+	.string "Block$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_3:
+	.string "Brutal Swing$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_4:
+	.string "Bug Bite$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_5:
+	.string "Fury Cutter$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_6:
+	.string "Hone Claws$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_7:
+	.string "Infestation$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_8:
+	.string "Helping Hand$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_9:
+	.string "Low Sweep$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_10:
+	.string "Mega Drain$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_11:
+	.string "Metronome$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_12:
+	.string "Ominous Wind$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_13:
+	.string "Psych Up$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_14:
+	.string "Rollout$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_15:
+	.string "Seismic Toss$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_16:
+	.string "Silver Wind$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_17:
+	.string "Spite$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_18:
+	.string "Struggle Bug$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_19:
+	.string "Twister$"
+
+OldaleTown_PokemonCenter_1F_Tutor_1_Text_20:
+	.string "Vacuum Wave$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_0:
+	.string "Agility$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_1:
+	.string "Chilling Water$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_2:
+	.string "Defog$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_3:
+	.string "Electroweb$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_4:
+	.string "Gastro Acid$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_5:
+	.string "Incinerate$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_6:
+	.string "Hex$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_7:
+	.string "Iron Defense$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_8:
+	.string "Magic Coat$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_9:
+	.string "Pain Split$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_10:
+	.string "Pluck$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_11:
+	.string "Pounce$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_12:
+	.string "Role Play$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_13:
+	.string "Shock Wave$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_14:
+	.string "Swagger$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_15:
+	.string "Synthesis$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_16:
+	.string "Trailblaze$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_17:
+	.string "Uproar$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_18:
+	.string "Water Pulse$"
+
+OldaleTown_PokemonCenter_1F_Tutor_2_Text_19:
+	.string "Worry Seed$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_0:
+	.string "Acid Spray$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_1:
+	.string "Aurora Beam$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_2:
+	.string "Breaking Swipe$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_3:
+	.string "Brine$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_4:
+	.string "Confide$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_5:
+	.string "Disable$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_6:
+	.string "Fire Fang$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_7:
+	.string "Gravity$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_8:
+	.string "Ice Fang$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_9:
+	.string "Lash Out$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_10:
+	.string "Magnet Rise$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_11:
+	.string "Recycle$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_12:
+	.string "Revenge$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_13:
+	.string "Rock Blast$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_14:
+	.string "Signal Beam$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_15:
+	.string "Smart Strike$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_16:
+	.string "Soft Boiled$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_17:
+	.string "Thunder Fang$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_18:
+	.string "Trick$"
+
+OldaleTown_PokemonCenter_1F_Tutor_3_Text_19:
+	.string "Wake Up Slap$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_0:
+	.string "Blaze Kick$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_1:
+	.string "Body Slam$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_2:
+	.string "Charm$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_3:
+	.string "Cross Poison$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_4:
+	.string "Curse$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_5:
+	.string "Drill Run$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_6:
+	.string "Eerie Impulse$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_7:
+	.string "Endeavor$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_8:
+	.string "Fire Punch$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_9:
+	.string "Heal Bell$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_10:
+	.string "Ice Punch$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_11:
+	.string "Leaf Blade$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_12:
+	.string "Psycho Cut$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_13:
+	.string "Razor Shell$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_14:
+	.string "Skitter Smack$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_15:
+	.string "Tailwind$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_16:
+	.string "Tri Attack$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_17:
+	.string "Thunder Punch$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_18:
+	.string "Weather Ball$"
+
+OldaleTown_PokemonCenter_1F_Tutor_4_Text_19:
+	.string "Zen Headbutt$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_0:
+	.string "Amnesia$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_1:
+	.string "Aqua Tail$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_2:
+	.string "Bounce$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_3:
+	.string "Bug Buzz$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_4:
+	.string "Crunch$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_5:
+	.string "Double Edge$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_6:
+	.string "Dual Chop$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_7:
+	.string "Dynamic Punch$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_8:
+	.string "Electric Terrain$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_9:
+	.string "Grassy Terrain$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_10:
+	.string "Haze$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_11:
+	.string "Misty Terrain$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_12:
+	.string "Muddy Water$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_13:
+	.string "Mystical Fire$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_14:
+	.string "Power Gem$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_15:
+	.string "Psychic Fangs$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_16:
+	.string "Psychic Terrain$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_17:
+	.string "Scorching Sands$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_18:
+	.string "Stored Power$"
+
+OldaleTown_PokemonCenter_1F_Tutor_5_Text_19:
+	.string "Teleport$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_0:
+	.string "Ancient Power$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_1:
+	.string "Baton Pass$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_2:
+	.string "Encore$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_3:
+	.string "Fire Pledge$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_4:
+	.string "Foul Play$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_5:
+	.string "Grass Pledge$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_6:
+	.string "Heal Block$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_7:
+	.string "Megahorn$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_8:
+	.string "Meteor Mash$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_9:
+	.string "Moonblast$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_10:
+	.string "Phantom Force$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_11:
+	.string "Pollen Puff$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_12:
+	.string "Snatch$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_13:
+	.string "Solar Blade$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_14:
+	.string "Spikes$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_15:
+	.string "Sucker Punch$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_16:
+	.string "Super Fang$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_17:
+	.string "Throat Chop$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_18:
+	.string "Toxic Spikes$"
+
+OldaleTown_PokemonCenter_1F_Tutor_6_Text_19:
+	.string "Water Pledge$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_0:
+	.string "Aurora Veil$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_1:
+	.string "Brave Bird$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_2:
+	.string "Dragon Dance$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_3:
+	.string "Double-Edge$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_4:
+	.string "Flare Blitz$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_5:
+	.string "Focus Punch$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_6:
+	.string "Heat Crash$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_7:
+	.string "Heavy Slam$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_8:
+	.string "Leaf Storm$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_9:
+	.string "Meteor Beam$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_10:
+	.string "Nasty Plot$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_11:
+	.string "Outrage$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_12:
+	.string "Poltergeist$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_13:
+	.string "Power Whip$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_14:
+	.string "Quiver Dance$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_15:
+	.string "Self Destruct$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_16:
+	.string "Sky Attack$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_17:
+	.string "Superpower$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_18:
+	.string "Triple Axel$"
+
+OldaleTown_PokemonCenter_1F_Tutor_7_Text_19:
+	.string "Wave Crash$"

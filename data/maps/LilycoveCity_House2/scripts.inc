@@ -17,6 +17,7 @@ LilycoveCity_House2_EventScript_FatMan_4:
 LilycoveCity_House2_EventScript_FatMan_2:
 	goto_if_set FLAG_RECEIVED_TM_SLEEP_TALK, LilycoveCity_House2_EventScript_FatMan_8
 	msgbox LilycoveCity_House2_EventScript_FatMan_Text_1
+	giveitem ITEM_TM_SLEEP_TALK
 	compare VAR_RESULT, FALSE
 	goto_if_eq LilycoveCity_House2_EventScript_FatMan_11
 LilycoveCity_House2_EventScript_FatMan_10:

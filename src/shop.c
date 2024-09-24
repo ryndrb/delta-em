@@ -604,9 +604,11 @@ static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, s
     sShopData->iconSlot ^= 1;
     if (item != LIST_CANCEL)
     {
-        if (sMartInfo.martType == MART_TYPE_NORMAL)
-            description = ItemId_GetDescription(item);
-        else
+        if (sMartInfo.martType == MART_TYPE_NORMAL) {
+            StringCopy(gStringVar2, GetMoveName(ItemIdToBattleMoveId(item)));
+            StringExpandPlaceholders(gStringVar4, ItemId_GetDescription(item)); 
+            description = gStringVar4;
+        } else
             description = gDecorations[item].description;
     }
     else

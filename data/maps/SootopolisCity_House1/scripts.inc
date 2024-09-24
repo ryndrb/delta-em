@@ -35,8 +35,7 @@ SootopolisCity_House1_Text_DevelopedThisTM:
 	.string "I bequeath it to you!$"
 
 SootopolisCity_House1_Text_ExplainBrickBreak:
-	.string "TM31 contains Brick Break! It's a move\n"
-	.string "so horrible that I can't describe it.$"
+	.string "Brick Break!\nAh, Brick Break…\pEven explaining it is terrifying!$"
 
 SootopolisCity_House1_Text_Kecleon:
 	.string "Kecleon: Puu puhyaah.$"

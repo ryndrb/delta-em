@@ -351,3 +351,13 @@ SlateportCity_PokemonFanClub_Text_Zigzagoon:
 
 SlateportCity_PokemonFanClub_Text_Azumarill:
 	.string "Marimari?$"
+
+SlateportCity_PokemonFanClub_EventScript_SwaggerMan::
+	msgbox SlateportCity_PokemonFanClub_EventScript_SwaggerMan_Text_0
+	closemessage
+	release
+	end
+
+
+SlateportCity_PokemonFanClub_EventScript_SwaggerMan_Text_0:
+	.string "Heh! My Pokémon totally rules!\nIt's cooler that any Pokémon!\pI was lipping off with a swagger\nin my step like that when Chairman\lchewed me out.\pThat took the swagger out my step…$"

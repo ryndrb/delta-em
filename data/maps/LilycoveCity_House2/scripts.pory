@@ -15,7 +15,7 @@ script LilycoveCity_House2_EventScript_FatMan {
             end
         }
         msgbox("Zzz… Hm?\nTake this, too?")
-        // giveitem(ITEM_TM_SLEEP_TALK)
+        giveitem(ITEM_TM_SLEEP_TALK)
         if(var(VAR_RESULT) == FALSE){
             goto(Common_EventScript_ShowBagIsFull)
         }

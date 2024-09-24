@@ -327,16 +327,6 @@ Route110_EventScript_CyclingChallengeResults::
 	case 0, Route110_EventScript_ChallengeReactionWorst
 	end
 
-Route110_EventScript_ChallengeReactionBest::
-	msgbox Route110_Text_ChallengeReactionBest, MSGBOX_DEFAULT
-	goto Route110_EventScript_EndChallenge
-	end
-
-Route110_EventScript_ChallengeReactionGood::
-	msgbox Route110_Text_ChallengeReactionGood, MSGBOX_DEFAULT
-	goto Route110_EventScript_EndChallenge
-	end
-
 Route110_EventScript_ChallengeReactionOk::
 	msgbox Route110_Text_ChallengeReactionOk, MSGBOX_DEFAULT
 	goto Route110_EventScript_EndChallenge
@@ -874,17 +864,6 @@ Route110_Text_CyclingChallengeResultSummary:
 	.string "Total time:\n"
 	.string "… … {STR_VAR_2}!$"
 
-Route110_Text_ChallengeReactionBest:
-	.string "Bravo! Splendid showing!\p"
-	.string "Your love of cycling comes from deep\n"
-	.string "within your heart.\l"
-	.string "You've shaken me to my very soul!$"
-
-Route110_Text_ChallengeReactionGood:
-	.string "Your technique is remarkable.\p"
-	.string "I suggest you speed up a bit while\n"
-	.string "still avoiding collisions.$"
-
 Route110_Text_ChallengeReactionOk:
 	.string "I would consider you a work in\n"
 	.string "progress.\p"
@@ -1082,6 +1061,38 @@ Route110_Movement_AquaGruntsLeave26:
 	walk_up
 	step_end
 
+Route110_EventScript_ChallengeReactionBest::
+	msgbox Route110_EventScript_ChallengeReactionBest_Text_0
+	checkitem ITEM_TM_WILD_CHARGE, 1
+	compare VAR_RESULT, 0
+	goto_if_eq Route110_EventScript_ChallengeReactionBest_2
+Route110_EventScript_ChallengeReactionBest_1:
+	goto Route110_EventScript_EndChallenge
+	end
+
+Route110_EventScript_ChallengeReactionBest_2:
+	msgbox Route110_EventScript_ChallengeReactionBest_Text_1
+	delay 8
+	giveitem ITEM_TM_WILD_CHARGE
+	goto Route110_EventScript_ChallengeReactionBest_1
+
+
+Route110_EventScript_ChallengeReactionGood::
+	msgbox Route110_EventScript_ChallengeReactionGood_Text_0
+	checkitem ITEM_TM_FLAME_CHARGE, 1
+	compare VAR_RESULT, 0
+	goto_if_eq Route110_EventScript_ChallengeReactionGood_2
+Route110_EventScript_ChallengeReactionGood_1:
+	goto Route110_EventScript_EndChallenge
+	end
+
+Route110_EventScript_ChallengeReactionGood_2:
+	msgbox Route110_EventScript_ChallengeReactionGood_Text_1
+	delay 8
+	giveitem ITEM_TM_FLAME_CHARGE
+	goto Route110_EventScript_ChallengeReactionGood_1
+
+
 Route110_EventScript_AquaGruntsScene_Text_0:
 	.string "{COLOR RED}Grunt{COLOR DARK_GRAY}: Let's keep going through Route\n110 and head for Mt. Chimney!$"
 
@@ -1090,3 +1101,15 @@ Route110_EventScript_AquaGruntsScene_Text_1:
 
 Route110_EventScript_AquaGruntsScene_Text_2:
 	.string "Great idea!$"
+
+Route110_EventScript_ChallengeReactionBest_Text_0:
+	.string "Bravo!\nSplendid showing!\pYour love for cycling comes from deep\nwithing your heart.\pYou've shaken me to my very soul!$"
+
+Route110_EventScript_ChallengeReactionBest_Text_1:
+	.string "Please, take this TM as a reward for\nyour cycling mastery!$"
+
+Route110_EventScript_ChallengeReactionGood_Text_0:
+	.string "Your technique is remarkable.\pI suggest you speed up a bit while still\navoiding collisions.$"
+
+Route110_EventScript_ChallengeReactionGood_Text_1:
+	.string "Here, take this TM to commemorate your\neffort.$"

@@ -51,3 +51,24 @@ MauvilleCity_Mart_Text_DecisionsDetermineBattle:
 	.string "The Trainer's decisions determine how\n"
 	.string "battles turn out, I think.$"
 
+MauvilleCity_Mart_EventScript_Clerk_TM::
+	lock
+	faceplayer
+	message gText_HowMayIServeYou
+	waitmessage
+	pokemart MauvillPokeMartTmList
+	msgbox gText_PleaseComeAgain
+	release
+	end
+
+
+	.align 2
+MauvillPokeMartTmList:
+	.2byte ITEM_TM_VENOSHOCK
+	.2byte ITEM_TM_AERIAL_ACE
+	.2byte ITEM_TM_LOW_KICK
+	.2byte ITEM_TM_CHARGE_BEAM
+	.2byte ITEM_TM_BULLDOZE
+	.2byte ITEM_TM_DRAGON_TAIL
+	.2byte ITEM_TM_POWER_UP_PUNCH
+	.2byte ITEM_NONE

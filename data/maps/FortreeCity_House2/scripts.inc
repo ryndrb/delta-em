@@ -61,3 +61,13 @@ FortreeCity_House2_Text_ExplainHiddenPower:
 
 FortreeCity_House2_Text_YouGuessedWrong:
 	.string "No, too bad.\nYou guessed wrong.$"
+
+FortreeCity_House2_EventScript_SleepTalkOldMan::
+	msgbox FortreeCity_House2_EventScript_SleepTalkOldMan_Text_0
+	closemessage
+	release
+	end
+
+
+FortreeCity_House2_EventScript_SleepTalkOldMan_Text_0:
+	.string "Humph! My wife relies on Hidden Power\nto stay awake.\pShe should just take a nap like I do.\nIt's way more relaxing!$"

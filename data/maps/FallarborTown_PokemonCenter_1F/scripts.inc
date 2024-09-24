@@ -112,3 +112,11 @@ FallarborTown_PokemonCenter_1F_Text_PlantHardyTrees:
 	.string "seedlings of hardy trees that thrive\l"
 	.string "even in volcanic ash.$"
 
+FallarborTown_PokemonCenter_1F_EventScript_DoorSign::
+	msgbox FallarborTown_PokemonCenter_1F_EventScript_DoorSign_Text_0, MSGBOX_SIGN
+	release
+	end
+
+
+FallarborTown_PokemonCenter_1F_EventScript_DoorSign_Text_0:
+	.string "Personnel Only.$"

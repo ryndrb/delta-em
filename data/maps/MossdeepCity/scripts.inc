@@ -411,3 +411,109 @@ MossdeepCity_Text_SootopolisNewGymLeader:
 	.string "Leader come in.\p"
 	.string "People tell me the new Leader once\n"
 	.string "mentored Wallace.$"
+
+MossdeepCity_EventScript_DynamicPunchBlackBelt::
+	msgbox MossdeepCity_EventScript_DynamicPunchBlackBelt_Text_0
+	closemessage
+	release
+	end
+
+
+MossdeepCity_EventScript_TMExpandingForce::
+	lock
+	delay 8
+	faceplayer
+	checkitem ITEM_TM_EXPANDING_FORCE, 1
+	compare VAR_RESULT, 0
+	goto_if_eq MossdeepCity_EventScript_TMExpandingForce_2
+MossdeepCity_EventScript_TMExpandingForce_1:
+	applymovement 18, MossdeepCity_Movement_EFGuy_1
+	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Movement_Player_1
+	waitmovement 18
+	msgbox MossdeepCity_EventScript_TMExpandingForce_Text_4
+	closemessage
+	applymovement 18, MossdeepCity_Movement_EFGuy_2
+	waitmovement 18
+	removeobject 18
+	setflag FLAG_HIDE_MOSSDEEP_CITY_EF_GUY
+	release
+	end
+
+MossdeepCity_EventScript_TMExpandingForce_2:
+	msgbox MossdeepCity_EventScript_TMExpandingForce_Text_0
+	closemessage
+	delay 8
+	applymovement 18, Common_Movement_WalkInPlaceDown
+	waitmovement 18
+	delay 8
+	msgbox MossdeepCity_EventScript_TMExpandingForce_Text_1
+	closemessage
+	applymovement 18, Common_Movement_WalkInPlaceLeft
+	applymovement 18, Common_Movement_ExclamationMark
+	waitmovement 18
+	message MossdeepCity_EventScript_TMExpandingForce_Text_2
+	closemessage
+	delay 16
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	delay 8
+	giveitem ITEM_TM_EXPANDING_FORCE
+	msgbox MossdeepCity_EventScript_TMExpandingForce_Text_3
+	closemessage
+	goto MossdeepCity_EventScript_TMExpandingForce_1
+
+
+MossdeepCity_Movement_EFGuy_1:
+	jump_in_place_left
+	delay_16
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_fast_left
+	walk_fast_left
+	walk_in_place_down
+	step_end
+
+MossdeepCity_Movement_EFGuy_2:
+	walk_in_place_left
+	walk_in_place_down
+	walk_in_place_up
+	walk_in_place_right
+	delay_8
+	jump_in_place_right
+	jump_in_place_right
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	step_end
+
+MossdeepCity_Movement_Player_1:
+	lock_facing_direction
+	delay_16
+	delay_16
+	walk_fast_left
+	unlock_facing_direction
+	walk_in_place_up
+	step_end
+
+MossdeepCity_EventScript_DynamicPunchBlackBelt_Text_0:
+	.string "I can't do this anymore!\pIt's utterly hopeless!\pI'm a Fighting-type Trainer, so I\ncan't win at the Mossdeep Gym no\lmatter how hard I try!\pArgh! Punch! Punch! Punch!\nPunch! Punch! Punch!\pWhat, don't look at me that way!\nI'm only hitting the ground!$"
+
+MossdeepCity_EventScript_TMExpandingForce_Text_0:
+	.string "Ahh… y-you feel it too, don't you?\pYes, yes… the tremors… the whispers!\pWhispers from beyond… THE STARS!\pThey're always calling--calling to\nthose who can hear!\pCan you hear them!? The cosmos… IT\nCALLS!$"
+
+MossdeepCity_EventScript_TMExpandingForce_Text_1:
+	.string "Ke ke ke…\pKE KE… KE!\pThe force--it's expanding!\nIt's growing!\pIt will consume EVERYTHING!\nEverything in its path… Ha ha!\pCan you see it? Can you FEEL it!?$"
+
+MossdeepCity_EventScript_TMExpandingForce_Text_2:
+	.string "Hah!\pAnd you--you seek to control it, don't\nyou?\pYes… YES! You're not like the others…\pYou SEE, don't you!?\nYOU SEE EVERYTHING!$"
+
+MossdeepCity_EventScript_TMExpandingForce_Text_3:
+	.string "Take it…!\pExpanding Force… A power… A force\nthat bends the universe!\pBEND IT TO YOUR WILL!\pBut beware… Oh, beware…\nEvery time you use it…\lYOU GET CLOSER!\lCloser to the whispers…\p…to the void… TO THE TRUTH THEY\nHIDE!\pHA HA HA!$"
+
+MossdeepCity_EventScript_TMExpandingForce_Text_4:
+	.string "Ke ke ke...$"

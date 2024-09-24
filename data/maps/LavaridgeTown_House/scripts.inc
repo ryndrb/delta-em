@@ -20,3 +20,13 @@ LavaridgeTown_House_Text_WifeWarmingEggInHotSprings:
 
 LavaridgeTown_House_Text_Zigzagoon:
 	.string "Pssshhhhh!$"
+
+LavaridgeTown_House_EventScript_MimicKid::
+	msgbox LavaridgeTown_House_EventScript_MimicKid_Text_0
+	closemessage
+	release
+	end
+
+
+LavaridgeTown_House_EventScript_MimicKid_Text_0:
+	.string "Ah, young one!\pI am also a young one, but I mimic\nthe styles and speech of the elderly\lfolks of this town.$"

@@ -20,7 +20,7 @@ FortreeCity_Gym_EventScript_Winona::
 	trainerbattle_single TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, FortreeCity_Gym_EventScript_WinonaRematch
-	goto_if_unset FLAG_RECEIVED_TM_AERIAL_ACE, FortreeCity_Gym_EventScript_GiveRoost2
+	goto_if_unset FLAG_RECEIVED_TM_ROOST, FortreeCity_Gym_EventScript_GiveRoost2
 	msgbox FortreeCity_Gym_Text_WinonaPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -52,18 +52,18 @@ FortreeCity_Gym_EventScript_WinonaDefeated::
 	end
 
 FortreeCity_Gym_EventScript_GiveRoost2::
-	giveitem ITEM_TM_AERIAL_ACE
+	giveitem ITEM_TM_ROOST
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox FortreeCity_Gym_Text_ExplainRoost, MSGBOX_DEFAULT
-	setflag FLAG_RECEIVED_TM_AERIAL_ACE
+	setflag FLAG_RECEIVED_TM_ROOST
 	release
 	end
 
 FortreeCity_Gym_EventScript_GiveRoost:: @ WILL BE REPLACED BY ROOST
-	giveitem ITEM_TM_AERIAL_ACE
+	giveitem ITEM_TM_ROOST
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	msgbox FortreeCity_Gym_Text_ExplainRoost, MSGBOX_DEFAULT
-	setflag FLAG_RECEIVED_TM_AERIAL_ACE
+	setflag FLAG_RECEIVED_TM_ROOST
 	return
 
 FortreeCity_Gym_EventScript_WinonaRematch::

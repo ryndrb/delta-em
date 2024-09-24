@@ -42,3 +42,12 @@ VerdanturfTown_PokemonCenter_1F_Text_VisitForBattleTent:
 	.string "Or is there somebody here that you\n"
 	.string "came to see?$"
 
+VerdanturfTown_PokemonCenter_1F_EventScript_FuryCutterKid::
+	msgbox VerdanturfTown_PokemonCenter_1F_EventScript_FuryCutterKid_Text_0
+	closemessage
+	release
+	end
+
+
+VerdanturfTown_PokemonCenter_1F_EventScript_FuryCutterKid_Text_0:
+	.string "There's a move that gets stronger when\nyou keep using it in a row.\pIt's called Fury Cutter, and it is\nwickedly cool!$"

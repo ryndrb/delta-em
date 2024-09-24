@@ -64,3 +64,29 @@ FallarborTown_Mart_Text_SellNuggetIFound:
 	.string "I suppose I'll have to sell it, seeing\l"
 	.string "as how it has no other use.$"
 
+FallarborTown_Mart_EventScript_DrainPunchTM::
+	lock
+	faceplayer
+	checkitem ITEM_TM_DRAIN_PUNCH, 1
+	compare VAR_RESULT, 1
+	goto_if_eq FallarborTown_Mart_EventScript_DrainPunchTM_2
+	msgbox FallarborTown_Mart_EventScript_DrainPunchTM_Text_0
+	closemessage
+	giveitem ITEM_TM_DRAIN_PUNCH
+	msgbox FallarborTown_Mart_Text_HaveDrainPunch
+	closemessage
+	release
+	end
+
+FallarborTown_Mart_EventScript_DrainPunchTM_2:
+	msgbox FallarborTown_Mart_Text_HaveDrainPunch
+	closemessage
+	release
+	end
+
+
+FallarborTown_Mart_EventScript_DrainPunchTM_Text_0:
+	.string "Hi there!\nHow are you today?\pCan I interest you in a free sample\nof Devon Corporation's new cleaning\lproduct, DRAIN PUNCH?\pIt's super effective against grime,\ngunk, and gunge!\p… … … … … … … …\n… … … … … … … …\l… … … … … … … …\p…Hmm? You're a Pokémon trainer?\nYou don't need a drain cleaner?\pWell, how about you take this TM\ninstead?$"
+
+FallarborTown_Mart_Text_HaveDrainPunch::
+	.string "TM60 is also Drain Punch, but\nit's a punch that drains a foe's HP in\lbattle instead.\pPlease don't use it on any drains!$"

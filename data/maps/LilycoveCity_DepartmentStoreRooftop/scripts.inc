@@ -217,3 +217,13 @@ LilycoveCity_DepartmentStoreRooftop_Text_NotEnoughMoney:
 
 LilycoveCity_DepartmentStoreRooftop_Text_DecidedAgainstBuyingDrink:
 	.string "Decided against buying a drink.$"
+
+LilycoveCity_DepartmentStoreRooftop_EventScript_SubstituteWoman::
+	msgbox LilycoveCity_DepartmentStoreRooftop_EventScript_SubstituteWoman_Text_0
+	closemessage
+	release
+	end
+
+
+LilycoveCity_DepartmentStoreRooftop_EventScript_SubstituteWoman_Text_0:
+	.string "When I see the wide world from up here\non the roof…\pI think about how nice it would be if\nthere were more than just one me so I\lcould enjoy all sorts of lives.\pOf course it's not possible.\pGiggle…$"

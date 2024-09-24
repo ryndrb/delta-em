@@ -50,12 +50,11 @@ Route111_EventScript_SecretPowerMan::
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, Route111_EventScript_UseBro
 	delay 8
-	giveitem ITEM_TM_SECRET_POWER
+	//giveitem ITEM_TM_SECRET_POWER
 	goto_if_eq VAR_RESULT, FALSE, Route111_EventScript_NoRoomForSecretPower
 	msgbox Route111_Text_ExplainSecretPower, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_RECEIVED_SECRET_POWER
-	clearflag FLAG_HIDE_SLATEPORT_CITY_TM_SALESMAN
 	applymovement 33, Common_Movement_WalkInPlaceUp
 	waitmovement 33
 	msgbox Route111_Text_ThisIsASecretSpot, MSGBOX_DEFAULT

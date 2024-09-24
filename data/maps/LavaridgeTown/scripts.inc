@@ -186,22 +186,28 @@ LavaridgeTown_Text_HerbShopSign:
 LavaridgeTown_EventScript_BlackBelt::
 	lock
 	faceplayer
-	goto_if_unset FLAG_RECEIVED_SWORDS_DANCE, LavaridgeTown_EventScript_BlackBelt_2
-LavaridgeTown_EventScript_BlackBelt_1:
-	msgbox LavaridgeTown_EventScript_BlackBelt_Text_3
+	checkitem ITEM_TM_SWORDS_DANCE, 1
+	compare VAR_RESULT, 1
+	goto_if_eq LavaridgeTown_EventScript_BlackBelt_2
+	msgbox LavaridgeTown_EventScript_BlackBelt_Text_0, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq LavaridgeTown_EventScript_BlackBelt_5
+	msgbox LavaridgeTown_EventScript_BlackBelt_Text_2
 	closemessage
+	delay 8
+	giveitem ITEM_TM_SWORDS_DANCE, 1
+	msgbox LavaridgeTown_Text_HaveSwordsDance
+	closemessage
+	release
 	end
 
 LavaridgeTown_EventScript_BlackBelt_2:
-	msgbox LavaridgeTown_EventScript_BlackBelt_Text_0, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_eq LavaridgeTown_EventScript_BlackBelt_4
-	msgbox LavaridgeTown_EventScript_BlackBelt_Text_2
-	delay 8
-	setflag FLAG_RECEIVED_SWORDS_DANCE
-	goto LavaridgeTown_EventScript_BlackBelt_1
+	msgbox LavaridgeTown_Text_HaveSwordsDance
+	closemessage
+	release
+	end
 
-LavaridgeTown_EventScript_BlackBelt_4:
+LavaridgeTown_EventScript_BlackBelt_5:
 	msgbox LavaridgeTown_EventScript_BlackBelt_Text_1
 	closemessage
 	end
@@ -387,9 +393,6 @@ LavaridgeTown_EventScript_BlackBelt_Text_1:
 LavaridgeTown_EventScript_BlackBelt_Text_2:
 	.string "Oh…\nI so sad and wretched…\pYou take this and you understand way\nof karate of me, fool Trainer!$"
 
-LavaridgeTown_EventScript_BlackBelt_Text_3:
-	.string "Suh-words Dance!\pYou use soulful dance for to make\npower of Pokémon go up, up!\pIt is the way of karate I seek!$"
-
 LavaridgeTown_EventScript_RivalGiveGoGoggles_Text_0:
 	.string "{COLOR RED}May{COLOR DARK_GRAY}: {PLAYER}!\pWow, it's a relief to see you in one\npiece!\pOh, well, you know…\nThe last I saw you was right after\lbattling those Team Whatsit people…\pSo I was a bit worried thinking\nabout what might have happened to\lyou after that, {PLAYER}…\p…What?\nYou battled them AGAIN after that?\lAnd you BEAT them!\pYou really are something else,\n{PLAYER}.\lI-I mean, you and your team are.\lI'm pretty impressed by you all!\pAnd that pretty stone that's sparkling\nthere…\pIs that the Meteorite you got back\nfrom them?$"
 
@@ -431,3 +434,6 @@ LavaridgeTown_EventScript_Rival_Text_0:
 
 LavaridgeTown_EventScript_Rival_Text_1:
 	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: How about it?\nWanna go back to Petalburg together?$"
+
+LavaridgeTown_Text_HaveSwordsDance::
+	.string "Suh-words Dance!\pYou use soulful dance for to make\npower of Pokémon go up, up!\pIt is the way of karate I seek!$"

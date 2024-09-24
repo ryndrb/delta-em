@@ -268,10 +268,12 @@
 #define OBJ_EVENT_GFX_MAGMA_COURTNEY             261
 #define OBJ_EVENT_GFX_MAGMA_TABITHA              262
 
+#define OBJ_EVENT_GFX_GOLD_ITEM_BALL             263
+
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        OBJ_EVENT_GFX_MAGMA_TABITHA + 1
+#define NUM_OBJ_EVENT_GFX                        OBJ_EVENT_GFX_GOLD_ITEM_BALL + 1
 
 
 // These are dynamic object gfx ids.

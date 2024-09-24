@@ -190,22 +190,32 @@ LavaridgeTown_Text_HerbShopSign:
 script LavaridgeTown_EventScript_BlackBelt {
     lock
     faceplayer
-    if(!flag(FLAG_RECEIVED_SWORDS_DANCE)){
-        msgbox("Dance and soul make power!\pSoul is the way of karate for me!\pYou understand, yes?", MSGBOX_YESNO)
-        if(var(VAR_RESULT) == YES){
-            msgbox("OK! OK!\nYou good kid!")
-            closemessage
-            end
-        }else{
-            msgbox("Oh…\nI so sad and wretched…\pYou take this and you understand way\nof karate of me, fool Trainer!")
-            delay(8)
-            //giveitem(ITEM_TM_SWORDS_DANCE, 1) // when added
-            setflag(FLAG_RECEIVED_SWORDS_DANCE)
-        }
+    checkitem(ITEM_TM_SWORDS_DANCE, 1)
+    if(var(VAR_RESULT) == 1){
+        msgbox(LavaridgeTown_Text_HaveSwordsDance)
+        closemessage
+        release
+        end
     }
-    msgbox("Suh-words Dance!\pYou use soulful dance for to make\npower of Pokémon go up, up!\pIt is the way of karate I seek!")
+    msgbox("Dance and soul make power!\pSoul is the way of karate for me!\pYou understand, yes?", MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES){
+        msgbox("OK! OK!\nYou good kid!")
+        closemessage
+        end
+    }else{
+        msgbox("Oh…\nI so sad and wretched…\pYou take this and you understand way\nof karate of me, fool Trainer!")
+        closemessage
+        delay(8)
+    }
+    giveitem(ITEM_TM_SWORDS_DANCE, 1)
+    msgbox(LavaridgeTown_Text_HaveSwordsDance)
     closemessage
+    release
     end
+}
+
+text LavaridgeTown_Text_HaveSwordsDance {
+    "Suh-words Dance!\pYou use soulful dance for to make\npower of Pokémon go up, up!\pIt is the way of karate I seek!"
 }
 
 script LavaridgeTown_EventScript_RivalGiveGoGoggles {

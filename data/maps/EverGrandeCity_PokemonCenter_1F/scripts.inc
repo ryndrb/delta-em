@@ -62,7 +62,6 @@ EverGrandeCity_PokemonCenter_1F_Movement_ScottExitNorth:
 	walk_left
 	walk_down
 	walk_down
-	walk_left
 	walk_down
 	walk_down
 	step_end
@@ -70,7 +69,6 @@ EverGrandeCity_PokemonCenter_1F_Movement_ScottExitNorth:
 EverGrandeCity_PokemonCenter_1F_Movement_ScottExit:
 	walk_down
 	walk_down
-	walk_left
 	walk_left
 	walk_down
 	walk_down
