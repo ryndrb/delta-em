@@ -683,7 +683,8 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
 #include "data/pokemon/trainer_class_lookups.h"
 #include "data/pokemon/experience_tables.h"
 
-#include "data/pokemon/level_up_learnsets.h"
+// #include "data/pokemon/level_up_learnsets.h"
+#include "data/pokemon/level_up_learnsets/custom.h"
 #if FALSE
 
 #if P_LVL_UP_LEARNSETS >= GEN_9
