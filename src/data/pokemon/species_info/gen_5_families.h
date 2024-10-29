@@ -570,7 +570,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sDewottLevelUpLearnset,
         .teachableLearnset = sDewottTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_SAMUROTT},
-                                {EVO_NONE, 0, SPECIES_SAMUROTT_HISUIAN}),
+                                {EVO_NONE, 0, SPECIES_SAMUROTT_HISUI}),
     },
 
     [SPECIES_SAMUROTT] =
@@ -636,7 +636,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     },
 
 #if P_HISUIAN_FORMS
-    [SPECIES_SAMUROTT_HISUIAN] =
+    [SPECIES_SAMUROTT_HISUI] =
     {
         .baseHP        = 90,
         .baseAttack    = 108,
@@ -670,32 +670,32 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonOffset = 2,
         .trainerScale = 271,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_SamurottHisuian,
+        .frontPic = gMonFrontPic_SamurottHisui,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SamurottHisuian,
+        .frontAnimFrames = sAnims_SamurottHisui,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_SamurottHisuian,
+        .backPic = gMonBackPic_SamurottHisui,
         .backPicSize = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 8,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_SamurottHisuian,
-        .shinyPalette = gMonShinyPalette_SamurottHisuian,
-        .iconSprite = gMonIcon_SamurottHisuian,
+        .palette = gMonPalette_SamurottHisui,
+        .shinyPalette = gMonShinyPalette_SamurottHisui,
+        .iconSprite = gMonIcon_SamurottHisui,
         .iconPalIndex = 0,
         SHADOW(-2, 13, SHADOW_SIZE_L)
         FOOTPRINT(Samurott)
         OVERWORLD(
-            sPicTable_SamurottHisuian,
+            sPicTable_SamurottHisui,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gOverworldPalette_SamurottHisuian,
-            gShinyOverworldPalette_SamurottHisuian
+            gOverworldPalette_SamurottHisui,
+            gShinyOverworldPalette_SamurottHisui
         )
         .isHisuianForm = TRUE,
-        .levelUpLearnset = sSamurottHisuianLevelUpLearnset,
-        .teachableLearnset = sSamurottHisuianTeachableLearnset,
+        .levelUpLearnset = sSamurottHisuiLevelUpLearnset,
+        .teachableLearnset = sSamurottHisuiTeachableLearnset,
         .formSpeciesIdTable = sSamurottFormSpeciesIdTable,
     },
 #endif //P_HISUIAN_FORMS
@@ -1851,6 +1851,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             TRACKS_FOOT,
             gOverworldPalette_Unfezant,
             gShinyOverworldPalette_Unfezant
+        )
+        OVERWORLD_FEMALE(
+            sPicTable_UnfezantF,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_UnfezantF,
+            gShinyOverworldPalette_UnfezantF
         )
         .levelUpLearnset = sUnfezantLevelUpLearnset,
         .teachableLearnset = sUnfezantTeachableLearnset,
@@ -3698,7 +3706,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sPetililTeachableLearnset,
         .eggMoveLearnset = sPetililEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_ITEM, ITEM_SUN_STONE, SPECIES_LILLIGANT},
-                                {EVO_NONE, 0, SPECIES_LILLIGANT_HISUIAN}),
+                                {EVO_NONE, 0, SPECIES_LILLIGANT_HISUI}),
     },
 
     [SPECIES_LILLIGANT] =
@@ -3766,7 +3774,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     },
 
 #if P_HISUIAN_FORMS
-    [SPECIES_LILLIGANT_HISUIAN] =
+    [SPECIES_LILLIGANT_HISUI] =
     {
         .baseHP        = 70,
         .baseAttack    = 105,
@@ -3803,32 +3811,32 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonOffset = 7,
         .trainerScale = 256,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_LilligantHisuian,
+        .frontPic = gMonFrontPic_LilligantHisui,
         .frontPicSize = MON_COORDS_SIZE(56, 64),
         .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_LilligantHisuian,
+        .frontAnimFrames = sAnims_LilligantHisui,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_LilligantHisuian,
+        .backPic = gMonBackPic_LilligantHisui,
         .backPicSize = MON_COORDS_SIZE(56, 56),
         .backPicYOffset = 5,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_LilligantHisuian,
-        .shinyPalette = gMonShinyPalette_LilligantHisuian,
-        .iconSprite = gMonIcon_LilligantHisuian,
+        .palette = gMonPalette_LilligantHisui,
+        .shinyPalette = gMonShinyPalette_LilligantHisui,
+        .iconSprite = gMonIcon_LilligantHisui,
         .iconPalIndex = 1,
         SHADOW(-3, 13, SHADOW_SIZE_S)
         FOOTPRINT(Lilligant)
         OVERWORLD(
-            sPicTable_LilligantHisuian,
+            sPicTable_LilligantHisui,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gOverworldPalette_LilligantHisuian,
-            gShinyOverworldPalette_LilligantHisuian
+            gOverworldPalette_LilligantHisui,
+            gShinyOverworldPalette_LilligantHisui
         )
         .isHisuianForm = TRUE,
-        .levelUpLearnset = sLilligantHisuianLevelUpLearnset,
-        .teachableLearnset = sLilligantHisuianTeachableLearnset,
+        .levelUpLearnset = sLilligantHisuiLevelUpLearnset,
+        .teachableLearnset = sLilligantHisuiTeachableLearnset,
         .formSpeciesIdTable = sLilligantFormSpeciesIdTable,
     },
 #endif //P_HISUIAN_FORMS
@@ -4028,11 +4036,11 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sBasculinWhiteStripedLevelUpLearnset,
         .teachableLearnset = sBasculinWhiteStripedTeachableLearnset,
         .formSpeciesIdTable = sBasculinFormSpeciesIdTable,
-        .evolutions = EVOLUTION({EVO_RECOIL_DAMAGE_MALE, 294, SPECIES_BASCULEGION_MALE},
-                                {EVO_RECOIL_DAMAGE_FEMALE, 294, SPECIES_BASCULEGION_FEMALE}),
+        .evolutions = EVOLUTION({EVO_RECOIL_DAMAGE_MALE, 294, SPECIES_BASCULEGION_M},
+                                {EVO_RECOIL_DAMAGE_FEMALE, 294, SPECIES_BASCULEGION_F}),
     },
 
-    [SPECIES_BASCULEGION_MALE] =
+    [SPECIES_BASCULEGION_M] =
     {
         .baseHP        = 120,
         .baseAttack    = 112,
@@ -4066,36 +4074,36 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonOffset = 7,
         .trainerScale = 256,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_BasculegionMale,
+        .frontPic = gMonFrontPic_BasculegionM,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 0,
         .frontAnimFrames = sAnims_Basculegion,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .enemyMonElevation = 5,
-        .backPic = gMonBackPic_BasculegionMale,
+        .backPic = gMonBackPic_BasculegionM,
         .backPicSize = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 8,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_BasculegionMale,
-        .shinyPalette = gMonShinyPalette_BasculegionMale,
-        .iconSprite = gMonIcon_BasculegionMale,
+        .palette = gMonPalette_BasculegionM,
+        .shinyPalette = gMonShinyPalette_BasculegionM,
+        .iconSprite = gMonIcon_BasculegionM,
         .iconPalIndex = 1,
         SHADOW(0, 16, SHADOW_SIZE_M)
         FOOTPRINT(Basculegion)
         OVERWORLD(
-            sPicTable_BasculegionMale,
+            sPicTable_BasculegionM,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gOverworldPalette_BasculegionMale,
-            gShinyOverworldPalette_BasculegionMale
+            gOverworldPalette_BasculegionM,
+            gShinyOverworldPalette_BasculegionM
         )
         .levelUpLearnset = sBasculegionLevelUpLearnset,
         .teachableLearnset = sBasculegionTeachableLearnset,
         .formSpeciesIdTable = sBasculegionFormSpeciesIdTable,
     },
 
-    [SPECIES_BASCULEGION_FEMALE] =
+    [SPECIES_BASCULEGION_F] =
     {
         .baseHP        = 120,
         .baseAttack    = 92,
@@ -4128,29 +4136,29 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonOffset = 7,
         .trainerScale = 256,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_BasculegionFemale,
+        .frontPic = gMonFrontPic_BasculegionF,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 0,
         .frontAnimFrames = sAnims_Basculegion,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .enemyMonElevation = 5,
-        .backPic = gMonBackPic_BasculegionFemale,
+        .backPic = gMonBackPic_BasculegionF,
         .backPicSize = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 8,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_BasculegionFemale,
-        .shinyPalette = gMonShinyPalette_BasculegionFemale,
-        .iconSprite = gMonIcon_BasculegionFemale,
+        .palette = gMonPalette_BasculegionF,
+        .shinyPalette = gMonShinyPalette_BasculegionF,
+        .iconSprite = gMonIcon_BasculegionF,
         .iconPalIndex = 0,
         SHADOW(0, 16, SHADOW_SIZE_M)
         FOOTPRINT(Basculegion)
         OVERWORLD(
-            sPicTable_BasculegionFemale,
+            sPicTable_BasculegionF,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gOverworldPalette_BasculegionFemale,
-            gShinyOverworldPalette_BasculegionFemale
+            gOverworldPalette_BasculegionF,
+            gShinyOverworldPalette_BasculegionF
         )
         .levelUpLearnset = sBasculegionLevelUpLearnset,
         .teachableLearnset = sBasculegionTeachableLearnset,
@@ -4418,10 +4426,10 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sDarumakaTeachableLearnset,
         .eggMoveLearnset = sDarumakaEggMoveLearnset,
         .formSpeciesIdTable = sDarumakaFormSpeciesIdTable,
-        .evolutions = EVOLUTION({EVO_LEVEL, 35, SPECIES_DARMANITAN_STANDARD_MODE}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 35, SPECIES_DARMANITAN_STANDARD}),
     },
 
-    [SPECIES_DARMANITAN_STANDARD_MODE] =
+    [SPECIES_DARMANITAN_STANDARD] =
     {
         .baseHP        = 105,
         .baseAttack    = 140,
@@ -4455,28 +4463,28 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonOffset = 3,
         .trainerScale = 256,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_DarmanitanStandardMode,
+        .frontPic = gMonFrontPic_DarmanitanStandard,
         .frontPicSize = MON_COORDS_SIZE(56, 64),
         .frontPicYOffset = 2,
-        .frontAnimFrames = sAnims_DarmanitanStandardMode,
+        .frontAnimFrames = sAnims_DarmanitanStandard,
         .frontAnimId = ANIM_CIRCULAR_STRETCH_TWICE,
-        .backPic = gMonBackPic_DarmanitanStandardMode,
+        .backPic = gMonBackPic_DarmanitanStandard,
         .backPicSize = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 2,
         .backAnimId = BACK_ANIM_V_SHAKE_H_SLIDE,
-        .palette = gMonPalette_DarmanitanStandardMode,
-        .shinyPalette = gMonShinyPalette_DarmanitanStandardMode,
-        .iconSprite = gMonIcon_DarmanitanStandardMode,
+        .palette = gMonPalette_DarmanitanStandard,
+        .shinyPalette = gMonShinyPalette_DarmanitanStandard,
+        .iconSprite = gMonIcon_DarmanitanStandard,
         .iconPalIndex = 0,
         SHADOW(3, 5, SHADOW_SIZE_L)
         FOOTPRINT(Darmanitan)
         OVERWORLD(
-            sPicTable_DarmanitanStandardMode,
+            sPicTable_DarmanitanStandard,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gOverworldPalette_DarmanitanStandardMode,
-            gShinyOverworldPalette_DarmanitanStandardMode
+            gOverworldPalette_DarmanitanStandard,
+            gShinyOverworldPalette_DarmanitanStandard
         )
         .levelUpLearnset = sDarmanitanLevelUpLearnset,
         .teachableLearnset = sDarmanitanTeachableLearnset,
@@ -4484,7 +4492,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .formChangeTable = sDarmanitanFormChangeTable,
     },
 
-    [SPECIES_DARMANITAN_ZEN_MODE] =
+    [SPECIES_DARMANITAN_ZEN] =
     {
         .baseHP        = 105,
         .baseAttack    = 30,
@@ -4517,18 +4525,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonOffset = 3,
         .trainerScale = 256,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_DarmanitanZenMode,
+        .frontPic = gMonFrontPic_DarmanitanZen,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 14,
-        .frontAnimFrames = sAnims_DarmanitanZenMode,
+        .frontAnimFrames = sAnims_DarmanitanZen,
         .frontAnimId = ANIM_GROW_VIBRATE,
-        .backPic = gMonBackPic_DarmanitanZenMode,
+        .backPic = gMonBackPic_DarmanitanZen,
         .backPicSize = MON_COORDS_SIZE(56, 48),
         .backPicYOffset = 11,
         .backAnimId = BACK_ANIM_H_SHAKE,
-        .palette = gMonPalette_DarmanitanZenMode,
-        .shinyPalette = gMonShinyPalette_DarmanitanZenMode,
-        .iconSprite = gMonIcon_DarmanitanZenMode,
+        .palette = gMonPalette_DarmanitanZen,
+        .shinyPalette = gMonShinyPalette_DarmanitanZen,
+        .iconSprite = gMonIcon_DarmanitanZen,
         .iconPalIndex = 0,
         SHADOW(-1, -1, SHADOW_SIZE_S)
         FOOTPRINT(Darmanitan)
@@ -4539,7 +4547,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     },
 
 #if P_GALARIAN_FORMS
-    [SPECIES_DARUMAKA_GALARIAN] =
+    [SPECIES_DARUMAKA_GALAR] =
     {
         .baseHP        = 70,
         .baseAttack    = 90,
@@ -4573,38 +4581,38 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonOffset = 14,
         .trainerScale = 256,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_DarumakaGalarian,
+        .frontPic = gMonFrontPic_DarumakaGalar,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 15,
-        .frontAnimFrames = sAnims_DarumakaGalarian,
+        .frontAnimFrames = sAnims_DarumakaGalar,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_DarumakaGalarian,
+        .backPic = gMonBackPic_DarumakaGalar,
         .backPicSize = MON_COORDS_SIZE(56, 48),
         .backPicYOffset = 11,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_DarumakaGalarian,
-        .shinyPalette = gMonShinyPalette_DarumakaGalarian,
-        .iconSprite = gMonIcon_DarumakaGalarian,
+        .palette = gMonPalette_DarumakaGalar,
+        .shinyPalette = gMonShinyPalette_DarumakaGalar,
+        .iconSprite = gMonIcon_DarumakaGalar,
         .iconPalIndex = 0,
         SHADOW(-3, -1, SHADOW_SIZE_S)
         FOOTPRINT(Darumaka)
         OVERWORLD(
-            sPicTable_DarumakaGalarian,
+            sPicTable_DarumakaGalar,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gOverworldPalette_DarumakaGalarian,
-            gShinyOverworldPalette_DarumakaGalarian
+            gOverworldPalette_DarumakaGalar,
+            gShinyOverworldPalette_DarumakaGalar
         )
         .isGalarianForm = TRUE,
-        .levelUpLearnset = sDarumakaGalarianLevelUpLearnset,
-        .teachableLearnset = sDarumakaGalarianTeachableLearnset,
-        .eggMoveLearnset = sDarumakaGalarianEggMoveLearnset,
+        .levelUpLearnset = sDarumakaGalarLevelUpLearnset,
+        .teachableLearnset = sDarumakaGalarTeachableLearnset,
+        .eggMoveLearnset = sDarumakaGalarEggMoveLearnset,
         .formSpeciesIdTable = sDarumakaFormSpeciesIdTable,
-        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ICE_STONE, SPECIES_DARMANITAN_GALARIAN_STANDARD_MODE}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_ICE_STONE, SPECIES_DARMANITAN_GALAR_STANDARD}),
     },
 
-    [SPECIES_DARMANITAN_GALARIAN_STANDARD_MODE] =
+    [SPECIES_DARMANITAN_GALAR_STANDARD] =
     {
         .baseHP        = 105,
         .baseAttack    = 140,
@@ -4638,37 +4646,37 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonOffset = 3,
         .trainerScale = 256,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_DarmanitanGalarianStandardMode,
+        .frontPic = gMonFrontPic_DarmanitanGalarStandard,
         .frontPicSize = MON_COORDS_SIZE(56, 64),
         .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_DarmanitanGalarianStandardMode,
+        .frontAnimFrames = sAnims_DarmanitanGalarStandard,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_DarmanitanGalarianStandardMode,
+        .backPic = gMonBackPic_DarmanitanGalarStandard,
         .backPicSize = MON_COORDS_SIZE(56, 64),
         .backPicYOffset = 2,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_DarmanitanGalarianStandardMode,
-        .shinyPalette = gMonShinyPalette_DarmanitanGalarianStandardMode,
-        .iconSprite = gMonIcon_DarmanitanGalarianStandardMode,
+        .palette = gMonPalette_DarmanitanGalarStandard,
+        .shinyPalette = gMonShinyPalette_DarmanitanGalarStandard,
+        .iconSprite = gMonIcon_DarmanitanGalarStandard,
         .iconPalIndex = 0,
         SHADOW(4, 8, SHADOW_SIZE_L)
         FOOTPRINT(Darmanitan)
         OVERWORLD(
-            sPicTable_DarmanitanGalarianStandardMode,
+            sPicTable_DarmanitanGalarStandard,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gOverworldPalette_DarmanitanGalarianStandardMode,
-            gShinyOverworldPalette_DarmanitanGalarianStandardMode
+            gOverworldPalette_DarmanitanGalarStandard,
+            gShinyOverworldPalette_DarmanitanGalarStandard
         )
         .isGalarianForm = TRUE,
-        .levelUpLearnset = sDarmanitanGalarianLevelUpLearnset,
-        .teachableLearnset = sDarmanitanGalarianTeachableLearnset,
+        .levelUpLearnset = sDarmanitanGalarLevelUpLearnset,
+        .teachableLearnset = sDarmanitanGalarTeachableLearnset,
         .formSpeciesIdTable = sDarmanitanFormSpeciesIdTable,
-        .formChangeTable = sDarmanitanGalarianFormChangeTable,
+        .formChangeTable = sDarmanitanGalarFormChangeTable,
     },
 
-    [SPECIES_DARMANITAN_GALARIAN_ZEN_MODE] =
+    [SPECIES_DARMANITAN_GALAR_ZEN] =
     {
         .baseHP        = 105,
         .baseAttack    = 160,
@@ -4702,26 +4710,26 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonOffset = 3,
         .trainerScale = 256,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_DarmanitanGalarianZenMode,
+        .frontPic = gMonFrontPic_DarmanitanGalarZen,
         .frontPicSize = MON_COORDS_SIZE(48, 64),
         .frontPicYOffset = 2,
-        .frontAnimFrames = sAnims_DarmanitanGalarianZenMode,
+        .frontAnimFrames = sAnims_DarmanitanGalarZen,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_DarmanitanGalarianZenMode,
+        .backPic = gMonBackPic_DarmanitanGalarZen,
         .backPicSize = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 1,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_DarmanitanGalarianZenMode,
-        .shinyPalette = gMonShinyPalette_DarmanitanGalarianZenMode,
-        .iconSprite = gMonIcon_DarmanitanGalarianZenMode,
+        .palette = gMonPalette_DarmanitanGalarZen,
+        .shinyPalette = gMonShinyPalette_DarmanitanGalarZen,
+        .iconSprite = gMonIcon_DarmanitanGalarZen,
         .iconPalIndex = 0,
         SHADOW(0, 11, SHADOW_SIZE_S)
         FOOTPRINT(Darmanitan)
         .isGalarianForm = TRUE,
-        .levelUpLearnset = sDarmanitanGalarianLevelUpLearnset,
-        .teachableLearnset = sDarmanitanGalarianTeachableLearnset,
+        .levelUpLearnset = sDarmanitanGalarLevelUpLearnset,
+        .teachableLearnset = sDarmanitanGalarTeachableLearnset,
         .formSpeciesIdTable = sDarmanitanFormSpeciesIdTable,
-        .formChangeTable = sDarmanitanGalarianFormChangeTable,
+        .formChangeTable = sDarmanitanGalarFormChangeTable,
     },
 #endif //P_GALARIAN_FORMS
 #endif //P_FAMILY_DARUMAKA
@@ -5243,7 +5251,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     },
 
 #if P_GALARIAN_FORMS
-    [SPECIES_YAMASK_GALARIAN] =
+    [SPECIES_YAMASK_GALAR] =
     {
         .baseHP        = 38,
         .baseAttack    = 55,
@@ -5277,34 +5285,34 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonOffset = 13,
         .trainerScale = 256,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_YamaskGalarian,
+        .frontPic = gMonFrontPic_YamaskGalar,
         .frontPicSize = MON_COORDS_SIZE(48, 40),
         .frontPicYOffset = 13,
-        .frontAnimFrames = sAnims_YamaskGalarian,
+        .frontAnimFrames = sAnims_YamaskGalar,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .enemyMonElevation = 4,
-        .backPic = gMonBackPic_YamaskGalarian,
+        .backPic = gMonBackPic_YamaskGalar,
         .backPicSize = MON_COORDS_SIZE(40, 40),
         .backPicYOffset = 13,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_YamaskGalarian,
-        .shinyPalette = gMonShinyPalette_YamaskGalarian,
-        .iconSprite = gMonIcon_YamaskGalarian,
+        .palette = gMonPalette_YamaskGalar,
+        .shinyPalette = gMonShinyPalette_YamaskGalar,
+        .iconSprite = gMonIcon_YamaskGalar,
         .iconPalIndex = 2,
         SHADOW(0, 2, SHADOW_SIZE_S)
         FOOTPRINT(Yamask)
         OVERWORLD(
-            sPicTable_YamaskGalarian,
+            sPicTable_YamaskGalar,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gOverworldPalette_YamaskGalarian,
-            gShinyOverworldPalette_YamaskGalarian
+            gOverworldPalette_YamaskGalar,
+            gShinyOverworldPalette_YamaskGalar
         )
         .isGalarianForm = TRUE,
-        .levelUpLearnset = sYamaskGalarianLevelUpLearnset,
-        .teachableLearnset = sYamaskGalarianTeachableLearnset,
-        .eggMoveLearnset = sYamaskGalarianEggMoveLearnset,
+        .levelUpLearnset = sYamaskGalarLevelUpLearnset,
+        .teachableLearnset = sYamaskGalarTeachableLearnset,
+        .eggMoveLearnset = sYamaskGalarEggMoveLearnset,
         .formSpeciesIdTable = sYamaskFormSpeciesIdTable,
         .evolutions = EVOLUTION({EVO_SCRIPT_TRIGGER_DMG, 49, SPECIES_RUNERIGUS}),
     },
@@ -5757,7 +5765,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     },
 
 #if P_GIGANTAMAX_FORMS
-    [SPECIES_GARBODOR_GIGANTAMAX] =
+    [SPECIES_GARBODOR_GMAX] =
     {
         .baseHP        = 80,
         .baseAttack    = 95,
@@ -5794,18 +5802,18 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonOffset = 1,
         .trainerScale = 326,
         .trainerOffset = 4,
-        .frontPic = gMonFrontPic_GarbodorGigantamax,
+        .frontPic = gMonFrontPic_GarbodorGmax,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 2,
-        .frontAnimFrames = sAnims_GarbodorGigantamax,
+        .frontAnimFrames = sAnims_GarbodorGmax,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_GarbodorGigantamax,
+        .backPic = gMonBackPic_GarbodorGmax,
         .backPicSize = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 2,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_GarbodorGigantamax,
-        .shinyPalette = gMonShinyPalette_GarbodorGigantamax,
-        .iconSprite = gMonIcon_GarbodorGigantamax,
+        .palette = gMonPalette_GarbodorGmax,
+        .shinyPalette = gMonShinyPalette_GarbodorGmax,
+        .iconSprite = gMonIcon_GarbodorGmax,
         .iconPalIndex = 0,
         NO_SHADOW
         FOOTPRINT(Garbodor)
@@ -5946,7 +5954,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     },
 
 #if P_HISUIAN_FORMS
-    [SPECIES_ZORUA_HISUIAN] =
+    [SPECIES_ZORUA_HISUI] =
     {
         .baseHP        = 35,
         .baseAttack    = 60,
@@ -5980,37 +5988,37 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonOffset = 12,
         .trainerScale = 256,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_ZoruaHisuian,
+        .frontPic = gMonFrontPic_ZoruaHisui,
         .frontPicSize = MON_COORDS_SIZE(48, 64),
         .frontPicYOffset = 1,
-        .frontAnimFrames = sAnims_ZoruaHisuian,
+        .frontAnimFrames = sAnims_ZoruaHisui,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_ZoruaHisuian,
+        .backPic = gMonBackPic_ZoruaHisui,
         .backPicSize = MON_COORDS_SIZE(56, 64),
         .backPicYOffset = 1,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_ZoruaHisuian,
-        .shinyPalette = gMonShinyPalette_ZoruaHisuian,
-        .iconSprite = gMonIcon_ZoruaHisuian,
+        .palette = gMonPalette_ZoruaHisui,
+        .shinyPalette = gMonShinyPalette_ZoruaHisui,
+        .iconSprite = gMonIcon_ZoruaHisui,
         .iconPalIndex = 0,
         SHADOW(2, 12, SHADOW_SIZE_S)
         FOOTPRINT(Zorua)
         OVERWORLD(
-            sPicTable_ZoruaHisuian,
+            sPicTable_ZoruaHisui,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gOverworldPalette_ZoruaHisuian,
-            gShinyOverworldPalette_ZoruaHisuian
+            gOverworldPalette_ZoruaHisui,
+            gShinyOverworldPalette_ZoruaHisui
         )
         .isHisuianForm = TRUE,
-        .levelUpLearnset = sZoruaHisuianLevelUpLearnset,
-        .teachableLearnset = sZoruaHisuianTeachableLearnset,
+        .levelUpLearnset = sZoruaHisuiLevelUpLearnset,
+        .teachableLearnset = sZoruaHisuiTeachableLearnset,
         .formSpeciesIdTable = sZoruaFormSpeciesIdTable,
-        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_ZOROARK_HISUIAN}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_ZOROARK_HISUI}),
     },
 
-    [SPECIES_ZOROARK_HISUIAN] =
+    [SPECIES_ZOROARK_HISUI] =
     {
         .baseHP        = 55,
         .baseAttack    = 100,
@@ -6044,32 +6052,32 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonOffset = 1,
         .trainerScale = 296,
         .trainerOffset = 1,
-        .frontPic = gMonFrontPic_ZoroarkHisuian,
+        .frontPic = gMonFrontPic_ZoroarkHisui,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 1,
-        .frontAnimFrames = sAnims_ZoroarkHisuian,
+        .frontAnimFrames = sAnims_ZoroarkHisui,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_ZoroarkHisuian,
+        .backPic = gMonBackPic_ZoroarkHisui,
         .backPicSize = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 0,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_ZoroarkHisuian,
-        .shinyPalette = gMonShinyPalette_ZoroarkHisuian,
-        .iconSprite = gMonIcon_ZoroarkHisuian,
+        .palette = gMonPalette_ZoroarkHisui,
+        .shinyPalette = gMonShinyPalette_ZoroarkHisui,
+        .iconSprite = gMonIcon_ZoroarkHisui,
         .iconPalIndex = 0,
         SHADOW(11, 13, SHADOW_SIZE_L)
         FOOTPRINT(Zoroark)
         OVERWORLD(
-            sPicTable_ZoroarkHisuian,
+            sPicTable_ZoroarkHisui,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gOverworldPalette_ZoroarkHisuian,
-            gShinyOverworldPalette_ZoroarkHisuian
+            gOverworldPalette_ZoroarkHisui,
+            gShinyOverworldPalette_ZoroarkHisui
         )
         .isHisuianForm = TRUE,
-        .levelUpLearnset = sZoroarkHisuianLevelUpLearnset,
-        .teachableLearnset = sZoroarkHisuianTeachableLearnset,
+        .levelUpLearnset = sZoroarkHisuiLevelUpLearnset,
+        .teachableLearnset = sZoroarkHisuiTeachableLearnset,
         .formSpeciesIdTable = sZoroarkFormSpeciesIdTable,
     },
 #endif //P_HISUIAN_FORMS
@@ -7818,6 +7826,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Frillish,
             gShinyOverworldPalette_Frillish
         )
+        OVERWORLD_FEMALE(
+            sPicTable_FrillishF,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_FrillishF,
+            gShinyOverworldPalette_FrillishF
+        )
         .levelUpLearnset = sFrillishLevelUpLearnset,
         .teachableLearnset = sFrillishTeachableLearnset,
         .eggMoveLearnset = sFrillishEggMoveLearnset,
@@ -7888,6 +7904,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             TRACKS_FOOT,
             gOverworldPalette_Jellicent,
             gShinyOverworldPalette_Jellicent
+        )
+        OVERWORLD_FEMALE(
+            sPicTable_JellicentF,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_JellicentF,
+            gShinyOverworldPalette_JellicentF
         )
         .levelUpLearnset = sJellicentLevelUpLearnset,
         .teachableLearnset = sJellicentTeachableLearnset,
@@ -9509,7 +9533,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     },
 
 #if P_GALARIAN_FORMS
-    [SPECIES_STUNFISK_GALARIAN] =
+    [SPECIES_STUNFISK_GALAR] =
     {
         .baseHP        = 109,
         .baseAttack    = 100,
@@ -9543,33 +9567,33 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonOffset = 14,
         .trainerScale = 256,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_StunfiskGalarian,
+        .frontPic = gMonFrontPic_StunfiskGalar,
         .frontPicSize = MON_COORDS_SIZE(48, 40),
         .frontPicYOffset = 14,
-        .frontAnimFrames = sAnims_StunfiskGalarian,
+        .frontAnimFrames = sAnims_StunfiskGalar,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_StunfiskGalarian,
+        .backPic = gMonBackPic_StunfiskGalar,
         .backPicSize = MON_COORDS_SIZE(64, 24),
         .backPicYOffset = 23,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_StunfiskGalarian,
-        .shinyPalette = gMonShinyPalette_StunfiskGalarian,
-        .iconSprite = gMonIcon_StunfiskGalarian,
+        .palette = gMonPalette_StunfiskGalar,
+        .shinyPalette = gMonShinyPalette_StunfiskGalar,
+        .iconSprite = gMonIcon_StunfiskGalar,
         .iconPalIndex = 1,
         SHADOW(0, -1, SHADOW_SIZE_M)
         FOOTPRINT(Stunfisk)
         OVERWORLD(
-            sPicTable_StunfiskGalarian,
+            sPicTable_StunfiskGalar,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gOverworldPalette_StunfiskGalarian,
-            gShinyOverworldPalette_StunfiskGalarian
+            gOverworldPalette_StunfiskGalar,
+            gShinyOverworldPalette_StunfiskGalar
         )
         .isGalarianForm = TRUE,
-        .levelUpLearnset = sStunfiskGalarianLevelUpLearnset,
-        .teachableLearnset = sStunfiskGalarianTeachableLearnset,
-        .eggMoveLearnset = sStunfiskGalarianEggMoveLearnset,
+        .levelUpLearnset = sStunfiskGalarLevelUpLearnset,
+        .teachableLearnset = sStunfiskGalarTeachableLearnset,
+        .eggMoveLearnset = sStunfiskGalarEggMoveLearnset,
         .formSpeciesIdTable = sStunfiskFormSpeciesIdTable,
     },
 #endif //P_GALARIAN_FORMS
@@ -10211,7 +10235,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sRuffletLevelUpLearnset,
         .teachableLearnset = sRuffletTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 54, SPECIES_BRAVIARY},
-                                {EVO_NONE, 0, SPECIES_BRAVIARY_HISUIAN}),
+                                {EVO_NONE, 0, SPECIES_BRAVIARY_HISUI}),
     },
 
     [SPECIES_BRAVIARY] =
@@ -10278,7 +10302,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     },
 
 #if P_HISUIAN_FORMS
-    [SPECIES_BRAVIARY_HISUIAN] =
+    [SPECIES_BRAVIARY_HISUI] =
     {
         .baseHP        = 110,
         .baseAttack    = 60,
@@ -10311,33 +10335,33 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonOffset = 2,
         .trainerScale = 271,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_BraviaryHisuian,
+        .frontPic = gMonFrontPic_BraviaryHisui,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_BraviaryHisuian,
+        .frontAnimFrames = sAnims_BraviaryHisui,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .enemyMonElevation = 3,
-        .backPic = gMonBackPic_BraviaryHisuian,
+        .backPic = gMonBackPic_BraviaryHisui,
         .backPicSize = MON_COORDS_SIZE(64, 56),
         .backPicYOffset = 7,
         //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_BraviaryHisuian,
-        .shinyPalette = gMonShinyPalette_BraviaryHisuian,
-        .iconSprite = gMonIcon_BraviaryHisuian,
+        .palette = gMonPalette_BraviaryHisui,
+        .shinyPalette = gMonShinyPalette_BraviaryHisui,
+        .iconSprite = gMonIcon_BraviaryHisui,
         .iconPalIndex = 2,
         SHADOW(0, 14, SHADOW_SIZE_M)
         FOOTPRINT(Braviary)
         OVERWORLD(
-            sPicTable_BraviaryHisuian,
+            sPicTable_BraviaryHisui,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gOverworldPalette_BraviaryHisuian,
-            gShinyOverworldPalette_BraviaryHisuian
+            gOverworldPalette_BraviaryHisui,
+            gShinyOverworldPalette_BraviaryHisui
         )
         .isHisuianForm = TRUE,
-        .levelUpLearnset = sBraviaryHisuianLevelUpLearnset,
-        .teachableLearnset = sBraviaryHisuianTeachableLearnset,
+        .levelUpLearnset = sBraviaryHisuiLevelUpLearnset,
+        .teachableLearnset = sBraviaryHisuiTeachableLearnset,
         .formSpeciesIdTable = sBraviaryFormSpeciesIdTable,
     },
 #endif //P_HISUIAN_FORMS
@@ -10496,10 +10520,10 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 14,
         .weight = 580,
         .description = COMPOUND_STRING(
-            "It draws in air through its tail, transforms\n"
-            "it into fire, and uses it like a tongue.\n"
-            "They burn through Durant's steel bodies\n"
-            "and consume their insides."),
+            "It draws in air through its tail,\n"
+            "transforms it into fire, and uses it like\n"
+            "a tongue. They burn through Durant's steel\n"
+            "bodies and consume their insides."),
         .pokemonScale = 265,
         .pokemonOffset = 2,
         .trainerScale = 262,
@@ -11226,6 +11250,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .iconPalIndex = 1,
         SHADOW(-5, 12, SHADOW_SIZE_L)
         FOOTPRINT(Tornadus)
+        OVERWORLD(
+            sPicTable_TornadusTherian,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_TornadusTherian,
+            gShinyOverworldPalette_TornadusTherian
+        )
         .isLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sTornadusLevelUpLearnset,
@@ -11328,10 +11360,10 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 30,
         .weight = 610,
         .description = COMPOUND_STRING(
-            "It pulverizes foes into\n"
-            "nothingness with showers of devastatingly\n"
-            "powerful lightning bolts launched from\n"
-            "the string of orbs on its tail."),
+            "It pulverizes foes into nothingness\n"
+            "with showers of devastatingly\n"
+            "powerful lightning bolts launched\n"
+            "from the string of orbs on its tail."),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -11352,6 +11384,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .iconPalIndex = 0,
         SHADOW(5, 16, SHADOW_SIZE_M)
         FOOTPRINT(Thundurus)
+        OVERWORLD(
+            sPicTable_ThundurusTherian,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_ThundurusTherian,
+            gShinyOverworldPalette_ThundurusTherian
+        )
         .isLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sThundurusLevelUpLearnset,
@@ -11520,9 +11560,9 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 15,
         .weight = 680,
         .description = COMPOUND_STRING(
-            "The energy that comes pouring from its tail\n"
-            "increases the nutrition in the soil, making\n"
-            "crops grow to great size. It has been\n"
+            "The energy that comes pouring from its\n"
+            "tail increases the nutrition in the soil,\n"
+            "granting bountiful crops. It has been\n"
             "hailed as “The Guardian of the Fields.”"),
         .pokemonScale = 268,
         .pokemonOffset = 2,
@@ -11609,6 +11649,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .iconPalIndex = 0,
         SHADOW(1, 11, SHADOW_SIZE_L)
         FOOTPRINT(Landorus)
+        OVERWORLD(
+            sPicTable_LandorusTherian,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_LandorusTherian,
+            gShinyOverworldPalette_LandorusTherian
+        )
         .isLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sLandorusLevelUpLearnset,
@@ -11744,6 +11792,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .iconPalIndex = 0,
         SHADOW(-8, 14, SHADOW_SIZE_L)
         FOOTPRINT(Kyurem)
+        OVERWORLD(
+            sPicTable_KyuremWhite,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_KyuremWhite,
+            gShinyOverworldPalette_KyuremWhite
+        )
         .isLegendary = TRUE,
         .cannotBeTraded = TRUE,
         .isFrontierBanned = TRUE,
@@ -11809,6 +11865,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .iconPalIndex = 0,
         SHADOW(4, 14, SHADOW_SIZE_L)
         FOOTPRINT(Kyurem)
+        OVERWORLD(
+            sPicTable_KyuremBlack,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_KyuremBlack,
+            gShinyOverworldPalette_KyuremBlack
+        )
         .isLegendary = TRUE,
         .cannotBeTraded = TRUE,
         .isFrontierBanned = TRUE,
@@ -12158,10 +12222,10 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     }
 
     [SPECIES_GENESECT]             = GENESECT_SPECIES_INFO(Genesect),
-    [SPECIES_GENESECT_DOUSE_DRIVE] = GENESECT_SPECIES_INFO(GenesectDouseDrive),
-    [SPECIES_GENESECT_SHOCK_DRIVE] = GENESECT_SPECIES_INFO(GenesectShockDrive),
-    [SPECIES_GENESECT_BURN_DRIVE]  = GENESECT_SPECIES_INFO(GenesectBurnDrive),
-    [SPECIES_GENESECT_CHILL_DRIVE] = GENESECT_SPECIES_INFO(GenesectChillDrive),
+    [SPECIES_GENESECT_DOUSE] = GENESECT_SPECIES_INFO(GenesectDouseDrive),
+    [SPECIES_GENESECT_SHOCK] = GENESECT_SPECIES_INFO(GenesectShockDrive),
+    [SPECIES_GENESECT_BURN]  = GENESECT_SPECIES_INFO(GenesectBurnDrive),
+    [SPECIES_GENESECT_CHILL] = GENESECT_SPECIES_INFO(GenesectChillDrive),
 #endif //P_FAMILY_GENESECT
 
 #ifdef __INTELLISENSE__
