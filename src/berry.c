@@ -12,6 +12,7 @@
 #include "script_pokemon_util.h"
 #include "string_util.h"
 #include "text.h"
+#include "wild_encounter.h"
 #include "constants/event_object_movement.h"
 #include "constants/items.h"
 
@@ -2481,4 +2482,26 @@ static void AddTreeBonus(struct BerryTree *tree, u8 bonus)
             bonus = GetBerryInfo(tree->berry)->maxYield;
         tree->berryYield = bonus;
     }
+}
+
+// Flat 33% chance at each stage to encounter a Pokemon.
+void CheckBerryEncounter(void)
+{
+    if (VarGet(VAR_REPEL_STEP_COUNT) == 0)
+    {
+        if (Random() % 100 < 33)
+            gSpecialVar_Result = TRUE;
+        else
+            gSpecialVar_Result = FALSE;
+    }
+    else
+    {
+        gSpecialVar_Result = FALSE;
+    }
+}
+
+void DoBerryEncounter(void)
+{
+    struct BerryTree *tree = GetBerryTreeInfo(GetObjectEventBerryTreeId(gSelectedObjectEvent));
+    BerryWildEncounter(tree->stage - BERRY_STAGE_SPROUTED);
 }
