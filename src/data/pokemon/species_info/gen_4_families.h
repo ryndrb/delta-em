@@ -1862,8 +1862,8 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_WormadamPlantCloak,
             gShinyOverworldPalette_WormadamPlantCloak
         )
-        .levelUpLearnset = sWormadamPlantLevelUpLearnset,
-        .teachableLearnset = sWormadamPlantTeachableLearnset,
+        .levelUpLearnset = sWormadamPlantCloakLevelUpLearnset,
+        .teachableLearnset = sWormadamPlantCloakTeachableLearnset,
         .formSpeciesIdTable = sWormadamFormSpeciesIdTable,
     },
 

@@ -188,7 +188,7 @@ script OldaleTown_PokemonCenter_1F_Tutor_1 {
         case 127: goto(PokemonCenter_1F_OldManUtility)
     }
     closemessage
-    call(MoveTutor_EventScript_OpenPartyMenu)
+    call(MoveTutor_EventScript_OpenPartyMenu_Delta)
     if (var(VAR_RESULT) == 0) {
         goto(OldaleTown_PokemonCenter_1F_Tutor_1)
     }
@@ -225,7 +225,7 @@ script OldaleTown_PokemonCenter_1F_Tutor_2 {
         case 19: setvar(VAR_0x8005, MOVE_WORRY_SEED)
         case 127: goto(PokemonCenter_1F_OldManUtility)
     }
-    call(MoveTutor_EventScript_OpenPartyMenu)
+    call(MoveTutor_EventScript_OpenPartyMenu_Delta)
     if (var(VAR_RESULT) == 0) {
         goto(OldaleTown_PokemonCenter_1F_Tutor_2)
     }
@@ -262,7 +262,7 @@ script OldaleTown_PokemonCenter_1F_Tutor_3 {
         case 19: setvar(VAR_0x8005, MOVE_WAKE_UP_SLAP)
         case 127: goto(PokemonCenter_1F_OldManUtility)
     }
-    call(MoveTutor_EventScript_OpenPartyMenu)
+    call(MoveTutor_EventScript_OpenPartyMenu_Delta)
     if (var(VAR_RESULT) == 0) {
         goto(OldaleTown_PokemonCenter_1F_Tutor_3)
     }
@@ -299,7 +299,7 @@ script OldaleTown_PokemonCenter_1F_Tutor_4 {
         case 19: setvar(VAR_0x8005, MOVE_ZEN_HEADBUTT)
         case 127: goto(PokemonCenter_1F_OldManUtility)
     }
-    call(MoveTutor_EventScript_OpenPartyMenu)
+    call(MoveTutor_EventScript_OpenPartyMenu_Delta)
     if (var(VAR_RESULT) == 0) {
         goto(OldaleTown_PokemonCenter_1F_Tutor_4)
     }
@@ -336,7 +336,7 @@ script OldaleTown_PokemonCenter_1F_Tutor_5 {
         case 19: setvar(VAR_0x8005, MOVE_TELEPORT)
         case 127: goto(PokemonCenter_1F_OldManUtility)
     }
-    call(MoveTutor_EventScript_OpenPartyMenu)
+    call(MoveTutor_EventScript_OpenPartyMenu_Delta)
     if (var(VAR_RESULT) == 0) {
         goto(OldaleTown_PokemonCenter_1F_Tutor_5)
     }
@@ -373,7 +373,7 @@ script OldaleTown_PokemonCenter_1F_Tutor_6 {
         case 19: setvar(VAR_0x8005, MOVE_WATER_PLEDGE)
         case 127: goto(PokemonCenter_1F_OldManUtility)
     }
-    call(MoveTutor_EventScript_OpenPartyMenu)
+    call(MoveTutor_EventScript_OpenPartyMenu_Delta)
     if (var(VAR_RESULT) == 0) {
         goto(OldaleTown_PokemonCenter_1F_Tutor_6)
     }
@@ -410,11 +410,19 @@ script OldaleTown_PokemonCenter_1F_Tutor_7 {
         case 19: setvar(VAR_0x8005, MOVE_WAVE_CRASH)
         case 127: goto(PokemonCenter_1F_OldManUtility)
     }
-    call(MoveTutor_EventScript_OpenPartyMenu)
+    call(MoveTutor_EventScript_OpenPartyMenu_Delta)
     if (var(VAR_RESULT) == 0) {
         goto(OldaleTown_PokemonCenter_1F_Tutor_7)
     }
     closemessage
     release
     end
+}
+
+script MoveTutor_EventScript_OpenPartyMenu_Delta {
+	special(ChooseMonForMoveTutor)
+	waitstate
+	lock
+	faceplayer
+	return
 }
