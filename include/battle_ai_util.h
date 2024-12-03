@@ -15,7 +15,7 @@ enum DamageRollType
     DMG_ROLL_HIGHEST,
 };
 
-enum AIPivot 
+enum AIPivot
 {
     DONT_PIVOT,
     CAN_TRY_PIVOT,
@@ -25,6 +25,7 @@ enum AIPivot
 bool32 AI_IsFaster(u32 battlerAi, u32 battlerDef, u32 move);
 bool32 AI_IsSlower(u32 battlerAi, u32 battlerDef, u32 move);
 bool32 AI_RandLessThan(u32 val);
+u32 GetDmgRollType(u32 battlerAtk);
 bool32 IsAiVsAiBattle(void);
 bool32 BattlerHasAi(u32 battlerId);
 bool32 IsAiBattlerAware(u32 battlerId);
@@ -184,6 +185,7 @@ bool32 PartnerMoveEffectIsTerrain(u32 battlerAtkPartner, u32 partnerMove);
 bool32 PartnerMoveIs(u32 battlerAtkPartner, u32 partnerMove, u32 moveCheck);
 bool32 PartnerMoveIsSameAsAttacker(u32 battlerAtkPartner, u32 battlerDef, u32 move, u32 partnerMove);
 bool32 PartnerMoveIsSameNoTarget(u32 battlerAtkPartner, u32 move, u32 partnerMove);
+bool32 PartnerMoveActivatesSleepClause(u32 move);
 bool32 ShouldUseWishAromatherapy(u32 battlerAtk, u32 battlerDef, u32 move);
 
 // party logic
