@@ -3508,4 +3508,17 @@ void ScriptHideItemDescription(struct ScriptContext *ctx)
 }
 #endif // OW_SHOW_ITEM_DESCRIPTIONS
 
-
+void MaxIV(void)
+{
+    u8 ivs[NUM_STATS] = {31,31,31,31,31,31};
+    for (u8 j = 0; j < gPlayerPartyCount; j++)
+    {
+        struct Pokemon *mon = &gPlayerParty[j];
+        for (u8 i = 0; i < NUM_STATS; i++)
+        {
+            if (ivs[i] <= MAX_PER_STAT_IVS)
+                SetMonData(mon, MON_DATA_HP_IV + i, &ivs[i]);
+        }
+        CalculateMonStats(mon);
+    }
+}
