@@ -3797,12 +3797,12 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
 #if P_GEN_9_CROSS_EVOS
     [SPECIES_FARIGIRAF] =
     {
-        .baseHP        = 120,
-        .baseAttack    = 60,
-        .baseDefense   = 85,
+        .baseHP        = 130,
+        .baseAttack    = 115,
+        .baseDefense   = 50,
         .baseSpeed     = 60,
-        .baseSpAttack  = 110,
-        .baseSpDefense = 85,
+        .baseSpAttack  = 115,
+        .baseSpDefense = 50,
         .types = MON_TYPES(TYPE_NORMAL, TYPE_PSYCHIC),
         .catchRate = 45,
         .expYield = 260,
@@ -3988,10 +3988,10 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     [SPECIES_DUNSPARCE] =
     {
         .baseHP        = 100,
-        .baseAttack    = 100,
-        .baseDefense   = 65,
-        .baseSpeed     = 70,
-        .baseSpAttack  = 35,
+        .baseAttack    = 110,
+        .baseDefense   = 70,
+        .baseSpeed     = 45,
+        .baseSpAttack  = 45,
         .baseSpDefense = 45,
         .types = MON_TYPES(TYPE_NORMAL),
         .catchRate = 190,
