@@ -1,0 +1,107 @@
+Pokémon Delta Emerald
+
+=========================================================
+Evolution Changes
+=========================================================
+
+Pokémon                     New Method
+---                         ---
+
+GENERATION 1
+0002 Ivysaur                Now evolves into Venusaur at Level 36 [32].
+0025 Pikachu                Now evolves into Raichu-Alola using a Sun Stone.
+0077 Ponyta                 Now evolves into Rapidash at Level 35 [40].
+0077 Ponyta-Galar           Now evolves into Rapidash-Galar at Level 35 [40].
+0102 Exeggcute              Now evolves into Exeggutor using a Leaf Stone.
+                            Now evolves into Exeggutor-Alola using a Sun Stone.
+0104 Cubone                 Now evolves into Marowak-Alola using a Dusk Stone.
+0109 Koffing                Now evolves into Weezing-Galar during Night while holding Strange Souvenir.
+0138 Omanyte                Now evolves into Omastar at Level 30 [40].
+0140 Kabuto                 Now evolves into Kabutops at Level 30 [40].
+
+GENERATION 2
+0155 Cyndaquil              Now evolves into Quilava at Level 16 [14].
+0156 Quilava                Now evolves into Typhlosion at Level 36 during Day.
+                            Now evolves into Typhlosion-Hisui at Level 36 during Night.
+0158 Totodile               Now evolves into Croconaw at Level 16 [18].
+0159 Croconaw               Now evolves into Feraligatr at Level 36 [30].
+0218 Slugma                 Now evolves into Magcargo at Level 30 [38].
+
+GENERATION 3
+0345 Lileep                 Now evolves into Cradily at Level 30 [40].
+0347 Anorith                Now evolves into Armaldo at Level 30 [40].
+0361 Snorunt                Now evolves into Glalie at Level 32 [42].
+0363 Spheal                 Now evolves into Sealeo at Level 22 [32].
+0363 Sealeo                 Now evolves into Walrein at Level 34 [44].
+
+GENERATION 4
+0387 Turtwig                Now evolves into Grotle at Level 16 [18].
+0388 Grotle                 Now evolves into Torterra at Level 36 [32].
+0390 Chimchar               Now evolves into Monferno at Level 16 [14].
+0431 Glameow                Now evolves into Purugly at Level 28 [38].
+0433 Stunky                 Now evolves into Skuntank at Level 28 [34].
+0431 Mime Jr.               Now evolves into Mr. Mime with high friendship during Day.
+                            Now evolves into Mr. Mime-Galar with high friendship during Night.
+
+GENERATION 5
+0495 Snivy                  Now evolves into Servine at Level 16 [17].
+0498 Tepig                  Now evolves into Pignite at Level 16 [17].
+0501 Oshawott               Now evolves into Dewott at Level 16 [17].
+0502 Dewott                 Now evolves into Samurott at Level 36 during Day.
+                            Now evolves into Samurott-Hisui at Level 36 during Night.
+0501 Pidove                 Now evolves into Tranquill at Level 14 [21].
+0548 Petilil                Now evolves into Lilligant using a Sun Stone.
+                            Now evolves into Lilligant-Hisui using a Dawn Stone.
+0559 Scraggy                Now evolves into Scrafty at Level 32 [39].
+0562 Yamask-Galar           Now evolves into Runerigus at Level 34 during Night.
+0564 Tirtouga               Now evolves into Carracosta at Level 30 [37].
+0566 Archen                 Now evolves into Archeops at Level 30 [37].
+0574 Gothita                Now evolves into Gothorita at Level 22 [32].
+0575 Gothorita              Now evolves into Gothitelle at Level 31 [41].
+0577 Solosis                Now evolves into Duosion at Level 22 [32].
+0578 Duosion                Now evolves into Reuniclus at Level 31 [41].
+0582 Vanillite              Now evolves into Vanillish at Level 25 [35].
+0583 Vanillish              Now evolves into Vanilluxe at Level 37 [47].
+0599 Klink                  Now evolves into Klang at Level 28 [38].
+0600 Klang                  Now evolves into Klinklang at Level 39 [49].
+0602 Tynamo                 Now evolves into Eelektrik at Level 20 [39].
+0605 Elgyem                 Now evolves into Beheeyem at Level 32 [42].
+0607 Litwick                Now evolves into Lampent at Level 31 [41].
+0619 Mienfoo                Now evolves into Meinshao at Level 40 [50].
+0622 Golett                 Now evolves into Gollurk at Level 33 [43].
+0627 Rufflet                Now evolves into Braviary at Level 34 [54] during Day.
+                            Now evolves into Braviary-Hisui at Level 34 [54] during Night.
+0629 Vullaby                Now evolves into Mandibuzz at Level 34 [54].
+0633 Deino                  Now evolves into Zweilous at Level 40 [50].
+0634 Zweilous               Now evolves into Hydreigon at Level 54 [64].
+0636 Larvesta               Now evolves into Volcarona at Level 49 [59].
+
+GENERATION 6
+0690 Skrelp                 Now evolves into Dragalge at Level 40 [48].
+0696 Tyrunt                 Now evolves into Tyrantrum at Level 30 [39].
+0698 Amaura                 Now evolves into Aurorus at Level 30 [39].
+0704 Goomy                  Now evolves into Sliggoo at Level 40 during Day.
+                            Now evolves into Sliggoo-Hisui at Level 40 during Night.
+0712 Bergmite               Now evolves into Avalugg at Level 37 during Day.
+                            Now evolves into Avalugg-Hisui at Level 37 during Night.
+0714 Noibat                 Now evolves into Noivern at Level 40 [48].
+
+GENERATION 7
+0722 Rowlet                 Now evolves into Dartrix at Level 16 [17].
+0723 Dartrix                Now evolves into Decidueye at Level 36 [34] during Night.
+                            Now evolves into Decidueye-Hisui at Level 36 [34] during Day.
+0725 Litten                 Now evolves into Torracat at Level 16 [17].
+0726 Torracat               Now evolves into Incineroar at Level 36 [34].
+0728 Poplio                 Now evolves into Brionne at Level 16 [17].
+0729 Brionne                Now evolves into Primarina at Level 36 [34].
+
+GENERATION 8
+0723 Thwakey                Now evolves into Rillaboom at Level 36 [35].
+0726 Raboot                 Now evolves into Cinderace at Level 36 [35].
+0729 Drizzile               Now evolves into Inteleon at Level 36 [35].
+0872 Snom                   Now evolves into Frosmoth at Level 49 [Friendship].
+0885 Dreepy                 Now evolves into Drakloak at Level 40 [50].
+0885 Drakloak               Now evolves into Dragapult at Level 50 [60].
+
+GENERATION 9
+0901 Ursaluna               Now evolves into Ursaluna-Bloodmoon using a Peat Block during Night.

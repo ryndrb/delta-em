@@ -3011,7 +3011,7 @@ const struct Item gItemsInfo[] =
         .description = COMPOUND_STRING(
             "An ornament that\n"
             "depicts a Pokémon\n"
-            "from Alola."),
+            "from Galar."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,

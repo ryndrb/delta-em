@@ -1,0 +1,442 @@
+Pokémon Delta Emerald
+
+=========================================================
+Move Changes
+=========================================================
+
+Double Slap
+Accuracy: 85 >> 100
+
+Comet Punch
+Power: 18 >> 20
+Accuracy: 85 >> 100
+
+Mega Punch
+Power: 80 >> 90
+PP: 20 >> 15
+Accuracy: 85 >> 100
+Effect: None >> Lower foe Defense (30%)
+
+Pay Day
+Power: 40 >> 60
+
+Razor Wind
+Type: Normal >> Flying
+Effect: Critical Hit (+1) >> Always Critical
+
+Cut
+Power: 50 >> 60
+Accuracy: 95 >> 100
+PP: 30 >> 25
+Type: Normal >> Steel
+Effect: None >> Critical Hit (+1)
+
+Fly
+Power: 90 >> 100
+Accuracy: 95 >> 100
+
+Slam
+Accuracy: 75 >> 80
+
+Mega Kick
+Power: 120 >> 90
+PP: 5 >> 15
+Accuracy: 75 >> 100
+Effect: None >> Lower foe Sp Defense (30%)
+
+Rolling Kick
+Accuracy: 85 >> 95
+
+Horn Attack
+Effect: None >> Always Critical
+PP: 25 >> 15
+
+Fury attack
+Power: 15 >> 20
+Accuracy: 85 >> 100
+
+Take Down
+Accuracy: 85 >> 100
+
+Poison Sting
+Power: 15 >> 30
+
+Twineedle
+Power: 25 >> 45
+Effect: Poison foe (20%) >> 30%
+
+Flamethrower
+Power: 90 >> 95
+
+Hydro Pump
+Power: 110 >> 120
+
+Surf
+Power: 90 >> 95
+
+Ice Beam
+Power: 90 >> 95
+
+Blizzard
+Power: 110 >> 120
+Accuracy: 70 >> 80
+
+Hyper Beam
+Accuracy: 90 >> 100
+
+Peck
+Power: 35 >> 40
+
+Drill Peck
+Effect: None >> Critical Hit (+1)
+
+Submission
+Power: 80 >> 90
+PP: 20 >> 15
+Accuracy: 80 >> 100
+
+Strength
+Power: 80 >> 100
+Effect: None >> Raise user Attack (10%)
+
+Absorb
+Power: 20 >> 35
+
+Mega Drain
+Power: 40 >> 60
+
+Razor Leaf
+Accuracy: 95 >> 100
+
+Solar Beam
+Power: 120 >> 150
+
+Thunderbolt
+Power: 90 >> 95
+
+Thunder
+Power: 110 >> 120
+
+Rock Throw
+Accuracy: 90 >> 100
+
+Meditate
+Effect: Raise user Attack >> Raise user Attack and Accuracy
+
+Egg Bomb
+Accuracy: 75 >> 100
+Category: Physical >> Special
+
+Lick
+Power: 30 >> 40
+Effect: Paralyze foe (30%) >> 40%
+
+Smog
+Power: 30 >> 40
+Accuracy: 70 >> 100
+
+Bone Club
+PP: 20 >> 15
+Accuracy: 85 >> 95
+Effect: Flinch (10%) >> 30%
+
+Fire Blast
+Power: 110 >> 120
+
+Spike Cannon
+Power: 20 >> 25
+Type: Normal >> Water
+Accuracy: 100 >> 95
+
+Barrage
+Accuracy: 85 >> 100
+
+Sky Attack
+Power: 140 >> 150
+Accuracy: 90 >> 100
+
+Fury Swipes
+Power: 18 >> 20
+Accuracy: 80 >> 100
+
+Hyper Fang
+Accuracy: 90 >> 100
+
+Tri Attack
+Effect: P.B.F foe (20%) >> 33%
+
+Triple Kick
+Power: 10 >> 20
+
+Aeroblast
+Accuracy: 95 >> 100
+
+Sludge Bomb
+PP: 10 >> 15
+
+Octazooka
+Power: 65 >> 85
+
+Icy Wind
+Power: 55 >> 60
+
+Bone Rush
+Power: 25 >> 20
+Priority: 0 >> +1
+
+Giga Drain
+Power: 75 >> 80
+
+Steel Wing
+Power: 70 >> 80
+Accuracy: 90 >> 100
+PP: 25 >> 20
+Effect: Raise user Defense (10%) >> 30%
+
+Sacred Fire
+Accuracy: 95 >> 100
+
+Pursuit
+Power: 40 >> 50
+
+Iron Tail
+Accuracy: 75 >> 90
+
+Metal Claw
+Effect: Raise user Defense (10%) >> 30%
+
+Rock Smash
+Effect: Lower foe Defense (50%) >> 100%
+
+Cross Chop
+Accuracy: 80 >> 90
+
+Ancient Power
+PP: 10
+
+Heat Wave
+Accuracy: 90 >> 95
+
+Dive
+Power: 80 >> 100
+
+Blaze Kick
+Power: 85 >> 90
+PP: 10 >> 15
+
+Needle Arm
+Effect: None >> Spikes
+
+Poison Fang:
+Power: 50 >> 65
+
+Astonish
+Power: 30 >> 40
+
+Air Cutter
+Accuracy: 95 >> 100
+
+Silver Wind
+PP: 5 >> 10
+
+Overheat
+Power: 130 >> 140
+
+Shadow Punch
+Power: 60 >> 80
+PP: 20 >> 15
+
+Sky Uppercut
+Accuracy: 90 >> 100
+
+Muddy Water
+Power: 90 >> 95
+
+Dragon Claw
+Effect: None >> Critical Hit (+1)
+
+Covet
+Type: Normal >> Fairy
+
+Rock Blast
+Accuracy: 90 >> 95
+
+Hammer Arm
+Accuracy: 90 >> 100
+
+Gyro Ball
+PP: 5 >> 10
+
+Sucker Punch
+Power: 70 >> 80
+
+Aura Sphere
+Power: 80 >> 90
+
+Aqua Tail
+Accuracy: 90 >> 100
+
+Air Slash
+Power: 75 >> 80
+Accuracy: 95 >> 100
+
+X-Scissor
+Effect: None >> Critical Hit (+1)
+
+Dragon Pulse
+Power: 85 >> 90
+
+Dragon Rush
+Accuracy: 75 >> 90
+
+Power Gem
+Power: 80 >> 90
+PP: 20 >> 15
+
+Focus Blast
+Accuracy: 70 >> 80
+
+Shadow Claw
+Power: 70 >> 80
+
+Thunder Fang
+Accuracy: 95 >> 100
+
+Ice Fang
+Accuracy: 95 >> 100
+
+Fire Fang
+Accuracy: 95 >> 100
+
+Mirror Shot
+Accuracy: 85 >> 100
+
+Rock Climb
+Accuracy: 85 >> 95
+PP: 20 >> 10
+Type: Normal >> Rock
+
+Draco Meteor
+Power: 130 >> 140
+
+Cross Poison
+Power: 70 >> 80
+PP: 20 >> 15
+
+Chatter
+Power: 65 >> 90
+PP: 20 >> 15
+
+Charge Beam
+Accuracy: 90 >> 95
+
+Attack Order
+Power: 90 >> 100
+
+Head Smash
+Accuracy: 80 >> 90
+
+Spacial Rend
+Accuracy: 95 >> 100
+
+Dark Void
+Accuracy: 50 >> 80
+
+Ominous Wind
+PP: 5 >> 10
+
+Chip Away
+Power: 70 >> 80
+
+Wild Charge
+Power: 90 >> 100
+PP: 15 >> 10
+Effect: Recoil user (25%) >> None
+
+Drill Run
+Accuracy: 95 >> 100
+
+Tail Slap
+Accuracy: 85 >> 95
+
+Hurricane
+Power: 110 >> 120
+Accuracy: 70 >> 80
+
+Gear Grind
+Accuracy: 85 >> 90
+
+Relic Song
+Power: 75 >> 95
+
+Glaciate
+Power: 65 >> 80
+
+Freeze Shock
+Accuracy: 90 >> 100
+
+Ice Burn
+Accuracy: 90 >> 140
+
+Icicle Crash
+Accuracy: 90 >> 100
+
+V-Create
+Accuracy: 95 >> 100
+
+Flying Press
+Accuracy: 95 >> 100
+
+Phantom Force
+Power: 90 >> 100
+
+Freeze Dry
+Power: 70 >> 95
+PP: 20 >> 15
+
+Disarming Voice
+Power: 40 >> 60
+
+Play Rough
+Power: 90 >> 95
+Accuracy: 90 >> 100
+Effect: Lower foe Attack (10%) >> 30%
+PP: 10 >> 15
+
+Diamond Storm
+Accuracy: 95 >> 100
+
+Mystical Fire
+Power: 75 >> 85
+
+Dazzling Gleam
+PP: 10 >> 15
+
+Origin Pulse
+Power: 110 >> 120
+
+Spirit Shackle
+Power: 80 >> 90
+
+Darkest Lariat
+Power: 85 >> 90
+
+High Horsepower
+Accuracy: 95 >> 100
+PP: 10 >> 15
+
+Strange Stream
+Accuracy: 95 >> 100
+
+Meteor Beam
+Accuracy: 90 >> 100
+
+Dual Wingbeat
+Accuracy: 90 >> 95
+PP: 10 >> 20
+
+Wicked Blow
+Power: 75 >> 80
+
+Chloroblast
+Accuracy: 95 >> 100
