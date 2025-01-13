@@ -6,9 +6,18 @@ raw `
 .set LOCALID_SCOTT, 9
 
 PetalburgCity_MapScripts::
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, PetalburgCity_OnWarp
 	map_script MAP_SCRIPT_ON_TRANSITION, PetalburgCity_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, PetalburgCity_OnFrame
 	.byte 0
+
+PetalburgCity_OnWarp:
+	map_script_2 VAR_PETALBURG_CITY_STATE, 2, PetalburgCity_EventScript_WallyFaceGymDoor
+	.2byte 0
+
+PetalburgCity_EventScript_WallyFaceGymDoor::
+	turnobject LOCALID_WALLY, DIR_NORTH
+	end
 
 PetalburgCity_OnTransition:
 	setflag FLAG_VISITED_PETALBURG_CITY
@@ -123,8 +132,6 @@ PetalburgCity_Movement_WallyTutorialPlayer:
 	walk_right
 	walk_right
 	walk_right
-	walk_right
-	walk_right
 	walk_up
 	walk_up
 	walk_in_place_right
@@ -138,9 +145,8 @@ PetalburgCity_Movement_WallyTutorialWally:
 	walk_down
 	walk_down
 	walk_down
-	walk_down
 	walk_right
-	walk_right
+	walk_in_place_left
 	walk_right
 	walk_right
 	walk_right
@@ -160,11 +166,8 @@ PetalburgCity_Movement_WallyTutorialWally:
 	walk_right
 	walk_right
 	walk_up
-	walk_up
 	walk_right
-	delay_16
 	walk_in_place_up
-	delay_16
 	delay_16
 	walk_in_place_right
 	step_end

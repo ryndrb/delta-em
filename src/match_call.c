@@ -1767,10 +1767,10 @@ static void PopulateSpeciesFromTrainerLocation(int matchCallId, u8 *destStr)
         if (gWildMonHeaders[i].mapGroup != MAP_GROUP(UNDEFINED))
         {
             numSpecies = 0;
-            if (GetProperLandMonsWithTime(i))
+            if (gWildMonHeaders[i].landMonsInfo)
             {
                 slot = GetLandEncounterSlot();
-                species[numSpecies] = GetProperLandMonsWithTime(i)->wildPokemon[slot].species;
+                species[numSpecies] = gWildMonHeaders[i].landMonsInfo->wildPokemon[slot].species;
                 numSpecies++;
             }
 

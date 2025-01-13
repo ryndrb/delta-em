@@ -62,6 +62,7 @@ EverGrandeCity_DrakesRoom_EventScript_Defeated::
 	playse SE_USE_ITEM
 	special HealPlayerParty
 	waitse
+	setvar VAR_LEVEL_CAP_VARIABLE, 78
 	release
 	end
 

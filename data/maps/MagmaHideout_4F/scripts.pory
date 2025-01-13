@@ -231,6 +231,7 @@ script MagmaHideout_4F_EventScript_Maxie {
 	removeobject(LOCALID_GRUNT_3)
 	removeobject(LOCALID_TABITHA)
 	setflag(FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS)
+    setvar(VAR_LEVEL_CAP_VARIABLE, 65)
     fadedefaultbgm
     delay(32)
 	fadescreen(FADE_FROM_BLACK)

@@ -143,7 +143,7 @@ DewfordTown_Gym_EventScript_Brawly::
 	release
 	end
 
-DewfordTown_Gym_EventScript_BrawlyDefeated::
+DewfordTown_Gym_EventScript_BrawlyDefeated::	
 	call DewfordTown_Gym_EventScript_AnimateFlashFullBrightness
 	message DewfordTown_Gym_Text_ReceivedKnuckleBadge
 	waitmessage
@@ -168,6 +168,7 @@ DewfordTown_Gym_EventScript_BrawlyDefeated::
     setvar VAR_TEMP_0, 1
 	setvar VAR_ROXANNE_CALL_STEP_COUNTER, 0
 	setflag FLAG_ENABLE_ROXANNE_FIRST_CALL
+	setvar VAR_LEVEL_CAP_VARIABLE, 27
 	release
 	end
 

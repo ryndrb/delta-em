@@ -543,6 +543,7 @@ script MtPyre_Summit_EventScript_TeamAquaExits {
     closemessage
     setflag(FLAG_RECEIVED_RED_OR_BLUE_ORB)
     setflag(FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD)
+	setvar(VAR_LEVEL_CAP_VARIABLE, 63)
     releaseall
     end
 }

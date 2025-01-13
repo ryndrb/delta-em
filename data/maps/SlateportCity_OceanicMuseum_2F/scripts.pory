@@ -168,10 +168,10 @@ script SlateportCity_OceanicMuseum_2F_EventScript_CaptStern {
         setvar(VAR_REGISTER_BIRCH_STATE, 1)
     }
 	setflag(FLAG_DELIVERED_DEVON_GOODS)
-    setflag(FLAG_HIDE_ROUTE_110_TEAM_AQUA)
 	clearflag(FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE)
 	setflag(FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_EMPLOYEE)
 	setvar(VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 1)
+    setvar(VAR_LEVEL_CAP_VARIABLE, 31)
     release
 	end   
 }

@@ -674,11 +674,11 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
     {
         if (MetatileBehavior_IsLandWildEncounter(curMetatileBehavior) == TRUE)
         {
-            if (GetProperLandMonsWithTime(headerId) == NULL)
+            if (gWildMonHeaders[headerId].landMonsInfo == NULL)
                 return FALSE;
             else if (prevMetatileBehavior != curMetatileBehavior && !AllowWildCheckOnNewMetatile())
                 return FALSE;
-            else if (WildEncounterCheck(GetProperLandMonsWithTime(headerId)->encounterRate, FALSE) != TRUE)
+            else if (WildEncounterCheck(gWildMonHeaders[headerId].landMonsInfo->encounterRate, FALSE) != TRUE)
                 return FALSE;
 
             if (TryStartRoamerEncounter())
@@ -699,12 +699,12 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
                 }
 
                 // try a regular wild land encounter
-                if (TryGenerateWildMon(GetProperLandMonsWithTime(headerId), WILD_AREA_LAND, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
+                if (TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
                 {
                     if (TryDoDoubleWildBattle())
                     {
                         struct Pokemon mon1 = gEnemyParty[0];
-                        TryGenerateWildMon(GetProperLandMonsWithTime(headerId), WILD_AREA_LAND, WILD_CHECK_KEEN_EYE);
+                        TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_KEEN_EYE);
                         gEnemyParty[1] = mon1;
                         BattleSetup_StartDoubleWildBattle();
                     }
@@ -843,7 +843,7 @@ bool8 SweetScentWildEncounter(void)
     {
         if (MetatileBehavior_IsLandWildEncounter(MapGridGetMetatileBehaviorAt(x, y)) == TRUE)
         {
-            if (GetProperLandMonsWithTime(headerId) == NULL)
+            if (gWildMonHeaders[headerId].landMonsInfo == NULL)
                 return FALSE;
 
             if (TryStartRoamerEncounter())
@@ -855,7 +855,7 @@ bool8 SweetScentWildEncounter(void)
             if (DoMassOutbreakEncounterTest() == TRUE)
                 SetUpMassOutbreakEncounter(0);
             else
-                TryGenerateWildMon(GetProperLandMonsWithTime(headerId), WILD_AREA_LAND, 0);
+                TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, 0);
 
             BattleSetup_StartWildBattle();
             return TRUE;
@@ -940,7 +940,7 @@ u16 GetLocalWildMon(bool8 *isWaterMon)
     headerId = GetCurrentMapWildMonHeaderId();
     if (headerId == HEADER_NONE)
         return SPECIES_NONE;
-    landMonsInfo = GetProperLandMonsWithTime(headerId);
+    landMonsInfo = gWildMonHeaders[headerId].landMonsInfo;
     waterMonsInfo = gWildMonHeaders[headerId].waterMonsInfo;
     // Neither
     if (landMonsInfo == NULL && waterMonsInfo == NULL)
@@ -1173,31 +1173,9 @@ bool32 MapHasNoEncounterData(void)
 bool8 StandardWildEncounter_Debug(void)
 {
     u16 headerId = GetCurrentMapWildMonHeaderId();
-    if (TryGenerateWildMon(GetProperLandMonsWithTime(headerId), WILD_AREA_LAND, 0) != TRUE)
+    if (TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, 0) != TRUE)
         return FALSE;
 
     DoStandardWildBattle_Debug();
     return TRUE;
-}
-
-const struct WildPokemonInfo *GetProperLandMonsWithTime(u16 headerId)
-{
-    u8 timeOfDay = GetTimeOfDay();
-    if (timeOfDay == TIME_MORNING || timeOfDay == TIME_DAY)
-        return gWildMonHeaders[headerId].landMonsInfo;
-    if (timeOfDay == TIME_EVENING || timeOfDay == TIME_NIGHT) {
-        u16 i;
-        for (i = 0; ; i++)
-        {
-            if (gWildMonHeaders_Night[i].mapGroup == MAP_GROUP(UNDEFINED))
-                break;
-
-            if (gWildMonHeaders_Night[i].mapGroup == gSaveBlock1Ptr->location.mapGroup
-            && gWildMonHeaders_Night[i].mapNum == gSaveBlock1Ptr->location.mapNum) {
-                return gWildMonHeaders_Night[i].landMonsInfo;
-            }
-        }
-    }
-
-    return gWildMonHeaders[headerId].landMonsInfo;
 }

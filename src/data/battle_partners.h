@@ -4,7 +4,7 @@ const struct Trainer gBattlePartners[] = {
         .party = NULL,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
-        .trainerPic = TRAINER_PIC_HIKER,
+        .trainerPic = TRAINER_BACK_PIC_BRENDAN,
         .trainerName = _(""),
         .items = {},
     },

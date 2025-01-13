@@ -1,0 +1,46 @@
+Pokémon Delta Emerald
+
+- Use soft cap prior, but hard AT the level.
+- Pokémon under the level cap receives more experience.
+
+=========================================================
+Level Caps
+=========================================================
+
+Trainer/s           Location                    Level
+---                 ---                         ---
+Grunt               Petalbug Woods              10
+Roxanne             Rustboro City               16
+Brawly              Dewford Town                24
+Grunts              Oceanic Museum              27
+Rival               Route 110                   31
+Wattson             Mauville City               36
+Tabitha             Meteor Falls                42
+Maxie               Mt. Chimney                 46
+Flannery            Lavaridge Town              48
+Norman              Petalburg City              50
+Courtney            Souther Island              52
+Shelly              Weather Institute           54
+Rival               Route 119                   55
+Winona              Fortree City                56
+Rival               Lilycove City               58
+Matt                Mt. Pyre                    60
+Maxie               Magma Hideout               63
+Matt                Aqua Hideout                65
+Tate & Liza         Mossdeep City               67
+Tabitha             Space Center                68
+Archie              Seafloor Cavern             70
+Wallace             Sootopolis City             72
+Wally               Victory Road                74
+
+Sidney              Evergrande City             76
+Phoebe              Evergrande City             76
+Glacia              Evergrande City             76
+Drake               Evergrande City             76
+Steven              Evergrande City             78 (Max Mon)
+
+Matt
+Courtney
+Zinnia
+Wallace
+Zinnia

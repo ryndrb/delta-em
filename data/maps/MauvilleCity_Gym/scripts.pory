@@ -113,6 +113,7 @@ MauvilleCity_Gym_EventScript_WattsonDefeated::
 	delay 30
 	setflag FLAG_ENABLE_WATTSON_MATCH_CALL
 	setvar VAR_MAUVILLE_CITY_STATE, 3
+	setvar VAR_LEVEL_CAP_VARIABLE, 42
 	clearflag FLAG_HIDE_MAUVILLE_CITY_GRUNTS
 	release
 	end

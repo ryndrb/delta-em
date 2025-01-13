@@ -315,6 +315,7 @@ PetalburgCity_Gym_EventScript_NormanBattle::
 	setvar VAR_PETALBURG_CITY_STATE, 4
 	clearflag FLAG_HIDE_PETALBURG_CITY_WALLYS_DAD
 	clearflag FLAG_HIDE_PETALBURG_CITY_WALLY
+	setvar VAR_LEVEL_CAP_VARIABLE, 52
 	warpsilent MAP_PETALBURG_CITY, 15, 9
 	waitstate
 	end

@@ -89,6 +89,7 @@ MossdeepCity_Gym_EventScript_TateAndLizaDefeated::
 	closemessage
 	delay 30
 	setflag FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL
+	setvar VAR_LEVEL_CAP_VARIABLE, 68
 	release
 	end
 

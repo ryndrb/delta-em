@@ -138,6 +138,7 @@ script AquaHideout_B2F_EventScript_SubmarineEscape {
     closemessage
     setflag(FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE)
     setflag(FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS)
+    setvar(VAR_LEVEL_CAP_VARIABLE, 67)
     release
     end
 }

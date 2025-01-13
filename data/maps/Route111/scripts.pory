@@ -599,7 +599,7 @@ Route111_Text_VictoriaPostBattle:
 	.string "We've got a strong Trainer here!\nThis one's really strong!$"
 
 Route111_Text_ViviIntro:
-	.string "You're stronger that Mom?\nWow!\pBut I'm strong, too!\nReally!\lHonestly!$"
+	.string "You're stronger than Mom?\nWow!\pBut I'm strong, too!\nReally!\lHonestly!$"
 
 Route111_Text_ViviDefeat:
 	.string "Huh?\nDid I really lose?$"

@@ -53,6 +53,5 @@ u8 ChooseHiddenMonIndex(void);
 bool32 MapHasNoEncounterData(void);
 bool8 StandardWildEncounter_Debug(void);
 u32 CalculateChainFishingShinyRolls(void);
-const struct WildPokemonInfo *GetProperLandMonsWithTime(u16 headerId);
 
 #endif // GUARD_WILD_ENCOUNTER_H

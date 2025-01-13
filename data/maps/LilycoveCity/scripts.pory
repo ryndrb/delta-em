@@ -545,6 +545,8 @@ script LilycoveCity_EventScript_Rival {
     fadedefaultbgm
     setflag(FLAG_MET_RIVAL_LILYCOVE)
     setvar(VAR_TEMP_2, 1)
+	setflag(FLAG_HIDE_ROUTE_122_AQUA_GRUNT)
+	setvar(VAR_LEVEL_CAP_VARIABLE, 60)
     release
     end
 }

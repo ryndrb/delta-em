@@ -115,6 +115,7 @@ SootopolisCity_Gym_1F_EventScript_WallaceDefeated::
 	closemessage
 	delay 32
 	// setflag FLAG_REMATCH_WALLACE
+	setvar VAR_LEVEL_CAP_VARIABLE, 74
 	release
 	end
 

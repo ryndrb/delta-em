@@ -137,12 +137,17 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
+	callnative MaxIV
 	release
 	end
 
 Debug_EventScript_Script_2::
+	buffernumberstring STR_VAR_1, VAR_LEVEL_CAP_VARIABLE
+	msgbox Debug_LevelCap, MSGBOX_DEFAULT
 	release
 	end
+Debug_LevelCap:
+	.string "The curreny cap is: {STR_VAR_1}.$"
 
 Debug_EventScript_Script_3::
 	release

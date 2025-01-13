@@ -342,6 +342,7 @@ script MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene {
 	clearflag(FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO)
 	setvar(VAR_METEOR_FALLS_STATE, 2)
 	setvar(VAR_FALLARBOR_TOWN_STATE, 3)
+	setvar(VAR_LEVEL_CAP_VARIABLE, 46)
 	fadescreen(FADE_TO_BLACK)
 	setflag(FLAG_REMOVE_WARP_FADE)
 	fadenewbgm(MUS_DUMMY)

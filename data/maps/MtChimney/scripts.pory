@@ -957,6 +957,7 @@ script MtChimney_EventScript_Maxie {
 	setflag(FLAG_HIDE_MAUVILLE_CITY_RIVAL)
 	clearflag(FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY)
     setvar(VAR_MT_CHIMNEY_STATE, 3)
+	setvar(VAR_LEVEL_CAP_VARIABLE, 48)
     release
     end
 }

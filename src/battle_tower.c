@@ -698,7 +698,7 @@ static const u8 *const *const sPartnerApprenticeTextTables[NUM_APPRENTICES] =
 
 #include "data/battle_frontier/battle_tent.h"
 
-#include "data/partner_parties.h"
+#include "data/battle_partner_parties.h"
 #if VANILLA_PARTY_SYNTAX == TRUE
 #include "data/battle_partners.h"
 #else

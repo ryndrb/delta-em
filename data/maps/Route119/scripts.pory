@@ -367,6 +367,7 @@ script Route119_EventScript_RivalEncounter {
 	}
 	waitmovement(LOCALID_SCOTT)
 	removeobject(LOCALID_SCOTT)
+	setvar(VAR_LEVEL_CAP_VARIABLE, 56)
 	release
 	end
 }

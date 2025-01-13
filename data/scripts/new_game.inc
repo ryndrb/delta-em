@@ -278,6 +278,6 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_SOOTOPOLIS_RIVAL
 	setflag FLAG_HIDE_ROUTE_131_LADY
 	setflag FLAG_HIDE_EVER_GRANDE_CITY_RIVAL
-	setvar VAR_LEVEL_CAP_VARIABLE, 5
+	setvar VAR_LEVEL_CAP_VARIABLE, 10
 	call EventScript_ResetAllBerries
 	end

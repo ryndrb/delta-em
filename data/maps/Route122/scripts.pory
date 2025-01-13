@@ -1,0 +1,15 @@
+raw `
+Route122_MapScripts::
+	.byte 0
+
+
+`
+
+script Route122_EventScript_TeamAquaGrunt {
+    lock
+    faceplayer
+    msgbox("NOPE, you're not getting\nthrough--boss's orders, and I'm not\labout to mess that up!\pGo run to Lilycove or something,\nmaybe cry to your little Pokémon\lwhile you're at it!")
+    closemessage
+    release
+    end
+}

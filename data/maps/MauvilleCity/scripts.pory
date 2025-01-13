@@ -273,10 +273,10 @@ MauvilleCity_Text_UncleYourePushingIt:
 	.string "{COLOR RED}Uncle{COLOR DARK_GRAY}: Now hold on, Wally…\pIt's certainly true that you've grown\nquite a lot stronger alongside your\lPokémon.\pBut don't you think that jumping\nright into challenging a Gym might be\lpushing it?$"
 
 MauvilleCity_Text_WallyWeCanBeatAnyone:
-	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: I'm not pushing it!\pIf it's me and my Ralts, we can beat\nanyone!$"
+	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: I'm not pushing it!\pIf it's me and my Kirlia, we can beat\nanyone!$"
 
 MauvilleCity_Text_WallyWillYouBattleMe:
-	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Ah!\n{PLAYER}!\pRalts and I have gotten stronger since\nwe first met.\lGrowing together!\pI want to prove that to you and my\nuncle both, {PLAYER}.\pPlease…help me once more…\pAnd have a battle with me!$"
+	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: Ah!\n{PLAYER}!\pKirlia and I have gotten stronger since\nwe first met.\lGrowing together!\pI want to prove that to you and my\nuncle both, {PLAYER}.\pPlease…help me once more…\pAnd have a battle with me!$"
 
 MauvilleCity_Text_WallyMyUncleWontKnowImStrong:
 	.string "But if you won't battle against me,\n{PLAYER}…\pI don't think my uncle will believe that\nI've really gotten stronger.$"
@@ -288,7 +288,7 @@ MauvilleCity_Text_WallyPleaseBattleMe:
 	.string "{COLOR RED}Wally{COLOR DARK_GRAY}: {PLAYER}, please!\nBattle with me!$"
 
 MauvilleCity_Text_WallyHereICome:
-	.string "Thank you, {PLAYER}.\nOK, here we go!\pWe're going to win this Ralts!\nWe have to!$"
+	.string "Thank you, {PLAYER}.\nOK, here we go!\pWe're going to win this Kirlia!\nWe have to!$"
 
 MauvilleCity_Text_WallyDefeat:
 	.string "Wow…\nYou really are strong, {PLAYER}!$"
@@ -313,7 +313,7 @@ MauvilleCity_Text_WallyYesUncle:
     .string "{COLOR RED}Wally{COLOR DARK_GRAY}: …Yes, Uncle.$"
 
 MauvilleCity_Text_WallyGetStronger:
-    .string "{PLAYER}…{PAUSE 48}\pI…\nI'm definitely…\pI'm going to get stronger.\nMuch, much stronger!\pI feel like I've learned a lot from just\none Pokémon battle with you.\lAbout my own limits…and Ralts's…$"
+    .string "{PLAYER}…{PAUSE 48}\pI…\nI'm definitely…\pI'm going to get stronger.\nMuch, much stronger!\pI feel like I've learned a lot from just\none Pokémon battle with you.\lAbout my own limits…and Kirlia's…$"
 
 MauvilleCity_Text_WallyCallYouRival:
     .string "So…um… That's why…\p{PLAYER}…\nIf it's all right… Could I…$"

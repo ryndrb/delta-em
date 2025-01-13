@@ -344,6 +344,7 @@ script SouthernIsland_Interior_EventScript_Latios {
 	setflag(FLAG_REMOVE_WARP_FADE)
 	setvar(VAR_ROUTE118_STATE, 4)
 	setvar(VAR_SOUTHERN_ISLAND_STATE, 3)
+	setvar(VAR_LEVEL_CAP_VARIABLE, 54)
 	warpsilent(MAP_SOUTHERN_ISLAND_EXTERIOR, 14, 20)
 	waitstate
 	releaseall

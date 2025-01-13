@@ -492,6 +492,7 @@ Route110_EventScript_RivalExit::
 	call_if_eq VAR_0x8008, 3, Route110_EventScript_RivalExit3
 	removeobject LOCALID_RIVAL_ON_BIKE
 	setvar VAR_ROUTE110_STATE, 1
+	setvar VAR_LEVEL_CAP_VARIABLE, 36
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	releaseall
@@ -1025,6 +1026,7 @@ script Route110_EventScript_AquaGruntsScene {
     removeobject(LOCALID_GRUNT_24)
     removeobject(LOCALID_GRUNT_25)
     removeobject(LOCALID_GRUNT_26)
+	setflag(FLAG_HIDE_ROUTE_110_TEAM_AQUA)
     delay(64)
     goto(Route110_EventScript_BirchScene)
     end

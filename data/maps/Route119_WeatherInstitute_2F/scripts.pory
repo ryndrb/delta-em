@@ -275,6 +275,7 @@ script Route119_WeatherInstitute_2F_EventScript_Shelly {
 	removeobject(LOCALID_SCIENTIST)
 	removeobject(LOCALID_MAN)
 	clearflag(FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS)
+	setvar(VAR_LEVEL_CAP_VARIABLE, 55)
 	release
 	end
 }
