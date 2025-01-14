@@ -703,7 +703,7 @@ Route101_EventScript_RivalGiveDexNav_1:
 # 361 "data/maps/Route101/scripts.pory"
 	setflag FLAG_SYS_DETECTOR_MODE
 # 362 "data/maps/Route101/scripts.pory"
-	setflag FLAG_SYS_DEXNAV_GET
+	setflag FLAG_SYS_DEXNAV_GET_
 # 363 "data/maps/Route101/scripts.pory"
 	msgbox Route101_EventScript_RivalGiveDexNav_Text_3
 # 364 "data/maps/Route101/scripts.pory"

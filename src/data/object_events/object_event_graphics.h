@@ -466,9 +466,6 @@ const u32 gObjectEventPic_Brandon[] = INCBIN_U32("graphics/object_events/pics/pe
 const u16 gObjectEventPal_Brandon[] = INCBIN_U16("graphics/object_events/pics/people/frontier_brains/brandon.gbapal");
 const u32 gObjectEventPic_PokeBall[] = INCBIN_U32("graphics/object_events/pics/misc/ball_poke.4bpp");
 
-const u32 gFieldEffectObjectPic_CaveDust[] = INCBIN_U32("graphics/field_effects/pics/cave_dust.4bpp");
-const u16 gFieldEffectObjectPalette_CaveDust[] = INCBIN_U16("graphics/field_effects/palettes/cave_dust.gbapal");
-
 const u32 gObjectEventPic_Delta_Brendan_Acro_Bike[] = INCBIN_U32("graphics/object_events/pics/people/delta/brendan_acro_bike.4bpp");
 const u32 gObjectEventPic_Delta_Brendan_Decorating[] = INCBIN_U32("graphics/object_events/pics/people/delta/brendan_decorating.4bpp");
 const u32 gObjectEventPic_Delta_Brendan_FieldMove[] = INCBIN_U32("graphics/object_events/pics/people/delta/brendan_fieldmove.4bpp");
@@ -606,3 +603,6 @@ const u16 gObjectEventPal_BeastBall[] = INCBIN_U16("graphics/object_events/pics/
 const u16 gObjectEventPal_StrangeBall[] = INCBIN_U16("graphics/object_events/pics/misc/ball_strange.gbapal");
 #endif //ITEM_STRANGE_BALL
 #endif //OW_FOLLOWERS_POKEBALLS
+
+const u32 gFieldEffectObjectPic_CaveDust[] = INCBIN_U32("graphics/field_effects/pics/cave_dust.4bpp");
+const u16 gFieldEffectObjectPalette_CaveDust[] = INCBIN_U16("graphics/field_effects/palettes/cave_dust.gbapal");

@@ -1033,377 +1033,377 @@ SlateportCity_PokemartDecor_Dolls:
 # 517 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_SKITTY_DOLL
 # 518 "data/maps/SlateportCity/scripts.pory"
-	.2byte DECOR_NONE
+	pokemartlistend
 # 519 "data/maps/SlateportCity/scripts.pory"
-	release
+
 # 520 "data/maps/SlateportCity/scripts.pory"
-	end
-# 521 "data/maps/SlateportCity/scripts.pory"
-
-# 522 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_ComeBackWithSecretPower::
-# 523 "data/maps/SlateportCity/scripts.pory"
+# 521 "data/maps/SlateportCity/scripts.pory"
 	msgbox gText_ComeBackWithSecretPower, MSGBOX_DEFAULT
+# 522 "data/maps/SlateportCity/scripts.pory"
+	release
+# 523 "data/maps/SlateportCity/scripts.pory"
+	end
 # 524 "data/maps/SlateportCity/scripts.pory"
-	release
+
 # 525 "data/maps/SlateportCity/scripts.pory"
-	end
-# 526 "data/maps/SlateportCity/scripts.pory"
-
-# 527 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_DecorClerk::
+# 526 "data/maps/SlateportCity/scripts.pory"
+	lock
+# 527 "data/maps/SlateportCity/scripts.pory"
+	faceplayer
 # 528 "data/maps/SlateportCity/scripts.pory"
-	lock
-# 529 "data/maps/SlateportCity/scripts.pory"
-	faceplayer
-# 530 "data/maps/SlateportCity/scripts.pory"
 	goto_if_unset FLAG_RECEIVED_SECRET_POWER, SlateportCity_EventScript_ComeBackWithSecretPower
+# 529 "data/maps/SlateportCity/scripts.pory"
+	message gText_HowMayIServeYou
+# 530 "data/maps/SlateportCity/scripts.pory"
+	waitmessage
 # 531 "data/maps/SlateportCity/scripts.pory"
-	message gText_HowMayIServeYou
-# 532 "data/maps/SlateportCity/scripts.pory"
-	waitmessage
-# 533 "data/maps/SlateportCity/scripts.pory"
 	pokemartdecoration SlateportCity_PokemartDecor
+# 532 "data/maps/SlateportCity/scripts.pory"
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+# 533 "data/maps/SlateportCity/scripts.pory"
+	release
 # 534 "data/maps/SlateportCity/scripts.pory"
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	end
 # 535 "data/maps/SlateportCity/scripts.pory"
-	release
+
 # 536 "data/maps/SlateportCity/scripts.pory"
-	end
+	.align 2
 # 537 "data/maps/SlateportCity/scripts.pory"
-
-# 538 "data/maps/SlateportCity/scripts.pory"
-	.align 2
-# 539 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_PokemartDecor:
-# 540 "data/maps/SlateportCity/scripts.pory"
+# 538 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_RED_BRICK
-# 541 "data/maps/SlateportCity/scripts.pory"
+# 539 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_BLUE_BRICK
-# 542 "data/maps/SlateportCity/scripts.pory"
+# 540 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_YELLOW_BRICK
-# 543 "data/maps/SlateportCity/scripts.pory"
+# 541 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_RED_BALLOON
-# 544 "data/maps/SlateportCity/scripts.pory"
+# 542 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_BLUE_BALLOON
-# 545 "data/maps/SlateportCity/scripts.pory"
+# 543 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_YELLOW_BALLOON
-# 546 "data/maps/SlateportCity/scripts.pory"
+# 544 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_C_LOW_NOTE_MAT
-# 547 "data/maps/SlateportCity/scripts.pory"
+# 545 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_D_NOTE_MAT
-# 548 "data/maps/SlateportCity/scripts.pory"
+# 546 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_E_NOTE_MAT
-# 549 "data/maps/SlateportCity/scripts.pory"
+# 547 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_F_NOTE_MAT
-# 550 "data/maps/SlateportCity/scripts.pory"
+# 548 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_G_NOTE_MAT
-# 551 "data/maps/SlateportCity/scripts.pory"
+# 549 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_A_NOTE_MAT
-# 552 "data/maps/SlateportCity/scripts.pory"
+# 550 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_B_NOTE_MAT
-# 553 "data/maps/SlateportCity/scripts.pory"
+# 551 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_C_HIGH_NOTE_MAT
+# 552 "data/maps/SlateportCity/scripts.pory"
+	pokemartlistend
+# 553 "data/maps/SlateportCity/scripts.pory"
+
 # 554 "data/maps/SlateportCity/scripts.pory"
-	.2byte DECOR_NONE
-# 555 "data/maps/SlateportCity/scripts.pory"
-	release
-# 556 "data/maps/SlateportCity/scripts.pory"
-	end
-# 557 "data/maps/SlateportCity/scripts.pory"
-
-# 558 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_PowerTMClerk::
-# 559 "data/maps/SlateportCity/scripts.pory"
+# 555 "data/maps/SlateportCity/scripts.pory"
 	lock
-# 560 "data/maps/SlateportCity/scripts.pory"
+# 556 "data/maps/SlateportCity/scripts.pory"
 	faceplayer
-# 561 "data/maps/SlateportCity/scripts.pory"
+# 557 "data/maps/SlateportCity/scripts.pory"
 	message gText_HowMayIServeYou
-# 562 "data/maps/SlateportCity/scripts.pory"
+# 558 "data/maps/SlateportCity/scripts.pory"
 	waitmessage
-# 563 "data/maps/SlateportCity/scripts.pory"
+# 559 "data/maps/SlateportCity/scripts.pory"
 	pokemart SlateportCity_Pokemart_PowerTMs
-# 564 "data/maps/SlateportCity/scripts.pory"
+# 560 "data/maps/SlateportCity/scripts.pory"
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-# 565 "data/maps/SlateportCity/scripts.pory"
+# 561 "data/maps/SlateportCity/scripts.pory"
 	release
-# 566 "data/maps/SlateportCity/scripts.pory"
+# 562 "data/maps/SlateportCity/scripts.pory"
 	end
-# 567 "data/maps/SlateportCity/scripts.pory"
+# 563 "data/maps/SlateportCity/scripts.pory"
 
-# 568 "data/maps/SlateportCity/scripts.pory"
+# 564 "data/maps/SlateportCity/scripts.pory"
 	.align 2
-# 569 "data/maps/SlateportCity/scripts.pory"
+# 565 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Pokemart_PowerTMs:
-# 570 "data/maps/SlateportCity/scripts.pory"
+# 566 "data/maps/SlateportCity/scripts.pory"
 	.2byte ITEM_TM_LIGHT_SCREEN // 5000
-# 571 "data/maps/SlateportCity/scripts.pory"
+# 567 "data/maps/SlateportCity/scripts.pory"
 	.2byte ITEM_TM_PROTECT // 5000
-# 572 "data/maps/SlateportCity/scripts.pory"
+# 568 "data/maps/SlateportCity/scripts.pory"
 	.2byte ITEM_TM_ICY_WIND // 10000
-# 573 "data/maps/SlateportCity/scripts.pory"
+# 569 "data/maps/SlateportCity/scripts.pory"
 	.2byte ITEM_TM_REFLECT // 5000
-# 574 "data/maps/SlateportCity/scripts.pory"
+# 570 "data/maps/SlateportCity/scripts.pory"
 	.2byte ITEM_TM_STEALTH_ROCK // 5000
-# 575 "data/maps/SlateportCity/scripts.pory"
+# 571 "data/maps/SlateportCity/scripts.pory"
 	.2byte ITEM_TM_THUNDER_WAVE // 5000
-# 576 "data/maps/SlateportCity/scripts.pory"
-	.2byte ITEM_NONE
-# 577 "data/maps/SlateportCity/scripts.pory"
-	release
-# 578 "data/maps/SlateportCity/scripts.pory"
-	end
-# 579 "data/maps/SlateportCity/scripts.pory"
+# 572 "data/maps/SlateportCity/scripts.pory"
+	pokemartlistend
+# 573 "data/maps/SlateportCity/scripts.pory"
 
-# 580 "data/maps/SlateportCity/scripts.pory"
+# 574 "data/maps/SlateportCity/scripts.pory"
 @ Scene with Capt Sterns interview and Team Aqua announcing plans to steal Submarine
-# 581 "data/maps/SlateportCity/scripts.pory"
+# 575 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_CaptStern::
-# 582 "data/maps/SlateportCity/scripts.pory"
+# 576 "data/maps/SlateportCity/scripts.pory"
 	lockall
-# 583 "data/maps/SlateportCity/scripts.pory"
+# 577 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_SternMoveAheadWithExploration, MSGBOX_DEFAULT
-# 584 "data/maps/SlateportCity/scripts.pory"
+# 578 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_GabbyWonderfulThanksForInterview, MSGBOX_DEFAULT
-# 585 "data/maps/SlateportCity/scripts.pory"
+# 579 "data/maps/SlateportCity/scripts.pory"
 	closemessage
-# 586 "data/maps/SlateportCity/scripts.pory"
+# 580 "data/maps/SlateportCity/scripts.pory"
 	applymovement LOCALID_GABBY, Common_Movement_WalkInPlaceRight
-# 587 "data/maps/SlateportCity/scripts.pory"
+# 581 "data/maps/SlateportCity/scripts.pory"
 	waitmovement 0
-# 588 "data/maps/SlateportCity/scripts.pory"
+# 582 "data/maps/SlateportCity/scripts.pory"
 	delay 10
-# 589 "data/maps/SlateportCity/scripts.pory"
+# 583 "data/maps/SlateportCity/scripts.pory"
 	applymovement LOCALID_TY, Common_Movement_WalkInPlaceDown
+# 584 "data/maps/SlateportCity/scripts.pory"
+	waitmovement 0
+# 585 "data/maps/SlateportCity/scripts.pory"
+	delay 25
+# 586 "data/maps/SlateportCity/scripts.pory"
+	applymovement LOCALID_CAPT_STERN, SlateportCity_Movement_SternWatchGabbyAndTyExit
+# 587 "data/maps/SlateportCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Movement_PlayerFaceStern
+# 588 "data/maps/SlateportCity/scripts.pory"
+	applymovement LOCALID_GABBY, SlateportCity_Movement_GabbyExit
+# 589 "data/maps/SlateportCity/scripts.pory"
+	applymovement LOCALID_TY, SlateportCity_Movement_TyExit
 # 590 "data/maps/SlateportCity/scripts.pory"
 	waitmovement 0
 # 591 "data/maps/SlateportCity/scripts.pory"
-	delay 25
-# 592 "data/maps/SlateportCity/scripts.pory"
-	applymovement LOCALID_CAPT_STERN, SlateportCity_Movement_SternWatchGabbyAndTyExit
-# 593 "data/maps/SlateportCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Movement_PlayerFaceStern
-# 594 "data/maps/SlateportCity/scripts.pory"
-	applymovement LOCALID_GABBY, SlateportCity_Movement_GabbyExit
-# 595 "data/maps/SlateportCity/scripts.pory"
-	applymovement LOCALID_TY, SlateportCity_Movement_TyExit
-# 596 "data/maps/SlateportCity/scripts.pory"
-	waitmovement 0
-# 597 "data/maps/SlateportCity/scripts.pory"
 	removeobject LOCALID_GABBY
-# 598 "data/maps/SlateportCity/scripts.pory"
+# 592 "data/maps/SlateportCity/scripts.pory"
 	removeobject LOCALID_TY
-# 599 "data/maps/SlateportCity/scripts.pory"
+# 593 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_SternWhewFirstInterview, MSGBOX_DEFAULT
-# 600 "data/maps/SlateportCity/scripts.pory"
+# 594 "data/maps/SlateportCity/scripts.pory"
 	closemessage
-# 601 "data/maps/SlateportCity/scripts.pory"
+# 595 "data/maps/SlateportCity/scripts.pory"
 	delay 8
-# 602 "data/maps/SlateportCity/scripts.pory"
+# 596 "data/maps/SlateportCity/scripts.pory"
 	playse SE_PIN
-# 603 "data/maps/SlateportCity/scripts.pory"
+# 597 "data/maps/SlateportCity/scripts.pory"
 	applymovement LOCALID_CAPT_STERN, Common_Movement_ExclamationMark
-# 604 "data/maps/SlateportCity/scripts.pory"
+# 598 "data/maps/SlateportCity/scripts.pory"
 	waitmovement 0
-# 605 "data/maps/SlateportCity/scripts.pory"
+# 599 "data/maps/SlateportCity/scripts.pory"
 	delay 8
-# 606 "data/maps/SlateportCity/scripts.pory"
+# 600 "data/maps/SlateportCity/scripts.pory"
 	applymovement LOCALID_CAPT_STERN, Common_Movement_WalkInPlaceUp
+# 601 "data/maps/SlateportCity/scripts.pory"
+	waitmovement 0
+# 602 "data/maps/SlateportCity/scripts.pory"
+	msgbox SlateportCity_Text_OhPlayerWeMadeDiscovery, MSGBOX_DEFAULT
+# 603 "data/maps/SlateportCity/scripts.pory"
+	closemessage
+# 604 "data/maps/SlateportCity/scripts.pory"
+	delay 16
+# 605 "data/maps/SlateportCity/scripts.pory"
+	playse SE_PIN
+# 606 "data/maps/SlateportCity/scripts.pory"
+	applymovement LOCALID_CAPT_STERN, Common_Movement_ExclamationMark
 # 607 "data/maps/SlateportCity/scripts.pory"
 	waitmovement 0
 # 608 "data/maps/SlateportCity/scripts.pory"
-	msgbox SlateportCity_Text_OhPlayerWeMadeDiscovery, MSGBOX_DEFAULT
+	delay 16
 # 609 "data/maps/SlateportCity/scripts.pory"
-	closemessage
-# 610 "data/maps/SlateportCity/scripts.pory"
-	delay 16
-# 611 "data/maps/SlateportCity/scripts.pory"
-	playse SE_PIN
-# 612 "data/maps/SlateportCity/scripts.pory"
-	applymovement LOCALID_CAPT_STERN, Common_Movement_ExclamationMark
-# 613 "data/maps/SlateportCity/scripts.pory"
-	waitmovement 0
-# 614 "data/maps/SlateportCity/scripts.pory"
-	delay 16
-# 615 "data/maps/SlateportCity/scripts.pory"
 	playbgm MUS_ENCOUNTER_AQUA, FALSE
-# 616 "data/maps/SlateportCity/scripts.pory"
+# 610 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_AquaWillAssumeControlOfSubmarine, MSGBOX_DEFAULT
-# 617 "data/maps/SlateportCity/scripts.pory"
+# 611 "data/maps/SlateportCity/scripts.pory"
 	closemessage
-# 618 "data/maps/SlateportCity/scripts.pory"
+# 612 "data/maps/SlateportCity/scripts.pory"
 	applymovement LOCALID_COOK, Common_Movement_WalkInPlaceLeft
-# 619 "data/maps/SlateportCity/scripts.pory"
+# 613 "data/maps/SlateportCity/scripts.pory"
 	applymovement LOCALID_FAT_MAN, Common_Movement_WalkInPlaceLeft
-# 620 "data/maps/SlateportCity/scripts.pory"
+# 614 "data/maps/SlateportCity/scripts.pory"
 	applymovement LOCALID_OLD_WOMAN, SlateportCity_Movement_OldWomanConcern
-# 621 "data/maps/SlateportCity/scripts.pory"
+# 615 "data/maps/SlateportCity/scripts.pory"
 	applymovement LOCALID_RICH_BOY, Common_Movement_QuestionMark
-# 622 "data/maps/SlateportCity/scripts.pory"
+# 616 "data/maps/SlateportCity/scripts.pory"
 	applymovement LOCALID_MAN_1, SlateportCity_Movement_ManConcern
-# 623 "data/maps/SlateportCity/scripts.pory"
+# 617 "data/maps/SlateportCity/scripts.pory"
 	waitmovement 0
-# 624 "data/maps/SlateportCity/scripts.pory"
+# 618 "data/maps/SlateportCity/scripts.pory"
 	applymovement LOCALID_CAPT_STERN, Common_Movement_WalkInPlaceDown
+# 619 "data/maps/SlateportCity/scripts.pory"
+	waitmovement 0
+# 620 "data/maps/SlateportCity/scripts.pory"
+	msgbox SlateportCity_Text_SternWhatWasAllThat, MSGBOX_DEFAULT
+# 621 "data/maps/SlateportCity/scripts.pory"
+	closemessage
+# 622 "data/maps/SlateportCity/scripts.pory"
+	delay 8
+# 623 "data/maps/SlateportCity/scripts.pory"
+	playse SE_PIN
+# 624 "data/maps/SlateportCity/scripts.pory"
+	applymovement LOCALID_CAPT_STERN, Common_Movement_ExclamationMark
 # 625 "data/maps/SlateportCity/scripts.pory"
 	waitmovement 0
 # 626 "data/maps/SlateportCity/scripts.pory"
-	msgbox SlateportCity_Text_SternWhatWasAllThat, MSGBOX_DEFAULT
-# 627 "data/maps/SlateportCity/scripts.pory"
-	closemessage
-# 628 "data/maps/SlateportCity/scripts.pory"
-	delay 8
-# 629 "data/maps/SlateportCity/scripts.pory"
-	playse SE_PIN
-# 630 "data/maps/SlateportCity/scripts.pory"
-	applymovement LOCALID_CAPT_STERN, Common_Movement_ExclamationMark
-# 631 "data/maps/SlateportCity/scripts.pory"
-	waitmovement 0
-# 632 "data/maps/SlateportCity/scripts.pory"
 	applymovement LOCALID_CAPT_STERN, Common_Movement_Delay48
-# 633 "data/maps/SlateportCity/scripts.pory"
+# 627 "data/maps/SlateportCity/scripts.pory"
 	waitmovement 0
-# 634 "data/maps/SlateportCity/scripts.pory"
+# 628 "data/maps/SlateportCity/scripts.pory"
 	applymovement LOCALID_CAPT_STERN, SlateportCity_Movement_SternGotoHarborEntrance
-# 635 "data/maps/SlateportCity/scripts.pory"
+# 629 "data/maps/SlateportCity/scripts.pory"
 	delay 16
-# 636 "data/maps/SlateportCity/scripts.pory"
+# 630 "data/maps/SlateportCity/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
-# 637 "data/maps/SlateportCity/scripts.pory"
+# 631 "data/maps/SlateportCity/scripts.pory"
 	waitmovement LOCALID_CAPT_STERN
-# 638 "data/maps/SlateportCity/scripts.pory"
+# 632 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_FromHarborTryingToTakeSub, MSGBOX_DEFAULT
+# 633 "data/maps/SlateportCity/scripts.pory"
+	closemessage
+# 634 "data/maps/SlateportCity/scripts.pory"
+	applymovement LOCALID_CAPT_STERN, Common_Movement_WalkInPlaceLeft
+# 635 "data/maps/SlateportCity/scripts.pory"
+	waitmovement 0
+# 636 "data/maps/SlateportCity/scripts.pory"
+	checkplayergender
+# 637 "data/maps/SlateportCity/scripts.pory"
+	call_if_eq VAR_RESULT, MALE, SlateportCity_EventScript_PleaseComeWithMeM
+# 638 "data/maps/SlateportCity/scripts.pory"
+	call_if_eq VAR_RESULT, FEMALE, SlateportCity_EventScript_PleaseComeWithMeF
 # 639 "data/maps/SlateportCity/scripts.pory"
 	closemessage
 # 640 "data/maps/SlateportCity/scripts.pory"
-	applymovement LOCALID_CAPT_STERN, Common_Movement_WalkInPlaceLeft
+	applymovement LOCALID_CAPT_STERN, SlateportCity_Movement_SternEnterHarbor
 # 641 "data/maps/SlateportCity/scripts.pory"
 	waitmovement 0
 # 642 "data/maps/SlateportCity/scripts.pory"
-	checkplayergender
-# 643 "data/maps/SlateportCity/scripts.pory"
-	call_if_eq VAR_RESULT, MALE, SlateportCity_EventScript_PleaseComeWithMeM
-# 644 "data/maps/SlateportCity/scripts.pory"
-	call_if_eq VAR_RESULT, FEMALE, SlateportCity_EventScript_PleaseComeWithMeF
-# 645 "data/maps/SlateportCity/scripts.pory"
-	closemessage
-# 646 "data/maps/SlateportCity/scripts.pory"
-	applymovement LOCALID_CAPT_STERN, SlateportCity_Movement_SternEnterHarbor
-# 647 "data/maps/SlateportCity/scripts.pory"
-	waitmovement 0
-# 648 "data/maps/SlateportCity/scripts.pory"
 	fadedefaultbgm
-# 649 "data/maps/SlateportCity/scripts.pory"
+# 643 "data/maps/SlateportCity/scripts.pory"
 	removeobject LOCALID_CAPT_STERN
-# 650 "data/maps/SlateportCity/scripts.pory"
+# 644 "data/maps/SlateportCity/scripts.pory"
 	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN
-# 651 "data/maps/SlateportCity/scripts.pory"
+# 645 "data/maps/SlateportCity/scripts.pory"
 	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_SUBMARINE_SHADOW
-# 652 "data/maps/SlateportCity/scripts.pory"
+# 646 "data/maps/SlateportCity/scripts.pory"
 	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_AQUA_GRUNT
-# 653 "data/maps/SlateportCity/scripts.pory"
+# 647 "data/maps/SlateportCity/scripts.pory"
 	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE
-# 654 "data/maps/SlateportCity/scripts.pory"
+# 648 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_SLATEPORT_CITY_STATE, 2
-# 655 "data/maps/SlateportCity/scripts.pory"
+# 649 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_TEMP_0, 1
-# 656 "data/maps/SlateportCity/scripts.pory"
+# 650 "data/maps/SlateportCity/scripts.pory"
 	releaseall
-# 657 "data/maps/SlateportCity/scripts.pory"
+# 651 "data/maps/SlateportCity/scripts.pory"
 	end
-# 658 "data/maps/SlateportCity/scripts.pory"
+# 652 "data/maps/SlateportCity/scripts.pory"
 
-# 659 "data/maps/SlateportCity/scripts.pory"
+# 653 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_PleaseComeWithMeM::
-# 660 "data/maps/SlateportCity/scripts.pory"
+# 654 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_PleaseComeWithMeM, MSGBOX_DEFAULT
-# 661 "data/maps/SlateportCity/scripts.pory"
+# 655 "data/maps/SlateportCity/scripts.pory"
 	return
-# 662 "data/maps/SlateportCity/scripts.pory"
+# 656 "data/maps/SlateportCity/scripts.pory"
 
-# 663 "data/maps/SlateportCity/scripts.pory"
+# 657 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_PleaseComeWithMeF::
-# 664 "data/maps/SlateportCity/scripts.pory"
+# 658 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_PleaseComeWithMeF, MSGBOX_DEFAULT
-# 665 "data/maps/SlateportCity/scripts.pory"
+# 659 "data/maps/SlateportCity/scripts.pory"
 	return
-# 666 "data/maps/SlateportCity/scripts.pory"
+# 660 "data/maps/SlateportCity/scripts.pory"
 
-# 667 "data/maps/SlateportCity/scripts.pory"
+# 661 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Movement_OldWomanConcern:
-# 668 "data/maps/SlateportCity/scripts.pory"
+# 662 "data/maps/SlateportCity/scripts.pory"
 	delay_16
-# 669 "data/maps/SlateportCity/scripts.pory"
+# 663 "data/maps/SlateportCity/scripts.pory"
 	delay_16
-# 670 "data/maps/SlateportCity/scripts.pory"
+# 664 "data/maps/SlateportCity/scripts.pory"
 	emote_question_mark
-# 671 "data/maps/SlateportCity/scripts.pory"
+# 665 "data/maps/SlateportCity/scripts.pory"
 	walk_in_place_right
-# 672 "data/maps/SlateportCity/scripts.pory"
+# 666 "data/maps/SlateportCity/scripts.pory"
 	delay_16
-# 673 "data/maps/SlateportCity/scripts.pory"
+# 667 "data/maps/SlateportCity/scripts.pory"
 	delay_16
-# 674 "data/maps/SlateportCity/scripts.pory"
+# 668 "data/maps/SlateportCity/scripts.pory"
 	walk_in_place_left
-# 675 "data/maps/SlateportCity/scripts.pory"
+# 669 "data/maps/SlateportCity/scripts.pory"
 	step_end
-# 676 "data/maps/SlateportCity/scripts.pory"
+# 670 "data/maps/SlateportCity/scripts.pory"
 
-# 677 "data/maps/SlateportCity/scripts.pory"
+# 671 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Movement_ManConcern:
-# 678 "data/maps/SlateportCity/scripts.pory"
+# 672 "data/maps/SlateportCity/scripts.pory"
 	emote_question_mark
-# 679 "data/maps/SlateportCity/scripts.pory"
+# 673 "data/maps/SlateportCity/scripts.pory"
 	walk_in_place_up
-# 680 "data/maps/SlateportCity/scripts.pory"
+# 674 "data/maps/SlateportCity/scripts.pory"
 	delay_16
-# 681 "data/maps/SlateportCity/scripts.pory"
+# 675 "data/maps/SlateportCity/scripts.pory"
 	walk_in_place_down
+# 676 "data/maps/SlateportCity/scripts.pory"
+	delay_16
+# 677 "data/maps/SlateportCity/scripts.pory"
+	delay_16
+# 678 "data/maps/SlateportCity/scripts.pory"
+	walk_in_place_left
+# 679 "data/maps/SlateportCity/scripts.pory"
+	step_end
+# 680 "data/maps/SlateportCity/scripts.pory"
+
+# 681 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_Movement_GabbyExit:
 # 682 "data/maps/SlateportCity/scripts.pory"
 	delay_16
 # 683 "data/maps/SlateportCity/scripts.pory"
-	delay_16
+	walk_left
 # 684 "data/maps/SlateportCity/scripts.pory"
-	walk_in_place_left
+	walk_left
 # 685 "data/maps/SlateportCity/scripts.pory"
-	step_end
+	walk_down
 # 686 "data/maps/SlateportCity/scripts.pory"
-
+	walk_left
 # 687 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Movement_GabbyExit:
+	walk_left
 # 688 "data/maps/SlateportCity/scripts.pory"
-	delay_16
+	walk_left
 # 689 "data/maps/SlateportCity/scripts.pory"
 	walk_left
 # 690 "data/maps/SlateportCity/scripts.pory"
 	walk_left
 # 691 "data/maps/SlateportCity/scripts.pory"
-	walk_down
+	walk_left
 # 692 "data/maps/SlateportCity/scripts.pory"
 	walk_left
 # 693 "data/maps/SlateportCity/scripts.pory"
 	walk_left
 # 694 "data/maps/SlateportCity/scripts.pory"
-	walk_left
+	step_end
 # 695 "data/maps/SlateportCity/scripts.pory"
-	walk_left
+
 # 696 "data/maps/SlateportCity/scripts.pory"
-	walk_left
+SlateportCity_Movement_TyExit:
 # 697 "data/maps/SlateportCity/scripts.pory"
-	walk_left
+	walk_down
 # 698 "data/maps/SlateportCity/scripts.pory"
 	walk_left
 # 699 "data/maps/SlateportCity/scripts.pory"
 	walk_left
 # 700 "data/maps/SlateportCity/scripts.pory"
-	step_end
+	walk_left
 # 701 "data/maps/SlateportCity/scripts.pory"
-
-# 702 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Movement_TyExit:
-# 703 "data/maps/SlateportCity/scripts.pory"
 	walk_down
+# 702 "data/maps/SlateportCity/scripts.pory"
+	walk_left
+# 703 "data/maps/SlateportCity/scripts.pory"
+	walk_left
 # 704 "data/maps/SlateportCity/scripts.pory"
 	walk_left
 # 705 "data/maps/SlateportCity/scripts.pory"
@@ -1411,411 +1411,411 @@ SlateportCity_Movement_TyExit:
 # 706 "data/maps/SlateportCity/scripts.pory"
 	walk_left
 # 707 "data/maps/SlateportCity/scripts.pory"
-	walk_down
+	walk_left
 # 708 "data/maps/SlateportCity/scripts.pory"
 	walk_left
 # 709 "data/maps/SlateportCity/scripts.pory"
 	walk_left
 # 710 "data/maps/SlateportCity/scripts.pory"
-	walk_left
+	step_end
 # 711 "data/maps/SlateportCity/scripts.pory"
-	walk_left
+
 # 712 "data/maps/SlateportCity/scripts.pory"
-	walk_left
-# 713 "data/maps/SlateportCity/scripts.pory"
-	walk_left
-# 714 "data/maps/SlateportCity/scripts.pory"
-	walk_left
-# 715 "data/maps/SlateportCity/scripts.pory"
-	walk_left
-# 716 "data/maps/SlateportCity/scripts.pory"
-	step_end
-# 717 "data/maps/SlateportCity/scripts.pory"
-
-# 718 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Movement_Unused:
-# 719 "data/maps/SlateportCity/scripts.pory"
+# 713 "data/maps/SlateportCity/scripts.pory"
 	walk_down
-# 720 "data/maps/SlateportCity/scripts.pory"
+# 714 "data/maps/SlateportCity/scripts.pory"
 	walk_in_place_up
-# 721 "data/maps/SlateportCity/scripts.pory"
+# 715 "data/maps/SlateportCity/scripts.pory"
 	step_end
-# 722 "data/maps/SlateportCity/scripts.pory"
+# 716 "data/maps/SlateportCity/scripts.pory"
 
-# 723 "data/maps/SlateportCity/scripts.pory"
+# 717 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Movement_SternGotoHarborEntrance:
-# 724 "data/maps/SlateportCity/scripts.pory"
+# 718 "data/maps/SlateportCity/scripts.pory"
 	walk_right
-# 725 "data/maps/SlateportCity/scripts.pory"
+# 719 "data/maps/SlateportCity/scripts.pory"
 	walk_up
-# 726 "data/maps/SlateportCity/scripts.pory"
+# 720 "data/maps/SlateportCity/scripts.pory"
 	step_end
-# 727 "data/maps/SlateportCity/scripts.pory"
+# 721 "data/maps/SlateportCity/scripts.pory"
 
-# 728 "data/maps/SlateportCity/scripts.pory"
+# 722 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Movement_SternEnterHarbor:
-# 729 "data/maps/SlateportCity/scripts.pory"
+# 723 "data/maps/SlateportCity/scripts.pory"
 	walk_up
-# 730 "data/maps/SlateportCity/scripts.pory"
+# 724 "data/maps/SlateportCity/scripts.pory"
 	set_invisible
-# 731 "data/maps/SlateportCity/scripts.pory"
+# 725 "data/maps/SlateportCity/scripts.pory"
 	step_end
-# 732 "data/maps/SlateportCity/scripts.pory"
+# 726 "data/maps/SlateportCity/scripts.pory"
 
-# 733 "data/maps/SlateportCity/scripts.pory"
+# 727 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Movement_SternWatchGabbyAndTyExit:
+# 728 "data/maps/SlateportCity/scripts.pory"
+	delay_16
+# 729 "data/maps/SlateportCity/scripts.pory"
+	delay_16
+# 730 "data/maps/SlateportCity/scripts.pory"
+	delay_16
+# 731 "data/maps/SlateportCity/scripts.pory"
+	delay_16
+# 732 "data/maps/SlateportCity/scripts.pory"
+	delay_16
+# 733 "data/maps/SlateportCity/scripts.pory"
+	walk_down
 # 734 "data/maps/SlateportCity/scripts.pory"
-	delay_16
+	walk_left
 # 735 "data/maps/SlateportCity/scripts.pory"
-	delay_16
+	step_end
 # 736 "data/maps/SlateportCity/scripts.pory"
-	delay_16
+
 # 737 "data/maps/SlateportCity/scripts.pory"
-	delay_16
+SlateportCity_Movement_PlayerFaceStern:
 # 738 "data/maps/SlateportCity/scripts.pory"
 	delay_16
 # 739 "data/maps/SlateportCity/scripts.pory"
-	walk_down
+	delay_16
 # 740 "data/maps/SlateportCity/scripts.pory"
-	walk_left
+	delay_16
 # 741 "data/maps/SlateportCity/scripts.pory"
-	step_end
+	delay_16
 # 742 "data/maps/SlateportCity/scripts.pory"
-
+	delay_16
 # 743 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Movement_PlayerFaceStern:
+	delay_16
 # 744 "data/maps/SlateportCity/scripts.pory"
 	delay_16
 # 745 "data/maps/SlateportCity/scripts.pory"
-	delay_16
-# 746 "data/maps/SlateportCity/scripts.pory"
-	delay_16
-# 747 "data/maps/SlateportCity/scripts.pory"
-	delay_16
-# 748 "data/maps/SlateportCity/scripts.pory"
-	delay_16
-# 749 "data/maps/SlateportCity/scripts.pory"
-	delay_16
-# 750 "data/maps/SlateportCity/scripts.pory"
-	delay_16
-# 751 "data/maps/SlateportCity/scripts.pory"
 	walk_in_place_down
-# 752 "data/maps/SlateportCity/scripts.pory"
+# 746 "data/maps/SlateportCity/scripts.pory"
 	step_end
-# 753 "data/maps/SlateportCity/scripts.pory"
+# 747 "data/maps/SlateportCity/scripts.pory"
 
-# 754 "data/maps/SlateportCity/scripts.pory"
+# 748 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_Ty::
-# 755 "data/maps/SlateportCity/scripts.pory"
+# 749 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_BigSmileForCamera, MSGBOX_SIGN
-# 756 "data/maps/SlateportCity/scripts.pory"
+# 750 "data/maps/SlateportCity/scripts.pory"
 	end
-# 757 "data/maps/SlateportCity/scripts.pory"
+# 751 "data/maps/SlateportCity/scripts.pory"
 
-# 758 "data/maps/SlateportCity/scripts.pory"
+# 752 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_Gabby::
-# 759 "data/maps/SlateportCity/scripts.pory"
+# 753 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_MostInvaluableExperience, MSGBOX_SIGN
-# 760 "data/maps/SlateportCity/scripts.pory"
+# 754 "data/maps/SlateportCity/scripts.pory"
 	end
-# 761 "data/maps/SlateportCity/scripts.pory"
+# 755 "data/maps/SlateportCity/scripts.pory"
 
-# 762 "data/maps/SlateportCity/scripts.pory"
+# 756 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_Man3::
-# 763 "data/maps/SlateportCity/scripts.pory"
+# 757 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_WonderIfLighthouseStartlesPokemon, MSGBOX_NPC
-# 764 "data/maps/SlateportCity/scripts.pory"
+# 758 "data/maps/SlateportCity/scripts.pory"
 	end
-# 765 "data/maps/SlateportCity/scripts.pory"
+# 759 "data/maps/SlateportCity/scripts.pory"
 
-# 766 "data/maps/SlateportCity/scripts.pory"
+# 760 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_BerryPowderClerk::
-# 767 "data/maps/SlateportCity/scripts.pory"
+# 761 "data/maps/SlateportCity/scripts.pory"
 	lock
-# 768 "data/maps/SlateportCity/scripts.pory"
+# 762 "data/maps/SlateportCity/scripts.pory"
 	faceplayer
-# 769 "data/maps/SlateportCity/scripts.pory"
+# 763 "data/maps/SlateportCity/scripts.pory"
 	goto_if_set FLAG_RECEIVED_POWDER_JAR, SlateportCity_EventScript_ReceivedPowderJar
-# 770 "data/maps/SlateportCity/scripts.pory"
+# 764 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_ExplainBerries, MSGBOX_DEFAULT
-# 771 "data/maps/SlateportCity/scripts.pory"
+# 765 "data/maps/SlateportCity/scripts.pory"
 	giveitem ITEM_POWDER_JAR
-# 772 "data/maps/SlateportCity/scripts.pory"
+# 766 "data/maps/SlateportCity/scripts.pory"
 	setflag FLAG_RECEIVED_POWDER_JAR
-# 773 "data/maps/SlateportCity/scripts.pory"
+# 767 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_ExplainBerryPowder, MSGBOX_DEFAULT
-# 774 "data/maps/SlateportCity/scripts.pory"
+# 768 "data/maps/SlateportCity/scripts.pory"
 	release
-# 775 "data/maps/SlateportCity/scripts.pory"
+# 769 "data/maps/SlateportCity/scripts.pory"
 	end
-# 776 "data/maps/SlateportCity/scripts.pory"
+# 770 "data/maps/SlateportCity/scripts.pory"
 
-# 777 "data/maps/SlateportCity/scripts.pory"
+# 771 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_ReceivedPowderJar::
-# 778 "data/maps/SlateportCity/scripts.pory"
+# 772 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8004, 1
-# 779 "data/maps/SlateportCity/scripts.pory"
+# 773 "data/maps/SlateportCity/scripts.pory"
 	specialvar VAR_RESULT, HasEnoughBerryPowder
-# 780 "data/maps/SlateportCity/scripts.pory"
+# 774 "data/maps/SlateportCity/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, SlateportCity_EventScript_ExplainBerryPowder
-# 781 "data/maps/SlateportCity/scripts.pory"
+# 775 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_BroughtMeSomeBerryPowder, MSGBOX_DEFAULT
-# 782 "data/maps/SlateportCity/scripts.pory"
+# 776 "data/maps/SlateportCity/scripts.pory"
 	special DisplayBerryPowderVendorMenu
-# 783 "data/maps/SlateportCity/scripts.pory"
+# 777 "data/maps/SlateportCity/scripts.pory"
 	goto SlateportCity_EventScript_ChooseBerryPowderItem
-# 784 "data/maps/SlateportCity/scripts.pory"
+# 778 "data/maps/SlateportCity/scripts.pory"
 	end
-# 785 "data/maps/SlateportCity/scripts.pory"
+# 779 "data/maps/SlateportCity/scripts.pory"
 
-# 786 "data/maps/SlateportCity/scripts.pory"
+# 780 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_ExplainBerryPowder::
-# 787 "data/maps/SlateportCity/scripts.pory"
+# 781 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_ExplainBerryPowder, MSGBOX_DEFAULT
-# 788 "data/maps/SlateportCity/scripts.pory"
+# 782 "data/maps/SlateportCity/scripts.pory"
 	release
-# 789 "data/maps/SlateportCity/scripts.pory"
+# 783 "data/maps/SlateportCity/scripts.pory"
 	end
-# 790 "data/maps/SlateportCity/scripts.pory"
+# 784 "data/maps/SlateportCity/scripts.pory"
 
-# 791 "data/maps/SlateportCity/scripts.pory"
+# 785 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_ChooseBerryPowderItem::
-# 792 "data/maps/SlateportCity/scripts.pory"
+# 786 "data/maps/SlateportCity/scripts.pory"
 	message SlateportCity_Text_ExchangeWhatWithIt
-# 793 "data/maps/SlateportCity/scripts.pory"
+# 787 "data/maps/SlateportCity/scripts.pory"
 	waitmessage
-# 794 "data/maps/SlateportCity/scripts.pory"
+# 788 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8004, SCROLL_MULTI_BERRY_POWDER_VENDOR
-# 795 "data/maps/SlateportCity/scripts.pory"
+# 789 "data/maps/SlateportCity/scripts.pory"
 	special ShowScrollableMultichoice
-# 796 "data/maps/SlateportCity/scripts.pory"
+# 790 "data/maps/SlateportCity/scripts.pory"
 	waitstate
-# 797 "data/maps/SlateportCity/scripts.pory"
+# 791 "data/maps/SlateportCity/scripts.pory"
 	switch VAR_RESULT
-# 798 "data/maps/SlateportCity/scripts.pory"
+# 792 "data/maps/SlateportCity/scripts.pory"
 	case 0, SlateportCity_EventScript_EnergyPowder
-# 799 "data/maps/SlateportCity/scripts.pory"
+# 793 "data/maps/SlateportCity/scripts.pory"
 	case 1, SlateportCity_EventScript_EnergyRoot
-# 800 "data/maps/SlateportCity/scripts.pory"
+# 794 "data/maps/SlateportCity/scripts.pory"
 	case 2, SlateportCity_EventScript_HealPowder
-# 801 "data/maps/SlateportCity/scripts.pory"
+# 795 "data/maps/SlateportCity/scripts.pory"
 	case 3, SlateportCity_EventScript_RevivalHerb
-# 802 "data/maps/SlateportCity/scripts.pory"
+# 796 "data/maps/SlateportCity/scripts.pory"
 	case 4, SlateportCity_EventScript_Protein
-# 803 "data/maps/SlateportCity/scripts.pory"
+# 797 "data/maps/SlateportCity/scripts.pory"
 	case 5, SlateportCity_EventScript_Iron
-# 804 "data/maps/SlateportCity/scripts.pory"
+# 798 "data/maps/SlateportCity/scripts.pory"
 	case 6, SlateportCity_EventScript_Carbos
-# 805 "data/maps/SlateportCity/scripts.pory"
+# 799 "data/maps/SlateportCity/scripts.pory"
 	case 7, SlateportCity_EventScript_Calcium
-# 806 "data/maps/SlateportCity/scripts.pory"
+# 800 "data/maps/SlateportCity/scripts.pory"
 	case 8, SlateportCity_EventScript_Zinc
-# 807 "data/maps/SlateportCity/scripts.pory"
+# 801 "data/maps/SlateportCity/scripts.pory"
 	case 9, SlateportCity_EventScript_HPUp
-# 808 "data/maps/SlateportCity/scripts.pory"
+# 802 "data/maps/SlateportCity/scripts.pory"
 	case 10, SlateportCity_EventScript_PPUp
-# 809 "data/maps/SlateportCity/scripts.pory"
+# 803 "data/maps/SlateportCity/scripts.pory"
 	case 11, SlateportCity_EventScript_CancelPowderItemSelect
-# 810 "data/maps/SlateportCity/scripts.pory"
+# 804 "data/maps/SlateportCity/scripts.pory"
 	case MULTI_B_PRESSED, SlateportCity_EventScript_CancelPowderItemSelect
-# 811 "data/maps/SlateportCity/scripts.pory"
+# 805 "data/maps/SlateportCity/scripts.pory"
 	end
-# 812 "data/maps/SlateportCity/scripts.pory"
+# 806 "data/maps/SlateportCity/scripts.pory"
 
-# 813 "data/maps/SlateportCity/scripts.pory"
+# 807 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_EnergyPowder::
-# 814 "data/maps/SlateportCity/scripts.pory"
+# 808 "data/maps/SlateportCity/scripts.pory"
 	bufferitemname STR_VAR_1, ITEM_ENERGY_POWDER
-# 815 "data/maps/SlateportCity/scripts.pory"
+# 809 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8008, ITEM_ENERGY_POWDER
-# 816 "data/maps/SlateportCity/scripts.pory"
+# 810 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8009, 50
-# 817 "data/maps/SlateportCity/scripts.pory"
+# 811 "data/maps/SlateportCity/scripts.pory"
 	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-# 818 "data/maps/SlateportCity/scripts.pory"
+# 812 "data/maps/SlateportCity/scripts.pory"
 	end
-# 819 "data/maps/SlateportCity/scripts.pory"
+# 813 "data/maps/SlateportCity/scripts.pory"
 
-# 820 "data/maps/SlateportCity/scripts.pory"
+# 814 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_EnergyRoot::
-# 821 "data/maps/SlateportCity/scripts.pory"
+# 815 "data/maps/SlateportCity/scripts.pory"
 	bufferitemname STR_VAR_1, ITEM_ENERGY_ROOT
-# 822 "data/maps/SlateportCity/scripts.pory"
+# 816 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8008, ITEM_ENERGY_ROOT
-# 823 "data/maps/SlateportCity/scripts.pory"
+# 817 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8009, 80
-# 824 "data/maps/SlateportCity/scripts.pory"
+# 818 "data/maps/SlateportCity/scripts.pory"
 	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-# 825 "data/maps/SlateportCity/scripts.pory"
+# 819 "data/maps/SlateportCity/scripts.pory"
 	end
-# 826 "data/maps/SlateportCity/scripts.pory"
+# 820 "data/maps/SlateportCity/scripts.pory"
 
-# 827 "data/maps/SlateportCity/scripts.pory"
+# 821 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_HealPowder::
-# 828 "data/maps/SlateportCity/scripts.pory"
+# 822 "data/maps/SlateportCity/scripts.pory"
 	bufferitemname STR_VAR_1, ITEM_HEAL_POWDER
-# 829 "data/maps/SlateportCity/scripts.pory"
+# 823 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8008, ITEM_HEAL_POWDER
-# 830 "data/maps/SlateportCity/scripts.pory"
+# 824 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8009, 50
-# 831 "data/maps/SlateportCity/scripts.pory"
+# 825 "data/maps/SlateportCity/scripts.pory"
 	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-# 832 "data/maps/SlateportCity/scripts.pory"
+# 826 "data/maps/SlateportCity/scripts.pory"
 	end
-# 833 "data/maps/SlateportCity/scripts.pory"
+# 827 "data/maps/SlateportCity/scripts.pory"
 
-# 834 "data/maps/SlateportCity/scripts.pory"
+# 828 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_RevivalHerb::
-# 835 "data/maps/SlateportCity/scripts.pory"
+# 829 "data/maps/SlateportCity/scripts.pory"
 	bufferitemname STR_VAR_1, ITEM_REVIVAL_HERB
-# 836 "data/maps/SlateportCity/scripts.pory"
+# 830 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8008, ITEM_REVIVAL_HERB
-# 837 "data/maps/SlateportCity/scripts.pory"
+# 831 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8009, 300
-# 838 "data/maps/SlateportCity/scripts.pory"
+# 832 "data/maps/SlateportCity/scripts.pory"
 	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-# 839 "data/maps/SlateportCity/scripts.pory"
+# 833 "data/maps/SlateportCity/scripts.pory"
 	end
-# 840 "data/maps/SlateportCity/scripts.pory"
+# 834 "data/maps/SlateportCity/scripts.pory"
 
-# 841 "data/maps/SlateportCity/scripts.pory"
+# 835 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_Protein::
-# 842 "data/maps/SlateportCity/scripts.pory"
+# 836 "data/maps/SlateportCity/scripts.pory"
 	bufferitemname STR_VAR_1, ITEM_PROTEIN
-# 843 "data/maps/SlateportCity/scripts.pory"
+# 837 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8008, ITEM_PROTEIN
-# 844 "data/maps/SlateportCity/scripts.pory"
+# 838 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8009, 1000
-# 845 "data/maps/SlateportCity/scripts.pory"
+# 839 "data/maps/SlateportCity/scripts.pory"
 	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-# 846 "data/maps/SlateportCity/scripts.pory"
+# 840 "data/maps/SlateportCity/scripts.pory"
 	end
-# 847 "data/maps/SlateportCity/scripts.pory"
+# 841 "data/maps/SlateportCity/scripts.pory"
 
-# 848 "data/maps/SlateportCity/scripts.pory"
+# 842 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_Iron::
-# 849 "data/maps/SlateportCity/scripts.pory"
+# 843 "data/maps/SlateportCity/scripts.pory"
 	bufferitemname STR_VAR_1, ITEM_IRON
-# 850 "data/maps/SlateportCity/scripts.pory"
+# 844 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8008, ITEM_IRON
-# 851 "data/maps/SlateportCity/scripts.pory"
+# 845 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8009, 1000
-# 852 "data/maps/SlateportCity/scripts.pory"
+# 846 "data/maps/SlateportCity/scripts.pory"
 	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-# 853 "data/maps/SlateportCity/scripts.pory"
+# 847 "data/maps/SlateportCity/scripts.pory"
 	end
-# 854 "data/maps/SlateportCity/scripts.pory"
+# 848 "data/maps/SlateportCity/scripts.pory"
 
-# 855 "data/maps/SlateportCity/scripts.pory"
+# 849 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_Carbos::
-# 856 "data/maps/SlateportCity/scripts.pory"
+# 850 "data/maps/SlateportCity/scripts.pory"
 	bufferitemname STR_VAR_1, ITEM_CARBOS
-# 857 "data/maps/SlateportCity/scripts.pory"
+# 851 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8008, ITEM_CARBOS
-# 858 "data/maps/SlateportCity/scripts.pory"
+# 852 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8009, 1000
-# 859 "data/maps/SlateportCity/scripts.pory"
+# 853 "data/maps/SlateportCity/scripts.pory"
 	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-# 860 "data/maps/SlateportCity/scripts.pory"
+# 854 "data/maps/SlateportCity/scripts.pory"
 	end
-# 861 "data/maps/SlateportCity/scripts.pory"
+# 855 "data/maps/SlateportCity/scripts.pory"
 
-# 862 "data/maps/SlateportCity/scripts.pory"
+# 856 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_Calcium::
-# 863 "data/maps/SlateportCity/scripts.pory"
+# 857 "data/maps/SlateportCity/scripts.pory"
 	bufferitemname STR_VAR_1, ITEM_CALCIUM
-# 864 "data/maps/SlateportCity/scripts.pory"
+# 858 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8008, ITEM_CALCIUM
-# 865 "data/maps/SlateportCity/scripts.pory"
+# 859 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8009, 1000
-# 866 "data/maps/SlateportCity/scripts.pory"
+# 860 "data/maps/SlateportCity/scripts.pory"
 	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-# 867 "data/maps/SlateportCity/scripts.pory"
+# 861 "data/maps/SlateportCity/scripts.pory"
 	end
-# 868 "data/maps/SlateportCity/scripts.pory"
+# 862 "data/maps/SlateportCity/scripts.pory"
 
-# 869 "data/maps/SlateportCity/scripts.pory"
+# 863 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_Zinc::
-# 870 "data/maps/SlateportCity/scripts.pory"
+# 864 "data/maps/SlateportCity/scripts.pory"
 	bufferitemname STR_VAR_1, ITEM_ZINC
-# 871 "data/maps/SlateportCity/scripts.pory"
+# 865 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8008, ITEM_ZINC
-# 872 "data/maps/SlateportCity/scripts.pory"
+# 866 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8009, 1000
-# 873 "data/maps/SlateportCity/scripts.pory"
+# 867 "data/maps/SlateportCity/scripts.pory"
 	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-# 874 "data/maps/SlateportCity/scripts.pory"
+# 868 "data/maps/SlateportCity/scripts.pory"
 	end
-# 875 "data/maps/SlateportCity/scripts.pory"
+# 869 "data/maps/SlateportCity/scripts.pory"
 
-# 876 "data/maps/SlateportCity/scripts.pory"
+# 870 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_HPUp::
-# 877 "data/maps/SlateportCity/scripts.pory"
+# 871 "data/maps/SlateportCity/scripts.pory"
 	bufferitemname STR_VAR_1, ITEM_HP_UP
-# 878 "data/maps/SlateportCity/scripts.pory"
+# 872 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8008, ITEM_HP_UP
-# 879 "data/maps/SlateportCity/scripts.pory"
+# 873 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8009, 1000
-# 880 "data/maps/SlateportCity/scripts.pory"
+# 874 "data/maps/SlateportCity/scripts.pory"
 	goto SlateportCity_EventScript_TryBuyBerryPowderItem
-# 881 "data/maps/SlateportCity/scripts.pory"
+# 875 "data/maps/SlateportCity/scripts.pory"
 	end
-# 882 "data/maps/SlateportCity/scripts.pory"
+# 876 "data/maps/SlateportCity/scripts.pory"
 
-# 883 "data/maps/SlateportCity/scripts.pory"
+# 877 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_PPUp::
-# 884 "data/maps/SlateportCity/scripts.pory"
+# 878 "data/maps/SlateportCity/scripts.pory"
 	bufferitemname STR_VAR_1, ITEM_PP_UP
-# 885 "data/maps/SlateportCity/scripts.pory"
+# 879 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8008, ITEM_PP_UP
-# 886 "data/maps/SlateportCity/scripts.pory"
+# 880 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_0x8009, 3000
-# 887 "data/maps/SlateportCity/scripts.pory"
+# 881 "data/maps/SlateportCity/scripts.pory"
 	goto SlateportCity_EventScript_TryBuyBerryPowderItem
+# 882 "data/maps/SlateportCity/scripts.pory"
+	end
+# 883 "data/maps/SlateportCity/scripts.pory"
+
+# 884 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_EventScript_CancelPowderItemSelect::
+# 885 "data/maps/SlateportCity/scripts.pory"
+	msgbox SlateportCity_Text_ComeBackToTradeBerryPowder, MSGBOX_DEFAULT
+# 886 "data/maps/SlateportCity/scripts.pory"
+	special RemoveBerryPowderVendorMenu
+# 887 "data/maps/SlateportCity/scripts.pory"
+	release
 # 888 "data/maps/SlateportCity/scripts.pory"
 	end
 # 889 "data/maps/SlateportCity/scripts.pory"
 
 # 890 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_EventScript_CancelPowderItemSelect::
-# 891 "data/maps/SlateportCity/scripts.pory"
-	msgbox SlateportCity_Text_ComeBackToTradeBerryPowder, MSGBOX_DEFAULT
-# 892 "data/maps/SlateportCity/scripts.pory"
-	special RemoveBerryPowderVendorMenu
-# 893 "data/maps/SlateportCity/scripts.pory"
-	release
-# 894 "data/maps/SlateportCity/scripts.pory"
-	end
-# 895 "data/maps/SlateportCity/scripts.pory"
-
-# 896 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_TryBuyBerryPowderItem::
-# 897 "data/maps/SlateportCity/scripts.pory"
+# 891 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_ExchangeBerryPowderForItem, MSGBOX_YESNO
-# 898 "data/maps/SlateportCity/scripts.pory"
+# 892 "data/maps/SlateportCity/scripts.pory"
 	goto_if_eq VAR_RESULT, NO, SlateportCity_EventScript_ChooseBerryPowderItem
-# 899 "data/maps/SlateportCity/scripts.pory"
+# 893 "data/maps/SlateportCity/scripts.pory"
 	copyvar VAR_0x8004, VAR_0x8009
-# 900 "data/maps/SlateportCity/scripts.pory"
+# 894 "data/maps/SlateportCity/scripts.pory"
 	specialvar VAR_RESULT, HasEnoughBerryPowder
-# 901 "data/maps/SlateportCity/scripts.pory"
+# 895 "data/maps/SlateportCity/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, SlateportCity_EventScript_NotEnoughBerryPowder
-# 902 "data/maps/SlateportCity/scripts.pory"
+# 896 "data/maps/SlateportCity/scripts.pory"
 	giveitem VAR_0x8008
-# 903 "data/maps/SlateportCity/scripts.pory"
+# 897 "data/maps/SlateportCity/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, SlateportCity_EventScript_NoRoomForBerryPowderItem
-# 904 "data/maps/SlateportCity/scripts.pory"
+# 898 "data/maps/SlateportCity/scripts.pory"
 	copyvar VAR_0x8004, VAR_0x8009
-# 905 "data/maps/SlateportCity/scripts.pory"
+# 899 "data/maps/SlateportCity/scripts.pory"
 	special TakeBerryPowder
-# 906 "data/maps/SlateportCity/scripts.pory"
+# 900 "data/maps/SlateportCity/scripts.pory"
 	special PrintPlayerBerryPowderAmount
-# 907 "data/maps/SlateportCity/scripts.pory"
+# 901 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_FineBerryPowderTradeSomethingElse, MSGBOX_YESNO
-# 908 "data/maps/SlateportCity/scripts.pory"
+# 902 "data/maps/SlateportCity/scripts.pory"
 	goto_if_eq VAR_RESULT, YES, SlateportCity_EventScript_ChooseBerryPowderItem
-# 909 "data/maps/SlateportCity/scripts.pory"
+# 903 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_WhenYouGetMoreBringItToMe, MSGBOX_DEFAULT
+# 904 "data/maps/SlateportCity/scripts.pory"
+	special RemoveBerryPowderVendorMenu
+# 905 "data/maps/SlateportCity/scripts.pory"
+	release
+# 906 "data/maps/SlateportCity/scripts.pory"
+	end
+# 907 "data/maps/SlateportCity/scripts.pory"
+
+# 908 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_EventScript_NoRoomForBerryPowderItem::
+# 909 "data/maps/SlateportCity/scripts.pory"
+	msgbox gText_TheBagIsFull, MSGBOX_DEFAULT
 # 910 "data/maps/SlateportCity/scripts.pory"
 	special RemoveBerryPowderVendorMenu
 # 911 "data/maps/SlateportCity/scripts.pory"
@@ -1825,780 +1825,768 @@ SlateportCity_EventScript_TryBuyBerryPowderItem::
 # 913 "data/maps/SlateportCity/scripts.pory"
 
 # 914 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_EventScript_NoRoomForBerryPowderItem::
-# 915 "data/maps/SlateportCity/scripts.pory"
-	msgbox gText_TheBagIsFull, MSGBOX_DEFAULT
-# 916 "data/maps/SlateportCity/scripts.pory"
-	special RemoveBerryPowderVendorMenu
-# 917 "data/maps/SlateportCity/scripts.pory"
-	release
-# 918 "data/maps/SlateportCity/scripts.pory"
-	end
-# 919 "data/maps/SlateportCity/scripts.pory"
-
-# 920 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_NotEnoughBerryPowder::
-# 921 "data/maps/SlateportCity/scripts.pory"
+# 915 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_DontHaveEnoughBerryPowder, MSGBOX_DEFAULT
-# 922 "data/maps/SlateportCity/scripts.pory"
+# 916 "data/maps/SlateportCity/scripts.pory"
 	goto SlateportCity_EventScript_ChooseBerryPowderItem
-# 923 "data/maps/SlateportCity/scripts.pory"
+# 917 "data/maps/SlateportCity/scripts.pory"
 	end
-# 924 "data/maps/SlateportCity/scripts.pory"
+# 918 "data/maps/SlateportCity/scripts.pory"
 
-# 925 "data/maps/SlateportCity/scripts.pory"
+# 919 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_ScottBattleTentScene::
-# 926 "data/maps/SlateportCity/scripts.pory"
+# 920 "data/maps/SlateportCity/scripts.pory"
 	lockall
-# 927 "data/maps/SlateportCity/scripts.pory"
+# 921 "data/maps/SlateportCity/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+# 922 "data/maps/SlateportCity/scripts.pory"
+	waitmovement 0
+# 923 "data/maps/SlateportCity/scripts.pory"
+	opendoor 10, 12
+# 924 "data/maps/SlateportCity/scripts.pory"
+	waitdooranim
+# 925 "data/maps/SlateportCity/scripts.pory"
+	addobject LOCALID_SCOTT
+# 926 "data/maps/SlateportCity/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Movement_PushPlayerDown
+# 927 "data/maps/SlateportCity/scripts.pory"
+	applymovement LOCALID_SCOTT, SlateportCity_Movement_ScottExitBattleTent
 # 928 "data/maps/SlateportCity/scripts.pory"
 	waitmovement 0
 # 929 "data/maps/SlateportCity/scripts.pory"
-	opendoor 10, 12
+	closedoor 10, 12
 # 930 "data/maps/SlateportCity/scripts.pory"
 	waitdooranim
 # 931 "data/maps/SlateportCity/scripts.pory"
-	addobject LOCALID_SCOTT
-# 932 "data/maps/SlateportCity/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Movement_PushPlayerDown
-# 933 "data/maps/SlateportCity/scripts.pory"
-	applymovement LOCALID_SCOTT, SlateportCity_Movement_ScottExitBattleTent
-# 934 "data/maps/SlateportCity/scripts.pory"
-	waitmovement 0
-# 935 "data/maps/SlateportCity/scripts.pory"
-	closedoor 10, 12
-# 936 "data/maps/SlateportCity/scripts.pory"
-	waitdooranim
-# 937 "data/maps/SlateportCity/scripts.pory"
 	msgbox SlateportCity_Text_TakingBattleTentChallenge, MSGBOX_DEFAULT
-# 938 "data/maps/SlateportCity/scripts.pory"
+# 932 "data/maps/SlateportCity/scripts.pory"
 	closemessage
-# 939 "data/maps/SlateportCity/scripts.pory"
+# 933 "data/maps/SlateportCity/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Movement_PlayerWatchScottExit
-# 940 "data/maps/SlateportCity/scripts.pory"
+# 934 "data/maps/SlateportCity/scripts.pory"
 	applymovement LOCALID_SCOTT, SlateportCity_Movement_ScottExitAfterBattleTent
-# 941 "data/maps/SlateportCity/scripts.pory"
+# 935 "data/maps/SlateportCity/scripts.pory"
 	waitmovement 0
-# 942 "data/maps/SlateportCity/scripts.pory"
+# 936 "data/maps/SlateportCity/scripts.pory"
 	removeobject LOCALID_SCOTT
-# 943 "data/maps/SlateportCity/scripts.pory"
+# 937 "data/maps/SlateportCity/scripts.pory"
 	addvar VAR_SCOTT_STATE, 1
-# 944 "data/maps/SlateportCity/scripts.pory"
+# 938 "data/maps/SlateportCity/scripts.pory"
 	setvar VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 3
-# 945 "data/maps/SlateportCity/scripts.pory"
+# 939 "data/maps/SlateportCity/scripts.pory"
 	releaseall
-# 946 "data/maps/SlateportCity/scripts.pory"
+# 940 "data/maps/SlateportCity/scripts.pory"
 	end
+# 941 "data/maps/SlateportCity/scripts.pory"
+
+# 942 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_Movement_PushPlayerDown:
+# 943 "data/maps/SlateportCity/scripts.pory"
+	lock_facing_direction
+# 944 "data/maps/SlateportCity/scripts.pory"
+	walk_down
+# 945 "data/maps/SlateportCity/scripts.pory"
+	unlock_facing_direction
+# 946 "data/maps/SlateportCity/scripts.pory"
+	step_end
 # 947 "data/maps/SlateportCity/scripts.pory"
 
 # 948 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Movement_PushPlayerDown:
-# 949 "data/maps/SlateportCity/scripts.pory"
-	lock_facing_direction
-# 950 "data/maps/SlateportCity/scripts.pory"
-	walk_down
-# 951 "data/maps/SlateportCity/scripts.pory"
-	unlock_facing_direction
-# 952 "data/maps/SlateportCity/scripts.pory"
-	step_end
-# 953 "data/maps/SlateportCity/scripts.pory"
-
-# 954 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Movement_PlayerWatchScottExit:
-# 955 "data/maps/SlateportCity/scripts.pory"
+# 949 "data/maps/SlateportCity/scripts.pory"
 	delay_16
-# 956 "data/maps/SlateportCity/scripts.pory"
+# 950 "data/maps/SlateportCity/scripts.pory"
 	walk_in_place_right
-# 957 "data/maps/SlateportCity/scripts.pory"
+# 951 "data/maps/SlateportCity/scripts.pory"
 	step_end
-# 958 "data/maps/SlateportCity/scripts.pory"
+# 952 "data/maps/SlateportCity/scripts.pory"
 
-# 959 "data/maps/SlateportCity/scripts.pory"
+# 953 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Movement_ScottExitBattleTent:
-# 960 "data/maps/SlateportCity/scripts.pory"
+# 954 "data/maps/SlateportCity/scripts.pory"
 	delay_8
-# 961 "data/maps/SlateportCity/scripts.pory"
+# 955 "data/maps/SlateportCity/scripts.pory"
 	walk_down
-# 962 "data/maps/SlateportCity/scripts.pory"
+# 956 "data/maps/SlateportCity/scripts.pory"
 	step_end
-# 963 "data/maps/SlateportCity/scripts.pory"
+# 957 "data/maps/SlateportCity/scripts.pory"
 
-# 964 "data/maps/SlateportCity/scripts.pory"
+# 958 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Movement_ScottExitAfterBattleTent:
+# 959 "data/maps/SlateportCity/scripts.pory"
+	walk_right
+# 960 "data/maps/SlateportCity/scripts.pory"
+	walk_right
+# 961 "data/maps/SlateportCity/scripts.pory"
+	walk_right
+# 962 "data/maps/SlateportCity/scripts.pory"
+	walk_right
+# 963 "data/maps/SlateportCity/scripts.pory"
+	walk_right
+# 964 "data/maps/SlateportCity/scripts.pory"
+	walk_right
 # 965 "data/maps/SlateportCity/scripts.pory"
 	walk_right
 # 966 "data/maps/SlateportCity/scripts.pory"
 	walk_right
 # 967 "data/maps/SlateportCity/scripts.pory"
-	walk_right
-# 968 "data/maps/SlateportCity/scripts.pory"
-	walk_right
-# 969 "data/maps/SlateportCity/scripts.pory"
-	walk_right
-# 970 "data/maps/SlateportCity/scripts.pory"
-	walk_right
-# 971 "data/maps/SlateportCity/scripts.pory"
-	walk_right
-# 972 "data/maps/SlateportCity/scripts.pory"
-	walk_right
-# 973 "data/maps/SlateportCity/scripts.pory"
 	step_end
-# 974 "data/maps/SlateportCity/scripts.pory"
+# 968 "data/maps/SlateportCity/scripts.pory"
 
-# 975 "data/maps/SlateportCity/scripts.pory"
+# 969 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_BerryCrushRankingsSign::
-# 976 "data/maps/SlateportCity/scripts.pory"
+# 970 "data/maps/SlateportCity/scripts.pory"
 	lockall
-# 977 "data/maps/SlateportCity/scripts.pory"
+# 971 "data/maps/SlateportCity/scripts.pory"
 	special ShowBerryCrushRankings
-# 978 "data/maps/SlateportCity/scripts.pory"
+# 972 "data/maps/SlateportCity/scripts.pory"
 	waitstate
-# 979 "data/maps/SlateportCity/scripts.pory"
+# 973 "data/maps/SlateportCity/scripts.pory"
 	releaseall
-# 980 "data/maps/SlateportCity/scripts.pory"
+# 974 "data/maps/SlateportCity/scripts.pory"
 	end
-# 981 "data/maps/SlateportCity/scripts.pory"
+# 975 "data/maps/SlateportCity/scripts.pory"
 
-# 982 "data/maps/SlateportCity/scripts.pory"
+# 976 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_EnergyGuruSellWhatYouNeed:
-# 983 "data/maps/SlateportCity/scripts.pory"
+# 977 "data/maps/SlateportCity/scripts.pory"
 	.string "I'm the Energy Guru! I'll go for it and\n"
-# 984 "data/maps/SlateportCity/scripts.pory"
+# 978 "data/maps/SlateportCity/scripts.pory"
 	.string "sell you what you need!$"
-# 985 "data/maps/SlateportCity/scripts.pory"
+# 979 "data/maps/SlateportCity/scripts.pory"
 
-# 986 "data/maps/SlateportCity/scripts.pory"
+# 980 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_OhYourPokemon:
-# 987 "data/maps/SlateportCity/scripts.pory"
+# 981 "data/maps/SlateportCity/scripts.pory"
 	.string "Oh?\n"
-# 988 "data/maps/SlateportCity/scripts.pory"
+# 982 "data/maps/SlateportCity/scripts.pory"
 	.string "Your {STR_VAR_1}…$"
-# 989 "data/maps/SlateportCity/scripts.pory"
+# 983 "data/maps/SlateportCity/scripts.pory"
 
-# 990 "data/maps/SlateportCity/scripts.pory"
+# 984 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_PleaseGiveItThisEffortRibbon:
-# 991 "data/maps/SlateportCity/scripts.pory"
+# 985 "data/maps/SlateportCity/scripts.pory"
 	.string "Went for it stupendously!\p"
-# 992 "data/maps/SlateportCity/scripts.pory"
+# 986 "data/maps/SlateportCity/scripts.pory"
 	.string "As its reward, please give it this\n"
-# 993 "data/maps/SlateportCity/scripts.pory"
+# 987 "data/maps/SlateportCity/scripts.pory"
 	.string "Effort Ribbon.$"
-# 994 "data/maps/SlateportCity/scripts.pory"
+# 988 "data/maps/SlateportCity/scripts.pory"
 
-# 995 "data/maps/SlateportCity/scripts.pory"
+# 989 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_ReceivedEffortRibbon:
-# 996 "data/maps/SlateportCity/scripts.pory"
+# 990 "data/maps/SlateportCity/scripts.pory"
 	.string "{PLAYER} received the Effort Ribbon.$"
-# 997 "data/maps/SlateportCity/scripts.pory"
+# 991 "data/maps/SlateportCity/scripts.pory"
 
-# 998 "data/maps/SlateportCity/scripts.pory"
+# 992 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_PutEffortRibbonOnMon:
-# 999 "data/maps/SlateportCity/scripts.pory"
+# 993 "data/maps/SlateportCity/scripts.pory"
 	.string "{PLAYER} put the Effort Ribbon\n"
-# 1000 "data/maps/SlateportCity/scripts.pory"
+# 994 "data/maps/SlateportCity/scripts.pory"
 	.string "on {STR_VAR_1}.$"
-# 1001 "data/maps/SlateportCity/scripts.pory"
+# 995 "data/maps/SlateportCity/scripts.pory"
 
-# 1002 "data/maps/SlateportCity/scripts.pory"
+# 996 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_GoForItLittleHarder:
-# 1003 "data/maps/SlateportCity/scripts.pory"
+# 997 "data/maps/SlateportCity/scripts.pory"
 	.string "You have to go for it a little harder.\p"
-# 1004 "data/maps/SlateportCity/scripts.pory"
+# 998 "data/maps/SlateportCity/scripts.pory"
 	.string "If you do, I'll give your Pokémon\n"
-# 1005 "data/maps/SlateportCity/scripts.pory"
+# 999 "data/maps/SlateportCity/scripts.pory"
 	.string "something nice.$"
-# 1006 "data/maps/SlateportCity/scripts.pory"
+# 1000 "data/maps/SlateportCity/scripts.pory"
 
-# 1007 "data/maps/SlateportCity/scripts.pory"
+# 1001 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_EffortRibbonLooksGoodOnIt:
-# 1008 "data/maps/SlateportCity/scripts.pory"
+# 1002 "data/maps/SlateportCity/scripts.pory"
 	.string "Oh! Your {STR_VAR_1}, that Effort\n"
-# 1009 "data/maps/SlateportCity/scripts.pory"
+# 1003 "data/maps/SlateportCity/scripts.pory"
 	.string "Ribbon looks good on it!$"
-# 1010 "data/maps/SlateportCity/scripts.pory"
+# 1004 "data/maps/SlateportCity/scripts.pory"
 
-# 1011 "data/maps/SlateportCity/scripts.pory"
+# 1005 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_WonderIfLighthouseStartlesPokemon:
-# 1012 "data/maps/SlateportCity/scripts.pory"
+# 1006 "data/maps/SlateportCity/scripts.pory"
 	.string "The beam from the lighthouse reaches\nfor dozens of miles.\pI wonder whether its light startles\nany of the Pokémon in the sea.$"
-# 1013 "data/maps/SlateportCity/scripts.pory"
+# 1007 "data/maps/SlateportCity/scripts.pory"
 
-# 1014 "data/maps/SlateportCity/scripts.pory"
+# 1008 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_SeaweedFullOfLife:
-# 1015 "data/maps/SlateportCity/scripts.pory"
+# 1009 "data/maps/SlateportCity/scripts.pory"
 	.string "Ooh, look at this!\p"
-# 1016 "data/maps/SlateportCity/scripts.pory"
+# 1010 "data/maps/SlateportCity/scripts.pory"
 	.string "The seaweed you can get around these\n"
-# 1017 "data/maps/SlateportCity/scripts.pory"
+# 1011 "data/maps/SlateportCity/scripts.pory"
 	.string "parts is fresh and full of life.\p"
-# 1018 "data/maps/SlateportCity/scripts.pory"
+# 1012 "data/maps/SlateportCity/scripts.pory"
 	.string "Why, it looks like it can even rear up\n"
-# 1019 "data/maps/SlateportCity/scripts.pory"
+# 1013 "data/maps/SlateportCity/scripts.pory"
 	.string "and attack!$"
+# 1014 "data/maps/SlateportCity/scripts.pory"
+
+# 1015 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_Text_HowTownIsBornAndGrows:
+# 1016 "data/maps/SlateportCity/scripts.pory"
+	.string "Where the water is clean, the fruits\nof bountiful harvest gather.\pAnd where people gather, a market\nfor exchange soon starts.\pThis is how a town is formed.$"
+# 1017 "data/maps/SlateportCity/scripts.pory"
+
+# 1018 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_Text_SlateportWonderfulPlace:
+# 1019 "data/maps/SlateportCity/scripts.pory"
+	.string "Shopping where you can breathe the\nscent of the ocean…\pSlateport is such a wonderful place!$"
 # 1020 "data/maps/SlateportCity/scripts.pory"
 
 # 1021 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_HowTownIsBornAndGrows:
-# 1022 "data/maps/SlateportCity/scripts.pory"
-	.string "Where the water is clean, the fruits\nof bountiful harvest gather.\pAnd where people gather, a market\nfor exchange soon starts.\pThis is how a town is formed.$"
-# 1023 "data/maps/SlateportCity/scripts.pory"
-
-# 1024 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_SlateportWonderfulPlace:
-# 1025 "data/maps/SlateportCity/scripts.pory"
-	.string "Shopping where you can breathe the\nscent of the ocean…\pSlateport is such a wonderful place!$"
-# 1026 "data/maps/SlateportCity/scripts.pory"
-
-# 1027 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_BuyBricksSoDecorWontGetDirty:
-# 1028 "data/maps/SlateportCity/scripts.pory"
+# 1022 "data/maps/SlateportCity/scripts.pory"
 	.string "If you put Dolls or Cushions on\n"
-# 1029 "data/maps/SlateportCity/scripts.pory"
+# 1023 "data/maps/SlateportCity/scripts.pory"
 	.string "the floor, they'll get dirty.\p"
-# 1030 "data/maps/SlateportCity/scripts.pory"
+# 1024 "data/maps/SlateportCity/scripts.pory"
 	.string "I'm going to buy some Bricks so my\n"
-# 1031 "data/maps/SlateportCity/scripts.pory"
+# 1025 "data/maps/SlateportCity/scripts.pory"
 	.string "Dolls and Cushions won't get dirty\l"
-# 1032 "data/maps/SlateportCity/scripts.pory"
+# 1026 "data/maps/SlateportCity/scripts.pory"
 	.string "when I leave them out.$"
+# 1027 "data/maps/SlateportCity/scripts.pory"
+
+# 1028 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_Text_GoingToCompeteInBattleTent:
+# 1029 "data/maps/SlateportCity/scripts.pory"
+	.string "Yeah!\nI've waited so long for this!\lPokémon Contest Spectacular!\lI'm going to enter!\pBut before I do, I have to catch\nsome Pokémon!$"
+# 1030 "data/maps/SlateportCity/scripts.pory"
+
+# 1031 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_Text_BushedHikingFromMauville:
+# 1032 "data/maps/SlateportCity/scripts.pory"
+	.string "Whew…\nI'm just bushed…\pI hiked over from Mauville City.\nBut, boy, this city's huge.\pIf I'd know that, I would've ridden\nmy Bike here!$"
 # 1033 "data/maps/SlateportCity/scripts.pory"
 
 # 1034 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_GoingToCompeteInBattleTent:
+SlateportCity_Text_EveryoneCallsHimCaptStern:
 # 1035 "data/maps/SlateportCity/scripts.pory"
-	.string "Yeah!\nI've waited so long for this!\lPokémon Contest Spectacular!\lI'm going to enter!\pBut before I do, I have to catch\nsome Pokémon!$"
+	.string "Stern, the fellow who built the\n"
 # 1036 "data/maps/SlateportCity/scripts.pory"
-
+	.string "Museum, also happens to be the leader\l"
 # 1037 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_BushedHikingFromMauville:
+	.string "of an undersea exploration team.\p"
 # 1038 "data/maps/SlateportCity/scripts.pory"
-	.string "Whew…\nI'm just bushed…\pI hiked over from Mauville City.\nBut, boy, this city's huge.\pIf I'd know that, I would've ridden\nmy Bike here!$"
+	.string "So, everyone calls him Captain Stern.$"
 # 1039 "data/maps/SlateportCity/scripts.pory"
 
 # 1040 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_EveryoneCallsHimCaptStern:
-# 1041 "data/maps/SlateportCity/scripts.pory"
-	.string "Stern, the fellow who built the\n"
-# 1042 "data/maps/SlateportCity/scripts.pory"
-	.string "Museum, also happens to be the leader\l"
-# 1043 "data/maps/SlateportCity/scripts.pory"
-	.string "of an undersea exploration team.\p"
-# 1044 "data/maps/SlateportCity/scripts.pory"
-	.string "So, everyone calls him Captain Stern.$"
-# 1045 "data/maps/SlateportCity/scripts.pory"
-
-# 1046 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_WhatsLongLineOverThere:
-# 1047 "data/maps/SlateportCity/scripts.pory"
+# 1041 "data/maps/SlateportCity/scripts.pory"
 	.string "What is that over there?\n"
-# 1048 "data/maps/SlateportCity/scripts.pory"
+# 1042 "data/maps/SlateportCity/scripts.pory"
 	.string "That long line…$"
+# 1043 "data/maps/SlateportCity/scripts.pory"
+
+# 1044 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_Text_VisitedMuseumOften:
+# 1045 "data/maps/SlateportCity/scripts.pory"
+	.string "When I was a child, I visited\n"
+# 1046 "data/maps/SlateportCity/scripts.pory"
+	.string "the Museum often.\p"
+# 1047 "data/maps/SlateportCity/scripts.pory"
+	.string "I used to dream about the mysteries of\n"
+# 1048 "data/maps/SlateportCity/scripts.pory"
+	.string "the sea after seeing the exhibits.$"
 # 1049 "data/maps/SlateportCity/scripts.pory"
 
 # 1050 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_VisitedMuseumOften:
+SlateportCity_Text_QuitPushing:
 # 1051 "data/maps/SlateportCity/scripts.pory"
-	.string "When I was a child, I visited\n"
+	.string "Hey there!\nQuit pushing!\pThis is the line, can't you see?$"
 # 1052 "data/maps/SlateportCity/scripts.pory"
-	.string "the Museum often.\p"
+
 # 1053 "data/maps/SlateportCity/scripts.pory"
-	.string "I used to dream about the mysteries of\n"
+SlateportCity_Text_AquaHasPolicy:
 # 1054 "data/maps/SlateportCity/scripts.pory"
-	.string "the sea after seeing the exhibits.$"
+	.string "Team Aqua has a policy of\nassembling and dispersing at the\loperation site.$"
 # 1055 "data/maps/SlateportCity/scripts.pory"
 
 # 1056 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_QuitPushing:
+SlateportCity_Text_BossIsBrilliant:
 # 1057 "data/maps/SlateportCity/scripts.pory"
-	.string "Hey there!\nQuit pushing!\pThis is the line, can't you see?$"
+	.string "Our Boss is brilliant.\pWhat would he want to do with a\nMuseum now?$"
 # 1058 "data/maps/SlateportCity/scripts.pory"
 
 # 1059 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_AquaHasPolicy:
+SlateportCity_Text_WhatsNewSchemeIWonder:
 # 1060 "data/maps/SlateportCity/scripts.pory"
-	.string "Team Aqua has a policy of\nassembling and dispersing at the\loperation site.$"
+	.string "What's new scheme, I wonder?\pOur Boss is scary when he's mad, so\nI'd better not screw things up…$"
 # 1061 "data/maps/SlateportCity/scripts.pory"
 
 # 1062 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_BossIsBrilliant:
+SlateportCity_Text_ShouldTakeItAll:
 # 1063 "data/maps/SlateportCity/scripts.pory"
-	.string "Our Boss is brilliant.\pWhat would he want to do with a\nMuseum now?$"
+	.string "If there's something we need in the\nMuseum, we should take it all!$"
 # 1064 "data/maps/SlateportCity/scripts.pory"
 
 # 1065 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_WhatsNewSchemeIWonder:
+SlateportCity_Text_DontButtIn:
 # 1066 "data/maps/SlateportCity/scripts.pory"
-	.string "What's new scheme, I wonder?\pOur Boss is scary when he's mad, so\nI'd better not screw things up…$"
+	.string "Hey, you there!\nDon't butt in!$"
 # 1067 "data/maps/SlateportCity/scripts.pory"
 
 # 1068 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_ShouldTakeItAll:
+SlateportCity_Text_RemindsMeOfLongLineForGames:
 # 1069 "data/maps/SlateportCity/scripts.pory"
-	.string "If there's something we need in the\nMuseum, we should take it all!$"
+	.string "A long line, huh?\pIt reminds me of the times I lined up\nto buy smash-hit games…$"
 # 1070 "data/maps/SlateportCity/scripts.pory"
 
 # 1071 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_DontButtIn:
+SlateportCity_Text_WhyAreWeLiningUp:
 # 1072 "data/maps/SlateportCity/scripts.pory"
-	.string "Hey, you there!\nDon't butt in!$"
+	.string "Why are we even living up and\npaying?\pWe should just march in!$"
 # 1073 "data/maps/SlateportCity/scripts.pory"
 
 # 1074 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_RemindsMeOfLongLineForGames:
-# 1075 "data/maps/SlateportCity/scripts.pory"
-	.string "A long line, huh?\pIt reminds me of the times I lined up\nto buy smash-hit games…$"
-# 1076 "data/maps/SlateportCity/scripts.pory"
-
-# 1077 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_WhyAreWeLiningUp:
-# 1078 "data/maps/SlateportCity/scripts.pory"
-	.string "Why are we even living up and\npaying?\pWe should just march in!$"
-# 1079 "data/maps/SlateportCity/scripts.pory"
-
-# 1080 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_WhatDoYouWant:
-# 1081 "data/maps/SlateportCity/scripts.pory"
+# 1075 "data/maps/SlateportCity/scripts.pory"
 	.string "What?\n"
-# 1082 "data/maps/SlateportCity/scripts.pory"
+# 1076 "data/maps/SlateportCity/scripts.pory"
 	.string "What do you want?$"
-# 1083 "data/maps/SlateportCity/scripts.pory"
+# 1077 "data/maps/SlateportCity/scripts.pory"
 
-# 1084 "data/maps/SlateportCity/scripts.pory"
+# 1078 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_IllReadSignForYou:
-# 1085 "data/maps/SlateportCity/scripts.pory"
+# 1079 "data/maps/SlateportCity/scripts.pory"
 	.string "You want to read this sign?\n"
-# 1086 "data/maps/SlateportCity/scripts.pory"
+# 1080 "data/maps/SlateportCity/scripts.pory"
 	.string "I'll read it for you!$"
+# 1081 "data/maps/SlateportCity/scripts.pory"
+
+# 1082 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_Text_SaysSomethingLikeSeaIsEndless:
+# 1083 "data/maps/SlateportCity/scripts.pory"
+	.string "Let's see…\pUm…\nI think it says something like\l“the life in the sea is endless.”\pYup, I'm pretty sure that's what it\nsays.$"
+# 1084 "data/maps/SlateportCity/scripts.pory"
+
+# 1085 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_Text_ShouldveBroughtMyGameBoy:
+# 1086 "data/maps/SlateportCity/scripts.pory"
+	.string "Grumble…\pI should've brought my\nGame Boy Advance so I wouldn't get\lbored in line…\pGrumble…$"
 # 1087 "data/maps/SlateportCity/scripts.pory"
 
 # 1088 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_SaysSomethingLikeSeaIsEndless:
+SlateportCity_Text_HotSpringsAfterOperation:
 # 1089 "data/maps/SlateportCity/scripts.pory"
-	.string "Let's see…\pUm…\nI think it says something like\l“the life in the sea is endless.”\pYup, I'm pretty sure that's what it\nsays.$"
+	.string "When this operation's over, I'll take\nyou to a hot spring spa!\pThat's what our leader said.\nI can't wait!$"
 # 1090 "data/maps/SlateportCity/scripts.pory"
 
 # 1091 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_ShouldveBroughtMyGameBoy:
+SlateportCity_Text_SeaIsSoWet:
 # 1092 "data/maps/SlateportCity/scripts.pory"
-	.string "Grumble…\pI should've brought my\nGame Boy Advance so I wouldn't get\lbored in line…\pGrumble…$"
+	.string "The sea is just so vast…\pCould the sea have been made by the\ntears shed by Pokémon?$"
 # 1093 "data/maps/SlateportCity/scripts.pory"
 
 # 1094 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_HotSpringsAfterOperation:
+SlateportCity_Text_SinkOldBoats:
 # 1095 "data/maps/SlateportCity/scripts.pory"
-	.string "When this operation's over, I'll take\nyou to a hot spring spa!\pThat's what our leader said.\nI can't wait!$"
+	.string "When you sink a man-made object\ninto the sea to make a habitat for\lPokémon, it's called an artificial\lreef!\pWe in Hoenn are well know for our\nreef!\pWe call is Sea Mauville!$"
 # 1096 "data/maps/SlateportCity/scripts.pory"
 
 # 1097 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_SeaIsSoWet:
-# 1098 "data/maps/SlateportCity/scripts.pory"
-	.string "The sea is just so vast…\pCould the sea have been made by the\ntears shed by Pokémon?$"
-# 1099 "data/maps/SlateportCity/scripts.pory"
-
-# 1100 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_SinkOldBoats:
-# 1101 "data/maps/SlateportCity/scripts.pory"
-	.string "When you sink a man-made object\ninto the sea to make a habitat for\lPokémon, it's called an artificial\lreef!\pWe in Hoenn are well know for our\nreef!\pWe call is Sea Mauville!$"
-# 1102 "data/maps/SlateportCity/scripts.pory"
-
-# 1103 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_BuyTooMuch:
-# 1104 "data/maps/SlateportCity/scripts.pory"
+# 1098 "data/maps/SlateportCity/scripts.pory"
 	.string "Whenever I visit here, I get carried\n"
-# 1105 "data/maps/SlateportCity/scripts.pory"
+# 1099 "data/maps/SlateportCity/scripts.pory"
 	.string "away and buy too much.$"
+# 1100 "data/maps/SlateportCity/scripts.pory"
+
+# 1101 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_Text_GetNameRaterToHelpYou:
+# 1102 "data/maps/SlateportCity/scripts.pory"
+	.string "If you want to change\nyour Pokémon's nickname, get the\l{COLOR BLUE}Name Rater{COLOR DARK_GRAY} to help.\lHe lives in this town.$"
+# 1103 "data/maps/SlateportCity/scripts.pory"
+
+# 1104 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_Text_CantChangeTradeMonName:
+# 1105 "data/maps/SlateportCity/scripts.pory"
+	.string "Any Pokémon you get in a trade, you\ncan't change its nickname.\pThe original Trainer's love for that\nPokémon is in the nickname!$"
 # 1106 "data/maps/SlateportCity/scripts.pory"
 
 # 1107 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_GetNameRaterToHelpYou:
-# 1108 "data/maps/SlateportCity/scripts.pory"
-	.string "If you want to change\nyour Pokémon's nickname, get the\l{COLOR BLUE}Name Rater{COLOR DARK_GRAY} to help.\lHe lives in this town.$"
-# 1109 "data/maps/SlateportCity/scripts.pory"
-
-# 1110 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_CantChangeTradeMonName:
-# 1111 "data/maps/SlateportCity/scripts.pory"
-	.string "Any Pokémon you get in a trade, you\ncan't change its nickname.\pThe original Trainer's love for that\nPokémon is in the nickname!$"
-# 1112 "data/maps/SlateportCity/scripts.pory"
-
-# 1113 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_BattleTentBuiltRecently:
-# 1114 "data/maps/SlateportCity/scripts.pory"
+# 1108 "data/maps/SlateportCity/scripts.pory"
 	.string "Recently, a Battle Tent was built\n"
-# 1115 "data/maps/SlateportCity/scripts.pory"
+# 1109 "data/maps/SlateportCity/scripts.pory"
 	.string "in Slateport.\p"
-# 1116 "data/maps/SlateportCity/scripts.pory"
+# 1110 "data/maps/SlateportCity/scripts.pory"
 	.string "Gyms are fun, but the Battle Tent's\n"
-# 1117 "data/maps/SlateportCity/scripts.pory"
+# 1111 "data/maps/SlateportCity/scripts.pory"
 	.string "awesome in its own way.\p"
-# 1118 "data/maps/SlateportCity/scripts.pory"
+# 1112 "data/maps/SlateportCity/scripts.pory"
 	.string "You should go find tough Pokémon\n"
-# 1119 "data/maps/SlateportCity/scripts.pory"
+# 1113 "data/maps/SlateportCity/scripts.pory"
 	.string "for the Battle Tent!$"
+# 1114 "data/maps/SlateportCity/scripts.pory"
+
+# 1115 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_Text_WhatWasThat:
+# 1116 "data/maps/SlateportCity/scripts.pory"
+	.string "What?\nWhat was that?$"
+# 1117 "data/maps/SlateportCity/scripts.pory"
+
+# 1118 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_Text_Premonition:
+# 1119 "data/maps/SlateportCity/scripts.pory"
+	.string "What? What?\nIs that a premonition that something\lbig is going to happen?$"
 # 1120 "data/maps/SlateportCity/scripts.pory"
 
 # 1121 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_WhatWasThat:
+SlateportCity_Text_SubmarineJackJustNow:
 # 1122 "data/maps/SlateportCity/scripts.pory"
-	.string "What?\nWhat was that?$"
+	.string "What?\pThe announcement just now…\nWas is about a submarine jack?!$"
 # 1123 "data/maps/SlateportCity/scripts.pory"
 
 # 1124 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_Premonition:
+SlateportCity_Text_CaptainInARush:
 # 1125 "data/maps/SlateportCity/scripts.pory"
-	.string "What? What?\nIs that a premonition that something\lbig is going to happen?$"
+	.string "Captain…\nHe went inside in a rush…\lI hope everything is OK.$"
 # 1126 "data/maps/SlateportCity/scripts.pory"
 
 # 1127 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_SubmarineJackJustNow:
+SlateportCity_Text_AmIOnTV:
 # 1128 "data/maps/SlateportCity/scripts.pory"
-	.string "What?\pThe announcement just now…\nWas is about a submarine jack?!$"
+	.string "Is somebody going to steal the\nsubmarine?\pWill I be on TV again?$"
 # 1129 "data/maps/SlateportCity/scripts.pory"
 
 # 1130 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_CaptainInARush:
+SlateportCity_Text_PeopleJackSubmarine:
 # 1131 "data/maps/SlateportCity/scripts.pory"
-	.string "Captain…\nHe went inside in a rush…\lI hope everything is OK.$"
+	.string "Oh no!\nI've never imagined that there are\lpeople who want to jack a submarine.$"
 # 1132 "data/maps/SlateportCity/scripts.pory"
 
 # 1133 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_AmIOnTV:
+SlateportCity_Text_BigSmileForCamera:
 # 1134 "data/maps/SlateportCity/scripts.pory"
-	.string "Is somebody going to steal the\nsubmarine?\pWill I be on TV again?$"
+	.string "{COLOR RED}Ty{COLOR DARK_GRAY}: Okay, Captain Stern, a big smile\nfor the camera!$"
 # 1135 "data/maps/SlateportCity/scripts.pory"
 
 # 1136 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_PeopleJackSubmarine:
+SlateportCity_Text_MostInvaluableExperience:
 # 1137 "data/maps/SlateportCity/scripts.pory"
-	.string "Oh no!\nI've never imagined that there are\lpeople who want to jack a submarine.$"
+	.string "{COLOR RED}Gabby{COLOR DARK_GRAY}: I see, I see.\pYou've had a most invaluable\nexperience…$"
 # 1138 "data/maps/SlateportCity/scripts.pory"
 
 # 1139 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_BigSmileForCamera:
+SlateportCity_Text_SternMoveAheadWithExploration:
 # 1140 "data/maps/SlateportCity/scripts.pory"
-	.string "{COLOR RED}Ty{COLOR DARK_GRAY}: Okay, Captain Stern, a big smile\nfor the camera!$"
+	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: Yes, indeed.\pAnd that is why we intend to move ahead\nwith out expedition.$"
 # 1141 "data/maps/SlateportCity/scripts.pory"
 
 # 1142 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_MostInvaluableExperience:
+SlateportCity_Text_GabbyWonderfulThanksForInterview:
 # 1143 "data/maps/SlateportCity/scripts.pory"
-	.string "{COLOR RED}Gabby{COLOR DARK_GRAY}: I see, I see.\pYou've had a most invaluable\nexperience…$"
+	.string "{COLOR RED}Gabby{COLOR DARK_GRAY}: That's wonderful,\nCaptain Stern!\pThank you for taking the time form your\nbusy schedule to talk to us.\pWe hope we can interview you again with\nnews of more discoveries!$"
 # 1144 "data/maps/SlateportCity/scripts.pory"
 
 # 1145 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_SternMoveAheadWithExploration:
+SlateportCity_Text_SternWhewFirstInterview:
 # 1146 "data/maps/SlateportCity/scripts.pory"
-	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: Yes, indeed.\pAnd that is why we intend to move ahead\nwith out expedition.$"
+	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: Whew…\pThat was my first time being filmed for\nTV. What a nerve-racking experience!$"
 # 1147 "data/maps/SlateportCity/scripts.pory"
 
 # 1148 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_GabbyWonderfulThanksForInterview:
+SlateportCity_Text_OhPlayerWeMadeDiscovery:
 # 1149 "data/maps/SlateportCity/scripts.pory"
-	.string "{COLOR RED}Gabby{COLOR DARK_GRAY}: That's wonderful,\nCaptain Stern!\pThank you for taking the time form your\nbusy schedule to talk to us.\pWe hope we can interview you again with\nnews of more discoveries!$"
+	.string "Oh!\nIt's you again!\pYou're looking well.\nGlad to see it.\pWe made a huge discovery on our latest\nexpedition to the seafloor.\pWe found an {COLOR BLUE}underwater cavern on\nRoute 128{COLOR DARK_GRAY}--and we think it may be the\lden of a super-ancient Pokémon long\lthought to have been extinct.$"
 # 1150 "data/maps/SlateportCity/scripts.pory"
 
 # 1151 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_SternWhewFirstInterview:
+SlateportCity_Text_AquaWillAssumeControlOfSubmarine:
 # 1152 "data/maps/SlateportCity/scripts.pory"
-	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: Whew…\pThat was my first time being filmed for\nTV. What a nerve-racking experience!$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: “Ahhh… Ahhh… Testing, testing.\nOne, two, three…OK.”\p“I hope you're listening out there…\nCaptain Stern!”\p“We of Team Aqua will now be assuming\ncontrol of your lovely submarine!”\p“You'll contribute to our great\nplan of returning everything to the\lbeginning…\lI hope you appreciate this great\lhonor!”\p“Wah…hahahah!\nBwahahahahahahahah!”$"
 # 1153 "data/maps/SlateportCity/scripts.pory"
 
 # 1154 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_OhPlayerWeMadeDiscovery:
+SlateportCity_Text_SternWhatWasAllThat:
 # 1155 "data/maps/SlateportCity/scripts.pory"
-	.string "Oh!\nIt's you again!\pYou're looking well.\nGlad to see it.\pWe made a huge discovery on our latest\nexpedition to the seafloor.\pWe found an {COLOR BLUE}underwater cavern on\nRoute 128{COLOR DARK_GRAY}--and we think it may be the\lden of a super-ancient Pokémon long\lthought to have been extinct.$"
+	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: Did you hear that voice?\pIt's like someone is using a\nmegaphone…\pBut where is it coming from?$"
 # 1156 "data/maps/SlateportCity/scripts.pory"
 
 # 1157 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_AquaWillAssumeControlOfSubmarine:
+SlateportCity_Text_FromHarborTryingToTakeSub:
 # 1158 "data/maps/SlateportCity/scripts.pory"
-	.string "{COLOR RED}???{COLOR DARK_GRAY}: “Ahhh… Ahhh… Testing, testing.\nOne, two, three…OK.”\p“I hope you're listening out there…\nCaptain Stern!”\p“We of Team Aqua will now be assuming\ncontrol of your lovely submarine!”\p“You'll contribute to our great\nplan of returning everything to the\lbeginning…\lI hope you appreciate this great\lhonor!”\p“Wah…hahahah!\nBwahahahahahahahah!”$"
+	.string "It came from the Harbor!\pOur submarine!\nThey took it!$"
 # 1159 "data/maps/SlateportCity/scripts.pory"
 
 # 1160 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_SternWhatWasAllThat:
+SlateportCity_Text_PleaseComeWithMeM:
 # 1161 "data/maps/SlateportCity/scripts.pory"
-	.string "{COLOR RED}Stern{COLOR DARK_GRAY}: Did you hear that voice?\pIt's like someone is using a\nmegaphone…\pBut where is it coming from?$"
+	.string "Young man! I'm sorry, but…\nPlease come with me!$"
 # 1162 "data/maps/SlateportCity/scripts.pory"
 
 # 1163 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_FromHarborTryingToTakeSub:
+SlateportCity_Text_PleaseComeWithMeF:
 # 1164 "data/maps/SlateportCity/scripts.pory"
-	.string "It came from the Harbor!\pOur submarine!\nThey took it!$"
+	.string "Young lady! I'm sorry, but…\nPlease come with me!$"
 # 1165 "data/maps/SlateportCity/scripts.pory"
 
 # 1166 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_PleaseComeWithMeM:
-# 1167 "data/maps/SlateportCity/scripts.pory"
-	.string "Young man! I'm sorry, but…\nPlease come with me!$"
-# 1168 "data/maps/SlateportCity/scripts.pory"
-
-# 1169 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_PleaseComeWithMeF:
-# 1170 "data/maps/SlateportCity/scripts.pory"
-	.string "Young lady! I'm sorry, but…\nPlease come with me!$"
-# 1171 "data/maps/SlateportCity/scripts.pory"
-
-# 1172 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_BattleTentSign:
-# 1173 "data/maps/SlateportCity/scripts.pory"
+# 1167 "data/maps/SlateportCity/scripts.pory"
 	.string "Battle Tent Slateport Site\n"
-# 1174 "data/maps/SlateportCity/scripts.pory"
+# 1168 "data/maps/SlateportCity/scripts.pory"
 	.string "“Find it! The ultimate Pokémon!”$"
-# 1175 "data/maps/SlateportCity/scripts.pory"
+# 1169 "data/maps/SlateportCity/scripts.pory"
 
-# 1176 "data/maps/SlateportCity/scripts.pory"
+# 1170 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_SternsShipyardWantedSign:
-# 1177 "data/maps/SlateportCity/scripts.pory"
+# 1171 "data/maps/SlateportCity/scripts.pory"
 	.string "Stern's Shipyard\p"
-# 1178 "data/maps/SlateportCity/scripts.pory"
+# 1172 "data/maps/SlateportCity/scripts.pory"
 	.string "“Wanted: A sailor capable of sailing\n"
-# 1179 "data/maps/SlateportCity/scripts.pory"
+# 1173 "data/maps/SlateportCity/scripts.pory"
 	.string "in all currents.”$"
+# 1174 "data/maps/SlateportCity/scripts.pory"
+
+# 1175 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_Text_SternsShipyardNearsCompletion:
+# 1176 "data/maps/SlateportCity/scripts.pory"
+	.string "Stern's Shipyard\p"
+# 1177 "data/maps/SlateportCity/scripts.pory"
+	.string "“The ferry S.S. Tidal nears\n"
+# 1178 "data/maps/SlateportCity/scripts.pory"
+	.string "completion for serving the ports of\l"
+# 1179 "data/maps/SlateportCity/scripts.pory"
+	.string "Slateport and Lilycove.”$"
 # 1180 "data/maps/SlateportCity/scripts.pory"
 
 # 1181 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_SternsShipyardNearsCompletion:
+SlateportCity_Text_SternsShipyardFerryComplete:
 # 1182 "data/maps/SlateportCity/scripts.pory"
 	.string "Stern's Shipyard\p"
 # 1183 "data/maps/SlateportCity/scripts.pory"
-	.string "“The ferry S.S. Tidal nears\n"
+	.string "“Boarding of the Slateport-Lilycove\n"
 # 1184 "data/maps/SlateportCity/scripts.pory"
-	.string "completion for serving the ports of\l"
+	.string "ferry S.S. Tidal is handled at the\l"
 # 1185 "data/maps/SlateportCity/scripts.pory"
-	.string "Slateport and Lilycove.”$"
+	.string "Harbor.”$"
 # 1186 "data/maps/SlateportCity/scripts.pory"
 
 # 1187 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_SternsShipyardFerryComplete:
-# 1188 "data/maps/SlateportCity/scripts.pory"
-	.string "Stern's Shipyard\p"
-# 1189 "data/maps/SlateportCity/scripts.pory"
-	.string "“Boarding of the Slateport-Lilycove\n"
-# 1190 "data/maps/SlateportCity/scripts.pory"
-	.string "ferry S.S. Tidal is handled at the\l"
-# 1191 "data/maps/SlateportCity/scripts.pory"
-	.string "Harbor.”$"
-# 1192 "data/maps/SlateportCity/scripts.pory"
-
-# 1193 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_PokemonFanClubSign:
-# 1194 "data/maps/SlateportCity/scripts.pory"
+# 1188 "data/maps/SlateportCity/scripts.pory"
 	.string "Pokémon Fan Club\n"
-# 1195 "data/maps/SlateportCity/scripts.pory"
+# 1189 "data/maps/SlateportCity/scripts.pory"
 	.string "“Calling all fans of Pokémon!”$"
-# 1196 "data/maps/SlateportCity/scripts.pory"
+# 1190 "data/maps/SlateportCity/scripts.pory"
 
-# 1197 "data/maps/SlateportCity/scripts.pory"
+# 1191 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_OceanicMuseumSign:
-# 1198 "data/maps/SlateportCity/scripts.pory"
+# 1192 "data/maps/SlateportCity/scripts.pory"
 	.string "“The endless sea sustains\n"
-# 1199 "data/maps/SlateportCity/scripts.pory"
+# 1193 "data/maps/SlateportCity/scripts.pory"
 	.string "all life.”\p"
-# 1200 "data/maps/SlateportCity/scripts.pory"
+# 1194 "data/maps/SlateportCity/scripts.pory"
 	.string "Oceanic Museum$"
-# 1201 "data/maps/SlateportCity/scripts.pory"
+# 1195 "data/maps/SlateportCity/scripts.pory"
 
-# 1202 "data/maps/SlateportCity/scripts.pory"
+# 1196 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_CitySign:
-# 1203 "data/maps/SlateportCity/scripts.pory"
+# 1197 "data/maps/SlateportCity/scripts.pory"
 	.string "Slateport City\p"
-# 1204 "data/maps/SlateportCity/scripts.pory"
+# 1198 "data/maps/SlateportCity/scripts.pory"
 	.string "“The port where people and Pokémon\n"
-# 1205 "data/maps/SlateportCity/scripts.pory"
+# 1199 "data/maps/SlateportCity/scripts.pory"
 	.string "cross paths.”$"
-# 1206 "data/maps/SlateportCity/scripts.pory"
+# 1200 "data/maps/SlateportCity/scripts.pory"
 
-# 1207 "data/maps/SlateportCity/scripts.pory"
+# 1201 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_MarketSign:
-# 1208 "data/maps/SlateportCity/scripts.pory"
+# 1202 "data/maps/SlateportCity/scripts.pory"
 	.string "Slateport Market\n"
-# 1209 "data/maps/SlateportCity/scripts.pory"
+# 1203 "data/maps/SlateportCity/scripts.pory"
 	.string "“Unique items found nowhere else!”$"
-# 1210 "data/maps/SlateportCity/scripts.pory"
+# 1204 "data/maps/SlateportCity/scripts.pory"
 
-# 1211 "data/maps/SlateportCity/scripts.pory"
+# 1205 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_HarborFerryUnderConstruction:
-# 1212 "data/maps/SlateportCity/scripts.pory"
+# 1206 "data/maps/SlateportCity/scripts.pory"
 	.string "Slateport Harbor\p"
-# 1213 "data/maps/SlateportCity/scripts.pory"
+# 1207 "data/maps/SlateportCity/scripts.pory"
 	.string "“The ferry S.S. Tidal is under\n"
-# 1214 "data/maps/SlateportCity/scripts.pory"
+# 1208 "data/maps/SlateportCity/scripts.pory"
 	.string "construction in the Shipyard.\p"
-# 1215 "data/maps/SlateportCity/scripts.pory"
+# 1209 "data/maps/SlateportCity/scripts.pory"
 	.string "“Service is scheduled to begin\n"
-# 1216 "data/maps/SlateportCity/scripts.pory"
+# 1210 "data/maps/SlateportCity/scripts.pory"
 	.string "shortly.”$"
-# 1217 "data/maps/SlateportCity/scripts.pory"
+# 1211 "data/maps/SlateportCity/scripts.pory"
 
-# 1218 "data/maps/SlateportCity/scripts.pory"
+# 1212 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_HarborSign:
-# 1219 "data/maps/SlateportCity/scripts.pory"
+# 1213 "data/maps/SlateportCity/scripts.pory"
 	.string "Slateport Harbor\p"
-# 1220 "data/maps/SlateportCity/scripts.pory"
+# 1214 "data/maps/SlateportCity/scripts.pory"
 	.string "“Enjoy a delightful cruise on\n"
-# 1221 "data/maps/SlateportCity/scripts.pory"
+# 1215 "data/maps/SlateportCity/scripts.pory"
 	.string "the ferry S.S. Tidal.”$"
-# 1222 "data/maps/SlateportCity/scripts.pory"
+# 1216 "data/maps/SlateportCity/scripts.pory"
 
-# 1223 "data/maps/SlateportCity/scripts.pory"
+# 1217 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_NameRatersHouseSign:
-# 1224 "data/maps/SlateportCity/scripts.pory"
+# 1218 "data/maps/SlateportCity/scripts.pory"
 	.string "Name Rater's House\n"
-# 1225 "data/maps/SlateportCity/scripts.pory"
+# 1219 "data/maps/SlateportCity/scripts.pory"
 	.string "“Pokémon nicknames rated.”$"
-# 1226 "data/maps/SlateportCity/scripts.pory"
+# 1220 "data/maps/SlateportCity/scripts.pory"
 
-# 1227 "data/maps/SlateportCity/scripts.pory"
+# 1221 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_ExplainBerries:
-# 1228 "data/maps/SlateportCity/scripts.pory"
+# 1222 "data/maps/SlateportCity/scripts.pory"
 	.string "If a wild Pokémon gets hurt, it heals\n"
-# 1229 "data/maps/SlateportCity/scripts.pory"
+# 1223 "data/maps/SlateportCity/scripts.pory"
 	.string "itself by chewing on Berries.\p"
+# 1224 "data/maps/SlateportCity/scripts.pory"
+	.string "Did you know that?\p"
+# 1225 "data/maps/SlateportCity/scripts.pory"
+	.string "Somebody saw that and got the idea\n"
+# 1226 "data/maps/SlateportCity/scripts.pory"
+	.string "of making medicine from Berries.\p"
+# 1227 "data/maps/SlateportCity/scripts.pory"
+	.string "Did you know that?\p"
+# 1228 "data/maps/SlateportCity/scripts.pory"
+	.string "To turn Berries into medicine,\n"
+# 1229 "data/maps/SlateportCity/scripts.pory"
+	.string "they must be crushed into powder.\p"
 # 1230 "data/maps/SlateportCity/scripts.pory"
 	.string "Did you know that?\p"
 # 1231 "data/maps/SlateportCity/scripts.pory"
-	.string "Somebody saw that and got the idea\n"
-# 1232 "data/maps/SlateportCity/scripts.pory"
-	.string "of making medicine from Berries.\p"
-# 1233 "data/maps/SlateportCity/scripts.pory"
-	.string "Did you know that?\p"
-# 1234 "data/maps/SlateportCity/scripts.pory"
-	.string "To turn Berries into medicine,\n"
-# 1235 "data/maps/SlateportCity/scripts.pory"
-	.string "they must be crushed into powder.\p"
-# 1236 "data/maps/SlateportCity/scripts.pory"
-	.string "Did you know that?\p"
-# 1237 "data/maps/SlateportCity/scripts.pory"
 	.string "You seem to have an interest\n"
-# 1238 "data/maps/SlateportCity/scripts.pory"
+# 1232 "data/maps/SlateportCity/scripts.pory"
 	.string "in Berries!\p"
-# 1239 "data/maps/SlateportCity/scripts.pory"
+# 1233 "data/maps/SlateportCity/scripts.pory"
 	.string "I've got something good for someone\n"
-# 1240 "data/maps/SlateportCity/scripts.pory"
+# 1234 "data/maps/SlateportCity/scripts.pory"
 	.string "like you.$"
-# 1241 "data/maps/SlateportCity/scripts.pory"
+# 1235 "data/maps/SlateportCity/scripts.pory"
 
-# 1242 "data/maps/SlateportCity/scripts.pory"
+# 1236 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_ExplainBerryPowder:
-# 1243 "data/maps/SlateportCity/scripts.pory"
+# 1237 "data/maps/SlateportCity/scripts.pory"
 	.string "I recently had machines installed at\n"
-# 1244 "data/maps/SlateportCity/scripts.pory"
+# 1238 "data/maps/SlateportCity/scripts.pory"
 	.string "Pokémon Centers for crushing Berries.\p"
-# 1245 "data/maps/SlateportCity/scripts.pory"
+# 1239 "data/maps/SlateportCity/scripts.pory"
 	.string "The Berry Crush machines are at\n"
-# 1246 "data/maps/SlateportCity/scripts.pory"
+# 1240 "data/maps/SlateportCity/scripts.pory"
 	.string "the Direct Corner upstairs.\p"
-# 1247 "data/maps/SlateportCity/scripts.pory"
+# 1241 "data/maps/SlateportCity/scripts.pory"
 	.string "Did you know?\p"
-# 1248 "data/maps/SlateportCity/scripts.pory"
+# 1242 "data/maps/SlateportCity/scripts.pory"
 	.string "Could you make Berry Powder for\n"
-# 1249 "data/maps/SlateportCity/scripts.pory"
+# 1243 "data/maps/SlateportCity/scripts.pory"
 	.string "me using those machines?\p"
-# 1250 "data/maps/SlateportCity/scripts.pory"
+# 1244 "data/maps/SlateportCity/scripts.pory"
 	.string "I can make you all sorts of medicine\n"
-# 1251 "data/maps/SlateportCity/scripts.pory"
+# 1245 "data/maps/SlateportCity/scripts.pory"
 	.string "if you bring me lots of Berry Powder.$"
-# 1252 "data/maps/SlateportCity/scripts.pory"
+# 1246 "data/maps/SlateportCity/scripts.pory"
 
-# 1253 "data/maps/SlateportCity/scripts.pory"
+# 1247 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_BroughtMeSomeBerryPowder:
-# 1254 "data/maps/SlateportCity/scripts.pory"
+# 1248 "data/maps/SlateportCity/scripts.pory"
 	.string "Have you brought me some\n"
-# 1255 "data/maps/SlateportCity/scripts.pory"
+# 1249 "data/maps/SlateportCity/scripts.pory"
 	.string "Berry Powder?$"
-# 1256 "data/maps/SlateportCity/scripts.pory"
+# 1250 "data/maps/SlateportCity/scripts.pory"
 
-# 1257 "data/maps/SlateportCity/scripts.pory"
+# 1251 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_ExchangeWhatWithIt:
-# 1258 "data/maps/SlateportCity/scripts.pory"
+# 1252 "data/maps/SlateportCity/scripts.pory"
 	.string "What would you like to exchange\n"
-# 1259 "data/maps/SlateportCity/scripts.pory"
+# 1253 "data/maps/SlateportCity/scripts.pory"
 	.string "it with?$"
-# 1260 "data/maps/SlateportCity/scripts.pory"
+# 1254 "data/maps/SlateportCity/scripts.pory"
 
-# 1261 "data/maps/SlateportCity/scripts.pory"
+# 1255 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_ExchangeBerryPowderForItem:
-# 1262 "data/maps/SlateportCity/scripts.pory"
+# 1256 "data/maps/SlateportCity/scripts.pory"
 	.string "Okay, you want to exchange your\n"
-# 1263 "data/maps/SlateportCity/scripts.pory"
+# 1257 "data/maps/SlateportCity/scripts.pory"
 	.string "Berry Powder for one {STR_VAR_1}?$"
-# 1264 "data/maps/SlateportCity/scripts.pory"
+# 1258 "data/maps/SlateportCity/scripts.pory"
 
-# 1265 "data/maps/SlateportCity/scripts.pory"
+# 1259 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_DontHaveEnoughBerryPowder:
-# 1266 "data/maps/SlateportCity/scripts.pory"
+# 1260 "data/maps/SlateportCity/scripts.pory"
 	.string "Oh, dear. You don't have enough\n"
-# 1267 "data/maps/SlateportCity/scripts.pory"
+# 1261 "data/maps/SlateportCity/scripts.pory"
 	.string "Berry Powder.$"
+# 1262 "data/maps/SlateportCity/scripts.pory"
+
+# 1263 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_Text_FineBerryPowderTradeSomethingElse:
+# 1264 "data/maps/SlateportCity/scripts.pory"
+	.string "This is fine Berry Powder.\n"
+# 1265 "data/maps/SlateportCity/scripts.pory"
+	.string "It will make excellent medicine.\p"
+# 1266 "data/maps/SlateportCity/scripts.pory"
+	.string "Would you like to trade more of your\n"
+# 1267 "data/maps/SlateportCity/scripts.pory"
+	.string "Berry Powder for something else?$"
 # 1268 "data/maps/SlateportCity/scripts.pory"
 
 # 1269 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_FineBerryPowderTradeSomethingElse:
-# 1270 "data/maps/SlateportCity/scripts.pory"
-	.string "This is fine Berry Powder.\n"
-# 1271 "data/maps/SlateportCity/scripts.pory"
-	.string "It will make excellent medicine.\p"
-# 1272 "data/maps/SlateportCity/scripts.pory"
-	.string "Would you like to trade more of your\n"
-# 1273 "data/maps/SlateportCity/scripts.pory"
-	.string "Berry Powder for something else?$"
-# 1274 "data/maps/SlateportCity/scripts.pory"
-
-# 1275 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_WhenYouGetMoreBringItToMe:
-# 1276 "data/maps/SlateportCity/scripts.pory"
+# 1270 "data/maps/SlateportCity/scripts.pory"
 	.string "Okay! When you get some more\n"
-# 1277 "data/maps/SlateportCity/scripts.pory"
+# 1271 "data/maps/SlateportCity/scripts.pory"
 	.string "Berry Powder, bring it to me, please!$"
+# 1272 "data/maps/SlateportCity/scripts.pory"
+
+# 1273 "data/maps/SlateportCity/scripts.pory"
+SlateportCity_Text_ComeBackToTradeBerryPowder:
+# 1274 "data/maps/SlateportCity/scripts.pory"
+	.string "Come back if you'd like to trade your\n"
+# 1275 "data/maps/SlateportCity/scripts.pory"
+	.string "Berry Powder for some medicine.\p"
+# 1276 "data/maps/SlateportCity/scripts.pory"
+	.string "I'm always running a bazaar here.\p"
+# 1277 "data/maps/SlateportCity/scripts.pory"
+	.string "Did you know?$"
 # 1278 "data/maps/SlateportCity/scripts.pory"
 
 # 1279 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_ComeBackToTradeBerryPowder:
+SlateportCity_Text_YouDroveTeamAquaAway:
 # 1280 "data/maps/SlateportCity/scripts.pory"
-	.string "Come back if you'd like to trade your\n"
+	.string "{COLOR RED}Scott{COLOR DARK_GRAY}: Huh?\pI'm sure I met you somewhere before.\nHave I introduced myself to you?\pIf not, my name's Scott.\nI just saw Team Aqua run away\lfrom here like they were stung.\pLet me guess-you drove them away?$"
 # 1281 "data/maps/SlateportCity/scripts.pory"
-	.string "Berry Powder for some medicine.\p"
+
 # 1282 "data/maps/SlateportCity/scripts.pory"
-	.string "I'm always running a bazaar here.\p"
+SlateportCity_Text_MaybeThisTrainer:
 # 1283 "data/maps/SlateportCity/scripts.pory"
-	.string "Did you know?$"
+	.string "Hmm…\nMaybe, just maybe, this Trainer…$"
 # 1284 "data/maps/SlateportCity/scripts.pory"
 
 # 1285 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_YouDroveTeamAquaAway:
+SlateportCity_Text_LetsRegisterEachOther:
 # 1286 "data/maps/SlateportCity/scripts.pory"
-	.string "{COLOR RED}Scott{COLOR DARK_GRAY}: Huh?\pI'm sure I met you somewhere before.\nHave I introduced myself to you?\pIf not, my name's Scott.\nI just saw Team Aqua run away\lfrom here like they were stung.\pLet me guess-you drove them away?$"
+	.string "All right!\pI think you're going to become a\ngood friend.\pSo, let's register each other in\nour Pokénavs.$"
 # 1287 "data/maps/SlateportCity/scripts.pory"
 
 # 1288 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_MaybeThisTrainer:
-# 1289 "data/maps/SlateportCity/scripts.pory"
-	.string "Hmm…\nMaybe, just maybe, this Trainer…$"
-# 1290 "data/maps/SlateportCity/scripts.pory"
-
-# 1291 "data/maps/SlateportCity/scripts.pory"
-SlateportCity_Text_LetsRegisterEachOther:
-# 1292 "data/maps/SlateportCity/scripts.pory"
-	.string "All right!\pI think you're going to become a\ngood friend.\pSo, let's register each other in\nour Pokénavs.$"
-# 1293 "data/maps/SlateportCity/scripts.pory"
-
-# 1294 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_RegisteredScott:
-# 1295 "data/maps/SlateportCity/scripts.pory"
+# 1289 "data/maps/SlateportCity/scripts.pory"
 	.string "Registered this Scott person\n"
-# 1296 "data/maps/SlateportCity/scripts.pory"
+# 1290 "data/maps/SlateportCity/scripts.pory"
 	.string "in the Pokénav.$"
-# 1297 "data/maps/SlateportCity/scripts.pory"
+# 1291 "data/maps/SlateportCity/scripts.pory"
 
-# 1298 "data/maps/SlateportCity/scripts.pory"
+# 1292 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_KeepEyeOnTrainersBeSeeingYou:
-# 1299 "data/maps/SlateportCity/scripts.pory"
+# 1293 "data/maps/SlateportCity/scripts.pory"
 	.string "What I'd like to do is tag along with\nyou, but I do want to keep an eye\lon the talents of other people,\ltoo.\pSo, I'll be off to roam other\ntowns a bit more.\lBe seeing you, {PLAYER}!$"
-# 1300 "data/maps/SlateportCity/scripts.pory"
+# 1294 "data/maps/SlateportCity/scripts.pory"
 
-# 1301 "data/maps/SlateportCity/scripts.pory"
+# 1295 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Text_TakingBattleTentChallenge:
-# 1302 "data/maps/SlateportCity/scripts.pory"
+# 1296 "data/maps/SlateportCity/scripts.pory"
 	.string "{COLOR RED}Scott{COLOR DARK_GRAY}: Oh, hey!\nIf it isn't {PLAYER}!\p{PLAYER}, let me guess-you're going to\ntake the Battle Tent challenge?\pYeah!\nThat's a good idea!\lThat's a really great idea!\pAfter all, a tough Trainer is the\nperfect fit for the Battle Tent!\pGive it your best effort!$"

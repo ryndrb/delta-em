@@ -49,36 +49,32 @@ SlateportCity_Mart_Pokemart:
 # 25 "data/maps/SlateportCity_Mart/scripts.pory"
 	.2byte ITEM_HARBOR_MAIL
 # 26 "data/maps/SlateportCity_Mart/scripts.pory"
-	.2byte ITEM_NONE
+	pokemartlistend
 # 27 "data/maps/SlateportCity_Mart/scripts.pory"
-	release
+
 # 28 "data/maps/SlateportCity_Mart/scripts.pory"
-	end
-# 29 "data/maps/SlateportCity_Mart/scripts.pory"
-
-# 30 "data/maps/SlateportCity_Mart/scripts.pory"
 SlateportCity_Mart_EventScript_BlackBelt::
-# 31 "data/maps/SlateportCity_Mart/scripts.pory"
+# 29 "data/maps/SlateportCity_Mart/scripts.pory"
 	msgbox SlateportCity_Mart_Text_SomeItemsOnlyAtMart, MSGBOX_NPC
+# 30 "data/maps/SlateportCity_Mart/scripts.pory"
+	end
+# 31 "data/maps/SlateportCity_Mart/scripts.pory"
+
 # 32 "data/maps/SlateportCity_Mart/scripts.pory"
-	end
-# 33 "data/maps/SlateportCity_Mart/scripts.pory"
-
-# 34 "data/maps/SlateportCity_Mart/scripts.pory"
 SlateportCity_Mart_EventScript_Man::
-# 35 "data/maps/SlateportCity_Mart/scripts.pory"
+# 33 "data/maps/SlateportCity_Mart/scripts.pory"
 	msgbox SlateportCity_Mart_Text_GreatBallIsBetter, MSGBOX_NPC
-# 36 "data/maps/SlateportCity_Mart/scripts.pory"
+# 34 "data/maps/SlateportCity_Mart/scripts.pory"
 	end
-# 37 "data/maps/SlateportCity_Mart/scripts.pory"
+# 35 "data/maps/SlateportCity_Mart/scripts.pory"
 
-# 38 "data/maps/SlateportCity_Mart/scripts.pory"
+# 36 "data/maps/SlateportCity_Mart/scripts.pory"
 SlateportCity_Mart_Text_SomeItemsOnlyAtMart:
-# 39 "data/maps/SlateportCity_Mart/scripts.pory"
+# 37 "data/maps/SlateportCity_Mart/scripts.pory"
 	.string "The Market does have some\ninteresting merchandise.\pBut there are some items you can\nonly get at a Poké Mart, you know?$"
-# 40 "data/maps/SlateportCity_Mart/scripts.pory"
+# 38 "data/maps/SlateportCity_Mart/scripts.pory"
 
-# 41 "data/maps/SlateportCity_Mart/scripts.pory"
+# 39 "data/maps/SlateportCity_Mart/scripts.pory"
 SlateportCity_Mart_Text_GreatBallIsBetter:
-# 42 "data/maps/SlateportCity_Mart/scripts.pory"
+# 40 "data/maps/SlateportCity_Mart/scripts.pory"
 	.string "It's easier to catch a Pokémon\nwith a Great Ball that is is with a\lregular old Poké Ball.\pWith this, I should finally be\nable to catch that hard-to-get\lPokémon…$"

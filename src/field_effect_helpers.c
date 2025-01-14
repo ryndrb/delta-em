@@ -1015,7 +1015,7 @@ void UpdateHotSpringsWaterFieldEffect(struct Sprite *sprite)
 #undef sPrevX
 #undef sPrevY
 
-u32 FldEff_UnusedGrass(void)
+u32 FldEff_ShakingGrass(void)
 {
     u8 spriteId;
 
@@ -1026,12 +1026,12 @@ u32 FldEff_UnusedGrass(void)
         struct Sprite *sprite = &gSprites[spriteId];
         sprite->coordOffsetEnabled = TRUE;
         sprite->oam.priority = gFieldEffectArguments[3];
-        sprite->sWaitFldEff = FLDEFF_UNUSED_GRASS;
+        sprite->sWaitFldEff = FLDEFF_SHAKING_GRASS;
     }
-    return 0;
+    return spriteId;
 }
 
-u32 FldEff_UnusedGrass2(void)
+u32 FldEff_ShakingGrass2(void)
 {
     u8 spriteId;
 
@@ -1042,9 +1042,10 @@ u32 FldEff_UnusedGrass2(void)
         struct Sprite *sprite = &gSprites[spriteId];
         sprite->coordOffsetEnabled = TRUE;
         sprite->oam.priority = gFieldEffectArguments[3];
-        sprite->sWaitFldEff = FLDEFF_UNUSED_GRASS_2;
+        sprite->sWaitFldEff = FLDEFF_SHAKING_LONG_GRASS;
     }
-    return 0;
+    
+    return spriteId;
 }
 
 u32 FldEff_UnusedSand(void)
@@ -1058,7 +1059,7 @@ u32 FldEff_UnusedSand(void)
         struct Sprite *sprite = &gSprites[spriteId];
         sprite->coordOffsetEnabled = TRUE;
         sprite->oam.priority = gFieldEffectArguments[3];
-        sprite->sWaitFldEff = FLDEFF_UNUSED_SAND;
+        sprite->sWaitFldEff = FLDEFF_SAND_HOLE;
     }
     return 0;
 }

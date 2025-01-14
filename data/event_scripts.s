@@ -20,6 +20,7 @@
 #include "constants/contest.h"
 #include "constants/daycare.h"
 #include "constants/decorations.h"
+#include "constants/difficulty.h"
 #include "constants/easy_chat.h"
 #include "constants/event_objects.h"
 #include "constants/event_object_movement.h"
@@ -1145,9 +1146,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/follower.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
-    .include "data/scripts/dexnav.inc"
-    
-
+	.include "data/scripts/dexnav.inc"
 	.include "data/maps/Seaspray_Cave/scripts.inc"
 
 	.include "data/maps/Seaspray_Cave_B1F/scripts.inc"

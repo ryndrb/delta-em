@@ -34,9 +34,7 @@ LilycoveCity_DepartmentStore_4F_Pokemart_TMs:
 	.2byte ITEM_TM_STEEL_BEAM // 30 000
 	.2byte ITEM_TM_GUNK_SHOT // 30 000
 	.2byte ITEM_TM_STONE_EDGE // 30 000
-	.2byte ITEM_NONE
-	release
-	end
+	pokemartlistend
 
 LilycoveCity_DepartmentStore_4F_EventScript_ClerkRight::
 	lock
@@ -53,9 +51,7 @@ LilycoveCity_DepartmentStore_4F_Pokemart_DefenseTMs:
 	.2byte ITEM_TM_PROTECT
 	.2byte ITEM_TM_REFLECT
 	.2byte ITEM_TM_LIGHT_SCREEN
-	.2byte ITEM_NONE
-	release
-	end
+	pokemartlistend
 
 LilycoveCity_DepartmentStore_4F_Text_AttackOrDefenseTM:
 	.string "Hmm…\p"

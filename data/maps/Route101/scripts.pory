@@ -359,7 +359,7 @@ script Route101_EventScript_RivalGiveDexNav{
     msgbox("{PLAYER} received the {COLOR RED}DexNav{COLOR DARK_GRAY}!")
     waitfanfare
     setflag(FLAG_SYS_DETECTOR_MODE)
-    setflag(FLAG_SYS_DEXNAV_GET)
+    setflag(FLAG_SYS_DEXNAV_GET_)
     msgbox("The item I just gave you is called a\nDexNav.\pIt can tell you lots about the\nPokémon living in each area and\lthat kind of stuff.\pIt's a handy app if you're trying\nto catch lots of different Pokémon.")
     checkplayergender
     if(var(VAR_RESULT) == MALE){

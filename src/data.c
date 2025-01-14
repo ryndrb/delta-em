@@ -230,7 +230,7 @@ const union AnimCmd *const sAnims_Trainer[] ={
 #if VANILLA_PARTY_SYNTAX == TRUE
 #include "data/trainers.h"
 #else
-const struct Trainer gTrainers[] =
+const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] =
 {
 #include "data/trainers.h"
 };

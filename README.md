@@ -16,8 +16,7 @@ I also added custom stuff myself, will list them here (or somewhere) if I rememb
 ## Credits
 
 - RHH (pokeemerald-expansion)
-- cyanSMP64 (HGSS/DPPt music expansion)
+- cyanSMP64 (HGSS/DPPt music)
 - AsparagusEduardo (Decapitalization, Expanded Bag Pockets)
-- ghoulslash (DexNav)
-- BuffelSaft (Inclement Emerald inspirations)
+- BuffelSaft (Inclement Emerald)
 - (Will add the sprites resource credits here once I remember them)

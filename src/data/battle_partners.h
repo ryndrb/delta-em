@@ -1,5 +1,5 @@
-const struct Trainer gBattlePartners[] = {
-    [PARTNER_NONE] =
+const struct Trainer gBattlePartners[DIFFICULTY_COUNT][PARTNER_COUNT] = {
+    [DIFFICULTY_NORMAL][PARTNER_NONE] =
     {
         .party = NULL,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
@@ -9,7 +9,7 @@ const struct Trainer gBattlePartners[] = {
         .items = {},
     },
 
-    [PARTNER_MAY_METEOR_FALLS_TREECKO] =
+    [DIFFICULTY_NORMAL][PARTNER_MAY_METEOR_FALLS_TREECKO] =
     {
         .party = TRAINER_PARTY(sParty_MayMeteorFallsTreeckoPartner),
         .trainerClass = TRAINER_CLASS_RIVAL,
@@ -18,7 +18,7 @@ const struct Trainer gBattlePartners[] = {
         .trainerName = _("May"),
     },
 
-    [PARTNER_MAY_METEOR_FALLS_TORCHIC] =
+    [DIFFICULTY_NORMAL][PARTNER_MAY_METEOR_FALLS_TORCHIC] =
     {
         .party = TRAINER_PARTY(sParty_MayMeteorFallsTorchicPartner),
         .trainerClass = TRAINER_CLASS_RIVAL,
@@ -27,7 +27,7 @@ const struct Trainer gBattlePartners[] = {
         .trainerName = _("May"),
     },
 
-    [PARTNER_MAY_METEOR_FALLS_MUDKIP] =
+    [DIFFICULTY_NORMAL][PARTNER_MAY_METEOR_FALLS_MUDKIP] =
     {
         .party = TRAINER_PARTY(sParty_MayMeteorFallsMudkipPartner),
         .trainerClass = TRAINER_CLASS_RIVAL,
@@ -36,7 +36,7 @@ const struct Trainer gBattlePartners[] = {
         .trainerName = _("May"),
     },
 
-    [PARTNER_BRENDAN_METEOR_FALLS_TREECKO] =
+    [DIFFICULTY_NORMAL][PARTNER_BRENDAN_METEOR_FALLS_TREECKO] =
     {
         .party = TRAINER_PARTY(sParty_BrendanMeteorFallsTreeckoPartner),
         .trainerClass = TRAINER_CLASS_RIVAL,
@@ -45,7 +45,7 @@ const struct Trainer gBattlePartners[] = {
         .trainerName = _("Brendan"),
     },
 
-    [PARTNER_BRENDAN_METEOR_FALLS_TORCHIC] =
+    [DIFFICULTY_NORMAL][PARTNER_BRENDAN_METEOR_FALLS_TORCHIC] =
     {
         .party = TRAINER_PARTY(sParty_BrendanMeteorFallsTorchicPartner),
         .trainerClass = TRAINER_CLASS_RIVAL,
@@ -54,7 +54,7 @@ const struct Trainer gBattlePartners[] = {
         .trainerName = _("Brendan"),
     },
 
-    [PARTNER_BRENDAN_METEOR_FALLS_MUDKIP] =
+    [DIFFICULTY_NORMAL][PARTNER_BRENDAN_METEOR_FALLS_MUDKIP] =
     {
         .party = TRAINER_PARTY(sParty_BrendanMeteorFallsMudkipPartner),
         .trainerClass = TRAINER_CLASS_RIVAL,
@@ -63,7 +63,7 @@ const struct Trainer gBattlePartners[] = {
         .trainerName = _("Brendan"),
     },
 
-    [PARTNER_STEVEN_SOUTHERN_ISLAND] =
+    [DIFFICULTY_NORMAL][PARTNER_STEVEN_SOUTHERN_ISLAND] =
     {
         .party = TRAINER_PARTY(sParty_StevenSouthernIslandPartner),
         .trainerClass = TRAINER_CLASS_RIVAL,
@@ -72,7 +72,7 @@ const struct Trainer gBattlePartners[] = {
         .trainerName = _("Steven"),
     },
 
-    [PARTNER_STEVEN_MOSSDEEP_SPACE_CENTER] =
+    [DIFFICULTY_NORMAL][PARTNER_STEVEN_MOSSDEEP_SPACE_CENTER] =
     {
         .party = TRAINER_PARTY(sParty_StevenMossdeepSpaceCenterPartner),
         .trainerClass = TRAINER_CLASS_RIVAL,

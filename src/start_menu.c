@@ -67,7 +67,7 @@ enum
     MENU_ACTION_RETIRE_FRONTIER,
     MENU_ACTION_PYRAMID_BAG,
     MENU_ACTION_DEBUG,
-    MENU_ACTION_DEXNAV
+    MENU_ACTION_DEXNAV,
 };
 
 // Save status
@@ -332,7 +332,7 @@ static void AddStartMenuAction(u8 action)
 }
 
 static void BuildNormalStartMenu(void)
-{    
+{ 
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEDEX);
     
@@ -342,7 +342,7 @@ static void BuildNormalStartMenu(void)
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKENAV);
 
-    if (FlagGet(FLAG_SYS_DEXNAV_GET))
+    if (FLAG_SYS_DEXNAV_GET != 0 && FlagGet(FLAG_SYS_DEXNAV_GET))
         AddStartMenuAction(MENU_ACTION_DEXNAV);
 
     AddStartMenuAction(MENU_ACTION_BAG);
