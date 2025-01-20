@@ -2801,12 +2801,24 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 
     sPartyMenuInternal->numActions = 0;
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUMMARY);
+    
+    if (CanLearnTeachableMove(GetMonData(&mons[slotId], MON_DATA_SPECIES), MOVE_FLY)) {
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, FIELD_MOVE_FLY + MENU_FIELD_MOVES);
+    }
+
+    if (CheckBagHasItem(GetMoveHMItemID(MOVE_FLASH), 1) && CanLearnTeachableMove(GetMonData(&mons[slotId], MON_DATA_SPECIES), MOVE_FLASH)) {
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, FIELD_MOVE_FLASH + MENU_FIELD_MOVES);
+    }
 
     // Add field moves to action list
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         for (j = 0; j != FIELD_MOVES_COUNT; j++)
         {
+            u16 move = GetMonData(&mons[slotId], i + MON_DATA_MOVE1);
+            if (move == MOVE_FLY || move == MOVE_FLASH)
+                break;
+
             if (GetMonData(&mons[slotId], i + MON_DATA_MOVE1) == sFieldMoves[j])
             {
                 AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, j + MENU_FIELD_MOVES);
@@ -3925,7 +3937,7 @@ static void CursorCb_FieldMove(u8 taskId)
     else
     {
         // All field moves before WATERFALL are HMs.
-        if (fieldMove <= FIELD_MOVE_WATERFALL && FlagGet(FLAG_BADGE01_GET + fieldMove) != TRUE)
+        if (fieldMove <= FIELD_MOVE_WATERFALL && FlagGet(FLAG_BADGE01_GET + fieldMove) != TRUE && fieldMove != FIELD_MOVE_FLY)
         {
             DisplayPartyMenuMessage(gText_CantUseUntilNewBadge, TRUE);
             gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
@@ -5274,6 +5286,43 @@ bool8 MonKnowsMove(struct Pokemon *mon, u16 move)
             return TRUE;
     }
     return FALSE;
+}
+
+u16 GetMoveHMItemID(u16 move)
+{
+    u16 item;
+    switch (move)
+    {
+        case MOVE_CUT:
+            item = ITEM_HM_CUT;
+            break;
+        case MOVE_FLY:
+            item = ITEM_HM_FLY;
+            break;
+        case MOVE_SURF:
+            item = ITEM_HM_SURF;
+            break;
+        case MOVE_STRENGTH:
+            item = ITEM_HM_STRENGTH;
+            break;
+        case MOVE_FLASH:
+            item = ITEM_HM_FLASH;
+            break;
+        case MOVE_ROCK_SMASH:
+            item = ITEM_HM_ROCK_SMASH;
+            break;
+        case MOVE_WATERFALL:
+            item = ITEM_HM_WATERFALL;
+            break;
+        case MOVE_DIVE:
+            item = ITEM_HM_DIVE;
+            break;
+        default:
+            item = 0;
+            break;
+    }
+
+    return item;
 }
 
 bool8 BoxMonKnowsMove(struct BoxPokemon *boxMon, u16 move)

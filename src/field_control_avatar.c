@@ -37,6 +37,7 @@
 #include "constants/field_poison.h"
 #include "constants/map_types.h"
 #include "constants/metatile_behaviors.h"
+#include "constants/moves.h"
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 
@@ -536,12 +537,14 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
 
 static const u8 *GetInteractedWaterScript(struct MapPosition *unused1, u8 metatileBehavior, u8 direction)
 {
-    if (FlagGet(FLAG_BADGE05_GET) == TRUE && PartyHasMonWithSurf() == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE)
+    // if (FlagGet(FLAG_BADGE05_GET) == TRUE && PartyHasMonWithSurf() == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE)
+    if (FlagGet(FLAG_BADGE05_GET) == TRUE && CheckBagHasItem(ITEM_HM03, 1) == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE)
         return EventScript_UseSurf;
 
     if (MetatileBehavior_IsWaterfall(metatileBehavior) == TRUE)
     {
-        if (FlagGet(FLAG_BADGE08_GET) == TRUE && IsPlayerSurfingNorth() == TRUE)
+        // if (FlagGet(FLAG_BADGE08_GET) == TRUE && IsPlayerSurfingNorth() == TRUE)
+        if (FlagGet(FLAG_BADGE08_GET) == TRUE && CheckBagHasItem(ITEM_HM07, 1) == TRUE && IsPlayerSurfingNorth() == TRUE)
             return EventScript_UseWaterfall;
         else
             return EventScript_CannotUseWaterfall;

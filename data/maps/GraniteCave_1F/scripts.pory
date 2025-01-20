@@ -22,7 +22,7 @@ GraniteCave_1F_Text_GetsDarkAheadHereYouGo:
 	.string "Hey, you.\nIt gets awfully dark ahead.\pIt'll be tough for trying to\nexplore.\pWell, for us Hikers, helping out\nthose that we meet is our motto.\pHere you go, I'll pass this on to\nyou.$"
 
 GraniteCave_1F_Text_ExplainFlash:
-	.string "Teach that HM flash to a Pokémon\nand use it.\pIt lights up even the inky darkness\nof caves.$"
+	.string "It lights up even the inky darkness\nof caves.\pBut it won't work outside of\nbattle if you don't have a badge from\Brawly's Gym!$"
 
 
 `
