@@ -128,7 +128,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Grunt"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_GruntPetalburgWoods),
     },
 
@@ -200,7 +200,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Grunt"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_GruntRusturfTunnel),
     },
 
@@ -248,7 +248,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Grunt"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_GruntMuseum1),
     },
 
@@ -260,7 +260,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Grunt"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_GruntMuseum2),
     },
 
@@ -3193,7 +3193,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .items = {},
         .doubleBattle = FALSE,
         .mugshotColor = MUGSHOT_COLOR_PINK,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Roxanne1),
     },
 
@@ -3205,7 +3205,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Brawly"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Brawly1),
     },
 
@@ -3217,7 +3217,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Wattson"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Wattson1),
     },
 
@@ -3229,7 +3229,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Flannery"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Flannery1),
     },
 
@@ -6182,7 +6182,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Tabitha"),
         .items = {},
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_TabithaMeteorFalls),
     },
 
@@ -6268,7 +6268,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .items = {},
         .doubleBattle = FALSE,
         .mugshotColor = MUGSHOT_COLOR_GREEN,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_BrendanRoute110Mudkip),
     },
 
@@ -6306,7 +6306,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .items = {},
         .doubleBattle = FALSE,
         .mugshotColor = MUGSHOT_COLOR_GREEN,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_BrendanRoute110Treecko),
     },
 
@@ -6344,7 +6344,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .items = {},
         .doubleBattle = FALSE,
         .mugshotColor = MUGSHOT_COLOR_GREEN,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_BrendanRoute110Torchic),
     },
 
@@ -6382,7 +6382,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .items = {},
         .doubleBattle = FALSE,
         .mugshotColor = MUGSHOT_COLOR_GREEN,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_MayRoute110Mudkip),
     },
 
@@ -6420,7 +6420,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .items = {},
         .doubleBattle = FALSE,
         .mugshotColor = MUGSHOT_COLOR_GREEN,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_MayRoute110Treecko),
     },
 
@@ -6458,7 +6458,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .items = {},
         .doubleBattle = FALSE,
         .mugshotColor = MUGSHOT_COLOR_GREEN,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_MayRoute110Torchic),
     },
 
@@ -7130,7 +7130,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Brendan"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_BrendanMeteorFallsTreecko),
     },
 
@@ -7142,7 +7142,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Brendan"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_BrendanMeteorFallsMudkip),
     },
 
@@ -7190,7 +7190,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Tabitha"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_TabithaMtChimney),
     },
 
@@ -7214,7 +7214,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Brendan"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_BrendanMeteorFallsTorchic),
     },
 
@@ -7226,7 +7226,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("May"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_MayMeteorFallsMudkip),
     },
 
@@ -7250,7 +7250,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Maxie"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_MaxieMtChimney),
     },
 
@@ -7898,7 +7898,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Wally"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_WallyMauville),
     },
 
@@ -9242,7 +9242,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("May"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_MayMeteorFallsTreecko),
     },
 
@@ -9254,7 +9254,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("May"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_MayMeteorFallsTorchic),
     },
 
@@ -10286,7 +10286,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Grunt"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_GruntMagmaMeteorFalls),
     },
 

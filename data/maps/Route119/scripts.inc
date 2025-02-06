@@ -991,7 +991,7 @@ Route119_EventScript_RivalEncounter_Text_3:
 
 Route119_EventScript_RivalEncounter_Text_4:
 # 304 "data/maps/Route119/scripts.pory"
-	.string "If you use Fly, your Pokémon will\ncarry you back to anywhere you've\lbeen before.\pBut you must have the Gym Badge\nfrom Fortree City to use Fly outside\lof battle.\pThat's the most important bit, so don't\nforget!\pMaybe you should Fly home and visit\nLittleroot sometimes.\pI bet your mom worries about you,\n{PLAYER}…\pWell, till we meet again!\nAnd next time I won't lose!$"
+	.string "If you use Fly, your Pokémon will\ncarry you back to anywhere you've\lbeen before. But you already know\lthat! Hehe.\pWell, till we meet again!\nAnd next time I won't lose!$"
 
 Route119_EventScript_RivalEncounter_Text_5:
 # 306 "data/maps/Route119/scripts.pory"
@@ -1011,7 +1011,7 @@ Route119_EventScript_RivalEncounter_Text_8:
 
 Route119_EventScript_RivalEncounter_Text_9:
 # 325 "data/maps/Route119/scripts.pory"
-	.string "With Fly, your Pokémon can carry you\nback to just about anyplace you've\lvisited before.\pOf course, you'll need the Fortree Gym\nBadge first, though…\pWell, I'm going on ahead.\nBut I'm definitely winning next time!$"
+	.string "With Fly, your Pokémon can carry you\nback to just about anyplace you've\lvisited before. But I'm sure you know\lthat already.\pWell, I'm going on ahead.\nBut I'm definitely winning next time!$"
 
 Route119_EventScript_RivalEncounter_Text_10:
 # 362 "data/maps/Route119/scripts.pory"

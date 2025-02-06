@@ -1636,7 +1636,7 @@ Route113_Text_DillonPostBattle:
 Route113_Text_MadelineIntro:
 	.string "I use this parasol to ward off this\n"
 	.string "filthy, yucky volcanic ash from\l"
-	.string "my dear Numel.$"
+	.string "my dear Scovillain.$"
 
 Route113_Text_MadelineDefeat:
 	.string "Huff, huff…\n"

@@ -47,7 +47,7 @@ GraniteCave_1F_Text_GetsDarkAheadHereYouGo:
 # 24 "data/maps/GraniteCave_1F/scripts.pory"
 GraniteCave_1F_Text_ExplainFlash:
 # 25 "data/maps/GraniteCave_1F/scripts.pory"
-	.string "Teach that HM flash to a Pokémon\nand use it.\pIt lights up even the inky darkness\nof caves.$"
+	.string "It lights up even the inky darkness\nof caves.\pBut it won't work outside of\nbattle if you don't have a badge from\nBrawly's Gym!$"
 
 GraniteCave_1F_EventScript_Hiker2::
 # 35 "data/maps/GraniteCave_1F/scripts.pory"

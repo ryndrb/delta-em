@@ -5587,7 +5587,11 @@
     "ROTOM": {
       "LevelMoves": [],
       "PreEvoMoves": [],
-      "TMMoves": [],
+      "TMMoves": [
+        "MOVE_FLAMETHROWER",
+        "MOVE_HEAT_WAVE",
+        "MOVE_OVERHEAT"
+      ],
       "EggMoves": [],
       "TutorMoves": []
     },
