@@ -1462,8 +1462,9 @@
 	.endm
 
 	@ Used by effects that may proc Symbiosis but do not call removeitem.
-	.macro trysymbiosis
+	.macro trysymbiosis battler:req
 	callnative BS_TrySymbiosis
+    .byte \battler
 	.endm
 
 	@ returns B_SIDE_x to gBattleCommunication[0]
@@ -1723,11 +1724,6 @@
 	.macro jumpifblockedbysoundproof battler:req, failInstr:req
 	callnative BS_JumpIfBlockedBySoundproof
 	.byte \battler
-	.4byte \failInstr
-	.endm
-
-	.macro tryhitswitchtarget failInstr:req
-	callnative BS_TryHitSwitchTarget
 	.4byte \failInstr
 	.endm
 

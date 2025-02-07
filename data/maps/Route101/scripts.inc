@@ -701,7 +701,7 @@ Route101_EventScript_RivalGiveDexNav_1:
 # 360 "data/maps/Route101/scripts.pory"
 	waitfanfare
 # 361 "data/maps/Route101/scripts.pory"
-	setflag FLAG_SYS_DETECTOR_MODE
+	setflag DN_FLAG_DETECTOR_MODE
 # 362 "data/maps/Route101/scripts.pory"
 	setflag FLAG_SYS_DEXNAV_GET_
 # 363 "data/maps/Route101/scripts.pory"

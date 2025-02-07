@@ -90,10 +90,6 @@ static void (*const sPlayerPartnerBufferCommands[CONTROLLER_CMDS_COUNT])(u32 bat
     [CONTROLLER_CHOSENMONRETURNVALUE]     = BtlController_Empty,
     [CONTROLLER_ONERETURNVALUE]           = BtlController_Empty,
     [CONTROLLER_ONERETURNVALUE_DUPLICATE] = BtlController_Empty,
-    [CONTROLLER_CLEARUNKVAR]              = BtlController_HandleClearUnkVar,
-    [CONTROLLER_SETUNKVAR]                = BtlController_HandleSetUnkVar,
-    [CONTROLLER_CLEARUNKFLAG]             = BtlController_HandleClearUnkFlag,
-    [CONTROLLER_TOGGLEUNKFLAG]            = BtlController_HandleToggleUnkFlag,
     [CONTROLLER_HITANIMATION]             = BtlController_HandleHitAnimation,
     [CONTROLLER_CANTSWITCH]               = BtlController_Empty,
     [CONTROLLER_PLAYSE]                   = BtlController_HandlePlaySE,
@@ -391,7 +387,7 @@ static void PlayerPartnerHandleChoosePokemon(u32 battler)
     // Switching out
     else if (gBattleStruct->monToSwitchIntoId[battler] >= PARTY_SIZE || !IsValidForBattle(&gPlayerParty[gBattleStruct->monToSwitchIntoId[battler]]))
     {
-        chosenMonId = GetMostSuitableMonToSwitchInto(battler, TRUE);
+        chosenMonId = GetMostSuitableMonToSwitchInto(battler, SWITCH_AFTER_KO);
 
         if (chosenMonId == PARTY_SIZE || !IsValidForBattle(&gPlayerParty[chosenMonId])) // just switch to the next mon
         {
@@ -409,7 +405,7 @@ static void PlayerPartnerHandleChoosePokemon(u32 battler)
                 }
             }
         }
-        *(gBattleStruct->monToSwitchIntoId + battler) = chosenMonId;
+        gBattleStruct->monToSwitchIntoId[battler] = chosenMonId;
     }
     else // Mon to switch out has been already chosen.
     {
