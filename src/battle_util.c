@@ -3320,20 +3320,16 @@ static void CancellerTruant(u32 *effect)
 {
     if (GetBattlerAbility(gBattlerAttacker) == ABILITY_TRUANT && gDisableStructs[gBattlerAttacker].truantCounter)
     {
-        if(gCurrentMove == MOVE_SLACK_OFF)
-        {
-            
-        }
-        else
-        {
-            CancelMultiTurnMoves(gBattlerAttacker);
-            gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
-            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LOAFING;
-            gBattlerAbility = gBattlerAttacker;
-            gBattlescriptCurrInstr = BattleScript_TruantLoafingAround;
-            gBattleStruct->moveResultFlags[gBattlerTarget] |= MOVE_RESULT_MISSED;
-            *effect = 1;
-        }
+        gCalledMove = MOVE_YAWN;
+        gChosenMove = gCalledMove;
+        CancelMultiTurnMoves(gBattlerAttacker);
+        SetAtkCancellerForCalledMove();
+        gBattlerAbility = gBattlerAttacker;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LOAFING;
+        gBattlescriptCurrInstr = BattleScript_TruantLoafingAround;
+        gBattlerTarget = GetBattleMoveTarget(gCalledMove, NO_TARGET_OVERRIDE);
+        gHitMarker |= HITMARKER_OBEYS;
+        *effect = 1;
     }
 }
 

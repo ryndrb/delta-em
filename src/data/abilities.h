@@ -413,7 +413,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_TRUANT] =
     {
         .name = _("Truant"),
-        .description = COMPOUND_STRING("This Pokémon skips every other\nturn instead of using a move,\nexcept Slack Off."),
+        .description = COMPOUND_STRING("This Pokémon uses every other\nturn to yawn instead of using\na move."),
         .aiRating = -2,
         .cantBeOverwritten = TRUE,
     },

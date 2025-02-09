@@ -8692,7 +8692,9 @@ BattleScript_MoveUsedLoafingAround::
 BattleScript_MoveUsedLoafingAroundMsg::
 	printfromtable gInobedientStringIds
 	waitmessage B_WAIT_TIME_LONG
-	moveendto MOVEEND_NEXT_TARGET
+	@moveendto MOVEEND_NEXT_TARGET
+	setbyte sMOVE_EFFECT, 0
+	jumptocalledmove FALSE
 	end
 BattleScript_TruantLoafingAround::
 	call BattleScript_AbilityPopUp
