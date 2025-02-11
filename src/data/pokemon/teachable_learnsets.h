@@ -24046,6 +24046,7 @@ static const u16 sSpindaTeachableLearnset[] = {
     MOVE_SNATCH,
     MOVE_SNORE,
     MOVE_SUCKER_PUNCH,
+    MOVE_SUPERPOWER,
     MOVE_SWAGGER,
     MOVE_SWIFT,
     MOVE_THUNDER_PUNCH,

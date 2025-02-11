@@ -3835,7 +3835,9 @@
       "PreEvoMoves": [],
       "TMMoves": [],
       "EggMoves": [],
-      "TutorMoves": []
+      "TutorMoves": [
+        "MOVE_SUPERPOWER"
+      ]
     },
     "TRAPINCH": {
       "LevelMoves": [],
