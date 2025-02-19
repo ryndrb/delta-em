@@ -5168,8 +5168,7 @@
       "LevelMoves": [],
       "PreEvoMoves": [],
       "TMMoves": [
-        "MOVE_KNOCK_OFF",
-        "MOVE_DRAGON_DANCE"
+        "MOVE_KNOCK_OFF"
       ],
       "EggMoves": [
         "MOVE_DOUBLE_EDGE",

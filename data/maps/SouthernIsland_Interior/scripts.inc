@@ -982,7 +982,7 @@ SouthernIsland_Interior_EventScript_Latios_Text_25:
 
 SouthernIsland_Interior_EventScript_Latios_Text_26:
 # 333 "data/maps/SouthernIsland_Interior/scripts.pory"
-	.string "Mega Evolution is a phenomenon that\nhas long been shrouded in mystery.\pWhat is a Mega Stone?\nWhat is a Key Stone?\pThe process by which bonds\nbetween Pokémon and people manifest\lin tangible power…\lHow do we explain that?\pI hope that the Mega Ring I just\ngave you might bring us one step\lcloses to finding the answer to\lthese questions.$"
+	.string "Mega Evolution is a phenomenon that\nhas long been shrouded in mystery.\pWhat is a Mega Stone?\nWhat is a Key Stone?\pThe process by which bonds\nbetween Pokémon and people manifest\lin tangible power…\lHow do we explain that?\pI hope that the Mega Ring I just\ngave you might bring us one step\lcloser to finding the answer to\lthese questions.$"
 
 SouthernIsland_Interior_EventScript_Latios_Text_27:
 # 337 "data/maps/SouthernIsland_Interior/scripts.pory"

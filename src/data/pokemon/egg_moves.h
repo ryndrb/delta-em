@@ -3771,6 +3771,7 @@ static const u16 sGibleEggMoveLearnset[] = {
     MOVE_MUD_SHOT,
     MOVE_ROCK_CLIMB,
     MOVE_IRON_TAIL,
+    MOVE_DRAGON_DANCE,
     MOVE_UNAVAILABLE,
 };
 #endif //P_FAMILY_GIBLE

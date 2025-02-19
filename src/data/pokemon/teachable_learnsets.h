@@ -30633,7 +30633,6 @@ static const u16 sGarchompTeachableLearnset[] = {
     MOVE_CONFIDE,
     MOVE_CRUNCH,
     MOVE_DOUBLE_EDGE,
-    MOVE_DRAGON_DANCE,
     MOVE_DUAL_CHOP,
     MOVE_ENDURE,
     MOVE_FIRE_FANG,

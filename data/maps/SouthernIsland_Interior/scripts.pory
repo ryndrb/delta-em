@@ -330,7 +330,7 @@ script SouthernIsland_Interior_EventScript_Latios {
 	msgbox("With the Mega Ring that I just gave you\nand the Mega Stones that a Pokémon\lmay hold, your Pokémon should be able\lto achieve a powerful boost, quite\lunlike any unusual form of Evolution…\lbut only if you are bound by great\laffection.\pYou will be able to achieve {COLOR BLUE}Mega\nEvolution{COLOR DARK_GRAY}.\pI suggest you try it with Latios the\nnext time that you happen to have\lthe chance in battle.")
 	closemessage
 	delay(48)
-	msgbox("Mega Evolution is a phenomenon that\nhas long been shrouded in mystery.\pWhat is a Mega Stone?\nWhat is a Key Stone?\pThe process by which bonds\nbetween Pokémon and people manifest\lin tangible power…\lHow do we explain that?\pI hope that the Mega Ring I just\ngave you might bring us one step\lcloses to finding the answer to\lthese questions.")
+	msgbox("Mega Evolution is a phenomenon that\nhas long been shrouded in mystery.\pWhat is a Mega Stone?\nWhat is a Key Stone?\pThe process by which bonds\nbetween Pokémon and people manifest\lin tangible power…\lHow do we explain that?\pI hope that the Mega Ring I just\ngave you might bring us one step\lcloser to finding the answer to\lthese questions.")
 	closemessage
 	applymovement(LOCALID_STEVEN, Common_Movement_WalkInPlaceDown)
 	waitmovement(LOCALID_STEVEN)

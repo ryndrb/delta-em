@@ -1914,7 +1914,15 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[monIndex].heldItem);
 
             CustomTrainerPartyAssignMoves(&party[i], &partyData[monIndex]);
-            SetMonData(&party[i], MON_DATA_IVS, &(partyData[monIndex].iv));
+            // generate random ivs dist seeded by otid
+            u16 playerOTID = (gSaveBlock2Ptr->playerTrainerId[0]) | (gSaveBlock2Ptr->playerTrainerId[1] << 8);
+            if (partyData[monIndex].iv == 0)
+            {
+                u32 maxIVShiftValue = (personalityHash * playerOTID) % 1073741823;
+                SetMonData(&party[i], MON_DATA_IVS, &(maxIVShiftValue));
+            }
+            else
+                SetMonData(&party[i], MON_DATA_IVS, &(partyData[monIndex].iv));
             if (partyData[monIndex].ev != NULL)
             {
                 SetMonData(&party[i], MON_DATA_HP_EV, &(partyData[monIndex].ev[0]));
@@ -1936,10 +1944,10 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 if (ability >= maxAbilities)
                     ability = 0;
             }
-            else if (B_TRAINER_MON_RANDOM_ABILITY)
+            else if (B_TRAINER_MON_RANDOM_ABILITY || partyData[monIndex].ability == ABILITY_NONE)
             {
                 const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[partyData[monIndex].species];
-                ability = personalityHash % 3;
+                ability = (personalityHash * playerOTID) % 3;
                 while (speciesInfo->abilities[ability] == ABILITY_NONE)
                 {
                     ability--;

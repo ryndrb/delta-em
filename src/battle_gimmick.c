@@ -7,6 +7,7 @@
 #include "battle_z_move.h"
 #include "battle_setup.h"
 #include "battle_util.h"
+#include "event_data.h"
 #include "item.h"
 #include "palette.h"
 #include "pokemon.h"
@@ -85,7 +86,7 @@ bool32 ShouldTrainerBattlerUseGimmick(u32 battler, enum Gimmick gimmick)
 
         if (gimmick == GIMMICK_TERA && mon->teraType != TYPE_NONE)
             return TRUE;
-        if (gimmick == GIMMICK_DYNAMAX && mon->shouldUseDynamax)
+        if (gimmick == GIMMICK_DYNAMAX && mon->shouldUseDynamax && (B_FLAG_DYNAMAX_BATTLE != 0 && !FlagGet(B_FLAG_DYNAMAX_BATTLE)))
             return TRUE;
     }
 

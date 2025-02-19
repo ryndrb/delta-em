@@ -18,23 +18,6 @@ Route121_EventScript_SafariZoneSign::
 	msgbox Route121_Text_SafariZoneSign, MSGBOX_SIGN
 	end
 
-Route121_EventScript_AquaGruntsMoveOut::
-	lockall
-	applymovement LOCALID_GRUNT_2, Common_Movement_WalkInPlaceRight
-	waitmovement 0
-	msgbox Route121_Text_OkayMoveOutToMtPyre, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_GRUNT_1, Route121_Movement_Grunt1Exit
-	applymovement LOCALID_GRUNT_2, Route121_Movement_Grunt2Exit
-	applymovement LOCALID_GRUNT_3, Route121_Movement_Grunt3Exit
-	waitmovement 0
-	removeobject LOCALID_GRUNT_1
-	removeobject LOCALID_GRUNT_2
-	removeobject LOCALID_GRUNT_3
-	setvar VAR_ROUTE121_STATE, 1
-	releaseall
-	end
-
 Route121_Movement_Grunt1Exit:
 	walk_down
 	walk_down
@@ -190,6 +173,42 @@ Route121_Text_SafariZoneSign:
 
 
 `
+
+script Route121_EventScript_AquaGruntsMoveOut {
+	lockall
+	delay(16)
+	if (!flag(FLAG_BADGE06_GET)) {
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
+		waitmovement(OBJ_EVENT_ID_PLAYER)
+		delay(8)
+		applymovement(LOCALID_GRUNT_2, Common_Movement_WalkInPlaceRight)
+		waitmovement(LOCALID_GRUNT_2)
+		msgbox("GRRAAH! Why are we just standing around\nhere?\pI wanna get my hands on that orb\nalready!")
+		closemessage
+		applymovement(LOCALID_GRUNT_3, Common_Movement_WalkInPlaceLeft)
+		waitmovement(LOCALID_GRUNT_3)
+		msgbox("Tch… Change of plans.\nBoss says to hold position here.\pWe'll move to Mt. Pyre later, just gotta\nwait for the signal.")
+		closemessage
+		applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left))
+		waitmovement(OBJ_EVENT_ID_PLAYER)
+		releaseall
+		end
+	}
+	applymovement(LOCALID_GRUNT_1, Common_Movement_WalkInPlaceUp)
+	waitmovement(0)
+	msgbox(Route121_Text_OkayMoveOutToMtPyre, MSGBOX_DEFAULT)
+	closemessage
+	applymovement(LOCALID_GRUNT_1, Route121_Movement_Grunt1Exit)
+	applymovement(LOCALID_GRUNT_2, Route121_Movement_Grunt2Exit)
+	applymovement(LOCALID_GRUNT_3, Route121_Movement_Grunt3Exit)
+	waitmovement(0)
+	removeobject(LOCALID_GRUNT_1)
+	removeobject(LOCALID_GRUNT_2)
+	removeobject(LOCALID_GRUNT_3)
+	setvar(VAR_ROUTE121_STATE, 1)
+	releaseall
+	end
+}
 
 script Route121_EventScript_Nurse {
     lock

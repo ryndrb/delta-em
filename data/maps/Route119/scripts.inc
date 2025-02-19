@@ -979,7 +979,7 @@ Route119_EventScript_RivalEncounter_Text_0:
 
 Route119_EventScript_RivalEncounter_Text_1:
 # 293 "data/maps/Route119/scripts.pory"
-	.string "Oh… Where did you get that thing on\nyour finger?\lThat's a pretty fancy-looking ring…\p…\pWow! So that's a Mega Ring?\nAnd you can use it for Mega Evolution…\pI guess now you can keep getting even\ncloser to your Pokémon, huh?\lSome guys have all the luck…\pBut I'm not about to lose to you and\nsome accessory!\lLet's see who's best in battle!\pAre your Pokémon all ready?\nOf course they are!\lLet's go!$"
+	.string "Oh… Where did you get that thing on\nyour finger?\lThat's a pretty fancy-looking ring…\p…\pWow! So that's a Mega Ring?\nAnd you can use it for Mega\lEvolution…\pHehe, looks like we're on the same\npage. I've got one too, you know.\pI guess now we can keep getting\neven closer to your Pokémon, huh?\lI guess we have all the luck…\pBut I'm not about to lose to you\nbecause we both have Mega Rings!\lLet's see who's best in battle!\pAre your Pokémon all ready?\nOf course they are!\lLet's go!$"
 
 Route119_EventScript_RivalEncounter_Text_2:
 # 296 "data/maps/Route119/scripts.pory"
@@ -999,7 +999,7 @@ Route119_EventScript_RivalEncounter_Text_5:
 
 Route119_EventScript_RivalEncounter_Text_6:
 # 313 "data/maps/Route119/scripts.pory"
-	.string "Huh?\pThat ring you've got on…\nIt's like, I don't know, really cool…\p…\pWhoa. So that's the Mega Ring?\nAnd you can use if for Mega Evolution…\pSo you'll just keep getting closer\nto your Pokémon and getting even\lstronger…\pAll right, then.\nI guess I've just gotta help you test\lhow strong you've become, huh?\pShow me in battle how much better\nyou've gotten!\pCome on! A battle!\nI'm challenging you to a battle!$"
+	.string "Huh?\pThat ring you've got on…\nIt's like, I don't know, really cool…\p…\pWhoa. So that's the Mega Ring?\nAnd you can use if for Mega\lEvolution…\pHeh, guess what? I've got one too.\nLooks like we're both stepping up our\lgame.\pSo you'll just keep getting closer\nto your Pokémon and getting even\lstronger…\pAll right, then.\nI guess I've just gotta help you test\lhow strong you've become, huh?\pShow me in battle how much better\nyou've gotten!\pCome on! A battle!\nI'm challenging you to a battle!$"
 
 Route119_EventScript_RivalEncounter_Text_7:
 # 317 "data/maps/Route119/scripts.pory"

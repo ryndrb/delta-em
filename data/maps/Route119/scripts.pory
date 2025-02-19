@@ -290,7 +290,7 @@ script Route119_EventScript_RivalEncounter {
 		applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
 		waitmovement(LOCALID_RIVAL)
 		waitse
-		msgbox("Oh… Where did you get that thing on\nyour finger?\lThat's a pretty fancy-looking ring…\p…\pWow! So that's a Mega Ring?\nAnd you can use it for Mega Evolution…\pI guess now you can keep getting even\ncloser to your Pokémon, huh?\lSome guys have all the luck…\pBut I'm not about to lose to you and\nsome accessory!\lLet's see who's best in battle!\pAre your Pokémon all ready?\nOf course they are!\lLet's go!")
+		msgbox("Oh… Where did you get that thing on\nyour finger?\lThat's a pretty fancy-looking ring…\p…\pWow! So that's a Mega Ring?\nAnd you can use it for Mega\lEvolution…\pHehe, looks like we're on the same\npage. I've got one too, you know.\pI guess now we can keep getting\neven closer to your Pokémon, huh?\lI guess we have all the luck…\pBut I'm not about to lose to you\nbecause we both have Mega Rings!\lLet's see who's best in battle!\pAre your Pokémon all ready?\nOf course they are!\lLet's go!")
 		closemessage
 		switch(var(VAR_STARTER_MON)){
 			case 0: trainerbattle_no_intro(TRAINER_MAY_ROUTE_119_TREECKO, "Achah! You're as strong as I expected,\n{PLAYER}!")
@@ -310,7 +310,7 @@ script Route119_EventScript_RivalEncounter {
 		applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
 		waitmovement(LOCALID_RIVAL)
 		waitse
-		msgbox("Huh?\pThat ring you've got on…\nIt's like, I don't know, really cool…\p…\pWhoa. So that's the Mega Ring?\nAnd you can use if for Mega Evolution…\pSo you'll just keep getting closer\nto your Pokémon and getting even\lstronger…\pAll right, then.\nI guess I've just gotta help you test\lhow strong you've become, huh?\pShow me in battle how much better\nyou've gotten!\pCome on! A battle!\nI'm challenging you to a battle!")
+		msgbox("Huh?\pThat ring you've got on…\nIt's like, I don't know, really cool…\p…\pWhoa. So that's the Mega Ring?\nAnd you can use if for Mega\lEvolution…\pHeh, guess what? I've got one too.\nLooks like we're both stepping up our\lgame.\pSo you'll just keep getting closer\nto your Pokémon and getting even\lstronger…\pAll right, then.\nI guess I've just gotta help you test\lhow strong you've become, huh?\pShow me in battle how much better\nyou've gotten!\pCome on! A battle!\nI'm challenging you to a battle!")
 		closemessage
 		delay(8)
 		switch(var(VAR_STARTER_MON)){

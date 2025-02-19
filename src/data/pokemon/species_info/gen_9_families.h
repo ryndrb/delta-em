@@ -7422,10 +7422,10 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
     [SPECIES_FEZANDIPITI] =
     {
         .baseHP        = 88,
-        .baseAttack    = 91,
+        .baseAttack    = 70,
         .baseDefense   = 82,
         .baseSpeed     = 99,
-        .baseSpAttack  = 70,
+        .baseSpAttack  = 91,
         .baseSpDefense = 125,
         .types = MON_TYPES(TYPE_POISON, TYPE_FAIRY),
         .catchRate = 3,

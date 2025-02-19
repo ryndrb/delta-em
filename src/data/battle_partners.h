@@ -70,6 +70,7 @@ const struct Trainer gBattlePartners[DIFFICULTY_COUNT][PARTNER_COUNT] = {
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_BACK_PIC_STEVEN,
         .trainerName = _("Steven"),
+        .items = {ITEM_MEGA_RING},
     },
 
     [DIFFICULTY_NORMAL][PARTNER_STEVEN_MOSSDEEP_SPACE_CENTER] =
