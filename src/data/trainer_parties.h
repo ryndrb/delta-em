@@ -9949,15 +9949,23 @@ static const struct TrainerMon sParty_GruntMtPyre4[] = {
 
 static const struct TrainerMon sParty_GruntJaggedPass[] = {
     {
-    .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-    .lvl = 22,
-    .species = SPECIES_POOCHYENA,
+        .lvl = 58,
+        .species = SPECIES_MIGHTYENA,
+        .ability = ABILITY_MOXIE,
+        .nature = NATURE_JOLLY,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_CRUNCH, MOVE_PLAY_ROUGH, MOVE_ICE_FANG, MOVE_THUNDER_FANG}
     },
     {
-    .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-    .lvl = 22,
-    .species = SPECIES_NUMEL,
-    }
+        .lvl = 58,
+        .species = SPECIES_CAMERUPT,
+        .ability = ABILITY_SOLID_ROCK,
+        .nature = NATURE_MODEST,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_EARTHQUAKE, MOVE_SLACK_OFF, MOVE_HEAT_CRASH, MOVE_ROCK_SLIDE}
+    },
 };
 
 static const struct TrainerMon sParty_Marc[] = {
@@ -10412,20 +10420,71 @@ static const struct TrainerMon sParty_MayMeteorFallsMudkip[] = {
 
 static const struct TrainerMon sParty_MaxieMagmaHideout[] = {
     {
-    .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-    .lvl = 37,
-    .species = SPECIES_MIGHTYENA,
+        .lvl = 63,
+        .species = SPECIES_GLISCOR,
+        .ability = ABILITY_POISON_HEAL,
+        .nature = NATURE_JOLLY,
+        .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+        .ev = TRAINER_PARTY_EVS(244, 0, 52, 0, 100, 112),
+        .heldItem = ITEM_TOXIC_ORB,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_EARTHQUAKE, MOVE_STEALTH_ROCK, MOVE_U_TURN, MOVE_ROOST}
     },
     {
-    .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-    .lvl = 38,
-    .species = SPECIES_CROBAT,
+        .lvl = 63,
+        .species = SPECIES_HEATRAN,
+        .ability = ABILITY_FLAME_BODY,
+        .nature = NATURE_BOLD,
+        .iv = TRAINER_PARTY_IVS(31, 0, 31, 31, 31, 31),
+        .ev = TRAINER_PARTY_EVS(252, 0, 236, 0, 0, 20),
+        .heldItem = ITEM_AIR_BALLOON,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_FLAMETHROWER, MOVE_EARTH_POWER, MOVE_TOXIC, MOVE_TAUNT}
     },
     {
-    .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
-    .lvl = 39,
-    .species = SPECIES_CAMERUPT,
-    }
+        .lvl = 63,
+        .species = SPECIES_VOLCARONA,
+        .ability = ABILITY_FLAME_BODY,
+        .nature = NATURE_TIMID,
+        .iv = IV_SPREAD_HP_GRASS, // hp grass
+        .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 4, 252),
+        .heldItem = ITEM_HEAVY_DUTY_BOOTS,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_QUIVER_DANCE, MOVE_FLAMETHROWER, MOVE_MORNING_SUN, MOVE_HIDDEN_POWER}
+    },
+    {
+        .lvl = 63,
+        .species = SPECIES_ZARUDE,
+        .ability = ABILITY_DEFIANT,
+        .nature = NATURE_JOLLY,
+        .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+        .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 4, 252),
+        .heldItem = ITEM_MUSCLE_BAND,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_KNOCK_OFF, MOVE_POWER_WHIP, MOVE_U_TURN, MOVE_DRAIN_PUNCH}
+    },
+    {
+        .lvl = 63,
+        .species = SPECIES_VOLCANION,
+        .ability = ABILITY_DROUGHT,
+        .nature = NATURE_TIMID,
+        .iv = TRAINER_PARTY_IVS(31, 0, 31, 31, 31, 31),
+        .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 4, 252),
+        .heldItem = ITEM_CHOICE_SPECS,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_FLAMETHROWER, MOVE_STEAM_ERUPTION, MOVE_EARTH_POWER, MOVE_SLUDGE_BOMB}
+    },
+    {
+        .lvl = 66,
+        .species = SPECIES_GARCHOMP,
+        .ability = ABILITY_ROUGH_SKIN,
+        .nature = NATURE_JOLLY,
+        .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+        .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 4, 252),
+        .heldItem = ITEM_GARCHOMPITE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_DRAGON_DANCE, MOVE_EARTHQUAKE, MOVE_DRAGON_CLAW, MOVE_IRON_HEAD}
+    },
 };
 
 static const struct TrainerMon sParty_MaxieMtChimney[] = {
@@ -12814,122 +12873,212 @@ static const struct TrainerMon sParty_Deandre[] = {
 
 static const struct TrainerMon sParty_GruntMagmaHideout1[] = {
     {
-    .lvl = 29,
-    .species = SPECIES_ZUBAT,
-    }
+        .lvl = 58,
+        .species = SPECIES_CROBAT,
+        .ability = ABILITY_INNER_FOCUS,
+        .nature = NATURE_ADAMANT,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_CROSS_POISON, MOVE_PSYCHIC_FANGS, MOVE_WING_ATTACK, MOVE_BITE}
+    },
 };
 
 static const struct TrainerMon sParty_GruntMagmaHideout2[] = {
     {
-    .lvl = 29,
-    .species = SPECIES_POOCHYENA,
-    }
+        .lvl = 56,
+        .species = SPECIES_HIPPOWDON,
+        .ability = ABILITY_ANGER_POINT,
+        .nature = NATURE_ADAMANT,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_EARTHQUAKE, MOVE_CRUNCH, MOVE_ICE_FANG, MOVE_THUNDER_FANG}
+    },
 };
 
 static const struct TrainerMon sParty_GruntMagmaHideout3[] = {
     {
-    .lvl = 29,
-    .species = SPECIES_NUMEL,
-    }
+        .lvl = 55,
+        .species = SPECIES_SKUNTANK,
+        .ability = ABILITY_AFTERMATH,
+        .nature = NATURE_ADAMANT,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_NIGHT_SLASH, MOVE_CROSS_POISON, MOVE_SUCKER_PUNCH, MOVE_SCREECH}
+    },
 };
 
 static const struct TrainerMon sParty_GruntMagmaHideout4[] = {
     {
-    .lvl = 28,
-    .species = SPECIES_BALTOY,
+        .lvl = 56,
+        .species = SPECIES_DUGTRIO,
+        .ability = ABILITY_ARENA_TRAP,
+        .nature = NATURE_ADAMANT,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_EARTHQUAKE, MOVE_NIGHT_SLASH, MOVE_TRI_ATTACK}
     },
     {
-    .lvl = 28,
-    .species = SPECIES_ZUBAT,
-    }
+        .lvl = 57,
+        .species = SPECIES_THIEVUL,
+        .ability = ABILITY_STAKEOUT,
+        .nature = NATURE_TIMID,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_SNARL, MOVE_PARTING_SHOT, MOVE_FOUL_PLAY, MOVE_QUICK_ATTACK}
+    },
 };
 
 static const struct TrainerMon sParty_GruntMagmaHideout5[] = {
     {
-    .lvl = 28,
-    .species = SPECIES_BALTOY,
+        .lvl = 58,
+        .species = SPECIES_MUK,
+        .ability = ABILITY_POISON_TOUCH,
+        .nature = NATURE_ADAMANT,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_GUNK_SHOT, MOVE_DISABLE, MOVE_ACID_ARMOR, MOVE_SCREECH}
     },
     {
-    .lvl = 28,
-    .species = SPECIES_NUMEL,
-    }
+        .lvl = 59,
+        .species = SPECIES_MUK_ALOLA,
+        .ability = ABILITY_POISON_TOUCH,
+        .nature = NATURE_ADAMANT,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_GUNK_SHOT, MOVE_CRUNCH, MOVE_DISABLE, MOVE_KNOCK_OFF}
+    },
 };
 
 static const struct TrainerMon sParty_GruntMagmaHideout6[] = {
     {
-    .lvl = 29,
-    .species = SPECIES_MIGHTYENA,
-    }
+        .lvl = 57,
+        .species = SPECIES_HIPPOWDON,
+        .ability = ABILITY_SAND_STREAM,
+        .nature = NATURE_ADAMANT,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_EARTHQUAKE, MOVE_CRUNCH, MOVE_ICE_FANG, MOVE_THUNDER_FANG}
+    },
 };
 
 static const struct TrainerMon sParty_GruntMagmaHideout7[] = {
     {
-    .lvl = 29,
-    .species = SPECIES_ZUBAT,
-    }
+        .lvl = 58,
+        .species = SPECIES_GARBODOR,
+        .ability = ABILITY_GOOEY,
+        .nature = NATURE_ADAMANT,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_GUNK_SHOT, MOVE_METAL_CLAW, MOVE_PAIN_SPLIT, MOVE_BODY_SLAM}
+    },
 };
 
 static const struct TrainerMon sParty_GruntMagmaHideout8[] = {
     {
-    .lvl = 29,
-    .species = SPECIES_POOCHYENA,
-    }
+        .lvl = 58,
+        .species = SPECIES_CAMERUPT,
+        .ability = ABILITY_SOLID_ROCK,
+        .nature = NATURE_MODEST,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_EARTHQUAKE, MOVE_SLACK_OFF, MOVE_HEAT_CRASH, MOVE_ROCK_SLIDE}
+    },
 };
 
 static const struct TrainerMon sParty_GruntMagmaHideout9[] = {
     {
-    .lvl = 29,
-    .species = SPECIES_ZUBAT,
-    }
+        .lvl = 58,
+        .species = SPECIES_TORKOAL,
+        .ability = ABILITY_DROUGHT,
+        .nature = NATURE_SASSY,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_FLAMETHROWER, MOVE_BODY_SLAM, MOVE_RAPID_SPIN, MOVE_CLEAR_SMOG}
+    },
 };
 
 static const struct TrainerMon sParty_GruntMagmaHideout10[] = {
     {
-    .lvl = 29,
-    .species = SPECIES_MIGHTYENA,
-    }
+        .lvl = 56,
+        .species = SPECIES_HEATMOR,
+        .ability = ABILITY_WHITE_SMOKE,
+        .nature = NATURE_JOLLY,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_FIRE_LASH, MOVE_BUG_BITE, MOVE_SLASH, MOVE_HONE_CLAWS}
+    },
 };
 
 static const struct TrainerMon sParty_GruntMagmaHideout11[] = {
     {
-    .lvl = 29,
-    .species = SPECIES_BALTOY,
-    }
+        .lvl = 60,
+        .species = SPECIES_TURTONATOR,
+        .ability = ABILITY_DAUNTLESS_SHIELD,
+        .nature = NATURE_MODEST,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_FLAMETHROWER, MOVE_DRAGON_PULSE, MOVE_IRON_DEFENSE, MOVE_FLAIL}
+    },
 };
 
 static const struct TrainerMon sParty_GruntMagmaHideout12[] = {
     {
-    .lvl = 29,
-    .species = SPECIES_NUMEL,
-    }
+        .lvl = 60,
+        .species = SPECIES_DARMANITAN,
+        .ability = ABILITY_SHEER_FORCE,
+        .nature = NATURE_JOLLY,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_FIRE_PUNCH, MOVE_HEADBUTT, MOVE_BITE, MOVE_WORK_UP}
+    },
 };
 
 static const struct TrainerMon sParty_GruntMagmaHideout13[] = {
     {
-    .lvl = 29,
-    .species = SPECIES_ZUBAT,
-    }
+        .lvl = 60,
+        .species = SPECIES_NIDOKING,
+        .ability = ABILITY_POISON_POINT,
+        .nature = NATURE_NAIVE,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_EARTH_POWER, MOVE_MEGAHORN, MOVE_SLUDGE_WAVE, MOVE_DOUBLE_KICK}
+    },
 };
 
 static const struct TrainerMon sParty_GruntMagmaHideout14[] = {
     {
-    .lvl = 29,
-    .species = SPECIES_MIGHTYENA,
-    }
+        .lvl = 59,
+        .species = SPECIES_MIGHTYENA,
+        .ability = ABILITY_INTIMIDATE,
+        .nature = NATURE_ADAMANT,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_CRUNCH, MOVE_FIRE_FANG, MOVE_THUNDER_FANG, MOVE_ICE_FANG}
+    },
 };
 
 static const struct TrainerMon sParty_GruntMagmaHideout15[] = {
     {
-    .lvl = 29,
-    .species = SPECIES_NUMEL,
-    }
+        .lvl = 60,
+        .species = SPECIES_CENTISKORCH,
+        .ability = ABILITY_FLAME_BODY,
+        .nature = NATURE_JOLLY,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_LUNGE, MOVE_FIRE_LASH, MOVE_CRUNCH, MOVE_COIL}
+    },
 };
 
 static const struct TrainerMon sParty_GruntMagmaHideout16[] = {
     {
-    .lvl = 29,
-    .species = SPECIES_BALTOY,
-    }
+        .lvl = 58,
+        .species = SPECIES_CLAYDOL,
+        .ability = ABILITY_PSYCH,
+        .nature = NATURE_TIMID,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_RECOVER, MOVE_EXTRASENSORY, MOVE_EARTH_POWER, MOVE_ANCIENT_POWER}
+    },
 };
 
 static const struct TrainerMon sParty_GruntMagmaMossdeep[] = {
