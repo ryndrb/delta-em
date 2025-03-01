@@ -38,34 +38,59 @@ static const struct TrainerMon sParty_Sawyer1[] = {
 
 static const struct TrainerMon sParty_GruntAquaHideout1[] = {
     {
-    .lvl = 32,
-    .species = SPECIES_POOCHYENA,
-    }
+        .lvl = 58,
+        .species = SPECIES_QWILFISH,
+        .ability = ABILITY_INTIMIDATE,
+        .nature = NATURE_JOLLY,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_ACUPRESSURE, MOVE_AQUA_TAIL, MOVE_POISON_JAB, MOVE_FELL_STINGER}
+    },
 };
 
 static const struct TrainerMon sParty_GruntAquaHideout2[] = {
     {
-    .lvl = 31,
-    .species = SPECIES_ZUBAT,
+        .lvl = 60,
+        .species = SPECIES_BARBARACLE,
+        .ability = ABILITY_TOUGH_CLAWS,
+        .nature = NATURE_JOLLY,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_STONE_EDGE, MOVE_CROSS_CHOP, MOVE_RAZOR_SHELL, MOVE_SHELL_SMASH}
     },
     {
-    .lvl = 31,
-    .species = SPECIES_CARVANHA,
-    }
+        .lvl = 61,
+        .species = SPECIES_JELLICENT,
+        .ability = ABILITY_WATER_BUBBLE,
+        .nature = NATURE_TIMID,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_SHADOW_BALL, MOVE_RECOVER, MOVE_STRENGTH_SAP, MOVE_HYDRO_PUMP}
+    },
 };
 
 static const struct TrainerMon sParty_GruntAquaHideout3[] = {
     {
-    .lvl = 32,
-    .species = SPECIES_ZUBAT,
-    }
+        .lvl = 60,
+        .species = SPECIES_LIEPARD,
+        .ability = ABILITY_LIMBER,
+        .nature = NATURE_JOLLY,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_NIGHT_SLASH, MOVE_PLAY_ROUGH, MOVE_SUCKER_PUNCH, MOVE_FAKE_OUT}
+    },
 };
 
 static const struct TrainerMon sParty_GruntAquaHideout4[] = {
     {
-    .lvl = 32,
-    .species = SPECIES_CARVANHA,
-    }
+        .lvl = 62,
+        .species = SPECIES_SHARPEDO,
+        .ability = ABILITY_SPEED_BOOST,
+        .nature = NATURE_ADAMANT,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_AQUA_CUTTER, MOVE_CRUNCH, MOVE_ICE_FANG, MOVE_NIGHT_SLASH}
+    },
 };
 
 static const struct TrainerMon sParty_GruntSeafloorCavern1[] = {
@@ -500,16 +525,26 @@ static const struct TrainerMon sParty_GruntWeatherInst4[] = {
 
 static const struct TrainerMon sParty_GruntAquaHideout5[] = {
     {
-    .lvl = 32,
-    .species = SPECIES_CARVANHA,
-    }
+        .lvl = 61,
+        .species = SPECIES_SHARPEDO,
+        .ability = ABILITY_SPEED_BOOST,
+        .nature = NATURE_ADAMANT,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_AQUA_CUTTER, MOVE_CRUNCH, MOVE_ICE_FANG, MOVE_NIGHT_SLASH}
+    },
 };
 
 static const struct TrainerMon sParty_GruntAquaHideout6[] = {
     {
-    .lvl = 32,
-    .species = SPECIES_ZUBAT,
-    }
+        .lvl = 62,
+        .species = SPECIES_CROBAT,
+        .ability = ABILITY_INFILTRATOR,
+        .nature = NATURE_ADAMANT,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_WING_ATTACK, MOVE_PSYCHIC_FANGS, MOVE_HAZE, MOVE_CROSS_POISON}
+    },
 };
 
 static const struct TrainerMon sParty_Fredrick[] = {
@@ -535,15 +570,71 @@ static const struct TrainerMon sParty_Fredrick[] = {
 
 static const struct TrainerMon sParty_Matt[] = {
     {
-    .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-    .lvl = 34,
-    .species = SPECIES_MIGHTYENA,
+        .lvl = 65,
+        .species = SPECIES_SAMUROTT_HISUI,
+        .ability = ABILITY_SHARPNESS,
+        .nature = NATURE_TIMID,
+        .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),    
+        .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 4, 252),
+        .heldItem = ITEM_FOCUS_SASH,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_CEASELESS_EDGE, MOVE_RAZOR_SHELL, MOVE_KNOCK_OFF, MOVE_AQUA_JET}
     },
     {
-    .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
-    .lvl = 34,
-    .species = SPECIES_GOLBAT,
-    }
+        .lvl = 65,
+        .species = SPECIES_EMPOLEON,
+        .ability = ABILITY_COMPETITIVE,
+        .nature = NATURE_CALM,
+        .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),    
+        .ev = TRAINER_PARTY_EVS(252, 0, 4, 0, 252, 0),
+        .heldItem = ITEM_LEFTOVERS,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_SURF, MOVE_ROOST, MOVE_STEALTH_ROCK, MOVE_ICE_BEAM}
+    },
+    {
+        .lvl = 65,
+        .species = SPECIES_GOLISOPOD,
+        .ability = ABILITY_TOUGH_CLAWS,
+        .nature = NATURE_JOLLY,
+        .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),    
+        .ev = TRAINER_PARTY_EVS(252, 252, 0, 0, 0, 0),
+        .heldItem = ITEM_HEAVY_DUTY_BOOTS,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_KNOCK_OFF, MOVE_AQUA_JET, MOVE_LEECH_LIFE, MOVE_SWORDS_DANCE}
+    },
+    {
+        .lvl = 65,
+        .species = SPECIES_SNEASLER,
+        .ability = ABILITY_POISON_TOUCH,
+        .nature = NATURE_JOLLY,
+        .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),    
+        .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 4, 252),
+        .heldItem = ITEM_MUSCLE_BAND,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_DIRE_CLAW, MOVE_CLOSE_COMBAT, MOVE_U_TURN, MOVE_THROAT_CHOP}
+    },
+    {
+        .lvl = 65,
+        .species = SPECIES_CHIEN_PAO,
+        .ability = ABILITY_SWORD_OF_RUIN,
+        .nature = NATURE_JOLLY,
+        .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),    
+        .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 4, 252),
+        .heldItem = ITEM_HEAVY_DUTY_BOOTS,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_SUCKER_PUNCH, MOVE_CRUNCH, MOVE_SWORDS_DANCE, MOVE_ICE_SPINNER}
+    },
+    {
+        .lvl = 67,
+        .species = SPECIES_SWAMPERT,
+        .ability = ABILITY_STAMINA,
+        .nature = NATURE_JOLLY,
+        .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),    
+        .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 5, 252),
+        .heldItem = ITEM_SWAMPERTITE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_EARTHQUAKE, MOVE_WATERFALL, MOVE_ICE_PUNCH, MOVE_FLIP_TURN}
+    },
 };
 
 static const struct TrainerMon sParty_Zander[] = {
@@ -3021,20 +3112,35 @@ static const struct TrainerMon sParty_Kirk[] = {
 
 static const struct TrainerMon sParty_GruntAquaHideout7[] = {
     {
-    .lvl = 31,
-    .species = SPECIES_POOCHYENA,
+        .lvl = 57,
+        .species = SPECIES_VENOMOTH,
+        .ability = ABILITY_TINTED_LENS,
+        .nature = NATURE_TIMID,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_PSYCHIC, MOVE_BUG_BUZZ, MOVE_STUN_SPORE, MOVE_AIR_SLASH}
     },
     {
-    .lvl = 31,
-    .species = SPECIES_ZUBAT,
-    }
+        .lvl = 58,
+        .species = SPECIES_OCTILLERY,
+        .ability = ABILITY_MOODY,
+        .nature = NATURE_TIMID,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_SNIPE_SHOT}
+    },
 };
 
 static const struct TrainerMon sParty_GruntAquaHideout8[] = {
     {
-    .lvl = 32,
-    .species = SPECIES_CARVANHA,
-    }
+        .lvl = 62,
+        .species = SPECIES_DRAPION,
+        .ability = ABILITY_BATTLE_ARMOR,
+        .nature = NATURE_ADAMANT,
+        .heldItem = ITEM_NONE,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_CRUNCH, MOVE_X_SCISSOR, MOVE_CROSS_POISON, MOVE_ICE_FANG}
+    },
 };
 
 static const struct TrainerMon sParty_Shawn[] = {
