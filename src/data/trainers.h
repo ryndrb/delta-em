@@ -8860,7 +8860,8 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Tabitha"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .mugshotColor = MUGSHOT_COLOR_YELLOW,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_TabithaMossdeep),
     },
 
