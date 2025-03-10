@@ -506,6 +506,10 @@ script LilycoveCity_EventScript_Rival {
         msgbox("Ahhh, this reminds me of the battle I\nhad with you back on Route 103!\pYou were able to become this strong\nbecause you battled me back then,\lright, {PLAYER}?")
         delay(16)
         msgbox("…What would you think if I said\nsomething like that? Hee hee…\pI'm actually thinking that it's\nabout time I went back to Littleroot,\lthough.\pI've caught a lot of different Pokémon,\nand my Pokédex is pretty complete, so\lI think I should go show it to my dad.")
+		closemessage
+		delay(8)
+		dofieldeffectsparkle(27, 8, 0)
+		waitfieldeffect(FLDEFF_SPARKLE)
         delay(24)
         msgbox("…Huh?\pDid something just…sparkle in your\nBag?\pIt was like the light from that\nMeteorite…\p…Oh, nothing!\pSorry!\nJust forget it!\lI'm probably imagining things!\p{PLAYER}, what are you going to do?\pYou going to collect all the Gym\nBadges and take on the Pokémon\lLeague challenge?", MSGBOX_YESNO)
         if(var(VAR_RESULT) == YES){
@@ -525,6 +529,10 @@ script LilycoveCity_EventScript_Rival {
         }else{
             msgbox("Huh? Really?\nI've gotta say, I always kind of\lthought that you'd go all the way and\laim to be Champion.")
         }
+		closemessage
+		delay(8)
+		dofieldeffectsparkle(27, 8, 0)
+		waitfieldeffect(FLDEFF_SPARKLE)
         delay(16)
         msgbox("…Uhhh. Huh? Did you…\n{PLAYER}, I think there's something…\lThere's something, like, sparkling in\lyour Bag…\pIt's the same kinda light as that\nMeteorite had, the one you showed me\lin Lavaridge…")
         closemessage

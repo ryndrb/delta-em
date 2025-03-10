@@ -955,67 +955,75 @@ LilycoveCity_EventScript_Rival_9:
 # 500 "data/maps/LilycoveCity/scripts.pory"
 	compare VAR_RESULT, MALE
 	goto_if_eq LilycoveCity_EventScript_Rival_14
-# 517 "data/maps/LilycoveCity/scripts.pory"
+# 521 "data/maps/LilycoveCity/scripts.pory"
 	switch VAR_STARTER_MON
-# 518 "data/maps/LilycoveCity/scripts.pory"
+# 522 "data/maps/LilycoveCity/scripts.pory"
 	case 0, LilycoveCity_EventScript_Rival_24
-# 519 "data/maps/LilycoveCity/scripts.pory"
+# 523 "data/maps/LilycoveCity/scripts.pory"
 	case 1, LilycoveCity_EventScript_Rival_25
-# 520 "data/maps/LilycoveCity/scripts.pory"
+# 524 "data/maps/LilycoveCity/scripts.pory"
 	case 2, LilycoveCity_EventScript_Rival_26
 LilycoveCity_EventScript_Rival_22:
-# 522 "data/maps/LilycoveCity/scripts.pory"
+# 526 "data/maps/LilycoveCity/scripts.pory"
 	msgbox LilycoveCity_EventScript_Rival_Text_15, MSGBOX_YESNO
-# 523 "data/maps/LilycoveCity/scripts.pory"
+# 527 "data/maps/LilycoveCity/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq LilycoveCity_EventScript_Rival_31
-# 526 "data/maps/LilycoveCity/scripts.pory"
+# 530 "data/maps/LilycoveCity/scripts.pory"
 	msgbox LilycoveCity_EventScript_Rival_Text_17
 LilycoveCity_EventScript_Rival_30:
-# 528 "data/maps/LilycoveCity/scripts.pory"
-	delay 16
-# 529 "data/maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_EventScript_Rival_Text_18
-# 530 "data/maps/LilycoveCity/scripts.pory"
-	closemessage
-# 531 "data/maps/LilycoveCity/scripts.pory"
-	delay 24
 # 532 "data/maps/LilycoveCity/scripts.pory"
+	closemessage
+# 533 "data/maps/LilycoveCity/scripts.pory"
+	delay 8
+# 534 "data/maps/LilycoveCity/scripts.pory"
+	dofieldeffectsparkle 27, 8, 0
+# 535 "data/maps/LilycoveCity/scripts.pory"
+	waitfieldeffect FLDEFF_SPARKLE
+# 536 "data/maps/LilycoveCity/scripts.pory"
+	delay 16
+# 537 "data/maps/LilycoveCity/scripts.pory"
+	msgbox LilycoveCity_EventScript_Rival_Text_18
+# 538 "data/maps/LilycoveCity/scripts.pory"
+	closemessage
+# 539 "data/maps/LilycoveCity/scripts.pory"
+	delay 24
+# 540 "data/maps/LilycoveCity/scripts.pory"
 	msgbox LilycoveCity_EventScript_Rival_Text_19
 LilycoveCity_EventScript_Rival_13:
-# 534 "data/maps/LilycoveCity/scripts.pory"
-	closemessage
-# 535 "data/maps/LilycoveCity/scripts.pory"
-	delay 8
-# 536 "data/maps/LilycoveCity/scripts.pory"
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceDown
-# 537 "data/maps/LilycoveCity/scripts.pory"
-	waitmovement LOCALID_RIVAL
-# 538 "data/maps/LilycoveCity/scripts.pory"
-	delay 48
-# 539 "data/maps/LilycoveCity/scripts.pory"
-	setfieldeffectargument 0, 1
-# 540 "data/maps/LilycoveCity/scripts.pory"
-	dofieldeffect FLDEFF_NPCFLY_OUT
-# 541 "data/maps/LilycoveCity/scripts.pory"
-	delay 16
 # 542 "data/maps/LilycoveCity/scripts.pory"
-	removeobject LOCALID_RIVAL
+	closemessage
 # 543 "data/maps/LilycoveCity/scripts.pory"
-	waitfieldeffect FLDEFF_NPCFLY_OUT
+	delay 8
 # 544 "data/maps/LilycoveCity/scripts.pory"
-	savebgm MUS_DUMMY
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceDown
 # 545 "data/maps/LilycoveCity/scripts.pory"
-	fadedefaultbgm
+	waitmovement LOCALID_RIVAL
 # 546 "data/maps/LilycoveCity/scripts.pory"
-	setflag FLAG_MET_RIVAL_LILYCOVE
+	delay 48
 # 547 "data/maps/LilycoveCity/scripts.pory"
-	setvar VAR_TEMP_2, 1
+	setfieldeffectargument 0, 1
 # 548 "data/maps/LilycoveCity/scripts.pory"
-	setflag FLAG_HIDE_ROUTE_122_AQUA_GRUNT
+	dofieldeffect FLDEFF_NPCFLY_OUT
 # 549 "data/maps/LilycoveCity/scripts.pory"
-	setvar VAR_LEVEL_CAP_VARIABLE, 60
+	delay 16
 # 550 "data/maps/LilycoveCity/scripts.pory"
+	removeobject LOCALID_RIVAL
+# 551 "data/maps/LilycoveCity/scripts.pory"
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+# 552 "data/maps/LilycoveCity/scripts.pory"
+	savebgm MUS_DUMMY
+# 553 "data/maps/LilycoveCity/scripts.pory"
+	fadedefaultbgm
+# 554 "data/maps/LilycoveCity/scripts.pory"
+	setflag FLAG_MET_RIVAL_LILYCOVE
+# 555 "data/maps/LilycoveCity/scripts.pory"
+	setvar VAR_TEMP_2, 1
+# 556 "data/maps/LilycoveCity/scripts.pory"
+	setflag FLAG_HIDE_ROUTE_122_AQUA_GRUNT
+# 557 "data/maps/LilycoveCity/scripts.pory"
+	setvar VAR_LEVEL_CAP_VARIABLE, 60
+# 558 "data/maps/LilycoveCity/scripts.pory"
 	release
 	end
 
@@ -1075,13 +1083,21 @@ LilycoveCity_EventScript_Rival_17:
 # 508 "data/maps/LilycoveCity/scripts.pory"
 	msgbox LilycoveCity_EventScript_Rival_Text_11
 # 509 "data/maps/LilycoveCity/scripts.pory"
-	delay 24
+	closemessage
 # 510 "data/maps/LilycoveCity/scripts.pory"
-	msgbox LilycoveCity_EventScript_Rival_Text_12, MSGBOX_YESNO
+	delay 8
 # 511 "data/maps/LilycoveCity/scripts.pory"
+	dofieldeffectsparkle 27, 8, 0
+# 512 "data/maps/LilycoveCity/scripts.pory"
+	waitfieldeffect FLDEFF_SPARKLE
+# 513 "data/maps/LilycoveCity/scripts.pory"
+	delay 24
+# 514 "data/maps/LilycoveCity/scripts.pory"
+	msgbox LilycoveCity_EventScript_Rival_Text_12, MSGBOX_YESNO
+# 515 "data/maps/LilycoveCity/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq LilycoveCity_EventScript_Rival_27
-# 514 "data/maps/LilycoveCity/scripts.pory"
+# 518 "data/maps/LilycoveCity/scripts.pory"
 	msgbox LilycoveCity_EventScript_Rival_Text_14
 	goto LilycoveCity_EventScript_Rival_13
 
@@ -1101,40 +1117,40 @@ LilycoveCity_EventScript_Rival_21:
 	goto LilycoveCity_EventScript_Rival_17
 
 LilycoveCity_EventScript_Rival_24:
-# 518 "data/maps/LilycoveCity/scripts.pory"
+# 522 "data/maps/LilycoveCity/scripts.pory"
 	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_TREECKO, LilycoveCity_Text_BrendanDefeat
 	goto LilycoveCity_EventScript_Rival_22
 
 LilycoveCity_EventScript_Rival_25:
-# 519 "data/maps/LilycoveCity/scripts.pory"
+# 523 "data/maps/LilycoveCity/scripts.pory"
 	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_TORCHIC, LilycoveCity_Text_BrendanDefeat
 	goto LilycoveCity_EventScript_Rival_22
 
 LilycoveCity_EventScript_Rival_26:
-# 520 "data/maps/LilycoveCity/scripts.pory"
+# 524 "data/maps/LilycoveCity/scripts.pory"
 	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_MUDKIP, LilycoveCity_Text_BrendanDefeat
 	goto LilycoveCity_EventScript_Rival_22
 
 LilycoveCity_EventScript_Rival_27:
-# 512 "data/maps/LilycoveCity/scripts.pory"
+# 516 "data/maps/LilycoveCity/scripts.pory"
 	msgbox LilycoveCity_EventScript_Rival_Text_13
 	goto LilycoveCity_EventScript_Rival_13
 
 LilycoveCity_EventScript_Rival_31:
-# 524 "data/maps/LilycoveCity/scripts.pory"
+# 528 "data/maps/LilycoveCity/scripts.pory"
 	msgbox LilycoveCity_EventScript_Rival_Text_16
 	goto LilycoveCity_EventScript_Rival_30
 
 
-# 554 "data/maps/LilycoveCity/scripts.pory"
+# 562 "data/maps/LilycoveCity/scripts.pory"
 LilycoveCity_Movement_PlayerStepBack:
-# 555 "data/maps/LilycoveCity/scripts.pory"
+# 563 "data/maps/LilycoveCity/scripts.pory"
 	lock_facing_direction
-# 556 "data/maps/LilycoveCity/scripts.pory"
+# 564 "data/maps/LilycoveCity/scripts.pory"
 	walk_down
-# 557 "data/maps/LilycoveCity/scripts.pory"
+# 565 "data/maps/LilycoveCity/scripts.pory"
 	walk_in_place_up
-# 558 "data/maps/LilycoveCity/scripts.pory"
+# 566 "data/maps/LilycoveCity/scripts.pory"
 	unlock_facing_direction
 	step_end
 
@@ -1187,41 +1203,41 @@ LilycoveCity_EventScript_Rival_Text_11:
 	.string "…What would you think if I said\nsomething like that? Hee hee…\pI'm actually thinking that it's\nabout time I went back to Littleroot,\lthough.\pI've caught a lot of different Pokémon,\nand my Pokédex is pretty complete, so\lI think I should go show it to my dad.$"
 
 LilycoveCity_EventScript_Rival_Text_12:
-# 510 "data/maps/LilycoveCity/scripts.pory"
+# 514 "data/maps/LilycoveCity/scripts.pory"
 	.string "…Huh?\pDid something just…sparkle in your\nBag?\pIt was like the light from that\nMeteorite…\p…Oh, nothing!\pSorry!\nJust forget it!\lI'm probably imagining things!\p{PLAYER}, what are you going to do?\pYou going to collect all the Gym\nBadges and take on the Pokémon\lLeague challenge?$"
 
 LilycoveCity_EventScript_Rival_Text_13:
-# 512 "data/maps/LilycoveCity/scripts.pory"
+# 516 "data/maps/LilycoveCity/scripts.pory"
 	.string "Typical, {PLAYER}!\pThen while you're collecting your\nBadges, I guess I'll go and complete\lmy Pokédex!\pI guess I'll be off then!$"
 
 LilycoveCity_EventScript_Rival_Text_14:
-# 514 "data/maps/LilycoveCity/scripts.pory"
+# 518 "data/maps/LilycoveCity/scripts.pory"
 	.string "What, really?\pWell, now you've got me curious!\pIf you aren't focusing on the League,\nthen what else are you hoping to\lachieve?\lI can't wait to see what you'll do!\pBut let's definitely meet up again\nsomewhere!$"
 
 LilycoveCity_EventScript_Rival_Text_15:
-# 522 "data/maps/LilycoveCity/scripts.pory"
+# 526 "data/maps/LilycoveCity/scripts.pory"
 	.string "Boy, that stings a bit…\pI had a head start on you as a Pokémon\nTrainer, but still…\pI, uh…\pI'm planning on going home to\nLittleroot.\pYou know how I've been helping out my\ndad with the Pokédex, and it's been\lcoming together pretty decently.\pSo…I ought to go back home and how it\nto him.\p{PLAYER}, what are you gonna do?\pYou still thinking of collecting all the\nGym Badges and taking on the Pokémon\lLeague challenge?$"
 
 LilycoveCity_EventScript_Rival_Text_16:
-# 524 "data/maps/LilycoveCity/scripts.pory"
+# 528 "data/maps/LilycoveCity/scripts.pory"
 	.string "Yeah?\nI guess I'm not surprised.\pDo your best.\nYou know I'm behind you.$"
 
 LilycoveCity_EventScript_Rival_Text_17:
-# 526 "data/maps/LilycoveCity/scripts.pory"
+# 530 "data/maps/LilycoveCity/scripts.pory"
 	.string "Huh? Really?\nI've gotta say, I always kind of\lthought that you'd go all the way and\laim to be Champion.$"
 
 LilycoveCity_EventScript_Rival_Text_18:
-# 529 "data/maps/LilycoveCity/scripts.pory"
+# 537 "data/maps/LilycoveCity/scripts.pory"
 	.string "…Uhhh. Huh? Did you…\n{PLAYER}, I think there's something…\lThere's something, like, sparkling in\lyour Bag…\pIt's the same kinda light as that\nMeteorite had, the one you showed me\lin Lavaridge…$"
 
 LilycoveCity_EventScript_Rival_Text_19:
-# 532 "data/maps/LilycoveCity/scripts.pory"
+# 540 "data/maps/LilycoveCity/scripts.pory"
 	.string "Ahhh, never mind!\pJust…\nGood luck out there!$"
 
 LilycoveCity_Text_MayDefeat::
-# 561 "data/maps/LilycoveCity/scripts.pory"
+# 569 "data/maps/LilycoveCity/scripts.pory"
 	.string "…$"
 
 LilycoveCity_Text_BrendanDefeat::
-# 565 "data/maps/LilycoveCity/scripts.pory"
+# 573 "data/maps/LilycoveCity/scripts.pory"
 	.string "Hmm…\nYou've raised your team quite a bit.$"

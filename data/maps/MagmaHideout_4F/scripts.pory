@@ -94,7 +94,7 @@ script MagmaHideout_4F_EventScript_Maxie {
     closemessage
     applymovement(LOCALID_MAXIE, Common_Movement_WalkInPlaceLeft)
     waitmovement(LOCALID_MAXIE)
-    msgbox("And now, you are the final obstacle\nremaining between me and my goals.\pIt behooves me to use every tool at my\ndisposal to eliminate you.\pIndeed!\nEven Mega Evolution!\pDo not delude yourself that you\nand your Pokémon are the only ones\lcapable of it.\pI must apologize for making you wait\nthrough our encounter at Mt. Chimney\lwithout treating you this sight.\pBrace yourself for my ultimate attack!")
+    msgbox("And now, you are the final obstacle\nremaining between me and my goals.\pIt behooves me to use every tool at my\ndisposal to eliminate you.\pI must apologize for making you wait\nthrough our encounter at Mt. Chimney\lwithout treating you this sight.\pBrace yourself for my ultimate attack!")
     closemessage
     delay(24)
     msgbox("Fuhahaha!")

@@ -66,7 +66,7 @@ script SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre {
     closemessage
     applymovement(LOCALID_ARCHIE, Common_Movement_WalkInPlaceDown)
     waitmovement(LOCALID_ARCHIE)
-    msgbox("And now, you are the last token\nresistance that's trying to ruin my\lday.\pI'll use everything my team and I have\nto crush you once and for all!\pOh?\nAnd…Mega Evolution?\pDid ya think that you and your Pokémon\nare the only ones who can use it?\pLet me show you now what I didn't get\nto show you all this time…\pThis is the true power of my team!")
+    msgbox("And now, you are the last token\nresistance that's trying to ruin my\lday.\pI'll use everything my team and I have\nto crush you once and for all!\pLet me show you now what I didn't get\nto show you all this time…\pThis is the true power of my team!")
     closemessage
     delay(24)
     msgbox("GRAAAAAAAAAHHHHHH!!!")

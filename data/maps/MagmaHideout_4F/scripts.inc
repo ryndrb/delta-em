@@ -543,7 +543,7 @@ MagmaHideout_4F_EventScript_Maxie_Text_5:
 
 MagmaHideout_4F_EventScript_Maxie_Text_6:
 # 97 "data/maps/MagmaHideout_4F/scripts.pory"
-	.string "And now, you are the final obstacle\nremaining between me and my goals.\pIt behooves me to use every tool at my\ndisposal to eliminate you.\pIndeed!\nEven Mega Evolution!\pDo not delude yourself that you\nand your Pokémon are the only ones\lcapable of it.\pI must apologize for making you wait\nthrough our encounter at Mt. Chimney\lwithout treating you this sight.\pBrace yourself for my ultimate attack!$"
+	.string "And now, you are the final obstacle\nremaining between me and my goals.\pIt behooves me to use every tool at my\ndisposal to eliminate you.\pI must apologize for making you wait\nthrough our encounter at Mt. Chimney\lwithout treating you this sight.\pBrace yourself for my ultimate attack!$"
 
 MagmaHideout_4F_EventScript_Maxie_Text_7:
 # 100 "data/maps/MagmaHideout_4F/scripts.pory"

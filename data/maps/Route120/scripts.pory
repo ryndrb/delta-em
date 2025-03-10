@@ -235,7 +235,10 @@ Route120_EventScript_StevenGiveDeconScope::
     giveitem ITEM_SCEPTILITE, 1
     msgbox Route120_Text_StevenExplainStones, MSGBOX_DEFAULT
     closemessage
-    delay 8
+	delay 16
+	dofieldeffectsparkle 13, 16, 0
+    waitfieldeffect FLDEFF_SPARKLE
+	delay 16
     playse SE_PIN
     applymovement LOCALID_STEVEN, Common_Movement_ExclamationMark
     waitmovement LOCALID_STEVEN

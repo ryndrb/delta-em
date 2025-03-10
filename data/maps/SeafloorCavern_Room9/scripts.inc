@@ -604,7 +604,7 @@ SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre_Text_9:
 
 SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre_Text_10:
 # 69 "data/maps/SeafloorCavern_Room9/scripts.pory"
-	.string "And now, you are the last token\nresistance that's trying to ruin my\lday.\pI'll use everything my team and I have\nto crush you once and for all!\pOh?\nAnd…Mega Evolution?\pDid ya think that you and your Pokémon\nare the only ones who can use it?\pLet me show you now what I didn't get\nto show you all this time…\pThis is the true power of my team!$"
+	.string "And now, you are the last token\nresistance that's trying to ruin my\lday.\pI'll use everything my team and I have\nto crush you once and for all!\pLet me show you now what I didn't get\nto show you all this time…\pThis is the true power of my team!$"
 
 SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre_Text_11:
 # 72 "data/maps/SeafloorCavern_Room9/scripts.pory"
