@@ -4037,14 +4037,14 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
 
     [DIFFICULTY_NORMAL][TRAINER_WALLACE] =
     {
-        .trainerClass = TRAINER_CLASS_CHAMPION,
+        .trainerClass = TRAINER_CLASS_LEADER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_CHAMPION_WALLACE,
         .trainerName = _("Wallace"),
-        .items = {},
+        .items = {ITEM_MEGA_RING},
         .doubleBattle = FALSE,
-        .mugshotColor = MUGSHOT_COLOR_YELLOW,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .mugshotColor = MUGSHOT_COLOR_PURPLE,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Wallace),
     },
 

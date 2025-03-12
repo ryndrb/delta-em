@@ -52,34 +52,27 @@ SootopolisCity_Gym_B1F_EventScript_Daphne::
 	end
 
 SootopolisCity_Gym_B1F_Text_AndreaIntro:
-	.string "I'll show you the sublime techniques\n"
-	.string "I learned from our Leader Juan!$"
+	.string "I'll show you the sublime techniques I\nlearned from our Leader Wallace!$"
 
 SootopolisCity_Gym_B1F_Text_AndreaDefeat:
-	.string "Please forgive me, Juan…$"
+	.string "Please forgive me, Wallace…$"
 
 SootopolisCity_Gym_B1F_Text_AndreaPostBattle:
 	.string "Watch what happens if you crack all\n"
 	.string "the floor tiles.$"
 
 SootopolisCity_Gym_B1F_Text_CrissyIntro:
-	.string "You came all the way here, but you won't\n"
-	.string "get to see Juan.\p"
-	.string "Not if you lose to me, you won't!$"
+	.string "You came all the way here, but you\nwon't get to see Wallace.\pNot if you lose to me, you won't!$"
 
 SootopolisCity_Gym_B1F_Text_CrissyDefeat:
 	.string "You're strong!\n"
 	.string "I was fooled by your cute looks!$"
 
 SootopolisCity_Gym_B1F_Text_CrissyPostBattle:
-	.string "You might be good enough to avoid\n"
-	.string "being wiped out in one hit by Juan.$"
+	.string "You might be good enough to avoid\nbeing wiped out in one hit by Wallace.$"
 
 SootopolisCity_Gym_B1F_Text_DaphneIntro:
-	.string "The sight of Juan conducting\n"
-	.string "a battle…\p"
-	.string "The very beauty of it compelled me to\n"
-	.string "become a Trainer.$"
+	.string "The sight of Wallace conducting a\nbattle…\pThe very beauty of it compelled me to\nbecome a Trainer.$"
 
 SootopolisCity_Gym_B1F_Text_DaphneDefeat:
 	.string "You battled with more beauty than\n"
@@ -100,9 +93,7 @@ SootopolisCity_Gym_B1F_Text_ConnieDefeat:
 	.string "You're strong.$"
 
 SootopolisCity_Gym_B1F_Text_ConniePostBattle:
-	.string "I'll tell you something good.\p"
-	.string "If you want to reach Juan, you\n"
-	.string "need to walk on each floor tile once.$"
+	.string "I'll tell you something good.\pIf you want to reach Wallace, you need\nto walk on each floor tile once.$"
 
 SootopolisCity_Gym_B1F_Text_BridgetIntro:
 	.string "The Pokémon Gym of the highest level\n"
@@ -120,7 +111,7 @@ SootopolisCity_Gym_B1F_Text_BridgetPostBattle:
 
 SootopolisCity_Gym_B1F_Text_OliviaIntro:
 	.string "I train my Pokémon together with\n"
-	.string "Juan.\p"
+	.string "Wallace.\p"
 	.string "Don't think I'm a pushover.$"
 
 SootopolisCity_Gym_B1F_Text_OliviaDefeat:
@@ -164,10 +155,7 @@ SootopolisCity_Gym_B1F_Text_AnnikaDefeat:
 	.string "at my Pokémon?$"
 
 SootopolisCity_Gym_B1F_Text_AnnikaPostBattle:
-	.string "I came to this Gym because Juan\n"
-	.string "praised me for my darling Pokémon.\p"
-	.string "Oh, if only I'd met Juan years ago\n"
-	.string "when I was younger…$"
+	.string "I came to this Gym because Wallace\npraised me for my darling Pokémon.\pOh, if only I'd met Wallace years ago\nwhen I was younger…$"
 
 SootopolisCity_Gym_B1F_Text_BriannaIntro:
 	.string "Giggle…\n"
@@ -178,6 +166,6 @@ SootopolisCity_Gym_B1F_Text_BriannaDefeat:
 	.string "I went much too easy on you.$"
 
 SootopolisCity_Gym_B1F_Text_BriannaPostBattle:
-	.string "You couldn't lay a finger on Juan,\n"
+	.string "You couldn't lay a finger on Wallace,\n"
 	.string "I'm sure. Giggle…$"
 

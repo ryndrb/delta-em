@@ -993,11 +993,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     [SPECIES_BLASTOISE_MEGA] =
     {
         .baseHP        = 79,
-        .baseAttack    = 103,
-        .baseDefense   = 120,
+        .baseAttack    = 83,
+        .baseDefense   = 130,
         .baseSpeed     = 78,
         .baseSpAttack  = 139,
-        .baseSpDefense = 115,
+        .baseSpDefense = 125,
         .types = MON_TYPES(TYPE_WATER, TYPE_STEEL),
         .catchRate = 45,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 315 : 284,
