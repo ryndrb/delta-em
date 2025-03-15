@@ -140,7 +140,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Marcel"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Marcel),
     },
 
@@ -468,7 +468,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Felix"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Felix),
     },
 
@@ -864,7 +864,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Randall"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Randall),
     },
 
@@ -876,7 +876,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Parker"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Parker),
     },
 
@@ -888,7 +888,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("George"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_George),
     },
 
@@ -900,7 +900,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Berke"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Berke),
     },
 
@@ -912,7 +912,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Braxton"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Braxton),
     },
 
@@ -924,7 +924,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Vincent"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Vincent),
     },
 
@@ -936,7 +936,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Leroy"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Leroy),
     },
 
@@ -948,7 +948,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Wilton"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Wilton1),
     },
 
@@ -960,7 +960,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Edgar"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Edgar),
     },
 
@@ -972,7 +972,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Albert"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Albert),
     },
 
@@ -984,7 +984,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Samuel"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Samuel),
     },
 
@@ -996,7 +996,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Vito"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Vito),
     },
 
@@ -1008,7 +1008,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Owen"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Owen),
     },
 
@@ -1020,7 +1020,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Wilton"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Wilton2),
     },
 
@@ -1032,7 +1032,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Wilton"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Wilton3),
     },
 
@@ -1044,7 +1044,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Wilton"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Wilton4),
     },
 
@@ -1056,7 +1056,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Wilton"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Wilton5),
     },
 
@@ -1068,7 +1068,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Warren"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Warren),
     },
 
@@ -1080,7 +1080,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Mary"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Mary),
     },
 
@@ -1092,7 +1092,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Alexia"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Alexia),
     },
 
@@ -1104,7 +1104,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Jody"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Jody),
     },
 
@@ -1116,7 +1116,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Wendy"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Wendy),
     },
 
@@ -1128,7 +1128,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Keira"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Keira),
     },
 
@@ -1140,7 +1140,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Brooke"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Brooke1),
     },
 
@@ -1152,7 +1152,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Jennifer"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Jennifer),
     },
 
@@ -1164,7 +1164,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Hope"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Hope),
     },
 
@@ -1176,7 +1176,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Shannon"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Shannon),
     },
 
@@ -1188,7 +1188,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Michelle"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Michelle),
     },
 
@@ -1200,7 +1200,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Caroline"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Caroline),
     },
 
@@ -1212,7 +1212,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Julie"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Julie),
     },
 
@@ -1224,7 +1224,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Brooke"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Brooke2),
     },
 
@@ -1236,7 +1236,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Brooke"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Brooke3),
     },
 
@@ -1248,7 +1248,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Brooke"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Brooke4),
     },
 
@@ -1260,7 +1260,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Brooke"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Brooke5),
     },
 
@@ -3911,7 +3911,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Quincy"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Quincy),
     },
 
@@ -3923,7 +3923,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Katelynn"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Katelynn),
     },
 
@@ -5028,7 +5028,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Dianne"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Dianne),
     },
 
@@ -6060,7 +6060,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Jazmyn"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Jazmyn),
     },
 
@@ -6120,7 +6120,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Marley"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Marley),
     },
 
@@ -6251,9 +6251,10 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_WALLY,
         .trainerName = _("Wally"),
-        .items = {},
+        .items = {ITEM_MEGA_RING},
+        .mugshotColor = MUGSHOT_COLOR_GREEN,
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_WallyVR1),
     },
 
@@ -6523,7 +6524,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Mitchell"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Mitchell),
     },
 
@@ -6595,7 +6596,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Halle"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Halle),
     },
 
@@ -6967,7 +6968,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Athena"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Athena),
     },
 
@@ -7220,7 +7221,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Jonathan"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Jonathan),
     },
 
@@ -7822,7 +7823,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Gerald"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Gerald),
     },
 
@@ -8093,7 +8094,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Alexa"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Alexa),
     },
 
@@ -8105,7 +8106,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Ruben"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Ruben),
     },
 
@@ -8849,7 +8850,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Darcy"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Darcy),
     },
 
@@ -8946,7 +8947,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Carolina"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Carolina),
     },
 
@@ -9198,7 +9199,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Leonel"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Leonel),
     },
 
@@ -9258,7 +9259,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Cristin"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Cristin1),
     },
 
@@ -9990,7 +9991,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Cristin"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Cristin2),
     },
 
@@ -10002,7 +10003,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Cristin"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Cristin3),
     },
 
@@ -10014,7 +10015,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Cristin"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Cristin4),
     },
 
@@ -10026,7 +10027,7 @@ const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] = {
         .trainerName = _("Cristin"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_SEMI_SMART_TRAINER,
+        .aiFlags = AI_FLAG_SMART_TRAINER,
         .party = TRAINER_PARTY(sParty_Cristin5),
     },
 
