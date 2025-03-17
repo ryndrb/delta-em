@@ -11094,9 +11094,10 @@ bool32 CanMegaEvolve(u32 battler)
         && !CheckBagHasItem(ITEM_MEGA_RING, 1))
         return FALSE;
 
+    // Comment out to allow AI to Mega Evolve with multiple mons.
     // Check if Trainer has already Mega Evolved.
-    if (HasTrainerUsedGimmick(battler, GIMMICK_MEGA))
-        return FALSE;
+    // if (HasTrainerUsedGimmick(battler, GIMMICK_MEGA))
+    //     return FALSE;
 
     // Check if battler has another gimmick active.
     if (GetActiveGimmick(battler) != GIMMICK_NONE)

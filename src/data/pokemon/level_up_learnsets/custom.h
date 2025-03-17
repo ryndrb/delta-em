@@ -12284,6 +12284,7 @@ static const struct LevelUpMove sSerperiorLevelUpLearnset[] = {
     LEVEL_UP_MOVE(50, MOVE_GASTRO_ACID),
     LEVEL_UP_MOVE(56, MOVE_LEAF_STORM),
     LEVEL_UP_MOVE(60, MOVE_OUTRAGE),//
+    LEVEL_UP_MOVE(64, MOVE_DRACO_METEOR),//
     LEVEL_UP_END
 };
 #endif //P_FAMILY_SNIVY

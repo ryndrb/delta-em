@@ -116,6 +116,7 @@ Power: 90 >> 95
 
 Thunder
 Power: 110 >> 120
+Accuracy: 70 >> 80
 
 Rock Throw
 Accuracy: 90 >> 100
@@ -440,3 +441,7 @@ Power: 75 >> 80
 
 Chloroblast
 Accuracy: 95 >> 100
+
+Hidden Power
+Power: 60 >> 80
+Category: Special >> Higher attacking stat

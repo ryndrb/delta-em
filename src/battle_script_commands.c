@@ -2015,6 +2015,8 @@ static inline void CalculateAndSetMoveDamage(struct DamageCalculationData *damag
 {
     if (GetMoveEffect(gCurrentMove) == EFFECT_SHELL_SIDE_ARM)
         gBattleStruct->swapDamageCategory = (gBattleStruct->shellSideArmCategory[gBattlerAttacker][battlerDef] != GetMoveCategory(gCurrentMove));
+    if (GetMoveEffect(gCurrentMove) == EFFECT_HIDDEN_POWER)
+        gBattleStruct->swapDamageCategory = (GetCategoryBasedOnStats(gBattlerAttacker) != GetMoveCategory(gCurrentMove));
 
     damageCalcData->battlerDef = battlerDef;
     damageCalcData->isCrit = gSpecialStatuses[battlerDef].criticalHit;
