@@ -12,5 +12,10 @@ Credits
     - Expanded Bag Pockets
 - BuffelSaft
     - Inclement Emerald inspirations
-- RavePossum & Ruki
+- RavePossum
     - Battle Backgrounds
+    - Shadows in summary screen
+- Ruki
+    - Battle Backgrounds
+- Kaixer
+    - Shadows in summary screen
