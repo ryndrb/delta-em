@@ -88,3 +88,23 @@ script FallarborTown_Mart_EventScript_DrainPunchTM {
 text FallarborTown_Mart_Text_HaveDrainPunch {
     "TM60 is also Drain Punch, but\nit's a punch that drains a foe's HP in\lbattle instead.\pPlease don't use it on any drains!"
 }
+
+script FallarborTown_Mart_EventScript_OtherClerk {
+    lock
+    faceplayer
+    message(gText_HowMayIServeYou)
+    waitmessage
+    pokemart(FallarborTown_Mart_OtherClerk_Pokemart)
+    msgbox(gText_PleaseComeAgain)
+	release
+	end
+}
+
+mart FallarborTown_Mart_OtherClerk_Pokemart {
+	ITEM_BLACK_AUGURITE
+	ITEM_DAWN_STONE
+	ITEM_DUSK_STONE
+	ITEM_LINKING_CORD
+	ITEM_METAL_ALLOY
+    ITEM_SHINY_STONE
+}

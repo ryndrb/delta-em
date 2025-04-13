@@ -1,6 +1,4 @@
 raw `
-SlateportCity_PokemonFanClub_MapScripts::
-	.byte 0
 
 SlateportCity_PokemonFanClub_EventScript_Chairman::
 	lock
@@ -355,9 +353,339 @@ SlateportCity_PokemonFanClub_Text_Azumarill:
 
 `
 
+mapscripts SlateportCity_PokemonFanClub_MapScripts {
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		// VAR_SLATEPORT_CITY_POKEFANCLUB_DIANCITE_EVENT, 0: SlateportCity_PokemonFanClub_EventScript_Diancite
+		VAR_TEMP_3, 0: SlateportCity_PokemonFanClub_EventScript_Diancite
+	]
+}
+
 script SlateportCity_PokemonFanClub_EventScript_SwaggerMan {
 	msgbox("Heh! My Pokémon totally rules!\nIt's cooler that any Pokémon!\pI was lipping off with a swagger\nin my step like that when Chairman\lchewed me out.\pThat took the swagger out my step…")
 	closemessage
+	release
+	end
+}
+
+// Furfrou Change Form Script
+// Each Furfrou have a different secondary type
+
+script Fufrou_Haircut_Main {
+    lock
+    faceplayer
+    msgbox("Do you know the Pokémon Furfrou?\nThey are very rare here in Hoenn.\pFurfrou's fur can be styled in\ndifferent ways, but it needs regular\ltrimming to stay elegant.\pIf you have one with you, I can give it\na trim it for ¥500.", MSGBOX_YESNO)
+    if(var(VAR_RESULT) == NO){
+        goto(Furfrou_Exit)
+    }
+    call(Furfrou_CheckIfFurfrouInParty)
+    msgbox("All right.\nWhich Furfrou will I trim today?")
+    special(ChoosePartyMon)
+    waitstate
+    if(var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
+        goto(Furfrou_Exit)
+    }
+    specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
+    if(var(VAR_RESULT) == SPECIES_EGG){
+        msgbox("Oh, dear.\nI can't trim an Egg!")
+        closemessage
+        release
+        end
+    }
+    call(Furfrou_CheckIfSelectedMonIsFurfrou)
+    goto(Furfrou_ChooseWhichStyle)
+}
+
+script Furfrou_CheckIfFurfrouInParty {
+    checkspecies(SPECIES_FURFROU, NO_PARTY_SCREEN)
+    if(var(VAR_RESULT) == TRUE){
+        return
+    }
+    checkspecies(SPECIES_FURFROU_NATURAL, NO_PARTY_SCREEN)
+    if(var(VAR_RESULT) == TRUE){
+        return
+    }
+    checkspecies(SPECIES_FURFROU_HEART, NO_PARTY_SCREEN)
+    if(var(VAR_RESULT) == TRUE){
+        return
+    }
+    checkspecies(SPECIES_FURFROU_STAR, NO_PARTY_SCREEN)
+    if(var(VAR_RESULT) == TRUE){
+        return
+    }
+    checkspecies(SPECIES_FURFROU_DIAMOND, NO_PARTY_SCREEN)
+    if(var(VAR_RESULT) == TRUE){
+        return
+    }
+    checkspecies(SPECIES_FURFROU_DEBUTANTE, NO_PARTY_SCREEN)
+    if(var(VAR_RESULT) == TRUE){
+        return
+    }
+    checkspecies(SPECIES_FURFROU_MATRON, NO_PARTY_SCREEN)
+    if(var(VAR_RESULT) == TRUE){
+        return
+    }
+    checkspecies(SPECIES_FURFROU_DANDY, NO_PARTY_SCREEN)
+    if(var(VAR_RESULT) == TRUE){
+        return
+    }
+    checkspecies(SPECIES_FURFROU_LA_REINE, NO_PARTY_SCREEN)
+    if(var(VAR_RESULT) == TRUE){
+        return
+    }
+    checkspecies(SPECIES_FURFROU_KABUKI, NO_PARTY_SCREEN)
+    if(var(VAR_RESULT) == TRUE){
+        return
+    }
+    checkspecies(SPECIES_FURFROU_PHARAOH, NO_PARTY_SCREEN)
+    if(var(VAR_RESULT) == TRUE){
+        return
+    }
+    goto(Furfrou_NoFurfrouInParty)
+}
+
+script Furfrou_CheckIfSelectedMonIsFurfrou {
+    copyvar(VAR_0x8006, VAR_RESULT)
+    switch(var(VAR_RESULT)){
+        case SPECIES_FURFROU:
+            return
+        case SPECIES_FURFROU_NATURAL:
+            return
+        case SPECIES_FURFROU_HEART:
+            return
+        case SPECIES_FURFROU_STAR:
+            return
+        case SPECIES_FURFROU_DIAMOND:
+            return
+        case SPECIES_FURFROU_DEBUTANTE:
+            return
+        case SPECIES_FURFROU_MATRON:
+            return
+        case SPECIES_FURFROU_DANDY:
+            return
+        case SPECIES_FURFROU_LA_REINE:
+            return
+        case SPECIES_FURFROU_KABUKI:
+            return
+        case SPECIES_FURFROU_PHARAOH:
+            return
+        case MULTI_B_PRESSED:
+            goto(Furfrou_Exit)
+    }
+    msgbox("Oh, I'm sorry, but…\nI can't trim any Pokémon but Furfrou.")
+    closemessage
+    release
+    end
+}
+
+script Furfrou_ChooseWhichStyle {
+    msgbox("What kind of style would you like it to\nhave?")
+    dynmultichoice(0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, 
+        "Natural", "Heart", "Star", "Diamond", "Debutante", "Matron", "Dandy", "La Reine", "Kabuki", "Pharaoh",
+    )
+    switch(var(VAR_RESULT)) {
+		case 0: setvar(VAR_0x8005, SPECIES_FURFROU)
+        case 1: setvar(VAR_0x8005, SPECIES_FURFROU_HEART)
+        case 2: setvar(VAR_0x8005, SPECIES_FURFROU_STAR)
+        case 3: setvar(VAR_0x8005, SPECIES_FURFROU_DIAMOND)
+        case 4: setvar(VAR_0x8005, SPECIES_FURFROU_DEBUTANTE)
+        case 5: setvar(VAR_0x8005, SPECIES_FURFROU_MATRON)
+        case 6: setvar(VAR_0x8005, SPECIES_FURFROU_DANDY)
+        case 7: setvar(VAR_0x8005, SPECIES_FURFROU_LA_REINE)
+        case 8: setvar(VAR_0x8005, SPECIES_FURFROU_KABUKI)
+        case 9: setvar(VAR_0x8005, SPECIES_FURFROU_PHARAOH)
+        case 127: goto(Furfrou_Exit)
+    }
+    goto(Furfrou_DoTrimming)
+}
+
+script Furfrou_DoTrimming {
+    if(var(VAR_0x8005) == VAR_0x8006){
+        msgbox("Oh? But your Furfrou already has this\nstyle.")
+        goto(Furfrou_ChooseWhichStyle)
+    }
+    checkmoney(500, 0)
+    if(var(VAR_RESULT) == FALSE){
+        msgbox("Oh, dear.\nYou don't seem to have ¥500.")
+        closemessage
+        release
+        end
+    }
+    removemoney(500, 0)
+    msgbox("Then let's start.\nPlease stay calm, Furfrou.")
+    delay(8)
+    playmoncry(SPECIES_FURFROU, CRY_MODE_NORMAL)
+    waitmoncry
+    delay(8)
+    fadescreen(FADE_TO_BLACK)
+    msgbox("Snip… {PAUSE 32}\nSnippity-snip… {PAUSE 32}\lSnip-snip… Snip!")
+    closemessage
+    delay(16)
+    fadescreen(FADE_FROM_BLACK)
+    msgbox("Thank you for your patience!\pIt's all done.\nYour Furfrou looks elegant!")
+    showmonpic(VAR_0x8005, 10, 3)
+	delay(8)
+    playmoncry(SPECIES_FURFROU, CRY_MODE_NORMAL)
+    waitmoncry
+    waitbuttonpress
+    hidemonpic
+    msgbox("If you ever wish to try out a new style,\ncome back again!")
+    closemessage
+    release
+    end
+}
+
+script Furfrou_NoFurfrouInParty {
+    msgbox("It seems you don't have a Furfrou with\nyou.")
+    closemessage
+    release
+    end
+}
+
+script Furfrou_Exit {
+    releaseall
+    end
+}
+
+// Diancite Event
+const LOCALID_GENTLEMAN = 11
+const LOCALID_BLACK_BELT = 12
+const LOCALID_NINJA_BOY = 13
+
+script SlateportCity_PokemonFanClub_EventScript_Diancite {
+	checkspecies(SPECIES_DIANCIE, NO_PARTY_SCREEN)
+    if(var(VAR_RESULT) == FALSE || flag(FLAG_RECEIVED_DIANCITE) == TRUE){
+		setvar(VAR_TEMP_3, 1)
+        release
+		end
+    }
+	lock
+	delay(16)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	delay(8)
+	fadescreen(FADE_TO_BLACK)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 2))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	fadescreen(FADE_FROM_BLACK)
+	delay(16)
+	addobject(LOCALID_GENTLEMAN)
+	playse(SE_DOOR)
+	delay(24)
+	addobject(LOCALID_BLACK_BELT)
+	playse(SE_DOOR)
+	delay(8)
+	msgbox("Please, just wait a moment, mon chou!\nI need you to attendez!")
+	closemessage
+	playse(SE_PIN)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	delay(16)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
+	applymovement(LOCALID_GENTLEMAN, moves(delay_8, walk_up))
+	applymovement(LOCALID_BLACK_BELT, moves(delay_16, walk_up))
+	waitmovement(LOCALID_BLACK_BELT)
+	delay(8)
+	msgbox("Do forgive us, young master, for\nspeaking without an introduction.\pThere is a matter of great import that\nwe must discuss.\pIs it true that you have somehow\nobtained the Mythical Pokémon\lDiancie?")
+	closemessage
+	applymovement(LOCALID_GENTLEMAN, moves(walk_in_place_up))
+	waitmovement(LOCALID_GENTLEMAN)
+	msgbox("Diancie…\pThe inexplicable mutation arising from\nthe Pokémon we know as Carbink…\pWhen and where it originates from, and\nthe mecanisme of its formation…\pIt is indeed a mysterieuse existence,\none of des plus grand mysteres!")
+	closemessage
+	applymovement(LOCALID_BLACK_BELT, moves(walk_in_place_up))
+	waitmovement(LOCALID_BLACK_BELT)
+	msgbox("Diancie is the epitome of beauty among\nPokémon.\pThe divine symmetry of its\nbody enables it to absorb light\land display a radiance beyond the\lawareness of this realm.\pIt is said that, upon Mega Evolving,\nMega Diancie emanates a beauty that\lsurpasses all know beauty.")
+	closemessage
+	applymovement(LOCALID_GENTLEMAN, moves(walk_in_place_up))
+	waitmovement(LOCALID_GENTLEMAN)
+	msgbox("That beauty… It is so dazzling\nto behold that people call it the\l“Royal Pink Princess.”\pOur jeune maitre--young master--has\nbeen searching for Diancie in order\lto see this beauty fantastique.\pAnd we two have managed to obtain\nthe Diancite that is necessaire for\lits Mega Evolution.\pWe have been the most ardent to\ndiscover a Diancie that we might\ltake back to our young master, to\lshow to him this fame beaute ultime.\pYet we have proved unsuitable\nto the task, unable to secure the\lindispensable Diancie!")
+	closemessage
+	applymovement(LOCALID_BLACK_BELT, moves(walk_in_place_up))
+	waitmovement(LOCALID_BLACK_BELT)
+	msgbox("Please allow me to ask you directly…\pWill you agree to relinquish your\nDiancie to us?", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO) {
+		msgbox("Is there no way we can persuade you?", MSGBOX_YESNO)
+		if (var(VAR_RESULT) == NO) {
+			applymovement(LOCALID_GENTLEMAN, moves(walk_in_place_up))
+			waitmovement(LOCALID_GENTLEMAN)
+			msgbox("Mon chou, please…\nIf you could only…")
+			closemessage
+		} else {
+			applymovement(LOCALID_GENTLEMAN, moves(walk_in_place_up))
+			waitmovement(LOCALID_GENTLEMAN)
+			msgbox("Vraiment? You will?\pOh, what a relief to have met with a\nTrainer so understanding!\pThen…")
+			closemessage
+		}
+	} else {
+		applymovement(LOCALID_GENTLEMAN, moves(walk_in_place_up))
+		waitmovement(LOCALID_GENTLEMAN)
+		msgbox("Vraiment? You will?\pOh, what a relief to have met with a\nTrainer so understanding!\pThen…")
+		closemessage
+	}
+	delay(8)
+	addobject(LOCALID_NINJA_BOY)
+	playse(SE_DOOR)
+	delay(16)
+	msgbox("…Wait.")
+	closemessage
+	delay(4)
+	playse(SE_PIN)
+	applymovement(LOCALID_GENTLEMAN, Common_Movement_ExclamationMark)
+	applymovement(LOCALID_BLACK_BELT, Common_Movement_ExclamationMark)
+	waitmovement(LOCALID_BLACK_BELT)
+	delay(8)
+	applymovement(LOCALID_GENTLEMAN, moves(walk_in_place_down))
+	applymovement(LOCALID_BLACK_BELT, moves(walk_in_place_down))
+	waitmovement(LOCALID_BLACK_BELT)
+	msgbox("M-master?")
+	closemessage
+	delay(16)
+	applymovement(LOCALID_GENTLEMAN, moves(walk_left, walk_in_place_up))
+	applymovement(LOCALID_BLACK_BELT, moves(delay_16, walk_in_place_up))
+	applymovement(LOCALID_NINJA_BOY, moves(walk_up))
+	waitmovement(LOCALID_GENTLEMAN)
+	msgbox("Hey, I'm sorry they've been bugging you.")
+	closemessage
+	delay(16)
+	applymovement(LOCALID_GENTLEMAN, moves(delay_8, walk_in_place_right))
+	applymovement(LOCALID_BLACK_BELT, moves(delay_16, walk_in_place_left))
+	applymovement(LOCALID_NINJA_BOY, moves(walk_in_place_down))
+	waitmovement(LOCALID_BLACK_BELT)
+	msgbox("Um, you guys…\pI'm really glad you tried so hard to find\na Diancie for me. Truly.\pBut… Well, I think you might be on the\nwrong track.\pI'm not even that into finding a\nDiancie anymore, you know.\pWhat I really want now is a big, tough\nPokémon--you know?")
+	closemessage
+	applymovement(LOCALID_GENTLEMAN, moves(delay_16, walk_in_place_up))
+	applymovement(LOCALID_BLACK_BELT, moves(delay_8, walk_in_place_up))
+	applymovement(LOCALID_NINJA_BOY, moves(walk_in_place_up))
+	waitmovement(LOCALID_GENTLEMAN)
+	msgbox("So, you've got a Diancie, right?\pHow about we give you the Diancite we\nfound?\pIt'd be a crazy waste to have\na rare Pokémon like that and never\leven Mega Evolve it. You know?")
+	giveitem(ITEM_DIANCITE, 1)
+	msgbox("That's what you gotta do, am I right?\pMega Evolve them like bam! And then…\nPow! Pow! And end that battle in a\lflash!\pEven if folks do call it a royal\npink whatever, I bet a Mega Evolved\lDiancie would be crazy strong!\lWho knows?\pYou keep rolling your way\nthrough battles and strolling away\lwith victories!\lThat's what I wanna see, you know!")
+	closemessage
+	applymovement(LOCALID_NINJA_BOY, moves(walk_in_place_down))
+	waitmovement(LOCALID_NINJA_BOY)	
+	msgbox("OK, you two!\pNow let's shoot for a big, tough\nPokémon!")
+	closemessage
+	applymovement(LOCALID_GENTLEMAN, moves(walk_in_place_right))
+	waitmovement(LOCALID_GENTLEMAN)
+	msgbox("Ohoho…\nMon jeune maitre…")
+	closemessage
+	delay(16)
+	applymovement(LOCALID_NINJA_BOY, moves(walk_down, walk_in_place_down))
+	waitmovement(LOCALID_NINJA_BOY)
+	playse(SE_EXIT)
+	removeobject(LOCALID_NINJA_BOY)
+	delay(8)
+	applymovement(LOCALID_BLACK_BELT, moves(walk_down, walk_in_place_down))
+	waitmovement(LOCALID_BLACK_BELT)
+	playse(SE_EXIT)
+	removeobject(LOCALID_BLACK_BELT)
+	delay(8)
+	applymovement(LOCALID_GENTLEMAN, moves(walk_down, walk_right, walk_in_place_down))
+	waitmovement(LOCALID_GENTLEMAN)
+	playse(SE_EXIT)
+	removeobject(LOCALID_GENTLEMAN)
+	setvar(VAR_TEMP_3, 1)
+	setflag(FLAG_HIDE_POKEMON_FANCLUB_NPCS)
+	setflag(FLAG_RECEIVED_DIANCITE)
 	release
 	end
 }

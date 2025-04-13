@@ -53,23 +53,23 @@ MauvilleCity_Mart_Text_DecisionsDetermineBattle:
 
 `
 
-script MauvilleCity_Mart_EventScript_Clerk_TM {
+script MauvilleCity_Mart_EventScript_OtherClerk {
     lock
     faceplayer
     message(gText_HowMayIServeYou)
     waitmessage
-    pokemart(MauvillPokeMartTmList)
+    pokemart(MauvilleCity_Mart_OtherClerk_Pokemart)
     msgbox(gText_PleaseComeAgain)
 	release
 	end
 }
 
-mart MauvillPokeMartTmList {
-    ITEM_TM_VENOSHOCK // 10 000
-    ITEM_TM_AERIAL_ACE // 10 000
-    ITEM_TM_LOW_KICK // 10 000
-    ITEM_TM_CHARGE_BEAM // 10 000
-    ITEM_TM_BULLDOZE // 10 000
-    ITEM_TM_DRAGON_TAIL // 10 000
-    ITEM_TM_POWER_UP_PUNCH // 10 000
+mart MauvilleCity_Mart_OtherClerk_Pokemart {
+	ITEM_TM_VENOSHOCK
+    ITEM_TM_AERIAL_ACE
+    ITEM_TM_LOW_KICK
+    ITEM_TM_CHARGE_BEAM
+    ITEM_TM_BULLDOZE
+    ITEM_TM_DRAGON_TAIL
+    ITEM_TM_POWER_UP_PUNCH
 }

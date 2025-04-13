@@ -101,7 +101,7 @@ MauvilleCity_Mart_Text_DecisionsDetermineBattle:
 # 51 "data/maps/MauvilleCity_Mart/scripts.pory"
 	.string "battles turn out, I think.$"
 
-MauvilleCity_Mart_EventScript_Clerk_TM::
+MauvilleCity_Mart_EventScript_OtherClerk::
 # 57 "data/maps/MauvilleCity_Mart/scripts.pory"
 	lock
 # 58 "data/maps/MauvilleCity_Mart/scripts.pory"
@@ -111,7 +111,7 @@ MauvilleCity_Mart_EventScript_Clerk_TM::
 # 60 "data/maps/MauvilleCity_Mart/scripts.pory"
 	waitmessage
 # 61 "data/maps/MauvilleCity_Mart/scripts.pory"
-	pokemart MauvillPokeMartTmList
+	pokemart MauvilleCity_Mart_OtherClerk_Pokemart
 # 62 "data/maps/MauvilleCity_Mart/scripts.pory"
 	msgbox gText_PleaseComeAgain
 # 63 "data/maps/MauvilleCity_Mart/scripts.pory"
@@ -121,7 +121,7 @@ MauvilleCity_Mart_EventScript_Clerk_TM::
 
 	.align 2
 # 67 "data/maps/MauvilleCity_Mart/scripts.pory"
-MauvillPokeMartTmList:
+MauvilleCity_Mart_OtherClerk_Pokemart:
 # 68 "data/maps/MauvilleCity_Mart/scripts.pory"
 	.2byte ITEM_TM_VENOSHOCK
 # 69 "data/maps/MauvilleCity_Mart/scripts.pory"

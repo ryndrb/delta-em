@@ -290,7 +290,7 @@ script Route119_EventScript_RivalEncounter {
 		applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
 		waitmovement(LOCALID_RIVAL)
 		waitse
-		msgbox("Oh… Where did you get that thing on\nyour finger?\lThat's a pretty fancy-looking ring…\p…\pWow! So that's a Mega Ring?\nAnd you can use it for Mega\lEvolution…\pHehe, looks like we're on the same\npage. I've got one too, you know.\pI guess now we can keep getting\neven closer to your Pokémon, huh?\lI guess we have all the luck…\pBut I'm not about to lose to you\nbecause we both have Mega Rings!\lLet's see who's best in battle!\pAre your Pokémon all ready?\nOf course they are!\lLet's go!")
+		msgbox("Oh… Where did you get that thing on\nyour finger?\lThat's a pretty fancy-looking ring…\p…\pWow! So that's a Mega Ring?\nAnd you can use it for Mega\lEvolution…\pHehe, looks like we're on the same\npage. I've got one too, you know.\pI guess now we can keep getting\neven closer to our Pokémon, huh?\lI guess we have all the luck…\pBut I'm not about to lose to you\nbecause we both have Mega Rings!\lLet's see who's best in battle!\pAre your Pokémon all ready?\nOf course they are!\lLet's go!")
 		closemessage
 		switch(var(VAR_STARTER_MON)){
 			case 0: trainerbattle_no_intro(TRAINER_MAY_ROUTE_119_TREECKO, "Achah! You're as strong as I expected,\n{PLAYER}!")
@@ -301,7 +301,7 @@ script Route119_EventScript_RivalEncounter {
 		closemessage
 		delay(8)
 		giveitem(ITEM_HM_FLY)
-		msgbox("If you use Fly, your Pokémon will\ncarry you back to anywhere you've\lbeen before. But you already know\lthat! Hehe.\pWell, till we meet again!\nAnd next time I won't lose!")
+		msgbox("If you use Fly, your Pokémon will\ncarry you back to anywhere you've\lbeen before.\pBut you already know that! Hehe.\pWell, till we meet again!\nAnd next time I won't lose!")
 	}else{
 		msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: {PLAYER}!\nYou've been looking for Pokémon here!")
 		closemessage
@@ -322,7 +322,7 @@ script Route119_EventScript_RivalEncounter {
 		closemessage
 		delay(8)
 		giveitem(ITEM_HM_FLY)
-		msgbox("With Fly, your Pokémon can carry you\nback to just about anyplace you've\lvisited before. But I'm sure you know\lthat already.\pWell, I'm going on ahead.\nBut I'm definitely winning next time!")
+		msgbox("With Fly, your Pokémon can carry you\nback to just about anyplace you've\lvisited before.\pBut I'm sure you know that already.\pWell, I'm going on ahead.\nBut I'm definitely winning next time!")
 	}
 	closemessage
 	setflag(FLAG_RECEIVED_HM_FLY)

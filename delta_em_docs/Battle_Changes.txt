@@ -1,0 +1,15 @@
+Pokémon Delta Emerald
+
+=========================================================
+Ability Changes
+=========================================================
+
+=========================================================
+Item Changes
+=========================================================
+
+Light Ball
+Effect: Now also boosts the Attack and Special attack of Raichu and Raichiu-A by 50% when held.
+
+Big Root
+Effect: Healing boost increases from 30% to 50%.

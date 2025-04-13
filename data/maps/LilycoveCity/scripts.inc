@@ -1154,6 +1154,67 @@ LilycoveCity_Movement_PlayerStepBack:
 	unlock_facing_direction
 	step_end
 
+LilycoveCity_EventScript_Collector::
+# 578 "data/maps/LilycoveCity/scripts.pory"
+	lock
+# 579 "data/maps/LilycoveCity/scripts.pory"
+	faceplayer
+# 580 "data/maps/LilycoveCity/scripts.pory"
+	goto_if_set FLAG_RECEIVED_ALTARIANITE, LilycoveCity_EventScript_Collector_2
+# 586 "data/maps/LilycoveCity/scripts.pory"
+	msgbox LilycoveCity_EventScript_Collector_Text_1
+# 587 "data/maps/LilycoveCity/scripts.pory"
+	special ChoosePartyMon
+# 588 "data/maps/LilycoveCity/scripts.pory"
+	waitstate
+# 589 "data/maps/LilycoveCity/scripts.pory"
+	compare VAR_0x8004, PARTY_NOTHING_CHOSEN
+	goto_if_eq LilycoveCity_EventScript_Collector_5
+# 594 "data/maps/LilycoveCity/scripts.pory"
+	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+# 595 "data/maps/LilycoveCity/scripts.pory"
+	compare VAR_RESULT, SPECIES_ALTARIA
+	goto_if_ne LilycoveCity_EventScript_Collector_8
+# 601 "data/maps/LilycoveCity/scripts.pory"
+	setflag FLAG_RECEIVED_ALTARIANITE
+# 602 "data/maps/LilycoveCity/scripts.pory"
+	msgbox LilycoveCity_EventScript_Collector_Text_3
+# 603 "data/maps/LilycoveCity/scripts.pory"
+	giveitem ITEM_ALTARIANITE, 1
+# 604 "data/maps/LilycoveCity/scripts.pory"
+	msgbox LilycoveCity_EventScript_Collector_Text_4
+# 605 "data/maps/LilycoveCity/scripts.pory"
+	closemessage
+# 606 "data/maps/LilycoveCity/scripts.pory"
+	release
+	end
+
+LilycoveCity_EventScript_Collector_2:
+# 581 "data/maps/LilycoveCity/scripts.pory"
+	msgbox LilycoveCity_EventScript_Collector_Text_0
+# 582 "data/maps/LilycoveCity/scripts.pory"
+	closemessage
+# 583 "data/maps/LilycoveCity/scripts.pory"
+	release
+	end
+
+LilycoveCity_EventScript_Collector_5:
+# 590 "data/maps/LilycoveCity/scripts.pory"
+	closemessage
+# 591 "data/maps/LilycoveCity/scripts.pory"
+	release
+	end
+
+LilycoveCity_EventScript_Collector_8:
+# 596 "data/maps/LilycoveCity/scripts.pory"
+	msgbox LilycoveCity_EventScript_Collector_Text_2
+# 597 "data/maps/LilycoveCity/scripts.pory"
+	closemessage
+# 598 "data/maps/LilycoveCity/scripts.pory"
+	release
+	end
+
+
 LilycoveCity_EventScript_Rival_Text_0:
 # 462 "data/maps/LilycoveCity/scripts.pory"
 	.string "{COLOR RED}May{COLOR DARK_GRAY}: Heeey! {PLAYER}!\nDon't tell me…\pAre you here for the shopping, too,\n{PLAYER}?$"
@@ -1233,6 +1294,26 @@ LilycoveCity_EventScript_Rival_Text_18:
 LilycoveCity_EventScript_Rival_Text_19:
 # 540 "data/maps/LilycoveCity/scripts.pory"
 	.string "Ahhh, never mind!\pJust…\nGood luck out there!$"
+
+LilycoveCity_EventScript_Collector_Text_0:
+# 581 "data/maps/LilycoveCity/scripts.pory"
+	.string "This is where fans of Pokémon\nbattles hold passionate discussions\levery day!$"
+
+LilycoveCity_EventScript_Collector_Text_1:
+# 586 "data/maps/LilycoveCity/scripts.pory"
+	.string "This is where fans of Pokémon\nbattles hold passionate discussions\levery day!\pTo commemorate our first meeting, how\nabout a quiz?\pWhat Pokémon does Winona the\nGym Leader always have with her?\lTry and show me!$"
+
+LilycoveCity_EventScript_Collector_Text_2:
+# 596 "data/maps/LilycoveCity/scripts.pory"
+	.string "Too bad! A miss!$"
+
+LilycoveCity_EventScript_Collector_Text_3:
+# 602 "data/maps/LilycoveCity/scripts.pory"
+	.string "I expected nothing less from you!\pYour Altaria looks pretty amazing, too,\ndoesn't it?\lYou can make it, can't you?$"
+
+LilycoveCity_EventScript_Collector_Text_4:
+# 604 "data/maps/LilycoveCity/scripts.pory"
+	.string "Yeah, yeah, hang in there!$"
 
 LilycoveCity_Text_MayDefeat::
 # 569 "data/maps/LilycoveCity/scripts.pory"

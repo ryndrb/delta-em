@@ -207,7 +207,7 @@ VerdanturfTown_Text_RusturfTunnelSign:
 
 VerdanturfTown_EventScript_AzurillNextToGirl::
 # 110 "data/maps/VerdanturfTown/scripts.pory"
-	setobjectxyperm 6, 6, 15
+	setobjectxyperm 6, 6, 14
 # 111 "data/maps/VerdanturfTown/scripts.pory"
 	setobjectmovementtype 6, MOVEMENT_TYPE_FACE_DOWN
 	return
@@ -312,7 +312,7 @@ VerdanturfTown_EventScript_TownSign_2:
 # 166 "data/maps/VerdanturfTown/scripts.pory"
 	applymovement 6, VerdanturfTown_Movement_AzurillToGirl
 # 167 "data/maps/VerdanturfTown/scripts.pory"
-	waitmovement 0
+	waitmovement 6
 # 168 "data/maps/VerdanturfTown/scripts.pory"
 	fadescreenswapbuffers FADE_FROM_BLACK
 # 169 "data/maps/VerdanturfTown/scripts.pory"
@@ -322,14 +322,10 @@ VerdanturfTown_EventScript_TownSign_2:
 # 171 "data/maps/VerdanturfTown/scripts.pory"
 	delay 8
 # 172 "data/maps/VerdanturfTown/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
+	giveitem ITEM_INTRIGUING_STONE, 1
 # 173 "data/maps/VerdanturfTown/scripts.pory"
-	msgbox VerdanturfTown_EventScript_TownSign_Text_2
-# 174 "data/maps/VerdanturfTown/scripts.pory"
-	waitfanfare
-# 175 "data/maps/VerdanturfTown/scripts.pory"
 	closemessage
-# 176 "data/maps/VerdanturfTown/scripts.pory"
+# 174 "data/maps/VerdanturfTown/scripts.pory"
 	setflag FLAG_RECEIVED_INTRUIGING_STONE
 	goto VerdanturfTown_EventScript_TownSign_1
 
@@ -351,8 +347,12 @@ VerdanturfTown_EventScript_TownSign_7:
 	goto VerdanturfTown_EventScript_TownSign_1
 
 
-# 181 "data/maps/VerdanturfTown/scripts.pory"
+# 179 "data/maps/VerdanturfTown/scripts.pory"
 VerdanturfTown_Movement_AzurillLookAround:
+# 180 "data/maps/VerdanturfTown/scripts.pory"
+	walk_in_place_left
+# 181 "data/maps/VerdanturfTown/scripts.pory"
+	walk_in_place_right
 # 182 "data/maps/VerdanturfTown/scripts.pory"
 	walk_in_place_left
 # 183 "data/maps/VerdanturfTown/scripts.pory"
@@ -360,92 +360,88 @@ VerdanturfTown_Movement_AzurillLookAround:
 # 184 "data/maps/VerdanturfTown/scripts.pory"
 	walk_in_place_left
 # 185 "data/maps/VerdanturfTown/scripts.pory"
-	walk_in_place_right
-# 186 "data/maps/VerdanturfTown/scripts.pory"
-	walk_in_place_left
-# 187 "data/maps/VerdanturfTown/scripts.pory"
 	delay_16
-# 188 "data/maps/VerdanturfTown/scripts.pory"
+# 186 "data/maps/VerdanturfTown/scripts.pory"
 	walk_in_place_down
 	step_end
 
-# 191 "data/maps/VerdanturfTown/scripts.pory"
+# 189 "data/maps/VerdanturfTown/scripts.pory"
 VerdanturfTown_Movement_PlayerToGirl:
-# 192 "data/maps/VerdanturfTown/scripts.pory"
+# 190 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_down
-# 192 "data/maps/VerdanturfTown/scripts.pory"
+# 190 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_down
-# 192 "data/maps/VerdanturfTown/scripts.pory"
+# 190 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_down
-# 192 "data/maps/VerdanturfTown/scripts.pory"
+# 190 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_down
-# 192 "data/maps/VerdanturfTown/scripts.pory"
+# 190 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_down
-# 192 "data/maps/VerdanturfTown/scripts.pory"
+# 190 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_down
-# 192 "data/maps/VerdanturfTown/scripts.pory"
+# 190 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_down
+# 191 "data/maps/VerdanturfTown/scripts.pory"
+	walk_faster_left
+# 191 "data/maps/VerdanturfTown/scripts.pory"
+	walk_faster_left
+# 191 "data/maps/VerdanturfTown/scripts.pory"
+	walk_faster_left
+# 191 "data/maps/VerdanturfTown/scripts.pory"
+	walk_faster_left
+# 191 "data/maps/VerdanturfTown/scripts.pory"
+	walk_faster_left
+# 191 "data/maps/VerdanturfTown/scripts.pory"
+	walk_faster_left
+# 191 "data/maps/VerdanturfTown/scripts.pory"
+	walk_faster_left
+# 191 "data/maps/VerdanturfTown/scripts.pory"
+	walk_faster_left
+# 191 "data/maps/VerdanturfTown/scripts.pory"
+	walk_faster_left
 # 192 "data/maps/VerdanturfTown/scripts.pory"
-	walk_faster_down
-# 193 "data/maps/VerdanturfTown/scripts.pory"
-	walk_faster_left
-# 193 "data/maps/VerdanturfTown/scripts.pory"
-	walk_faster_left
-# 193 "data/maps/VerdanturfTown/scripts.pory"
-	walk_faster_left
-# 193 "data/maps/VerdanturfTown/scripts.pory"
-	walk_faster_left
-# 193 "data/maps/VerdanturfTown/scripts.pory"
-	walk_faster_left
-# 193 "data/maps/VerdanturfTown/scripts.pory"
-	walk_faster_left
-# 193 "data/maps/VerdanturfTown/scripts.pory"
-	walk_faster_left
-# 193 "data/maps/VerdanturfTown/scripts.pory"
-	walk_faster_left
-# 193 "data/maps/VerdanturfTown/scripts.pory"
-	walk_faster_left
-# 194 "data/maps/VerdanturfTown/scripts.pory"
 	walk_in_place_up
 	step_end
 
-# 197 "data/maps/VerdanturfTown/scripts.pory"
+# 195 "data/maps/VerdanturfTown/scripts.pory"
 VerdanturfTown_Movement_AzurillToGirl:
-# 198 "data/maps/VerdanturfTown/scripts.pory"
+# 196 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_down
-# 198 "data/maps/VerdanturfTown/scripts.pory"
+# 196 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_down
-# 198 "data/maps/VerdanturfTown/scripts.pory"
+# 196 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_down
-# 198 "data/maps/VerdanturfTown/scripts.pory"
+# 196 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_down
-# 198 "data/maps/VerdanturfTown/scripts.pory"
+# 196 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_down
-# 198 "data/maps/VerdanturfTown/scripts.pory"
+# 196 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_down
-# 198 "data/maps/VerdanturfTown/scripts.pory"
+# 196 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_down
-# 198 "data/maps/VerdanturfTown/scripts.pory"
+# 196 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_down
-# 199 "data/maps/VerdanturfTown/scripts.pory"
+# 197 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_left
-# 199 "data/maps/VerdanturfTown/scripts.pory"
+# 197 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_left
-# 199 "data/maps/VerdanturfTown/scripts.pory"
+# 197 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_left
-# 199 "data/maps/VerdanturfTown/scripts.pory"
+# 197 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_left
-# 199 "data/maps/VerdanturfTown/scripts.pory"
+# 197 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_left
-# 199 "data/maps/VerdanturfTown/scripts.pory"
+# 197 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_left
-# 199 "data/maps/VerdanturfTown/scripts.pory"
+# 197 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_left
-# 199 "data/maps/VerdanturfTown/scripts.pory"
+# 197 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_left
-# 199 "data/maps/VerdanturfTown/scripts.pory"
+# 197 "data/maps/VerdanturfTown/scripts.pory"
 	walk_faster_left
-# 200 "data/maps/VerdanturfTown/scripts.pory"
+# 198 "data/maps/VerdanturfTown/scripts.pory"
+	walk_faster_up
+# 199 "data/maps/VerdanturfTown/scripts.pory"
 	walk_in_place_down
 	step_end
 
@@ -468,7 +464,3 @@ VerdanturfTown_EventScript_TownSign_Text_0:
 VerdanturfTown_EventScript_TownSign_Text_1:
 # 170 "data/maps/VerdanturfTown/scripts.pory"
 	.string "Ah!\nAshu!\pThank you for finding my Azurill!\pI'll give you this.\nI just found it.\lIt has a strange shape and it looks\lamazing.$"
-
-VerdanturfTown_EventScript_TownSign_Text_2:
-# 173 "data/maps/VerdanturfTown/scripts.pory"
-	.string "{PLAYER} receive an {COLOR RED}Intriguing Stone{COLOR DARK_GRAY}!$"

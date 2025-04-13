@@ -4580,6 +4580,36 @@
       "secondary_tileset": "gTileset_MirageTower",
       "border_filepath": "data/layouts/MirageTower_B1F/border.bin",
       "blockdata_filepath": "data/layouts/MirageTower_B1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SCORCHED_SLAB_B1F",
+      "name": "ScorchedSlab_B1F_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/ScorchedSlab_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/ScorchedSlab_B1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SCORCHED_SLAB_B2F",
+      "name": "ScorchedSlab_B2F_Layout",
+      "width": 21,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/ScorchedSlab_B2F/border.bin",
+      "blockdata_filepath": "data/layouts/ScorchedSlab_B2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SCORCHED_SLAB_HEATRAN_ROOM",
+      "name": "ScorchedSlab_HeatranRoom_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/ScorchedSlab_HeatranRoom/border.bin",
+      "blockdata_filepath": "data/layouts/ScorchedSlab_HeatranRoom/map.bin"
     }
   ]
 }

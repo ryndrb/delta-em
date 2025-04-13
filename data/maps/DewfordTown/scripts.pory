@@ -700,6 +700,18 @@ script DewfordTown_EventScript_Briney_Continue {
 }
 
 script DewfordTown_EventScript_OldFisherMan {
-	msgbox("This is a renowned fishing spot.", MSGBOX_NPC)
+	lock
+	faceplayer
+	if (flag(FLAG_RECEIVED_EVIOLITE)) {
+		msgbox("Dewford is a renowned fishing spot.")
+		closemessage
+		release
+		end
+	}
+	msgbox("I fished up this strange rock the other\nday.\pIt's of no use to me, so here, you take\nit!")
+	giveitem(ITEM_EVIOLITE, 1)
+	msgbox("Maybe it'll be more useful in the hands\nof a Pokémon Trainer, yeah?\pIt's no good as bait, that's for sure!")
+	closemessage
+	release
 	end
 }

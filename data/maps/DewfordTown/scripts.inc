@@ -1424,7 +1424,30 @@ DewfordTown_EventScript_Briney_Continue_18:
 
 DewfordTown_EventScript_OldFisherMan::
 # 703 "data/maps/DewfordTown/scripts.pory"
-	msgbox DewfordTown_EventScript_OldFisherMan_Text_0, MSGBOX_NPC
+	lock
+# 704 "data/maps/DewfordTown/scripts.pory"
+	faceplayer
+# 705 "data/maps/DewfordTown/scripts.pory"
+	goto_if_set FLAG_RECEIVED_EVIOLITE, DewfordTown_EventScript_OldFisherMan_2
+# 711 "data/maps/DewfordTown/scripts.pory"
+	msgbox DewfordTown_EventScript_OldFisherMan_Text_1
+# 712 "data/maps/DewfordTown/scripts.pory"
+	giveitem ITEM_EVIOLITE, 1
+# 713 "data/maps/DewfordTown/scripts.pory"
+	msgbox DewfordTown_EventScript_OldFisherMan_Text_2
+# 714 "data/maps/DewfordTown/scripts.pory"
+	closemessage
+# 715 "data/maps/DewfordTown/scripts.pory"
+	release
+	end
+
+DewfordTown_EventScript_OldFisherMan_2:
+# 706 "data/maps/DewfordTown/scripts.pory"
+	msgbox DewfordTown_EventScript_OldFisherMan_Text_0
+# 707 "data/maps/DewfordTown/scripts.pory"
+	closemessage
+# 708 "data/maps/DewfordTown/scripts.pory"
+	release
 	end
 
 
@@ -1437,5 +1460,13 @@ DewfordTown_EventScript_Briney_Continue_Text_1:
 	.string "{COLOR RED}Mr. Briney{COLOR DARK_GRAY}: Ahoy!\nI know exactly what you want to say!\pYou've still got to deliver that case to\nyoung Stern in Slateport.\lAin't that so?\pYou just leave it up to this old\nseadog!\pWeigh anchors!\nWe're for Slateport!$"
 
 DewfordTown_EventScript_OldFisherMan_Text_0:
-# 703 "data/maps/DewfordTown/scripts.pory"
-	.string "This is a renowned fishing spot.$"
+# 706 "data/maps/DewfordTown/scripts.pory"
+	.string "Dewford is a renowned fishing spot.$"
+
+DewfordTown_EventScript_OldFisherMan_Text_1:
+# 711 "data/maps/DewfordTown/scripts.pory"
+	.string "I fished up this strange rock the other\nday.\pIt's of no use to me, so here, you take\nit!$"
+
+DewfordTown_EventScript_OldFisherMan_Text_2:
+# 713 "data/maps/DewfordTown/scripts.pory"
+	.string "Maybe it'll be more useful in the hands\nof a Pokémon Trainer, yeah?\pIt's no good as bait, that's for sure!$"

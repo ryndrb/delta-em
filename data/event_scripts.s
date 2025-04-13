@@ -1181,3 +1181,9 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Route111_MirageRuinsExterior/scripts.inc"
 
 	.include "data/maps/MirageTower_B1F/scripts.inc"
+
+	.include "data/maps/ScorchedSlab_B1F/scripts.inc"
+
+	.include "data/maps/ScorchedSlab_B2F/scripts.inc"
+
+	.include "data/maps/ScorchedSlab_HeatranRoom/scripts.inc"

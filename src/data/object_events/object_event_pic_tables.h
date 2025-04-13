@@ -1669,3 +1669,15 @@ static const struct SpriteFrameImage sPicTable_Tabitha[] = {
 static const struct SpriteFrameImage sPicTable_GoldItemBall[] = {
     obj_frame_tiles(gObjectEventPic_GoldItemBall),
 };
+
+const struct SpriteFrameImage sPicTable_MegaStone[] = {
+    overworld_frame(gObjectEventPic_MegaStone, 2, 2, 0),
+    overworld_frame(gObjectEventPic_MegaStone, 2, 2, 1),
+    overworld_frame(gObjectEventPic_MegaStone, 2, 2, 2),
+    overworld_frame(gObjectEventPic_MegaStone, 2, 2, 0),
+    overworld_frame(gObjectEventPic_MegaStone, 2, 2, 1),
+    overworld_frame(gObjectEventPic_MegaStone, 2, 2, 0),
+    overworld_frame(gObjectEventPic_MegaStone, 2, 2, 0),
+    overworld_frame(gObjectEventPic_MegaStone, 2, 2, 0),
+    overworld_frame(gObjectEventPic_MegaStone, 2, 2, 0),
+};

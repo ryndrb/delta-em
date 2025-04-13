@@ -4359,3 +4359,33 @@ void GetCodeFeedback(void)
     else
         gSpecialVar_Result = 0;
 }
+
+void RockSmashItems(void)
+{
+    u32 rand = Random() % 100;
+    if (rand < 20) {
+        gSpecialVar_Result = ITEM_PEARL;
+    } else if (rand < 40) {
+        gSpecialVar_Result = Random() % 4 + ITEM_RED_SHARD;
+    } else if (rand < 50) {
+        gSpecialVar_Result = ITEM_ELIXIR;
+    } else if (rand < 60) {
+        gSpecialVar_Result = ITEM_REVIVE;
+    } else if (rand < 70) {
+        gSpecialVar_Result = ITEM_STAR_PIECE;
+    } else if (rand < 80) {
+        gSpecialVar_Result = Random() % 18 + ITEM_NORMAL_GEM;
+    } else if (rand < 85) {
+        gSpecialVar_Result = ITEM_BIG_PEARL;
+    } else if (rand < 90) {
+        gSpecialVar_Result = ITEM_MAX_REVIVE;
+    } else if (rand < 94) {
+        gSpecialVar_Result = ITEM_SOFT_SAND;
+    } else if (rand < 98) {
+        gSpecialVar_Result = ITEM_HARD_STONE;
+    } else if (rand < 99) {
+        gSpecialVar_Result = ITEM_MAX_ELIXIR;
+    } else if (rand < 100) {
+        gSpecialVar_Result = Random() % 15 + ITEM_HELIX_FOSSIL;
+    }
+}

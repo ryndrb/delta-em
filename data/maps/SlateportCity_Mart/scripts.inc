@@ -78,3 +78,44 @@ SlateportCity_Mart_Text_SomeItemsOnlyAtMart:
 SlateportCity_Mart_Text_GreatBallIsBetter:
 # 40 "data/maps/SlateportCity_Mart/scripts.pory"
 	.string "It's easier to catch a Pokémon\nwith a Great Ball that is is with a\lregular old Poké Ball.\pWith this, I should finally be\nable to catch that hard-to-get\lPokémon…$"
+
+SlateportCity_Mart_EventScript_OtherClerk::
+# 45 "data/maps/SlateportCity_Mart/scripts.pory"
+	lock
+# 46 "data/maps/SlateportCity_Mart/scripts.pory"
+	faceplayer
+# 47 "data/maps/SlateportCity_Mart/scripts.pory"
+	message gText_HowMayIServeYou
+# 48 "data/maps/SlateportCity_Mart/scripts.pory"
+	waitmessage
+# 49 "data/maps/SlateportCity_Mart/scripts.pory"
+	pokemart SlateportCity_Mart_OtherClerk_Pokemart
+# 50 "data/maps/SlateportCity_Mart/scripts.pory"
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+# 51 "data/maps/SlateportCity_Mart/scripts.pory"
+	release
+	end
+
+
+	.align 2
+# 55 "data/maps/SlateportCity_Mart/scripts.pory"
+SlateportCity_Mart_OtherClerk_Pokemart:
+# 56 "data/maps/SlateportCity_Mart/scripts.pory"
+	.2byte ITEM_FIRE_STONE
+# 57 "data/maps/SlateportCity_Mart/scripts.pory"
+	.2byte ITEM_WATER_STONE
+# 58 "data/maps/SlateportCity_Mart/scripts.pory"
+	.2byte ITEM_THUNDER_STONE
+# 59 "data/maps/SlateportCity_Mart/scripts.pory"
+	.2byte ITEM_LEAF_STONE
+# 60 "data/maps/SlateportCity_Mart/scripts.pory"
+	.2byte ITEM_MOON_STONE
+# 61 "data/maps/SlateportCity_Mart/scripts.pory"
+	.2byte ITEM_SUN_STONE
+# 62 "data/maps/SlateportCity_Mart/scripts.pory"
+	.2byte ITEM_ICE_STONE
+# 63 "data/maps/SlateportCity_Mart/scripts.pory"
+	.2byte ITEM_OVAL_STONE
+# 64 "data/maps/SlateportCity_Mart/scripts.pory"
+	.2byte ITEM_HARBOR_MAIL
+	.2byte ITEM_NONE

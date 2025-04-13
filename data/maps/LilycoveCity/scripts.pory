@@ -573,3 +573,36 @@ text LilycoveCity_Text_MayDefeat {
 text LilycoveCity_Text_BrendanDefeat {
     "Hmm…\nYou've raised your team quite a bit."
 }
+
+script LilycoveCity_EventScript_Collector {
+	lock
+	faceplayer
+	if (flag(FLAG_RECEIVED_ALTARIANITE) == TRUE) {
+		msgbox("This is where fans of Pokémon\nbattles hold passionate discussions\levery day!")
+        closemessage
+        release
+        end
+	}
+	msgbox("This is where fans of Pokémon\nbattles hold passionate discussions\levery day!\pTo commemorate our first meeting, how\nabout a quiz?\pWhat Pokémon does Winona the\nGym Leader always have with her?\lTry and show me!")
+	special(ChoosePartyMon)
+    waitstate
+    if(var(VAR_0x8004) == PARTY_NOTHING_CHOSEN){
+        closemessage
+		release
+		end
+    }
+	specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
+    if(var(VAR_RESULT) != SPECIES_ALTARIA){
+        msgbox("Too bad! A miss!")
+        closemessage
+        release
+        end
+    }
+	setflag(FLAG_RECEIVED_ALTARIANITE)
+	msgbox("I expected nothing less from you!\pYour Altaria looks pretty amazing, too,\ndoesn't it?\lYou can make it, can't you?")
+	giveitem(ITEM_ALTARIANITE, 1)
+	msgbox("Yeah, yeah, hang in there!")
+	closemessage
+	release
+	end
+}

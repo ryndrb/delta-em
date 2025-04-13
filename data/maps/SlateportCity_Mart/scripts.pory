@@ -40,3 +40,26 @@ SlateportCity_Mart_Text_GreatBallIsBetter:
 	.string "It's easier to catch a Pokémon\nwith a Great Ball that is is with a\lregular old Poké Ball.\pWith this, I should finally be\nable to catch that hard-to-get\lPokémon…$"
 
 `
+
+script SlateportCity_Mart_EventScript_OtherClerk {
+	lock
+	faceplayer
+	message(gText_HowMayIServeYou)
+	waitmessage
+	pokemart(SlateportCity_Mart_OtherClerk_Pokemart)
+	msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
+	release
+	end
+}
+
+mart SlateportCity_Mart_OtherClerk_Pokemart {
+	ITEM_FIRE_STONE
+	ITEM_WATER_STONE
+	ITEM_THUNDER_STONE
+	ITEM_LEAF_STONE
+	ITEM_MOON_STONE
+	ITEM_SUN_STONE
+	ITEM_ICE_STONE
+	ITEM_OVAL_STONE
+	ITEM_HARBOR_MAIL
+}

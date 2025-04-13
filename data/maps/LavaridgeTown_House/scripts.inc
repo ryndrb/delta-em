@@ -47,14 +47,18 @@ LavaridgeTown_House_Text_Zigzagoon:
 
 LavaridgeTown_House_EventScript_MimicKid::
 # 28 "data/maps/LavaridgeTown_House/scripts.pory"
-	msgbox LavaridgeTown_House_EventScript_MimicKid_Text_0
+	lock
 # 29 "data/maps/LavaridgeTown_House/scripts.pory"
-	closemessage
+	faceplayer
 # 30 "data/maps/LavaridgeTown_House/scripts.pory"
+	msgbox LavaridgeTown_House_EventScript_MimicKid_Text_0
+# 31 "data/maps/LavaridgeTown_House/scripts.pory"
+	closemessage
+# 32 "data/maps/LavaridgeTown_House/scripts.pory"
 	release
 	end
 
 
 LavaridgeTown_House_EventScript_MimicKid_Text_0:
-# 28 "data/maps/LavaridgeTown_House/scripts.pory"
+# 30 "data/maps/LavaridgeTown_House/scripts.pory"
 	.string "Ah, young one!\pI am also a young one, but I mimic\nthe styles and speech of the elderly\lfolks of this town.$"

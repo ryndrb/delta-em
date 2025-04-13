@@ -5,3 +5,53 @@ mapscripts AshenWoods_MapScripts {
 script AshenWoods_OnResume {
     setstepcallback(STEP_CB_ASH)
 }
+
+script AshenWoods_EventScript_AuspiciousArmorTraderOldMan {
+    lock
+    faceplayer
+    checkitem(ITEM_YELLOW_SHARD, 10)
+    if (var(VAR_RESULT) == FALSE) {
+        msgbox("Hoho!\nHello there, child!\pI am a collector of curiosities and a\ngreat lover of shards.\pI've auspicious curios to offer--if\nyou'll trade me {COLOR RED}10{COLOR DARK_GRAY} Yellow Shards for one.")
+        closemessage
+        release
+        end
+    }
+    msgbox("Hoho!\nHello there, child!\pI am a collector of curiosities and a\ngreat lover of shards.\pI've auspicious curios to offer--if\nyou'll trade me {COLOR RED}10{COLOR DARK_GRAY} Yellow Shards for one.", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        closemessage
+        release
+        end
+    }
+    removeitem(ITEM_YELLOW_SHARD, 10)
+    msgbox("Hoho!\nVery good, very good.\pI feel closer than ever in surpassing\nmy wife now!\pHere's a curio I promised you.\pTake good care of it--it's laden with\nblessings.")
+    delay(8)
+    giveitem(ITEM_AUSPICIOUS_ARMOR, 1)
+    closemessage
+    release
+    end
+}
+
+script AshenWoods_EventScript_MaliciousArmorTraderOldWoman {
+    lock
+    faceplayer
+    checkitem(ITEM_BLUE_SHARD, 10)
+    if (var(VAR_RESULT) == FALSE) {
+        msgbox("Ehehe!\nHello there, child!\pI am a collector of curiosities and a\ngreat lover of shards.\pI've curios with a…dark past, shall we\nsay.\pI'll trade you one for {COLOR RED}10{COLOR DARK_GRAY} Blue Shards.")
+        closemessage
+        release
+        end
+    }
+    msgbox("Ehehe!\nHello there, child!\pI am a collector of curiosities and a\ngreat lover of shards.\pI've curios with a…dark past, shall we\nsay.\pI'll trade you one for {COLOR RED}10{COLOR DARK_GRAY} Blue Shards.", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        closemessage
+        release
+        end
+    }
+    removeitem(ITEM_BLUE_SHARD, 10)
+    msgbox("Ehehe!\nThat will do nicely.\pI feel better about my chances against\nmy husband now!\pHere's a curio I promised you.\pCareful with it--it's steeped in a\npotent malice.")
+    delay(8)
+    giveitem(ITEM_MALICIOUS_ARMOR, 1)
+    closemessage
+    release
+    end
+}

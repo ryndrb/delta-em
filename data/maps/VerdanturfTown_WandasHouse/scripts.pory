@@ -39,15 +39,6 @@ VerdanturfTown_WandasHouse_EventScript_WandasBoyfriend::
 	msgbox VerdanturfTown_WandasHouse_Text_CanSeeGirlfriendEveryDay, MSGBOX_NPC
 	end
 
-VerdanturfTown_WandasHouse_EventScript_Wanda::
-	lock
-	faceplayer
-	goto_if_set FLAG_DEFEATED_LAVARIDGE_GYM, VerdanturfTown_WandasHouse_EventScript_WandaDontWorry
-	goto_if_set FLAG_DEFEATED_WALLY_MAUVILLE, VerdanturfTown_WandasHouse_EventScript_MeetWanda
-	msgbox VerdanturfTown_WandasHouse_Text_DontWorryAboutWally, MSGBOX_DEFAULT
-	release
-	end
-
 VerdanturfTown_WandasHouse_EventScript_MeetWanda::
 	msgbox VerdanturfTown_WandasHouse_Text_MeetWanda, MSGBOX_DEFAULT
 	release
@@ -148,3 +139,29 @@ VerdanturfTown_WandasHouse_Text_WallyWasInEverGrande:
 	.string "astonished to hear that!$"
 
 `
+
+script VerdanturfTown_WandasHouse_EventScript_Wanda {
+	lock
+	faceplayer
+	if (flag(FLAG_RECEIVED_GARDEVOIRITE) == FALSE) {
+		checkitem(ITEM_MEGA_RING)
+		if (var(VAR_RESULT) == TRUE) {
+			msgbox("{COLOR RED}Wanda{COLOR DARK_GRAY}: Why, it feels like it's been ages\nsince we saw you last!\pWhat wonderful timing! I was thinking\nthat I wanted to give this to you…")
+			giveitem(ITEM_GARDEVOIRITE, 1)
+			msgbox("I didn't really thank you properly\nwhen you helped smash those rocks in\lthe tunnel.\pI found it in the yard some time ago.\pActually, I found two, and I gave the\nother to Wally.\pIt's a pretty stone, and I'm sure your\nPokémon would be delighted if you let\lone of them hold it!")
+			closemessage
+			setflag(FLAG_RECEIVED_GARDEVOIRITE)
+			release
+			end
+		}
+	}
+	if (flag(FLAG_DEFEATED_LAVARIDGE_GYM) == TRUE) {
+		goto(VerdanturfTown_WandasHouse_EventScript_WandaDontWorry)
+	}
+	if (flag(FLAG_DEFEATED_WALLY_MAUVILLE) == TRUE) {
+		goto(VerdanturfTown_WandasHouse_EventScript_MeetWanda)
+	}
+	msgbox(VerdanturfTown_WandasHouse_Text_DontWorryAboutWally)
+	release
+	end
+}

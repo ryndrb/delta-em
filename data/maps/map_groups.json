@@ -446,7 +446,10 @@
     "MirageRuins_B1F",
     "MirageRuins_2F",
     "MirageRuins_3F",
-    "MirageTower_B1F"
+    "MirageTower_B1F",
+    "ScorchedSlab_B1F",
+    "ScorchedSlab_B2F",
+    "ScorchedSlab_HeatranRoom"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

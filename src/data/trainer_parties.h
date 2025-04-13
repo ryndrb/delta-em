@@ -188,13 +188,22 @@ static const struct TrainerMon sParty_Gabrielle1[] = {
 
 static const struct TrainerMon sParty_GruntPetalburgWoods[] = {
     {
-        .lvl = 10,
-        .species = SPECIES_POOCHYENA,
-        .ability = ABILITY_NONE,
-        .nature = NATURE_JOLLY,
-        .heldItem = ITEM_NONE,
+        .lvl = 8,
+        .species = SPECIES_GLIMMET,
+        .ability = ABILITY_TOXIC_DEBRIS,
+        .nature = NATURE_TIMID,
+        .heldItem = ITEM_SHUCA_BERRY,
         .ball = ITEM_POKE_BALL,
-        .moves = {MOVE_TACKLE, MOVE_TRAILBLAZE, MOVE_ROAR, MOVE_BITE}
+        .moves = {MOVE_ACID_SPRAY, MOVE_ANCIENT_POWER}
+    },
+    {
+        .lvl = 9,
+        .species = SPECIES_POOCHYENA,
+        .ability = ABILITY_QUICK_FEET,
+        .nature = NATURE_JOLLY,
+        .heldItem = ITEM_SITRUS_BERRY,
+        .ball = ITEM_POKE_BALL,
+        .moves = {MOVE_HOWL, MOVE_ICE_FANG, MOVE_FIRE_FANG, MOVE_BITE}
     },
     {
         .lvl = 10,
@@ -202,9 +211,9 @@ static const struct TrainerMon sParty_GruntPetalburgWoods[] = {
         .ability = ABILITY_INTIMIDATE,
         .nature = NATURE_RASH,
         .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 0, 0),
-        .heldItem = ITEM_NONE,
+        .heldItem = ITEM_WISE_GLASSES,
         .ball = ITEM_POKE_BALL,
-        .moves = {MOVE_EMBER, MOVE_SMOG, MOVE_TRAILBLAZE}
+        .moves = {MOVE_SNARL, MOVE_INCINERATE}
     },
 };
 

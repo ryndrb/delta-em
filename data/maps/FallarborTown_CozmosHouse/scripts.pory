@@ -40,15 +40,6 @@ FallarborTown_CozmosHouse_OnFrameTable:
 	map_script_2 VAR_FALLARBOR_TOWN_STATE, 3, FallarborTown_CozmosHouse_EventScript_CozmosReturn
 	.2byte 0
 
-FallarborTown_CozmosHouse_EventScript_ProfCozmo::
-	lock
-	faceplayer
-	goto_if_unset FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, FallarborTown_CozmosHouse_EventScript_CrooksAtMtChimney
-	msgbox FallarborTown_CozmosHouse_Text_MakeYourselfAtHome, MSGBOX_DEFAULT
-	closemessage
-	release
-	end
-
 FallarborTown_CozmosHouse_EventScript_CozmosWife::
 	lock
 	faceplayer
@@ -317,4 +308,38 @@ script FallarborTown_CozmosHouse_EventScript_Rival {
 	closemessage
 	release
 	end
+}
+
+script FallarborTown_CozmosHouse_EventScript_ProfCozmo {
+	lock
+	faceplayer
+	if (flag(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY)) {
+		goto(FallarborTown_CozmosHouse_EventScript_CrooksAtMtChimney)
+	} else {
+		if (flag(FLAG_TEMP_2) == TRUE) {
+			msgbox("{COLOR RED}Cozmo{COLOR DARK_GRAY}: Make yourself at home!")
+			closemessage
+			release
+			end
+		}
+		if (flag(FLAG_RECEIVED_GALLADITE) == FALSE) {
+			checkitem(ITEM_MEGA_RING)
+			if (var(VAR_RESULT) == TRUE) {
+				msgbox("{COLOR RED}Cozmo{COLOR DARK_GRAY}: Oh! Why, hello again!\pWhat good fortune…\pI'd been thinking that if I saw you\nagain, I would want to give you this…")
+				giveitem(ITEM_GALLADITE, 1)
+				// msgbox("I happened to pick this up some\ntime ago, while doing excavation at\lMeteor Falls.\pI hope it might help you and your team\nalong on your journey.\pBut I'm still astounded by it all…\pA relationship between the\nMega Stones, Key Stones, and the\lMeteorites…\pMy, but new facts do come to light\nevery day!\pThis is what makes my research feel\nworthwhile!\pI know a man, a dear friend in\nthe Kalos region, who has been\lresearching Mega Evolution.\pWe worked together a few\nyears back here at Meteor Falls\lresearching Meteorites.\pI'll have to share this information with\nhim at once.\pIt might propel his research forward,\nand help future Trainers and Pokémon.\lI hope it does.")
+				msgbox("I happened to pick this up some\ntime ago, while doing excavation at\lMeteor Falls.\pI hope it might help you and your team\nalong on your journey.")
+				closemessage
+				setflag(FLAG_RECEIVED_GALLADITE)
+				setflag(FLAG_TEMP_2)
+				release
+				end
+			}
+		} else {
+			msgbox(FallarborTown_CozmosHouse_Text_MakeYourselfAtHome)
+			closemessage
+			release
+			end
+		}
+	}
 }

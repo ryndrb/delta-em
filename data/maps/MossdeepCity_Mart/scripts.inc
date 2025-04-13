@@ -13,15 +13,16 @@ MossdeepCity_Mart_EventScript_Clerk::
 
 	.align 2
 MossdeepCity_Mart_Pokemart:
-	.2byte ITEM_ULTRA_BALL
-	.2byte ITEM_NET_BALL
-	.2byte ITEM_DIVE_BALL
-	.2byte ITEM_HYPER_POTION
-	.2byte ITEM_FULL_HEAL
-	.2byte ITEM_REVIVE
-	.2byte ITEM_MAX_REPEL
-	.2byte ITEM_X_ATTACK
-	.2byte ITEM_X_DEFENSE
+	.2byte ITEM_ASSAULT_VEST
+	.2byte ITEM_BRIGHT_POWDER
+	.2byte ITEM_CHOICE_BAND
+	.2byte ITEM_CHOICE_SPECS
+	.2byte ITEM_CLEAR_AMULET
+	.2byte ITEM_FLAME_ORB
+	.2byte ITEM_HEAVY_DUTY_BOOTS
+	.2byte ITEM_LIFE_ORB
+	.2byte ITEM_ROOM_SERVICE
+	.2byte ITEM_TOXIC_ORB
 	pokemartlistend
 
 MossdeepCity_Mart_EventScript_Woman::

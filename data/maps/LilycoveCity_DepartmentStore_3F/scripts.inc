@@ -6,19 +6,21 @@ LilycoveCity_DepartmentStore_3F_EventScript_ClerkLeft::
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
-	pokemart LilycoveCity_DepartmentStore_3F_Pokemart_Vitamins
+	pokemart LilycoveCity_DepartmentStore_3F_Pokemart_Left
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end
 
 	.align 2
-LilycoveCity_DepartmentStore_3F_Pokemart_Vitamins:
-	.2byte ITEM_PROTEIN
-	.2byte ITEM_CALCIUM
-	.2byte ITEM_IRON
-	.2byte ITEM_ZINC
-	.2byte ITEM_CARBOS
-	.2byte ITEM_HP_UP
+LilycoveCity_DepartmentStore_3F_Pokemart_Left:
+	.2byte ITEM_ASSAULT_VEST
+	.2byte ITEM_CHOICE_BAND
+	.2byte ITEM_CHOICE_SCARF
+	.2byte ITEM_CHOICE_SPECS
+	.2byte ITEM_EJECT_PACK
+	.2byte ITEM_HEAVY_DUTY_BOOTS
+	.2byte ITEM_LIFE_ORB
+	.2byte ITEM_LOADED_DICE
 	pokemartlistend
 
 LilycoveCity_DepartmentStore_3F_EventScript_ClerkRight::

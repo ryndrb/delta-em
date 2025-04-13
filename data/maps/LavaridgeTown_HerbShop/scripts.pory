@@ -2,24 +2,6 @@ raw `
 LavaridgeTown_HerbShop_MapScripts::
 	.byte 0
 
-LavaridgeTown_HerbShop_EventScript_Clerk::
-	lock
-	faceplayer
-	message LavaridgeTown_HerbShop_Text_WelcomeToHerbShop
-	waitmessage
-	pokemart LavaridgeTown_HerbShop_Pokemart
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-	release
-	end
-
-	.align 2
-LavaridgeTown_HerbShop_Pokemart:
-	.2byte ITEM_ENERGY_POWDER
-	.2byte ITEM_ENERGY_ROOT
-	.2byte ITEM_HEAL_POWDER
-	.2byte ITEM_REVIVAL_HERB
-	pokemartlistend
-
 LavaridgeTown_HerbShop_EventScript_ExpertM::
 	msgbox LavaridgeTown_HerbShop_Text_HerbalMedicineWorksButMonWillDislike, MSGBOX_NPC
 	end
@@ -57,3 +39,50 @@ LavaridgeTown_HerbShop_Text_HerbalMedicineWorksButMonWillDislike:
 
 
 `
+
+script LavaridgeTown_HerbShop_EventScript_Clerk {
+	lock
+	faceplayer
+	message(LavaridgeTown_HerbShop_Text_WelcomeToHerbShop)
+	waitmessage
+	if (flag(FLAG_BADGE06_GET)) {
+      pokemart(LavaridgeTown_HerbShop_Pokemart_6thBadge)
+    } elif (flag(FLAG_BADGE05_GET)) {
+		pokemart(LavaridgeTown_HerbShop_Pokemart_5thBadge)
+	} else {
+		pokemart(LavaridgeTown_HerbShop_Pokemart)
+	}
+	msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
+	release
+	end
+}
+
+mart LavaridgeTown_HerbShop_Pokemart {
+	ITEM_ENERGY_POWDER
+	ITEM_ENERGY_ROOT
+	ITEM_HEAL_POWDER
+	ITEM_MENTAL_HERB
+	ITEM_REVIVAL_HERB
+	ITEM_WHITE_HERB
+}
+
+mart LavaridgeTown_HerbShop_Pokemart_5thBadge {
+	ITEM_ENERGY_POWDER
+	ITEM_ENERGY_ROOT
+	ITEM_HEAL_POWDER
+	ITEM_MENTAL_HERB
+	ITEM_MIRROR_HERB
+	ITEM_REVIVAL_HERB
+	ITEM_WHITE_HERB
+}
+
+mart LavaridgeTown_HerbShop_Pokemart_6thBadge {
+	ITEM_ENERGY_POWDER
+	ITEM_ENERGY_ROOT
+	ITEM_HEAL_POWDER
+	ITEM_MENTAL_HERB
+	ITEM_MIRROR_HERB
+	ITEM_POWER_HERB
+	ITEM_REVIVAL_HERB
+	ITEM_WHITE_HERB
+}

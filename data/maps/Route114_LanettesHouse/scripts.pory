@@ -1,0 +1,85 @@
+raw `
+Route114_LanettesHouse_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route114_LanettesHouse_OnTransition
+	.byte 0
+
+Route114_LanettesHouse_OnTransition:
+	setflag FLAG_LANDMARK_LANETTES_HOUSE
+	end
+
+Route114_LanettesHouse_EventScript_Notebook::
+	lockall
+	msgbox Route114_LanettesHouse_Text_ResearchNotesPage1, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Route114_LanettesHouse_EventScript_NotebookPage2
+	msgbox Route114_LanettesHouse_Text_ClosedTheNotebook, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Route114_LanettesHouse_EventScript_NotebookPage2::
+	msgbox Route114_LanettesHouse_Text_ResearchNotesPage2, MSGBOX_YESNO
+	call_if_eq VAR_RESULT, YES, Route114_LanettesHouse_EventScript_NotebookPage3
+	releaseall
+	end
+
+Route114_LanettesHouse_EventScript_NotebookPage3::
+	msgbox Route114_LanettesHouse_Text_ResearchNotesPage3, MSGBOX_DEFAULT
+	return
+
+Route114_LanettesHouse_EventScript_PC::
+	msgbox Route114_LanettesHouse_Text_EmailFromBill, MSGBOX_SIGN
+	end
+
+Route114_LanettesHouse_Text_ResearchNotesPage1:
+	.string "It's Lanette's research notes.\n"
+	.string "There's information about Boxes.\p"
+	.string "Design Boxes to hold 30 Pokémon each.\p"
+	.string "Each Trainer should be able to store\n"
+	.string "420 Pokémon on the PC system.\p"
+	.string "Keep reading?$"
+
+Route114_LanettesHouse_Text_ResearchNotesPage2:
+	.string "A marking system should be added to\n"
+	.string "make Pokémon easier to organize.\p"
+	.string "The name and wallpaper design of each\n"
+	.string "Box will be made changeable to please\l"
+	.string "the stored Pokémon.\p"
+	.string "Keep reading?$"
+
+Route114_LanettesHouse_Text_ResearchNotesPage3:
+	.string "When storing a Pokémon, it should be\n"
+	.string "sent to the Box inspected last.\p"
+	.string "If that Box is full, the received\n"
+	.string "Pokémon is stored in the next Box.\p"
+	.string "In other words, when a Box is examined,\n"
+	.string "it is automatically selected as the Box\l"
+	.string "to which Pokémon are sent.$"
+
+Route114_LanettesHouse_Text_ClosedTheNotebook:
+	.string "{PLAYER} closed the notebook.$"
+
+Route114_LanettesHouse_Text_EmailFromBill:
+	.string "There's an e-mail from someone on the\nPC.\p“… … … … … …\p“Your Pokémon Storage System offers\nmore convenience than mine.\p“It has a lot of user-friendly features\nthat make it fun and useful, too.\p“It makes me proud that I played a part\nin its development.\p“Here's hoping that you'll continue\ncollaborating with me.\p“- Bill\pP.S. I hope you're taking breaks and not\nworking too hard.\pDon't forget to eat--I know how you get\nwhen you're lost in your research.\pTake care of yourself, Lanette.\p… … … … …”$"
+
+
+`
+
+script Route114_LanettesHouse_EventScript_Lanette {
+    lock
+	faceplayer
+    if (flag(FLAG_RECEIVED_ROTOM_CATALOG)) {
+        msgbox("{COLOR RED}Lanette{COLOR DARK_GRAY}: If you ever meet Bill, don't\ntell him how messy my house is, okay?\pHe'd never let me hear the end of it!")
+        closemessage
+        release
+        end
+    }
+    setflag(FLAG_SYS_PC_LANETTE)
+    msgbox("{COLOR RED}Lanette{COLOR DARK_GRAY}: Oh! {PLAYER}!\pI'm sorry everything so cluttered…\pWhen I get engrossed in research,\nthings end up this way…\pBut I'm so glad you're here!\pI've been working on something special\nwith a colleague of mine from Kanto.\lYou might know him--Bill?\pHe's the one who pioneered the Pokémon\nStorage System.\pWe've been collaborating on a project\nto expand the capabilities of certain\lPokémon, like Rotom.\pSpeaking of which…\n{PLAYER}, I want you to have this.")
+    closemessage
+    delay(16)
+    giveitem(ITEM_ROTOM_CATALOG)
+    msgbox("{COLOR RED}Lanette{COLOR DARK_GRAY}: It's called a Rotom Catalog.\pIt allows Rotom to change forms and\nunlock new potential!\pBill and I thought trainers like\nyou would appreciate the chance\lto explore new possibilities with\lyour Pokémon.\pConsider it a token of our gratitude\nfor using the Storage System.\pOh, and… if you ever meet Bill, don't tell\nhim how messy my house is, okay?\pHe'd never let me hear the end of it!")
+    closemessage
+    setflag(FLAG_RECEIVED_ROTOM_CATALOG)
+	release
+	end
+}

@@ -34,18 +34,6 @@ Route114_FossilManiacsTunnel_EventScript_ManiacMentionCaveIn::
 	releaseall
 	end
 
-Route114_FossilManiacsTunnel_EventScript_FossilManiac::
-	lock
-	faceplayer
-	goto_if_set FLAG_RECEIVED_REVIVED_FOSSIL_MON, Route114_FossilManiacsTunnel_EventScript_PlayerRevivedFossil
-	checkitem ITEM_ROOT_FOSSIL
-	goto_if_eq VAR_RESULT, TRUE, Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil
-	checkitem ITEM_CLAW_FOSSIL
-	goto_if_eq VAR_RESULT, TRUE, Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil
-	msgbox Route114_FossilManiacsTunnel_Text_LookInDesertForFossils, MSGBOX_DEFAULT
-	release
-	end
-
 Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil::
 	msgbox Route114_FossilManiacsTunnel_Text_DevonCorpRevivingFossils, MSGBOX_DEFAULT
 	release
@@ -86,3 +74,37 @@ Route114_FossilManiacsTunnel_Text_NotSafeThatWay:
 
 
 `
+
+script Route114_FossilManiacsTunnel_EventScript_FossilManiac {
+	lock
+	faceplayer
+	if (flag(FLAG_TEMP_1) == TRUE) {
+		msgbox("But the Fossils around these parts\nall belong to me… None for you…\pIf you can't go without a Fossil, try\nthe desert on Route 111…\pFrom what I've heard, the Fossils\nburied in the sand sometimes rise to\lthe surface due to sandstorms…")
+		closemessage
+		release
+		end
+	}
+	checkspecies(SPECIES_BELDUM, NO_PARTY_SCREEN)
+	if (flag(FLAG_RECEIVED_BELDUM) && flag(FLAG_RECEIVED_BELDUM) && var(VAR_RESULT) == TRUE) {
+		msgbox("Looking at your white Pokémon reminds\nme of the Devon president's son…\pI heard he traveled all the way\nto Kalos, crossing three oceans to\lfind the white Pokémon and some kind\lof stone…\pThat's what you'd expect from\nsomeone who calls himself a wandering\lstone collector…")
+		closemessage
+		release
+		end
+	}
+	if (flag(FLAG_RECEIVED_REVIVED_FOSSIL_MON) == TRUE) {
+		goto(Route114_FossilManiacsTunnel_EventScript_PlayerRevivedFossil)
+	}
+	checkitem(ITEM_ROOT_FOSSIL)
+	if (var(VAR_RESULT) == TRUE) {
+		goto(Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil)
+	}
+	checkitem(ITEM_CLAW_FOSSIL)
+	if (var(VAR_RESULT) == TRUE) {
+		goto(Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil)
+	}
+	msgbox(Route114_FossilManiacsTunnel_Text_LookInDesertForFossils, MSGBOX_DEFAULT)
+	closemessage
+	setflag(FLAG_TEMP_1)
+	release
+	end
+}

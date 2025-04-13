@@ -777,7 +777,14 @@ script MauvilleCity_EventScript_Wattson {
 }
 
 script MauvilleCity_EventScript_RolloutMan {
-	msgbox("Did you know that you can go\nfrom here a long way in that direction\lwithout changing direction?\pI might even be able to roll that way.\pDo you think your Pokémon will want to\nroll, too?")
+	lock
+	faceplayer
+	checkitem(ITEM_TM_GYRO_BALL, 1)
+	if (var(VAR_RESULT) != 1) {
+		msgbox("Did you know that you can go\nfrom here a long way in that direction\lwithout changing direction?\pI might even be able to roll that way.\pDo you think your Pokémon will want to\nroll, too?\pHere, let them try out this TM if you'd\nlike.")
+		giveitem(ITEM_TM_GYRO_BALL, 1)
+	}
+	msgbox("The TM I gave you contains the move\nGyro Ball.\pIt's an attack that does more damage\nthe slower the user is compared to\lthe foe.")
 	closemessage
 	release
 	end

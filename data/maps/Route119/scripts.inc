@@ -979,7 +979,7 @@ Route119_EventScript_RivalEncounter_Text_0:
 
 Route119_EventScript_RivalEncounter_Text_1:
 # 293 "data/maps/Route119/scripts.pory"
-	.string "Oh… Where did you get that thing on\nyour finger?\lThat's a pretty fancy-looking ring…\p…\pWow! So that's a Mega Ring?\nAnd you can use it for Mega\lEvolution…\pHehe, looks like we're on the same\npage. I've got one too, you know.\pI guess now we can keep getting\neven closer to your Pokémon, huh?\lI guess we have all the luck…\pBut I'm not about to lose to you\nbecause we both have Mega Rings!\lLet's see who's best in battle!\pAre your Pokémon all ready?\nOf course they are!\lLet's go!$"
+	.string "Oh… Where did you get that thing on\nyour finger?\lThat's a pretty fancy-looking ring…\p…\pWow! So that's a Mega Ring?\nAnd you can use it for Mega\lEvolution…\pHehe, looks like we're on the same\npage. I've got one too, you know.\pI guess now we can keep getting\neven closer to our Pokémon, huh?\lI guess we have all the luck…\pBut I'm not about to lose to you\nbecause we both have Mega Rings!\lLet's see who's best in battle!\pAre your Pokémon all ready?\nOf course they are!\lLet's go!$"
 
 Route119_EventScript_RivalEncounter_Text_2:
 # 296 "data/maps/Route119/scripts.pory"
@@ -991,7 +991,7 @@ Route119_EventScript_RivalEncounter_Text_3:
 
 Route119_EventScript_RivalEncounter_Text_4:
 # 304 "data/maps/Route119/scripts.pory"
-	.string "If you use Fly, your Pokémon will\ncarry you back to anywhere you've\lbeen before. But you already know\lthat! Hehe.\pWell, till we meet again!\nAnd next time I won't lose!$"
+	.string "If you use Fly, your Pokémon will\ncarry you back to anywhere you've\lbeen before.\pBut you already know that! Hehe.\pWell, till we meet again!\nAnd next time I won't lose!$"
 
 Route119_EventScript_RivalEncounter_Text_5:
 # 306 "data/maps/Route119/scripts.pory"
@@ -1011,7 +1011,7 @@ Route119_EventScript_RivalEncounter_Text_8:
 
 Route119_EventScript_RivalEncounter_Text_9:
 # 325 "data/maps/Route119/scripts.pory"
-	.string "With Fly, your Pokémon can carry you\nback to just about anyplace you've\lvisited before. But I'm sure you know\lthat already.\pWell, I'm going on ahead.\nBut I'm definitely winning next time!$"
+	.string "With Fly, your Pokémon can carry you\nback to just about anyplace you've\lvisited before.\pBut I'm sure you know that already.\pWell, I'm going on ahead.\nBut I'm definitely winning next time!$"
 
 Route119_EventScript_RivalEncounter_Text_10:
 # 362 "data/maps/Route119/scripts.pory"

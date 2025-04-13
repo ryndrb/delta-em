@@ -55,120 +55,151 @@ FallarborTown_Mart_Pokemart:
 # 28 "data/maps/FallarborTown_Mart/scripts.pory"
 	.2byte ITEM_GUARD_SPEC
 # 29 "data/maps/FallarborTown_Mart/scripts.pory"
-	.2byte ITEM_NONE
+	pokemartlistend
 # 30 "data/maps/FallarborTown_Mart/scripts.pory"
-	release
+
 # 31 "data/maps/FallarborTown_Mart/scripts.pory"
-	end
-# 32 "data/maps/FallarborTown_Mart/scripts.pory"
-
-# 33 "data/maps/FallarborTown_Mart/scripts.pory"
 FallarborTown_Mart_EventScript_Woman::
-# 34 "data/maps/FallarborTown_Mart/scripts.pory"
+# 32 "data/maps/FallarborTown_Mart/scripts.pory"
 	msgbox FallarborTown_Mart_Text_DecidingSkittyEvolve, MSGBOX_NPC
+# 33 "data/maps/FallarborTown_Mart/scripts.pory"
+	end
+# 34 "data/maps/FallarborTown_Mart/scripts.pory"
+
 # 35 "data/maps/FallarborTown_Mart/scripts.pory"
-	end
-# 36 "data/maps/FallarborTown_Mart/scripts.pory"
-
-# 37 "data/maps/FallarborTown_Mart/scripts.pory"
 FallarborTown_Mart_EventScript_PokefanM::
-# 38 "data/maps/FallarborTown_Mart/scripts.pory"
+# 36 "data/maps/FallarborTown_Mart/scripts.pory"
 	msgbox FallarborTown_Mart_Text_SellNuggetIFound, MSGBOX_NPC
+# 37 "data/maps/FallarborTown_Mart/scripts.pory"
+	end
+# 38 "data/maps/FallarborTown_Mart/scripts.pory"
+
 # 39 "data/maps/FallarborTown_Mart/scripts.pory"
-	end
-# 40 "data/maps/FallarborTown_Mart/scripts.pory"
-
-# 41 "data/maps/FallarborTown_Mart/scripts.pory"
 FallarborTown_Mart_EventScript_Skitty::
-# 42 "data/maps/FallarborTown_Mart/scripts.pory"
+# 40 "data/maps/FallarborTown_Mart/scripts.pory"
 	lock
-# 43 "data/maps/FallarborTown_Mart/scripts.pory"
+# 41 "data/maps/FallarborTown_Mart/scripts.pory"
 	faceplayer
-# 44 "data/maps/FallarborTown_Mart/scripts.pory"
+# 42 "data/maps/FallarborTown_Mart/scripts.pory"
 	waitse
-# 45 "data/maps/FallarborTown_Mart/scripts.pory"
+# 43 "data/maps/FallarborTown_Mart/scripts.pory"
 	playmoncry SPECIES_SKITTY, CRY_MODE_NORMAL
-# 46 "data/maps/FallarborTown_Mart/scripts.pory"
+# 44 "data/maps/FallarborTown_Mart/scripts.pory"
 	msgbox FallarborTown_Mart_Text_Skitty, MSGBOX_DEFAULT
-# 47 "data/maps/FallarborTown_Mart/scripts.pory"
+# 45 "data/maps/FallarborTown_Mart/scripts.pory"
 	waitmoncry
-# 48 "data/maps/FallarborTown_Mart/scripts.pory"
+# 46 "data/maps/FallarborTown_Mart/scripts.pory"
 	release
-# 49 "data/maps/FallarborTown_Mart/scripts.pory"
+# 47 "data/maps/FallarborTown_Mart/scripts.pory"
 	end
-# 50 "data/maps/FallarborTown_Mart/scripts.pory"
+# 48 "data/maps/FallarborTown_Mart/scripts.pory"
 
-# 51 "data/maps/FallarborTown_Mart/scripts.pory"
+# 49 "data/maps/FallarborTown_Mart/scripts.pory"
 FallarborTown_Mart_Text_DecidingSkittyEvolve:
-# 52 "data/maps/FallarborTown_Mart/scripts.pory"
+# 50 "data/maps/FallarborTown_Mart/scripts.pory"
 	.string "I'm having a hard time deciding if I\n"
-# 53 "data/maps/FallarborTown_Mart/scripts.pory"
+# 51 "data/maps/FallarborTown_Mart/scripts.pory"
 	.string "should make my Skitty evolve or not.\p"
-# 54 "data/maps/FallarborTown_Mart/scripts.pory"
+# 52 "data/maps/FallarborTown_Mart/scripts.pory"
 	.string "I only have to use this Moon Stone,\n"
-# 55 "data/maps/FallarborTown_Mart/scripts.pory"
+# 53 "data/maps/FallarborTown_Mart/scripts.pory"
 	.string "but it's so hard to decide…\p"
-# 56 "data/maps/FallarborTown_Mart/scripts.pory"
+# 54 "data/maps/FallarborTown_Mart/scripts.pory"
 	.string "If I make it evolve, it will become\n"
-# 57 "data/maps/FallarborTown_Mart/scripts.pory"
+# 55 "data/maps/FallarborTown_Mart/scripts.pory"
 	.string "much stronger.\p"
-# 58 "data/maps/FallarborTown_Mart/scripts.pory"
+# 56 "data/maps/FallarborTown_Mart/scripts.pory"
 	.string "But it will look so different, too.$"
-# 59 "data/maps/FallarborTown_Mart/scripts.pory"
+# 57 "data/maps/FallarborTown_Mart/scripts.pory"
 
-# 60 "data/maps/FallarborTown_Mart/scripts.pory"
+# 58 "data/maps/FallarborTown_Mart/scripts.pory"
 FallarborTown_Mart_Text_Skitty:
-# 61 "data/maps/FallarborTown_Mart/scripts.pory"
+# 59 "data/maps/FallarborTown_Mart/scripts.pory"
 	.string "Skitty: Miyao?$"
-# 62 "data/maps/FallarborTown_Mart/scripts.pory"
+# 60 "data/maps/FallarborTown_Mart/scripts.pory"
 
-# 63 "data/maps/FallarborTown_Mart/scripts.pory"
+# 61 "data/maps/FallarborTown_Mart/scripts.pory"
 FallarborTown_Mart_Text_SellNuggetIFound:
-# 64 "data/maps/FallarborTown_Mart/scripts.pory"
+# 62 "data/maps/FallarborTown_Mart/scripts.pory"
 	.string "This Nugget I found here…\n"
-# 65 "data/maps/FallarborTown_Mart/scripts.pory"
+# 63 "data/maps/FallarborTown_Mart/scripts.pory"
 	.string "I suppose I'll have to sell it, seeing\l"
-# 66 "data/maps/FallarborTown_Mart/scripts.pory"
+# 64 "data/maps/FallarborTown_Mart/scripts.pory"
 	.string "as how it has no other use.$"
 
 FallarborTown_Mart_EventScript_DrainPunchTM::
-# 72 "data/maps/FallarborTown_Mart/scripts.pory"
+# 70 "data/maps/FallarborTown_Mart/scripts.pory"
 	lock
-# 73 "data/maps/FallarborTown_Mart/scripts.pory"
+# 71 "data/maps/FallarborTown_Mart/scripts.pory"
 	faceplayer
-# 74 "data/maps/FallarborTown_Mart/scripts.pory"
+# 72 "data/maps/FallarborTown_Mart/scripts.pory"
 	checkitem ITEM_TM_DRAIN_PUNCH, 1
-# 75 "data/maps/FallarborTown_Mart/scripts.pory"
+# 73 "data/maps/FallarborTown_Mart/scripts.pory"
 	compare VAR_RESULT, 1
 	goto_if_eq FallarborTown_Mart_EventScript_DrainPunchTM_2
-# 81 "data/maps/FallarborTown_Mart/scripts.pory"
+# 79 "data/maps/FallarborTown_Mart/scripts.pory"
 	msgbox FallarborTown_Mart_EventScript_DrainPunchTM_Text_0
-# 82 "data/maps/FallarborTown_Mart/scripts.pory"
+# 80 "data/maps/FallarborTown_Mart/scripts.pory"
 	closemessage
-# 83 "data/maps/FallarborTown_Mart/scripts.pory"
+# 81 "data/maps/FallarborTown_Mart/scripts.pory"
 	giveitem ITEM_TM_DRAIN_PUNCH
-# 84 "data/maps/FallarborTown_Mart/scripts.pory"
+# 82 "data/maps/FallarborTown_Mart/scripts.pory"
 	msgbox FallarborTown_Mart_Text_HaveDrainPunch
-# 85 "data/maps/FallarborTown_Mart/scripts.pory"
+# 83 "data/maps/FallarborTown_Mart/scripts.pory"
 	closemessage
-# 86 "data/maps/FallarborTown_Mart/scripts.pory"
+# 84 "data/maps/FallarborTown_Mart/scripts.pory"
 	release
 	end
 
 FallarborTown_Mart_EventScript_DrainPunchTM_2:
-# 76 "data/maps/FallarborTown_Mart/scripts.pory"
+# 74 "data/maps/FallarborTown_Mart/scripts.pory"
 	msgbox FallarborTown_Mart_Text_HaveDrainPunch
-# 77 "data/maps/FallarborTown_Mart/scripts.pory"
+# 75 "data/maps/FallarborTown_Mart/scripts.pory"
 	closemessage
-# 78 "data/maps/FallarborTown_Mart/scripts.pory"
+# 76 "data/maps/FallarborTown_Mart/scripts.pory"
 	release
 	end
 
 
+FallarborTown_Mart_EventScript_OtherClerk::
+# 93 "data/maps/FallarborTown_Mart/scripts.pory"
+	lock
+# 94 "data/maps/FallarborTown_Mart/scripts.pory"
+	faceplayer
+# 95 "data/maps/FallarborTown_Mart/scripts.pory"
+	message gText_HowMayIServeYou
+# 96 "data/maps/FallarborTown_Mart/scripts.pory"
+	waitmessage
+# 97 "data/maps/FallarborTown_Mart/scripts.pory"
+	pokemart FallarborTown_Mart_OtherClerk_Pokemart
+# 98 "data/maps/FallarborTown_Mart/scripts.pory"
+	msgbox gText_PleaseComeAgain
+# 99 "data/maps/FallarborTown_Mart/scripts.pory"
+	release
+	end
+
+
+	.align 2
+# 103 "data/maps/FallarborTown_Mart/scripts.pory"
+FallarborTown_Mart_OtherClerk_Pokemart:
+# 104 "data/maps/FallarborTown_Mart/scripts.pory"
+	.2byte ITEM_BLACK_AUGURITE
+# 105 "data/maps/FallarborTown_Mart/scripts.pory"
+	.2byte ITEM_DAWN_STONE
+# 106 "data/maps/FallarborTown_Mart/scripts.pory"
+	.2byte ITEM_DUSK_STONE
+# 107 "data/maps/FallarborTown_Mart/scripts.pory"
+	.2byte ITEM_LINKING_CORD
+# 108 "data/maps/FallarborTown_Mart/scripts.pory"
+	.2byte ITEM_METAL_ALLOY
+# 109 "data/maps/FallarborTown_Mart/scripts.pory"
+	.2byte ITEM_SHINY_STONE
+	.2byte ITEM_NONE
+
 FallarborTown_Mart_EventScript_DrainPunchTM_Text_0:
-# 81 "data/maps/FallarborTown_Mart/scripts.pory"
+# 79 "data/maps/FallarborTown_Mart/scripts.pory"
 	.string "Hi there!\nHow are you today?\pCan I interest you in a free sample\nof Devon Corporation's new cleaning\lproduct, DRAIN PUNCH?\pIt's super effective against grime,\ngunk, and gunge!\p… … … … … … … …\n… … … … … … … …\l… … … … … … … …\p…Hmm? You're a Pokémon trainer?\nYou don't need a drain cleaner?\pWell, how about you take this TM\ninstead?$"
 
 FallarborTown_Mart_Text_HaveDrainPunch::
-# 90 "data/maps/FallarborTown_Mart/scripts.pory"
+# 88 "data/maps/FallarborTown_Mart/scripts.pory"
 	.string "TM60 is also Drain Punch, but\nit's a punch that drains a foe's HP in\lbattle instead.\pPlease don't use it on any drains!$"

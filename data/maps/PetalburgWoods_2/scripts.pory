@@ -5,3 +5,30 @@ script PetalburgWoods_2_EventScript_Sign {
     release
     end
 }
+
+script PetalburgWoods_2_EventScript_BigRootGirl {
+	lock
+	faceplayer
+    if (flag(FLAG_RECEIVED_BIG_ROOT)) {
+        msgbox("I check on the health of the\ntrees around here with my Grass-type\lPokémon.\pI guess you could say I'm a tree\ndoctor!")
+    } else {
+        msgbox("I love Grass-type Pokémon!\pHow about you?")
+        special(IsGrassTypeInParty)
+        if (var(VAR_RESULT) == FALSE) {
+            msgbox("Oh…\pYou don't travel with any Grass-type\nPokémon…")
+            closemessage
+            release
+            end
+        }
+        msgbox("Oh?\pYou also love Grass-type Pokémon, eh?\pI'm so happy that I want to give you\nthis!\pIt'll be a token of our friendship!")
+        giveitem(ITEM_BIG_ROOT, 1)
+        if (var(VAR_RESULT) == FALSE) {
+            goto(Common_EventScript_ShowBagIsFull)
+        }
+        setflag(FLAG_RECEIVED_BIG_ROOT)
+        msgbox("I check on the health of the\ntrees around here with my Grass-type\lPokémon.\pI guess you could say I'm a tree\ndoctor!")
+    }
+    closemessage
+    release
+    end
+}

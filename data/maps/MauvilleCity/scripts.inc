@@ -1594,12 +1594,29 @@ MauvilleCity_EventScript_Wattson_11:
 
 MauvilleCity_EventScript_RolloutMan::
 # 780 "data/maps/MauvilleCity/scripts.pory"
-	msgbox MauvilleCity_EventScript_RolloutMan_Text_0
+	lock
 # 781 "data/maps/MauvilleCity/scripts.pory"
-	closemessage
+	faceplayer
 # 782 "data/maps/MauvilleCity/scripts.pory"
+	checkitem ITEM_TM_GYRO_BALL, 1
+# 783 "data/maps/MauvilleCity/scripts.pory"
+	compare VAR_RESULT, 1
+	goto_if_ne MauvilleCity_EventScript_RolloutMan_2
+MauvilleCity_EventScript_RolloutMan_1:
+# 787 "data/maps/MauvilleCity/scripts.pory"
+	msgbox MauvilleCity_EventScript_RolloutMan_Text_1
+# 788 "data/maps/MauvilleCity/scripts.pory"
+	closemessage
+# 789 "data/maps/MauvilleCity/scripts.pory"
 	release
 	end
+
+MauvilleCity_EventScript_RolloutMan_2:
+# 784 "data/maps/MauvilleCity/scripts.pory"
+	msgbox MauvilleCity_EventScript_RolloutMan_Text_0
+# 785 "data/maps/MauvilleCity/scripts.pory"
+	giveitem ITEM_TM_GYRO_BALL, 1
+	goto MauvilleCity_EventScript_RolloutMan_1
 
 
 MauvilleCity_EventScript_WallyAndUncleIntro_Text_0:
@@ -1711,5 +1728,9 @@ MauvilleCity_EventScript_Wattson_Text_5:
 	.string "When you get inside, switch off the\nGenerator.\pIt has been running a bit haywire.\nIt's getting unsafe.\pI sure am sorry to bug you with all this,\nbut I'm really counting on you!\pYou can {COLOR BLUE}Surf{COLOR DARK_GRAY} from {COLOR BLUE}Route 110{COLOR DARK_GRAY} to get to\nNew Mauville.$"
 
 MauvilleCity_EventScript_RolloutMan_Text_0:
-# 780 "data/maps/MauvilleCity/scripts.pory"
-	.string "Did you know that you can go\nfrom here a long way in that direction\lwithout changing direction?\pI might even be able to roll that way.\pDo you think your Pokémon will want to\nroll, too?$"
+# 784 "data/maps/MauvilleCity/scripts.pory"
+	.string "Did you know that you can go\nfrom here a long way in that direction\lwithout changing direction?\pI might even be able to roll that way.\pDo you think your Pokémon will want to\nroll, too?\pHere, let them try out this TM if you'd\nlike.$"
+
+MauvilleCity_EventScript_RolloutMan_Text_1:
+# 787 "data/maps/MauvilleCity/scripts.pory"
+	.string "The TM I gave you contains the move\nGyro Ball.\pIt's an attack that does more damage\nthe slower the user is compared to\lthe foe.$"

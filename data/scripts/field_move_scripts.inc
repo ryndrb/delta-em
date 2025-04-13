@@ -88,9 +88,25 @@ EventScript_SmashRock:: @ fallthrough
 	removeobject VAR_LAST_TALKED
 	specialvar VAR_RESULT, TryUpdateRusturfTunnelState
 	goto_if_eq VAR_RESULT, TRUE, EventScript_EndSmash
+	random 4
+	switch VAR_RESULT
+	case 0, EventScript_EndSmash
+	case 1, EventScript_RockSmashEncounter
+	case 2, EventScript_RockSmashItem
+	case 3, EventScript_RockSmashItem
+	releaseall
+	end
+
+EventScript_RockSmashEncounter:
 	special RockSmashWildEncounter
 	goto_if_eq VAR_RESULT, FALSE, EventScript_EndSmash
 	waitstate
+	releaseall
+	end
+
+EventScript_RockSmashItem::
+	special RockSmashItems
+	giveitem VAR_RESULT, 1
 	releaseall
 	end
 

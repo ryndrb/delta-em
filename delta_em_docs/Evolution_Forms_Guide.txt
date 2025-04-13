@@ -15,7 +15,7 @@ GENERATION 1
 0102 Exeggcute              Now evolves into Exeggutor using a Leaf Stone.
                             Now evolves into Exeggutor-Alola using a Sun Stone.
 0104 Cubone                 Now evolves into Marowak-Alola using a Dusk Stone.
-0109 Koffing                Now evolves into Weezing-Galar during Night while holding Strange Souvenir.
+0109 Koffing                Now evolves into Weezing-Galar at Level 35 during Night.
 0138 Omanyte                Now evolves into Omastar at Level 30 [40].
 0140 Kabuto                 Now evolves into Kabutops at Level 30 [40].
 
@@ -105,3 +105,35 @@ GENERATION 8
 
 GENERATION 9
 0901 Ursaluna               Now evolves into Ursaluna-Bloodmoon using a Peat Block during Night.
+
+=========================================================
+Form Change
+=========================================================
+Pokémon with manual form changes can change forms as described below.
+
+Deoxys:
+- Use the Meteorite (Key Item) that is obtained at Mt. Chimney after defeating Maxie.
+
+Rotom:
+- Talk to Lynette in front of the PC inside Fallarbor's Pokémon Center.
+- Goto her house at Route 114 to receive the Rotom Catalog (Key Item).
+- Then, use the Rotom Catalog on a Rotom.
+
+Furfrou
+- Talk to a woman in the Pokémon Fan Clun in Slateport.
+- Each Furfrou (!default) form have a different secondary type.
+
+Oricorio
+- Use a Nectar item on it, as you would in official games.
+- All Nectars spawn in Dewford and Verdanturf Meadow.
+- There's a 33.33% of all of them spawning whenever the Player transition to the meadows.
+
+
+Mega Evolution
+===========================
+
+- To mega evolve a Pokémon, you first need a Mega Ring. This is given to the Player by Steven after obtaining Latios
+in the Souther Island event. Then, a Pokémon must hold a mega stone. When sent into battle, press START on the move
+selection screen and then choose a move.
+- Rayquaza works similarly, but must know Dragon Ascent INSTEAD of holding a mega stone. Dragon Ascent is a level-up move.
+- Primal Reversion works similarly to mega evolution. It immediately triggers upon entering a battle.

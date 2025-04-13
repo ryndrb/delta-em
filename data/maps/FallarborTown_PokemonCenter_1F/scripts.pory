@@ -36,6 +36,7 @@ FallarborTown_PokemonCenter_1F_EventScript_Lanette::
 	switch VAR_FACING
 	case DIR_NORTH, FallarborTown_PokemonCenter_1F_EventScript_LanetteExitNorth
 	case DIR_WEST, FallarborTown_PokemonCenter_1F_EventScript_LanetteExitWest
+	case DIR_EAST, FallarborTown_PokemonCenter_1F_EventScript_LanetteExitWest
 	end
 
 FallarborTown_PokemonCenter_1F_EventScript_LanetteExitNorth::
@@ -58,15 +59,11 @@ FallarborTown_PokemonCenter_1F_EventScript_LanetteExited::
 	end
 
 FallarborTown_PokemonCenter_1F_Movement_LanetteExitNorth:
-	walk_right
-	walk_down
-	walk_down
-	walk_left
-	walk_left
 	walk_left
 	walk_left
 	walk_down
 	walk_down
+	walk_left
 	walk_down
 	walk_down
 	delay_8
@@ -80,27 +77,11 @@ FallarborTown_PokemonCenter_1F_Movement_LanetteExitWest:
 	walk_left
 	walk_down
 	walk_down
-	walk_down
-	walk_down
 	delay_8
 	step_end
 
 FallarborTown_PokemonCenter_1F_Text_LanetteGreeting:
-	.string "Oh, hello.\n"
-	.string "You are?\p"
-	.string "Okay, your name's {PLAYER}{KUN}.\n"
-	.string "I can see that you're a Trainer.\p"
-	.string "So that means you use the Pokémon\n"
-	.string "Storage System I developed.\p"
-	.string "How I arrived at that conclusion is\n"
-	.string "a simple deductive process.\p"
-	.string "You spoke to me because you wanted\n"
-	.string "to access something on this PC.\p"
-	.string "Oh, I'm sorry. I'm Lanette.\p"
-	.string "Honestly, I'm glad to meet you--it's\n"
-	.string "great you're using the Storage System.\p"
-	.string "If you could, please visit me at home.\n"
-	.string "My house is on Route 114.$"
+	.string "{COLOR RED}???{COLOR DARK_GRAY}: Oh, hello. You are?\pOkay, your name's {PLAYER}.\nI can see that you're a Trainer.\pSo that means you use the Pokémon\nStorage System I developed.\pHow I arrived at that conclusion is a\nsimple deductive process.\pYou spoke to me because you wanted to\naccess something on this PC.\pOh, I'm sorry. I'm {COLOR RED}Lanette{COLOR DARK_GRAY}.\pHonestly, I'm glad to meet you--it's\ngreat you're using the Storage System.\pIf you could, please visit me at home.\nMy house is on Route 114.$"
 
 FallarborTown_PokemonCenter_1F_Text_FossilManiacEdgeOfTown:
 	.string "I wonder what Pokémon looked like\n"
@@ -115,9 +96,3 @@ FallarborTown_PokemonCenter_1F_Text_PlantHardyTrees:
 
 
 `
-
-script FallarborTown_PokemonCenter_1F_EventScript_DoorSign {
-    msgbox("Personnel Only.", MSGBOX_SIGN)
-    release
-    end
-}

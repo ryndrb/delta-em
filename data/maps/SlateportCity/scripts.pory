@@ -187,14 +187,6 @@ SlateportCity_EventScript_MonHasEffortRibbon::
 	release
 	end
 
-SlateportCity_EventScript_Cook::
-	lock
-	faceplayer
-	call_if_eq VAR_TEMP_0, 1, SlateportCity_EventScript_CookSternInterview
-	msgbox SlateportCity_Text_SeaweedFullOfLife, MSGBOX_DEFAULT
-	release
-	end
-
 SlateportCity_EventScript_CookSternInterview::
 	msgbox SlateportCity_Text_CaptainInARush, MSGBOX_DEFAULT
 	release
@@ -515,40 +507,6 @@ SlateportCity_PokemartDecor_Dolls:
 	.2byte DECOR_AZURILL_DOLL
 	.2byte DECOR_MARILL_DOLL
 	.2byte DECOR_SKITTY_DOLL
-	pokemartlistend
-
-SlateportCity_EventScript_ComeBackWithSecretPower::
-	msgbox gText_ComeBackWithSecretPower, MSGBOX_DEFAULT
-	release
-	end
-
-SlateportCity_EventScript_DecorClerk::
-	lock
-	faceplayer
-	goto_if_unset FLAG_RECEIVED_SECRET_POWER, SlateportCity_EventScript_ComeBackWithSecretPower
-	message gText_HowMayIServeYou
-	waitmessage
-	pokemartdecoration SlateportCity_PokemartDecor
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-	release
-	end
-
-	.align 2
-SlateportCity_PokemartDecor:
-	.2byte DECOR_RED_BRICK
-	.2byte DECOR_BLUE_BRICK
-	.2byte DECOR_YELLOW_BRICK
-	.2byte DECOR_RED_BALLOON
-	.2byte DECOR_BLUE_BALLOON
-	.2byte DECOR_YELLOW_BALLOON
-	.2byte DECOR_C_LOW_NOTE_MAT
-	.2byte DECOR_D_NOTE_MAT
-	.2byte DECOR_E_NOTE_MAT
-	.2byte DECOR_F_NOTE_MAT
-	.2byte DECOR_G_NOTE_MAT
-	.2byte DECOR_A_NOTE_MAT
-	.2byte DECOR_B_NOTE_MAT
-	.2byte DECOR_C_HIGH_NOTE_MAT
 	pokemartlistend
 
 SlateportCity_EventScript_PowerTMClerk::
@@ -1296,3 +1254,174 @@ SlateportCity_Text_TakingBattleTentChallenge:
 	.string "{COLOR RED}Scott{COLOR DARK_GRAY}: Oh, hey!\nIf it isn't {PLAYER}!\p{PLAYER}, let me guess-you're going to\ntake the Battle Tent challenge?\pYeah!\nThat's a good idea!\lThat's a really great idea!\pAfter all, a tough Trainer is the\nperfect fit for the Battle Tent!\pGive it your best effort!$"
 
 `
+
+script SlateportCity_EventScript_AntiqueClerk {
+	lock
+	faceplayer
+	message(gText_HowMayIServeYou)
+	waitmessage
+	pokemart(SlateportCity_AntiqueEvolutionItems)
+	msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
+	release
+	end
+}
+
+mart SlateportCity_AntiqueEvolutionItems {
+	ITEM_GALARICA_CUFF
+	ITEM_GALARICA_WREATH
+	ITEM_CHIPPED_POT
+	ITEM_CRACKED_POT
+	ITEM_LEADERS_CREST
+	ITEM_MASTERPIECE_TEACUP
+	ITEM_UNREMARKABLE_TEACUP
+}
+
+script SlateportCity_EventScript_Cook {
+	lock
+	faceplayer
+	if (var(VAR_TEMP_0) == 1) {
+		call(SlateportCity_EventScript_CookSternInterview)
+	}
+	message(gText_HowMayIServeYou)
+	waitmessage
+	pokemart(SlateportCity_CookItems)
+	msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
+	release
+	end
+}
+
+mart SlateportCity_CookItems {
+	ITEM_SWEET_APPLE
+	ITEM_SYRUPY_APPLE
+	ITEM_TART_APPLE
+	ITEM_WHIPPED_DREAM
+	ITEM_STRAWBERRY_SWEET
+	ITEM_LOVE_SWEET
+	ITEM_BERRY_SWEET
+	ITEM_CLOVER_SWEET
+	ITEM_FLOWER_SWEET
+	ITEM_STAR_SWEET
+	ITEM_RIBBON_SWEET
+}
+
+script SlateportCity_EventScript_PowerItems {
+	lock
+	faceplayer
+	message(gText_HowMayIServeYou)
+	waitmessage
+	if (flag(FLAG_UNLOCKED_STAT_EDITOR) == TRUE) {
+		pokemart(SlateportCity_Pokemart_TypeBoostingItems)
+	} else {
+		pokemart(SlateportCity_Pokemart_PowerItems)
+	}
+	msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
+	release
+	end
+}
+
+mart SlateportCity_Pokemart_PowerItems {
+	ITEM_POWER_BRACER
+	ITEM_POWER_BELT
+	ITEM_POWER_LENS
+	ITEM_POWER_BAND
+	ITEM_POWER_ANKLET
+	ITEM_POWER_WEIGHT
+}
+
+mart SlateportCity_Pokemart_TypeBoostingItems {
+	ITEM_CHARCOAL
+	ITEM_BLACK_BELT
+	ITEM_BLACK_GLASSES
+	ITEM_DRAGON_FANG
+	ITEM_FAIRY_FEATHER
+	ITEM_HARD_STONE
+	ITEM_MAGNET
+	ITEM_MIRACLE_SEED
+	ITEM_MYSTIC_WATER
+	ITEM_NEVERMELTICE
+	ITEM_POISON_BARB
+	ITEM_SHARP_BEAK
+	ITEM_SILK_SCARF
+	ITEM_SILVER_POWDER
+	ITEM_SOFT_SAND
+	ITEM_SPELL_TAG
+	ITEM_TWISTED_SPOON
+}
+
+script SlateportCity_EventScript_IncenseStand {
+	lock
+	faceplayer
+	message(gText_HowMayIServeYou)
+	waitmessage
+	pokemart(SlateportCity_Pokemart_Incense)
+	msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
+	release
+	end
+}
+
+mart SlateportCity_Pokemart_Incense {
+	ITEM_FULL_INCENSE
+	ITEM_LAX_INCENSE
+	ITEM_LUCK_INCENSE
+	ITEM_ODD_INCENSE
+	ITEM_PURE_INCENSE
+	ITEM_ROCK_INCENSE
+	ITEM_ROSE_INCENSE
+	ITEM_SEA_INCENSE
+	ITEM_WAVE_INCENSE
+}
+
+script SlateportCity_EventScript_MintClerk {
+	lock
+	faceplayer
+	message(gText_HowMayIServeYou)
+	waitmessage
+	pokemart(SlateportCity_Pokemart_Mints)
+	msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
+	release
+	end
+}
+
+mart SlateportCity_Pokemart_Mints {
+	ITEM_LONELY_MINT
+	ITEM_ADAMANT_MINT
+	ITEM_NAUGHTY_MINT
+	ITEM_BRAVE_MINT
+	ITEM_BOLD_MINT
+	ITEM_IMPISH_MINT
+	ITEM_LAX_MINT
+	ITEM_RELAXED_MINT
+	ITEM_MODEST_MINT
+	ITEM_MILD_MINT
+	ITEM_RASH_MINT
+	ITEM_QUIET_MINT
+	ITEM_CALM_MINT
+	ITEM_GENTLE_MINT
+	ITEM_CAREFUL_MINT
+	ITEM_SASSY_MINT
+	ITEM_TIMID_MINT
+	ITEM_HASTY_MINT
+	ITEM_JOLLY_MINT
+	ITEM_NAIVE_MINT
+	ITEM_SERIOUS_MINT
+}
+
+script SlateportCity_EventScript_BerryClerk {
+	lock
+	faceplayer
+	message(gText_HowMayIServeYou)
+	waitmessage
+	pokemart(SlateportCity_Pokemart_Berries)
+	msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
+	release
+	end
+}
+
+mart SlateportCity_Pokemart_Berries {
+	ITEM_POMEG_BERRY
+	ITEM_KELPSY_BERRY
+	ITEM_QUALOT_BERRY
+	ITEM_HONDEW_BERRY
+	ITEM_GREPA_BERRY
+	ITEM_TAMATO_BERRY
+}

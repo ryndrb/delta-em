@@ -1648,6 +1648,379 @@ MoveTutor_EventScript_OpenPartyMenu_Delta::
 	return
 
 
+Mart_EventScript_PokeCenter_GeneralClerk::
+# 432 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	lock
+# 433 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	faceplayer
+# 434 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	message gText_HowMayIServeYou
+# 435 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	waitmessage
+# 436 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	goto_if_set FLAG_BADGE06_GET, Mart_EventScript_PokeCenter_GeneralClerk_2
+# 438 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	goto_if_set FLAG_BADGE05_GET, Mart_EventScript_PokeCenter_GeneralClerk_3
+# 440 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	goto_if_set FLAG_BADGE04_GET, Mart_EventScript_PokeCenter_GeneralClerk_4
+# 442 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	goto_if_set FLAG_BADGE03_GET, Mart_EventScript_PokeCenter_GeneralClerk_5
+# 444 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	goto_if_set FLAG_BADGE02_GET, Mart_EventScript_PokeCenter_GeneralClerk_6
+# 446 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	goto_if_set FLAG_BADGE01_GET, Mart_EventScript_PokeCenter_GeneralClerk_7
+# 448 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	goto_if_set FLAG_VISITED_RUSTBORO_CITY, Mart_EventScript_PokeCenter_GeneralClerk_8
+# 450 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	goto_if_set FLAG_ADVENTURE_STARTED, Mart_EventScript_PokeCenter_GeneralClerk_9
+Mart_EventScript_PokeCenter_GeneralClerk_1:
+# 453 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+# 454 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	release
+	end
+
+Mart_EventScript_PokeCenter_GeneralClerk_2:
+# 437 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	pokemart Mart_PokeCenter_6thBadge
+	goto Mart_EventScript_PokeCenter_GeneralClerk_1
+
+Mart_EventScript_PokeCenter_GeneralClerk_3:
+# 439 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	pokemart Mart_PokeCenter_5thBadge
+	goto Mart_EventScript_PokeCenter_GeneralClerk_1
+
+Mart_EventScript_PokeCenter_GeneralClerk_4:
+# 441 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	pokemart Mart_PokeCenter_4thBadge
+	goto Mart_EventScript_PokeCenter_GeneralClerk_1
+
+Mart_EventScript_PokeCenter_GeneralClerk_5:
+# 443 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	pokemart Mart_PokeCenter_3rdBadge
+	goto Mart_EventScript_PokeCenter_GeneralClerk_1
+
+Mart_EventScript_PokeCenter_GeneralClerk_6:
+# 445 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	pokemart Mart_PokeCenter_2ndBadge
+	goto Mart_EventScript_PokeCenter_GeneralClerk_1
+
+Mart_EventScript_PokeCenter_GeneralClerk_7:
+# 447 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	pokemart Mart_PokeCenter_1stBadge
+	goto Mart_EventScript_PokeCenter_GeneralClerk_1
+
+Mart_EventScript_PokeCenter_GeneralClerk_8:
+# 449 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	pokemart Mart_PokeCenter_VisitedRustboro
+	goto Mart_EventScript_PokeCenter_GeneralClerk_1
+
+Mart_EventScript_PokeCenter_GeneralClerk_9:
+# 451 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	pokemart Mart_PokeCenter_ObtainedPokedex
+	goto Mart_EventScript_PokeCenter_GeneralClerk_1
+
+
+	.align 2
+# 458 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+Mart_PokeCenter_ObtainedPokedex:
+# 459 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_POKE_BALL
+# 460 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_POTION
+# 461 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ANTIDOTE
+# 462 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_BURN_HEAL
+# 463 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ICE_HEAL
+# 464 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_PARALYZE_HEAL
+# 465 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_AWAKENING
+	.2byte ITEM_NONE
+
+	.align 2
+# 468 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+Mart_PokeCenter_VisitedRustboro:
+# 469 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_POKE_BALL
+# 470 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_POTION
+# 471 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_SUPER_POTION
+# 472 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ANTIDOTE
+# 473 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_BURN_HEAL
+# 474 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ICE_HEAL
+# 475 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_PARALYZE_HEAL
+# 476 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_AWAKENING
+	.2byte ITEM_NONE
+
+	.align 2
+# 479 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+Mart_PokeCenter_1stBadge:
+# 480 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_POKE_BALL
+# 481 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_GREAT_BALL
+# 482 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_POTION
+# 483 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_SUPER_POTION
+# 484 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ANTIDOTE
+# 485 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_BURN_HEAL
+# 486 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ICE_HEAL
+# 487 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_PARALYZE_HEAL
+# 488 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_AWAKENING
+# 489 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_REPEL
+	.2byte ITEM_NONE
+
+	.align 2
+# 492 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+Mart_PokeCenter_2ndBadge:
+# 493 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_POKE_BALL
+# 494 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_GREAT_BALL
+# 495 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_DREAM_BALL
+# 496 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_POTION
+# 497 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_SUPER_POTION
+# 498 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_HYPER_POTION
+# 499 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_REVIVE
+# 500 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ANTIDOTE
+# 501 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_BURN_HEAL
+# 502 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ICE_HEAL
+# 503 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_PARALYZE_HEAL
+# 504 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_AWAKENING
+# 505 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_REPEL
+# 506 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_SUPER_REPEL
+# 507 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ABILITY_CAPSULE
+	.2byte ITEM_NONE
+
+	.align 2
+# 510 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+Mart_PokeCenter_3rdBadge:
+# 511 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_POKE_BALL
+# 512 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_GREAT_BALL
+# 513 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ULTRA_BALL
+# 514 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_DREAM_BALL
+# 515 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_POTION
+# 516 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_SUPER_POTION
+# 517 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_HYPER_POTION
+# 518 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_REVIVE
+# 519 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ANTIDOTE
+# 520 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_BURN_HEAL
+# 521 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ICE_HEAL
+# 522 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_PARALYZE_HEAL
+# 523 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_AWAKENING
+# 524 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_FULL_HEAL
+# 525 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_REPEL
+# 526 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_SUPER_REPEL
+# 527 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_MAX_REPEL
+# 528 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ABILITY_CAPSULE
+	.2byte ITEM_NONE
+
+	.align 2
+# 531 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+Mart_PokeCenter_4thBadge:
+# 532 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_POKE_BALL
+# 533 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_GREAT_BALL
+# 534 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ULTRA_BALL
+# 535 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_DREAM_BALL
+# 536 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_POTION
+# 537 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_SUPER_POTION
+# 538 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_HYPER_POTION
+# 539 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_MAX_POTION
+# 540 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_REVIVE
+# 541 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_MAX_REVIVE
+# 542 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ANTIDOTE
+# 543 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_BURN_HEAL
+# 544 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ICE_HEAL
+# 545 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_PARALYZE_HEAL
+# 546 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_AWAKENING
+# 547 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_FULL_HEAL
+# 548 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ETHER
+# 549 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_REPEL
+# 550 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_SUPER_REPEL
+# 551 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_MAX_REPEL
+# 552 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ABILITY_CAPSULE
+# 553 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ABILITY_PATCH
+	.2byte ITEM_NONE
+
+	.align 2
+# 556 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+Mart_PokeCenter_5thBadge:
+# 557 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_POKE_BALL
+# 558 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_GREAT_BALL
+# 559 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ULTRA_BALL
+# 560 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_DREAM_BALL
+# 561 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_POTION
+# 562 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_SUPER_POTION
+# 563 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_HYPER_POTION
+# 564 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_MAX_POTION
+# 565 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_FULL_RESTORE
+# 566 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_REVIVE
+# 567 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_MAX_REVIVE
+# 568 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ANTIDOTE
+# 569 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_BURN_HEAL
+# 570 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ICE_HEAL
+# 571 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_PARALYZE_HEAL
+# 572 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_AWAKENING
+# 573 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_FULL_HEAL
+# 574 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ETHER
+# 575 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_PP_UP
+# 576 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_REPEL
+# 577 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_SUPER_REPEL
+# 578 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_MAX_REPEL
+# 579 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ABILITY_CAPSULE
+# 580 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ABILITY_PATCH
+	.2byte ITEM_NONE
+
+	.align 2
+# 583 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+Mart_PokeCenter_6thBadge:
+# 584 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_POKE_BALL
+# 585 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_GREAT_BALL
+# 586 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ULTRA_BALL
+# 587 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_DREAM_BALL
+# 588 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_POTION
+# 589 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_SUPER_POTION
+# 590 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_HYPER_POTION
+# 591 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_MAX_POTION
+# 592 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_FULL_RESTORE
+# 593 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_REVIVE
+# 594 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_MAX_REVIVE
+# 595 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ANTIDOTE
+# 596 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_BURN_HEAL
+# 597 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ICE_HEAL
+# 598 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_PARALYZE_HEAL
+# 599 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_AWAKENING
+# 600 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_FULL_HEAL
+# 601 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ETHER
+# 602 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_MAX_ETHER
+# 603 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_PP_UP
+# 604 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_PP_MAX
+# 605 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_REPEL
+# 606 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_SUPER_REPEL
+# 607 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_MAX_REPEL
+# 608 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ABILITY_CAPSULE
+# 609 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
+	.2byte ITEM_ABILITY_PATCH
+	.2byte ITEM_NONE
+
 PokemonCenter_1F_OldManUtility_Text_0:
 # 72 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
 	.string "{COLOR RED}Tutor{COLOR DARK_GRAY}: Eh? Who's there?\pAh, a Trainer! I can teach your Pokémon\nsome special moves… moves they can't\llearn anywhere else, not in my day.\pDon't worry, no charge! But… let's\nsee, you'll only get a few moves to\lstart with…\pHmm, yes, yes.\nEarn more Gym Badges, and I might\lremember some new moves for you.\pHah!\nMy memory ain't what it used to be.\lCome back often!$"

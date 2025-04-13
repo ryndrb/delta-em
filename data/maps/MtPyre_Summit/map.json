@@ -130,6 +130,19 @@
       "trainer_sight_or_berry_tree_id": "ITEM_TM_WILL_O_WISP",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_MT_PYRE_EXTERIOR_TM_WILL_O_WISP"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MEGA_STONE",
+      "x": 38,
+      "y": 24,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_BANETTITE",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_MT_PYRE_SUMMIT_BANETTITE"
     }
   ],
   "warp_events": [

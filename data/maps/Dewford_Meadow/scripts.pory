@@ -1,8 +1,16 @@
-raw `
-Dewford_Meadow_MapScripts::
-	.byte 0
-
-`
+mapscripts Dewford_Meadow_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        // 33.33% chance of "spawning" a nectar
+        random(3)
+        switch (var(VAR_RESULT)) {
+            case 2:
+                clearflag(FLAG_HIDDEN_ITEM_RED_NECTAR)
+                clearflag(FLAG_HIDDEN_ITEM_PINK_NECTAR)
+                clearflag(FLAG_HIDDEN_ITEM_PURPLE_NECTAR)
+                clearflag(FLAG_HIDDEN_ITEM_YELLOW_NECTAR)
+        }
+    }
+}
 
 script DewfordMeadow_EventScript_TrainingPokemon {
     lock
