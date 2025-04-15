@@ -1072,24 +1072,26 @@ Furfrou_DoTrimming_1:
 # 523 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	fadescreen FADE_FROM_BLACK
 # 524 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox Furfrou_DoTrimming_Text_4
+	special ChangeMonSpecies
 # 525 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	showmonpic VAR_0x8005, 10, 3
+	msgbox Furfrou_DoTrimming_Text_4
 # 526 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	delay 8
+	showmonpic VAR_0x8005, 10, 3
 # 527 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	playmoncry SPECIES_FURFROU, CRY_MODE_NORMAL
+	delay 8
 # 528 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmoncry
+	playmoncry SPECIES_FURFROU, CRY_MODE_NORMAL
 # 529 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitbuttonpress
+	waitmoncry
 # 530 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	hidemonpic
+	waitbuttonpress
 # 531 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox Furfrou_DoTrimming_Text_5
+	hidemonpic
 # 532 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	closemessage
+	msgbox Furfrou_DoTrimming_Text_5
 # 533 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	closemessage
+# 534 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	release
 	end
 
@@ -1111,401 +1113,401 @@ Furfrou_DoTrimming_5:
 
 
 Furfrou_NoFurfrouInParty::
-# 538 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox Furfrou_NoFurfrouInParty_Text_0
 # 539 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	closemessage
+	msgbox Furfrou_NoFurfrouInParty_Text_0
 # 540 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	closemessage
+# 541 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	release
 	end
 
 
 Furfrou_Exit::
-# 545 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 546 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	releaseall
 	end
 
 
 SlateportCity_PokemonFanClub_EventScript_Diancite::
-# 555 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	checkspecies SPECIES_DIANCIE, NO_PARTY_SCREEN
 # 556 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	checkspecies SPECIES_DIANCIE, NO_PARTY_SCREEN
+# 557 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	compare VAR_RESULT, FALSE
 	goto_if_eq SlateportCity_PokemonFanClub_EventScript_Diancite_2
-# 556 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 557 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	goto_if_set FLAG_RECEIVED_DIANCITE, SlateportCity_PokemonFanClub_EventScript_Diancite_2
-# 561 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	lock
 # 562 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	delay 16
+	lock
 # 563 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	delay 16
 # 564 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
 # 565 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	delay 8
+	waitmovement OBJ_EVENT_ID_PLAYER
 # 566 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	fadescreen FADE_TO_BLACK
+	delay 8
 # 567 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_0
+	fadescreen FADE_TO_BLACK
 # 568 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_0
 # 569 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	fadescreen FADE_FROM_BLACK
-# 570 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	delay 16
-# 571 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	addobject 11
-# 572 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	playse SE_DOOR
-# 573 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	delay 24
-# 574 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	addobject 12
-# 575 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	playse SE_DOOR
-# 576 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	delay 8
-# 577 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_0
-# 578 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	closemessage
-# 579 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	playse SE_PIN
-# 580 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-# 581 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
-# 582 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 570 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	fadescreen FADE_FROM_BLACK
+# 571 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	delay 16
-# 583 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
-# 584 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_1
-# 585 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 12, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_2
-# 586 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmovement 12
-# 587 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 572 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	addobject 11
+# 573 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	playse SE_DOOR
+# 574 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	delay 24
+# 575 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	addobject 12
+# 576 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	playse SE_DOOR
+# 577 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	delay 8
+# 578 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_0
+# 579 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	closemessage
+# 580 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	playse SE_PIN
+# 581 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+# 582 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 583 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	delay 16
+# 584 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
+# 585 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_1
+# 586 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement 12, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_2
+# 587 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	waitmovement 12
 # 588 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_1
+	delay 8
 # 589 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	closemessage
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_1
 # 590 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_3
+	closemessage
 # 591 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmovement 11
-# 592 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_2
-# 593 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	closemessage
-# 594 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 12, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_3
-# 595 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmovement 12
-# 596 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_3
-# 597 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	closemessage
-# 598 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_3
-# 599 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 592 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	waitmovement 11
-# 600 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_4
-# 601 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 593 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_2
+# 594 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	closemessage
-# 602 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 595 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	applymovement 12, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_3
-# 603 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 596 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	waitmovement 12
+# 597 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_3
+# 598 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	closemessage
+# 599 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_3
+# 600 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	waitmovement 11
+# 601 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_4
+# 602 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	closemessage
+# 603 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement 12, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_3
 # 604 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_5, MSGBOX_YESNO
+	waitmovement 12
 # 605 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_5, MSGBOX_YESNO
+# 606 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	compare VAR_RESULT, NO
 	goto_if_eq SlateportCity_PokemonFanClub_EventScript_Diancite_7
-# 619 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_3
 # 620 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmovement 11
+	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_3
 # 621 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_8
+	waitmovement 11
 # 622 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_8
+# 623 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	closemessage
 SlateportCity_PokemonFanClub_EventScript_Diancite_6:
-# 624 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	delay 8
 # 625 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	addobject 13
+	delay 8
 # 626 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	playse SE_DOOR
+	addobject 13
 # 627 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	delay 16
+	playse SE_DOOR
 # 628 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_9
+	delay 16
 # 629 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	closemessage
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_9
 # 630 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	delay 4
+	closemessage
 # 631 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	playse SE_PIN
+	delay 4
 # 632 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 11, Common_Movement_ExclamationMark
+	playse SE_PIN
 # 633 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 12, Common_Movement_ExclamationMark
+	applymovement 11, Common_Movement_ExclamationMark
 # 634 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmovement 12
+	applymovement 12, Common_Movement_ExclamationMark
 # 635 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	delay 8
+	waitmovement 12
 # 636 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_4
+	delay 8
 # 637 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 12, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_4
+	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_4
 # 638 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmovement 12
+	applymovement 12, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_4
 # 639 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_10
+	waitmovement 12
 # 640 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	closemessage
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_10
 # 641 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	delay 16
+	closemessage
 # 642 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_5
+	delay 16
 # 643 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 12, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_6
+	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_5
 # 644 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 13, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_7
+	applymovement 12, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_6
 # 645 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmovement 11
+	applymovement 13, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_7
 # 646 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_11
+	waitmovement 11
 # 647 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	closemessage
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_11
 # 648 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	delay 16
+	closemessage
 # 649 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_8
-# 650 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 12, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_9
-# 651 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 13, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_4
-# 652 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmovement 12
-# 653 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_12
-# 654 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	closemessage
-# 655 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_6
-# 656 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 12, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_10
-# 657 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 13, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_3
-# 658 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmovement 11
-# 659 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_13
-# 660 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	giveitem ITEM_DIANCITE, 1
-# 661 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_14
-# 662 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	closemessage
-# 663 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 13, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_4
-# 664 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmovement 13
-# 665 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_15
-# 666 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	closemessage
-# 667 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_11
-# 668 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmovement 11
-# 669 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_16
-# 670 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	closemessage
-# 671 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	delay 16
-# 672 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 13, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_12
-# 673 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmovement 13
-# 674 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	playse SE_EXIT
-# 675 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	removeobject 13
-# 676 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	delay 8
-# 677 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 12, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_12
-# 678 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 650 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_8
+# 651 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement 12, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_9
+# 652 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement 13, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_4
+# 653 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	waitmovement 12
-# 679 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	playse SE_EXIT
-# 680 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	removeobject 12
-# 681 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	delay 8
-# 682 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_13
-# 683 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 654 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_12
+# 655 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	closemessage
+# 656 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_6
+# 657 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement 12, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_10
+# 658 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement 13, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_3
+# 659 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	waitmovement 11
-# 684 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 660 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_13
+# 661 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	giveitem ITEM_DIANCITE, 1
+# 662 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_14
+# 663 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	closemessage
+# 664 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement 13, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_4
+# 665 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	waitmovement 13
+# 666 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_15
+# 667 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	closemessage
+# 668 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_11
+# 669 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	waitmovement 11
+# 670 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_16
+# 671 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	closemessage
+# 672 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	delay 16
+# 673 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement 13, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_12
+# 674 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	waitmovement 13
+# 675 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	playse SE_EXIT
+# 676 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	removeobject 13
+# 677 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	delay 8
+# 678 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement 12, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_12
+# 679 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	waitmovement 12
+# 680 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	playse SE_EXIT
+# 681 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	removeobject 12
+# 682 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	delay 8
+# 683 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_13
+# 684 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	waitmovement 11
 # 685 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	removeobject 11
+	playse SE_EXIT
 # 686 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	setvar VAR_TEMP_3, 1
+	removeobject 11
 # 687 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	setflag FLAG_HIDE_POKEMON_FANCLUB_NPCS
+	setvar VAR_TEMP_3, 1
 # 688 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	setflag FLAG_RECEIVED_DIANCITE
+	setflag FLAG_HIDE_POKEMON_FANCLUB_NPCS
 # 689 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	setflag FLAG_RECEIVED_DIANCITE
+# 690 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	release
 	end
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_2:
-# 557 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	setvar VAR_TEMP_3, 1
 # 558 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	setvar VAR_TEMP_3, 1
+# 559 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	release
 	end
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_7:
-# 606 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_6, MSGBOX_YESNO
 # 607 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_6, MSGBOX_YESNO
+# 608 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	compare VAR_RESULT, NO
 	goto_if_eq SlateportCity_PokemonFanClub_EventScript_Diancite_10
-# 613 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_3
 # 614 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmovement 11
+	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_3
 # 615 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_8
+	waitmovement 11
 # 616 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_8
+# 617 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	closemessage
 	goto SlateportCity_PokemonFanClub_EventScript_Diancite_6
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_10:
-# 608 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_3
 # 609 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	waitmovement 11
+	applymovement 11, SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_3
 # 610 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
-	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_7
+	waitmovement 11
 # 611 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+	msgbox SlateportCity_PokemonFanClub_EventScript_Diancite_Text_7
+# 612 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	closemessage
 	goto SlateportCity_PokemonFanClub_EventScript_Diancite_6
 
 
-# 567 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 568 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_0:
-# 567 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 568 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_up
-# 567 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 568 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_up
 	step_end
 
-# 584 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 585 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_1:
-# 584 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 585 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	delay_8
-# 584 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 585 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_up
 	step_end
 
-# 585 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 586 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_2:
-# 585 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 586 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	delay_16
-# 585 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 586 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_up
 	step_end
 
-# 590 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 591 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_3:
-# 590 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 591 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_in_place_up
 	step_end
 
-# 636 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 637 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_4:
-# 636 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 637 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_in_place_down
 	step_end
 
-# 642 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 643 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_5:
-# 642 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 643 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_left
-# 642 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 643 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_in_place_up
 	step_end
 
-# 643 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 644 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_6:
-# 643 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 644 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	delay_16
-# 643 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 644 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_in_place_up
 	step_end
 
-# 644 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 645 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_7:
-# 644 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 645 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_up
 	step_end
 
-# 649 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 650 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_8:
-# 649 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 650 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	delay_8
-# 649 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 650 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_in_place_right
 	step_end
 
-# 650 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 651 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_9:
-# 650 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 651 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	delay_16
-# 650 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 651 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_in_place_left
 	step_end
 
-# 656 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 657 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_10:
-# 656 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 657 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	delay_8
-# 656 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 657 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_in_place_up
 	step_end
 
-# 667 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 668 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_11:
-# 667 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 668 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_in_place_right
 	step_end
 
-# 672 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 673 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_12:
-# 672 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 673 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_down
-# 672 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 673 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_in_place_down
 	step_end
 
-# 682 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 683 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 SlateportCity_PokemonFanClub_EventScript_Diancite_Movement_13:
-# 682 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 683 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_down
-# 682 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 683 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_right
-# 682 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 683 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	walk_in_place_down
 	step_end
 
@@ -1590,81 +1592,81 @@ Furfrou_DoTrimming_Text_3:
 	.string "Snip… {PAUSE 32}\nSnippity-snip… {PAUSE 32}\lSnip-snip… Snip!$"
 
 Furfrou_DoTrimming_Text_4:
-# 524 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 525 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "Thank you for your patience!\pIt's all done.\nYour Furfrou looks elegant!$"
 
 Furfrou_DoTrimming_Text_5:
-# 531 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 532 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "If you ever wish to try out a new style,\ncome back again!$"
 
 Furfrou_NoFurfrouInParty_Text_0:
-# 538 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 539 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "It seems you don't have a Furfrou with\nyou.$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_0:
-# 577 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 578 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "Please, just wait a moment, mon chou!\nI need you to attendez!$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_1:
-# 588 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 589 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "Do forgive us, young master, for\nspeaking without an introduction.\pThere is a matter of great import that\nwe must discuss.\pIs it true that you have somehow\nobtained the Mythical Pokémon\lDiancie?$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_2:
-# 592 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 593 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "Diancie…\pThe inexplicable mutation arising from\nthe Pokémon we know as Carbink…\pWhen and where it originates from, and\nthe mecanisme of its formation…\pIt is indeed a mysterieuse existence,\none of des plus grand mysteres!$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_3:
-# 596 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 597 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "Diancie is the epitome of beauty among\nPokémon.\pThe divine symmetry of its\nbody enables it to absorb light\land display a radiance beyond the\lawareness of this realm.\pIt is said that, upon Mega Evolving,\nMega Diancie emanates a beauty that\lsurpasses all know beauty.$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_4:
-# 600 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 601 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "That beauty… It is so dazzling\nto behold that people call it the\l“Royal Pink Princess.”\pOur jeune maitre--young master--has\nbeen searching for Diancie in order\lto see this beauty fantastique.\pAnd we two have managed to obtain\nthe Diancite that is necessaire for\lits Mega Evolution.\pWe have been the most ardent to\ndiscover a Diancie that we might\ltake back to our young master, to\lshow to him this fame beaute ultime.\pYet we have proved unsuitable\nto the task, unable to secure the\lindispensable Diancie!$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_5:
-# 604 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 605 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "Please allow me to ask you directly…\pWill you agree to relinquish your\nDiancie to us?$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_6:
-# 606 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 607 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "Is there no way we can persuade you?$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_7:
-# 610 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 611 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "Mon chou, please…\nIf you could only…$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_8:
-# 615 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 616 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "Vraiment? You will?\pOh, what a relief to have met with a\nTrainer so understanding!\pThen…$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_9:
-# 628 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 629 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "…Wait.$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_10:
-# 639 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 640 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "M-master?$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_11:
-# 646 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 647 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "Hey, I'm sorry they've been bugging you.$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_12:
-# 653 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 654 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "Um, you guys…\pI'm really glad you tried so hard to find\na Diancie for me. Truly.\pBut… Well, I think you might be on the\nwrong track.\pI'm not even that into finding a\nDiancie anymore, you know.\pWhat I really want now is a big, tough\nPokémon--you know?$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_13:
-# 659 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 660 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "So, you've got a Diancie, right?\pHow about we give you the Diancite we\nfound?\pIt'd be a crazy waste to have\na rare Pokémon like that and never\leven Mega Evolve it. You know?$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_14:
-# 661 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 662 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "That's what you gotta do, am I right?\pMega Evolve them like bam! And then…\nPow! Pow! And end that battle in a\lflash!\pEven if folks do call it a royal\npink whatever, I bet a Mega Evolved\lDiancie would be crazy strong!\lWho knows?\pYou keep rolling your way\nthrough battles and strolling away\lwith victories!\lThat's what I wanna see, you know!$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_15:
-# 665 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 666 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "OK, you two!\pNow let's shoot for a big, tough\nPokémon!$"
 
 SlateportCity_PokemonFanClub_EventScript_Diancite_Text_16:
-# 669 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
+# 670 "data/maps/SlateportCity_PokemonFanClub/scripts.pory"
 	.string "Ohoho…\nMon jeune maitre…$"

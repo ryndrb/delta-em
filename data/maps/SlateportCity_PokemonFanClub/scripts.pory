@@ -521,6 +521,7 @@ script Furfrou_DoTrimming {
     closemessage
     delay(16)
     fadescreen(FADE_FROM_BLACK)
+	special(ChangeMonSpecies)
     msgbox("Thank you for your patience!\pIt's all done.\nYour Furfrou looks elegant!")
     showmonpic(VAR_0x8005, 10, 3)
 	delay(8)
