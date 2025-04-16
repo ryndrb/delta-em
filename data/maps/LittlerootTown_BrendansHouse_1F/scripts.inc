@@ -518,3 +518,62 @@ PlayersHouse_1F_Text_StillUnknownPokemon:
 PlayersHouse_1F_Text_OhYoureTheNewNeighbor:
 # 260 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	.string "Oh, hello.\nAnd you are?\p…\pOh, you're {PLAYER}, our new next-door\nneighbor! Welcome.\pWe have a son who is about the same\nage as you.\pHe has been so excited about making a\nnew friend.\pHe should be in {COLOR BLUE}his room upstairs{COLOR DARK_GRAY}.\pI hope you'll go and introduce yourself.$"
+
+PlayersHouse_1F_EventScript_Mom_StatEditor::
+# 265 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	goto_if_set FLAG_TEMP_1, PlayersHouse_1F_EventScript_Mom_StatEditor_2
+# 271 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	goto_if_set FLAG_UNLOCKED_STAT_EDITOR, PlayersHouse_1F_EventScript_Mom_StatEditor_5
+# 274 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	goto_if_set FLAG_BADGE03_GET, PlayersHouse_1F_EventScript_Mom_StatEditor_8
+	return
+
+PlayersHouse_1F_EventScript_Mom_StatEditor_2:
+# 266 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	msgbox PlayersHouse_1F_EventScript_Mom_StatEditor_Text_0
+# 267 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	closemessage
+# 268 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	release
+	end
+
+PlayersHouse_1F_EventScript_Mom_StatEditor_5:
+	return
+
+PlayersHouse_1F_EventScript_Mom_StatEditor_8:
+# 275 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	msgbox PlayersHouse_1F_EventScript_Mom_StatEditor_Text_1
+# 276 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	closemessage
+# 277 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	delay 8
+# 278 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	applymovement LOCALID_MOM, Common_Movement_ExclamationMark
+# 279 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	waitmovement LOCALID_MOM
+# 280 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	delay 8
+# 281 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	msgbox PlayersHouse_1F_EventScript_Mom_StatEditor_Text_2
+# 282 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	closemessage
+# 283 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	setflag FLAG_UNLOCKED_STAT_EDITOR
+# 284 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	setflag FLAG_TEMP_1
+# 285 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	release
+	end
+
+
+PlayersHouse_1F_EventScript_Mom_StatEditor_Text_0:
+# 266 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Stay safe out there, okay? And\ncome home whenever you need a break.$"
+
+PlayersHouse_1F_EventScript_Mom_StatEditor_Text_1:
+# 275 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Oh, {PLAYER}!\nYou're back!\pYou've grown so much since we first\ngot here… I can feel it!\pYour eyes, the way you stand…\nYou've changed, just a little.\lStronger, maybe.\pAnd your Pokémon, too.\nThey seem… closer to you.\lLike you're really in sync.\pYou know, sometimes I think the heart\nunderstands more than we realize.\pWhen everything just clicks between\nyou and your Pokémon--it's special.\pIf you ever feel like something's not\nquite right, deep down, trust your\linstincts. Trust their instincts.\pIt's okay to listen to that feeling and\nmake a few changes.\pAfter all, growing stronger isn't\nalways about pushing forward.\pSometimes, it's about understanding\nwho you are--together.$"
+
+PlayersHouse_1F_EventScript_Mom_StatEditor_Text_2:
+# 281 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	.string "{COLOR RED}Mom{COLOR DARK_GRAY}: Hah, listen to me rambling!\pMaybe I've just been watching too\nmany dramas lately.\pAnyway, stay safe out there, okay? And\ncome home whenever you need a break.$"

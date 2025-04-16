@@ -19,3 +19,5 @@ Credits
     - Battle Backgrounds
 - Kaixer
     - Shadows in summary screen
+- Team Aqua Hideout
+    - Stat Editor
