@@ -21,3 +21,7 @@ Credits
     - Shadows in summary screen
 - Team Aqua Hideout
     - Stat Editor
+- aveontrainer
+    - Overworld Sprites
+- kalarie
+    - Overworld Sprites

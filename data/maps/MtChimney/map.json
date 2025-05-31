@@ -340,7 +340,7 @@
       "flag": "FLAG_HIDE_MT_CHIMNEY_TRAINERS"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
+      "graphics_id": "OBJ_EVENT_GFX_BEAUTY_2_RSE",
       "x": 8,
       "y": 7,
       "elevation": 3,
@@ -353,7 +353,7 @@
       "flag": "FLAG_HIDE_MT_CHIMNEY_TRAINERS"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
+      "graphics_id": "OBJ_EVENT_GFX_BEAUTY_2_RSE",
       "x": 30,
       "y": 6,
       "elevation": 3,
@@ -366,7 +366,7 @@
       "flag": "FLAG_HIDE_MT_CHIMNEY_TRAINERS"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
+      "graphics_id": "OBJ_EVENT_GFX_BEAUTY_2_RSE",
       "x": 25,
       "y": 17,
       "elevation": 3,
@@ -392,7 +392,7 @@
       "flag": "FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "graphics_id": "OBJ_EVENT_GFX_HIKER_2_RSE",
       "x": 11,
       "y": 14,
       "elevation": 3,

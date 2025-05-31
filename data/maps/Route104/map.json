@@ -57,7 +57,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "graphics_id": "OBJ_EVENT_GFX_LASS_2_RSE",
       "x": 32,
       "y": 23,
       "elevation": 3,
@@ -135,7 +135,7 @@
       "flag": "FLAG_HIDE_ROUTE_104_MR_BRINEY"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
+      "graphics_id": "OBJ_EVENT_GFX_FISHERMAN_2_FRLG",
       "x": 30,
       "y": 7,
       "elevation": 3,
@@ -317,7 +317,7 @@
       "flag": "FLAG_HIDE_ROUTE_104_WHITE_HERB_FLORIST"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TWIN",
+      "graphics_id": "OBJ_EVENT_GFX_TWIN_2_RSE",
       "x": 27,
       "y": 15,
       "elevation": 3,
@@ -330,7 +330,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TWIN",
+      "graphics_id": "OBJ_EVENT_GFX_TWIN_2_RSE",
       "x": 28,
       "y": 15,
       "elevation": 3,
@@ -343,7 +343,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_RICH_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_RICH_BOY_2_FRLG",
       "x": 21,
       "y": 26,
       "elevation": 3,
@@ -356,7 +356,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_LADY_FRLG",
       "x": 13,
       "y": 44,
       "elevation": 3,
@@ -382,7 +382,7 @@
       "flag": "FLAG_ITEM_ROUTE_104_POKE_BALL"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER_2_RSE",
       "x": 18,
       "y": 67,
       "elevation": 3,
@@ -447,7 +447,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
+      "graphics_id": "OBJ_EVENT_GFX_FISHERMAN_2_FRLG",
       "x": 14,
       "y": 63,
       "elevation": 3,
