@@ -210,16 +210,11 @@ const u8 gText_ZCrystalsPocket[] = _("Z-Crystals");
 
 const u8 *const gPocketNamesStringsTable[] =
 {
-    [ITEMS_POCKET]          = COMPOUND_STRING("Items"),
-    [MEDICINE_POCKET]       = COMPOUND_STRING("Medicines"),
-    [BALLS_POCKET]          = COMPOUND_STRING("Poké Balls"),
-    [BATTLEITEMS_POCKET]    = COMPOUND_STRING("Battle Item"),
-    [BERRIES_POCKET]        = COMPOUND_STRING("Berries"),
-    [POWERUP_POCKET]        = COMPOUND_STRING("Power-Ups"),
-    [MEGASTONES_POCKET]     = COMPOUND_STRING("Mega Stones"),
-    [ZCRYSTALS_POCKET]      = COMPOUND_STRING("Z-Crystals"),
-    [TMHM_POCKET]           = COMPOUND_STRING("TMs & HMs"),
-    [KEYITEMS_POCKET]       = COMPOUND_STRING("Key Items")
+    [POCKET_ITEMS] =        COMPOUND_STRING("Items"),
+    [POCKET_POKE_BALLS] =   COMPOUND_STRING("Poké Balls"),
+    [POCKET_TM_HM]  =       COMPOUND_STRING("TMs & HMs"),
+    [POCKET_BERRIES] =      COMPOUND_STRING("Berries"),
+    [POCKET_KEY_ITEMS] =    COMPOUND_STRING("Key Items")
 };
 
 const u8 gText_NumberItem_TMBerry[] = _("{NO}{STR_VAR_1}{CLEAR 0x07}{STR_VAR_2}");
@@ -336,6 +331,9 @@ const u8 gText_DoWhatWithMail[] = _("Do what with the Mail?");
 const u8 gText_ChoosePokemonCancel[] = _("Choose Pokémon or Cancel.");
 const u8 gText_ChoosePokemonConfirm[] = _("Choose Pokémon and confirm.");
 const u8 gText_SendWhichMonToPC[] = _("Send which Pokémon to the PC?");
+const u8 gText_MoveItemWhere[] = _("Move item to where?");
+const u8 gText_XsYAnd[] = _("{STR_VAR_1}'s {STR_VAR_2} and\n");
+const u8 gText_XsYWereSwapped[] = _("{STR_VAR_1}'s {STR_VAR_2} were swapped!{PAUSE_UNTIL_PRESS}");
 const u8 gText_EnjoyCycling[] = _("Let's enjoy cycling!");
 const u8 gText_InUseAlready_PM[] = _("This is in use already.");
 const u8 gText_AlreadyHoldingOne[] = _("{STR_VAR_1} is already holding\none {STR_VAR_2}.");

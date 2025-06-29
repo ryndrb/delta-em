@@ -67,6 +67,7 @@
       "flag": "FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN"
     },
     {
+      "local_id": "LOCALID_SLATEPORT_HARBOR_SS_TIDAL",
       "graphics_id": "OBJ_EVENT_GFX_SS_TIDAL",
       "x": 8,
       "y": 9,
@@ -93,6 +94,7 @@
       "flag": "FLAG_HIDE_SLATEPORT_CITY_HARBOR_AQUA_GRUNT"
     },
     {
+      "local_id": "LOCALID_SLATEPORT_HARBOR_ARCHIE",
       "graphics_id": "OBJ_EVENT_GFX_ARCHIE",
       "x": 7,
       "y": 10,
@@ -106,6 +108,7 @@
       "flag": "FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE"
     },
     {
+      "local_id": "LOCALID_SLATEPORT_HARBOR_SUBMARINE",
       "graphics_id": "OBJ_EVENT_GFX_SUBMARINE_SHADOW",
       "x": 7,
       "y": 9,

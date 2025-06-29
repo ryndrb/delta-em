@@ -40,12 +40,7 @@ struct WildPokemonHeader
 {
     u8 mapGroup;
     u8 mapNum;
-
-#if OW_TIME_OF_DAY_ENCOUNTERS
     const struct WildEncounterTypes encounterTypes[TIMES_OF_DAY_COUNT];
-#else
-    const struct WildEncounterTypes encounterTypes[1];
-#endif
 };
 
 
@@ -58,7 +53,7 @@ extern u8 gChainFishingDexNavStreak;
 
 void DisableWildEncounters(bool8 disabled);
 u8 PickWildMonNature(void);
-bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavior);
+bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior);
 bool8 SweetScentWildEncounter(void);
 void BerryWildEncounter(u8 headerId);
 bool8 DoesCurrentMapHaveFishingMons(void);

@@ -18,16 +18,11 @@ EventScript_ObtainItemMessage::
 
 EventScript_BufferPocketNameAndTryFanfare::
 	switch VAR_RESULT
-	case POCKET_ITEMS,        EventScript_BufferItemsPocket
-	case POCKET_MEDICINE,     EventScript_BufferMedicinePocket
-	case POCKET_POKE_BALLS,   EventScript_BufferPokeballsPocket
-	case POCKET_BATTLE_ITEMS, EventScript_BufferBattleItemsPocket
-	case POCKET_BERRIES,      EventScript_BufferBerriesPocket
-	case POCKET_POWER_UP,     EventScript_BufferPowerUpPocket
-	case POCKET_TM_HM,        EventScript_BufferTMHMsPocket
-	case POCKET_MEGA_STONES,  EventScript_BufferMegaStonesPocket
-	case POCKET_Z_CRYSTALS,   EventScript_BufferZCrystalsPocket
-	case POCKET_KEY_ITEMS,    EventScript_BufferKeyItemsPocket
+	case POCKET_ITEMS,      EventScript_BufferItemsPocket
+	case POCKET_KEY_ITEMS,  EventScript_BufferKeyItemsPocket
+	case POCKET_POKE_BALLS, EventScript_BufferPokeballsPocket
+	case POCKET_TM_HM,      EventScript_BufferTMHMsPocket
+	case POCKET_BERRIES,    EventScript_BufferBerriesPocket
 	end
 
 EventScript_BufferItemsPocket::

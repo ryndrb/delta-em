@@ -106,6 +106,7 @@
       "flag": "FLAG_HIDE_METEOR_FALLS_TEAM_AQUA"
     },
     {
+      "local_id": "LOCALID_METEOR_FALLS_AQUA_GRUNT_2",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
       "x": 6,
       "y": 21,
