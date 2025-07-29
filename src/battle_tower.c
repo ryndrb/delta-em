@@ -697,15 +697,11 @@ static const u8 *const *const sPartnerApprenticeTextTables[NUM_APPRENTICES] =
 
 #include "data/battle_frontier/battle_tent.h"
 
-#include "data/battle_partner_parties.h"
-#if VANILLA_PARTY_SYNTAX == TRUE
-#include "data/battle_partners.h"
-#else
-const struct Trainer gBattlePartners[] =
+#include "data/partner_parties.h"
+const struct Trainer gBattlePartners[DIFFICULTY_COUNT][PARTNER_COUNT] =
 {
 #include "data/battle_partners.h"
 };
-#endif
 
 static void (*const sBattleTowerFuncs[])(void) =
 {

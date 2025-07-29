@@ -228,13 +228,9 @@ const union AnimCmd *const gAnims_Trainer[] ={
 
 #include "data/trainer_parties.h"
 
-#if VANILLA_PARTY_SYNTAX == TRUE
-#include "data/trainers.h"
-#else
 const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] =
 {
 #include "data/trainers.h"
 };
-#endif
 
 #include "data/text/follower_messages.h"

@@ -104,7 +104,7 @@ BattleScript_ItemHealAndCureStatusEnd::
 BattleScript_ItemIncreaseStat::
 	call BattleScript_UseItemMessage
 	itemincreasestat
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_ItemEnd
+	statbuffchange BS_ATTACKER, STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_ItemEnd
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 	end
@@ -131,7 +131,7 @@ BattleScript_PokeFluteEnd::
 BattleScript_ItemSetMist::
 	call BattleScript_UseItemMessage
 	setmist
-	playmoveanimation BS_ATTACKER, MOVE_MIST
+	playmoveanimation MOVE_MIST
 	waitanimation
 	printfromtable gMistUsedStringIds
 	waitmessage B_WAIT_TIME_LONG
@@ -142,7 +142,7 @@ BattleScript_ItemSetFocusEnergy::
 	jumpifvolatile BS_ATTACKER, VOLATILE_DRAGON_CHEER, BattleScript_ButItFailed
 	jumpifvolatile BS_ATTACKER, VOLATILE_FOCUS_ENERGY, BattleScript_ButItFailed
 	setfocusenergy BS_ATTACKER
-	playmoveanimation BS_ATTACKER, MOVE_FOCUS_ENERGY
+	playmoveanimation MOVE_FOCUS_ENERGY
 	waitanimation
 	copybyte sBATTLER, gBattlerAttacker
 	printstring STRINGID_PKMNUSEDXTOGETPUMPED

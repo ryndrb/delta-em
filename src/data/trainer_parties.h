@@ -1,28 +1,28 @@
-#define IV_SPREAD_ZERO         TRAINER_PARTY_IVS(0,   0,  0,  0,  0,  0)
-#define IV_SPREAD_MEDIUM       TRAINER_PARTY_IVS(16, 16, 16, 16, 16, 16)
-#define IV_SPREAD_MAX          TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31)
-#define IV_SPREAD_HP_DARK      TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31)
-#define IV_SPREAD_HP_DRAGON    TRAINER_PARTY_IVS(30, 31, 31, 31, 31, 31)
-#define IV_SPREAD_HP_ICE       TRAINER_PARTY_IVS(30, 31, 30, 31, 31, 31)
-#define IV_SPREAD_HP_PSYCHIC   TRAINER_PARTY_IVS(30, 31, 31, 31, 31, 30)
-#define IV_SPREAD_HP_ELECTRIC  TRAINER_PARTY_IVS(30, 31, 30, 31, 31, 30)
-#define IV_SPREAD_HP_GRASS     TRAINER_PARTY_IVS(30, 31, 31, 30, 31, 31)
-#define IV_SPREAD_HP_WATER     TRAINER_PARTY_IVS(31, 30, 30, 30, 31, 31)
-#define IV_SPREAD_HP_FIRE      TRAINER_PARTY_IVS(31, 30, 31, 30, 31, 30)
-#define IV_SPREAD_HP_STEEL     TRAINER_PARTY_IVS(31, 30, 30, 30, 31, 30)
-#define IV_SPREAD_HP_GHOST     TRAINER_PARTY_IVS(31, 30, 31, 31, 30, 31)
-#define IV_SPREAD_HP_BUG       TRAINER_PARTY_IVS(31, 30, 30, 31, 30, 31)
-#define IV_SPREAD_HP_ROCK      TRAINER_PARTY_IVS(30, 30, 31, 31, 30, 30)
-#define IV_SPREAD_HP_GROUND    TRAINER_PARTY_IVS(30, 30, 30, 31, 30, 30)
-#define IV_SPREAD_HP_POISON    TRAINER_PARTY_IVS(30, 30, 31, 30, 30, 31)
-#define IV_SPREAD_HP_FLYING    TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 31)
-#define IV_SPREAD_HP_FIGHTING  TRAINER_PARTY_IVS(30, 30, 31, 30, 30, 30)
+// #define IV_SPREAD_ZERO         TRAINER_PARTY_IVS(0,   0,  0,  0,  0,  0)
+// #define IV_SPREAD_MEDIUM       TRAINER_PARTY_IVS(16, 16, 16, 16, 16, 16)
+// #define IV_SPREAD_MAX          TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31)
+// #define IV_SPREAD_HP_DARK      TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31)
+// #define IV_SPREAD_HP_DRAGON    TRAINER_PARTY_IVS(30, 31, 31, 31, 31, 31)
+// #define TRAINER_PARTY_IVS(30, 31, 30, 31, 31, 31)       TRAINER_PARTY_IVS(30, 31, 30, 31, 31, 31)
+// #define IV_SPREAD_HP_PSYCHIC   TRAINER_PARTY_IVS(30, 31, 31, 31, 31, 30)
+// #define IV_SPREAD_HP_ELECTRIC  TRAINER_PARTY_IVS(30, 31, 30, 31, 31, 30)
+// #define IV_SPREAD_HP_GRASS     TRAINER_PARTY_IVS(30, 31, 31, 30, 31, 31)
+// #define TRAINER_PARTY_IVS(31, 30, 30, 30, 31, 31)     TRAINER_PARTY_IVS(31, 30, 30, 30, 31, 31)
+// #define TRAINER_PARTY_IVS(31, 30, 31, 30, 31, 30)      TRAINER_PARTY_IVS(31, 30, 31, 30, 31, 30)
+// #define TRAINER_PARTY_IVS(31, 30, 30, 30, 31, 30)     TRAINER_PARTY_IVS(31, 30, 30, 30, 31, 30)
+// #define IV_SPREAD_HP_GHOST     TRAINER_PARTY_IVS(31, 30, 31, 31, 30, 31)
+// #define IV_SPREAD_HP_BUG       TRAINER_PARTY_IVS(31, 30, 30, 31, 30, 31)
+// #define IV_SPREAD_HP_ROCK      TRAINER_PARTY_IVS(30, 30, 31, 31, 30, 30)
+// #define IV_SPREAD_HP_GROUND    TRAINER_PARTY_IVS(30, 30, 30, 31, 30, 30)
+// #define IV_SPREAD_HP_POISON    TRAINER_PARTY_IVS(30, 30, 31, 30, 30, 31)
+// #define IV_SPREAD_HP_FLYING    TRAINER_PARTY_IVS(30, 30, 30, 30, 30, 31)
+// #define IV_SPREAD_HP_FIGHTING  TRAINER_PARTY_IVS(30, 30, 31, 30, 30, 30)
 
-#define EV_SPREAD_0            TRAINER_PARTY_EVS(0,   0,  0,  0,  0,  0)
-#define EV_SPREAD_20           TRAINER_PARTY_EVS(20, 20, 20, 20, 20, 20)
-#define EV_SPREAD_40           TRAINER_PARTY_EVS(40, 40, 40, 40, 40, 40)
-#define EV_SPREAD_60           TRAINER_PARTY_EVS(60, 60, 60, 60, 60, 60)
-#define EV_SPREAD_80           TRAINER_PARTY_EVS(80, 80, 80, 80, 80, 80)
+// #define EV_SPREAD_0            TRAINER_PARTY_EVS(0,   0,  0,  0,  0,  0)
+// #define EV_SPREAD_20           TRAINER_PARTY_EVS(20, 20, 20, 20, 20, 20)
+// #define EV_SPREAD_40           TRAINER_PARTY_EVS(40, 40, 40, 40, 40, 40)
+// #define EV_SPREAD_60           TRAINER_PARTY_EVS(60, 60, 60, 60, 60, 60)
+// #define EV_SPREAD_80           TRAINER_PARTY_EVS(80, 80, 80, 80, 80, 80)
 
 static const struct TrainerMon sParty_Sawyer1[] = {
     {
@@ -1672,7 +1672,7 @@ static const struct TrainerMon sParty_Edgar[] = {
         .species = SPECIES_MAGNEZONE,
         .ability = ABILITY_LEVITATE,
         .nature = NATURE_MODEST,
-        .iv = IV_SPREAD_HP_FIRE,
+        .iv = TRAINER_PARTY_IVS(31, 30, 31, 30, 31, 30),
         .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 4, 252),
         .heldItem = ITEM_WISE_GLASSES,
         .ball = ITEM_POKE_BALL,
@@ -4822,7 +4822,7 @@ static const struct TrainerMon sParty_Sidney[] = {
         .species = SPECIES_MUK_ALOLA,
         .ability = ABILITY_POISON_TOUCH,
         .nature = NATURE_ADAMANT,
-        .iv = IV_SPREAD_HP_ICE,
+        .iv = TRAINER_PARTY_IVS(30, 31, 30, 31, 31, 31),
         .ev = TRAINER_PARTY_EVS(252, 252, 0, 0, 4, 0),
         .heldItem = ITEM_ASSAULT_VEST,
         .ball = ITEM_POKE_BALL,
@@ -4844,7 +4844,7 @@ static const struct TrainerMon sParty_Sidney[] = {
         .species = SPECIES_CHI_YU,
         .ability = ABILITY_BEADS_OF_RUIN,
         .nature = NATURE_TIMID,
-        .iv = IV_SPREAD_HP_GRASS,
+        .iv = TRAINER_PARTY_IVS(30, 31, 31, 30, 31, 31),
         .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 4, 252),
         .heldItem = ITEM_CHARCOAL,
         .ball = ITEM_POKE_BALL,
@@ -4944,7 +4944,7 @@ static const struct TrainerMon sParty_Phoebe[] = {
 };
 
 static const struct TrainerMon sParty_Glacia[] = {
-{
+    {
         .lvl = 76,
         .species = SPECIES_NINETALES_ALOLA,
         .ability = ABILITY_SNOW_WARNING,
@@ -5209,7 +5209,7 @@ static const struct TrainerMon sParty_Wattson1[] = {
         .species = SPECIES_MAGNEZONE,
         .ability = ABILITY_LEVITATE,
         .nature = NATURE_ADAMANT,
-        .iv = IV_SPREAD_HP_WATER, // hp water
+        .iv = TRAINER_PARTY_IVS(31, 30, 30, 30, 31, 31), // hp water
         .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 0, 4),
         .heldItem = ITEM_ASSAULT_VEST,
         .ball = ITEM_QUICK_BALL,
@@ -5242,7 +5242,7 @@ static const struct TrainerMon sParty_Wattson1[] = {
         .species = SPECIES_AMPHAROS,
         .ability = ABILITY_STATIC,
         .nature = NATURE_MODEST,
-        .iv = IV_SPREAD_HP_STEEL, // hp steel
+        .iv = TRAINER_PARTY_IVS(31, 30, 30, 30, 31, 30), // hp steel
         .ev = TRAINER_PARTY_EVS(252, 0, 0, 252, 4, 0),
         .heldItem = ITEM_ASSAULT_VEST,
         .ball = ITEM_QUICK_BALL,
@@ -5311,7 +5311,7 @@ static const struct TrainerMon sParty_Flannery1[] = {
         .species = SPECIES_VOLCARONA,
         .ability = ABILITY_FLAME_BODY,
         .nature = NATURE_TIMID,
-        .iv = IV_SPREAD_HP_GRASS, // hp grass
+        .iv = TRAINER_PARTY_IVS(30, 31, 31, 30, 31, 31), // hp grass
         .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 4, 252),
         .heldItem = ITEM_HEAVY_DUTY_BOOTS,
         .ball = ITEM_POKE_BALL,
@@ -6330,17 +6330,7 @@ static const struct TrainerMon sParty_Tommy[] = {
 };
 
 static const struct TrainerMon sParty_Joey[] = {
-    // {
-    //     .lvl = 12,
-    //     .species = SPECIES_RATTATA,
-    //     .ability = ABILITY_HUSTLE,
-    //     .nature = NATURE_ADAMANT,
-    //     .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 0, 0),
-    //     .heldItem = ITEM_NONE,
-    //     .ball = ITEM_POKE_BALL,
-    //     .moves = {MOVE_QUICK_ATTACK, MOVE_BITE}
-    // },
-{
+    {
         .lvl = 78,
         .species = SPECIES_ZOROARK,
         .ability = ABILITY_ILLUSION,
@@ -6464,7 +6454,7 @@ static const struct TrainerMon sParty_Katelynn[] = {
         .species = SPECIES_ZEBSTRIKA,
         .ability = ABILITY_SAP_SIPPER,
         .nature = NATURE_NAIVE,
-        .iv = IV_SPREAD_HP_ICE,
+        .iv = TRAINER_PARTY_IVS(30, 31, 30, 31, 31, 31),
         .ev = TRAINER_PARTY_EVS(0, 252, 0, 4, 0, 252),
         .heldItem = ITEM_LIFE_ORB,
         .ball = ITEM_POKE_BALL,
@@ -9651,7 +9641,7 @@ static const struct TrainerMon sParty_TabithaMeteorFalls[] = {
         .species = SPECIES_ARCANINE_HISUI,
         .ability = ABILITY_ROCK_HEAD,
         .nature = NATURE_JOLLY,
-        .iv = IV_SPREAD_HP_GRASS,
+        .iv = TRAINER_PARTY_IVS(30, 31, 31, 30, 31, 31),
         .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 4, 252),
         .heldItem = ITEM_PASSHO_BERRY,
         .ball = ITEM_POKE_BALL,
@@ -9662,7 +9652,7 @@ static const struct TrainerMon sParty_TabithaMeteorFalls[] = {
         .species = SPECIES_ARMAROUGE,
         .ability = ABILITY_WEAK_ARMOR,
         .nature = NATURE_TIMID,
-        .iv = IV_SPREAD_HP_GRASS, // hp grass
+        .iv = TRAINER_PARTY_IVS(30, 31, 31, 30, 31, 31), // hp grass
         .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 4, 252),
         .heldItem = ITEM_CHARCOAL,
         .ball = ITEM_POKE_BALL,
@@ -9775,7 +9765,7 @@ static const struct TrainerMon sParty_WallyVR1[] = {
         .species = SPECIES_MAGNEZONE,
         .ability = ABILITY_LEVITATE,
         .nature = NATURE_MODEST,
-        .iv = IV_SPREAD_HP_FIRE,
+        .iv = TRAINER_PARTY_IVS(31, 30, 31, 30, 31, 30),
         .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 4, 252),
         .heldItem = ITEM_CHOICE_SPECS,
         .ball = ITEM_POKE_BALL,
@@ -10113,7 +10103,7 @@ static const struct TrainerMon sParty_BrendanRoute110Torchic[] = {
         .species = SPECIES_ARMAROUGE,
         .ability = ABILITY_WEAK_ARMOR,
         .nature = NATURE_TIMID,
-        .iv = IV_SPREAD_HP_GRASS, // hp grass
+        .iv = TRAINER_PARTY_IVS(30, 31, 31, 30, 31, 31), // hp grass
         .heldItem = ITEM_PASSHO_BERRY,
         .ball = ITEM_POKE_BALL,
         .moves = {MOVE_PSYSHOCK, MOVE_MYSTICAL_FIRE, MOVE_CALM_MIND, MOVE_HIDDEN_POWER}
@@ -10200,7 +10190,7 @@ static const struct TrainerMon sParty_BrendanRoute119Torchic[] = {
 };
 
 static const struct TrainerMon sParty_MayRoute103Mudkip[] = {
-{
+    {
         .lvl = 5,
         .species = SPECIES_TREECKO,
         .ability = ABILITY_OVERGROW,
@@ -10439,7 +10429,7 @@ static const struct TrainerMon sParty_MayRoute119Treecko[] = {
         .species = SPECIES_ROSERADE,
         .ability = ABILITY_TECHNICIAN,
         .nature = NATURE_TIMID,
-        .iv = IV_SPREAD_HP_FIRE,
+        .iv = TRAINER_PARTY_IVS(31, 30, 31, 30, 31, 30),
         .ev = TRAINER_PARTY_EVS(0, 0, 252, 0, 4, 252),
         .heldItem = ITEM_LIFE_ORB,
         .ball = ITEM_POKE_BALL,
@@ -11807,7 +11797,7 @@ static const struct TrainerMon sParty_TabithaMtChimney[] = {
         .species = SPECIES_MAGMORTAR,
         .ability = ABILITY_MAGMA_ARMOR,
         .nature = NATURE_TIMID,
-        .iv = IV_SPREAD_HP_GRASS, // hp grass
+        .iv = TRAINER_PARTY_IVS(30, 31, 31, 30, 31, 31), // hp grass
         .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 4, 252),
         .heldItem = ITEM_CHOICE_SPECS,
         .ball = ITEM_POKE_BALL,
@@ -11962,7 +11952,7 @@ static const struct TrainerMon sParty_MaxieMagmaHideout[] = {
         .species = SPECIES_VOLCARONA,
         .ability = ABILITY_FLAME_BODY,
         .nature = NATURE_TIMID,
-        .iv = IV_SPREAD_HP_GRASS, // hp grass
+        .iv = TRAINER_PARTY_IVS(30, 31, 31, 30, 31, 31), // hp grass
         .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 4, 252),
         .heldItem = ITEM_HEAVY_DUTY_BOOTS,
         .ball = ITEM_POKE_BALL,
@@ -12031,7 +12021,7 @@ static const struct TrainerMon sParty_MaxieMtChimney[] = {
         .species = SPECIES_ROTOM_HEAT,
         .ability = ABILITY_LEVITATE,
         .nature = NATURE_TIMID,
-        .iv = IV_SPREAD_HP_GRASS, // hp grass
+        .iv = TRAINER_PARTY_IVS(30, 31, 31, 30, 31, 31), // hp grass
         .ev = TRAINER_PARTY_EVS(252, 0, 104, 0, 0, 152),
         .heldItem = ITEM_HEAVY_DUTY_BOOTS,
         .ball = ITEM_POKE_BALL,
@@ -12270,7 +12260,7 @@ static const struct TrainerMon sParty_Robin[] = {
 };
 
 static const struct TrainerMon sParty_Andrea[] = {
-{
+    {
         .lvl = 69,
         .species = SPECIES_SEISMITOAD,
         .ability = ABILITY_POISON_TOUCH,
@@ -13572,7 +13562,7 @@ static const struct TrainerMon sParty_MayLilycoveTreecko[] = {
         .species = SPECIES_ROSERADE,
         .ability = ABILITY_TECHNICIAN,
         .nature = NATURE_TIMID,
-        .iv = IV_SPREAD_HP_FIRE,
+        .iv = TRAINER_PARTY_IVS(31, 30, 31, 30, 31, 30),
         .ev = TRAINER_PARTY_EVS(0, 0, 252, 0, 4, 252),
         .heldItem = ITEM_LIFE_ORB,
         .ball = ITEM_POKE_BALL,
@@ -14808,7 +14798,7 @@ static const struct TrainerMon sParty_GruntMagmaMossdeep[] = {
         .species = SPECIES_TYPHLOSION_HISUI,
         .ability = ABILITY_BLAZE,
         .nature = NATURE_MODEST,
-        .iv = IV_SPREAD_HP_GRASS,
+        .iv = TRAINER_PARTY_IVS(30, 31, 31, 30, 31, 31),
         .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 4, 252),
         .heldItem = ITEM_LIFE_ORB,
         .ball = ITEM_POKE_BALL,
@@ -17024,7 +17014,7 @@ static const struct TrainerMon sParty_Steven[] = {
         .species = SPECIES_DIANCIE,
         .ability = ABILITY_LEVITATE,
         .nature = NATURE_MODEST,
-        .iv = IV_SPREAD_HP_FIRE,
+        .iv = TRAINER_PARTY_IVS(31, 30, 31, 30, 31, 30),
         .ev = TRAINER_PARTY_EVS(0, 252, 4, 0, 0, 252),
         .heldItem = ITEM_BABIRI_BERRY,
         .ball = ITEM_POKE_BALL,
@@ -17035,7 +17025,7 @@ static const struct TrainerMon sParty_Steven[] = {
         .species = SPECIES_RAYQUAZA,
         .ability = ABILITY_AIR_LOCK,
         .nature = NATURE_JOLLY,
-        .iv = IV_SPREAD_HP_FIRE,
+        .iv = TRAINER_PARTY_IVS(31, 30, 31, 30, 31, 30),
         .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 4, 252),
         .heldItem = ITEM_LIFE_ORB,
         .ball = ITEM_POKE_BALL,
@@ -17890,7 +17880,7 @@ static const struct TrainerMon sParty_GruntMagmaMeteorFalls[] = {
         .species = SPECIES_SCOVILLAIN,
         .ability = ABILITY_CHLOROPHYLL,
         .nature = NATURE_TIMID,
-        .iv = IV_SPREAD_HP_ICE, // hp ice
+        .iv = TRAINER_PARTY_IVS(30, 31, 30, 31, 31, 31), // hp ice
         .ev = TRAINER_PARTY_EVS(0, 0, 4, 252, 0, 252),
         .heldItem = ITEM_EXPERT_BELT,
         .ball = ITEM_POKE_BALL,

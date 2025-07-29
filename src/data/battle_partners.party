@@ -12,17 +12,41 @@ Pic: May
 Gender: Male
 Music: Male
 
-Wailmer
-Level: 18
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Blaziken @ Life Orb
+Adamant Nature
+Level: 42
+Ability: Speed Boost
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 Def / 252 SpD
+Ball: Poke Ball
+- Swords Dance
+- Protect
+- Blaze Kick
+- Brick Break
 
-Shroomish
-Level: 18
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Gholdengo @ Air Balloon
+Bold Nature
+Level: 42
+Ability: Good As Gold
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 196 Def / 60 SpD
+Ball: Poke Ball
+- Recover
+- Shadow Ball
+- Flash Cannon
+- Dazzling Gleam
 
-Combusken
-Level: 20
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Milotic @ Leftovers
+Bold Nature
+Level: 42
+Ability: Serene Grace
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 128 Def / 128 SpA
+Ball: Poke Ball
+- Scald
+- Recover
+- Moonblast
+- Ice Beam
 
 === PARTNER_MAY_METEOR_FALLS_TORCHIC ===
 Name: May
@@ -31,17 +55,41 @@ Pic: May
 Gender: Male
 Music: Male
 
-Shroomish
-Level: 18
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Swampert @ Leftovers
+Careful Nature
+Level: 42
+Ability: Stamina
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 4 Def / 252 SpA
+Ball: Poke Ball
+- Liquidation
+- Bulldoze
+- Rock Slide
+- Ice Punch
 
-Slugma
-Level: 18
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Mimikyu @ Life Orb
+Jolly Nature
+Level: 42
+Ability: Disguise
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpA / 252 SpD
+Ball: Poke Ball
+- Shadow Sneak
+- Drain Punch
+- Play Rough
+- Shadow Claw
 
-Marshtomp
-Level: 20
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Tangrowth @ Rocky Helmet
+Relaxed Nature
+Level: 42
+Ability: Self Sufficient
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Def / 4 SpA
+Ball: Poke Ball
+- Giga Drain
+- Knock Off
+- Stun Spore
+- Bulldoze
 
 === PARTNER_MAY_METEOR_FALLS_MUDKIP ===
 Name: May
@@ -50,17 +98,41 @@ Pic: May
 Gender: Male
 Music: Male
 
-Slugma
-Level: 18
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Sceptile @ Life Orb
+Jolly Nature
+Level: 42
+Ability: Sharpness
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 Def / 252 SpD
+Ball: Poke Ball
+- Scale Shot
+- Leaf Blade
+- X Scissor
+- Drain Punch
 
-Wailmer
-Level: 18
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Gliscor @ Toxic Orb
+Impish Nature
+Level: 42
+Ability: Poison Heal
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 244 HP / 248 Def / 16 SpA
+Ball: Poke Ball
+- Swords Dance
+- Bulldoze
+- Facade
+- Protect
 
-Grovyle
-Level: 20
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Azumarill @ Leftovers
+Adamant Nature
+Level: 42
+Ability: Huge Power
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 SpD
+Ball: Poke Ball
+- Liquidation
+- Play Rough
+- Aqua Jet
+- Knock Off
 
 === PARTNER_BRENDAN_METEOR_FALLS_TREECKO ===
 Name: Brendan
@@ -69,17 +141,41 @@ Pic: Brendan
 Gender: Male
 Music: Male
 
-Wailmer
-Level: 18
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Blaziken @ Life Orb
+Adamant Nature
+Level: 42
+Ability: Speed Boost
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 Def / 252 SpD
+Ball: Poke Ball
+- Swords Dance
+- Protect
+- Blaze Kick
+- Brick Break
 
-Shroomish
-Level: 18
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Togekiss @ Leftovers
+Timid Nature
+Level: 42
+Ability: Serene Grace
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 248 HP / 8 Def / 252 SpD
+Ball: Poke Ball
+- Air Slash
+- Nasty Plot
+- Moonblast
+- Flamethrower
 
-Combusken
-Level: 20
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Starmie @ Colbur Berry
+Timid Nature
+Level: 42
+Ability: Neuroforce
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 SpD / 4 Spe
+Ball: Poke Ball
+- Scald
+- Recover
+- Ice Beam
+- Thunderbolt
 
 === PARTNER_BRENDAN_METEOR_FALLS_TORCHIC ===
 Name: Brendan
@@ -88,17 +184,41 @@ Pic: Brendan
 Gender: Male
 Music: Male
 
-Shroomish
-Level: 18
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Swampert @ Leftovers
+Careful Nature
+Level: 42
+Ability: Stamina
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 4 Def / 252 SpA
+Ball: Poke Ball
+- Liquidation
+- Bulldoze
+- Rock Slide
+- Ice Punch
 
-Slugma
-Level: 18
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Ribombee @ Focus Sash
+Timid Nature
+Level: 42
+Ability: Honey Gather
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 SpA / 252 SpD / 252 Spe
+Ball: Poke Ball
+- Pollen Puff
+- Sticky Web
+- Draining Kiss
+- Protect
 
-Marshtomp
-Level: 20
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Armarouge @ Weakness Policy
+Timid Nature
+Level: 42
+Ability: Weak Armor
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 Def / 252 SpD / 252 Spe
+Ball: Poke Ball
+- Psyshock
+- Mystical Fire
+- Endure
+- Mystical Fire
 
 === PARTNER_BRENDAN_METEOR_FALLS_MUDKIP ===
 Name: Brendan
@@ -107,17 +227,41 @@ Pic: Brendan
 Gender: Male
 Music: Male
 
-Slugma
-Level: 18
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Sceptile @ Leftovers
+Jolly Nature
+Level: 42
+Ability: Sharpness
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 Def / 252 SpD
+Ball: Poke Ball
+- Scale Shot
+- Leaf Blade
+- X Scissor
+- Drain Punch
 
-Wailmer
-Level: 18
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Clefable @ Leftovers
+Bold Nature
+Level: 42
+Ability: Unaware
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 Def
+Ball: Poke Ball
+- Moonblast
+- Calm Mind
+- Moonlight
+- Flamethrower
 
-Grovyle
-Level: 20
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Toxapex @ Rocky Helmet
+Bold Nature
+Level: 42
+Ability: Rough Skin
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 248 HP / 152 Def / 108 SpA
+Ball: Poke Ball
+- Scald
+- Recover
+- Toxic
+- Haze
 
 === PARTNER_STEVEN_SOUTHERN_ISLAND ===
 Name: Steven
@@ -125,10 +269,43 @@ Class: Rival
 Pic: Steven
 Gender: Male
 Music: Male
+Items: Mega Ring
 
-Skarmory
-Level: 31
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ferrothorn @ Leftovers
+Impish Nature
+Level: 52
+Ability: Iron Barbs
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 92 Def / 164 SpA
+Ball: Poke Ball
+- Leech Seed
+- Knock Off
+- Power Whip
+- Bulldoze
+
+Gholdengo @ Air Balloon
+Bold Nature
+Level: 52
+Ability: Good As Gold
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 196 Def / 60 SpD
+Ball: Poke Ball
+- Nasty Plot
+- Shadow Ball
+- Flash Cannon
+- Recover
+
+Metagross @ Metagrossite
+Jolly Nature
+Level: 52
+Ability: Fatal Precision
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpA / 252 SpD
+Ball: Poke Ball
+- Meteor Mash
+- Ice Punch
+- Rock Slide
+- Stomping Tantrum
 
 === PARTNER_STEVEN_MOSSDEEP_SPACE_CENTER ===
 Name: Steven
@@ -137,32 +314,38 @@ Pic: Steven
 Gender: Male
 Music: Male
 
-Metang
-Brave Nature
-Level: 42
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Light Screen
-- Psychic
-- Reflect
-- Metal Claw
-
-Skarmory
+Ferrothorn @ Leftovers
 Impish Nature
-Level: 43
+Level: 68
+Ability: Iron Barbs
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 6 SpA / 252 SpD
-- Toxic
-- Aerial Ace
-- Protect
-- Steel Wing
+EVs: 252 HP / 92 Def / 164 SpA
+Ball: Poke Ball
+- Leech Seed
+- Knock Off
+- Power Whip
+- Bulldoze
 
-Aggron
-Adamant Nature
-Level: 44
+Gholdengo @ Air Balloon
+Bold Nature
+Level: 68
+Ability: Good As Gold
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
-- Dragon Claw
+EVs: 252 HP / 196 Def / 60 SpD
+Ball: Poke Ball
+- Nasty Plot
+- Shadow Ball
+- Flash Cannon
+- Recover
+
+Metagross @ Metagrossite
+Jolly Nature
+Level: 68
+Ability: Fatal Precision
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpA / 252 SpD
+Ball: Poke Ball
+- Meteor Mash
+- Ice Punch
+- Rock Slide
+- Stomping Tantrum

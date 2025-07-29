@@ -959,7 +959,7 @@ const u32 gItemIcon_Diancite[] = INCBIN_U32("graphics/items/icons/diancite.4bpp.
 const u16 gItemIconPalette_Diancite[] = INCBIN_U16("graphics/items/icon_palettes/diancite.gbapal");
 
 const u32 gItemIcon_IntriguingStone[] = INCBIN_U32("graphics/items/icons/intriguing_stone.4bpp.lz");
-const u32 gItemIconPalette_IntriguingStone[] = INCBIN_U32("graphics/items/icon_palettes/intriguing_stone.gbapal.lz");
+const u16 gItemIconPalette_IntriguingStone[] = INCBIN_U16("graphics/items/icon_palettes/intriguing_stone.gbapal");
 
 // Gems
 
