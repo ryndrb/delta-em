@@ -543,144 +543,140 @@ Route119_WeatherInstitute_2F_EventScript_Shelly::
 # 256 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CASTFORM
 # 257 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
-	playfanfare MUS_HG_RECEIVE_POKEMON
-# 258 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	givemon SPECIES_CASTFORM, 25, ITEM_MYSTIC_WATER
-# 259 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 258 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	msgbox Route119_WeatherInstitute_2F_EventScript_Shelly_Text_11
-# 260 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
-	waitfanfare
-# 261 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 259 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	msgbox Route119_WeatherInstitute_2F_EventScript_Shelly_Text_12
-# 262 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 260 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	msgbox Route119_WeatherInstitute_2F_EventScript_Shelly_Text_13
-# 263 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 261 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	msgbox Route119_WeatherInstitute_2F_EventScript_Shelly_Text_14
-# 264 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 262 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	delay 16
-# 265 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 263 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	msgbox Route119_WeatherInstitute_2F_EventScript_Shelly_Text_15
-# 266 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 264 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	closemessage
-# 267 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 265 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	delay 8
-# 268 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 266 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
+# 267 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 268 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp
 # 269 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
 # 270 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp
-# 271 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
-	waitmovement OBJ_EVENT_ID_PLAYER
-# 272 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	applymovement LOCALID_SCIENTIST, Route119_WeatherInstitute_2F_Movement_ScientistManExit
-# 273 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 271 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	applymovement LOCALID_MAN, Route119_WeatherInstitute_2F_Movement_ScientistManExit
-# 274 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 272 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	waitmovement LOCALID_MAN
-# 275 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 273 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	removeobject LOCALID_SCIENTIST
-# 276 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 274 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	removeobject LOCALID_MAN
-# 277 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 275 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	clearflag FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS
-# 278 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 276 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	setvar VAR_LEVEL_CAP_VARIABLE, 55
-# 279 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 277 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	release
 	end
 
 
-# 283 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 281 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 Route119_WeatherInstitute_2F_Movement_ShellyExit1:
-# 284 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 282 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_right
-# 284 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 282 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_right
-# 284 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 282 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_right
 	step_end
 
-# 287 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 285 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 Route119_WeatherInstitute_2F_Movement_PlayerMoveAside:
-# 288 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 286 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	delay_16
-# 289 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 287 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_up
-# 290 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 288 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_in_place_down
 	step_end
 
-# 293 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 291 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 Route119_WeatherInstitute_2F_Movement_GruntInAHurry:
-# 294 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 292 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_fast_left
-# 294 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 292 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_fast_left
-# 294 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 292 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_fast_left
-# 294 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 292 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_fast_left
-# 294 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 292 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_fast_left
-# 294 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 292 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_fast_left
-# 294 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 292 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_fast_left
-# 294 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 292 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_fast_left
-# 294 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 292 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_fast_left
 	step_end
 
-# 297 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 295 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 Route119_WeatherInstitute_2F_Movement_TeamAquaExit:
-# 298 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 296 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_right
-# 298 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 296 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_right
-# 298 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 296 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_right
 	step_end
 
-# 301 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 299 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 Route119_WeatherInstitute_2F_Movement_PlayerFaceWorkers:
-# 302 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 300 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_down
-# 303 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 301 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_left
-# 303 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 301 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_left
 	step_end
 
-# 306 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 304 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 Route119_WeatherInstitute_2F_Movement_ScientistManExit:
+# 305 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+	walk_right
+# 306 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+	walk_down
 # 307 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_right
-# 308 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
-	walk_down
-# 309 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 307 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_right
-# 309 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 307 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_right
-# 309 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 307 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_right
-# 309 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 307 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_right
-# 309 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 307 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_right
-# 309 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 307 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_right
-# 309 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 307 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_right
-# 309 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
-	walk_right
-# 309 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 307 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	walk_right
 	step_end
 
 Route119_WeatherInstitute_2F_EventScript_GentlemanMentionWeather::
-# 313 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 311 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	msgbox Route119_WeatherInstitute_2F_EventScript_GentlemanMentionWeather_Text_0, MSGBOX_NPC
 	end
 
@@ -754,25 +750,25 @@ Route119_WeatherInstitute_2F_EventScript_Shelly_Text_10:
 	.string "Oh, but I am forgetting myself!\pFirst I must thank you properly for\nyour help.\pIt might seem an odd way of rewarding\nyou, but please take this Pokémon as\lmy thanks.$"
 
 Route119_WeatherInstitute_2F_EventScript_Shelly_Text_11:
-# 259 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 258 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	.string "{PLAYER} received a Castform!$"
 
 Route119_WeatherInstitute_2F_EventScript_Shelly_Text_12:
-# 261 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 259 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	.string "{COLOR RED}Man{COLOR DARK_GRAY}: Castform is a Pokémon that\nchanges its form according to the\lcurrent weather conditions.\pWe have many of the living here in the\nInstitute with us.\pThey help us with out research of\nweather phenomena.$"
 
 Route119_WeatherInstitute_2F_EventScript_Shelly_Text_13:
-# 262 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 260 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	.string "{COLOR RED}Gentleman{COLOR DARK_GRAY}: Indeed.\pI trust that it might help you on your\nadventure.\pBut as for the data those ruffians\nwere seeking…\pThey wanted to know about the extreme\nweather conditions that ruled\lthousands of years ago because of\lthose two super-ancient Pokémon.\pThose legendary Pokémon held the\nability to reshape the world.\pBy tapping into the boundless energies\nof the natural world, they triggered\la transformation that altered the\lvery fabric of our planet.\p{COLOR RED}Primal Groudon{COLOR DARK_GRAY} and {COLOR RED}Primal Kyogre{COLOR DARK_GRAY}…\pThis transformation caused untold\ndisturbances to the world's climate,\lleading to desolation.\pIt dried up the oceans, and arid lands\nconsumed more of the planet.\pWe refer to this transformation as\n{COLOR RED}Primal Reversion{COLOR DARK_GRAY}…$"
 
 Route119_WeatherInstitute_2F_EventScript_Shelly_Text_14:
-# 263 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 261 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	.string "The result of it is the cataclysmic\nforce that wreaked havoc upon the\lworld…\pPrimal Reversion is a mysterious form\nof Evolution, both resembling and\ldiffering from Mega Evolution…\pOr so it has been theorized.\nBut it has never been achieved by any\lPokémon other than those\lsuper-ancient Pokémon.\pAs such, it has largely faded from\nmemory as a method of Evolution.$"
 
 Route119_WeatherInstitute_2F_EventScript_Shelly_Text_15:
-# 265 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 263 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	.string "{COLOR RED}Scientist{COLOR DARK_GRAY}: If you'll excuse us then…\pWe'll be heading downstairs now , but\ntalk to us when you have a moment.\lWe want to thank you as well.$"
 
 Route119_WeatherInstitute_2F_EventScript_GentlemanMentionWeather_Text_0:
-# 313 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
+# 311 "data/maps/Route119_WeatherInstitute_2F/scripts.pory"
 	.string "I've been researching rain for many\nyears, but it's ridiculous to think\lthat humans can freely change the\lweather.$"

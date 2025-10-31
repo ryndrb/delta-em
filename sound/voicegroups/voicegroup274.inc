@@ -1,7 +1,7 @@
     .align 2
 voicegroup274::
-    voice_keysplit voicegroup005, KeySplitTable1
-    voice_keysplit voicegroup005, KeySplitTable1
+    voice_keysplit voicegroup_piano_keysplit, keysplit_piano
+    voice_keysplit voicegroup_piano_keysplit, keysplit_piano
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -48,4 +48,4 @@ voicegroup274::
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
     voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-    voice_keysplit voicegroup006, KeySplitTable2
+    voice_keysplit voicegroup_strings_keysplit, keysplit_strings

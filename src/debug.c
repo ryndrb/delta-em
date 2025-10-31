@@ -29,6 +29,7 @@
 #include "international_string_util.h"
 #include "item.h"
 #include "item_icon.h"
+#include "item_use.h"
 #include "list_menu.h"
 #include "m4a.h"
 #include "main.h"
@@ -55,6 +56,7 @@
 #include "strings.h"
 #include "string_util.h"
 #include "task.h"
+#include "tv.h"
 #include "pokemon_summary_screen.h"
 #include "wild_encounter.h"
 #include "constants/abilities.h"
@@ -105,8 +107,8 @@ enum FlagsVarsDebugMenu
     DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_COLLISION,
     DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_ENCOUNTER,
     DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_TRAINER_SEE,
-    DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BAG_USE,
     DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_CATCHING,
+    DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BAG_USE,
 };
 
 enum DebugBattleType
@@ -236,6 +238,8 @@ static void Debug_DestroyMenu(u8 taskId);
 static void DebugAction_Cancel(u8 taskId);
 static void DebugAction_DestroyExtraWindow(u8 taskId);
 static void Debug_RefreshListMenu(u8 taskId);
+static u8 DebugNativeStep_CreateDebugWindow(void);
+static void DebugNativeStep_CloseDebugWindow(u8 taskId);
 
 static void DebugAction_OpenSubMenu(u8 taskId, const struct DebugMenuOption *items);
 static void DebugAction_OpenSubMenuFlagsVars(u8 taskId, const struct DebugMenuOption *items);
@@ -341,12 +345,15 @@ static void DebugAction_Player_Id(u8 taskId);
 
 extern const u8 Debug_FlagsNotSetOverworldConfigMessage[];
 extern const u8 Debug_FlagsNotSetBattleConfigMessage[];
+extern const u8 Debug_VarsNotSetBattleConfigMessage[];
 extern const u8 Debug_FlagsAndVarNotSetBattleConfigMessage[];
 extern const u8 Debug_EventScript_FontTest[];
 extern const u8 Debug_EventScript_CheckEVs[];
 extern const u8 Debug_EventScript_CheckIVs[];
 extern const u8 Debug_EventScript_InflictStatus1[];
 extern const u8 Debug_EventScript_SetHiddenNature[];
+extern const u8 Debug_EventScript_SetAbility[];
+extern const u8 Debug_EventScript_SetFriendship[];
 extern const u8 Debug_EventScript_Script_1[];
 extern const u8 Debug_EventScript_Script_2[];
 extern const u8 Debug_EventScript_Script_3[];
@@ -575,6 +582,8 @@ static const struct DebugMenuOption sDebugMenu_Actions_Party[] =
     { COMPOUND_STRING("Heal party"),         DebugAction_Party_HealParty },
     { COMPOUND_STRING("Inflict Status1"),    DebugAction_ExecuteScript, Debug_EventScript_InflictStatus1 },
     { COMPOUND_STRING("Set Hidden Nature"),  DebugAction_ExecuteScript, Debug_EventScript_SetHiddenNature },
+    { COMPOUND_STRING("Set Friendship"),     DebugAction_ExecuteScript, Debug_EventScript_SetFriendship },
+    { COMPOUND_STRING("Set Ability"),        DebugAction_ExecuteScript, Debug_EventScript_SetAbility },
     { COMPOUND_STRING("Check EVs"),          DebugAction_ExecuteScript, Debug_EventScript_CheckEVs },
     { COMPOUND_STRING("Check IVs"),          DebugAction_ExecuteScript, Debug_EventScript_CheckIVs },
     { COMPOUND_STRING("Clear Party"),        DebugAction_Party_ClearParty },
@@ -650,9 +659,16 @@ static const struct DebugMenuOption sDebugMenu_Actions_Flags[] =
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_COLLISION]     = { COMPOUND_STRING("Toggle {STR_VAR_1}Collision OFF"),   DebugAction_ToggleFlag, DebugAction_FlagsVars_CollisionOnOff },
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_ENCOUNTER]     = { COMPOUND_STRING("Toggle {STR_VAR_1}Encounter OFF"),   DebugAction_ToggleFlag, DebugAction_FlagsVars_EncounterOnOff },
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_TRAINER_SEE]   = { COMPOUND_STRING("Toggle {STR_VAR_1}Trainer See OFF"), DebugAction_ToggleFlag, DebugAction_FlagsVars_TrainerSeeOnOff },
-    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BAG_USE]       = { COMPOUND_STRING("Toggle {STR_VAR_1}Bag Use OFF"),     DebugAction_ToggleFlag, DebugAction_FlagsVars_BagUseOnOff },
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_CATCHING]      = { COMPOUND_STRING("Toggle {STR_VAR_1}Catching OFF"),    DebugAction_ToggleFlag, DebugAction_FlagsVars_CatchingOnOff },
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BAG_USE]       = { COMPOUND_STRING("Toggle {STR_VAR_1}Bag Use OFF"),     DebugAction_ToggleFlag, DebugAction_FlagsVars_BagUseOnOff },
     { NULL }
+};
+
+static const u8 *sDebugMenu_Actions_BagUse_Options[] =
+{
+    COMPOUND_STRING("No Bag: {STR_VAR_1}Inactive"),
+    COMPOUND_STRING("No Bag: {STR_VAR_1}VS Trainers"),
+    COMPOUND_STRING("No Bag: {STR_VAR_1}Active"),
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_Main[] =
@@ -931,6 +947,30 @@ static void DebugAction_DestroyExtraWindow(u8 taskId)
     UnfreezeObjectEvents();
 }
 
+static u8 DebugNativeStep_CreateDebugWindow(void)
+{
+    u8 windowId;
+
+    LockPlayerFieldControls();
+    FreezeObjectEvents();
+    HideMapNamePopUpWindow();
+    LoadMessageBoxAndBorderGfx();
+    windowId = AddWindow(&sDebugMenuWindowTemplateExtra);
+    DrawStdWindowFrame(windowId, FALSE);
+    CopyWindowToVram(windowId, COPYWIN_FULL);
+
+    return windowId;
+}
+
+static void DebugNativeStep_CloseDebugWindow(u8 taskId)
+{
+    ClearStdWindowAndFrame(gTasks[taskId].tSubWindowId, TRUE);
+    RemoveWindow(gTasks[taskId].tSubWindowId);
+    DestroyTask(taskId);
+    UnfreezeObjectEvents();
+    UnlockPlayerFieldControls();
+}
+
 static const u16 sLocationFlags[] =
 {
     FLAG_VISITED_LITTLEROOT_TOWN,
@@ -955,7 +995,7 @@ static const u16 sLocationFlags[] =
 
 static u8 Debug_CheckToggleFlags(u8 id)
 {
-    u8 result = FALSE;
+    bool32 result = FALSE;
 
     switch (id)
     {
@@ -1017,16 +1057,14 @@ static u8 Debug_CheckToggleFlags(u8 id)
             result = FlagGet(OW_FLAG_NO_TRAINER_SEE);
             break;
     #endif
-    #if B_FLAG_NO_BAG_USE != 0
-        case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BAG_USE:
-            result = FlagGet(B_FLAG_NO_BAG_USE);
-            break;
-    #endif
     #if B_FLAG_NO_CATCHING != 0
         case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_CATCHING:
             result = FlagGet(B_FLAG_NO_CATCHING);
             break;
     #endif
+        case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BAG_USE:
+            result = VarGet(B_VAR_NO_BAG_USE);
+            break;
         default:
             result = 0xFF;
             break;
@@ -1053,7 +1091,10 @@ static u8 Debug_GenerateListMenuNames(void)
         if (sDebugMenuListData->listId == 1)
         {
             flagResult = Debug_CheckToggleFlags(i);
-            name = sDebugMenu_Actions_Flags[i].text;
+            if (i == DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BAG_USE)
+                name = sDebugMenu_Actions_BagUse_Options[flagResult];
+            else
+                name = sDebugMenu_Actions_Flags[i].text;
         }
 
         if (flagResult == 0xFF)
@@ -2005,14 +2046,11 @@ static void DebugAction_FlagsVars_TrainerSeeOnOff(u8 taskId)
 
 static void DebugAction_FlagsVars_BagUseOnOff(u8 taskId)
 {
-#if B_FLAG_NO_BAG_USE == 0
-    Debug_DestroyMenu_Full_Script(taskId, Debug_FlagsNotSetBattleConfigMessage);
+#if B_VAR_NO_BAG_USE < VARS_START || B_VAR_NO_BAG_USE > VARS_END
+    Debug_DestroyMenu_Full_Script(taskId, Debug_VarsNotSetBattleConfigMessage);
 #else
-    if (FlagGet(B_FLAG_NO_BAG_USE))
-        PlaySE(SE_PC_OFF);
-    else
-        PlaySE(SE_PC_LOGIN);
-    FlagToggle(B_FLAG_NO_BAG_USE);
+    PlaySE(SE_SELECT);
+    VarSet(B_VAR_NO_BAG_USE, (VarGet(B_VAR_NO_BAG_USE) + 1) % 3);
 #endif
 }
 
@@ -2039,6 +2077,17 @@ static void Debug_Display_ItemInfo(u32 itemId, u32 digit, u8 windowId)
 {
     StringCopy(gStringVar2, gText_DigitIndicator[digit]);
     u8* end = CopyItemName(itemId, gStringVar1);
+    u16 moveId = ItemIdToBattleMoveId(itemId);
+    if (moveId != MOVE_NONE)
+    {
+        end = StringCopy(end, gText_Space);
+        end = StringCopy(end, GetMoveName(moveId));
+    }
+    else if (CheckIfItemIsTMHMOrEvolutionStone(itemId) == 1)
+    {
+        end = StringCopy(end, COMPOUND_STRING(" None"));
+    } 
+
     WrapFontIdToFit(gStringVar1, end, DEBUG_MENU_FONT, WindowWidthPx(windowId));
     StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
     ConvertIntToDecimalStringN(gStringVar3, itemId, STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);
@@ -2385,7 +2434,7 @@ static void DebugAction_Give_Pokemon_SelectShiny(u8 taskId)
     }
 }
 
-static void Debug_Display_Ability(u32 abilityId, u32 digit, u8 windowId)//(u32 natureId, u32 digit, u8 windowId)
+static void Debug_Display_Ability(enum Ability abilityId, u32 digit, u8 windowId)//(u32 natureId, u32 digit, u8 windowId)
 {
     StringCopy(gStringVar2, gText_DigitIndicator[digit]);
     ConvertIntToDecimalStringN(gStringVar3, abilityId, STR_CONV_MODE_LEADING_ZEROS, 2);
@@ -2424,7 +2473,7 @@ static void DebugAction_Give_Pokemon_SelectNature(u8 taskId)
         gTasks[taskId].tInput = 0;
         gTasks[taskId].tDigit = 0;
 
-        u32 abilityId = GetAbilityBySpecies(sDebugMonData->species, 0);
+        enum Ability abilityId = GetAbilityBySpecies(sDebugMonData->species, 0);
         Debug_Display_Ability(abilityId, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId);
 
         gTasks[taskId].func = DebugAction_Give_Pokemon_SelectAbility;
@@ -2473,7 +2522,7 @@ static void DebugAction_Give_Pokemon_SelectAbility(u8 taskId)
         {
             i++;
         }
-        u32 abilityId = GetAbilityBySpecies(sDebugMonData->species, gTasks[taskId].tInput - i);
+        enum Ability abilityId = GetAbilityBySpecies(sDebugMonData->species, gTasks[taskId].tInput - i);
         Debug_Display_Ability(abilityId, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId);
     }
 
@@ -2576,11 +2625,11 @@ static void DebugAction_Give_Pokemon_SelectDynamaxLevel(u8 taskId)
     }
 }
 
-static void Debug_Display_StatInfo(const u8* text, u32 stat, u32 value, u32 digit, u8 windowId)
+static void Debug_Display_StatInfo(const u8* text, u32 stat, u32 value, u32 digit, u8 windowId, u32 maxValue)
 {
     StringCopy(gStringVar1, gStatNamesTable[stat]);
     StringCopy(gStringVar2, gText_DigitIndicator[digit]);
-    ConvertIntToDecimalStringN(gStringVar3, value, STR_CONV_MODE_LEADING_ZEROS, 2);
+    ConvertIntToDecimalStringN(gStringVar3, value, STR_CONV_MODE_LEADING_ZEROS, CountDigits(maxValue));
     StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
     StringExpandPlaceholders(gStringVar4, text);
     AddTextPrinterParameterized(windowId, DEBUG_MENU_FONT, gStringVar4, 0, 0, 0, NULL);
@@ -2600,7 +2649,7 @@ static void DebugAction_Give_Pokemon_SelectGigantamaxFactor(u8 taskId)
         sDebugMonData->gmaxFactor = gTasks[taskId].tInput;
         gTasks[taskId].tInput = 0;
         gTasks[taskId].tDigit = 0;
-        Debug_Display_StatInfo(sDebugText_IVs, gTasks[taskId].tIterator, gTasks[taskId].tInput, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId);
+        Debug_Display_StatInfo(sDebugText_IVs, gTasks[taskId].tIterator, gTasks[taskId].tInput, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId, MAX_PER_STAT_IVS);
         gTasks[taskId].func = DebugAction_Give_Pokemon_SelectIVs;
     }
     else if (JOY_NEW(B_BUTTON))
@@ -2617,7 +2666,7 @@ static void DebugAction_Give_Pokemon_SelectIVs(u8 taskId)
     {
         PlaySE(SE_SELECT);
         Debug_HandleInput_Numeric(taskId, 0, MAX_PER_STAT_IVS, 3);
-        Debug_Display_StatInfo(sDebugText_IVs, gTasks[taskId].tIterator, gTasks[taskId].tInput, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId);
+        Debug_Display_StatInfo(sDebugText_IVs, gTasks[taskId].tIterator, gTasks[taskId].tInput, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId, MAX_PER_STAT_IVS);
     }
 
     //If A or B button
@@ -2633,7 +2682,7 @@ static void DebugAction_Give_Pokemon_SelectIVs(u8 taskId)
             gTasks[taskId].tInput = 0;
             gTasks[taskId].tDigit = 0;
 
-            Debug_Display_StatInfo(sDebugText_IVs, gTasks[taskId].tIterator, gTasks[taskId].tInput, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId);
+            Debug_Display_StatInfo(sDebugText_IVs, gTasks[taskId].tIterator, gTasks[taskId].tInput, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId, MAX_PER_STAT_IVS);
             gTasks[taskId].func = DebugAction_Give_Pokemon_SelectIVs;
         }
         else
@@ -2642,7 +2691,7 @@ static void DebugAction_Give_Pokemon_SelectIVs(u8 taskId)
             gTasks[taskId].tDigit = 0;
             gTasks[taskId].tIterator = 0;
 
-            Debug_Display_StatInfo(sDebugText_EVs, gTasks[taskId].tIterator, gTasks[taskId].tInput, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId);
+            Debug_Display_StatInfo(sDebugText_EVs, gTasks[taskId].tIterator, gTasks[taskId].tInput, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId, MAX_PER_STAT_EVS);
             gTasks[taskId].func = DebugAction_Give_Pokemon_SelectEVs;
         }
     }
@@ -2690,7 +2739,7 @@ static void DebugAction_Give_Pokemon_SelectEVs(u8 taskId)
     {
         PlaySE(SE_SELECT);
         Debug_HandleInput_Numeric(taskId, 0, MAX_PER_STAT_EVS, 4);
-        Debug_Display_StatInfo(sDebugText_EVs, gTasks[taskId].tIterator, gTasks[taskId].tInput, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId);
+        Debug_Display_StatInfo(sDebugText_EVs, gTasks[taskId].tIterator, gTasks[taskId].tInput, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId, MAX_PER_STAT_EVS);
     }
 
     //If A or B button
@@ -2705,7 +2754,7 @@ static void DebugAction_Give_Pokemon_SelectEVs(u8 taskId)
             gTasks[taskId].tIterator++;
             gTasks[taskId].tInput = 0;
             gTasks[taskId].tDigit = 0;
-            Debug_Display_StatInfo(sDebugText_EVs, gTasks[taskId].tIterator, gTasks[taskId].tInput, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId);
+            Debug_Display_StatInfo(sDebugText_EVs, gTasks[taskId].tIterator, gTasks[taskId].tInput, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId, MAX_PER_STAT_EVS);
             gTasks[taskId].func = DebugAction_Give_Pokemon_SelectEVs;
         }
         else
@@ -2722,7 +2771,7 @@ static void DebugAction_Give_Pokemon_SelectEVs(u8 taskId)
                 }
 
                 PlaySE(SE_FAILURE);
-                Debug_Display_StatInfo(sDebugText_EVs, gTasks[taskId].tIterator, gTasks[taskId].tInput, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId);
+                Debug_Display_StatInfo(sDebugText_EVs, gTasks[taskId].tIterator, gTasks[taskId].tInput, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId, MAX_PER_STAT_EVS);
                 gTasks[taskId].func = DebugAction_Give_Pokemon_SelectEVs;
             }
             else
@@ -2853,6 +2902,10 @@ static void DebugAction_Give_Pokemon_ComplexCreateMon(u8 taskId) //https://githu
     //Moves
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
+        // Non-default moveset chosen. Reset moves before setting the chosen moves.
+        if (moves[0] != MOVE_NONE)
+            SetMonMoveSlot(&mon, MOVE_NONE, i);
+
         if (moves[i] == MOVE_NONE || moves[i] >= MOVES_COUNT)
             continue;
 
@@ -3000,6 +3053,9 @@ static void DebugAction_Give_MaxMoney(u8 taskId)
 static void DebugAction_Give_MaxCoins(u8 taskId)
 {
     SetCoins(MAX_COINS);
+
+    if (!CheckBagHasItem(ITEM_COIN_CASE, 1))
+        AddBagItem(ITEM_COIN_CASE, 1);
 }
 
 static void DebugAction_Give_MaxBattlePoints(u8 taskId)
@@ -3151,12 +3207,10 @@ static void DebugAction_PCBag_Fill_PocketItems(u8 taskId)
 
 static void DebugAction_PCBag_Fill_PocketPokeBalls(u8 taskId)
 {
-    u16 ballId;
-
-    for (ballId = BALL_STRANGE; ballId < POKEBALL_COUNT; ballId++)
+    for (enum PokeBall ballId = BALL_STRANGE; ballId < POKEBALL_COUNT; ballId++)
     {
         if (CheckBagHasSpace(ballId, MAX_BAG_ITEM_CAPACITY))
-            AddBagItem(ballId, MAX_BAG_ITEM_CAPACITY);
+            AddBagItem(gBallItemIds[ballId], MAX_BAG_ITEM_CAPACITY);
     }
 }
 
@@ -3384,926 +3438,501 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
 
 #undef tCurrentSong
 
-#undef tMenuTaskId
-#undef tWindowId
-#undef tSubWindowId
-#undef tInput
-#undef tDigit
 
-#define SOUND_LIST_BGM \
-    X(MUS_LITTLEROOT_TEST) \
-    X(MUS_GSC_ROUTE38) \
-    X(MUS_CAUGHT) \
-    X(MUS_VICTORY_WILD) \
-    X(MUS_VICTORY_GYM_LEADER) \
-    X(MUS_VICTORY_LEAGUE) \
-    X(MUS_C_COMM_CENTER) \
-    X(MUS_GSC_PEWTER) \
-    X(MUS_C_VS_LEGEND_BEAST) \
-    X(MUS_ROUTE101) \
-    X(MUS_ROUTE110) \
-    X(MUS_ROUTE120) \
-    X(MUS_PETALBURG) \
-    X(MUS_OLDALE) \
-    X(MUS_GYM) \
-    X(MUS_SURF) \
-    X(MUS_PETALBURG_WOODS) \
-    X(MUS_LEVEL_UP) \
-    X(MUS_HEAL) \
-    X(MUS_OBTAIN_BADGE) \
-    X(MUS_OBTAIN_ITEM) \
-    X(MUS_EVOLVED) \
-    X(MUS_OBTAIN_TMHM) \
-    X(MUS_LILYCOVE_MUSEUM) \
-    X(MUS_ROUTE122) \
-    X(MUS_OCEANIC_MUSEUM) \
-    X(MUS_EVOLUTION_INTRO) \
-    X(MUS_EVOLUTION) \
-    X(MUS_MOVE_DELETED) \
-    X(MUS_ENCOUNTER_GIRL) \
-    X(MUS_ENCOUNTER_MALE) \
-    X(MUS_ABANDONED_SHIP) \
-    X(MUS_FORTREE) \
-    X(MUS_BIRCH_LAB) \
-    X(MUS_B_TOWER_RS) \
-    X(MUS_ENCOUNTER_SWIMMER) \
-    X(MUS_CAVE_OF_ORIGIN) \
-    X(MUS_OBTAIN_BERRY) \
-    X(MUS_AWAKEN_LEGEND) \
-    X(MUS_SLOTS_JACKPOT) \
-    X(MUS_SLOTS_WIN) \
-    X(MUS_TOO_BAD) \
-    X(MUS_ROULETTE) \
-    X(MUS_LINK_CONTEST_P1) \
-    X(MUS_LINK_CONTEST_P2) \
-    X(MUS_LINK_CONTEST_P3) \
-    X(MUS_LINK_CONTEST_P4) \
-    X(MUS_ENCOUNTER_RICH) \
-    X(MUS_VERDANTURF) \
-    X(MUS_RUSTBORO) \
-    X(MUS_POKE_CENTER) \
-    X(MUS_ROUTE104) \
-    X(MUS_ROUTE119) \
-    X(MUS_CYCLING) \
-    X(MUS_POKE_MART) \
-    X(MUS_LITTLEROOT) \
-    X(MUS_MT_CHIMNEY) \
-    X(MUS_ENCOUNTER_FEMALE) \
-    X(MUS_LILYCOVE) \
-    X(MUS_ROUTE111) \
-    X(MUS_HELP) \
-    X(MUS_UNDERWATER) \
-    X(MUS_VICTORY_TRAINER) \
-    X(MUS_TITLE) \
-    X(MUS_INTRO) \
-    X(MUS_ENCOUNTER_MAY) \
-    X(MUS_ENCOUNTER_INTENSE) \
-    X(MUS_ENCOUNTER_COOL) \
-    X(MUS_ROUTE113) \
-    X(MUS_ENCOUNTER_AQUA) \
-    X(MUS_FOLLOW_ME) \
-    X(MUS_ENCOUNTER_BRENDAN) \
-    X(MUS_EVER_GRANDE) \
-    X(MUS_ENCOUNTER_SUSPICIOUS) \
-    X(MUS_VICTORY_AQUA_MAGMA) \
-    X(MUS_CABLE_CAR) \
-    X(MUS_GAME_CORNER) \
-    X(MUS_DEWFORD) \
-    X(MUS_SAFARI_ZONE) \
-    X(MUS_VICTORY_ROAD) \
-    X(MUS_AQUA_MAGMA_HIDEOUT) \
-    X(MUS_SAILING) \
-    X(MUS_MT_PYRE) \
-    X(MUS_SLATEPORT) \
-    X(MUS_MT_PYRE_EXTERIOR) \
-    X(MUS_SCHOOL) \
-    X(MUS_HALL_OF_FAME) \
-    X(MUS_FALLARBOR) \
-    X(MUS_SEALED_CHAMBER) \
-    X(MUS_CONTEST_WINNER) \
-    X(MUS_CONTEST) \
-    X(MUS_ENCOUNTER_MAGMA) \
-    X(MUS_INTRO_BATTLE) \
-    X(MUS_WEATHER_KYOGRE) \
-    X(MUS_WEATHER_GROUDON) \
-    X(MUS_SOOTOPOLIS) \
-    X(MUS_CONTEST_RESULTS) \
-    X(MUS_HALL_OF_FAME_ROOM) \
-    X(MUS_TRICK_HOUSE) \
-    X(MUS_ENCOUNTER_TWINS) \
-    X(MUS_ENCOUNTER_ELITE_FOUR) \
-    X(MUS_ENCOUNTER_HIKER) \
-    X(MUS_CONTEST_LOBBY) \
-    X(MUS_ENCOUNTER_INTERVIEWER) \
-    X(MUS_ENCOUNTER_CHAMPION) \
-    X(MUS_CREDITS) \
-    X(MUS_END) \
-    X(MUS_VS_WILD) \
-    X(MUS_VS_AQUA_MAGMA) \
-    X(MUS_VS_TRAINER) \
-    X(MUS_VS_GYM_LEADER) \
-    X(MUS_VS_CHAMPION) \
-    X(MUS_VS_REGI) \
-    X(MUS_VS_KYOGRE_GROUDON) \
-    X(MUS_VS_RIVAL) \
-    X(MUS_VS_ELITE_FOUR) \
-    X(MUS_VS_AQUA_MAGMA_LEADER) \
-    X(MUS_RG_FOLLOW_ME) \
-    X(MUS_RG_GAME_CORNER) \
-    X(MUS_RG_ROCKET_HIDEOUT) \
-    X(MUS_RG_GYM) \
-    X(MUS_RG_JIGGLYPUFF) \
-    X(MUS_RG_INTRO_FIGHT) \
-    X(MUS_RG_TITLE) \
-    X(MUS_RG_CINNABAR) \
-    X(MUS_RG_LAVENDER) \
-    X(MUS_RG_HEAL) \
-    X(MUS_RG_CYCLING) \
-    X(MUS_RG_ENCOUNTER_ROCKET) \
-    X(MUS_RG_ENCOUNTER_GIRL) \
-    X(MUS_RG_ENCOUNTER_BOY) \
-    X(MUS_RG_HALL_OF_FAME) \
-    X(MUS_RG_VIRIDIAN_FOREST) \
-    X(MUS_RG_MT_MOON) \
-    X(MUS_RG_POKE_MANSION) \
-    X(MUS_RG_CREDITS) \
-    X(MUS_RG_ROUTE1) \
-    X(MUS_RG_ROUTE24) \
-    X(MUS_RG_ROUTE3) \
-    X(MUS_RG_ROUTE11) \
-    X(MUS_RG_VICTORY_ROAD) \
-    X(MUS_RG_VS_GYM_LEADER) \
-    X(MUS_RG_VS_TRAINER) \
-    X(MUS_RG_VS_WILD) \
-    X(MUS_RG_VS_CHAMPION) \
-    X(MUS_RG_PALLET) \
-    X(MUS_RG_OAK_LAB) \
-    X(MUS_RG_OAK) \
-    X(MUS_RG_POKE_CENTER) \
-    X(MUS_RG_SS_ANNE) \
-    X(MUS_RG_SURF) \
-    X(MUS_RG_POKE_TOWER) \
-    X(MUS_RG_SILPH) \
-    X(MUS_RG_FUCHSIA) \
-    X(MUS_RG_CELADON) \
-    X(MUS_RG_VICTORY_TRAINER) \
-    X(MUS_RG_VICTORY_WILD) \
-    X(MUS_RG_VICTORY_GYM_LEADER) \
-    X(MUS_RG_VERMILLION) \
-    X(MUS_RG_PEWTER) \
-    X(MUS_RG_ENCOUNTER_RIVAL) \
-    X(MUS_RG_RIVAL_EXIT) \
-    X(MUS_RG_DEX_RATING) \
-    X(MUS_RG_OBTAIN_KEY_ITEM) \
-    X(MUS_RG_CAUGHT_INTRO) \
-    X(MUS_RG_PHOTO) \
-    X(MUS_RG_GAME_FREAK) \
-    X(MUS_RG_CAUGHT) \
-    X(MUS_RG_NEW_GAME_INSTRUCT) \
-    X(MUS_RG_NEW_GAME_INTRO) \
-    X(MUS_RG_NEW_GAME_EXIT) \
-    X(MUS_RG_POKE_JUMP) \
-    X(MUS_RG_UNION_ROOM) \
-    X(MUS_RG_NET_CENTER) \
-    X(MUS_RG_MYSTERY_GIFT) \
-    X(MUS_RG_BERRY_PICK) \
-    X(MUS_RG_SEVII_CAVE) \
-    X(MUS_RG_TEACHY_TV_SHOW) \
-    X(MUS_RG_SEVII_ROUTE) \
-    X(MUS_RG_SEVII_DUNGEON) \
-    X(MUS_RG_SEVII_123) \
-    X(MUS_RG_SEVII_45) \
-    X(MUS_RG_SEVII_67) \
-    X(MUS_RG_POKE_FLUTE) \
-    X(MUS_RG_VS_DEOXYS) \
-    X(MUS_RG_VS_MEWTWO) \
-    X(MUS_RG_VS_LEGEND) \
-    X(MUS_RG_ENCOUNTER_GYM_LEADER) \
-    X(MUS_RG_ENCOUNTER_DEOXYS) \
-    X(MUS_RG_TRAINER_TOWER) \
-    X(MUS_RG_SLOW_PALLET) \
-    X(MUS_RG_TEACHY_TV_MENU) \
-    X(MUS_ABNORMAL_WEATHER) \
-    X(MUS_B_FRONTIER) \
-    X(MUS_B_ARENA) \
-    X(MUS_OBTAIN_B_POINTS) \
-    X(MUS_REGISTER_MATCH_CALL) \
-    X(MUS_B_PYRAMID) \
-    X(MUS_B_PYRAMID_TOP) \
-    X(MUS_B_PALACE) \
-    X(MUS_RAYQUAZA_APPEARS) \
-    X(MUS_B_TOWER) \
-    X(MUS_OBTAIN_SYMBOL) \
-    X(MUS_B_DOME) \
-    X(MUS_B_PIKE) \
-    X(MUS_B_FACTORY) \
-    X(MUS_VS_RAYQUAZA) \
-    X(MUS_VS_FRONTIER_BRAIN) \
-    X(MUS_VS_MEW) \
-    X(MUS_B_DOME_LOBBY) \
-    X(MUS_DP_TWINLEAF_DAY) \
-    X(MUS_DP_SANDGEM_DAY) \
-    X(MUS_DP_FLOAROMA_DAY) \
-    X(MUS_DP_SOLACEON_DAY) \
-    X(MUS_DP_ROUTE225_DAY) \
-    X(MUS_DP_VALOR_LAKEFRONT_DAY) \
-    X(MUS_DP_JUBILIFE_DAY) \
-    X(MUS_DP_CANALAVE_DAY) \
-    X(MUS_DP_OREBURGH_DAY) \
-    X(MUS_DP_ETERNA_DAY) \
-    X(MUS_DP_HEARTHOME_DAY) \
-    X(MUS_DP_VEILSTONE_DAY) \
-    X(MUS_DP_SUNYSHORE_DAY) \
-    X(MUS_DP_SNOWPOINT_DAY) \
-    X(MUS_DP_POKEMON_LEAGUE_DAY) \
-    X(MUS_DP_FIGHT_AREA_DAY) \
-    X(MUS_DP_ROUTE201_DAY) \
-    X(MUS_DP_ROUTE203_DAY) \
-    X(MUS_DP_ROUTE205_DAY) \
-    X(MUS_DP_ROUTE206_DAY) \
-    X(MUS_DP_ROUTE209_DAY) \
-    X(MUS_DP_ROUTE210_DAY) \
-    X(MUS_DP_ROUTE216_DAY) \
-    X(MUS_DP_ROUTE228_DAY) \
-    X(MUS_DP_ROWAN) \
-    X(MUS_DP_TV_BROADCAST) \
-    X(MUS_DP_TWINLEAF_NIGHT) \
-    X(MUS_DP_SANDGEM_NIGHT) \
-    X(MUS_DP_FLOAROMA_NIGHT) \
-    X(MUS_DP_SOLACEON_NIGHT) \
-    X(MUS_DP_ROUTE225_NIGHT) \
-    X(MUS_DP_VALOR_LAKEFRONT_NIGHT) \
-    X(MUS_DP_JUBILIFE_NIGHT) \
-    X(MUS_DP_CANALAVE_NIGHT) \
-    X(MUS_DP_OREBURGH_NIGHT) \
-    X(MUS_DP_ETERNA_NIGHT) \
-    X(MUS_DP_HEARTHOME_NIGHT) \
-    X(MUS_DP_VEILSTONE_NIGHT) \
-    X(MUS_DP_SUNYSHORE_NIGHT) \
-    X(MUS_DP_SNOWPOINT_NIGHT) \
-    X(MUS_DP_POKEMON_LEAGUE_NIGHT) \
-    X(MUS_DP_FIGHT_AREA_NIGHT) \
-    X(MUS_DP_ROUTE201_NIGHT) \
-    X(MUS_DP_ROUTE203_NIGHT) \
-    X(MUS_DP_ROUTE205_NIGHT) \
-    X(MUS_DP_ROUTE206_NIGHT) \
-    X(MUS_DP_ROUTE209_NIGHT) \
-    X(MUS_DP_ROUTE210_NIGHT) \
-    X(MUS_DP_ROUTE216_NIGHT) \
-    X(MUS_DP_ROUTE228_NIGHT) \
-    X(MUS_DP_UNDERGROUND) \
-    X(MUS_DP_FLAG_CAPTURED) \
-    X(MUS_DP_VICTORY_ROAD) \
-    X(MUS_DP_ETERNA_FOREST) \
-    X(MUS_DP_OLD_CHATEAU) \
-    X(MUS_DP_LAKE_CAVERNS) \
-    X(MUS_DP_AMITY_SQUARE) \
-    X(MUS_DP_GALACTIC_HQ) \
-    X(MUS_DP_GALACTIC_ETERNA_BUILDING) \
-    X(MUS_DP_GREAT_MARSH) \
-    X(MUS_DP_LAKE) \
-    X(MUS_DP_MT_CORONET) \
-    X(MUS_DP_SPEAR_PILLAR) \
-    X(MUS_DP_STARK_MOUNTAIN) \
-    X(MUS_DP_OREBURGH_GATE) \
-    X(MUS_DP_OREBURGH_MINE) \
-    X(MUS_DP_INSIDE_POKEMON_LEAGUE) \
-    X(MUS_DP_HALL_OF_FAME_ROOM) \
-    X(MUS_DP_POKE_CENTER_DAY) \
-    X(MUS_DP_POKE_CENTER_NIGHT) \
-    X(MUS_DP_GYM) \
-    X(MUS_DP_ROWAN_LAB) \
-    X(MUS_DP_CONTEST_LOBBY) \
-    X(MUS_DP_POKE_MART) \
-    X(MUS_DP_GAME_CORNER) \
-    X(MUS_DP_B_TOWER) \
-    X(MUS_DP_TV_STATION) \
-    X(MUS_DP_GALACTIC_HQ_BASEMENT) \
-    X(MUS_DP_AZURE_FLUTE) \
-    X(MUS_DP_HALL_OF_ORIGIN) \
-    X(MUS_DP_GTS) \
-    X(MUS_DP_ENCOUNTER_BOY) \
-    X(MUS_DP_ENCOUNTER_TWINS) \
-    X(MUS_DP_ENCOUNTER_INTENSE) \
-    X(MUS_DP_ENCOUNTER_GALACTIC) \
-    X(MUS_DP_ENCOUNTER_LADY) \
-    X(MUS_DP_ENCOUNTER_HIKER) \
-    X(MUS_DP_ENCOUNTER_RICH) \
-    X(MUS_DP_ENCOUNTER_SAILOR) \
-    X(MUS_DP_ENCOUNTER_SUSPICIOUS) \
-    X(MUS_DP_ENCOUNTER_ACE_TRAINER) \
-    X(MUS_DP_ENCOUNTER_GIRL) \
-    X(MUS_DP_ENCOUNTER_CYCLIST) \
-    X(MUS_DP_ENCOUNTER_ARTIST) \
-    X(MUS_DP_ENCOUNTER_ELITE_FOUR) \
-    X(MUS_DP_ENCOUNTER_CHAMPION) \
-    X(MUS_DP_VS_WILD) \
-    X(MUS_DP_VS_GYM_LEADER) \
-    X(MUS_DP_VS_UXIE_MESPRIT_AZELF) \
-    X(MUS_DP_VS_TRAINER) \
-    X(MUS_DP_VS_GALACTIC_BOSS) \
-    X(MUS_DP_VS_DIALGA_PALKIA) \
-    X(MUS_DP_VS_CHAMPION) \
-    X(MUS_DP_VS_GALACTIC) \
-    X(MUS_DP_VS_RIVAL) \
-    X(MUS_DP_VS_ARCEUS) \
-    X(MUS_DP_VS_LEGEND) \
-    X(MUS_DP_VICTORY_WILD) \
-    X(MUS_DP_VICTORY_TRAINER) \
-    X(MUS_DP_VICTORY_GYM_LEADER) \
-    X(MUS_DP_VICTORY_CHAMPION) \
-    X(MUS_DP_VICTORY_GALACTIC) \
-    X(MUS_DP_VICTORY_ELITE_FOUR) \
-    X(MUS_DP_VS_GALACTIC_COMMANDER) \
-    X(MUS_DP_CONTEST) \
-    X(MUS_DP_VS_ELITE_FOUR) \
-    X(MUS_DP_FOLLOW_ME) \
-    X(MUS_DP_RIVAL) \
-    X(MUS_DP_LAKE_EVENT) \
-    X(MUS_DP_EVOLUTION) \
-    X(MUS_DP_LUCAS) \
-    X(MUS_DP_DAWN) \
-    X(MUS_DP_LEGEND_APPEARS) \
-    X(MUS_DP_CATASTROPHE) \
-    X(MUS_DP_POKE_RADAR) \
-    X(MUS_DP_SURF) \
-    X(MUS_DP_CYCLING) \
-    X(MUS_DP_LETS_GO_TOGETHER) \
-    X(MUS_DP_TV_END) \
-    X(MUS_DP_LEVEL_UP) \
-    X(MUS_DP_EVOLVED) \
-    X(MUS_DP_OBTAIN_KEY_ITEM) \
-    X(MUS_DP_OBTAIN_ITEM) \
-    X(MUS_DP_CAUGHT_INTRO) \
-    X(MUS_DP_DEX_RATING) \
-    X(MUS_DP_OBTAIN_BADGE) \
-    X(MUS_DP_POKETCH) \
-    X(MUS_DP_OBTAIN_TMHM) \
-    X(MUS_DP_OBTAIN_ACCESSORY) \
-    X(MUS_DP_MOVE_DELETED) \
-    X(MUS_DP_HEAL) \
-    X(MUS_DP_OBTAIN_BERRY) \
-    X(MUS_DP_CONTEST_DRESS_UP) \
-    X(MUS_DP_HALL_OF_FAME) \
-    X(MUS_DP_INTRO) \
-    X(MUS_DP_TITLE) \
-    X(MUS_DP_MYSTERY_GIFT) \
-    X(MUS_DP_WFC) \
-    X(MUS_DP_DANCE_EASY) \
-    X(MUS_DP_DANCE_DIFFICULT) \
-    X(MUS_DP_CONTEST_RESULTS) \
-    X(MUS_DP_CONTEST_WINNER) \
-    X(MUS_DP_POFFINS) \
-    X(MUS_DP_SLOTS_WIN) \
-    X(MUS_DP_SLOTS_JACKPOT) \
-    X(MUS_DP_CREDITS) \
-    X(MUS_DP_SLOTS_UNUSED) \
-    X(MUS_PL_FIGHT_AREA_DAY) \
-    X(MUS_PL_TV_BROADCAST) \
-    X(MUS_PL_TV_END) \
-    X(MUS_PL_INTRO) \
-    X(MUS_PL_TITLE) \
-    X(MUS_PL_DISTORTION_WORLD) \
-    X(MUS_PL_B_ARCADE) \
-    X(MUS_PL_B_HALL) \
-    X(MUS_PL_B_CASTLE) \
-    X(MUS_PL_B_FACTORY) \
-    X(MUS_PL_GLOBAL_TERMINAL) \
-    X(MUS_PL_LILYCOVE_BOSSA_NOVA) \
-    X(MUS_PL_LOOKER) \
-    X(MUS_PL_VS_GIRATINA) \
-    X(MUS_PL_VS_FRONTIER_BRAIN) \
-    X(MUS_PL_VICTORY_FRONTIER_BRAIN) \
-    X(MUS_PL_VS_REGI) \
-    X(MUS_PL_CONTEST_COOL) \
-    X(MUS_PL_CONTEST_SMART) \
-    X(MUS_PL_CONTEST_CUTE) \
-    X(MUS_PL_CONTEST_TOUGH) \
-    X(MUS_PL_CONTEST_BEAUTY) \
-    X(MUS_PL_SPIN_TRADE) \
-    X(MUS_PL_WIFI_MINIGAMES) \
-    X(MUS_PL_WIFI_PLAZA) \
-    X(MUS_PL_WIFI_PARADE) \
-    X(MUS_PL_GIRATINA_APPEARS_1) \
-    X(MUS_PL_GIRATINA_APPEARS_2) \
-    X(MUS_PL_MYSTERY_GIFT) \
-    X(MUS_PL_TWINLEAF_MUSIC_BOX) \
-    X(MUS_PL_OBTAIN_ARCADE_POINTS) \
-    X(MUS_PL_OBTAIN_CASTLE_POINTS) \
-    X(MUS_PL_OBTAIN_B_POINTS) \
-    X(MUS_PL_WIN_MINIGAME) \
-    X(MUS_HG_INTRO) \
-    X(MUS_HG_TITLE) \
-    X(MUS_HG_NEW_GAME) \
-    X(MUS_HG_EVOLUTION) \
-    X(MUS_HG_EVOLUTION_NO_INTRO) \
-    X(MUS_HG_CYCLING) \
-    X(MUS_HG_SURF) \
-    X(MUS_HG_E_DENDOURIRI) \
-    X(MUS_HG_CREDITS) \
-    X(MUS_HG_END) \
-    X(MUS_HG_NEW_BARK) \
-    X(MUS_HG_CHERRYGROVE) \
-    X(MUS_HG_VIOLET) \
-    X(MUS_HG_AZALEA) \
-    X(MUS_HG_GOLDENROD) \
-    X(MUS_HG_ECRUTEAK) \
-    X(MUS_HG_CIANWOOD) \
-    X(MUS_HG_ROUTE29) \
-    X(MUS_HG_ROUTE30) \
-    X(MUS_HG_ROUTE34) \
-    X(MUS_HG_ROUTE38) \
-    X(MUS_HG_ROUTE42) \
-    X(MUS_HG_VERMILION) \
-    X(MUS_HG_PEWTER) \
-    X(MUS_HG_CERULEAN) \
-    X(MUS_HG_LAVENDER) \
-    X(MUS_HG_CELADON) \
-    X(MUS_HG_PALLET) \
-    X(MUS_HG_CINNABAR) \
-    X(MUS_HG_ROUTE1) \
-    X(MUS_HG_ROUTE3) \
-    X(MUS_HG_ROUTE11) \
-    X(MUS_HG_ROUTE24) \
-    X(MUS_HG_ROUTE26) \
-    X(MUS_HG_POKE_CENTER) \
-    X(MUS_HG_POKE_MART) \
-    X(MUS_HG_GYM) \
-    X(MUS_HG_ELM_LAB) \
-    X(MUS_HG_OAK) \
-    X(MUS_HG_DANCE_THEATER) \
-    X(MUS_HG_GAME_CORNER) \
-    X(MUS_HG_B_TOWER) \
-    X(MUS_HG_B_TOWER_RECEPTION) \
-    X(MUS_HG_SPROUT_TOWER) \
-    X(MUS_HG_UNION_CAVE) \
-    X(MUS_HG_RUINS_OF_ALPH) \
-    X(MUS_HG_NATIONAL_PARK) \
-    X(MUS_HG_BURNED_TOWER) \
-    X(MUS_HG_BELL_TOWER) \
-    X(MUS_HG_LIGHTHOUSE) \
-    X(MUS_HG_TEAM_ROCKET_HQ) \
-    X(MUS_HG_ICE_PATH) \
-    X(MUS_HG_DRAGONS_DEN) \
-    X(MUS_HG_ROCK_TUNNEL) \
-    X(MUS_HG_VIRIDIAN_FOREST) \
-    X(MUS_HG_VICTORY_ROAD) \
-    X(MUS_HG_POKEMON_LEAGUE) \
-    X(MUS_HG_FOLLOW_ME_1) \
-    X(MUS_HG_FOLLOW_ME_2) \
-    X(MUS_HG_ENCOUNTER_RIVAL) \
-    X(MUS_HG_RIVAL_EXIT) \
-    X(MUS_HG_BUG_CONTEST_PREP) \
-    X(MUS_HG_BUG_CATCHING_CONTEST) \
-    X(MUS_HG_RADIO_ROCKET) \
-    X(MUS_HG_ROCKET_TAKEOVER) \
-    X(MUS_HG_MAGNET_TRAIN) \
-    X(MUS_HG_SS_AQUA) \
-    X(MUS_HG_MT_MOON_SQUARE) \
-    X(MUS_HG_RADIO_JINGLE) \
-    X(MUS_HG_RADIO_LULLABY) \
-    X(MUS_HG_RADIO_MARCH) \
-    X(MUS_HG_RADIO_UNOWN) \
-    X(MUS_HG_RADIO_POKE_FLUTE) \
-    X(MUS_HG_RADIO_OAK) \
-    X(MUS_HG_RADIO_BUENA) \
-    X(MUS_HG_EUSINE) \
-    X(MUS_HG_CLAIR) \
-    X(MUS_HG_ENCOUNTER_GIRL_1) \
-    X(MUS_HG_ENCOUNTER_BOY_1) \
-    X(MUS_HG_ENCOUNTER_SUSPICIOUS_1) \
-    X(MUS_HG_ENCOUNTER_SAGE) \
-    X(MUS_HG_ENCOUNTER_KIMONO_GIRL) \
-    X(MUS_HG_ENCOUNTER_ROCKET) \
-    X(MUS_HG_ENCOUNTER_GIRL_2) \
-    X(MUS_HG_ENCOUNTER_BOY_2) \
-    X(MUS_HG_ENCOUNTER_SUSPICIOUS_2) \
-    X(MUS_HG_VS_WILD) \
-    X(MUS_HG_VS_TRAINER) \
-    X(MUS_HG_VS_GYM_LEADER) \
-    X(MUS_HG_VS_RIVAL) \
-    X(MUS_HG_VS_ROCKET) \
-    X(MUS_HG_VS_SUICUNE) \
-    X(MUS_HG_VS_ENTEI) \
-    X(MUS_HG_VS_RAIKOU) \
-    X(MUS_HG_VS_CHAMPION) \
-    X(MUS_HG_VS_WILD_KANTO) \
-    X(MUS_HG_VS_TRAINER_KANTO) \
-    X(MUS_HG_VS_GYM_LEADER_KANTO) \
-    X(MUS_HG_VICTORY_TRAINER) \
-    X(MUS_HG_VICTORY_WILD) \
-    X(MUS_HG_CAUGHT) \
-    X(MUS_HG_VICTORY_GYM_LEADER) \
-    X(MUS_HG_VS_HO_OH) \
-    X(MUS_HG_VS_LUGIA) \
-    X(MUS_HG_POKEATHLON_LOBBY) \
-    X(MUS_HG_POKEATHLON_START) \
-    X(MUS_HG_POKEATHLON_BEFORE) \
-    X(MUS_HG_POKEATHLON_EVENT) \
-    X(MUS_HG_POKEATHLON_FINALS) \
-    X(MUS_HG_POKEATHLON_RESULTS) \
-    X(MUS_HG_POKEATHLON_END) \
-    X(MUS_HG_POKEATHLON_WINNER) \
-    X(MUS_HG_B_FACTORY) \
-    X(MUS_HG_B_HALL) \
-    X(MUS_HG_B_ARCADE) \
-    X(MUS_HG_B_CASTLE) \
-    X(MUS_HG_VS_FRONTIER_BRAIN) \
-    X(MUS_HG_VICTORY_FRONTIER_BRAIN) \
-    X(MUS_HG_WFC) \
-    X(MUS_HG_MYSTERY_GIFT) \
-    X(MUS_HG_WIFI_PLAZA) \
-    X(MUS_HG_WIFI_MINIGAMES) \
-    X(MUS_HG_WIFI_PARADE) \
-    X(MUS_HG_GLOBAL_TERMINAL) \
-    X(MUS_HG_SPIN_TRADE) \
-    X(MUS_HG_GTS) \
-    X(MUS_HG_ROUTE47) \
-    X(MUS_HG_SAFARI_ZONE_GATE) \
-    X(MUS_HG_SAFARI_ZONE) \
-    X(MUS_HG_ETHAN) \
-    X(MUS_HG_LYRA) \
-    X(MUS_HG_GAME_CORNER_WIN) \
-    X(MUS_HG_KIMONO_GIRL_DANCE) \
-    X(MUS_HG_KIMONO_GIRL) \
-    X(MUS_HG_HO_OH_APPEARS) \
-    X(MUS_HG_LUGIA_APPEARS) \
-    X(MUS_HG_SPIKY_EARED_PICHU) \
-    X(MUS_HG_SINJOU_RUINS) \
-    X(MUS_HG_RADIO_ROUTE101) \
-    X(MUS_HG_RADIO_ROUTE201) \
-    X(MUS_HG_RADIO_TRAINER) \
-    X(MUS_HG_RADIO_VARIETY) \
-    X(MUS_HG_VS_KYOGRE_GROUDON) \
-    X(MUS_HG_POKEWALKER) \
-    X(MUS_HG_VS_ARCEUS) \
-    X(MUS_HG_HEAL) \
-    X(MUS_HG_LEVEL_UP) \
-    X(MUS_HG_OBTAIN_ITEM) \
-    X(MUS_HG_OBTAIN_KEY_ITEM) \
-    X(MUS_HG_EVOLVED) \
-    X(MUS_HG_OBTAIN_BADGE) \
-    X(MUS_HG_OBTAIN_TMHM) \
-    X(MUS_HG_OBTAIN_ACCESSORY) \
-    X(MUS_HG_MOVE_DELETED) \
-    X(MUS_HG_OBTAIN_BERRY) \
-    X(MUS_HG_DEX_RATING_1) \
-    X(MUS_HG_DEX_RATING_2) \
-    X(MUS_HG_DEX_RATING_3) \
-    X(MUS_HG_DEX_RATING_4) \
-    X(MUS_HG_DEX_RATING_5) \
-    X(MUS_HG_DEX_RATING_6) \
-    X(MUS_HG_OBTAIN_EGG) \
-    X(MUS_HG_BUG_CONTEST_1ST_PLACE) \
-    X(MUS_HG_BUG_CONTEST_2ND_PLACE) \
-    X(MUS_HG_BUG_CONTEST_3RD_PLACE) \
-    X(MUS_HG_CARD_FLIP) \
-    X(MUS_HG_CARD_FLIP_GAME_OVER) \
-    X(MUS_HG_POKEGEAR_REGISTERED) \
-    X(MUS_HG_LETS_GO_TOGETHER) \
-    X(MUS_HG_POKEATHLON_READY) \
-    X(MUS_HG_POKEATHLON_1ST_PLACE) \
-    X(MUS_HG_RECEIVE_POKEMON) \
-    X(MUS_HG_OBTAIN_ARCADE_POINTS) \
-    X(MUS_HG_OBTAIN_CASTLE_POINTS) \
-    X(MUS_HG_OBTAIN_B_POINTS) \
-    X(MUS_HG_WIN_MINIGAME) \
-    X(MUS_ZINNIA_THEME) \
-    X(MUS_ZINNIA_BATTLE) \
-    X(MUS_ZINNIA_SORROW) \
-    X(MUS_WALLY_THEME) \
-    X(MUS_WALLY_BATTLE) \
+#define SOUND_LIST_BGM              \
+    X(MUS_LITTLEROOT_TEST)          \
+    X(MUS_GSC_ROUTE38)              \
+    X(MUS_CAUGHT)                   \
+    X(MUS_VICTORY_WILD)             \
+    X(MUS_VICTORY_GYM_LEADER)       \
+    X(MUS_VICTORY_LEAGUE)           \
+    X(MUS_C_COMM_CENTER)            \
+    X(MUS_GSC_PEWTER)               \
+    X(MUS_C_VS_LEGEND_BEAST)        \
+    X(MUS_ROUTE101)                 \
+    X(MUS_ROUTE110)                 \
+    X(MUS_ROUTE120)                 \
+    X(MUS_PETALBURG)                \
+    X(MUS_OLDALE)                   \
+    X(MUS_GYM)                      \
+    X(MUS_SURF)                     \
+    X(MUS_PETALBURG_WOODS)          \
+    X(MUS_LEVEL_UP)                 \
+    X(MUS_HEAL)                     \
+    X(MUS_OBTAIN_BADGE)             \
+    X(MUS_OBTAIN_ITEM)              \
+    X(MUS_EVOLVED)                  \
+    X(MUS_OBTAIN_TMHM)              \
+    X(MUS_LILYCOVE_MUSEUM)          \
+    X(MUS_ROUTE122)                 \
+    X(MUS_OCEANIC_MUSEUM)           \
+    X(MUS_EVOLUTION_INTRO)          \
+    X(MUS_EVOLUTION)                \
+    X(MUS_MOVE_DELETED)             \
+    X(MUS_ENCOUNTER_GIRL)           \
+    X(MUS_ENCOUNTER_MALE)           \
+    X(MUS_ABANDONED_SHIP)           \
+    X(MUS_FORTREE)                  \
+    X(MUS_BIRCH_LAB)                \
+    X(MUS_B_TOWER_RS)               \
+    X(MUS_ENCOUNTER_SWIMMER)        \
+    X(MUS_CAVE_OF_ORIGIN)           \
+    X(MUS_OBTAIN_BERRY)             \
+    X(MUS_AWAKEN_LEGEND)            \
+    X(MUS_SLOTS_JACKPOT)            \
+    X(MUS_SLOTS_WIN)                \
+    X(MUS_TOO_BAD)                  \
+    X(MUS_ROULETTE)                 \
+    X(MUS_LINK_CONTEST_P1)          \
+    X(MUS_LINK_CONTEST_P2)          \
+    X(MUS_LINK_CONTEST_P3)          \
+    X(MUS_LINK_CONTEST_P4)          \
+    X(MUS_ENCOUNTER_RICH)           \
+    X(MUS_VERDANTURF)               \
+    X(MUS_RUSTBORO)                 \
+    X(MUS_POKE_CENTER)              \
+    X(MUS_ROUTE104)                 \
+    X(MUS_ROUTE119)                 \
+    X(MUS_CYCLING)                  \
+    X(MUS_POKE_MART)                \
+    X(MUS_LITTLEROOT)               \
+    X(MUS_MT_CHIMNEY)               \
+    X(MUS_ENCOUNTER_FEMALE)         \
+    X(MUS_LILYCOVE)                 \
+    X(MUS_DESERT)                   \
+    X(MUS_HELP)                     \
+    X(MUS_UNDERWATER)               \
+    X(MUS_VICTORY_TRAINER)          \
+    X(MUS_TITLE)                    \
+    X(MUS_INTRO)                    \
+    X(MUS_ENCOUNTER_MAY)            \
+    X(MUS_ENCOUNTER_INTENSE)        \
+    X(MUS_ENCOUNTER_COOL)           \
+    X(MUS_ROUTE113)                 \
+    X(MUS_ENCOUNTER_AQUA)           \
+    X(MUS_FOLLOW_ME)                \
+    X(MUS_ENCOUNTER_BRENDAN)        \
+    X(MUS_EVER_GRANDE)              \
+    X(MUS_ENCOUNTER_SUSPICIOUS)     \
+    X(MUS_VICTORY_AQUA_MAGMA)       \
+    X(MUS_CABLE_CAR)                \
+    X(MUS_GAME_CORNER)              \
+    X(MUS_DEWFORD)                  \
+    X(MUS_SAFARI_ZONE)              \
+    X(MUS_VICTORY_ROAD)             \
+    X(MUS_AQUA_MAGMA_HIDEOUT)       \
+    X(MUS_SAILING)                  \
+    X(MUS_MT_PYRE)                  \
+    X(MUS_SLATEPORT)                \
+    X(MUS_MT_PYRE_EXTERIOR)         \
+    X(MUS_SCHOOL)                   \
+    X(MUS_HALL_OF_FAME)             \
+    X(MUS_FALLARBOR)                \
+    X(MUS_SEALED_CHAMBER)           \
+    X(MUS_CONTEST_WINNER)           \
+    X(MUS_CONTEST)                  \
+    X(MUS_ENCOUNTER_MAGMA)          \
+    X(MUS_INTRO_BATTLE)             \
+    X(MUS_ABNORMAL_WEATHER)         \
+    X(MUS_WEATHER_GROUDON)          \
+    X(MUS_SOOTOPOLIS)               \
+    X(MUS_CONTEST_RESULTS)          \
+    X(MUS_HALL_OF_FAME_ROOM)        \
+    X(MUS_TRICK_HOUSE)              \
+    X(MUS_ENCOUNTER_TWINS)          \
+    X(MUS_ENCOUNTER_ELITE_FOUR)     \
+    X(MUS_ENCOUNTER_HIKER)          \
+    X(MUS_CONTEST_LOBBY)            \
+    X(MUS_ENCOUNTER_INTERVIEWER)    \
+    X(MUS_ENCOUNTER_CHAMPION)       \
+    X(MUS_CREDITS)                  \
+    X(MUS_END)                      \
+    X(MUS_B_FRONTIER)               \
+    X(MUS_B_ARENA)                  \
+    X(MUS_OBTAIN_B_POINTS)          \
+    X(MUS_REGISTER_MATCH_CALL)      \
+    X(MUS_B_PYRAMID)                \
+    X(MUS_B_PYRAMID_TOP)            \
+    X(MUS_B_PALACE)                 \
+    X(MUS_RAYQUAZA_APPEARS)         \
+    X(MUS_B_TOWER)                  \
+    X(MUS_OBTAIN_SYMBOL)            \
+    X(MUS_B_DOME)                   \
+    X(MUS_B_PIKE)                   \
+    X(MUS_B_FACTORY)                \
+    X(MUS_VS_RAYQUAZA)              \
+    X(MUS_VS_FRONTIER_BRAIN)        \
+    X(MUS_VS_MEW)                   \
+    X(MUS_B_DOME_LOBBY)             \
+    X(MUS_VS_WILD)                  \
+    X(MUS_VS_AQUA_MAGMA)            \
+    X(MUS_VS_TRAINER)               \
+    X(MUS_VS_GYM_LEADER)            \
+    X(MUS_VS_CHAMPION)              \
+    X(MUS_VS_REGI)                  \
+    X(MUS_VS_KYOGRE_GROUDON)        \
+    X(MUS_VS_RIVAL)                 \
+    X(MUS_VS_ELITE_FOUR)            \
+    X(MUS_VS_AQUA_MAGMA_LEADER)     \
+    X(MUS_RG_FOLLOW_ME)             \
+    X(MUS_RG_GAME_CORNER)           \
+    X(MUS_RG_ROCKET_HIDEOUT)        \
+    X(MUS_RG_GYM)                   \
+    X(MUS_RG_JIGGLYPUFF)            \
+    X(MUS_RG_INTRO_FIGHT)           \
+    X(MUS_RG_TITLE)                 \
+    X(MUS_RG_CINNABAR)              \
+    X(MUS_RG_LAVENDER)              \
+    X(MUS_RG_HEAL)                  \
+    X(MUS_RG_CYCLING)               \
+    X(MUS_RG_ENCOUNTER_ROCKET)      \
+    X(MUS_RG_ENCOUNTER_GIRL)        \
+    X(MUS_RG_ENCOUNTER_BOY)         \
+    X(MUS_RG_HALL_OF_FAME)          \
+    X(MUS_RG_VIRIDIAN_FOREST)       \
+    X(MUS_RG_MT_MOON)               \
+    X(MUS_RG_POKE_MANSION)          \
+    X(MUS_RG_CREDITS)               \
+    X(MUS_RG_ROUTE1)                \
+    X(MUS_RG_ROUTE24)               \
+    X(MUS_RG_ROUTE3)                \
+    X(MUS_RG_ROUTE11)               \
+    X(MUS_RG_VICTORY_ROAD)          \
+    X(MUS_RG_VS_GYM_LEADER)         \
+    X(MUS_RG_VS_TRAINER)            \
+    X(MUS_RG_VS_WILD)               \
+    X(MUS_RG_VS_CHAMPION)           \
+    X(MUS_RG_PALLET)                \
+    X(MUS_RG_OAK_LAB)               \
+    X(MUS_RG_OAK)                   \
+    X(MUS_RG_POKE_CENTER)           \
+    X(MUS_RG_SS_ANNE)               \
+    X(MUS_RG_SURF)                  \
+    X(MUS_RG_POKE_TOWER)            \
+    X(MUS_RG_SILPH)                 \
+    X(MUS_RG_FUCHSIA)               \
+    X(MUS_RG_CELADON)               \
+    X(MUS_RG_VICTORY_TRAINER)       \
+    X(MUS_RG_VICTORY_WILD)          \
+    X(MUS_RG_VICTORY_GYM_LEADER)    \
+    X(MUS_RG_VERMILLION)            \
+    X(MUS_RG_PEWTER)                \
+    X(MUS_RG_ENCOUNTER_RIVAL)       \
+    X(MUS_RG_RIVAL_EXIT)            \
+    X(MUS_RG_DEX_RATING)            \
+    X(MUS_RG_OBTAIN_KEY_ITEM)       \
+    X(MUS_RG_CAUGHT_INTRO)          \
+    X(MUS_RG_PHOTO)                 \
+    X(MUS_RG_GAME_FREAK)            \
+    X(MUS_RG_CAUGHT)                \
+    X(MUS_RG_NEW_GAME_INSTRUCT)     \
+    X(MUS_RG_NEW_GAME_INTRO)        \
+    X(MUS_RG_NEW_GAME_EXIT)         \
+    X(MUS_RG_POKE_JUMP)             \
+    X(MUS_RG_UNION_ROOM)            \
+    X(MUS_RG_NET_CENTER)            \
+    X(MUS_RG_MYSTERY_GIFT)          \
+    X(MUS_RG_BERRY_PICK)            \
+    X(MUS_RG_SEVII_CAVE)            \
+    X(MUS_RG_TEACHY_TV_SHOW)        \
+    X(MUS_RG_SEVII_ROUTE)           \
+    X(MUS_RG_SEVII_DUNGEON)         \
+    X(MUS_RG_SEVII_123)             \
+    X(MUS_RG_SEVII_45)              \
+    X(MUS_RG_SEVII_67)              \
+    X(MUS_RG_POKE_FLUTE)            \
+    X(MUS_RG_VS_DEOXYS)             \
+    X(MUS_RG_VS_MEWTWO)             \
+    X(MUS_RG_VS_LEGEND)             \
+    X(MUS_RG_ENCOUNTER_GYM_LEADER)  \
+    X(MUS_RG_ENCOUNTER_DEOXYS)      \
+    X(MUS_RG_TRAINER_TOWER)         \
+    X(MUS_RG_SLOW_PALLET)           \
+    X(MUS_RG_TEACHY_TV_MENU)        \
+    X(MUS_ZINNIA_THEME)             \
+    X(MUS_ZINNIA_BATTLE)            \
+    X(MUS_ZINNIA_SORROW)            \
+    X(MUS_WALLY_THEME)              \
+    X(MUS_WALLY_BATTLE)             \
 
-#define SOUND_LIST_SE \
-    X(SE_USE_ITEM) \
-    X(SE_PC_LOGIN) \
-    X(SE_PC_OFF) \
-    X(SE_PC_ON) \
-    X(SE_SELECT) \
-    X(SE_WIN_OPEN) \
-    X(SE_WALL_HIT) \
-    X(SE_DOOR) \
-    X(SE_EXIT) \
-    X(SE_LEDGE) \
-    X(SE_BIKE_BELL) \
-    X(SE_NOT_EFFECTIVE) \
-    X(SE_EFFECTIVE) \
-    X(SE_SUPER_EFFECTIVE) \
-    X(SE_BALL_OPEN) \
-    X(SE_FAINT) \
-    X(SE_FLEE) \
-    X(SE_SLIDING_DOOR) \
-    X(SE_SHIP) \
-    X(SE_BANG) \
-    X(SE_PIN) \
-    X(SE_BOO) \
-    X(SE_BALL) \
-    X(SE_CONTEST_PLACE) \
-    X(SE_A) \
-    X(SE_I) \
-    X(SE_U) \
-    X(SE_E) \
-    X(SE_O) \
-    X(SE_N) \
-    X(SE_SUCCESS) \
-    X(SE_FAILURE) \
-    X(SE_EXP) \
-    X(SE_BIKE_HOP) \
-    X(SE_SWITCH) \
-    X(SE_CLICK) \
-    X(SE_FU_ZAKU) \
-    X(SE_CONTEST_CONDITION_LOSE) \
-    X(SE_LAVARIDGE_FALL_WARP) \
-    X(SE_ICE_STAIRS) \
-    X(SE_ICE_BREAK) \
-    X(SE_ICE_CRACK) \
-    X(SE_FALL) \
-    X(SE_UNLOCK) \
-    X(SE_WARP_IN) \
-    X(SE_WARP_OUT) \
-    X(SE_REPEL) \
-    X(SE_ROTATING_GATE) \
-    X(SE_TRUCK_MOVE) \
-    X(SE_TRUCK_STOP) \
-    X(SE_TRUCK_UNLOAD) \
-    X(SE_TRUCK_DOOR) \
-    X(SE_BERRY_BLENDER) \
-    X(SE_CARD) \
-    X(SE_SAVE) \
-    X(SE_BALL_BOUNCE_1) \
-    X(SE_BALL_BOUNCE_2) \
-    X(SE_BALL_BOUNCE_3) \
-    X(SE_BALL_BOUNCE_4) \
-    X(SE_BALL_TRADE) \
-    X(SE_BALL_THROW) \
-    X(SE_NOTE_C) \
-    X(SE_NOTE_D) \
-    X(SE_NOTE_E) \
-    X(SE_NOTE_F) \
-    X(SE_NOTE_G) \
-    X(SE_NOTE_A) \
-    X(SE_NOTE_B) \
-    X(SE_NOTE_C_HIGH) \
-    X(SE_PUDDLE) \
-    X(SE_BRIDGE_WALK) \
-    X(SE_ITEMFINDER) \
-    X(SE_DING_DONG) \
-    X(SE_BALLOON_RED) \
-    X(SE_BALLOON_BLUE) \
-    X(SE_BALLOON_YELLOW) \
-    X(SE_BREAKABLE_DOOR) \
-    X(SE_MUD_BALL) \
-    X(SE_FIELD_POISON) \
-    X(SE_ESCALATOR) \
-    X(SE_THUNDERSTORM) \
-    X(SE_THUNDERSTORM_STOP) \
-    X(SE_DOWNPOUR) \
-    X(SE_DOWNPOUR_STOP) \
-    X(SE_RAIN) \
-    X(SE_RAIN_STOP) \
-    X(SE_THUNDER) \
-    X(SE_THUNDER2) \
-    X(SE_ELEVATOR) \
-    X(SE_LOW_HEALTH) \
-    X(SE_EXP_MAX) \
-    X(SE_ROULETTE_BALL) \
-    X(SE_ROULETTE_BALL2) \
-    X(SE_TAILLOW_WING_FLAP) \
-    X(SE_SHOP) \
-    X(SE_CONTEST_HEART) \
-    X(SE_CONTEST_CURTAIN_RISE) \
-    X(SE_CONTEST_CURTAIN_FALL) \
-    X(SE_CONTEST_ICON_CHANGE) \
-    X(SE_CONTEST_ICON_CLEAR) \
-    X(SE_CONTEST_MONS_TURN) \
-    X(SE_SHINY) \
-    X(SE_INTRO_BLAST) \
-    X(SE_MUGSHOT) \
-    X(SE_APPLAUSE) \
-    X(SE_VEND) \
-    X(SE_ORB) \
-    X(SE_DEX_SCROLL) \
-    X(SE_DEX_PAGE) \
-    X(SE_POKENAV_ON) \
-    X(SE_POKENAV_OFF) \
-    X(SE_DEX_SEARCH) \
-    X(SE_EGG_HATCH) \
-    X(SE_BALL_TRAY_ENTER) \
-    X(SE_BALL_TRAY_BALL) \
-    X(SE_BALL_TRAY_EXIT) \
-    X(SE_GLASS_FLUTE) \
-    X(SE_M_THUNDERBOLT) \
-    X(SE_M_THUNDERBOLT2) \
-    X(SE_M_HARDEN) \
-    X(SE_M_NIGHTMARE) \
-    X(SE_M_VITAL_THROW) \
-    X(SE_M_VITAL_THROW2) \
-    X(SE_M_BUBBLE) \
-    X(SE_M_BUBBLE2) \
-    X(SE_M_BUBBLE3) \
-    X(SE_M_RAIN_DANCE) \
-    X(SE_M_CUT) \
-    X(SE_M_STRING_SHOT) \
-    X(SE_M_STRING_SHOT2) \
-    X(SE_M_ROCK_THROW) \
-    X(SE_M_GUST) \
-    X(SE_M_GUST2) \
-    X(SE_M_DOUBLE_SLAP) \
-    X(SE_M_DOUBLE_TEAM) \
-    X(SE_M_RAZOR_WIND) \
-    X(SE_M_ICY_WIND) \
-    X(SE_M_THUNDER_WAVE) \
-    X(SE_M_COMET_PUNCH) \
-    X(SE_M_MEGA_KICK) \
-    X(SE_M_MEGA_KICK2) \
-    X(SE_M_CRABHAMMER) \
-    X(SE_M_JUMP_KICK) \
-    X(SE_M_FLAME_WHEEL) \
-    X(SE_M_FLAME_WHEEL2) \
-    X(SE_M_FLAMETHROWER) \
-    X(SE_M_FIRE_PUNCH) \
-    X(SE_M_TOXIC) \
-    X(SE_M_SACRED_FIRE) \
-    X(SE_M_SACRED_FIRE2) \
-    X(SE_M_EMBER) \
-    X(SE_M_TAKE_DOWN) \
-    X(SE_M_BLIZZARD) \
-    X(SE_M_BLIZZARD2) \
-    X(SE_M_SCRATCH) \
-    X(SE_M_VICEGRIP) \
-    X(SE_M_WING_ATTACK) \
-    X(SE_M_FLY) \
-    X(SE_M_SAND_ATTACK) \
-    X(SE_M_RAZOR_WIND2) \
-    X(SE_M_BITE) \
-    X(SE_M_HEADBUTT) \
-    X(SE_M_SURF) \
-    X(SE_M_HYDRO_PUMP) \
-    X(SE_M_WHIRLPOOL) \
-    X(SE_M_HORN_ATTACK) \
-    X(SE_M_TAIL_WHIP) \
-    X(SE_M_MIST) \
-    X(SE_M_POISON_POWDER) \
-    X(SE_M_BIND) \
-    X(SE_M_DRAGON_RAGE) \
-    X(SE_M_SING) \
-    X(SE_M_PERISH_SONG) \
-    X(SE_M_PAY_DAY) \
-    X(SE_M_DIG) \
-    X(SE_M_DIZZY_PUNCH) \
-    X(SE_M_SELF_DESTRUCT) \
-    X(SE_M_EXPLOSION) \
-    X(SE_M_ABSORB_2) \
-    X(SE_M_ABSORB) \
-    X(SE_M_SCREECH) \
-    X(SE_M_BUBBLE_BEAM) \
-    X(SE_M_BUBBLE_BEAM2) \
-    X(SE_M_SUPERSONIC) \
-    X(SE_M_BELLY_DRUM) \
-    X(SE_M_METRONOME) \
-    X(SE_M_BONEMERANG) \
-    X(SE_M_LICK) \
-    X(SE_M_PSYBEAM) \
-    X(SE_M_FAINT_ATTACK) \
-    X(SE_M_SWORDS_DANCE) \
-    X(SE_M_LEER) \
-    X(SE_M_SWAGGER) \
-    X(SE_M_SWAGGER2) \
-    X(SE_M_HEAL_BELL) \
-    X(SE_M_CONFUSE_RAY) \
-    X(SE_M_SNORE) \
-    X(SE_M_BRICK_BREAK) \
-    X(SE_M_GIGA_DRAIN) \
-    X(SE_M_PSYBEAM2) \
-    X(SE_M_SOLAR_BEAM) \
-    X(SE_M_PETAL_DANCE) \
-    X(SE_M_TELEPORT) \
-    X(SE_M_MINIMIZE) \
-    X(SE_M_SKETCH) \
-    X(SE_M_SWIFT) \
-    X(SE_M_REFLECT) \
-    X(SE_M_BARRIER) \
-    X(SE_M_DETECT) \
-    X(SE_M_LOCK_ON) \
-    X(SE_M_MOONLIGHT) \
-    X(SE_M_CHARM) \
-    X(SE_M_CHARGE) \
-    X(SE_M_STRENGTH) \
-    X(SE_M_HYPER_BEAM) \
-    X(SE_M_WATERFALL) \
-    X(SE_M_REVERSAL) \
-    X(SE_M_ACID_ARMOR) \
-    X(SE_M_SANDSTORM) \
-    X(SE_M_TRI_ATTACK) \
-    X(SE_M_TRI_ATTACK2) \
-    X(SE_M_ENCORE) \
-    X(SE_M_ENCORE2) \
-    X(SE_M_BATON_PASS) \
-    X(SE_M_MILK_DRINK) \
-    X(SE_M_ATTRACT) \
-    X(SE_M_ATTRACT2) \
-    X(SE_M_MORNING_SUN) \
-    X(SE_M_FLATTER) \
-    X(SE_M_SAND_TOMB) \
-    X(SE_M_GRASSWHISTLE) \
-    X(SE_M_SPIT_UP) \
-    X(SE_M_DIVE) \
-    X(SE_M_EARTHQUAKE) \
-    X(SE_M_TWISTER) \
-    X(SE_M_SWEET_SCENT) \
-    X(SE_M_YAWN) \
-    X(SE_M_SKY_UPPERCUT) \
-    X(SE_M_STAT_INCREASE) \
-    X(SE_M_HEAT_WAVE) \
-    X(SE_M_UPROAR) \
-    X(SE_M_HAIL) \
-    X(SE_M_COSMIC_POWER) \
-    X(SE_M_TEETER_DANCE) \
-    X(SE_M_STAT_DECREASE) \
-    X(SE_M_HAZE) \
-    X(SE_M_HYPER_BEAM2) \
-    X(SE_RG_DOOR) \
-    X(SE_RG_CARD_FLIP) \
-    X(SE_RG_CARD_FLIPPING) \
-    X(SE_RG_CARD_OPEN) \
-    X(SE_RG_BAG_CURSOR) \
-    X(SE_RG_BAG_POCKET) \
-    X(SE_RG_BALL_CLICK) \
-    X(SE_RG_SHOP) \
-    X(SE_RG_SS_ANNE_HORN) \
-    X(SE_RG_HELP_OPEN) \
-    X(SE_RG_HELP_CLOSE) \
-    X(SE_RG_HELP_ERROR) \
-    X(SE_RG_DEOXYS_MOVE) \
-    X(SE_RG_POKE_JUMP_SUCCESS) \
-    X(SE_RG_POKE_JUMP_FAILURE) \
-    X(SE_POKENAV_CALL) \
-    X(SE_POKENAV_HANG_UP) \
-    X(SE_ARENA_TIMEUP1) \
-    X(SE_ARENA_TIMEUP2) \
-    X(SE_PIKE_CURTAIN_CLOSE) \
-    X(SE_PIKE_CURTAIN_OPEN) \
-    X(SE_SUDOWOODO_SHAKE) \
-    X(SE_DUMMY_1) \
-    X(PH_TRAP_BLEND) \
-    X(PH_TRAP_HELD) \
-    X(PH_TRAP_SOLO) \
-    X(PH_FACE_BLEND) \
-    X(PH_FACE_HELD) \
-    X(PH_FACE_SOLO) \
-    X(PH_CLOTH_BLEND) \
-    X(PH_CLOTH_HELD) \
-    X(PH_CLOTH_SOLO) \
-    X(PH_DRESS_BLEND) \
-    X(PH_DRESS_HELD) \
-    X(PH_DRESS_SOLO) \
-    X(PH_FLEECE_BLEND) \
-    X(PH_FLEECE_HELD) \
-    X(PH_FLEECE_SOLO) \
-    X(PH_KIT_BLEND) \
-    X(PH_KIT_HELD) \
-    X(PH_KIT_SOLO) \
-    X(PH_PRICE_BLEND) \
-    X(PH_PRICE_HELD) \
-    X(PH_PRICE_SOLO) \
-    X(PH_LOT_BLEND) \
-    X(PH_LOT_HELD) \
-    X(PH_LOT_SOLO) \
-    X(PH_GOAT_BLEND) \
-    X(PH_GOAT_HELD) \
-    X(PH_GOAT_SOLO) \
-    X(PH_THOUGHT_BLEND) \
-    X(PH_THOUGHT_HELD) \
-    X(PH_THOUGHT_SOLO) \
-    X(PH_CHOICE_BLEND) \
-    X(PH_CHOICE_HELD) \
-    X(PH_CHOICE_SOLO) \
-    X(PH_MOUTH_BLEND) \
-    X(PH_MOUTH_HELD) \
-    X(PH_MOUTH_SOLO) \
-    X(PH_FOOT_BLEND) \
-    X(PH_FOOT_HELD) \
-    X(PH_FOOT_SOLO) \
-    X(PH_GOOSE_BLEND) \
-    X(PH_GOOSE_HELD) \
-    X(PH_GOOSE_SOLO) \
-    X(PH_STRUT_BLEND) \
-    X(PH_STRUT_HELD) \
-    X(PH_STRUT_SOLO) \
-    X(PH_CURE_BLEND) \
-    X(PH_CURE_HELD) \
-    X(PH_CURE_SOLO) \
-    X(PH_NURSE_BLEND) \
-    X(PH_NURSE_HELD) \
-    X(PH_NURSE_SOLO) \
+#define SOUND_LIST_SE               \
+    X(SE_USE_ITEM)                  \
+    X(SE_PC_LOGIN)                  \
+    X(SE_PC_OFF)                    \
+    X(SE_PC_ON)                     \
+    X(SE_SELECT)                    \
+    X(SE_WIN_OPEN)                  \
+    X(SE_WALL_HIT)                  \
+    X(SE_DOOR)                      \
+    X(SE_EXIT)                      \
+    X(SE_LEDGE)                     \
+    X(SE_BIKE_BELL)                 \
+    X(SE_NOT_EFFECTIVE)             \
+    X(SE_EFFECTIVE)                 \
+    X(SE_SUPER_EFFECTIVE)           \
+    X(SE_BALL_OPEN)                 \
+    X(SE_FAINT)                     \
+    X(SE_FLEE)                      \
+    X(SE_SLIDING_DOOR)              \
+    X(SE_SHIP)                      \
+    X(SE_BANG)                      \
+    X(SE_PIN)                       \
+    X(SE_BOO)                       \
+    X(SE_BALL)                      \
+    X(SE_CONTEST_PLACE)             \
+    X(SE_A)                         \
+    X(SE_I)                         \
+    X(SE_U)                         \
+    X(SE_E)                         \
+    X(SE_O)                         \
+    X(SE_N)                         \
+    X(SE_SUCCESS)                   \
+    X(SE_FAILURE)                   \
+    X(SE_EXP)                       \
+    X(SE_BIKE_HOP)                  \
+    X(SE_SWITCH)                    \
+    X(SE_CLICK)                     \
+    X(SE_FU_ZAKU)                   \
+    X(SE_CONTEST_CONDITION_LOSE)    \
+    X(SE_LAVARIDGE_FALL_WARP)       \
+    X(SE_ICE_STAIRS)                \
+    X(SE_ICE_BREAK)                 \
+    X(SE_ICE_CRACK)                 \
+    X(SE_FALL)                      \
+    X(SE_UNLOCK)                    \
+    X(SE_WARP_IN)                   \
+    X(SE_WARP_OUT)                  \
+    X(SE_REPEL)                     \
+    X(SE_ROTATING_GATE)             \
+    X(SE_TRUCK_MOVE)                \
+    X(SE_TRUCK_STOP)                \
+    X(SE_TRUCK_UNLOAD)              \
+    X(SE_TRUCK_DOOR)                \
+    X(SE_BERRY_BLENDER)             \
+    X(SE_CARD)                      \
+    X(SE_SAVE)                      \
+    X(SE_BALL_BOUNCE_1)             \
+    X(SE_BALL_BOUNCE_2)             \
+    X(SE_BALL_BOUNCE_3)             \
+    X(SE_BALL_BOUNCE_4)             \
+    X(SE_BALL_TRADE)                \
+    X(SE_BALL_THROW)                \
+    X(SE_NOTE_C)                    \
+    X(SE_NOTE_D)                    \
+    X(SE_NOTE_E)                    \
+    X(SE_NOTE_F)                    \
+    X(SE_NOTE_G)                    \
+    X(SE_NOTE_A)                    \
+    X(SE_NOTE_B)                    \
+    X(SE_NOTE_C_HIGH)               \
+    X(SE_PUDDLE)                    \
+    X(SE_BRIDGE_WALK)               \
+    X(SE_ITEMFINDER)                \
+    X(SE_DING_DONG)                 \
+    X(SE_BALLOON_RED)               \
+    X(SE_BALLOON_BLUE)              \
+    X(SE_BALLOON_YELLOW)            \
+    X(SE_BREAKABLE_DOOR)            \
+    X(SE_MUD_BALL)                  \
+    X(SE_FIELD_POISON)              \
+    X(SE_ESCALATOR)                 \
+    X(SE_THUNDERSTORM)              \
+    X(SE_THUNDERSTORM_STOP)         \
+    X(SE_DOWNPOUR)                  \
+    X(SE_DOWNPOUR_STOP)             \
+    X(SE_RAIN)                      \
+    X(SE_RAIN_STOP)                 \
+    X(SE_THUNDER)                   \
+    X(SE_THUNDER2)                  \
+    X(SE_ELEVATOR)                  \
+    X(SE_LOW_HEALTH)                \
+    X(SE_EXP_MAX)                   \
+    X(SE_ROULETTE_BALL)             \
+    X(SE_ROULETTE_BALL2)            \
+    X(SE_TAILLOW_WING_FLAP)         \
+    X(SE_SHOP)                      \
+    X(SE_CONTEST_HEART)             \
+    X(SE_CONTEST_CURTAIN_RISE)      \
+    X(SE_CONTEST_CURTAIN_FALL)      \
+    X(SE_CONTEST_ICON_CHANGE)       \
+    X(SE_CONTEST_ICON_CLEAR)        \
+    X(SE_CONTEST_MONS_TURN)         \
+    X(SE_SHINY)                     \
+    X(SE_INTRO_BLAST)               \
+    X(SE_MUGSHOT)                   \
+    X(SE_APPLAUSE)                  \
+    X(SE_VEND)                      \
+    X(SE_ORB)                       \
+    X(SE_DEX_SCROLL)                \
+    X(SE_DEX_PAGE)                  \
+    X(SE_POKENAV_ON)                \
+    X(SE_POKENAV_OFF)               \
+    X(SE_DEX_SEARCH)                \
+    X(SE_EGG_HATCH)                 \
+    X(SE_BALL_TRAY_ENTER)           \
+    X(SE_BALL_TRAY_BALL)            \
+    X(SE_BALL_TRAY_EXIT)            \
+    X(SE_GLASS_FLUTE)               \
+    X(SE_M_THUNDERBOLT)             \
+    X(SE_M_THUNDERBOLT2)            \
+    X(SE_M_HARDEN)                  \
+    X(SE_M_NIGHTMARE)               \
+    X(SE_M_VITAL_THROW)             \
+    X(SE_M_VITAL_THROW2)            \
+    X(SE_M_BUBBLE)                  \
+    X(SE_M_BUBBLE2)                 \
+    X(SE_M_BUBBLE3)                 \
+    X(SE_M_RAIN_DANCE)              \
+    X(SE_M_CUT)                     \
+    X(SE_M_STRING_SHOT)             \
+    X(SE_M_STRING_SHOT2)            \
+    X(SE_M_ROCK_THROW)              \
+    X(SE_M_GUST)                    \
+    X(SE_M_GUST2)                   \
+    X(SE_M_DOUBLE_SLAP)             \
+    X(SE_M_DOUBLE_TEAM)             \
+    X(SE_M_RAZOR_WIND)              \
+    X(SE_M_ICY_WIND)                \
+    X(SE_M_THUNDER_WAVE)            \
+    X(SE_M_COMET_PUNCH)             \
+    X(SE_M_MEGA_KICK)               \
+    X(SE_M_MEGA_KICK2)              \
+    X(SE_M_CRABHAMMER)              \
+    X(SE_M_JUMP_KICK)               \
+    X(SE_M_FLAME_WHEEL)             \
+    X(SE_M_FLAME_WHEEL2)            \
+    X(SE_M_FLAMETHROWER)            \
+    X(SE_M_FIRE_PUNCH)              \
+    X(SE_M_TOXIC)                   \
+    X(SE_M_SACRED_FIRE)             \
+    X(SE_M_SACRED_FIRE2)            \
+    X(SE_M_EMBER)                   \
+    X(SE_M_TAKE_DOWN)               \
+    X(SE_M_BLIZZARD)                \
+    X(SE_M_BLIZZARD2)               \
+    X(SE_M_SCRATCH)                 \
+    X(SE_M_VICEGRIP)                \
+    X(SE_M_WING_ATTACK)             \
+    X(SE_M_FLY)                     \
+    X(SE_M_SAND_ATTACK)             \
+    X(SE_M_RAZOR_WIND2)             \
+    X(SE_M_BITE)                    \
+    X(SE_M_HEADBUTT)                \
+    X(SE_M_SURF)                    \
+    X(SE_M_HYDRO_PUMP)              \
+    X(SE_M_WHIRLPOOL)               \
+    X(SE_M_HORN_ATTACK)             \
+    X(SE_M_TAIL_WHIP)               \
+    X(SE_M_MIST)                    \
+    X(SE_M_POISON_POWDER)           \
+    X(SE_M_BIND)                    \
+    X(SE_M_DRAGON_RAGE)             \
+    X(SE_M_SING)                    \
+    X(SE_M_PERISH_SONG)             \
+    X(SE_M_PAY_DAY)                 \
+    X(SE_M_DIG)                     \
+    X(SE_M_DIZZY_PUNCH)             \
+    X(SE_M_SELF_DESTRUCT)           \
+    X(SE_M_EXPLOSION)               \
+    X(SE_M_ABSORB_2)                \
+    X(SE_M_ABSORB)                  \
+    X(SE_M_SCREECH)                 \
+    X(SE_M_BUBBLE_BEAM)             \
+    X(SE_M_BUBBLE_BEAM2)            \
+    X(SE_M_SUPERSONIC)              \
+    X(SE_M_BELLY_DRUM)              \
+    X(SE_M_METRONOME)               \
+    X(SE_M_BONEMERANG)              \
+    X(SE_M_LICK)                    \
+    X(SE_M_PSYBEAM)                 \
+    X(SE_M_FAINT_ATTACK)            \
+    X(SE_M_SWORDS_DANCE)            \
+    X(SE_M_LEER)                    \
+    X(SE_M_SWAGGER)                 \
+    X(SE_M_SWAGGER2)                \
+    X(SE_M_HEAL_BELL)               \
+    X(SE_M_CONFUSE_RAY)             \
+    X(SE_M_SNORE)                   \
+    X(SE_M_BRICK_BREAK)             \
+    X(SE_M_GIGA_DRAIN)              \
+    X(SE_M_PSYBEAM2)                \
+    X(SE_M_SOLAR_BEAM)              \
+    X(SE_M_PETAL_DANCE)             \
+    X(SE_M_TELEPORT)                \
+    X(SE_M_MINIMIZE)                \
+    X(SE_M_SKETCH)                  \
+    X(SE_M_SWIFT)                   \
+    X(SE_M_REFLECT)                 \
+    X(SE_M_BARRIER)                 \
+    X(SE_M_DETECT)                  \
+    X(SE_M_LOCK_ON)                 \
+    X(SE_M_MOONLIGHT)               \
+    X(SE_M_CHARM)                   \
+    X(SE_M_CHARGE)                  \
+    X(SE_M_STRENGTH)                \
+    X(SE_M_HYPER_BEAM)              \
+    X(SE_M_WATERFALL)               \
+    X(SE_M_REVERSAL)                \
+    X(SE_M_ACID_ARMOR)              \
+    X(SE_M_SANDSTORM)               \
+    X(SE_M_TRI_ATTACK)              \
+    X(SE_M_TRI_ATTACK2)             \
+    X(SE_M_ENCORE)                  \
+    X(SE_M_ENCORE2)                 \
+    X(SE_M_BATON_PASS)              \
+    X(SE_M_MILK_DRINK)              \
+    X(SE_M_ATTRACT)                 \
+    X(SE_M_ATTRACT2)                \
+    X(SE_M_MORNING_SUN)             \
+    X(SE_M_FLATTER)                 \
+    X(SE_M_SAND_TOMB)               \
+    X(SE_M_GRASSWHISTLE)            \
+    X(SE_M_SPIT_UP)                 \
+    X(SE_M_DIVE)                    \
+    X(SE_M_EARTHQUAKE)              \
+    X(SE_M_TWISTER)                 \
+    X(SE_M_SWEET_SCENT)             \
+    X(SE_M_YAWN)                    \
+    X(SE_M_SKY_UPPERCUT)            \
+    X(SE_M_STAT_INCREASE)           \
+    X(SE_M_HEAT_WAVE)               \
+    X(SE_M_UPROAR)                  \
+    X(SE_M_HAIL)                    \
+    X(SE_M_COSMIC_POWER)            \
+    X(SE_M_TEETER_DANCE)            \
+    X(SE_M_STAT_DECREASE)           \
+    X(SE_M_HAZE)                    \
+    X(SE_M_HYPER_BEAM2)             \
+    X(SE_RG_DOOR)                   \
+    X(SE_RG_CARD_FLIP)              \
+    X(SE_RG_CARD_FLIPPING)          \
+    X(SE_RG_CARD_OPEN)              \
+    X(SE_RG_BAG_CURSOR)             \
+    X(SE_RG_BAG_POCKET)             \
+    X(SE_RG_BALL_CLICK)             \
+    X(SE_RG_SHOP)                   \
+    X(SE_RG_SS_ANNE_HORN)           \
+    X(SE_RG_HELP_OPEN)              \
+    X(SE_RG_HELP_CLOSE)             \
+    X(SE_RG_HELP_ERROR)             \
+    X(SE_RG_DEOXYS_MOVE)            \
+    X(SE_RG_POKE_JUMP_SUCCESS)      \
+    X(SE_RG_POKE_JUMP_FAILURE)      \
+    X(SE_POKENAV_CALL)              \
+    X(SE_POKENAV_HANG_UP)           \
+    X(SE_ARENA_TIMEUP1)             \
+    X(SE_ARENA_TIMEUP2)             \
+    X(SE_PIKE_CURTAIN_CLOSE)        \
+    X(SE_PIKE_CURTAIN_OPEN)         \
+    X(SE_SUDOWOODO_SHAKE)
 
 // Create BGM list
 #define X(songId) static const u8 sBGMName_##songId[] = _(#songId);
 SOUND_LIST_BGM
 #undef X
 
-#define X(songId) sBGMName_##songId,
-static const u8 *const sBGMNames[] =
+#define X(songId) [songId - START_MUS] = sBGMName_##songId,
+static const u8 *const sBGMNames[END_MUS - START_MUS + 1] =
 {
 SOUND_LIST_BGM
 };
@@ -4436,6 +4065,81 @@ static void DebugAction_Party_HealParty(u8 taskId)
     ScriptContext_Enable();
     Debug_DestroyMenu_Full(taskId);
 }
+
+void DebugNative_GetAbilityNames(void)
+{
+    u32 species = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES);
+    StringCopy(gStringVar1, gAbilitiesInfo[GetAbilityBySpecies(species, 0)].name);
+    StringCopy(gStringVar2, gAbilitiesInfo[GetAbilityBySpecies(species, 1)].name);
+    StringCopy(gStringVar3, gAbilitiesInfo[GetAbilityBySpecies(species, 2)].name);
+}
+
+#define tPartyId               data[5]
+#define tFriendship            data[6]
+
+static void Debug_Display_FriendshipInfo(s32 oldFriendship, s32 newFriendship, u32 digit, u8 windowId)
+{
+    ConvertIntToDecimalStringN(gStringVar1, oldFriendship, STR_CONV_MODE_LEADING_ZEROS, 3);
+    ConvertIntToDecimalStringN(gStringVar2, newFriendship, STR_CONV_MODE_LEADING_ZEROS, 3);
+    StringCopy(gStringVar3, gText_DigitIndicator[digit]);
+    StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Friendship:\n{STR_VAR_1} {RIGHT_ARROW} {STR_VAR_2}\n\n{STR_VAR_3}"));
+    AddTextPrinterParameterized(windowId, DEBUG_MENU_FONT, gStringVar4, 0, 0, 0, NULL);
+}
+
+static void DebugNativeStep_Party_SetFriendshipSelect(u8 taskId)
+{
+    if (JOY_NEW(A_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        gTasks[taskId].tFriendship = gTasks[taskId].tInput;
+        SetMonData(&gPlayerParty[gTasks[taskId].tPartyId], MON_DATA_FRIENDSHIP, &gTasks[taskId].tInput);
+    }
+    else if (JOY_NEW(B_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        DebugNativeStep_CloseDebugWindow(taskId);
+        return;
+    }
+
+    Debug_HandleInput_Numeric(taskId, 0, 255, 3);
+
+    if (JOY_NEW(DPAD_ANY) || JOY_NEW(A_BUTTON))
+        Debug_Display_FriendshipInfo(gTasks[taskId].tFriendship, gTasks[taskId].tInput, gTasks[taskId].tDigit, gTasks[taskId].tSubWindowId);
+}
+
+static void DebugNativeStep_Party_SetFriendshipMain(u8 taskId)
+{
+    u8 windowId = DebugNativeStep_CreateDebugWindow();
+    u32 friendship = GetMonData(&gPlayerParty[gTasks[taskId].tPartyId], MON_DATA_FRIENDSHIP);
+
+    // Display initial flag
+    Debug_Display_FriendshipInfo(friendship, friendship, 0, windowId);
+
+    gTasks[taskId].func = DebugNativeStep_Party_SetFriendshipSelect;
+    gTasks[taskId].tSubWindowId = windowId;
+    gTasks[taskId].tFriendship = friendship;
+    gTasks[taskId].tInput = friendship;
+    gTasks[taskId].tDigit = 0;
+    gTasks[taskId].tPartyId = 0;
+}
+
+void DebugNative_Party_SetFriendship(void)
+{
+    if (gSpecialVar_0x8004 < PARTY_SIZE)
+    {
+        u32 taskId = CreateTask(DebugNativeStep_Party_SetFriendshipMain, 1);
+        gTasks[taskId].tPartyId = gSpecialVar_0x8004;
+    }
+}
+
+#undef tPartyId
+#undef tFriendship
+
+#undef tMenuTaskId
+#undef tWindowId
+#undef tSubWindowId
+#undef tInput
+#undef tDigit
 
 static void DebugAction_Party_ClearParty(u8 taskId)
 {

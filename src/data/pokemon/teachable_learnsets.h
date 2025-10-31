@@ -48440,6 +48440,7 @@ static const u16 sHydrappleTeachableLearnset[] = {
     MOVE_BUG_BITE,
     MOVE_BULLET_SEED,
     MOVE_CURSE,
+    MOVE_DEFENSE_CURL,
     MOVE_DOUBLE_EDGE,
     MOVE_DRAGON_PULSE,
     MOVE_DRAGON_TAIL,
@@ -48465,8 +48466,10 @@ static const u16 sHydrappleTeachableLearnset[] = {
     MOVE_RECYCLE,
     MOVE_REFLECT,
     MOVE_REST,
+    MOVE_ROLLOUT,
     MOVE_SEED_BOMB,
     MOVE_SLEEP_TALK,
+    MOVE_SUCKER_PUNCH,
     MOVE_UPROAR,
     MOVE_UNAVAILABLE,
 };

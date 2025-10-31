@@ -254,10 +254,8 @@ script Route119_WeatherInstitute_2F_EventScript_Shelly {
 	delay(32)
 	msgbox("Oh, but I am forgetting myself!\pFirst I must thank you properly for\nyour help.\pIt might seem an odd way of rewarding\nyou, but please take this Pokémon as\lmy thanks.")
 	setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CASTFORM)
-	playfanfare(MUS_HG_RECEIVE_POKEMON)
 	givemon(SPECIES_CASTFORM, 25, ITEM_MYSTIC_WATER)
 	msgbox("{PLAYER} received a Castform!")
-	waitfanfare
 	msgbox("{COLOR RED}Man{COLOR DARK_GRAY}: Castform is a Pokémon that\nchanges its form according to the\lcurrent weather conditions.\pWe have many of the living here in the\nInstitute with us.\pThey help us with out research of\nweather phenomena.")
 	msgbox("{COLOR RED}Gentleman{COLOR DARK_GRAY}: Indeed.\pI trust that it might help you on your\nadventure.\pBut as for the data those ruffians\nwere seeking…\pThey wanted to know about the extreme\nweather conditions that ruled\lthousands of years ago because of\lthose two super-ancient Pokémon.\pThose legendary Pokémon held the\nability to reshape the world.\pBy tapping into the boundless energies\nof the natural world, they triggered\la transformation that altered the\lvery fabric of our planet.\p{COLOR RED}Primal Groudon{COLOR DARK_GRAY} and {COLOR RED}Primal Kyogre{COLOR DARK_GRAY}…\pThis transformation caused untold\ndisturbances to the world's climate,\lleading to desolation.\pIt dried up the oceans, and arid lands\nconsumed more of the planet.\pWe refer to this transformation as\n{COLOR RED}Primal Reversion{COLOR DARK_GRAY}…")
 	msgbox("The result of it is the cataclysmic\nforce that wreaked havoc upon the\lworld…\pPrimal Reversion is a mysterious form\nof Evolution, both resembling and\ldiffering from Mega Evolution…\pOr so it has been theorized.\nBut it has never been achieved by any\lPokémon other than those\lsuper-ancient Pokémon.\pAs such, it has largely faded from\nmemory as a method of Evolution.")

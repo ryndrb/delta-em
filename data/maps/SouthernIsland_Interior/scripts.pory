@@ -308,9 +308,7 @@ script SouthernIsland_Interior_EventScript_Latios {
 	closemessage
 	delay(16)
 	givemon(SPECIES_LATIOS, 30, ITEM_LATIOSITE)
-	playfanfare(MUS_HG_RECEIVE_POKEMON)
 	msgbox("Latios joined your team!")
-	waitfanfare
 	delay(16)
 	msgbox("Latios is carrying a piece of Latiosite!")
 	closemessage

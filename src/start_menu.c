@@ -81,11 +81,6 @@ enum
     SAVE_ERROR
 };
 
-// Clock
-EWRAM_DATA static u8 sTimeWindowId = 0;
-static void DrawTime(void);
-static void RemoveTimeBox(void);
-
 // IWRAM common
 COMMON_DATA bool8 (*gMenuCallback)(void) = NULL;
 
@@ -313,7 +308,7 @@ static void BuildStartMenuActions(void)
     {
         BuildBattlePikeStartMenu();
     }
-    else if (InBattlePyramid())
+    else if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
     {
         BuildBattlePyramidStartMenu();
     }
@@ -356,8 +351,6 @@ static void BuildNormalStartMenu(void)
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    if(FlagGet(FLAG_SET_WALL_CLOCK) == TRUE)
-        DrawTime();
 }
 
 static void BuildDebugStartMenu(void)
@@ -472,7 +465,7 @@ static void RemoveExtraStartMenuWindows(void)
         CopyWindowToVram(sSafariBallsWindowId, COPYWIN_GFX);
         RemoveWindow(sSafariBallsWindowId);
     }
-    if (InBattlePyramid())
+    if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
     {
         ClearStdWindowAndFrameToTransparent(sBattlePyramidFloorWindowId, FALSE);
         RemoveWindow(sBattlePyramidFloorWindowId);
@@ -532,7 +525,7 @@ static bool32 InitStartMenuStep(void)
     case 3:
         if (GetSafariZoneFlag())
             ShowSafariBallsWindow();
-        if (InBattlePyramid())
+        if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
             ShowPyramidFloorWindow();
         sInitStartMenuData[0]++;
         break;
@@ -666,8 +659,6 @@ static bool8 HandleStartMenuInput(void)
     {
         RemoveExtraStartMenuWindows();
         HideStartMenu();
-        if(FlagGet(FLAG_SET_WALL_CLOCK) == TRUE)
-            RemoveTimeBox();
         return TRUE;
     }
 
@@ -758,7 +749,7 @@ static bool8 StartMenuPlayerNameCallback(void)
 
 static bool8 StartMenuSaveCallback(void)
 {
-    if (InBattlePyramid())
+    if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
         RemoveExtraStartMenuWindows();
 
     gMenuCallback = SaveStartCallback; // Display save menu
@@ -954,7 +945,7 @@ static void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void))
 {
     StringExpandPlaceholders(gStringVar4, message);
     LoadMessageBoxAndFrameGfx(0, TRUE);
-    AddTextPrinterForMessage_2(TRUE);
+    AddTextPrinterForMessage(TRUE);
     sSavingComplete = TRUE;
     sSaveDialogCallback = saveCallback;
 }
@@ -1032,7 +1023,7 @@ static u8 SaveConfirmSaveCallback(void)
     RemoveStartMenuWindow();
     ShowSaveInfoWindow();
 
-    if (InBattlePyramid())
+    if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
     {
         ShowSaveMessage(gText_BattlePyramidConfirmRest, SaveYesNoCallback);
     }
@@ -1493,75 +1484,6 @@ static bool8 StartMenuDexNavCallback(void)
 {
     CreateTask(Task_OpenDexNavFromStartMenu, 0);
     return TRUE;
-}
-
-static void DrawTime(void){
-    u8 width, xOff, rem;
-    struct WindowTemplate template;
-    struct SiiRtcInfo rtc;
-    const u8* amPMString;
-    
-    RtcCalcLocalTime();
-    RtcGetDateTime(&rtc);
-
-    amPMString = (gLocalTime.hours >= 12) ? gText_Clock_PM : gText_Clock_AM;
-	ConvertIntToDecimalStringN(gStringVar1, (gLocalTime.hours == 0) ? 12 : (gLocalTime.hours > 12) ? gLocalTime.hours - 12 : gLocalTime.hours, STR_CONV_MODE_RIGHT_ALIGN, 2);
-	ConvertIntToDecimalStringN(gStringVar2, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
-
-	StringCopy(gStringVar3, amPMString);
-    switch(ConvertBcdToBinary(rtc.dayOfWeek)){
-        case 0:
-            StringExpandPlaceholders(gStringVar4, gText_Clock_Sun);
-            break;
-        case 1:
-            StringExpandPlaceholders(gStringVar4, gText_Clock_Mon);
-            break;
-        case 2:
-            StringExpandPlaceholders(gStringVar4, gText_Clock_Tue);
-            break;
-        case 3:
-            StringExpandPlaceholders(gStringVar4, gText_Clock_Wed);
-            break;
-        case 4:
-            StringExpandPlaceholders(gStringVar4, gText_Clock_Thu);
-            break;
-        case 5:
-            StringExpandPlaceholders(gStringVar4, gText_Clock_Fri);
-            break;
-        case 6:
-            StringExpandPlaceholders(gStringVar4, gText_Clock_Sat);
-            break;
-        default:
-            StringExpandPlaceholders(gStringVar4, gText_Clock_Err);
-            break;
-    }
-
-    width = GetStringWidth(FONT_NORMAL, gStringVar4, 0);
-    xOff = width;
-    rem = width % 8;
-
-    if(rem < 3)
-        width = width - rem;
-    else
-        width = width + 8 - rem;
-    width = width / 8 + 1;
-    xOff = (width * 8 - xOff) / 2;
-
-    SetWindowTemplateFields(&template, 0, 1, 1, width, 2, 15, 0x008);
-	sTimeWindowId = AddWindow(&template);
-    DrawStdWindowFrame(sTimeWindowId, FALSE);
-    PutWindowTilemap(sTimeWindowId);
-    FillWindowPixelBuffer(sTimeWindowId, PIXEL_FILL(1));
-
-	AddTextPrinterParameterized(sTimeWindowId, FONT_NORMAL, gStringVar4, xOff, 0, 0xFF, NULL);
-	CopyWindowToVram(sTimeWindowId, COPYWIN_GFX);
-}
-
-static void RemoveTimeBox(void)
-{
-    ClearStdWindowAndFrame(sTimeWindowId, TRUE);
-    CopyWindowToVram(sTimeWindowId, COPYWIN_GFX);
-    RemoveWindow(sTimeWindowId);
 }
 
 void Script_ForceSaveGame(struct ScriptContext *ctx)

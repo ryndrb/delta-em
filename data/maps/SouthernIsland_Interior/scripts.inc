@@ -561,84 +561,80 @@ SouthernIsland_Interior_EventScript_Latios_14:
 # 310 "data/maps/SouthernIsland_Interior/scripts.pory"
 	givemon SPECIES_LATIOS, 30, ITEM_LATIOSITE
 # 311 "data/maps/SouthernIsland_Interior/scripts.pory"
-	playfanfare MUS_HG_RECEIVE_POKEMON
-# 312 "data/maps/SouthernIsland_Interior/scripts.pory"
 	msgbox SouthernIsland_Interior_EventScript_Latios_Text_22
+# 312 "data/maps/SouthernIsland_Interior/scripts.pory"
+	delay 16
 # 313 "data/maps/SouthernIsland_Interior/scripts.pory"
-	waitfanfare
-# 314 "data/maps/SouthernIsland_Interior/scripts.pory"
-	delay 16
-# 315 "data/maps/SouthernIsland_Interior/scripts.pory"
 	msgbox SouthernIsland_Interior_EventScript_Latios_Text_23
-# 316 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 314 "data/maps/SouthernIsland_Interior/scripts.pory"
 	closemessage
-# 317 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 315 "data/maps/SouthernIsland_Interior/scripts.pory"
 	delay 8
-# 318 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 316 "data/maps/SouthernIsland_Interior/scripts.pory"
 	playmoncry SPECIES_LATIOS, CRY_MODE_NORMAL
-# 319 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 317 "data/maps/SouthernIsland_Interior/scripts.pory"
 	waitmoncry
-# 320 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 318 "data/maps/SouthernIsland_Interior/scripts.pory"
 	fadescreen FADE_TO_WHITE
-# 321 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 319 "data/maps/SouthernIsland_Interior/scripts.pory"
 	removeobject LOCALID_LATIOS
-# 322 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 320 "data/maps/SouthernIsland_Interior/scripts.pory"
 	fadescreen FADE_FROM_WHITE
-# 323 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 321 "data/maps/SouthernIsland_Interior/scripts.pory"
 	delay 24
-# 324 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 322 "data/maps/SouthernIsland_Interior/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
-# 325 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 323 "data/maps/SouthernIsland_Interior/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
-# 326 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 324 "data/maps/SouthernIsland_Interior/scripts.pory"
 	msgbox SouthernIsland_Interior_EventScript_Latios_Text_24
-# 327 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 325 "data/maps/SouthernIsland_Interior/scripts.pory"
 	closemessage
-# 328 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 326 "data/maps/SouthernIsland_Interior/scripts.pory"
 	delay 16
-# 329 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 327 "data/maps/SouthernIsland_Interior/scripts.pory"
 	giveitem ITEM_MEGA_RING
-# 330 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 328 "data/maps/SouthernIsland_Interior/scripts.pory"
 	msgbox SouthernIsland_Interior_EventScript_Latios_Text_25
-# 331 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 329 "data/maps/SouthernIsland_Interior/scripts.pory"
 	closemessage
-# 332 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 330 "data/maps/SouthernIsland_Interior/scripts.pory"
 	delay 48
-# 333 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 331 "data/maps/SouthernIsland_Interior/scripts.pory"
 	msgbox SouthernIsland_Interior_EventScript_Latios_Text_26
-# 334 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 332 "data/maps/SouthernIsland_Interior/scripts.pory"
 	closemessage
-# 335 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 333 "data/maps/SouthernIsland_Interior/scripts.pory"
 	applymovement 4, Common_Movement_WalkInPlaceDown
-# 336 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 334 "data/maps/SouthernIsland_Interior/scripts.pory"
 	waitmovement 4
-# 337 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 335 "data/maps/SouthernIsland_Interior/scripts.pory"
 	msgbox SouthernIsland_Interior_EventScript_Latios_Text_27
-# 338 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 336 "data/maps/SouthernIsland_Interior/scripts.pory"
 	closemessage
-# 339 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 337 "data/maps/SouthernIsland_Interior/scripts.pory"
 	applymovement 4, SouthernIsland_Interior_Movement_PlayerStevenExit
-# 340 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 338 "data/maps/SouthernIsland_Interior/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, SouthernIsland_Interior_Movement_PlayerStevenExit
-# 341 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 339 "data/maps/SouthernIsland_Interior/scripts.pory"
 	fadescreen FADE_TO_BLACK
-# 342 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 340 "data/maps/SouthernIsland_Interior/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
-# 343 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 341 "data/maps/SouthernIsland_Interior/scripts.pory"
 	removeobject 4
-# 344 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 342 "data/maps/SouthernIsland_Interior/scripts.pory"
 	setflag FLAG_REMOVE_WARP_FADE
-# 345 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 343 "data/maps/SouthernIsland_Interior/scripts.pory"
 	setvar VAR_ROUTE118_STATE, 4
-# 346 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 344 "data/maps/SouthernIsland_Interior/scripts.pory"
 	setvar VAR_SOUTHERN_ISLAND_STATE, 3
-# 347 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 345 "data/maps/SouthernIsland_Interior/scripts.pory"
 	setvar VAR_LEVEL_CAP_VARIABLE, 54
-# 348 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 346 "data/maps/SouthernIsland_Interior/scripts.pory"
 	warpsilent MAP_SOUTHERN_ISLAND_EXTERIOR, 14, 20
-# 349 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 347 "data/maps/SouthernIsland_Interior/scripts.pory"
 	waitstate
-# 350 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 348 "data/maps/SouthernIsland_Interior/scripts.pory"
 	releaseall
 	end
 
@@ -698,181 +694,181 @@ SouthernIsland_Interior_EventScript_Latios_22:
 	goto SouthernIsland_Interior_EventScript_Latios_14
 
 
-# 354 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 352 "data/maps/SouthernIsland_Interior/scripts.pory"
 SouthernIsland_Interior_Movement_PlayerApproachLatios1:
+# 353 "data/maps/SouthernIsland_Interior/scripts.pory"
+	delay_16
+# 354 "data/maps/SouthernIsland_Interior/scripts.pory"
+	walk_in_place_right
+# 355 "data/maps/SouthernIsland_Interior/scripts.pory"
+	delay_16
 # 355 "data/maps/SouthernIsland_Interior/scripts.pory"
 	delay_16
 # 356 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_in_place_right
+	walk_up
+# 356 "data/maps/SouthernIsland_Interior/scripts.pory"
+	walk_up
+# 356 "data/maps/SouthernIsland_Interior/scripts.pory"
+	walk_up
+# 356 "data/maps/SouthernIsland_Interior/scripts.pory"
+	walk_up
+# 356 "data/maps/SouthernIsland_Interior/scripts.pory"
+	walk_up
+# 356 "data/maps/SouthernIsland_Interior/scripts.pory"
+	walk_up
 # 357 "data/maps/SouthernIsland_Interior/scripts.pory"
-	delay_16
+	walk_right
 # 357 "data/maps/SouthernIsland_Interior/scripts.pory"
-	delay_16
-# 358 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_up
-# 358 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_up
-# 358 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_up
-# 358 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_up
-# 358 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_up
-# 358 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_up
-# 359 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_right
-# 359 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_right
-# 360 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 358 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 360 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 358 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
 	step_end
 
-# 363 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 361 "data/maps/SouthernIsland_Interior/scripts.pory"
 SouthernIsland_Interior_Movement_PlayerApproachLatios2:
-# 364 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 362 "data/maps/SouthernIsland_Interior/scripts.pory"
 	delay_16
-# 365 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 363 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_left
-# 366 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 364 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_in_place_right
-# 367 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 365 "data/maps/SouthernIsland_Interior/scripts.pory"
 	delay_16
-# 368 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 366 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 368 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 366 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 368 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 366 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 368 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 366 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 368 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 366 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 368 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 366 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 369 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 367 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_right
-# 369 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 367 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_right
-# 370 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 368 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 370 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 368 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
 	step_end
 
-# 373 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 371 "data/maps/SouthernIsland_Interior/scripts.pory"
 SouthernIsland_Interior_Movement_PlayerApproachLatios3:
+# 372 "data/maps/SouthernIsland_Interior/scripts.pory"
+	delay_16
+# 373 "data/maps/SouthernIsland_Interior/scripts.pory"
+	walk_in_place_left
+# 374 "data/maps/SouthernIsland_Interior/scripts.pory"
+	delay_16
 # 374 "data/maps/SouthernIsland_Interior/scripts.pory"
 	delay_16
 # 375 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_in_place_left
-# 376 "data/maps/SouthernIsland_Interior/scripts.pory"
-	delay_16
-# 376 "data/maps/SouthernIsland_Interior/scripts.pory"
-	delay_16
-# 377 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 377 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 375 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 377 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 375 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 377 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 375 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 377 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 375 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 377 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 375 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 377 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 375 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 377 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 375 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
 	step_end
 
-# 380 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 378 "data/maps/SouthernIsland_Interior/scripts.pory"
 SouthernIsland_Interior_Movement_StevenApproachLatios:
+# 379 "data/maps/SouthernIsland_Interior/scripts.pory"
+	delay_16
+# 380 "data/maps/SouthernIsland_Interior/scripts.pory"
+	walk_up
+# 380 "data/maps/SouthernIsland_Interior/scripts.pory"
+	walk_up
+# 380 "data/maps/SouthernIsland_Interior/scripts.pory"
+	walk_up
+# 380 "data/maps/SouthernIsland_Interior/scripts.pory"
+	walk_up
+# 380 "data/maps/SouthernIsland_Interior/scripts.pory"
+	walk_up
+# 380 "data/maps/SouthernIsland_Interior/scripts.pory"
+	walk_up
+# 380 "data/maps/SouthernIsland_Interior/scripts.pory"
+	walk_up
+# 380 "data/maps/SouthernIsland_Interior/scripts.pory"
+	walk_up
 # 381 "data/maps/SouthernIsland_Interior/scripts.pory"
-	delay_16
-# 382 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_up
-# 382 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_up
-# 382 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_up
-# 382 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_up
-# 382 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_up
-# 382 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_up
-# 382 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_up
-# 382 "data/maps/SouthernIsland_Interior/scripts.pory"
-	walk_up
-# 383 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_left
-# 384 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 382 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
 	step_end
 
-# 387 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 385 "data/maps/SouthernIsland_Interior/scripts.pory"
 SouthernIsland_Interior_Movement_MagmaApproach:
-# 388 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 386 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 388 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 386 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 388 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 386 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 388 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 386 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
-# 388 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 386 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_up
 	step_end
 
-# 391 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 389 "data/maps/SouthernIsland_Interior/scripts.pory"
 SouthernIsland_Interior_Movement_CameraMiddle:
-# 392 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 390 "data/maps/SouthernIsland_Interior/scripts.pory"
 	delay_16
-# 392 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 390 "data/maps/SouthernIsland_Interior/scripts.pory"
 	delay_16
-# 392 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 390 "data/maps/SouthernIsland_Interior/scripts.pory"
 	delay_16
-# 392 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 390 "data/maps/SouthernIsland_Interior/scripts.pory"
 	delay_16
-# 393 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 391 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_down
 	step_end
 
-# 396 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 394 "data/maps/SouthernIsland_Interior/scripts.pory"
 SouthernIsland_Interior_Movement_MagmaExit:
-# 397 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 395 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_down
-# 397 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 395 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_down
-# 397 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 395 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_down
-# 397 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 395 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_down
-# 397 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 395 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_down
-# 397 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 395 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_down
 	step_end
 
-# 400 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 398 "data/maps/SouthernIsland_Interior/scripts.pory"
 SouthernIsland_Interior_Movement_PlayerStevenExit:
-# 401 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 399 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_down
-# 401 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 399 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_down
-# 401 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 399 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_down
-# 401 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 399 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_down
-# 401 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 399 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_down
-# 401 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 399 "data/maps/SouthernIsland_Interior/scripts.pory"
 	walk_down
 	step_end
 
@@ -965,25 +961,25 @@ SouthernIsland_Interior_EventScript_Latios_Text_21:
 	.string "Go on.\nHold out your hand to it.$"
 
 SouthernIsland_Interior_EventScript_Latios_Text_22:
-# 312 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 311 "data/maps/SouthernIsland_Interior/scripts.pory"
 	.string "Latios joined your team!$"
 
 SouthernIsland_Interior_EventScript_Latios_Text_23:
-# 315 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 313 "data/maps/SouthernIsland_Interior/scripts.pory"
 	.string "Latios is carrying a piece of Latiosite!$"
 
 SouthernIsland_Interior_EventScript_Latios_Text_24:
-# 326 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 324 "data/maps/SouthernIsland_Interior/scripts.pory"
 	.string "You should take this from me…$"
 
 SouthernIsland_Interior_EventScript_Latios_Text_25:
-# 330 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 328 "data/maps/SouthernIsland_Interior/scripts.pory"
 	.string "With the Mega Ring that I just gave you\nand the Mega Stones that a Pokémon\lmay hold, your Pokémon should be able\lto achieve a powerful boost, quite\lunlike any unusual form of Evolution…\lbut only if you are bound by great\laffection.\pYou will be able to achieve {COLOR BLUE}Mega\nEvolution{COLOR DARK_GRAY}.\pI suggest you try it with Latios the\nnext time that you happen to have\lthe chance in battle.$"
 
 SouthernIsland_Interior_EventScript_Latios_Text_26:
-# 333 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 331 "data/maps/SouthernIsland_Interior/scripts.pory"
 	.string "Mega Evolution is a phenomenon that\nhas long been shrouded in mystery.\pWhat is a Mega Stone?\nWhat is a Key Stone?\pThe process by which bonds\nbetween Pokémon and people manifest\lin tangible power…\lHow do we explain that?\pI hope that the Mega Ring I just\ngave you might bring us one step\lcloser to finding the answer to\lthese questions.$"
 
 SouthernIsland_Interior_EventScript_Latios_Text_27:
-# 337 "data/maps/SouthernIsland_Interior/scripts.pory"
+# 335 "data/maps/SouthernIsland_Interior/scripts.pory"
 	.string "If that settles that…\nShould we be heading back?\pTogether with Latias, waiting so\npatiently for us there…$"

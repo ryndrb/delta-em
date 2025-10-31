@@ -203,7 +203,7 @@ struct ChooseMoveStruct
     u8 currentPp[MAX_MON_MOVES];
     u8 maxPp[MAX_MON_MOVES];
     u16 species;
-    u8 monTypes[3];
+    enum Type monTypes[3];
     struct ZMoveData zmove;
 };
 
@@ -279,6 +279,7 @@ void InitBattleControllers(void);
 bool32 IsValidForBattle(struct Pokemon *mon);
 void TryReceiveLinkBattleData(void);
 void PrepareBufferDataTransferLink(u32 battler, u32 bufferId, u16 size, u8 *data);
+void UpdateFriendshipFromXItem(u32 battler);
 
 // emitters
 void BtlController_EmitGetMonData(u32 battler, u32 bufferId, u8 requestId, u8 monToCheck);
@@ -363,7 +364,7 @@ void BtlController_HandleSpriteInvisibility(u32 battler);
 bool32 TwoPlayerIntroMons(u32 battlerId); // Double battle with both player pokemon active.
 bool32 TwoOpponentIntroMons(u32 battlerId); // Double battle with both opponent pokemon active.
 void BtlController_HandleIntroTrainerBallThrow(u32 battler, u16 tagTrainerPal, const u16 *trainerPal, s16 framesToWait, void (*controllerCallback)(u32 battler));
-void BtlController_HandleDrawPartyStatusSummary(u32 battler, u32 side, bool32 considerDelay);
+void BtlController_HandleDrawPartyStatusSummary(u32 battler, enum BattleSide side, bool32 considerDelay);
 void BtlController_HandleHidePartyStatusSummary(u32 battler);
 void BtlController_HandleBattleAnimation(u32 battler);
 
@@ -393,6 +394,10 @@ void HandleChooseMoveAfterDma3(u32 battler);
 // recorded player controller
 void SetControllerToRecordedPlayer(u32 battler);
 void RecordedPlayerBufferExecCompleted(u32 battler);
+
+// recorded partner controller
+void SetControllerToRecordedPartner(u32 battler);
+void RecordedPartnerBufferExecCompleted(u32 battler);
 
 // opponent controller
 void SetControllerToOpponent(u32 battler);
@@ -426,6 +431,7 @@ void LinkPartnerBufferExecCompleted(u32 battler);
 
 void TrySetBattlerShadowSpriteCallback(u32 battler);
 
+void AnimateMonAfterPokeBallFail(u32 battler);
 void TryShinyAnimAfterMonAnim(u32 battler);
 void WaitForMonAnimAfterLoad(u32 battler);
 void BtlController_HandleSwitchInWaitAndEnd(u32 battler);
@@ -434,5 +440,8 @@ void BtlController_HandleSwitchInShowHealthbox(u32 battler);
 void BtlController_HandleSwitchInTryShinyAnim(u32 battler);
 void BtlController_HandleSwitchInSoundAndEnd(u32 battler);
 void BtlController_HandleSwitchInShowSubstitute(u32 battler);
+
+bool32 ShouldBattleRestrictionsApply(u32 battler);
+void FreeShinyStars(void);
 
 #endif // GUARD_BATTLE_CONTROLLERS_H

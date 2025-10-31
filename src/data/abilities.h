@@ -1,4 +1,4 @@
-const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
+const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
 {
     [ABILITY_NONE] =
     {
@@ -1285,7 +1285,8 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_BULLETPROOF] =
     {
         .name = _("Bulletproof"),
-        .description = COMPOUND_STRING("This Pokémon's Sp. Atk is\nraised by 2 for each of its\nstats that is lowered by a foe."),
+        .description = COMPOUND_STRING("This Pokémon is immune to\nbullet moves."),
+        .breakable = TRUE,
         .aiRating = 7,
     },
 
