@@ -1,5 +1,4 @@
 raw `
-.set LOCALID_RIVAL, 1
 
 LittlerootTown_MaysHouse_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_MaysHouse_2F_OnTransition
@@ -24,8 +23,8 @@ LittlerootTown_MaysHouse_2F_EventScript_TryUpdateMayPos::
 	checkplayergender
 	goto_if_eq VAR_RESULT, FEMALE, LittlerootTown_MaysHouse_2F_EventScript_Ret
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_MaysHouse_2F_EventScript_Ret
-	setobjectxyperm LOCALID_RIVAL, 8, 2
-	setobjectmovementtype LOCALID_RIVAL, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_PLAYERS_HOUSE_2F_RIVAL, 8, 2
+	setobjectmovementtype LOCALID_PLAYERS_HOUSE_2F_RIVAL, MOVEMENT_TYPE_FACE_UP
 	return
 
 LittlerootTown_MaysHouse_2F_EventScript_Ret::
@@ -61,7 +60,7 @@ LittlerootTown_MaysHouse_2F_EventScript_RivalsPokeBall::
 	end
 
 LittlerootTown_MaysHouse_2F_EventScript_MeetMay::
-	addobject LOCALID_RIVAL
+	addobject LOCALID_PLAYERS_HOUSE_2F_RIVAL
 	delay 10
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, LittlerootTown_MaysHouse_2F_Movement_CameraPansToMay
@@ -71,14 +70,14 @@ LittlerootTown_MaysHouse_2F_EventScript_MeetMay::
 	msgbox RivalsHouse_2F_Text_MayGettingReady, MSGBOX_DEFAULT
 	closemessage
 	delay 8
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceLeft
+	applymovement LOCALID_PLAYERS_HOUSE_2F_RIVAL, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	delay 16
 	playse SE_PIN
-	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	applymovement LOCALID_PLAYERS_HOUSE_2F_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
 	delay 16
-	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPlayer
+	applymovement LOCALID_PLAYERS_HOUSE_2F_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPlayer
 	applymovement OBJ_EVENT_ID_CAMERA, LittlerootTown_MaysHouse_2F_Movement_CameraPansToBoth
 	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
@@ -87,15 +86,15 @@ LittlerootTown_MaysHouse_2F_EventScript_MeetMay::
 	closemessage
 	delay 16
 	playse SE_PIN
-	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	applymovement LOCALID_PLAYERS_HOUSE_2F_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
 	msgbox RivalsHouse_2F_Text_MayWhoAreYou, MSGBOX_DEFAULT
 	closemessage
 	delay 16
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerMoveAside
-	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayLeaveRoom
-	waitmovement LOCALID_RIVAL
-	removeobject LOCALID_RIVAL
+	applymovement LOCALID_PLAYERS_HOUSE_2F_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayLeaveRoom
+	waitmovement LOCALID_PLAYERS_HOUSE_2F_RIVAL
+	removeobject LOCALID_PLAYERS_HOUSE_2F_RIVAL
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, LittlerootTown_MaysHouse_2F_Movement_CameraPansToPlayer
 	waitmovement 0

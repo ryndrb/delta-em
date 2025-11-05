@@ -449,7 +449,7 @@ script MauvilleCity_EventScript_WallyAndUncleIntro {
     waitmovement(OBJ_EVENT_ID_CAMERA)
     delay(16)
     msgbox("{COLOR RED}Wally{COLOR DARK_GRAY}: Wow!\nSo this is Mauville City!")
-    msgbox("{COLOR RED}Uncle{COLOR DARK_GRAY}: Hahaha!\pYou sure seem to be enjoying it,\nWally!\pSo what would you like to do?\nDo you want to grab a bite to eat at\lthe Mauville Food Court?\pOr maybe we should get you a Bike of\nyou own at Rydel's Cycles.\lWould you like that?\pI bet the exercise would be good for\nyour health.")
+    msgbox("{COLOR RED}Uncle{COLOR DARK_GRAY}: Hahaha!\pYou sure seem to be enjoying it,\nWally!\pSo what would you like to do?\nDo you want to grab a bite to eat?\pOr maybe we should get you a Bike of\nyour own at Rydel's Cycles.\lWould you like that?\pI bet the exercise would be good for\nyour health.")
     msgbox("{COLOR RED}Wally{COLOR DARK_GRAY}: No, thank you!\pI want to challenge the Gym right away!")
     delay(16)
     msgbox("{COLOR RED}Uncle{COLOR DARK_GRAY}: What?")

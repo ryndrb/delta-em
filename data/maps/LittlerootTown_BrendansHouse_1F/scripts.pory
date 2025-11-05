@@ -1,7 +1,4 @@
 raw `
-.set LOCALID_MOM, 1
-.set LOCALID_RIVAL_MOM, 4
-.set LOCALID_RIVAL, 7
 
 LittlerootTown_BrendansHouse_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, LittlerootTown_BrendansHouse_1F_OnLoad
@@ -36,23 +33,23 @@ LittlerootTown_BrendansHouse_1F_OnTransition:
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs::
-	setobjectxyperm LOCALID_MOM, 8, 4
-	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_PLAYERS_HOUSE_1F_MOM, 8, 4
+	setobjectmovementtype LOCALID_PLAYERS_HOUSE_1F_MOM, MOVEMENT_TYPE_FACE_UP
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV::
-	setobjectxyperm LOCALID_MOM, 4, 5
-	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_PLAYERS_HOUSE_1F_MOM, 4, 5
+	setobjectmovementtype LOCALID_PLAYERS_HOUSE_1F_MOM, MOVEMENT_TYPE_FACE_UP
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor::
-	setobjectxyperm LOCALID_MOM, 9, 8
-	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_PLAYERS_HOUSE_1F_MOM, 9, 8
+	setobjectmovementtype LOCALID_PLAYERS_HOUSE_1F_MOM, MOVEMENT_TYPE_FACE_UP
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoorFrontFacingUp::
-	setobjectxyperm LOCALID_RIVAL_MOM, 8, 6
-	setobjectmovementtype LOCALID_RIVAL_MOM, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_RIVALS_HOUSE_1F_MOM, 8, 6
+	setobjectmovementtype LOCALID_RIVALS_HOUSE_1F_MOM, MOVEMENT_TYPE_FACE_UP
 	return
 
 @ Many of the below scripts have no gender check because they assume youre in the correct house
@@ -70,7 +67,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_GoUpstairsToSetClock::
 	msgbox PlayersHouse_1F_Text_GoSetTheClock, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_BrendansHouse_1F_Movement_PushTowardStairs
-	applymovement LOCALID_MOM, LittlerootTown_BrendansHouse_1F_Movement_PushTowardStairs
+	applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, LittlerootTown_BrendansHouse_1F_Movement_PushTowardStairs
 	waitmovement 0
 	warp MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F, 7, 1
 	waitstate
@@ -83,7 +80,7 @@ LittlerootTown_BrendansHouse_1F_Movement_PushTowardStairs:
 
 LittlerootTown_BrendansHouse_1F_EventScript_EnterHouseMovingIn::
 	lockall
-	setvar VAR_0x8004, LOCALID_MOM
+	setvar VAR_0x8004, LOCALID_PLAYERS_HOUSE_1F_MOM
 	setvar VAR_0x8005, MALE
 	goto PlayersHouse_1F_EventScript_EnterHouseMovingIn
 	end
@@ -91,22 +88,22 @@ LittlerootTown_BrendansHouse_1F_EventScript_EnterHouseMovingIn::
 LittlerootTown_BrendansHouse_1F_EventScript_PetalburgGymReport::
 	lockall
 	setvar VAR_0x8004, MALE
-	setvar VAR_0x8005, LOCALID_MOM
+	setvar VAR_0x8005, LOCALID_PLAYERS_HOUSE_1F_MOM
 	goto PlayersHouse_1F_EventScript_PetalburgGymReportMale
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_YoureNewNeighbor::
 	lockall
 	delay 40
-	applymovement LOCALID_RIVAL_MOM, Common_Movement_WalkInPlaceDown
+	applymovement LOCALID_RIVALS_HOUSE_1F_MOM, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	delay 8
 	playse SE_PIN
-	applymovement LOCALID_RIVAL_MOM, Common_Movement_ExclamationMark
+	applymovement LOCALID_RIVALS_HOUSE_1F_MOM, Common_Movement_ExclamationMark
 	waitmovement 0
 	msgbox PlayersHouse_1F_Text_OhYoureTheNewNeighbor, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_RIVAL_MOM, LittlerootTown_BrendansHouse_1F_Movement_RivalMomMoveAside
+	applymovement LOCALID_RIVALS_HOUSE_1F_MOM, LittlerootTown_BrendansHouse_1F_Movement_RivalMomMoveAside
 	waitmovement 0
 	setflag FLAG_MET_RIVAL_MOM
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
@@ -123,7 +120,7 @@ LittlerootTown_BrendansHouse_1F_Movement_RivalMomMoveAside:
 
 LittlerootTown_BrendansHouse_1F_EventScript_GoSeeRoom::
 	lockall
-	setvar VAR_0x8004, LOCALID_MOM
+	setvar VAR_0x8004, LOCALID_PLAYERS_HOUSE_1F_MOM
 	setvar VAR_0x8005, MALE
 	applymovement VAR_0x8004, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
@@ -275,8 +272,8 @@ script PlayersHouse_1F_EventScript_Mom_StatEditor {
 		msgbox("{COLOR RED}Mom{COLOR DARK_GRAY}: Oh, {PLAYER}!\nYou're back!\pYou've grown so much since we first\ngot here… I can feel it!\pYour eyes, the way you stand…\nYou've changed, just a little.\lStronger, maybe.\pAnd your Pokémon, too.\nThey seem… closer to you.\lLike you're really in sync.\pYou know, sometimes I think the heart\nunderstands more than we realize.\pWhen everything just clicks between\nyou and your Pokémon--it's special.\pIf you ever feel like something's not\nquite right, deep down, trust your\linstincts. Trust their instincts.\pIt's okay to listen to that feeling and\nmake a few changes.\pAfter all, growing stronger isn't\nalways about pushing forward.\pSometimes, it's about understanding\nwho you are--together.")
 		closemessage
 		delay(8)
-		applymovement(LOCALID_MOM, Common_Movement_ExclamationMark)
-		waitmovement(LOCALID_MOM)
+		applymovement(LOCALID_PLAYERS_HOUSE_1F_MOM, Common_Movement_ExclamationMark)
+		waitmovement(LOCALID_PLAYERS_HOUSE_1F_MOM)
 		delay(8)
 		msgbox("{COLOR RED}Mom{COLOR DARK_GRAY}: Hah, listen to me rambling!\pMaybe I've just been watching too\nmany dramas lately.\pAnyway, stay safe out there, okay? And\ncome home whenever you need a break.")
 		closemessage

@@ -1,6 +1,4 @@
 raw `
-.set LOCALID_WIFE, 2
-.set LOCALID_COZMO, 1
 
 FallarborTown_CozmosHouse_MapScripts::
     map_script MAP_SCRIPT_ON_TRANSITION, FallarborTown_CozmosHouse_OnTransition
@@ -9,30 +7,30 @@ FallarborTown_CozmosHouse_MapScripts::
 
 FallarborTown_CozmosHouse_OnTransition:
     call Common_EventScript_SetupRivalGfxId
+    goto_if_eq VAR_FALLARBOR_TOWN_STATE, 1, FallarborTown_CozmosHouse_MoveCosmoWifeInFrontOfDoor1
 	goto_if_eq VAR_FALLARBOR_TOWN_STATE, 3, FallarborTown_CozmosHouse_MoveCosmoWifeInFrontOfDoor2
 	goto_if_unset FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, FallarborTown_CozmosHouse_MoveEveyoneAtBack
-    goto_if_eq VAR_FALLARBOR_TOWN_STATE, 1, FallarborTown_CozmosHouse_MoveCosmoWifeInFrontOfDoor1
     end
 
 FallarborTown_CozmosHouse_MoveEveyoneAtBack:
-	setobjectxyperm LOCALID_WIFE, 4, 5
-	setobjectxyperm LOCALID_COZMO, 4, 4
-	setobjectxyperm LOCALID_RIVAL, 7, 4
-    setobjectmovementtype LOCALID_WIFE, MOVEMENT_TYPE_FACE_UP
-	setobjectmovementtype LOCALID_COZMO, MOVEMENT_TYPE_FACE_DOWN
-	setobjectmovementtype LOCALID_RIVAL, MOVEMENT_TYPE_LOOK_AROUND
+	setobjectxyperm LOCALID_COZMOS_HOUSE_WIFE, 4, 5
+	setobjectxyperm LOCALID_COZMOS_HOUSE_COZMO, 4, 4
+	setobjectxyperm LOCALID_COZMOS_HOUSE_RIVAL, 8, 5
+    setobjectmovementtype LOCALID_COZMOS_HOUSE_WIFE, MOVEMENT_TYPE_FACE_UP
+	setobjectmovementtype LOCALID_COZMOS_HOUSE_COZMO, MOVEMENT_TYPE_FACE_DOWN
+	setobjectmovementtype LOCALID_COZMOS_HOUSE_RIVAL, MOVEMENT_TYPE_LOOK_AROUND
     return
 
 FallarborTown_CozmosHouse_MoveCosmoWifeInFrontOfDoor2:
-	setobjectxyperm LOCALID_WIFE, 3, 6
-	setobjectxyperm LOCALID_COZMO, 4, 7
-    setobjectmovementtype LOCALID_WIFE, MOVEMENT_TYPE_FACE_UP
-	setobjectmovementtype LOCALID_COZMO, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_COZMOS_HOUSE_WIFE, 3, 6
+	setobjectxyperm LOCALID_COZMOS_HOUSE_COZMO, 4, 7
+    setobjectmovementtype LOCALID_COZMOS_HOUSE_WIFE, MOVEMENT_TYPE_FACE_UP
+	setobjectmovementtype LOCALID_COZMOS_HOUSE_COZMO, MOVEMENT_TYPE_FACE_UP
     return
 
 FallarborTown_CozmosHouse_MoveCosmoWifeInFrontOfDoor1:
-    setobjectxyperm LOCALID_WIFE, 4, 6
-    setobjectmovementtype LOCALID_WIFE, MOVEMENT_TYPE_FACE_DOWN
+    setobjectxyperm LOCALID_COZMOS_HOUSE_WIFE, 4, 6
+    setobjectmovementtype LOCALID_COZMOS_HOUSE_WIFE, MOVEMENT_TYPE_FACE_DOWN
     return
 
 FallarborTown_CozmosHouse_OnFrameTable:
@@ -43,7 +41,8 @@ FallarborTown_CozmosHouse_OnFrameTable:
 FallarborTown_CozmosHouse_EventScript_CozmosWife::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_TM_RETURN, FallarborTown_CozmosHouse_EventScript_CozmoIsHappy
+	checkitem ITEM_TM_ROCK_SLIDE
+	goto_if_eq VAR_RESULT, TRUE, FallarborTown_CozmosHouse_EventScript_CozmoIsHappy
 	goto_if_set FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, FallarborTown_CozmosHouse_EventScript_CozmoIsSad
 	msgbox FallarborTown_CozmosHouse_Text_PleaseSaveCozmo, MSGBOX_DEFAULT
 	release
@@ -75,14 +74,12 @@ FallarborTown_CozmosHouse_Text_CozmoIsSoHappy:
 
 `
 
-const LOCALID_RIVAL = 3
-
 script FallarborTown_CozmosHouse_EventScript_CozmosAbducted {
     lock
     delay(8)
     applymovement(OBJ_EVENT_ID_PLAYER, FallarborTown_CozmosHouse_Movement_PlayerGoUp)
-    applymovement(LOCALID_RIVAL, FallarborTown_CozmosHouse_Movement_RivalGoUp)
-    waitmovement(LOCALID_RIVAL)
+    applymovement(LOCALID_COZMOS_HOUSE_RIVAL, FallarborTown_CozmosHouse_Movement_RivalGoUp)
+    waitmovement(LOCALID_COZMOS_HOUSE_RIVAL)
     checkplayergender
     if(var(VAR_RESULT) == MALE){
         msgbox("{COLOR RED}May{COLOR DARK_GRAY}: Y-you see…\pProfessor Cozmo…\pHe got abducted by some weird guys\ncalling themselves Team Something or\lOther…")
@@ -90,14 +87,14 @@ script FallarborTown_CozmosHouse_EventScript_CozmosAbducted {
         msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: It's ridiculous…\nProfessor Cozmo…\pThey say he was just up and kidnapped\nby some nuts calling themselves Team\lSomething or Other…")
     }
     closemessage
-    applymovement(LOCALID_WIFE, Common_Movement_WalkInPlaceDown)
+    applymovement(LOCALID_COZMOS_HOUSE_WIFE, Common_Movement_WalkInPlaceDown)
     delay(8)
-    applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceRight)
-    waitmovement(LOCALID_RIVAL)
+    applymovement(LOCALID_COZMOS_HOUSE_RIVAL, Common_Movement_WalkInPlaceRight)
+    waitmovement(LOCALID_COZMOS_HOUSE_RIVAL)
     msgbox("Those shady characters…\nThey called themselves Team Magma.\pIt seems as though they plan to do\nsomething with the Meteorite that\lthe Professor has been researching.\pThe professor is just too gullible.\nIf you show the least bit of interest\lin this research, he would happily go\lwith you anywhere, without question.")
     closemessage
-    applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceDown)
-    waitmovement(LOCALID_RIVAL)
+    applymovement(LOCALID_COZMOS_HOUSE_RIVAL, Common_Movement_WalkInPlaceDown)
+    waitmovement(LOCALID_COZMOS_HOUSE_RIVAL)
     checkplayergender
     if(var(VAR_RESULT) == MALE){
         msgbox("{COLOR RED}May{COLOR DARK_GRAY}: {PLAYER}, please…\nYou've got to help me save him!\pThey can't be planning to do anything\ngood with Professor Cozmo's research.\pWe have to do something!\pI…I'm going to head after them right\naway! Let's meet up at Meteor Falls!\pI'm counting on you, {PLAYER}!")
@@ -105,12 +102,12 @@ script FallarborTown_CozmosHouse_EventScript_CozmosAbducted {
         msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: {PLAYER}…\nI know it's a lot ask, but we've gotta\lhelp Cozmo!\pI can't just stand by here and watch\nthem use his life's work for their own\lcorrupt reasons!\pI'm going to head to Meteor Falls right\naway.\pCome catch up to me as soon as you\ncan.\pI'm counting on you, {PLAYER}!")
     }
     closemessage
-    applymovement(LOCALID_RIVAL, FallarborTown_CozmosHouse_Movement_RivalExit)
+    applymovement(LOCALID_COZMOS_HOUSE_RIVAL, FallarborTown_CozmosHouse_Movement_RivalExit)
     applymovement(OBJ_EVENT_ID_PLAYER, FallarborTown_CozmosHouse_Movement_PlayerWatchRivalExit)
-    waitmovement(LOCALID_RIVAL)
+    waitmovement(LOCALID_COZMOS_HOUSE_RIVAL)
     playse(SE_EXIT)
     waitse
-    removeobject(LOCALID_RIVAL)
+    removeobject(LOCALID_COZMOS_HOUSE_RIVAL)
     setvar(VAR_FALLARBOR_TOWN_STATE, 2)
     release
     end
@@ -139,34 +136,34 @@ movement FallarborTown_CozmosHouse_Movement_PlayerWatchRivalExit {
 script FallarborTown_CozmosHouse_EventScript_CozmosReturn {
 	lock
 	delay(8)
-	applymovement(LOCALID_WIFE, Common_Movement_WalkInPlaceDown)
-	waitmovement(LOCALID_WIFE)
+	applymovement(LOCALID_COZMOS_HOUSE_WIFE, Common_Movement_WalkInPlaceDown)
+	waitmovement(LOCALID_COZMOS_HOUSE_WIFE)
 	delay(8)
 	playse(SE_PIN)
-	applymovement(LOCALID_WIFE, Common_Movement_ExclamationMark)
-	waitmovement(LOCALID_WIFE)
+	applymovement(LOCALID_COZMOS_HOUSE_WIFE, Common_Movement_ExclamationMark)
+	waitmovement(LOCALID_COZMOS_HOUSE_WIFE)
 	waitse
 	msgbox("Ahh! Professor!\pThank the stars above Professor,\nyou're back!")
 	closemessage
-	applymovement(LOCALID_COZMO, Common_Movement_WalkUp)
-	waitmovement(LOCALID_COZMO)
-	applymovement(LOCALID_COZMO, Common_Movement_WalkInPlaceLeft)
-	applymovement(LOCALID_RIVAL, Common_Movement_WalkUp)
+	applymovement(LOCALID_COZMOS_HOUSE_COZMO, Common_Movement_WalkUp)
+	waitmovement(LOCALID_COZMOS_HOUSE_COZMO)
+	applymovement(LOCALID_COZMOS_HOUSE_COZMO, Common_Movement_WalkInPlaceLeft)
+	applymovement(LOCALID_COZMOS_HOUSE_RIVAL, Common_Movement_WalkUp)
 	delay(8)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
-	applymovement(LOCALID_WIFE, Common_Movement_WalkInPlaceRight)
-	waitmovement(LOCALID_WIFE)
+	applymovement(LOCALID_COZMOS_HOUSE_WIFE, Common_Movement_WalkInPlaceRight)
+	waitmovement(LOCALID_COZMOS_HOUSE_WIFE)
 	msgbox("{COLOR RED}Cozmo{COLOR DARK_GRAY}: Hah…haha…\pThanks to these children, I have\nsomehow returned.")
 	closemessage
 	delay(8)
-	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceRight)
+	applymovement(LOCALID_COZMOS_HOUSE_RIVAL, Common_Movement_WalkInPlaceRight)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	delay(8)
-	applymovement(LOCALID_COZMO, Common_Movement_WalkInPlaceDown)
+	applymovement(LOCALID_COZMOS_HOUSE_COZMO, Common_Movement_WalkInPlaceDown)
 	delay(8)
-	applymovement(LOCALID_WIFE, Common_Movement_WalkInPlaceDown)
-	waitmovement(LOCALID_WIFE)
+	applymovement(LOCALID_COZMOS_HOUSE_WIFE, Common_Movement_WalkInPlaceDown)
+	waitmovement(LOCALID_COZMOS_HOUSE_WIFE)
 	checkplayergender
     if(var(VAR_RESULT) == MALE){
         msgbox("{COLOR RED}May{COLOR DARK_GRAY}: Those nuts back there…\pWhat do you think they're hoping to do\nwith the professor's Meteorite?\pFrom the look of them, they kind of\nseem like bad guys, but…\pWe've both got to be careful.\pThough I'm not worried a bit if it's you\nand your team, {PLAYER}!")
@@ -176,8 +173,8 @@ script FallarborTown_CozmosHouse_EventScript_CozmosReturn {
     closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
 	delay(8)
-	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceUp)
-	waitmovement(LOCALID_RIVAL)
+	applymovement(LOCALID_COZMOS_HOUSE_RIVAL, Common_Movement_WalkInPlaceUp)
+	waitmovement(LOCALID_COZMOS_HOUSE_RIVAL)
 	msgbox("{COLOR RED}Cozmo{COLOR DARK_GRAY}: But I need to thank you, as well.\nYou truly saved me from disaster.\pI hope you take this TM as some small\nform of repayment.")
 	delay(8)
 	giveitem(ITEM_TM_ROCK_SLIDE, 1)
@@ -189,7 +186,7 @@ script FallarborTown_CozmosHouse_EventScript_CozmosReturn {
         msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: Thank you, Professor.")
     }
     closemessage
-	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceRight)
+	applymovement(LOCALID_COZMOS_HOUSE_RIVAL, Common_Movement_WalkInPlaceRight)
 	delay(8)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
@@ -234,19 +231,19 @@ script FallarborTown_CozmosHouse_EventScript_CozmosReturn {
 }
 
 script FallarborTown_CozmosHouse_EventScript_CrooksAtMtChimney {
-	msgbox("{COLOR RED}Cozmo{COLOR DARK_GRAY}: Those crooks who took my\nMeteorite…\pWhat will they next at {COLOR BLUE}Mt. Chimney{COLOR DARK_GRAY}?", MSGBOX_NPC)
-	applymovement(LOCALID_COZMO, Common_Movement_WalkInPlaceDown)
-	waitmovement(LOCALID_COZMO)
+	msgbox("{COLOR RED}Cozmo{COLOR DARK_GRAY}: Those crooks who took my\nMeteorite…\pWhat will they do next at {COLOR BLUE}Mt. Chimney{COLOR DARK_GRAY}?", MSGBOX_NPC)
+	applymovement(LOCALID_COZMOS_HOUSE_COZMO, Common_Movement_WalkInPlaceDown)
+	waitmovement(LOCALID_COZMOS_HOUSE_COZMO)
 	end
 }
 
 script FallarborTown_CozmosHouse_EventScript_MoveEveryone {
 	fadescreen(FADE_TO_BLACK)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
-	applymovement(LOCALID_COZMO, FallarborTown_CozmosHouse_Movement_MoveEveryone_Cozmo)
-	applymovement(LOCALID_WIFE, FallarborTown_CozmosHouse_Movement_MoveEveryone_CozmosWife)
-	applymovement(LOCALID_RIVAL, FallarborTown_CozmosHouse_Movement_MoveEveryone_Rival)
-	waitmovement(LOCALID_RIVAL)
+	applymovement(LOCALID_COZMOS_HOUSE_COZMO, FallarborTown_CozmosHouse_Movement_MoveEveryone_Cozmo)
+	applymovement(LOCALID_COZMOS_HOUSE_WIFE, FallarborTown_CozmosHouse_Movement_MoveEveryone_CozmosWife)
+	applymovement(LOCALID_COZMOS_HOUSE_RIVAL, FallarborTown_CozmosHouse_Movement_MoveEveryone_Rival)
+	waitmovement(LOCALID_COZMOS_HOUSE_RIVAL)
 	fadescreen(FADE_FROM_BLACK)
 	setvar(VAR_FALLARBOR_TOWN_STATE, 4)
 	return
@@ -263,8 +260,8 @@ movement FallarborTown_CozmosHouse_Movement_MoveEveryone_CozmosWife {
 }
 
 movement FallarborTown_CozmosHouse_Movement_MoveEveryone_Rival {
-	walk_faster_right * 4
-	walk_faster_up * 3
+	walk_faster_right * 5
+	walk_faster_up * 2
 	walk_in_place_down
 }
 
@@ -313,7 +310,7 @@ script FallarborTown_CozmosHouse_EventScript_Rival {
 script FallarborTown_CozmosHouse_EventScript_ProfCozmo {
 	lock
 	faceplayer
-	if (flag(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY)) {
+	if (flag(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY) == FALSE) {
 		goto(FallarborTown_CozmosHouse_EventScript_CrooksAtMtChimney)
 	} else {
 		if (flag(FLAG_TEMP_2) == TRUE) {

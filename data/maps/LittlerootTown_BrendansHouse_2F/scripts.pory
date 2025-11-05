@@ -1,5 +1,4 @@
 raw `
-.set LOCALID_RIVAL, 1
 
 LittlerootTown_BrendansHouse_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_BrendansHouse_2F_OnTransition
@@ -25,8 +24,8 @@ LittlerootTown_BrendansHouse_2F_EventScript_TryUpdateBrendanPos::
 	goto_if_eq VAR_RESULT, MALE, LittlerootTown_BrendansHouse_2F_EventScript_Ret
 	@ Odd that the MaysHouse equivalent was used below instead
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_MaysHouse_2F_EventScript_Ret
-	setobjectxyperm LOCALID_RIVAL, 0, 2
-	setobjectmovementtype LOCALID_RIVAL, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_PLAYERS_HOUSE_2F_RIVAL, 0, 2
+	setobjectmovementtype LOCALID_PLAYERS_HOUSE_2F_RIVAL, MOVEMENT_TYPE_FACE_UP
 	return
 
 LittlerootTown_BrendansHouse_2F_EventScript_Ret::
@@ -62,7 +61,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_RivalsPokeBall::
 	end
 
 LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendan::
-	addobject LOCALID_RIVAL
+	addobject LOCALID_PLAYERS_HOUSE_2F_RIVAL
 	delay 10
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, LittlerootTown_BrendansHouse_2F_Movement_CameraPansToBrendan
@@ -72,14 +71,14 @@ LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendan::
 	msgbox RivalsHouse_2F_Text_BrendanGettingReady, MSGBOX_DEFAULT
 	closemessage
 	delay 8
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceRight
+	applymovement LOCALID_PLAYERS_HOUSE_2F_RIVAL, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	delay 16
 	playse SE_PIN
-	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	applymovement LOCALID_PLAYERS_HOUSE_2F_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
 	delay 16
-	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_BrendanWalkToPlayer
+	applymovement LOCALID_PLAYERS_HOUSE_2F_RIVAL, LittlerootTown_MaysHouse_2F_Movement_BrendanWalkToPlayer
 	applymovement OBJ_EVENT_ID_CAMERA, LittlerootTown_BrendansHouse_2F_Movement_CameraPansToBoth
 	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
@@ -88,15 +87,15 @@ LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendan::
 	closemessage
 	delay 16
 	playse SE_PIN
-	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	applymovement LOCALID_PLAYERS_HOUSE_2F_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
 	msgbox RivalsHouse_2F_Text_BrendanWhoAreYou, MSGBOX_DEFAULT
 	closemessage
 	delay 16
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_BrendansHouse_2F_Movement_PlayerMoveAside
-	applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendaLeaveRoom
-	waitmovement LOCALID_RIVAL
-	removeobject LOCALID_RIVAL
+	applymovement LOCALID_PLAYERS_HOUSE_2F_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendaLeaveRoom
+	waitmovement LOCALID_PLAYERS_HOUSE_2F_RIVAL
+	removeobject LOCALID_PLAYERS_HOUSE_2F_RIVAL
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, LittlerootTown_BrendansHouse_2F_Movement_CameraPansToPlayer
 	waitmovement 0

@@ -29,10 +29,10 @@ Route103_EventScript_RivalMay::
 	closemessage
 	delay 16
 	playbgm MUS_ENCOUNTER_MAY, TRUE
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceDown
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
 	waitmovement 0
 	playse SE_PIN
-	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
 	waitmovement 0
@@ -51,7 +51,7 @@ Route103_EventScript_RivalBrendan::
 	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
 	waitmovement 0
 	playse SE_PIN
-	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
 	waitmovement 0

@@ -182,380 +182,380 @@ FallarborTown_Text_MoveTutorSign:
 	.string "“New moves taught to Pokémon.”$"
 
 FallarborTown_EventScript_RivalTrigger1::
-# 99 "data/maps/FallarborTown/scripts.pory"
+# 97 "data/maps/FallarborTown/scripts.pory"
 	setvar VAR_TEMP_0, 1
-# 100 "data/maps/FallarborTown/scripts.pory"
+# 98 "data/maps/FallarborTown/scripts.pory"
 	goto FallarborTown_EventScript_Rival
 	return
 
 
 FallarborTown_EventScript_RivalTrigger2::
-# 104 "data/maps/FallarborTown/scripts.pory"
+# 102 "data/maps/FallarborTown/scripts.pory"
 	setvar VAR_TEMP_0, 2
-# 105 "data/maps/FallarborTown/scripts.pory"
+# 103 "data/maps/FallarborTown/scripts.pory"
 	goto FallarborTown_EventScript_Rival
 	return
 
 
 FallarborTown_EventScript_RivalTrigger3::
-# 109 "data/maps/FallarborTown/scripts.pory"
+# 107 "data/maps/FallarborTown/scripts.pory"
 	setvar VAR_TEMP_0, 3
-# 110 "data/maps/FallarborTown/scripts.pory"
+# 108 "data/maps/FallarborTown/scripts.pory"
 	goto FallarborTown_EventScript_Rival
 	return
 
 
 FallarborTown_EventScript_RivalTrigger4::
-# 114 "data/maps/FallarborTown/scripts.pory"
+# 112 "data/maps/FallarborTown/scripts.pory"
 	setvar VAR_TEMP_0, 4
-# 115 "data/maps/FallarborTown/scripts.pory"
+# 113 "data/maps/FallarborTown/scripts.pory"
 	goto FallarborTown_EventScript_Rival
 	return
 
 
 FallarborTown_EventScript_RivalTrigger5::
-# 119 "data/maps/FallarborTown/scripts.pory"
+# 117 "data/maps/FallarborTown/scripts.pory"
 	setvar VAR_TEMP_0, 5
-# 120 "data/maps/FallarborTown/scripts.pory"
+# 118 "data/maps/FallarborTown/scripts.pory"
 	goto FallarborTown_EventScript_Rival
 	return
 
 
 FallarborTown_EventScript_Rival::
-# 124 "data/maps/FallarborTown/scripts.pory"
+# 122 "data/maps/FallarborTown/scripts.pory"
 	lock
-# 125 "data/maps/FallarborTown/scripts.pory"
+# 123 "data/maps/FallarborTown/scripts.pory"
 	delay 8
-# 126 "data/maps/FallarborTown/scripts.pory"
+# 124 "data/maps/FallarborTown/scripts.pory"
 	playse SE_PIN
-# 127 "data/maps/FallarborTown/scripts.pory"
+# 125 "data/maps/FallarborTown/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-# 128 "data/maps/FallarborTown/scripts.pory"
+# 126 "data/maps/FallarborTown/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
-# 129 "data/maps/FallarborTown/scripts.pory"
+# 127 "data/maps/FallarborTown/scripts.pory"
 	waitse
-# 130 "data/maps/FallarborTown/scripts.pory"
+# 128 "data/maps/FallarborTown/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
-# 131 "data/maps/FallarborTown/scripts.pory"
+# 129 "data/maps/FallarborTown/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
-# 132 "data/maps/FallarborTown/scripts.pory"
+# 130 "data/maps/FallarborTown/scripts.pory"
 	switch VAR_TEMP_0
-# 133 "data/maps/FallarborTown/scripts.pory"
+# 131 "data/maps/FallarborTown/scripts.pory"
 	case 1, FallarborTown_EventScript_Rival_3
-# 136 "data/maps/FallarborTown/scripts.pory"
+# 134 "data/maps/FallarborTown/scripts.pory"
 	case 2, FallarborTown_EventScript_Rival_4
-# 139 "data/maps/FallarborTown/scripts.pory"
+# 137 "data/maps/FallarborTown/scripts.pory"
 	case 3, FallarborTown_EventScript_Rival_5
-# 142 "data/maps/FallarborTown/scripts.pory"
+# 140 "data/maps/FallarborTown/scripts.pory"
 	case 4, FallarborTown_EventScript_Rival_6
-# 145 "data/maps/FallarborTown/scripts.pory"
+# 143 "data/maps/FallarborTown/scripts.pory"
 	case 5, FallarborTown_EventScript_Rival_7
 FallarborTown_EventScript_Rival_1:
-# 149 "data/maps/FallarborTown/scripts.pory"
+# 147 "data/maps/FallarborTown/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
-# 150 "data/maps/FallarborTown/scripts.pory"
+# 148 "data/maps/FallarborTown/scripts.pory"
 	checkplayergender
-# 151 "data/maps/FallarborTown/scripts.pory"
+# 149 "data/maps/FallarborTown/scripts.pory"
 	compare VAR_RESULT, MALE
 	goto_if_eq FallarborTown_EventScript_Rival_9
-# 154 "data/maps/FallarborTown/scripts.pory"
+# 152 "data/maps/FallarborTown/scripts.pory"
 	msgbox FallarborTown_EventScript_Rival_Text_1
 FallarborTown_EventScript_Rival_8:
-# 156 "data/maps/FallarborTown/scripts.pory"
+# 154 "data/maps/FallarborTown/scripts.pory"
 	closemessage
-# 157 "data/maps/FallarborTown/scripts.pory"
-	applymovement 5, FallarborTown_Movement_RivalGetInsideCozmoHouse
-# 158 "data/maps/FallarborTown/scripts.pory"
+# 155 "data/maps/FallarborTown/scripts.pory"
+	applymovement LOCALID_FALLARBOR_TOWN_RIVAL, FallarborTown_Movement_RivalGetInsideCozmoHouse
+# 156 "data/maps/FallarborTown/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGetInsideCozmoHouse
-# 159 "data/maps/FallarborTown/scripts.pory"
+# 157 "data/maps/FallarborTown/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
-# 160 "data/maps/FallarborTown/scripts.pory"
+# 158 "data/maps/FallarborTown/scripts.pory"
 	opendoor 6, 15
+# 159 "data/maps/FallarborTown/scripts.pory"
+	waitdooranim
+# 160 "data/maps/FallarborTown/scripts.pory"
+	applymovement LOCALID_FALLARBOR_TOWN_RIVAL, FallarborTown_Movement_RivalInside
 # 161 "data/maps/FallarborTown/scripts.pory"
-	waitdooranim
-# 162 "data/maps/FallarborTown/scripts.pory"
-	applymovement 5, FallarborTown_Movement_RivalInside
-# 163 "data/maps/FallarborTown/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerInside
-# 164 "data/maps/FallarborTown/scripts.pory"
+# 162 "data/maps/FallarborTown/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
-# 165 "data/maps/FallarborTown/scripts.pory"
+# 163 "data/maps/FallarborTown/scripts.pory"
 	playse SE_DOOR
-# 166 "data/maps/FallarborTown/scripts.pory"
-	removeobject 5
-# 167 "data/maps/FallarborTown/scripts.pory"
+# 164 "data/maps/FallarborTown/scripts.pory"
+	removeobject LOCALID_FALLARBOR_TOWN_RIVAL
+# 165 "data/maps/FallarborTown/scripts.pory"
 	closedoor 6, 15
-# 168 "data/maps/FallarborTown/scripts.pory"
+# 166 "data/maps/FallarborTown/scripts.pory"
 	waitdooranim
-# 169 "data/maps/FallarborTown/scripts.pory"
+# 167 "data/maps/FallarborTown/scripts.pory"
 	setvar VAR_FALLARBOR_TOWN_STATE, 1
-# 170 "data/maps/FallarborTown/scripts.pory"
+# 168 "data/maps/FallarborTown/scripts.pory"
 	warpsilent MAP_FALLARBOR_TOWN_COZMOS_HOUSE, 4, 8
-# 171 "data/maps/FallarborTown/scripts.pory"
+# 169 "data/maps/FallarborTown/scripts.pory"
 	waitstate
-# 172 "data/maps/FallarborTown/scripts.pory"
+# 170 "data/maps/FallarborTown/scripts.pory"
 	release
 	end
 
 FallarborTown_EventScript_Rival_3:
-# 134 "data/maps/FallarborTown/scripts.pory"
+# 132 "data/maps/FallarborTown/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGotoRival1
-# 135 "data/maps/FallarborTown/scripts.pory"
-	applymovement 5, FallarborTown_Movement_RivalGotoPlayer1
+# 133 "data/maps/FallarborTown/scripts.pory"
+	applymovement LOCALID_FALLARBOR_TOWN_RIVAL, FallarborTown_Movement_RivalGotoPlayer1
 	goto FallarborTown_EventScript_Rival_1
 
 FallarborTown_EventScript_Rival_4:
-# 137 "data/maps/FallarborTown/scripts.pory"
+# 135 "data/maps/FallarborTown/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGotoRival2
-# 138 "data/maps/FallarborTown/scripts.pory"
-	applymovement 5, FallarborTown_Movement_RivalGotoPlayer2
+# 136 "data/maps/FallarborTown/scripts.pory"
+	applymovement LOCALID_FALLARBOR_TOWN_RIVAL, FallarborTown_Movement_RivalGotoPlayer2
 	goto FallarborTown_EventScript_Rival_1
 
 FallarborTown_EventScript_Rival_5:
-# 140 "data/maps/FallarborTown/scripts.pory"
+# 138 "data/maps/FallarborTown/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGotoRival3
-# 141 "data/maps/FallarborTown/scripts.pory"
-	applymovement 5, FallarborTown_Movement_RivalGotoPlayer3
+# 139 "data/maps/FallarborTown/scripts.pory"
+	applymovement LOCALID_FALLARBOR_TOWN_RIVAL, FallarborTown_Movement_RivalGotoPlayer3
 	goto FallarborTown_EventScript_Rival_1
 
 FallarborTown_EventScript_Rival_6:
-# 143 "data/maps/FallarborTown/scripts.pory"
+# 141 "data/maps/FallarborTown/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGotoRival4
-# 144 "data/maps/FallarborTown/scripts.pory"
-	applymovement 5, FallarborTown_Movement_RivalGotoPlayer4
+# 142 "data/maps/FallarborTown/scripts.pory"
+	applymovement LOCALID_FALLARBOR_TOWN_RIVAL, FallarborTown_Movement_RivalGotoPlayer4
 	goto FallarborTown_EventScript_Rival_1
 
 FallarborTown_EventScript_Rival_7:
-# 146 "data/maps/FallarborTown/scripts.pory"
+# 144 "data/maps/FallarborTown/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGotoRival5
-# 147 "data/maps/FallarborTown/scripts.pory"
-	applymovement 5, FallarborTown_Movement_RivalGotoPlayer5
+# 145 "data/maps/FallarborTown/scripts.pory"
+	applymovement LOCALID_FALLARBOR_TOWN_RIVAL, FallarborTown_Movement_RivalGotoPlayer5
 	goto FallarborTown_EventScript_Rival_1
 
 FallarborTown_EventScript_Rival_9:
-# 152 "data/maps/FallarborTown/scripts.pory"
+# 150 "data/maps/FallarborTown/scripts.pory"
 	msgbox FallarborTown_EventScript_Rival_Text_0
 	goto FallarborTown_EventScript_Rival_8
 
 
-# 177 "data/maps/FallarborTown/scripts.pory"
+# 175 "data/maps/FallarborTown/scripts.pory"
 FallarborTown_Movement_PlayerGotoRival1:
-# 178 "data/maps/FallarborTown/scripts.pory"
+# 176 "data/maps/FallarborTown/scripts.pory"
 	walk_down
-# 178 "data/maps/FallarborTown/scripts.pory"
+# 176 "data/maps/FallarborTown/scripts.pory"
 	walk_down
-# 178 "data/maps/FallarborTown/scripts.pory"
+# 176 "data/maps/FallarborTown/scripts.pory"
 	walk_down
-# 179 "data/maps/FallarborTown/scripts.pory"
+# 177 "data/maps/FallarborTown/scripts.pory"
 	walk_left
-# 179 "data/maps/FallarborTown/scripts.pory"
+# 177 "data/maps/FallarborTown/scripts.pory"
 	walk_left
-# 180 "data/maps/FallarborTown/scripts.pory"
+# 178 "data/maps/FallarborTown/scripts.pory"
 	walk_down
-# 180 "data/maps/FallarborTown/scripts.pory"
+# 178 "data/maps/FallarborTown/scripts.pory"
 	walk_down
-# 180 "data/maps/FallarborTown/scripts.pory"
+# 178 "data/maps/FallarborTown/scripts.pory"
 	walk_down
 	step_end
 
-# 183 "data/maps/FallarborTown/scripts.pory"
+# 181 "data/maps/FallarborTown/scripts.pory"
 FallarborTown_Movement_PlayerGotoRival2:
+# 182 "data/maps/FallarborTown/scripts.pory"
+	walk_down
+# 182 "data/maps/FallarborTown/scripts.pory"
+	walk_down
+# 183 "data/maps/FallarborTown/scripts.pory"
+	walk_left
+# 183 "data/maps/FallarborTown/scripts.pory"
+	walk_left
 # 184 "data/maps/FallarborTown/scripts.pory"
 	walk_down
 # 184 "data/maps/FallarborTown/scripts.pory"
 	walk_down
-# 185 "data/maps/FallarborTown/scripts.pory"
-	walk_left
-# 185 "data/maps/FallarborTown/scripts.pory"
-	walk_left
-# 186 "data/maps/FallarborTown/scripts.pory"
-	walk_down
-# 186 "data/maps/FallarborTown/scripts.pory"
-	walk_down
-# 186 "data/maps/FallarborTown/scripts.pory"
+# 184 "data/maps/FallarborTown/scripts.pory"
 	walk_down
 	step_end
 
-# 189 "data/maps/FallarborTown/scripts.pory"
+# 187 "data/maps/FallarborTown/scripts.pory"
 FallarborTown_Movement_PlayerGotoRival3:
+# 188 "data/maps/FallarborTown/scripts.pory"
+	walk_down
+# 189 "data/maps/FallarborTown/scripts.pory"
+	walk_left
+# 189 "data/maps/FallarborTown/scripts.pory"
+	walk_left
 # 190 "data/maps/FallarborTown/scripts.pory"
 	walk_down
-# 191 "data/maps/FallarborTown/scripts.pory"
-	walk_left
-# 191 "data/maps/FallarborTown/scripts.pory"
-	walk_left
-# 192 "data/maps/FallarborTown/scripts.pory"
+# 190 "data/maps/FallarborTown/scripts.pory"
 	walk_down
-# 192 "data/maps/FallarborTown/scripts.pory"
-	walk_down
-# 192 "data/maps/FallarborTown/scripts.pory"
+# 190 "data/maps/FallarborTown/scripts.pory"
 	walk_down
 	step_end
 
-# 195 "data/maps/FallarborTown/scripts.pory"
+# 193 "data/maps/FallarborTown/scripts.pory"
 FallarborTown_Movement_PlayerGotoRival4:
+# 194 "data/maps/FallarborTown/scripts.pory"
+	walk_down
+# 195 "data/maps/FallarborTown/scripts.pory"
+	walk_left
+# 195 "data/maps/FallarborTown/scripts.pory"
+	walk_left
 # 196 "data/maps/FallarborTown/scripts.pory"
 	walk_down
-# 197 "data/maps/FallarborTown/scripts.pory"
-	walk_left
-# 197 "data/maps/FallarborTown/scripts.pory"
-	walk_left
-# 198 "data/maps/FallarborTown/scripts.pory"
-	walk_down
-# 198 "data/maps/FallarborTown/scripts.pory"
+# 196 "data/maps/FallarborTown/scripts.pory"
 	walk_down
 	step_end
 
-# 201 "data/maps/FallarborTown/scripts.pory"
+# 199 "data/maps/FallarborTown/scripts.pory"
 FallarborTown_Movement_PlayerGotoRival5:
-# 202 "data/maps/FallarborTown/scripts.pory"
+# 200 "data/maps/FallarborTown/scripts.pory"
 	walk_left
-# 202 "data/maps/FallarborTown/scripts.pory"
+# 200 "data/maps/FallarborTown/scripts.pory"
 	walk_left
-# 203 "data/maps/FallarborTown/scripts.pory"
+# 201 "data/maps/FallarborTown/scripts.pory"
 	walk_down
-# 203 "data/maps/FallarborTown/scripts.pory"
+# 201 "data/maps/FallarborTown/scripts.pory"
 	walk_down
 	step_end
 
-# 206 "data/maps/FallarborTown/scripts.pory"
+# 204 "data/maps/FallarborTown/scripts.pory"
 FallarborTown_Movement_RivalGotoPlayer1:
-# 207 "data/maps/FallarborTown/scripts.pory"
+# 205 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 207 "data/maps/FallarborTown/scripts.pory"
+# 205 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 207 "data/maps/FallarborTown/scripts.pory"
+# 205 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 207 "data/maps/FallarborTown/scripts.pory"
+# 205 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 207 "data/maps/FallarborTown/scripts.pory"
+# 205 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 207 "data/maps/FallarborTown/scripts.pory"
+# 205 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 208 "data/maps/FallarborTown/scripts.pory"
+# 206 "data/maps/FallarborTown/scripts.pory"
 	walk_up
-# 208 "data/maps/FallarborTown/scripts.pory"
+# 206 "data/maps/FallarborTown/scripts.pory"
 	walk_up
 	step_end
 
-# 211 "data/maps/FallarborTown/scripts.pory"
+# 209 "data/maps/FallarborTown/scripts.pory"
 FallarborTown_Movement_RivalGotoPlayer2:
-# 212 "data/maps/FallarborTown/scripts.pory"
+# 210 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 212 "data/maps/FallarborTown/scripts.pory"
+# 210 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 212 "data/maps/FallarborTown/scripts.pory"
+# 210 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 212 "data/maps/FallarborTown/scripts.pory"
+# 210 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 212 "data/maps/FallarborTown/scripts.pory"
+# 210 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 213 "data/maps/FallarborTown/scripts.pory"
+# 211 "data/maps/FallarborTown/scripts.pory"
 	walk_up
-# 213 "data/maps/FallarborTown/scripts.pory"
+# 211 "data/maps/FallarborTown/scripts.pory"
 	walk_up
 	step_end
 
-# 216 "data/maps/FallarborTown/scripts.pory"
+# 214 "data/maps/FallarborTown/scripts.pory"
 FallarborTown_Movement_RivalGotoPlayer3:
-# 217 "data/maps/FallarborTown/scripts.pory"
+# 215 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 217 "data/maps/FallarborTown/scripts.pory"
+# 215 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 217 "data/maps/FallarborTown/scripts.pory"
+# 215 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 217 "data/maps/FallarborTown/scripts.pory"
+# 215 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 218 "data/maps/FallarborTown/scripts.pory"
+# 216 "data/maps/FallarborTown/scripts.pory"
 	walk_up
-# 218 "data/maps/FallarborTown/scripts.pory"
+# 216 "data/maps/FallarborTown/scripts.pory"
 	walk_up
 	step_end
 
-# 221 "data/maps/FallarborTown/scripts.pory"
+# 219 "data/maps/FallarborTown/scripts.pory"
 FallarborTown_Movement_RivalGotoPlayer4:
-# 222 "data/maps/FallarborTown/scripts.pory"
+# 220 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 222 "data/maps/FallarborTown/scripts.pory"
+# 220 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 222 "data/maps/FallarborTown/scripts.pory"
+# 220 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 223 "data/maps/FallarborTown/scripts.pory"
+# 221 "data/maps/FallarborTown/scripts.pory"
 	walk_up
-# 223 "data/maps/FallarborTown/scripts.pory"
+# 221 "data/maps/FallarborTown/scripts.pory"
 	walk_up
 	step_end
 
-# 226 "data/maps/FallarborTown/scripts.pory"
+# 224 "data/maps/FallarborTown/scripts.pory"
 FallarborTown_Movement_RivalGotoPlayer5:
-# 227 "data/maps/FallarborTown/scripts.pory"
+# 225 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 227 "data/maps/FallarborTown/scripts.pory"
+# 225 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 228 "data/maps/FallarborTown/scripts.pory"
+# 226 "data/maps/FallarborTown/scripts.pory"
 	walk_up
-# 228 "data/maps/FallarborTown/scripts.pory"
+# 226 "data/maps/FallarborTown/scripts.pory"
 	walk_up
 	step_end
 
-# 231 "data/maps/FallarborTown/scripts.pory"
+# 229 "data/maps/FallarborTown/scripts.pory"
 FallarborTown_Movement_RivalGetInsideCozmoHouse:
-# 232 "data/maps/FallarborTown/scripts.pory"
+# 230 "data/maps/FallarborTown/scripts.pory"
 	walk_down
-# 233 "data/maps/FallarborTown/scripts.pory"
+# 231 "data/maps/FallarborTown/scripts.pory"
 	walk_left
-# 233 "data/maps/FallarborTown/scripts.pory"
+# 231 "data/maps/FallarborTown/scripts.pory"
 	walk_left
-# 233 "data/maps/FallarborTown/scripts.pory"
+# 231 "data/maps/FallarborTown/scripts.pory"
 	walk_left
-# 233 "data/maps/FallarborTown/scripts.pory"
+# 231 "data/maps/FallarborTown/scripts.pory"
 	walk_left
-# 233 "data/maps/FallarborTown/scripts.pory"
+# 231 "data/maps/FallarborTown/scripts.pory"
 	walk_left
-# 234 "data/maps/FallarborTown/scripts.pory"
+# 232 "data/maps/FallarborTown/scripts.pory"
 	walk_in_place_up
 	step_end
 
-# 237 "data/maps/FallarborTown/scripts.pory"
+# 235 "data/maps/FallarborTown/scripts.pory"
 FallarborTown_Movement_PlayerGetInsideCozmoHouse:
-# 238 "data/maps/FallarborTown/scripts.pory"
+# 236 "data/maps/FallarborTown/scripts.pory"
 	walk_down
-# 238 "data/maps/FallarborTown/scripts.pory"
+# 236 "data/maps/FallarborTown/scripts.pory"
 	walk_down
-# 239 "data/maps/FallarborTown/scripts.pory"
+# 237 "data/maps/FallarborTown/scripts.pory"
 	walk_left
-# 239 "data/maps/FallarborTown/scripts.pory"
+# 237 "data/maps/FallarborTown/scripts.pory"
 	walk_left
-# 239 "data/maps/FallarborTown/scripts.pory"
+# 237 "data/maps/FallarborTown/scripts.pory"
 	walk_left
-# 239 "data/maps/FallarborTown/scripts.pory"
+# 237 "data/maps/FallarborTown/scripts.pory"
 	walk_left
 	step_end
 
-# 242 "data/maps/FallarborTown/scripts.pory"
+# 240 "data/maps/FallarborTown/scripts.pory"
 FallarborTown_Movement_RivalInside:
-# 243 "data/maps/FallarborTown/scripts.pory"
+# 241 "data/maps/FallarborTown/scripts.pory"
 	walk_up
-# 244 "data/maps/FallarborTown/scripts.pory"
+# 242 "data/maps/FallarborTown/scripts.pory"
 	set_invisible
 	step_end
 
-# 247 "data/maps/FallarborTown/scripts.pory"
+# 245 "data/maps/FallarborTown/scripts.pory"
 FallarborTown_Movement_PlayerInside:
-# 248 "data/maps/FallarborTown/scripts.pory"
+# 246 "data/maps/FallarborTown/scripts.pory"
 	delay_16
-# 249 "data/maps/FallarborTown/scripts.pory"
+# 247 "data/maps/FallarborTown/scripts.pory"
 	walk_left
-# 250 "data/maps/FallarborTown/scripts.pory"
+# 248 "data/maps/FallarborTown/scripts.pory"
 	walk_up
-# 251 "data/maps/FallarborTown/scripts.pory"
+# 249 "data/maps/FallarborTown/scripts.pory"
 	set_invisible
 	step_end
 
 FallarborTown_EventScript_Rival_Text_0:
-# 152 "data/maps/FallarborTown/scripts.pory"
+# 150 "data/maps/FallarborTown/scripts.pory"
 	.string "{COLOR RED}May{COLOR DARK_GRAY}: Arghhh, what a disaster!\nOh! {PLAYER}! Help!\lYou've got to come with me!$"
 
 FallarborTown_EventScript_Rival_Text_1:
-# 154 "data/maps/FallarborTown/scripts.pory"
+# 152 "data/maps/FallarborTown/scripts.pory"
 	.string "{COLOR RED}Brendan{COLOR DARK_GRAY}: {PLAYER}! C'mere!\nEverything's a mess!$"

@@ -1625,7 +1625,7 @@ MauvilleCity_EventScript_WallyAndUncleIntro_Text_0:
 
 MauvilleCity_EventScript_WallyAndUncleIntro_Text_1:
 # 452 "data/maps/MauvilleCity/scripts.pory"
-	.string "{COLOR RED}Uncle{COLOR DARK_GRAY}: Hahaha!\pYou sure seem to be enjoying it,\nWally!\pSo what would you like to do?\nDo you want to grab a bite to eat at\lthe Mauville Food Court?\pOr maybe we should get you a Bike of\nyou own at Rydel's Cycles.\lWould you like that?\pI bet the exercise would be good for\nyour health.$"
+	.string "{COLOR RED}Uncle{COLOR DARK_GRAY}: Hahaha!\pYou sure seem to be enjoying it,\nWally!\pSo what would you like to do?\nDo you want to grab a bite to eat?\pOr maybe we should get you a Bike of\nyour own at Rydel's Cycles.\lWould you like that?\pI bet the exercise would be good for\nyour health.$"
 
 MauvilleCity_EventScript_WallyAndUncleIntro_Text_2:
 # 453 "data/maps/MauvilleCity/scripts.pory"

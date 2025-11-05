@@ -93,8 +93,6 @@ FallarborTown_Text_MoveTutorSign:
 
 `
 
-const LOCALID_RIVAL = 5
-
 script FallarborTown_EventScript_RivalTrigger1 {
     setvar(VAR_TEMP_0, 1)
     goto(FallarborTown_EventScript_Rival)
@@ -132,19 +130,19 @@ script FallarborTown_EventScript_Rival {
     switch(var(VAR_TEMP_0)){
         case 1: 
             applymovement(OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGotoRival1)
-            applymovement(LOCALID_RIVAL, FallarborTown_Movement_RivalGotoPlayer1)
+            applymovement(LOCALID_FALLARBOR_TOWN_RIVAL, FallarborTown_Movement_RivalGotoPlayer1)
         case 2: 
             applymovement(OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGotoRival2)
-            applymovement(LOCALID_RIVAL, FallarborTown_Movement_RivalGotoPlayer2)
+            applymovement(LOCALID_FALLARBOR_TOWN_RIVAL, FallarborTown_Movement_RivalGotoPlayer2)
         case 3: 
             applymovement(OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGotoRival3)
-            applymovement(LOCALID_RIVAL, FallarborTown_Movement_RivalGotoPlayer3)
+            applymovement(LOCALID_FALLARBOR_TOWN_RIVAL, FallarborTown_Movement_RivalGotoPlayer3)
         case 4: 
             applymovement(OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGotoRival4)
-            applymovement(LOCALID_RIVAL, FallarborTown_Movement_RivalGotoPlayer4)
+            applymovement(LOCALID_FALLARBOR_TOWN_RIVAL, FallarborTown_Movement_RivalGotoPlayer4)
         case 5: 
             applymovement(OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGotoRival5)
-            applymovement(LOCALID_RIVAL, FallarborTown_Movement_RivalGotoPlayer5)
+            applymovement(LOCALID_FALLARBOR_TOWN_RIVAL, FallarborTown_Movement_RivalGotoPlayer5)
     }
     waitmovement(OBJ_EVENT_ID_PLAYER)
     checkplayergender
@@ -154,16 +152,16 @@ script FallarborTown_EventScript_Rival {
         msgbox("{COLOR RED}Brendan{COLOR DARK_GRAY}: {PLAYER}! C'mere!\nEverything's a mess!")
     }
     closemessage
-    applymovement(LOCALID_RIVAL, FallarborTown_Movement_RivalGetInsideCozmoHouse)
+    applymovement(LOCALID_FALLARBOR_TOWN_RIVAL, FallarborTown_Movement_RivalGetInsideCozmoHouse)
     applymovement(OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerGetInsideCozmoHouse)
     waitmovement(OBJ_EVENT_ID_PLAYER)
     opendoor(6, 15)
     waitdooranim
-    applymovement(LOCALID_RIVAL, FallarborTown_Movement_RivalInside)
+    applymovement(LOCALID_FALLARBOR_TOWN_RIVAL, FallarborTown_Movement_RivalInside)
     applymovement(OBJ_EVENT_ID_PLAYER, FallarborTown_Movement_PlayerInside)
     waitmovement(OBJ_EVENT_ID_PLAYER)
     playse(SE_DOOR)
-    removeobject(LOCALID_RIVAL)
+    removeobject(LOCALID_FALLARBOR_TOWN_RIVAL)
     closedoor(6, 15)
     waitdooranim
     setvar(VAR_FALLARBOR_TOWN_STATE, 1)

@@ -169,13 +169,7 @@
       "flag": "FLAG_ITEM_ROUTE_132_TM_SLUDGE_WAVE"
     }
   ],
-  "warp_events": [
-
-  ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": []
 }

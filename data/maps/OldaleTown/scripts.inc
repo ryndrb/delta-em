@@ -21,7 +21,7 @@ OldaleTown_EventScript_BlockWestEntrance::
 	return
 
 OldaleTown_EventScript_MoveMartEmployee::
-	setobjectxyperm LOCALID_OLDALE_MART_EMPLOYEE, 10, 12
+	setobjectxyperm LOCALID_OLDALE_MART_EMPLOYEE, 10, 11
 	setobjectmovementtype LOCALID_OLDALE_MART_EMPLOYEE, MOVEMENT_TYPE_FACE_DOWN
 	return
 
@@ -303,7 +303,7 @@ OldaleTown_Text_HereHaveThisPotion:
 	.string "I'd like you to have these as part\nof a special promotion!$"
 
 OldaleTown_Text_PotionExplanation:
-	.string "Potions can be used anytime, so they\ncan be very useful to have.\pThat's it.\nThat was the advice from me--the\lsupremely kindhearted clerk.\lHave a great journey!$"
+	.string "Potions can be used anytime, so they\ncan be very useful to have.$"
 
 OldaleTown_Text_WaitDontComeInHere:
 	.string "Aaaaah! Wait!\nPlease don't wander around here!\pI've just discovered a set of\nincredibly rare Pokémon prints!\pWait until I finish sketching them, OK?$"

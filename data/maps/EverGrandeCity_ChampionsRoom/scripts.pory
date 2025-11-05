@@ -1,7 +1,4 @@
 raw `
-.set LOCALID_STEVEN, 1
-.set LOCALID_RIVAL, 2
-.set LOCALID_BIRCH, 3
 
 EverGrandeCity_ChampionsRoom_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, EverGrandeCity_ChampionsRoom_OnTransition
@@ -31,8 +28,8 @@ EverGrandeCity_ChampionsRoom_EventScript_EnterRoom::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp4
 	waitmovement 0
 	delay 96
-	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceDown
-	waitmovement LOCALID_STEVEN
+	applymovement LOCALID_CHAMPIONS_ROOM_STEVEN, Common_Movement_WalkInPlaceDown
+	waitmovement LOCALID_CHAMPIONS_ROOM_STEVEN
 	delay 32
 	applymovement OBJ_EVENT_ID_PLAYER, EverGrandeCity_ChampionsRoom_Movement_PlayerApproachSteven
 	waitmovement 0
@@ -79,9 +76,9 @@ script EverGrandeCity_ChampionsRoom_EventScript_Steven {
 	}else{
 		playbgm(MUS_ENCOUNTER_BRENDAN, FALSE)
 	}
-	addobject(LOCALID_RIVAL)
-	applymovement(LOCALID_RIVAL, EverGrandeCity_ChampionsRoom_Movement_RivalApproachPlayer)
-	waitmovement(LOCALID_RIVAL)
+	addobject(LOCALID_CHAMPIONS_ROOM_RIVAL)
+	applymovement(LOCALID_CHAMPIONS_ROOM_RIVAL, EverGrandeCity_ChampionsRoom_Movement_RivalApproachPlayer)
+	waitmovement(LOCALID_CHAMPIONS_ROOM_RIVAL)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 	checkplayergender
@@ -93,11 +90,11 @@ script EverGrandeCity_ChampionsRoom_EventScript_Steven {
 	closemessage
 	delay(8)
 	playse(SE_PIN)
-	applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
-	waitmovement(LOCALID_RIVAL)
+	applymovement(LOCALID_CHAMPIONS_ROOM_RIVAL, Common_Movement_ExclamationMark)
+	waitmovement(LOCALID_CHAMPIONS_ROOM_RIVAL)
 	delay(16)
-	applymovement(LOCALID_RIVAL, EverGrandeCity_ChampionsRoom_Movement_RivalLookBackAndForth)
-	waitmovement(LOCALID_RIVAL)
+	applymovement(LOCALID_CHAMPIONS_ROOM_RIVAL, EverGrandeCity_ChampionsRoom_Movement_RivalLookBackAndForth)
+	waitmovement(LOCALID_CHAMPIONS_ROOM_RIVAL)
 	checkplayergender
 	if(var(VAR_RESULT) == MALE){
 		msgbox("Huh?\nWait--what? What?\p{PLAYER}…\nCould it be that…\lIt's already over?")
@@ -106,9 +103,9 @@ script EverGrandeCity_ChampionsRoom_EventScript_Steven {
 	}
 	closemessage
 	playse(SE_DOOR)
-	addobject(LOCALID_BIRCH)
-	applymovement(LOCALID_BIRCH, EverGrandeCity_ChampionsRoom_Movement_BirchArrives)
-	waitmovement(LOCALID_BIRCH)
+	addobject(LOCALID_CHAMPIONS_ROOM_BIRCH)
+	applymovement(LOCALID_CHAMPIONS_ROOM_BIRCH, EverGrandeCity_ChampionsRoom_Movement_BirchArrives)
+	waitmovement(LOCALID_CHAMPIONS_ROOM_BIRCH)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 	msgbox("{COLOR RED}Prof. Birch{COLOR DARK_GRAY}: See?\nWhat did I say, {RIVAL}?\pDidn't I tell you that {PLAYER}\nwould be just fine.")
@@ -120,18 +117,18 @@ script EverGrandeCity_ChampionsRoom_EventScript_Steven {
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 	msgbox("{COLOR RED}Steven{COLOR DARK_GRAY}: {PLAYER}…\pNo, I should call you the Hoenn's\nregion's new Pokémon League Champion…\pCome with me, Champion.")
 	closemessage
-	applymovement(LOCALID_STEVEN, Common_Movement_WalkInPlaceUp)
-	waitmovement(LOCALID_STEVEN)
+	applymovement(LOCALID_CHAMPIONS_ROOM_STEVEN, Common_Movement_WalkInPlaceUp)
+	waitmovement(LOCALID_CHAMPIONS_ROOM_STEVEN)
 	delay(16)
 	playse(SE_DOOR)
 	setmetatile(6, 1, METATILE_EliteFour_OpenDoorChampion_Frame, FALSE)
 	setmetatile(6, 2, METATILE_EliteFour_OpenDoorChampion_Opening, FALSE)
 	special(DrawWholeMapView)
 	delay(32)
-	applymovement(LOCALID_STEVEN, EverGrandeCity_ChampionsRoom_Movement_StevenExitStart)
+	applymovement(LOCALID_CHAMPIONS_ROOM_STEVEN, EverGrandeCity_ChampionsRoom_Movement_StevenExitStart)
 	applymovement(OBJ_EVENT_ID_PLAYER, EverGrandeCity_ChampionsRoom_Movement_PlayerExitStart)
-	applymovement(LOCALID_BIRCH, Common_Movement_WalkInPlaceUp)
-	applymovement(LOCALID_RIVAL, EverGrandeCity_ChampionsRoom_Movement_RivalFollows)
+	applymovement(LOCALID_CHAMPIONS_ROOM_BIRCH, Common_Movement_WalkInPlaceUp)
+	applymovement(LOCALID_CHAMPIONS_ROOM_RIVAL, EverGrandeCity_ChampionsRoom_Movement_RivalFollows)
 	waitmovement(0)
 	delay(24)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
@@ -152,7 +149,7 @@ script EverGrandeCity_ChampionsRoom_EventScript_Steven {
 	}
 	closemessage
 	delay(16)
-	applymovement(LOCALID_STEVEN, EverGrandeCity_ChampionsRoom_Movement_WallaceExit)
+	applymovement(LOCALID_CHAMPIONS_ROOM_STEVEN, EverGrandeCity_ChampionsRoom_Movement_WallaceExit)
 	applymovement(OBJ_EVENT_ID_PLAYER, EverGrandeCity_ChampionsRoom_Movement_PlayerExit)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 	setflag(FLAG_HIDE_PETALBURG_GYM_GREETER)

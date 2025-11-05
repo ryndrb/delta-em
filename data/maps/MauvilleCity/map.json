@@ -237,8 +237,8 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 33,
-      "y": 3,
+      "x": 34,
+      "y": 5,
       "elevation": 0,
       "dest_map": "MAP_MAUVILLE_CITY_BIKE_SHOP",
       "dest_warp_id": "0"
@@ -424,8 +424,8 @@
     },
     {
       "type": "sign",
-      "x": 32,
-      "y": 4,
+      "x": 33,
+      "y": 6,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MauvilleCity_EventScript_BikeShopSign"
