@@ -2414,14 +2414,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 }
             }
             break;
-        case EFFECT_SOLAR_BEAM:
-            if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_POWER_HERB
-              || ((AI_GetWeather() & B_WEATHER_SUN) && aiData->holdEffects[battlerAtk] != HOLD_EFFECT_UTILITY_UMBRELLA)
-              || aiData->holdEffects[battlerAtk] == ABILITY_CHLOROPLAST)
-                break;
-            if (CanTargetFaintAi(battlerDef, battlerAtk)) //Attacker can be knocked out
-                ADJUST_SCORE(-4);
-            break;
         case EFFECT_SEMI_INVULNERABLE:
             if (predictedMove != MOVE_NONE
               && AI_IsSlower(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, CONSIDER_PRIORITY)

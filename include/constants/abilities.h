@@ -342,9 +342,8 @@ enum __attribute__((packed)) Ability
     ABILITY_STRIKER = ABILITIES_COUNT_GEN9 + 5, // Boosts kicking moves by 1.2x. Moves affected by Striker #####NEED TO UPDATE AFFECTED MOVES
     ABILITY_PSYCH = ABILITIES_COUNT_GEN9 + 6, // Doubles Special Attack (special Huge/Pure Power).
     ABILITY_SELF_SUFFICIENT = ABILITIES_COUNT_GEN9 + 7, // Heals 1/16 at the end of every turn.
-    ABILITY_CHLOROPLAST = ABILITIES_COUNT_GEN9 + 8, // Moves function as if it's sunny, regardless of weather
-    ABILITY_POWER_FIST = ABILITIES_COUNT_GEN9 + 9,  // Punching moves do special damage and get 20% boost
-    ABILITY_BLITZ_BOXER = ABILITIES_COUNT_GEN9 + 10,  // Punching moves go first.
+    ABILITY_POWER_FIST = ABILITIES_COUNT_GEN9 + 8,  // Punching moves do special damage and get 20% boost
+    ABILITY_BLITZ_BOXER = ABILITIES_COUNT_GEN9 + 9,  // Punching moves go first.
     ABILITY_COUNT_CUSTOM,
 
     ABILITIES_COUNT = ABILITY_COUNT_CUSTOM,

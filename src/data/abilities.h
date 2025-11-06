@@ -917,7 +917,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_FLOWER_GIFT] =
     {
         .name = _("Flower Gift"),
-        .description = COMPOUND_STRING("If user is Cherrim and sun is\nactive, it and allies' Sp. Atk\nand Sp. Def are 1.5x."),
+        .description = COMPOUND_STRING("If sun is active, this Pokémon\nand its allies' Atk, Sp. Atk,\nand Sp. Def are 1.5x."),
         .aiRating = 4,
         .cantBeCopied = TRUE,
         .cantBeTraced = TRUE,
@@ -2500,17 +2500,6 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     #endif
         .description = COMPOUND_STRING("This Pokémon's recovers 1/16\nof its max HP at the end of\nevery turn."),
         .aiRating = 8,
-    },
-
-    [ABILITY_CHLOROPLAST] =
-    {
-    #if B_EXPANDED_ABILITY_NAMES == TRUE
-        .name = _("Chloroplast"),
-    #else
-        .name = _("Chloroplast"),
-    #endif
-        .description = COMPOUND_STRING("This Pokémon's moves functions\nas if sun is active, regardless\nof the current weather."),
-        .aiRating = 7,
     },
 
     [ABILITY_POWER_FIST] =
