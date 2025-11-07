@@ -215,7 +215,7 @@ SlateportCity_Harbor_EventScript_BoardFerry::
 # 108 "data/maps/SlateportCity_Harbor/scripts.pory"
 	delay 30
 # 109 "data/maps/SlateportCity_Harbor/scripts.pory"
-	hideobjectat OBJ_EVENT_ID_PLAYER, 0
+	hideobjectat OBJ_EVENT_ID_PLAYER, MAP_SLATEPORT_CITY_HARBOR
 # 110 "data/maps/SlateportCity_Harbor/scripts.pory"
 	setvar VAR_0x8004, LOCALID_SS_TIDAL
 # 111 "data/maps/SlateportCity_Harbor/scripts.pory"

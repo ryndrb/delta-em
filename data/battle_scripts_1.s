@@ -3684,7 +3684,7 @@ BattleScript_BlockedByPrimalWeatherRet::
 
 BattleScript_EffectBellyDrum::
 	attackcanceler
-	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_ATK, MAX_STAT_STAGE, BattleScript_ButItFailed
+	jumpifstatignorecontrary BS_ATTACKER, CMP_EQUAL, STAT_ATK, MAX_STAT_STAGE, BattleScript_ButItFailed
 	halvehp BattleScript_ButItFailed
 	attackanimation
 	waitanimation
