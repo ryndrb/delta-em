@@ -867,8 +867,16 @@
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT                      859
-#define MAX_TRAINERS_COUNT                  864
+#define TRAINERS_COUNT_EMERALD              859
+#define MAX_TRAINERS_COUNT_EMERALD          864
+
+#if IS_FRLG
+#define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG
+#define MAX_TRAINERS_COUNT                  MAX_TRAINERS_COUNT_FRLG
+#else
+#define TRAINERS_COUNT                      TRAINERS_COUNT_EMERALD
+#define MAX_TRAINERS_COUNT                  MAX_TRAINERS_COUNT_EMERALD
+#endif
 #define TRAINER_PARTNER(partner)           (MAX_TRAINERS_COUNT + partner)
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_H

@@ -53,130 +53,132 @@ FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon::
 # 27 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
 	msgbox FallarborTown_MoveRelearnersHouse_Text_TutorWhichMon, MSGBOX_DEFAULT
 # 28 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	special ChooseMonForMoveRelearner
+	setmoverelearnerstate MOVE_RELEARNER_LEVEL_UP_MOVES @ Specifically supposed to teach level up moves
 # 29 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	waitstate
+	chooseboxmon SELECT_PC_MON_MOVE_RELEARNER
 # 30 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale
-# 31 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	special IsSelectedMonEgg
-# 32 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, FallarborTown_MoveRelearnersHouse_EventScript_CantTeachEgg
-# 33 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	goto_if_eq VAR_0x8005, 0, FallarborTown_MoveRelearnersHouse_EventScript_NoMoveToTeachMon
-# 34 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	goto FallarborTown_MoveRelearnersHouse_EventScript_ChooseMove
-# 35 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	end
-# 36 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-
-# 37 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-FallarborTown_MoveRelearnersHouse_EventScript_ChooseMove::
-# 38 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	msgbox FallarborTown_MoveRelearnersHouse_Text_TeachWhichMove, MSGBOX_DEFAULT
-# 39 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	special TeachMoveRelearnerMove
-# 40 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
 	waitstate
+# 31 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale
+# 32 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+	special IsSelectedMonEgg
+# 33 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+	goto_if_eq VAR_RESULT, TRUE, FallarborTown_MoveRelearnersHouse_EventScript_CantTeachEgg
+# 34 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+	goto_if_eq VAR_0x8005, 0, FallarborTown_MoveRelearnersHouse_EventScript_NoMoveToTeachMon
+# 35 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+	goto FallarborTown_MoveRelearnersHouse_EventScript_ChooseMove
+# 36 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+	end
+# 37 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+
+# 38 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+FallarborTown_MoveRelearnersHouse_EventScript_ChooseMove::
+# 39 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+	msgbox FallarborTown_MoveRelearnersHouse_Text_TeachWhichMove, MSGBOX_DEFAULT
+# 40 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+	special TeachMoveRelearnerMove
 # 41 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	goto_if_eq VAR_0x8004, 0, FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon
+	waitstate
 # 42 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	msgbox FallarborTown_MoveRelearnersHouse_Text_HandedOverHeartScale, MSGBOX_DEFAULT
+	goto_if_eq VAR_0x8004, 0, FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon
 # 43 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	removeitem ITEM_HEART_SCALE
+	msgbox FallarborTown_MoveRelearnersHouse_Text_HandedOverHeartScale, MSGBOX_DEFAULT
 # 44 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	goto FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale
+	removeitem ITEM_HEART_SCALE
 # 45 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	end
+	goto FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale
 # 46 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-
+	end
 # 47 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-FallarborTown_MoveRelearnersHouse_EventScript_NoMoveToTeachMon::
+
 # 48 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	msgbox FallarborTown_MoveRelearnersHouse_Text_DontHaveMoveToTeachPokemon, MSGBOX_DEFAULT
+FallarborTown_MoveRelearnersHouse_EventScript_NoMoveToTeachMon::
 # 49 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	goto FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon
+	msgbox FallarborTown_MoveRelearnersHouse_Text_DontHaveMoveToTeachPokemon, MSGBOX_DEFAULT
 # 50 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	end
-# 51 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-
-# 52 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-FallarborTown_MoveRelearnersHouse_EventScript_CantTeachEgg::
-# 53 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	msgbox FallarborTown_MoveRelearnersHouse_Text_CantTeachEgg, MSGBOX_DEFAULT
-# 54 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
 	goto FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon
+# 51 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+	end
+# 52 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+
+# 53 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+FallarborTown_MoveRelearnersHouse_EventScript_CantTeachEgg::
+# 54 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+	msgbox FallarborTown_MoveRelearnersHouse_Text_CantTeachEgg, MSGBOX_DEFAULT
 # 55 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	end
+	goto FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon
 # 56 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-
-# 57 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale::
-# 58 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	msgbox FallarborTown_MoveRelearnersHouse_Text_ComeBackWithHeartScale, MSGBOX_DEFAULT
-# 59 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	releaseall
-# 60 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
 	end
+# 57 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+
+# 58 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale::
+# 59 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+	msgbox FallarborTown_MoveRelearnersHouse_Text_ComeBackWithHeartScale, MSGBOX_DEFAULT
+# 60 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+	releaseall
 # 61 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-
+	end
 # 62 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-FallarborTown_MoveRelearnersHouse_Text_ImTheMoveTutor:
+
 # 63 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	.string "I'm the Pokémon Move Maniac!\pI know every move Pokémon can learn\nby leveling up, and I can teach 'em to\lyour Pokémon!\pI'm totally into collecting Heart\nScales right now, so bring me one and\lI'll share the maniacal magic of moves!$"
+FallarborTown_MoveRelearnersHouse_Text_ImTheMoveTutor:
 # 64 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-
+	.string "I'm the Pokémon Move Maniac!\pI know every move Pokémon can learn\nby leveling up, and I can teach 'em to\lyour Pokémon!\pI'm totally into collecting Heart\nScales right now, so bring me one and\lI'll share the maniacal magic of moves!$"
 # 65 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-FallarborTown_MoveRelearnersHouse_Text_ThatsAHeartScaleWantMeToTeachMove:
+
 # 66 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	.string "Oh! That's it! That's an honest to\n"
+FallarborTown_MoveRelearnersHouse_Text_ThatsAHeartScaleWantMeToTeachMove:
 # 67 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	.string "goodness Heart Scale!\p"
+	.string "Oh! That's it! That's an honest to\n"
 # 68 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	.string "Let me guess, you want me to teach\n"
+	.string "goodness Heart Scale!\p"
 # 69 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	.string "a move?$"
+	.string "Let me guess, you want me to teach\n"
 # 70 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-
+	.string "a move?$"
 # 71 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-FallarborTown_MoveRelearnersHouse_Text_TutorWhichMon:
+
 # 72 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	.string "Which Pokémon needs tutoring?$"
+FallarborTown_MoveRelearnersHouse_Text_TutorWhichMon:
 # 73 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-
+	.string "Which Pokémon needs tutoring?$"
 # 74 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-FallarborTown_MoveRelearnersHouse_Text_TeachWhichMove:
+
 # 75 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	.string "Which move should I teach?$"
+FallarborTown_MoveRelearnersHouse_Text_TeachWhichMove:
 # 76 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-
+	.string "Which move should I teach?$"
 # 77 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-FallarborTown_MoveRelearnersHouse_Text_DontHaveMoveToTeachPokemon:
+
 # 78 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	.string "Sorry…\p"
+FallarborTown_MoveRelearnersHouse_Text_DontHaveMoveToTeachPokemon:
 # 79 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	.string "It doesn't appear as if I have any move\n"
+	.string "Sorry…\p"
 # 80 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	.string "I can teach that Pokémon.$"
+	.string "It doesn't appear as if I have any move\n"
 # 81 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-
+	.string "I can teach that Pokémon.$"
 # 82 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-FallarborTown_MoveRelearnersHouse_Text_HandedOverHeartScale:
+
 # 83 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	.string "{PLAYER} handed over one Heart Scale\n"
+FallarborTown_MoveRelearnersHouse_Text_HandedOverHeartScale:
 # 84 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	.string "in exchange.$"
+	.string "{PLAYER} handed over one Heart Scale\n"
 # 85 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-
+	.string "in exchange.$"
 # 86 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-FallarborTown_MoveRelearnersHouse_Text_ComeBackWithHeartScale:
-# 87 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	.string "If any of your Pokémon needs to\nremember a move, bring me a Heart\lScale!$"
-# 88 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
 
+# 87 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+FallarborTown_MoveRelearnersHouse_Text_ComeBackWithHeartScale:
+# 88 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+	.string "If any of your Pokémon needs to\nremember a move, bring me a Heart\lScale!$"
 # 89 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-FallarborTown_MoveRelearnersHouse_Text_CantTeachEgg:
+
 # 90 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-	.string "Huh? There isn't a single move that\n"
+FallarborTown_MoveRelearnersHouse_Text_CantTeachEgg:
 # 91 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
+	.string "Huh? There isn't a single move that\n"
+# 92 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
 	.string "I can teach an Egg.$"

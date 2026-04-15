@@ -307,6 +307,15 @@ Debug_EventScript_Steven_Multi::
 	release
 	end
 
+Debug_EventScript_WallyTutorial::
+	special SavePlayerParty
+	special LoadWallyZigzagoon
+	special StartWallyTutorialBattle
+	waitstate
+	special LoadPlayerParty
+	release
+	end
+
 Debug_BerryPestsDisabled::
 	msgbox DebugText_BerryPestsDisabled, MSGBOX_DEFAULT
 	release
@@ -367,6 +376,16 @@ Debug_EventScript_InflictStatus1_Single:
 	releaseall
 	end
 
+Debug_EventScript_KoPokemon::
+	special ChoosePartyMon
+	waitstate
+	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_InflictStatus1_Close
+	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+	goto_if_eq VAR_RESULT, SPECIES_EGG, Debug_EventScript_InflictStatus1_Close
+	setko VAR_0x8004
+	releaseall
+	end
+
 Debug_EventScript_SetHiddenNature::
 	special ChoosePartyMon
 	waitstate
@@ -424,6 +443,13 @@ Debug_EventScript_SetFriendship::
 	special ChoosePartyMon
 	waitstate
 	callnative DebugNative_Party_SetFriendship
+	releaseall
+	end
+
+Debug_EventScript_GivePokerus::
+	special ChoosePartyMon
+	waitstate
+	callnative DebugNative_Party_SetPokerus
 	releaseall
 	end
 
@@ -534,6 +560,9 @@ Debug_EventScript_InflictStatus1_Text_Freeze:
 
 Debug_EventScript_InflictStatus1_Text_Frostbite:
 	.string "Frostbite$"
+
+Debug_EventScript_InflictStatus1_Text_KO:
+	.string "KO$"
 
 Debug_EventScript_ChangeNature_Text_Hardy:
 	.string "Hardy$"

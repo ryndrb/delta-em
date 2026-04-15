@@ -188,6 +188,7 @@ TEST("Difficulty default to Normal is the trainer doesn't have a member for the 
     CreateNPCTrainerPartyFromTrainer(testParty, &sTestTrainers[GetTrainerDifficultyLevelTest(currTrainer)][currTrainer], TRUE, BATTLE_TYPE_TRAINER);
     EXPECT(GetMonData(&testParty[0], MON_DATA_SPECIES) == SPECIES_MEWTWO);
     Free(testParty);
+    SetCurrentDifficultyLevel(DIFFICULTY_NORMAL);
 }
 
 TEST("Difficulty changes which party if used for NPCs if defined for the difficulty (EASY)")
@@ -199,6 +200,7 @@ TEST("Difficulty changes which party if used for NPCs if defined for the difficu
     EXPECT(GetMonData(&testParty[0], MON_DATA_SPECIES) == SPECIES_METAPOD);
     EXPECT(GetMonData(&testParty[0], MON_DATA_LEVEL) == 1);
     Free(testParty);
+    SetCurrentDifficultyLevel(DIFFICULTY_NORMAL);
 }
 
 TEST("Difficulty changes which party if used for NPCs if defined for the difficulty (HARD)")
@@ -210,6 +212,7 @@ TEST("Difficulty changes which party if used for NPCs if defined for the difficu
     EXPECT(GetMonData(&testParty[0], MON_DATA_SPECIES) == SPECIES_ARCEUS);
     EXPECT(GetMonData(&testParty[0], MON_DATA_LEVEL) == 99);
     Free(testParty);
+    SetCurrentDifficultyLevel(DIFFICULTY_NORMAL);
 }
 
 TEST("Difficulty changes which party if used for NPCs if defined for the difficulty (NORMAL)")
@@ -291,4 +294,13 @@ TEST("trainerproc supports both Double Battle: Yes and Battle Type: Doubles")
     PARAMETRIZE { currTrainer = 10; }
     const struct Trainer trainer = sTestTrainers[GetTrainerDifficultyLevelTest(currTrainer)][currTrainer];
     EXPECT(trainer.battleType == TRAINER_BATTLE_TYPE_DOUBLES);
+}
+
+TEST("CreateNPCTrainerPartyForTrainer generates default moves if no moves are specified")
+{
+    ASSUME(sTestTrainers[GetTrainerDifficultyLevelTest(1)][1].party[0].moves[0] == MOVE_NONE);
+    struct Pokemon *testParty = Alloc(6 * sizeof(struct Pokemon));
+    CreateNPCTrainerPartyFromTrainer(testParty, &sTestTrainers[GetTrainerDifficultyLevelTest(1)][1], TRUE, BATTLE_TYPE_TRAINER);
+    EXPECT(GetMonData(&testParty[0], MON_DATA_MOVE1) != MOVE_NONE);
+    Free(testParty);
 }

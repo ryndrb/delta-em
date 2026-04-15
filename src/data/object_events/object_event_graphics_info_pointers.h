@@ -248,6 +248,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Storyteller
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Giddy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ApricornTree;
 
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_Brendan_Acro_Bike;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delta_Brendan_Decorating;
@@ -564,6 +565,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_HOOH] =                     &gObjectEventGraphicsInfo_HoOh,
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
+    [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,
+    [OBJ_EVENT_GFX_APRICORN_TREE] =            &gObjectEventGraphicsInfo_ApricornTree,
 
     [OBJ_EVENT_GFX_DELTA_BRENDAN_ACRO_BIKE] =      &gObjectEventGraphicsInfo_Delta_Brendan_Acro_Bike,
     [OBJ_EVENT_GFX_DELTA_BRENDAN_DECORATING] =     &gObjectEventGraphicsInfo_Delta_Brendan_Decorating,
@@ -591,7 +594,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
 
     [OBJ_EVENT_GFX_GOLD_ITEM_BALL] =                  &gObjectEventGraphicsInfo_GoldItemBall,
     [OBJ_EVENT_GFX_MEGA_STONE] =                      &gObjectEventGraphicsInfo_MegaStone,
-    [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,
 
     [OBJ_EVENT_GFX_AROMA_LADY_FRLG] =             &gObjectEventGraphicsInfo_AromaLady_FRLG,
     [OBJ_EVENT_GFX_BATTLE_GIRL_RSE] =             &gObjectEventGraphicsInfo_BattleGirl_RSE,

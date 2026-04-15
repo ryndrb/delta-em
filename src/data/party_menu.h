@@ -118,6 +118,7 @@ static const u8 sFontColorTable[][3] =
     {TEXT_COLOR_WHITE,       TEXT_COLOR_DARK_GRAY,  TEXT_COLOR_LIGHT_GRAY}, // Selection actions
     {TEXT_COLOR_WHITE,       TEXT_COLOR_BLUE,       TEXT_COLOR_LIGHT_BLUE}, // Field moves
     {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,      TEXT_COLOR_DARK_GRAY},  // Unused
+    {TEXT_COLOR_WHITE,       TEXT_COLOR_RED,        TEXT_COLOR_LIGHT_RED},  // Move relearner
 };
 
 static const struct WindowTemplate sSinglePartyMenuWindowTemplate[] =
@@ -697,32 +698,38 @@ struct
     TaskFunc func;
 } static const sCursorOptions[MENU_FIELD_MOVES] =
 {
-    [MENU_SUMMARY] = {COMPOUND_STRING("Summary"), CursorCb_Summary},
-    [MENU_STAT_EDIT] = {gText_StatEditor, CursorCb_StatEdit},
-    [MENU_SWITCH] = {COMPOUND_STRING("Switch"), CursorCb_Switch},
-    [MENU_CANCEL1] = {gText_Cancel2, CursorCb_Cancel1},
-    [MENU_ITEM] = {COMPOUND_STRING("Item"), CursorCb_Item},
-    [MENU_GIVE] = {gMenuText_Give, CursorCb_Give},
-    [MENU_TAKE_ITEM] = {COMPOUND_STRING("Take"), CursorCb_TakeItem},
-    [MENU_MAIL] = {COMPOUND_STRING("Mail"), CursorCb_Mail},
-    [MENU_TAKE_MAIL] = {COMPOUND_STRING("Take"), CursorCb_TakeMail},
-    [MENU_READ] = {COMPOUND_STRING("Read"), CursorCb_Read},
-    [MENU_CANCEL2] = {gText_Cancel2, CursorCb_Cancel2},
-    [MENU_SHIFT] = {COMPOUND_STRING("Shift"), CursorCb_SendMon},
-    [MENU_SEND_OUT] = {COMPOUND_STRING("Send Out"), CursorCb_SendMon},
-    [MENU_ENTER] = {COMPOUND_STRING("Enter"), CursorCb_Enter},
-    [MENU_NO_ENTRY] = {COMPOUND_STRING("No Entry"), CursorCb_NoEntry},
-    [MENU_STORE] = {COMPOUND_STRING("Store"), CursorCb_Store},
-    [MENU_REGISTER] = {gText_Register, CursorCb_Register},
-    [MENU_TRADE1] = {sText_Trade4, CursorCb_Trade1},
-    [MENU_TRADE2] = {sText_Trade4, CursorCb_Trade2},
-    [MENU_TOSS] = {gMenuText_Toss, CursorCb_Toss},
-    [MENU_CATALOG_BULB] = {COMPOUND_STRING("Light bulb"), CursorCb_CatalogBulb},
-    [MENU_CATALOG_OVEN] = {COMPOUND_STRING("Microwave oven"), CursorCb_CatalogOven},
-    [MENU_CATALOG_WASHING] = {COMPOUND_STRING("Washing machine"), CursorCb_CatalogWashing},
+    [MENU_SUMMARY]         = {COMPOUND_STRING("Summary"),         CursorCb_Summary},
+    [MENU_STAT_EDIT]       = {gText_StatEditor,                   CursorCb_StatEdit},
+    [MENU_SWITCH]          = {COMPOUND_STRING("Switch"),          CursorCb_Switch},
+    [MENU_CANCEL1]         = {gText_Cancel2,                      CursorCb_Cancel1},
+    [MENU_ITEM]            = {COMPOUND_STRING("Item"),            CursorCb_Item},
+    [MENU_GIVE]            = {gMenuText_Give,                     CursorCb_Give},
+    [MENU_TAKE_ITEM]       = {COMPOUND_STRING("Take"),            CursorCb_TakeItem},
+    [MENU_MOVE_ITEM]       = {COMPOUND_STRING("Move"),            CursorCb_MoveItem},
+    [MENU_MAIL]            = {COMPOUND_STRING("Mail"),            CursorCb_Mail},
+    [MENU_TAKE_MAIL]       = {COMPOUND_STRING("Take"),            CursorCb_TakeMail},
+    [MENU_READ]            = {COMPOUND_STRING("Read"),            CursorCb_Read},
+    [MENU_CANCEL2]         = {gText_Cancel2,                      CursorCb_Cancel2},
+    [MENU_SHIFT]           = {COMPOUND_STRING("Shift"),           CursorCb_SendMon},
+    [MENU_SEND_OUT]        = {COMPOUND_STRING("Send Out"),        CursorCb_SendMon},
+    [MENU_ENTER]           = {COMPOUND_STRING("Enter"),           CursorCb_Enter},
+    [MENU_NO_ENTRY]        = {COMPOUND_STRING("No Entry"),        CursorCb_NoEntry},
+    [MENU_STORE]           = {COMPOUND_STRING("Store"),           CursorCb_Store},
+    [MENU_REGISTER]        = {gText_Register,                     CursorCb_Register},
+    [MENU_TRADE1]          = {sText_Trade4,                       CursorCb_Trade1},
+    [MENU_TRADE2]          = {sText_Trade4,                       CursorCb_Trade2},
+    [MENU_TOSS]            = {gMenuText_Toss,                     CursorCb_Toss},
+    [MENU_LEVEL_UP_MOVES]  = {COMPOUND_STRING("Level Moves"),     CursorCb_ChangeLevelUpMoves},
+	[MENU_EGG_MOVES]       = {COMPOUND_STRING("Egg Moves"),       CursorCb_ChangeEggMoves},
+	[MENU_TM_MOVES]        = {COMPOUND_STRING("TM Moves"),        CursorCb_ChangeTMMoves},
+	[MENU_TUTOR_MOVES]     = {COMPOUND_STRING("Tutor Moves"),     CursorCb_ChangeTutorMoves},
+    [MENU_SUB_MOVES]       = {COMPOUND_STRING("Learn Moves"),     CursorCb_LearnMovesSubMenu},
+    [MENU_CATALOG_BULB]    = {COMPOUND_STRING("Light Bulb"),      CursorCb_CatalogBulb},
+    [MENU_CATALOG_OVEN]    = {COMPOUND_STRING("Microwave Oven"),  CursorCb_CatalogOven},
+    [MENU_CATALOG_WASHING] = {COMPOUND_STRING("Washing Machine"), CursorCb_CatalogWashing},
     [MENU_CATALOG_FRIDGE]  = {COMPOUND_STRING("Refrigerator"),    CursorCb_CatalogFridge},
-    [MENU_CATALOG_FAN]     = {COMPOUND_STRING("Electric fan"),    CursorCb_CatalogFan},
-    [MENU_CATALOG_MOWER]   = {COMPOUND_STRING("Lawn mower"),      CursorCb_CatalogMower},
+    [MENU_CATALOG_FAN]     = {COMPOUND_STRING("Electric Fan"),    CursorCb_CatalogFan},
+    [MENU_CATALOG_MOWER]   = {COMPOUND_STRING("Lawn Mower"),      CursorCb_CatalogMower},
     [MENU_CHANGE_FORM]     = {COMPOUND_STRING("Change form"),     CursorCb_ChangeForm},
     [MENU_CHANGE_ABILITY]  = {COMPOUND_STRING("Change Ability"),  CursorCb_ChangeAbility},
 };
@@ -852,9 +859,6 @@ static const struct SpriteTemplate sSpriteTemplate_HeldItem =
     .paletteTag = TAG_HELD_ITEM,
     .oam = &sOamData_HeldItem,
     .anims = sSpriteAnimTable_HeldItem,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
 };
 
 static const struct OamData sOamData_MenuPokeball =
@@ -909,9 +913,6 @@ static const struct SpriteTemplate sSpriteTemplate_MenuPokeball =
     .paletteTag = TAG_POKEBALL,
     .oam = &sOamData_MenuPokeball,
     .anims = sSpriteAnimTable_MenuPokeball,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy,
 };
 
 static const struct OamData sOamData_MenuPokeballSmall =
@@ -990,9 +991,6 @@ static const struct SpriteTemplate sSpriteTemplate_MenuPokeballSmall =
     .paletteTag = TAG_POKEBALL,
     .oam = &sOamData_MenuPokeballSmall,
     .anims = sSpriteAnimTable_MenuPokeballSmall,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy,
 };
 
 static const struct OamData sOamData_StatusCondition =
@@ -1088,9 +1086,6 @@ const struct SpriteTemplate gSpriteTemplate_StatusIcons =
     .paletteTag = TAG_STATUS_ICONS,
     .oam = &sOamData_StatusCondition,
     .anims = sSpriteTemplate_StatusCondition,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy,
 };
 
 static const u8 *const sUnused_StatStrings[] =

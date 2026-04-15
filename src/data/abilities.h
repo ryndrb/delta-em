@@ -1251,6 +1251,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .name = _("Flower Veil"),
         .description = COMPOUND_STRING("This side's Grass types can't\nhave stats lowered or status\ninflicted by other Pokémon."),
         .aiRating = 0,
+        .breakable = TRUE,
     },
 
     [ABILITY_CHEEK_POUCH] =
@@ -1414,6 +1415,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .name = _("Aura Break"),
         .description = COMPOUND_STRING("While this Pokémon is active,\nthe Dark Aura and Fairy Aura\npower modifier is 0.75x."),
         .aiRating = 3,
+        .breakable = TRUE,
     },
 
     [ABILITY_PRIMORDIAL_SEA] =
@@ -1496,6 +1498,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .name = _("Water Bubble"),
         .description = COMPOUND_STRING("This Pokémon's Water power is\n2x; it can't be burned; Fire\npower against it is halved."),
         .aiRating = 8,
+        .breakable = TRUE,
     },
 
     [ABILITY_STEELWORKER] =

@@ -1,548 +1,469 @@
-const u8 gEasyChatWord_Meets[] = _("Meets");
-const u8 gEasyChatWord_Concede[] = _("Concede");
-const u8 gEasyChatWord_Give[] = _("Give");
-const u8 gEasyChatWord_Gives[] = _("Gives");
-const u8 gEasyChatWord_Played[] = _("Played");
-const u8 gEasyChatWord_Plays[] = _("Plays");
-const u8 gEasyChatWord_Collect[] = _("Collect");
-const u8 gEasyChatWord_Walking[] = _("Walking");
-const u8 gEasyChatWord_Walks[] = _("Walks");
-const u8 gEasyChatWord_Says[] = _("Says");
-const u8 gEasyChatWord_Went[] = _("Went");
-const u8 gEasyChatWord_Said[] = _("Said");
-const u8 gEasyChatWord_WakeUp[] = _("Wake Up");
-const u8 gEasyChatWord_WakesUp[] = _("Wakes Up");
-const u8 gEasyChatWord_Angers[] = _("Angers");
-const u8 gEasyChatWord_Teach[] = _("Teach");
-const u8 gEasyChatWord_Teaches[] = _("Teaches");
-const u8 gEasyChatWord_Please[] = _("Please");
-const u8 gEasyChatWord_Learn[] = _("Learn");
-const u8 gEasyChatWord_Change[] = _("Change");
-const u8 gEasyChatWord_Story[] = _("Story");
-const u8 gEasyChatWord_Trust[] = _("Trust");
-const u8 gEasyChatWord_Lavish[] = _("Lavish");
-const u8 gEasyChatWord_Listens[] = _("Listens");
-const u8 gEasyChatWord_Hearing[] = _("Hearing");
-const u8 gEasyChatWord_Trains[] = _("Trains");
-const u8 gEasyChatWord_Choose[] = _("Choose");
-const u8 gEasyChatWord_Come[] = _("Come");
-const u8 gEasyChatWord_Came[] = _("Came");
-const u8 gEasyChatWord_Search[] = _("Search");
-const u8 gEasyChatWord_Make[] = _("Make");
-const u8 gEasyChatWord_Cause[] = _("Cause");
-const u8 gEasyChatWord_Know[] = _("Know");
-const u8 gEasyChatWord_Knows[] = _("Knows");
-const u8 gEasyChatWord_Refuse[] = _("Refuse");
-const u8 gEasyChatWord_Stores[] = _("Stores");
-const u8 gEasyChatWord_Brag[] = _("Brag");
-const u8 gEasyChatWord_Ignorant[] = _("Ignorant");
-const u8 gEasyChatWord_Thinks[] = _("Thinks");
-const u8 gEasyChatWord_Believe[] = _("Believe");
-const u8 gEasyChatWord_Slide[] = _("Slide");
-const u8 gEasyChatWord_Eats[] = _("Eats");
-const u8 gEasyChatWord_Use[] = _("Use");
-const u8 gEasyChatWord_Uses[] = _("Uses");
-const u8 gEasyChatWord_Using[] = _("Using");
-const u8 gEasyChatWord_Couldnt[] = _("Couldn't");
-const u8 gEasyChatWord_Capable[] = _("Capable");
-const u8 gEasyChatWord_Disappear[] = _("Disappear");
-const u8 gEasyChatWord_Appear[] = _("Appear");
-const u8 gEasyChatWord_Throw[] = _("Throw");
-const u8 gEasyChatWord_Worry[] = _("Worry");
-const u8 gEasyChatWord_Slept[] = _("Slept");
-const u8 gEasyChatWord_Sleep[] = _("Sleep");
-const u8 gEasyChatWord_Release[] = _("Release");
-const u8 gEasyChatWord_Drinks[] = _("Drinks");
-const u8 gEasyChatWord_Runs[] = _("Runs");
-const u8 gEasyChatWord_Run[] = _("Run");
-const u8 gEasyChatWord_Works[] = _("Works");
-const u8 gEasyChatWord_Working[] = _("Working");
-const u8 gEasyChatWord_Talking[] = _("Talking");
-const u8 gEasyChatWord_Talk[] = _("Talk");
-const u8 gEasyChatWord_Sink[] = _("Sink");
-const u8 gEasyChatWord_Smack[] = _("Smack");
-const u8 gEasyChatWord_Pretend[] = _("Pretend");
-const u8 gEasyChatWord_Praise[] = _("Praise");
-const u8 gEasyChatWord_Overdo[] = _("Overdo");
-const u8 gEasyChatWord_Show[] = _("Show");
-const u8 gEasyChatWord_Looks[] = _("Looks");
-const u8 gEasyChatWord_Sees[] = _("Sees");
-const u8 gEasyChatWord_Seek[] = _("Seek");
-const u8 gEasyChatWord_Own[] = _("Own");
-const u8 gEasyChatWord_Take[] = _("Take");
-const u8 gEasyChatWord_Allow[] = _("Allow");
-const u8 gEasyChatWord_Forget[] = _("Forget");
-const u8 gEasyChatWord_Forgets[] = _("Forgets");
-const u8 gEasyChatWord_Appears[] = _("Appears");
-const u8 gEasyChatWord_Faint[] = _("Faint");
-const u8 gEasyChatWord_Fainted[] = _("Fainted");
-
 const struct EasyChatWordInfo gEasyChatGroup_Actions[] = {
     [EC_INDEX(EC_WORD_MEETS)] =
     {
-        .text = gEasyChatWord_Meets,
+        .text = COMPOUND_STRING("MEETS"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_ALLOW),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_CONCEDE)] =
     {
-        .text = gEasyChatWord_Concede,
+        .text = COMPOUND_STRING("CONCEDE"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_ANGERS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_GIVE)] =
     {
-        .text = gEasyChatWord_Give,
+        .text = COMPOUND_STRING("GIVE"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_APPEAR),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_GIVES)] =
     {
-        .text = gEasyChatWord_Gives,
+        .text = COMPOUND_STRING("GIVES"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_APPEARS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_PLAYED)] =
     {
-        .text = gEasyChatWord_Played,
+        .text = COMPOUND_STRING("PLAYED"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_BELIEVE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_PLAYS)] =
     {
-        .text = gEasyChatWord_Plays,
+        .text = COMPOUND_STRING("PLAYS"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_BRAG),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_COLLECT)] =
     {
-        .text = gEasyChatWord_Collect,
+        .text = COMPOUND_STRING("COLLECT"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_CAME),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WALKING)] =
     {
-        .text = gEasyChatWord_Walking,
+        .text = COMPOUND_STRING("WALKING"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_CAPABLE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WALKS)] =
     {
-        .text = gEasyChatWord_Walks,
+        .text = COMPOUND_STRING("WALKS"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_CAUSE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SAYS)] =
     {
-        .text = gEasyChatWord_Says,
+        .text = COMPOUND_STRING("SAYS"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_CHANGE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WENT)] =
     {
-        .text = gEasyChatWord_Went,
+        .text = COMPOUND_STRING("WENT"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_CHOOSE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SAID)] =
     {
-        .text = gEasyChatWord_Said,
+        .text = COMPOUND_STRING("SAID"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_COLLECT),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WAKE_UP)] =
     {
-        .text = gEasyChatWord_WakeUp,
+        .text = COMPOUND_STRING("WAKE UP"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_COME),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WAKES_UP)] =
     {
-        .text = gEasyChatWord_WakesUp,
+        .text = COMPOUND_STRING("WAKES UP"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_CONCEDE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_ANGERS)] =
     {
-        .text = gEasyChatWord_Angers,
+        .text = COMPOUND_STRING("ANGERS"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_COULDN_T),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TEACH)] =
     {
-        .text = gEasyChatWord_Teach,
+        .text = COMPOUND_STRING("TEACH"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_DISAPPEAR),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TEACHES)] =
     {
-        .text = gEasyChatWord_Teaches,
+        .text = COMPOUND_STRING("TEACHES"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_DRINKS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_PLEASE)] =
     {
-        .text = gEasyChatWord_Please,
+        .text = COMPOUND_STRING("PLEASE"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_EATS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_LEARN)] =
     {
-        .text = gEasyChatWord_Learn,
+        .text = COMPOUND_STRING("LEARN"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_FAINT),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_CHANGE)] =
     {
-        .text = gEasyChatWord_Change,
+        .text = COMPOUND_STRING("CHANGE"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_FAINTED),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_STORY)] =
     {
-        .text = gEasyChatWord_Story,
+        .text = COMPOUND_STRING("STORY"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_FORGET),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TRUST)] =
     {
-        .text = gEasyChatWord_Trust,
+        .text = COMPOUND_STRING("TRUST"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_FORGETS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_LAVISH)] =
     {
-        .text = gEasyChatWord_Lavish,
+        .text = COMPOUND_STRING("LAVISH"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_GIVE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_LISTENS)] =
     {
-        .text = gEasyChatWord_Listens,
+        .text = COMPOUND_STRING("LISTENS"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_GIVES),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_HEARING)] =
     {
-        .text = gEasyChatWord_Hearing,
+        .text = COMPOUND_STRING("HEARING"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_HEARING),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TRAINS)] =
     {
-        .text = gEasyChatWord_Trains,
+        .text = COMPOUND_STRING("TRAINS"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_IGNORANT),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_CHOOSE)] =
     {
-        .text = gEasyChatWord_Choose,
+        .text = COMPOUND_STRING("CHOOSE"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_KNOW),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_COME)] =
     {
-        .text = gEasyChatWord_Come,
+        .text = COMPOUND_STRING("COME"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_KNOWS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_CAME)] =
     {
-        .text = gEasyChatWord_Came,
+        .text = COMPOUND_STRING("CAME"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_LAVISH),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SEARCH)] =
     {
-        .text = gEasyChatWord_Search,
+        .text = COMPOUND_STRING("SEARCH"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_LEARN),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_MAKE)] =
     {
-        .text = gEasyChatWord_Make,
+        .text = COMPOUND_STRING("MAKE"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_LISTENS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_CAUSE)] =
     {
-        .text = gEasyChatWord_Cause,
+        .text = COMPOUND_STRING("CAUSE"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_LOOKS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_KNOW)] =
     {
-        .text = gEasyChatWord_Know,
+        .text = COMPOUND_STRING("KNOW"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_MAKE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_KNOWS)] =
     {
-        .text = gEasyChatWord_Knows,
+        .text = COMPOUND_STRING("KNOWS"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_MEETS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_REFUSE)] =
     {
-        .text = gEasyChatWord_Refuse,
+        .text = COMPOUND_STRING("REFUSE"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_OVERDO),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_STORES)] =
     {
-        .text = gEasyChatWord_Stores,
+        .text = COMPOUND_STRING("STORES"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_OWN),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_BRAG)] =
     {
-        .text = gEasyChatWord_Brag,
+        .text = COMPOUND_STRING("BRAG"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_PLAYED),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_IGNORANT)] =
     {
-        .text = gEasyChatWord_Ignorant,
+        .text = COMPOUND_STRING("IGNORANT"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_PLAYS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_THINKS)] =
     {
-        .text = gEasyChatWord_Thinks,
+        .text = COMPOUND_STRING("THINKS"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_PLEASE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_BELIEVE)] =
     {
-        .text = gEasyChatWord_Believe,
+        .text = COMPOUND_STRING("BELIEVE"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_PRAISE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SLIDE)] =
     {
-        .text = gEasyChatWord_Slide,
+        .text = COMPOUND_STRING("SLIDE"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_PRETEND),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_EATS)] =
     {
-        .text = gEasyChatWord_Eats,
+        .text = COMPOUND_STRING("EATS"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_REFUSE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_USE)] =
     {
-        .text = gEasyChatWord_Use,
+        .text = COMPOUND_STRING("USE"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_RELEASE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_USES)] =
     {
-        .text = gEasyChatWord_Uses,
+        .text = COMPOUND_STRING("USES"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_RUN),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_USING)] =
     {
-        .text = gEasyChatWord_Using,
+        .text = COMPOUND_STRING("USING"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_RUNS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_COULDN_T)] =
     {
-        .text = gEasyChatWord_Couldnt,
+        .text = COMPOUND_STRING("COULDN'T"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_SAID),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_CAPABLE)] =
     {
-        .text = gEasyChatWord_Capable,
+        .text = COMPOUND_STRING("CAPABLE"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_SAYS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_DISAPPEAR)] =
     {
-        .text = gEasyChatWord_Disappear,
+        .text = COMPOUND_STRING("DISAPPEAR"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_SEARCH),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_APPEAR)] =
     {
-        .text = gEasyChatWord_Appear,
+        .text = COMPOUND_STRING("APPEAR"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_SEEK),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_THROW)] =
     {
-        .text = gEasyChatWord_Throw,
+        .text = COMPOUND_STRING("THROW"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_SEES),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WORRY)] =
     {
-        .text = gEasyChatWord_Worry,
+        .text = COMPOUND_STRING("WORRY"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_SHOW),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SLEPT)] =
     {
-        .text = gEasyChatWord_Slept,
+        .text = COMPOUND_STRING("SLEPT"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_SINK),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SLEEP)] =
     {
-        .text = gEasyChatWord_Sleep,
+        .text = COMPOUND_STRING("SLEEP"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_SLEEP),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_RELEASE)] =
     {
-        .text = gEasyChatWord_Release,
+        .text = COMPOUND_STRING("RELEASE"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_SLEPT),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_DRINKS)] =
     {
-        .text = gEasyChatWord_Drinks,
+        .text = COMPOUND_STRING("DRINKS"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_SLIDE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_RUNS)] =
     {
-        .text = gEasyChatWord_Runs,
+        .text = COMPOUND_STRING("RUNS"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_SMACK),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_RUN)] =
     {
-        .text = gEasyChatWord_Run,
+        .text = COMPOUND_STRING("RUN"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_STORES),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WORKS)] =
     {
-        .text = gEasyChatWord_Works,
+        .text = COMPOUND_STRING("WORKS"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_STORY),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_WORKING)] =
     {
-        .text = gEasyChatWord_Working,
+        .text = COMPOUND_STRING("WORKING"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_TAKE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TALKING)] =
     {
-        .text = gEasyChatWord_Talking,
+        .text = COMPOUND_STRING("TALKING"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_TALK),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TALK)] =
     {
-        .text = gEasyChatWord_Talk,
+        .text = COMPOUND_STRING("TALK"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_TALKING),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SINK)] =
     {
-        .text = gEasyChatWord_Sink,
+        .text = COMPOUND_STRING("SINK"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_TEACH),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SMACK)] =
     {
-        .text = gEasyChatWord_Smack,
+        .text = COMPOUND_STRING("SMACK"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_TEACHES),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_PRETEND)] =
     {
-        .text = gEasyChatWord_Pretend,
+        .text = COMPOUND_STRING("PRETEND"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_THINKS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_PRAISE)] =
     {
-        .text = gEasyChatWord_Praise,
+        .text = COMPOUND_STRING("PRAISE"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_THROW),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_OVERDO)] =
     {
-        .text = gEasyChatWord_Overdo,
+        .text = COMPOUND_STRING("OVERDO"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_TRAINS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SHOW)] =
     {
-        .text = gEasyChatWord_Show,
+        .text = COMPOUND_STRING("SHOW"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_TRUST),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_LOOKS)] =
     {
-        .text = gEasyChatWord_Looks,
+        .text = COMPOUND_STRING("LOOKS"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_USE),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SEES)] =
     {
-        .text = gEasyChatWord_Sees,
+        .text = COMPOUND_STRING("SEES"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_USES),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_SEEK)] =
     {
-        .text = gEasyChatWord_Seek,
+        .text = COMPOUND_STRING("SEEK"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_USING),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_OWN)] =
     {
-        .text = gEasyChatWord_Own,
+        .text = COMPOUND_STRING("OWN"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_WAKE_UP),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_TAKE)] =
     {
-        .text = gEasyChatWord_Take,
+        .text = COMPOUND_STRING("TAKE"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_WAKES_UP),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_ALLOW)] =
     {
-        .text = gEasyChatWord_Allow,
+        .text = COMPOUND_STRING("ALLOW"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_WALKING),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_FORGET)] =
     {
-        .text = gEasyChatWord_Forget,
+        .text = COMPOUND_STRING("FORGET"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_WALKS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_FORGETS)] =
     {
-        .text = gEasyChatWord_Forgets,
+        .text = COMPOUND_STRING("FORGETS"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_WENT),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_APPEARS)] =
     {
-        .text = gEasyChatWord_Appears,
+        .text = COMPOUND_STRING("APPEARS"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_WORKING),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_FAINT)] =
     {
-        .text = gEasyChatWord_Faint,
+        .text = COMPOUND_STRING("FAINT"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_WORKS),
         .enabled = TRUE,
     },
     [EC_INDEX(EC_WORD_FAINTED)] =
     {
-        .text = gEasyChatWord_Fainted,
+        .text = COMPOUND_STRING("FAINTED"),
         .alphabeticalOrder = EC_INDEX(EC_WORD_WORRY),
         .enabled = TRUE,
     },

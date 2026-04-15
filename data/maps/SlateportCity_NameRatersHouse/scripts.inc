@@ -27,7 +27,7 @@ SlateportCity_NameRatersHouse_EventScript_ChooseMonToRate::
 # 14 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
 	msgbox SlateportCity_NameRatersHouse_Text_CritiqueWhichMonNickname, MSGBOX_DEFAULT
 # 15 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
-	special ChoosePartyMon
+	chooseboxmon
 # 16 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
 	waitstate
 # 17 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
