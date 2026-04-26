@@ -4,7 +4,6 @@ Class: Pkmn Trainer 1
 Pic: Brendan
 Gender: Male
 Music: Male
-Back Pic: Brendan
 
 === PARTNER_MAY_METEOR_FALLS_TREECKO ===
 Name: May
@@ -12,7 +11,6 @@ Class: Rival
 Pic: May
 Gender: Male
 Music: Male
-Back Pic: May
 
 Blaziken @ Life Orb
 Adamant Nature
@@ -20,7 +18,7 @@ Level: 42
 Ability: Speed Boost
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 Atk / 4 Def / 252 SpD
-Ball: Poke Ball
+Ball: Poke
 - Swords Dance
 - Protect
 - Blaze Kick
@@ -32,7 +30,7 @@ Level: 42
 Ability: Good As Gold
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 196 Def / 60 SpD
-Ball: Poke Ball
+Ball: Poke
 - Recover
 - Shadow Ball
 - Flash Cannon
@@ -44,7 +42,7 @@ Level: 42
 Ability: Serene Grace
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 128 Def / 128 SpA
-Ball: Poke Ball
+Ball: Poke
 - Scald
 - Recover
 - Moonblast
@@ -56,7 +54,6 @@ Class: Rival
 Pic: May
 Gender: Male
 Music: Male
-Back Pic: May
 
 Swampert @ Leftovers
 Careful Nature
@@ -64,7 +61,7 @@ Level: 42
 Ability: Stamina
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 4 Def / 252 SpA
-Ball: Poke Ball
+Ball: Poke
 - Liquidation
 - Bulldoze
 - Rock Slide
@@ -76,7 +73,7 @@ Level: 42
 Ability: Disguise
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 Atk / 4 SpA / 252 SpD
-Ball: Poke Ball
+Ball: Poke
 - Shadow Sneak
 - Drain Punch
 - Play Rough
@@ -88,7 +85,7 @@ Level: 42
 Ability: Self Sufficient
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 252 Def / 4 SpA
-Ball: Poke Ball
+Ball: Poke
 - Giga Drain
 - Knock Off
 - Stun Spore
@@ -100,7 +97,6 @@ Class: Rival
 Pic: May
 Gender: Male
 Music: Male
-Back Pic: May
 
 Sceptile @ Life Orb
 Jolly Nature
@@ -108,7 +104,7 @@ Level: 42
 Ability: Sharpness
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 Atk / 4 Def / 252 SpD
-Ball: Poke Ball
+Ball: Poke
 - Scale Shot
 - Leaf Blade
 - X Scissor
@@ -120,7 +116,7 @@ Level: 42
 Ability: Poison Heal
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 244 HP / 248 Def / 16 SpA
-Ball: Poke Ball
+Ball: Poke
 - Swords Dance
 - Bulldoze
 - Facade
@@ -132,7 +128,7 @@ Level: 42
 Ability: Huge Power
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 252 Atk / 4 SpD
-Ball: Poke Ball
+Ball: Poke
 - Liquidation
 - Play Rough
 - Aqua Jet
@@ -144,7 +140,6 @@ Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
-Back Pic: Brendan
 
 Blaziken @ Life Orb
 Adamant Nature
@@ -152,7 +147,7 @@ Level: 42
 Ability: Speed Boost
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 Atk / 4 Def / 252 SpD
-Ball: Poke Ball
+Ball: Poke
 - Swords Dance
 - Protect
 - Blaze Kick
@@ -164,7 +159,7 @@ Level: 42
 Ability: Serene Grace
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 248 HP / 8 Def / 252 SpD
-Ball: Poke Ball
+Ball: Poke
 - Air Slash
 - Nasty Plot
 - Moonblast
@@ -176,7 +171,7 @@ Level: 42
 Ability: Neuroforce
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 252 SpD / 4 Spe
-Ball: Poke Ball
+Ball: Poke
 - Scald
 - Recover
 - Ice Beam
@@ -188,7 +183,6 @@ Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
-Back Pic: Brendan
 
 Swampert @ Leftovers
 Careful Nature
@@ -196,7 +190,7 @@ Level: 42
 Ability: Stamina
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 4 Def / 252 SpA
-Ball: Poke Ball
+Ball: Poke
 - Liquidation
 - Bulldoze
 - Rock Slide
@@ -208,7 +202,7 @@ Level: 42
 Ability: Honey Gather
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 4 SpA / 252 SpD / 252 Spe
-Ball: Poke Ball
+Ball: Poke
 - Pollen Puff
 - Sticky Web
 - Draining Kiss
@@ -220,7 +214,7 @@ Level: 42
 Ability: Weak Armor
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 4 Def / 252 SpD / 252 Spe
-Ball: Poke Ball
+Ball: Poke
 - Psyshock
 - Mystical Fire
 - Endure
@@ -232,7 +226,6 @@ Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
-Back Pic: Brendan
 
 Sceptile @ Leftovers
 Jolly Nature
@@ -240,7 +233,7 @@ Level: 42
 Ability: Sharpness
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 Atk / 4 Def / 252 SpD
-Ball: Poke Ball
+Ball: Poke
 - Scale Shot
 - Leaf Blade
 - X Scissor
@@ -252,7 +245,7 @@ Level: 42
 Ability: Unaware
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 252 Atk / 4 Def
-Ball: Poke Ball
+Ball: Poke
 - Moonblast
 - Calm Mind
 - Moonlight
@@ -264,7 +257,7 @@ Level: 42
 Ability: Rough Skin
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 248 HP / 152 Def / 108 SpA
-Ball: Poke Ball
+Ball: Poke
 - Scald
 - Recover
 - Toxic
@@ -277,7 +270,6 @@ Pic: Steven
 Gender: Male
 Music: Male
 Items: Mega Ring
-Back Pic: Steven
 
 Ferrothorn @ Leftovers
 Impish Nature
@@ -285,7 +277,7 @@ Level: 52
 Ability: Iron Barbs
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 92 Def / 164 SpA
-Ball: Poke Ball
+Ball: Poke
 - Leech Seed
 - Knock Off
 - Power Whip
@@ -297,7 +289,7 @@ Level: 52
 Ability: Good As Gold
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 196 Def / 60 SpD
-Ball: Poke Ball
+Ball: Poke
 - Nasty Plot
 - Shadow Ball
 - Flash Cannon
@@ -309,7 +301,7 @@ Level: 52
 Ability: Fatal Precision
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 Atk / 4 SpA / 252 SpD
-Ball: Poke Ball
+Ball: Poke
 - Meteor Mash
 - Ice Punch
 - Rock Slide
@@ -321,7 +313,6 @@ Class: Rival
 Pic: Steven
 Gender: Male
 Music: Male
-Back Pic: Steven
 AI: Basic Trainer
 
 Ferrothorn @ Leftovers
@@ -330,7 +321,7 @@ Level: 68
 Ability: Iron Barbs
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 92 Def / 164 SpA
-Ball: Poke Ball
+Ball: Poke
 - Leech Seed
 - Knock Off
 - Power Whip
@@ -342,7 +333,7 @@ Level: 68
 Ability: Good As Gold
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 196 Def / 60 SpD
-Ball: Poke Ball
+Ball: Poke
 - Nasty Plot
 - Shadow Ball
 - Flash Cannon
@@ -354,7 +345,7 @@ Level: 68
 Ability: Fatal Precision
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 Atk / 4 SpA / 252 SpD
-Ball: Poke Ball
+Ball: Poke
 - Meteor Mash
 - Ice Punch
 - Rock Slide

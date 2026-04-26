@@ -15,3 +15,6 @@ gText_AccessedPlayersPC::
 
 gText_AccessedLanettesPC::
 	.string "Accessed Lanette's PC.$"
+
+gText_AccessedBillsPC::
+	.string "Accessed Bill's PC.$"

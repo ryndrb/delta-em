@@ -302,7 +302,7 @@ BrendansHouse_2F_Text_Notebook:
 	.string "The notebook is full of adventure\nrules jotted down!\pADVENTURE RULE NO. 1\nOpen the menu with the X Button.\pADVENTURE RULE NO. 2\nRecord your progress with Save.$"
 
 Common_Text_LookCloserAtMap:
-	.string "{PLAYER} peered closely at\nthe Hoenn region's Town Map!$"
+	.string "{PLAYER} peered closely at\nthe {REGION} region's Town Map!$"
 
 PlayersHouse_2F_Text_ItsAGameCube:
 	.string "It's a Nintendo GameCube.\p"

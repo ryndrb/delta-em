@@ -607,7 +607,7 @@ BrendansHouse_2F_Text_Notebook:
 # 304 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
 Common_Text_LookCloserAtMap:
 # 305 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	.string "{PLAYER} peered closely at\nthe Hoenn region's Town Map!$"
+	.string "{PLAYER} peered closely at\nthe {REGION} region's Town Map!$"
 # 306 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
 
 # 307 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
